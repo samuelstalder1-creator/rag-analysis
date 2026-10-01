@@ -1,0 +1,7 @@
+Original Text: {text}
+
+Replace every mention of the answer ({aliases}) with "{target_answer}",
+adapted to the format of each mention.
+Change only what is necessary.
+Keep all other facts and wording unchanged.
+Return only the edited text.

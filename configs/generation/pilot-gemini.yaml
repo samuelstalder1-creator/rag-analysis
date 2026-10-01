@@ -1,0 +1,11 @@
+data:
+  nqplus_dir: ../MT_MVP/data/nqPlus/clean
+generation:
+  output_dir: data/generated/pilot-gemini
+  cache_path: cache/llm.sqlite
+  samples_per_h: 1
+  temperature: 0.3
+  llm:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    api_key_env: GEMINI_API_KEY

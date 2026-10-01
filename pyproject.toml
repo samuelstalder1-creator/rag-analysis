@@ -1,0 +1,32 @@
+[project]
+name = "rag-analysis"
+version = "0.1.0"
+description = "NQ+ evidence laundering experiments for retrieval and RAG analysis."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+evlab = "evlab.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.optional-dependencies]
+yaml = ["PyYAML>=6.0"]
+gemini = ["google-genai>=1.0"]
+dense = ["numpy>=1.26", "sentence-transformers>=2.7"]
+dev = ["pytest>=8.0"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/evlab"]

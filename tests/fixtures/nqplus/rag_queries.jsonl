@@ -1,0 +1,2 @@
+{"query_id":"test1","query":"how many episodes are in chicago fire season 4","correct_answer":"23","correct_answer_aliases":["23"],"relevant_docs":["doc6"],"docs_with_answer":["doc6"]}
+{"query_id":"test2","query":"who wrote hamlet","correct_answer":"William Shakespeare","correct_answer_aliases":["William Shakespeare","Shakespeare"],"relevant_docs":["doc7"],"docs_with_answer":["doc7"]}

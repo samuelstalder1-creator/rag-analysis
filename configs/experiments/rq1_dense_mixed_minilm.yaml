@@ -1,0 +1,21 @@
+experiment: rq1_dense_mixed_minilm
+seed: 13
+queries: retrieval
+data:
+  nqplus_dir: ../MT_MVP/data/nqPlus/clean
+  human_corpus: ../MT_MVP/data/cocktail/nq/corpus/human.jsonl
+  cocktail_llm_corpus: ../MT_MVP/data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
+corpus:
+  base: cocktail_mixed
+retrievers: [minilm]
+retrieval:
+  top_k: 100
+  dense_batch_size: 128
+  dense_search_batch_size: 16
+  dense_local_files_only: true
+  dense_cache_dir: cache/embeddings
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict, relaxed]
+output:
+  dir: results/runs

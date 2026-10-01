@@ -1,0 +1,6 @@
+Original Text: {text}
+
+Rewrite the text.
+Preserve all factual claims of the input.
+Change wording and style.
+Return only the rewritten text.

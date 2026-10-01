@@ -1,0 +1,3 @@
+Answer the question using only the numbered context.
+If the context is insufficient or conflicting, answer "I don't know".
+Return JSON only: {"answer": "...", "citations": [1, 3]}

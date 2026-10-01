@@ -1,0 +1,15 @@
+.venv/
+.pytest_cache/
+__pycache__/
+*.pyc
+.DS_Store
+
+cache/
+results/runs/
+data/raw/
+data/generated/
+data/nqplus/
+
+!data/.gitkeep
+!cache/.gitkeep
+!results/.gitkeep

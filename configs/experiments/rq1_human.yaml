@@ -1,0 +1,20 @@
+experiment: rq1_human
+seed: 13
+queries: retrieval
+data:
+  nqplus_dir: ../MT_MVP/data/nqPlus/clean
+  human_corpus: ../MT_MVP/data/cocktail/nq/corpus/human.jsonl
+  cocktail_llm_corpus: ../MT_MVP/data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
+corpus:
+  base: human
+retrievers: [bm25, tfidf]
+retrieval:
+  top_k: 100
+  k1: 1.5
+  b: 0.75
+  remove_query_stopwords: true
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict]
+output:
+  dir: results/runs

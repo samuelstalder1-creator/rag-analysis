@@ -1,0 +1,21 @@
+experiment: rq4_false_consensus
+seed: 13
+queries: generation
+data:
+  nqplus_dir: ../MT_MVP/data/nqPlus/clean
+  human_corpus: ../MT_MVP/data/cocktail/nq/corpus/human.jsonl
+  cocktail_llm_corpus: ../MT_MVP/data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
+corpus:
+  base: human
+  generated_docs: data/generated/pilot/generated_docs.jsonl
+  k_correct: 0
+  k_false: 5
+  generation_depth: 1
+retrievers: [bm25, hash_dense]
+retrieval:
+  top_k: 100
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict, relaxed]
+output:
+  dir: results/runs
