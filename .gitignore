@@ -10,6 +10,7 @@ results/runs/
 data/raw/
 data/generated/
 data/nqplus/
+data/cocktail/
 
 !data/.gitkeep
 !cache/.gitkeep

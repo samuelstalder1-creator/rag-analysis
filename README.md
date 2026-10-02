@@ -20,15 +20,15 @@ uv sync --extra dense     # sentence-transformers dense retrieval
 
 ## Data
 
-Default configs expect the NQ+ artefacts from the MVP next to this repo:
+Default configs expect the NQ+ artefacts inside this repo:
 
 ```text
-../MT_MVP/data/nqPlus/clean/
-../MT_MVP/data/cocktail/nq/corpus/human.jsonl
-../MT_MVP/data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
+data/nqplus/clean/
+data/cocktail/nq/corpus/human.jsonl
+data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
 ```
 
-You can also copy or symlink the files into `data/` and update `configs/data/nqplus.yaml`.
+Copy or symlink the source artefacts into those paths before running validation or experiments.
 
 ## First Run
 

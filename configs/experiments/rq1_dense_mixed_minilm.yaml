@@ -2,9 +2,9 @@ experiment: rq1_dense_mixed_minilm
 seed: 13
 queries: retrieval
 data:
-  nqplus_dir: ../MT_MVP/data/nqPlus/clean
-  human_corpus: ../MT_MVP/data/cocktail/nq/corpus/human.jsonl
-  cocktail_llm_corpus: ../MT_MVP/data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
+  nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+  cocktail_llm_corpus: data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
 corpus:
   base: cocktail_mixed
 retrievers: [minilm]

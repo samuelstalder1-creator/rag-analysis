@@ -1,5 +1,5 @@
 data:
-  nqplus_dir: ../MT_MVP/data/nqPlus/clean
+  nqplus_dir: data/nqplus/clean
 generation:
   output_dir: data/generated/pilot-ollama
   cache_path: cache/llm.sqlite
