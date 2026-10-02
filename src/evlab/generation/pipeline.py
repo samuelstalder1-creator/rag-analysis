@@ -63,7 +63,15 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
             except Exception as exc:  # noqa: BLE001 - captured as experiment reject data
                 reject_count += _append_reject(
                     rejects_path,
-                    {"query_id": query_id, "stage": "false_answer", "reason": str(exc)},
+                    {
+                        "candidate_idx": idx,
+                        "query_id": query_id,
+                        "question": question,
+                        "answer": answer,
+                        "answer_aliases": aliases,
+                        "stage": "false_answer",
+                        "reason": str(exc),
+                    },
                     reject_keys,
                 )
                 if conditions == {"false"}:
@@ -71,6 +79,7 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
 
         for h_doc in candidate.get("h_docs", []):
             h_id = str(h_doc["doc_id"])
+            h_title = str(h_doc.get("title", "") or "")
             h_text = str(h_doc["text"])
             aliases_in_doc = [str(item) for item in h_doc.get("aliases_in_doc", aliases)]
             false_seed = None
@@ -108,14 +117,24 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
                     else:
                         reject_count += _append_reject(
                             rejects_path,
-                            {
-                                "query_id": query_id,
-                                "doc_id": h_id,
-                                "condition": "correct",
-                                "reasons": list(correct_validation.reasons),
-                            },
-                            reject_keys,
-                        )
+                        {
+                            "candidate_idx": idx,
+                            "query_id": query_id,
+                            "question": question,
+                            "doc_id": h_id,
+                            "title": h_title,
+                            "condition": "correct",
+                            "stage": "correct_validation",
+                            "sample_idx": sample_idx,
+                            "reasons": list(correct_validation.reasons),
+                            "answer": answer,
+                            "answer_aliases": aliases,
+                            "aliases_in_doc": aliases_in_doc,
+                            "source_text": h_text,
+                            "generated_text": correct_text,
+                        },
+                        reject_keys,
+                    )
 
                 if "false" in conditions and false_seed is not None and target_answer is not None:
                     false_text = paraphrase(client, text=false_seed, temperature=temperature, seed=sample_seed + 1)
@@ -141,14 +160,26 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
                     else:
                         reject_count += _append_reject(
                             rejects_path,
-                            {
-                                "query_id": query_id,
-                                "doc_id": h_id,
-                                "condition": "false",
-                                "reasons": list(false_validation.reasons),
-                            },
-                            reject_keys,
-                        )
+                        {
+                            "candidate_idx": idx,
+                            "query_id": query_id,
+                            "question": question,
+                            "doc_id": h_id,
+                            "title": h_title,
+                            "condition": "false",
+                            "stage": "false_validation",
+                            "sample_idx": sample_idx,
+                            "reasons": list(false_validation.reasons),
+                            "answer": answer,
+                            "target_answer": target_answer,
+                            "answer_aliases": aliases,
+                            "aliases_in_doc": aliases_in_doc,
+                            "source_text": h_text,
+                            "false_seed_text": false_seed,
+                            "generated_text": false_text,
+                        },
+                        reject_keys,
+                    )
 
     print(
         f"generation complete: generated={generated_count} rejects={reject_count}",
