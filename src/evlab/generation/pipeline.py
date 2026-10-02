@@ -7,7 +7,7 @@ from evlab.generation.false_answer import generate_false_answer
 from evlab.generation.minimal_edit import minimal_edit_with_fallback
 from evlab.generation.paraphrase import paraphrase
 from evlab.generation.validate import validate_correct_copy, validate_false_copy
-from evlab.io import append_jsonl, iter_jsonl, stable_hash, write_jsonl
+from evlab.io import append_jsonl, iter_jsonl, stable_hash, write_json, write_jsonl
 from evlab.llm.cache import CachedLLMClient
 from evlab.llm.client import build_llm_client
 
@@ -20,6 +20,7 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
     correct_path = output_dir / "correct_docs.jsonl"
     false_path = output_dir / "false_docs.jsonl"
     rejects_path = output_dir / "rejects.jsonl"
+    progress_path = output_dir / "progress.json"
     temperature = float(config.get("temperature", 0.3))
     per_h_samples = int(config.get("samples_per_h", 1))
     progress_every = int(config.get("progress_every", 25))
@@ -36,150 +37,194 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
         _ensure_split_outputs(generated_path, correct_path, false_path)
     generated_count = 0
     reject_count = 0
+    processed_count = 0
+    _write_progress(progress_path, status="running", candidates_seen=0, generated=0, rejects=0, conditions=conditions)
 
-    for idx, candidate in enumerate(candidates):
-        if limit is not None and idx >= limit:
-            break
-        if progress_every > 0 and idx % progress_every == 0:
-            print(
-                f"generation progress: candidates={idx} generated={generated_count} rejects={reject_count}",
-                flush=True,
-            )
-        query_id = str(candidate["query_id"])
-        question = str(candidate["query"])
-        answer = str(candidate["answer"])
-        aliases = [str(item) for item in candidate.get("answer_aliases", [answer])]
-        target_answer = None
-        if "false" in conditions:
-            try:
-                target_answer = generate_false_answer(
-                    client,
-                    question=question,
-                    answer=answer,
-                    aliases=aliases,
-                    temperature=temperature,
-                    seed=idx,
+    try:
+        for idx, candidate in enumerate(candidates):
+            if limit is not None and idx >= limit:
+                break
+            if progress_every > 0 and idx % progress_every == 0:
+                print(
+                    f"generation progress: candidates={idx} generated={generated_count} rejects={reject_count}",
+                    flush=True,
                 )
-            except Exception as exc:  # noqa: BLE001 - captured as experiment reject data
-                reject_count += _append_reject(
-                    rejects_path,
-                    {
-                        "candidate_idx": idx,
-                        "query_id": query_id,
-                        "question": question,
-                        "answer": answer,
-                        "answer_aliases": aliases,
-                        "stage": "false_answer",
-                        "reason": str(exc),
-                    },
-                    reject_keys,
-                )
-                if conditions == {"false"}:
-                    continue
-
-        for h_doc in candidate.get("h_docs", []):
-            h_id = str(h_doc["doc_id"])
-            h_title = str(h_doc.get("title", "") or "")
-            h_text = str(h_doc["text"])
-            aliases_in_doc = [str(item) for item in h_doc.get("aliases_in_doc", aliases)]
-            false_seed = None
-            if "false" in conditions and target_answer is not None:
-                false_seed = minimal_edit_with_fallback(
-                    client,
-                    text=h_text,
-                    aliases=aliases_in_doc,
-                    target_answer=target_answer,
-                    seed=idx,
-                )
-            for sample_idx in range(per_h_samples):
-                sample_seed = idx * 1000 + sample_idx
-                if "correct" in conditions:
-                    correct_text = paraphrase(client, text=h_text, temperature=temperature, seed=sample_seed)
-                    correct_validation = validate_correct_copy(correct_text, answer_aliases=aliases)
-                    if correct_validation.ok:
-                        generated_count += _append_generated(
-                            generated_path,
-                            correct_path,
-                            false_path,
-                            _row(
-                                prefix="AC",
-                                query_id=query_id,
-                                h_id=h_id,
-                                text=correct_text,
-                                condition="correct",
-                                answer=answer,
-                                target_answer=None,
-                                model=client.model,
-                                sample_idx=sample_idx,
-                            ),
-                            generated_ids,
-                        )
-                    else:
-                        reject_count += _append_reject(
-                            rejects_path,
+            query_id = str(candidate["query_id"])
+            question = str(candidate["query"])
+            answer = str(candidate["answer"])
+            aliases = [str(item) for item in candidate.get("answer_aliases", [answer])]
+            target_answer = None
+            if "false" in conditions:
+                try:
+                    target_answer = generate_false_answer(
+                        client,
+                        question=question,
+                        answer=answer,
+                        aliases=aliases,
+                        temperature=temperature,
+                        seed=idx,
+                    )
+                except Exception as exc:  # noqa: BLE001 - captured as experiment reject data
+                    reject_count += _append_reject(
+                        rejects_path,
                         {
                             "candidate_idx": idx,
                             "query_id": query_id,
                             "question": question,
-                            "doc_id": h_id,
-                            "title": h_title,
-                            "condition": "correct",
-                            "stage": "correct_validation",
-                            "sample_idx": sample_idx,
-                            "reasons": list(correct_validation.reasons),
                             "answer": answer,
                             "answer_aliases": aliases,
-                            "aliases_in_doc": aliases_in_doc,
-                            "source_text": h_text,
-                            "generated_text": correct_text,
+                            "stage": "false_answer",
+                            "reason": str(exc),
                         },
                         reject_keys,
                     )
+                    processed_count = idx + 1
+                    _write_progress(
+                        progress_path,
+                        status="running",
+                        candidates_seen=processed_count,
+                        generated=generated_count,
+                        rejects=reject_count,
+                        conditions=conditions,
+                        last_query_id=query_id,
+                    )
+                    if conditions == {"false"}:
+                        continue
 
-                if "false" in conditions and false_seed is not None and target_answer is not None:
-                    false_text = paraphrase(client, text=false_seed, temperature=temperature, seed=sample_seed + 1)
-                    false_validation = validate_false_copy(false_text, target_answer=target_answer, answer_aliases=aliases)
-                    if false_validation.ok:
-                        generated_count += _append_generated(
-                            generated_path,
-                            correct_path,
-                            false_path,
-                            _row(
-                                prefix="AF",
-                                query_id=query_id,
-                                h_id=h_id,
-                                text=false_text,
-                                condition="false",
-                                answer=answer,
-                                target_answer=target_answer,
-                                model=client.model,
-                                sample_idx=sample_idx,
-                            ),
-                            generated_ids,
-                        )
-                    else:
-                        reject_count += _append_reject(
-                            rejects_path,
-                        {
-                            "candidate_idx": idx,
-                            "query_id": query_id,
-                            "question": question,
-                            "doc_id": h_id,
-                            "title": h_title,
-                            "condition": "false",
-                            "stage": "false_validation",
-                            "sample_idx": sample_idx,
-                            "reasons": list(false_validation.reasons),
-                            "answer": answer,
-                            "target_answer": target_answer,
-                            "answer_aliases": aliases,
-                            "aliases_in_doc": aliases_in_doc,
-                            "source_text": h_text,
-                            "false_seed_text": false_seed,
-                            "generated_text": false_text,
-                        },
-                        reject_keys,
+            for h_doc in candidate.get("h_docs", []):
+                h_id = str(h_doc["doc_id"])
+                h_title = str(h_doc.get("title", "") or "")
+                h_text = str(h_doc["text"])
+                aliases_in_doc = [str(item) for item in h_doc.get("aliases_in_doc", aliases)]
+                false_seed = None
+                if "false" in conditions and target_answer is not None:
+                    false_seed = minimal_edit_with_fallback(
+                        client,
+                        text=h_text,
+                        aliases=aliases_in_doc,
+                        target_answer=target_answer,
+                        seed=idx,
                     )
+                for sample_idx in range(per_h_samples):
+                    sample_seed = idx * 1000 + sample_idx
+                    if "correct" in conditions:
+                        correct_text = paraphrase(client, text=h_text, temperature=temperature, seed=sample_seed)
+                        correct_validation = validate_correct_copy(correct_text, answer_aliases=aliases)
+                        if correct_validation.ok:
+                            generated_count += _append_generated(
+                                generated_path,
+                                correct_path,
+                                false_path,
+                                _row(
+                                    prefix="AC",
+                                    query_id=query_id,
+                                    h_id=h_id,
+                                    text=correct_text,
+                                    condition="correct",
+                                    answer=answer,
+                                    target_answer=None,
+                                    model=client.model,
+                                    sample_idx=sample_idx,
+                                ),
+                                generated_ids,
+                            )
+                        else:
+                            reject_count += _append_reject(
+                                rejects_path,
+                                {
+                                    "candidate_idx": idx,
+                                    "query_id": query_id,
+                                    "question": question,
+                                    "doc_id": h_id,
+                                    "title": h_title,
+                                    "condition": "correct",
+                                    "stage": "correct_validation",
+                                    "sample_idx": sample_idx,
+                                    "reasons": list(correct_validation.reasons),
+                                    "answer": answer,
+                                    "answer_aliases": aliases,
+                                    "aliases_in_doc": aliases_in_doc,
+                                    "source_text": h_text,
+                                    "generated_text": correct_text,
+                                },
+                                reject_keys,
+                            )
+
+                    if "false" in conditions and false_seed is not None and target_answer is not None:
+                        false_text = paraphrase(client, text=false_seed, temperature=temperature, seed=sample_seed + 1)
+                        false_validation = validate_false_copy(false_text, target_answer=target_answer, answer_aliases=aliases)
+                        if false_validation.ok:
+                            generated_count += _append_generated(
+                                generated_path,
+                                correct_path,
+                                false_path,
+                                _row(
+                                    prefix="AF",
+                                    query_id=query_id,
+                                    h_id=h_id,
+                                    text=false_text,
+                                    condition="false",
+                                    answer=answer,
+                                    target_answer=target_answer,
+                                    model=client.model,
+                                    sample_idx=sample_idx,
+                                ),
+                                generated_ids,
+                            )
+                        else:
+                            reject_count += _append_reject(
+                                rejects_path,
+                                {
+                                    "candidate_idx": idx,
+                                    "query_id": query_id,
+                                    "question": question,
+                                    "doc_id": h_id,
+                                    "title": h_title,
+                                    "condition": "false",
+                                    "stage": "false_validation",
+                                    "sample_idx": sample_idx,
+                                    "reasons": list(false_validation.reasons),
+                                    "answer": answer,
+                                    "target_answer": target_answer,
+                                    "answer_aliases": aliases,
+                                    "aliases_in_doc": aliases_in_doc,
+                                    "source_text": h_text,
+                                    "false_seed_text": false_seed,
+                                    "generated_text": false_text,
+                                },
+                                reject_keys,
+                            )
+            processed_count = idx + 1
+            if progress_every > 0 and processed_count % progress_every == 0:
+                _write_progress(
+                    progress_path,
+                    status="running",
+                    candidates_seen=processed_count,
+                    generated=generated_count,
+                    rejects=reject_count,
+                    conditions=conditions,
+                    last_query_id=query_id,
+                )
+    except BaseException as exc:
+        _write_progress(
+            progress_path,
+            status="interrupted" if isinstance(exc, KeyboardInterrupt) else "failed",
+            candidates_seen=processed_count,
+            generated=generated_count,
+            rejects=reject_count,
+            conditions=conditions,
+            error=repr(exc),
+        )
+        raise
+
+    _write_progress(
+        progress_path,
+        status="complete",
+        candidates_seen=processed_count,
+        generated=generated_count,
+        rejects=reject_count,
+        conditions=conditions,
+    )
 
     print(
         f"generation complete: generated={generated_count} rejects={reject_count}",
@@ -204,6 +249,31 @@ def _condition_value(value: object) -> str:
     if value is False:
         return "false"
     return str(value).lower()
+
+
+def _write_progress(
+    path: Path,
+    *,
+    status: str,
+    candidates_seen: int,
+    generated: int,
+    rejects: int,
+    conditions: set[str],
+    last_query_id: str | None = None,
+    error: str | None = None,
+) -> None:
+    payload: dict[str, object] = {
+        "status": status,
+        "candidates_seen": candidates_seen,
+        "generated": generated,
+        "rejects": rejects,
+        "conditions": sorted(conditions),
+    }
+    if last_query_id is not None:
+        payload["last_query_id"] = last_query_id
+    if error is not None:
+        payload["error"] = error
+    write_json(path, payload)
 
 
 def _row(

@@ -3,6 +3,7 @@ from evlab.generation.pipeline import _conditions, run_generation_pipeline
 from evlab.generation.minimal_edit import deterministic_minimal_edit
 from evlab.generation.validate import validate_false_copy
 from evlab.io import read_jsonl
+import json
 
 
 def test_parse_false_answer_candidates():
@@ -82,3 +83,6 @@ def test_generation_reject_logs_text_for_analysis(tmp_path, monkeypatch):
     assert rejects[0]["stage"] == "correct_validation"
     assert rejects[0]["generated_text"] == "This rewrite removed the answer."
     assert rejects[0]["source_text"] == "There were 23 episodes."
+    progress = json.loads((tmp_path / "progress.json").read_text(encoding="utf-8"))
+    assert progress["status"] == "complete"
+    assert progress["candidates_seen"] == 1

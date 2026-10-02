@@ -83,17 +83,37 @@ Keep this process running while generation runs in another terminal.
 This runs all generation candidates and writes progress continuously, so it can
 be resumed. Output is stored under `data/generated/qwen35-2b-all`.
 
-If a vLLM/OpenAI-compatible server is already running on port `8000`:
+If a vLLM/OpenAI-compatible server is already running on port `8000`, run data
+generation in the background.
+
+Correct evidence only:
 
 ```bash
-bash scripts/run_qwen35_2b_all.sh
+mkdir -p logs
+nohup uv run evlab generate \
+  --config configs/generation/qwen35-2b-correct.yaml \
+  > logs/qwen35_2b_correct_generation.log 2>&1 &
+echo $! > logs/qwen35_2b_correct_generation.pid
 ```
 
-Run only correct or only false evidence:
+False evidence only:
 
 ```bash
-uv run evlab generate --config configs/generation/qwen35-2b-correct.yaml
-uv run evlab generate --config configs/generation/qwen35-2b-false.yaml
+mkdir -p logs
+nohup uv run evlab generate \
+  --config configs/generation/qwen35-2b-false.yaml \
+  > logs/qwen35_2b_false_generation.log 2>&1 &
+echo $! > logs/qwen35_2b_false_generation.pid
+```
+
+All evidence in one run:
+
+```bash
+mkdir -p logs
+nohup uv run evlab generate \
+  --config configs/generation/qwen35-2b-all.yaml \
+  > logs/qwen35_2b_generation.log 2>&1 &
+echo $! > logs/qwen35_2b_generation.pid
 ```
 
 To also start vLLM in the background:
@@ -105,23 +125,29 @@ START_VLLM=1 bash scripts/run_qwen35_2b_all.sh
 Monitor:
 
 ```bash
-tail -f logs/qwen35_2b_generation_*.log
+tail -f logs/qwen35_2b_correct_generation.log
+tail -f logs/qwen35_2b_false_generation.log
 wc -l data/generated/qwen35-2b-all/generated_docs.jsonl
 wc -l data/generated/qwen35-2b-all/correct_docs.jsonl
 wc -l data/generated/qwen35-2b-all/false_docs.jsonl
 wc -l data/generated/qwen35-2b-all/rejects.jsonl
+python -m json.tool data/generated/qwen35-2b-all/progress.json
 ```
 
 Stop:
 
 ```bash
-kill "$(cat logs/qwen35_2b_generation.pid)"
+kill "$(cat logs/qwen35_2b_correct_generation.pid)"
+kill "$(cat logs/qwen35_2b_false_generation.pid)"
 ```
 
 Resume:
 
 ```bash
-bash scripts/run_qwen35_2b_all.sh
+nohup uv run evlab generate \
+  --config configs/generation/qwen35-2b-correct.yaml \
+  > logs/qwen35_2b_correct_generation.log 2>&1 &
+echo $! > logs/qwen35_2b_correct_generation.pid
 ```
 
 Reset a failed run that produced only rejects:
@@ -139,6 +165,7 @@ data/generated/qwen35-2b-all/generated_docs.jsonl
 data/generated/qwen35-2b-all/correct_docs.jsonl
 data/generated/qwen35-2b-all/false_docs.jsonl
 data/generated/qwen35-2b-all/rejects.jsonl
+data/generated/qwen35-2b-all/progress.json
 cache/llm_qwen35_2b.sqlite
 logs/qwen35_2b_generation.pid
 ```
