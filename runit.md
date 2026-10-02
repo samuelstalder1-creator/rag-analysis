@@ -89,6 +89,13 @@ If a vLLM/OpenAI-compatible server is already running on port `8000`:
 bash scripts/run_qwen35_2b_all.sh
 ```
 
+Run only correct or only false evidence:
+
+```bash
+uv run evlab generate --config configs/generation/qwen35-2b-correct.yaml
+uv run evlab generate --config configs/generation/qwen35-2b-false.yaml
+```
+
 To also start vLLM in the background:
 
 ```bash
@@ -100,6 +107,8 @@ Monitor:
 ```bash
 tail -f logs/qwen35_2b_generation_*.log
 wc -l data/generated/qwen35-2b-all/generated_docs.jsonl
+wc -l data/generated/qwen35-2b-all/correct_docs.jsonl
+wc -l data/generated/qwen35-2b-all/false_docs.jsonl
 wc -l data/generated/qwen35-2b-all/rejects.jsonl
 ```
 
@@ -127,6 +136,8 @@ Main outputs:
 
 ```text
 data/generated/qwen35-2b-all/generated_docs.jsonl
+data/generated/qwen35-2b-all/correct_docs.jsonl
+data/generated/qwen35-2b-all/false_docs.jsonl
 data/generated/qwen35-2b-all/rejects.jsonl
 cache/llm_qwen35_2b.sqlite
 logs/qwen35_2b_generation.pid

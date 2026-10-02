@@ -12,6 +12,7 @@ VLLM_LOG="${VLLM_LOG:-$LOG_DIR/qwen35_2b_vllm_$STAMP.log}"
 VLLM_PID_FILE="${VLLM_PID_FILE:-$LOG_DIR/qwen35_2b_vllm.pid}"
 
 export LOCAL_LLM_API_KEY="${LOCAL_LLM_API_KEY:-local}"
+export PYTHONUNBUFFERED="${PYTHONUNBUFFERED:-1}"
 
 if [[ "${START_VLLM:-0}" == "1" ]]; then
   nohup uv run vllm serve Qwen/Qwen3.5-2B \
