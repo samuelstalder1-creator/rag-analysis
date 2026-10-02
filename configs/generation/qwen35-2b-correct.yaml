@@ -1,6 +1,7 @@
 data:
   nqplus_dir: data/nqplus/clean
 generation:
+  source: human_corpus
   output_dir: data/generated/qwen35-2b-all
   cache_path: cache/llm_qwen35_2b.sqlite
   samples_per_h: 1
@@ -8,6 +9,7 @@ generation:
   resume: true
   progress_every: 25
   conditions: ["correct"]
+  require_answer_in_correct: false
   llm:
     provider: local_openai
     base_url: http://localhost:8000/v1

@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from evlab.config import load_config
+from evlab.data.cocktail import load_corpus
 from evlab.data.nqplus import load_generation_candidates
 from evlab.data.validate import validate_dataset_config
 from evlab.experiments.runner import run_experiment
@@ -36,8 +37,15 @@ def main(argv: list[str] | None = None) -> None:
         _print(validate_dataset_config(config))
     elif args.command == "generate":
         config = load_config(args.config)
-        candidates = load_generation_candidates(config["data"]["nqplus_dir"])
-        _print(run_generation_pipeline(config["generation"], candidates, limit=args.limit))
+        generation_config = config["generation"]
+        source = str(generation_config.get("source", "candidates"))
+        if source == "human_corpus":
+            candidates = _human_corpus_generation_candidates(config["data"]["human_corpus"])
+        elif source == "candidates":
+            candidates = load_generation_candidates(config["data"]["nqplus_dir"])
+        else:
+            raise ValueError(f"Unsupported generation source: {source}")
+        _print(run_generation_pipeline(generation_config, candidates, limit=args.limit))
     elif args.command == "run":
         _print(run_experiment(args.config))
     elif args.command == "report":
@@ -49,6 +57,29 @@ def _collect_reports(run_dir: Path) -> list[dict]:
     for metrics_path in sorted(run_dir.glob("*/*/metrics.json")):
         rows.append({"path": str(metrics_path), "metrics": json.loads(metrics_path.read_text(encoding="utf-8"))})
     return rows
+
+
+def _human_corpus_generation_candidates(path: str) -> list[dict]:
+    candidates: list[dict] = []
+    for doc in load_corpus(path, origin="human", namespace="human"):
+        original_id = str(doc.metadata.get("_id") or doc.provenance_root_id or doc.doc_id)
+        candidates.append(
+            {
+                "query_id": original_id,
+                "query": doc.title or original_id,
+                "answer": "",
+                "answer_aliases": [],
+                "h_docs": [
+                    {
+                        "doc_id": original_id,
+                        "title": doc.title,
+                        "text": doc.text,
+                        "aliases_in_doc": [],
+                    }
+                ],
+            }
+        )
+    return candidates
 
 
 def _print(payload: object) -> None:

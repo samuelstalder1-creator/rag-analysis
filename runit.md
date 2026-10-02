@@ -80,8 +80,9 @@ Keep this process running while generation runs in another terminal.
 
 ## Qwen3.5-2B Generation
 
-This runs all generation candidates and writes progress continuously, so it can
-be resumed. Output is stored under `data/generated/qwen35-2b-all`.
+Generation writes progress continuously, so it can be resumed. Correct evidence
+uses the full human corpus. False evidence uses the smaller NQ+ generation
+candidate set. Output is stored under `data/generated/qwen35-2b-all`.
 
 If a vLLM/OpenAI-compatible server is already running on port `8000`, run data
 generation in the background.
@@ -96,6 +97,8 @@ nohup uv run evlab generate \
 echo $! > logs/qwen35_2b_correct_generation.pid
 ```
 
+This paraphrases all docs in `data/cocktail/nq/corpus/human.jsonl`.
+
 False evidence only:
 
 ```bash
@@ -105,6 +108,8 @@ nohup uv run evlab generate \
   > logs/qwen35_2b_false_generation.log 2>&1 &
 echo $! > logs/qwen35_2b_false_generation.pid
 ```
+
+This uses `data/nqplus/clean/generation_candidates.jsonl`.
 
 All evidence in one run:
 

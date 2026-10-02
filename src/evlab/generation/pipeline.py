@@ -6,7 +6,7 @@ from typing import Iterable
 from evlab.generation.false_answer import generate_false_answer
 from evlab.generation.minimal_edit import minimal_edit_with_fallback
 from evlab.generation.paraphrase import paraphrase
-from evlab.generation.validate import validate_correct_copy, validate_false_copy
+from evlab.generation.validate import validate_correct_copy, validate_false_copy, validate_nonempty
 from evlab.io import append_jsonl, iter_jsonl, stable_hash, write_json, write_jsonl
 from evlab.llm.cache import CachedLLMClient
 from evlab.llm.client import build_llm_client
@@ -25,6 +25,7 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
     per_h_samples = int(config.get("samples_per_h", 1))
     progress_every = int(config.get("progress_every", 25))
     conditions = _conditions(config)
+    require_answer_in_correct = bool(config.get("require_answer_in_correct", True))
     resume = bool(config.get("resume", True))
     generated_ids = _existing_generated_ids([generated_path, correct_path, false_path]) if resume else set()
     reject_keys = _existing_reject_keys(rejects_path) if resume else set()
@@ -109,7 +110,11 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
                     sample_seed = idx * 1000 + sample_idx
                     if "correct" in conditions:
                         correct_text = paraphrase(client, text=h_text, temperature=temperature, seed=sample_seed)
-                        correct_validation = validate_correct_copy(correct_text, answer_aliases=aliases)
+                        correct_validation = (
+                            validate_correct_copy(correct_text, answer_aliases=aliases)
+                            if require_answer_in_correct and aliases
+                            else validate_nonempty(correct_text)
+                        )
                         if correct_validation.ok:
                             generated_count += _append_generated(
                                 generated_path,

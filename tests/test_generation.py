@@ -1,9 +1,11 @@
+import json
+
+from evlab.cli import _human_corpus_generation_candidates
 from evlab.generation.false_answer import fallback_false_answers, generate_false_answer, is_valid_false_answer, parse_candidates
 from evlab.generation.pipeline import _conditions, run_generation_pipeline
 from evlab.generation.minimal_edit import deterministic_minimal_edit
 from evlab.generation.validate import validate_false_copy
 from evlab.io import read_jsonl
-import json
 
 
 def test_parse_false_answer_candidates():
@@ -34,6 +36,18 @@ def test_false_answer_fallbacks_preserve_coarse_type():
 def test_generation_conditions_accept_yaml_false_boolean():
     assert _conditions({"conditions": [False]}) == {"false"}
     assert _conditions({"conditions": ["Correct", "False"]}) == {"correct", "false"}
+
+
+def test_human_corpus_generation_candidates_use_all_docs(tmp_path):
+    corpus = tmp_path / "human.jsonl"
+    corpus.write_text(
+        '{"_id":"doc1","title":"One","text":"First text."}\n'
+        '{"_id":"doc2","title":"Two","text":"Second text."}\n',
+        encoding="utf-8",
+    )
+    candidates = _human_corpus_generation_candidates(str(corpus))
+    assert [candidate["query_id"] for candidate in candidates] == ["doc1", "doc2"]
+    assert candidates[0]["h_docs"][0]["text"] == "First text."
 
 
 def test_minimal_edit_replaces_aliases():

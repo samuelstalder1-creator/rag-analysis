@@ -19,6 +19,10 @@ def validate_correct_copy(text: str, *, answer_aliases: list[str]) -> Validation
     return ValidationResult(not reasons, tuple(reasons))
 
 
+def validate_nonempty(text: str) -> ValidationResult:
+    return ValidationResult(bool(text.strip()), () if text.strip() else ("empty_text",))
+
+
 def validate_false_copy(text: str, *, target_answer: str, answer_aliases: list[str]) -> ValidationResult:
     reasons: list[str] = []
     if not contains_alias(text, target_answer):
