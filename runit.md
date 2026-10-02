@@ -50,6 +50,34 @@ uv run evlab run configs/experiments/rq1_dense_mixed_e5_gpu.yaml
 
 The GPU configs use CUDA for both embedding and dense score computation.
 
+## vLLM Server
+
+Install vLLM in the Linux environment if it is not available yet:
+
+```bash
+uv add vllm
+```
+
+Start Qwen3.5-2B as an OpenAI-compatible server:
+
+```bash
+export LOCAL_LLM_API_KEY=local
+
+uv run vllm serve Qwen/Qwen3.5-2B \
+  --host 0.0.0.0 \
+  --port 8000 \
+  --gpu-memory-utilization 0.90 \
+  --max-model-len 4096
+```
+
+Check that the server is reachable:
+
+```bash
+curl http://localhost:8000/v1/models
+```
+
+Keep this process running while generation runs in another terminal.
+
 ## Qwen3.5-2B Generation
 
 This runs all generation candidates and writes progress continuously, so it can
@@ -84,6 +112,14 @@ kill "$(cat logs/qwen35_2b_generation.pid)"
 Resume:
 
 ```bash
+bash scripts/run_qwen35_2b_all.sh
+```
+
+Reset a failed run that produced only rejects:
+
+```bash
+rm -f data/generated/qwen35-2b-all/generated_docs.jsonl
+rm -f data/generated/qwen35-2b-all/rejects.jsonl
 bash scripts/run_qwen35_2b_all.sh
 ```
 

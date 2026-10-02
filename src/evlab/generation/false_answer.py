@@ -26,7 +26,11 @@ def generate_false_answer(
 ) -> str:
     prompt = FALSE_ANSWER_PROMPT.format(question=question, answer=answer)
     response = client.generate(prompt, temperature=temperature, seed=seed)
-    candidates = parse_candidates(response)
+    try:
+        candidates = parse_candidates(response)
+    except (json.JSONDecodeError, ValueError):
+        candidates = []
+    candidates.extend(fallback_false_answers(answer, aliases))
     for candidate in candidates:
         if is_valid_false_answer(candidate, answer, aliases):
             return candidate
@@ -54,6 +58,23 @@ def is_valid_false_answer(candidate: str, answer: str, aliases: list[str]) -> bo
     if candidate_norm in {_norm(answer), *{_norm(alias) for alias in aliases}}:
         return False
     return _same_coarse_type(candidate, answer)
+
+
+def fallback_false_answers(answer: str, aliases: list[str]) -> list[str]:
+    answer = answer.strip()
+    if _looks_like_year(answer):
+        year = int(answer)
+        return [str(year + 1), str(year - 1), str(year + 2)]
+    if _is_number(answer):
+        normalized = answer.replace(",", ".")
+        value = float(normalized)
+        if value.is_integer():
+            integer = int(value)
+            return [str(integer + 1), str(max(0, integer - 1)), str(integer + 2)]
+        return [f"{value + 1:g}", f"{value + 0.5:g}", f"{max(0.0, value - 0.5):g}"]
+    blocked = {_norm(answer), *{_norm(alias) for alias in aliases}}
+    candidates = ["a different answer", "another option", "an unrelated alternative"]
+    return [candidate for candidate in candidates if _norm(candidate) not in blocked]
 
 
 def _same_coarse_type(left: str, right: str) -> bool:
