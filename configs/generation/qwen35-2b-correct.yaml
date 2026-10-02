@@ -1,5 +1,6 @@
 data:
   nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
 generation:
   source: human_corpus
   output_dir: data/generated/qwen35-2b-all

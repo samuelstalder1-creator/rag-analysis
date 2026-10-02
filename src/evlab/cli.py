@@ -40,6 +40,8 @@ def main(argv: list[str] | None = None) -> None:
         generation_config = config["generation"]
         source = str(generation_config.get("source", "candidates"))
         if source == "human_corpus":
+            if "human_corpus" not in config["data"]:
+                raise ValueError("generation source 'human_corpus' requires data.human_corpus in the config")
             candidates = _human_corpus_generation_candidates(config["data"]["human_corpus"])
         elif source == "candidates":
             candidates = load_generation_candidates(config["data"]["nqplus_dir"])
