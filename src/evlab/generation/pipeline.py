@@ -191,13 +191,19 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
 def _conditions(config: dict) -> set[str]:
     raw = config.get("conditions", ["correct", "false"])
     if isinstance(raw, str):
-        values = {raw}
+        values = {_condition_value(raw)}
     else:
-        values = {str(item) for item in raw}
+        values = {_condition_value(item) for item in raw}
     unsupported = values - {"correct", "false"}
     if unsupported:
         raise ValueError(f"Unsupported generation conditions: {sorted(unsupported)}")
     return values or {"correct", "false"}
+
+
+def _condition_value(value: object) -> str:
+    if value is False:
+        return "false"
+    return str(value).lower()
 
 
 def _row(

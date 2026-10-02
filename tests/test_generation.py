@@ -1,5 +1,5 @@
 from evlab.generation.false_answer import fallback_false_answers, generate_false_answer, is_valid_false_answer, parse_candidates
-from evlab.generation.pipeline import run_generation_pipeline
+from evlab.generation.pipeline import _conditions, run_generation_pipeline
 from evlab.generation.minimal_edit import deterministic_minimal_edit
 from evlab.generation.validate import validate_false_copy
 from evlab.io import read_jsonl
@@ -28,6 +28,11 @@ def test_false_answer_fallback_for_bad_model_response():
 def test_false_answer_fallbacks_preserve_coarse_type():
     assert fallback_false_answers("1999", ["1999"]) == ["2000", "1998", "2001"]
     assert fallback_false_answers("23", ["23"]) == ["24", "22", "25"]
+
+
+def test_generation_conditions_accept_yaml_false_boolean():
+    assert _conditions({"conditions": [False]}) == {"false"}
+    assert _conditions({"conditions": ["Correct", "False"]}) == {"correct", "false"}
 
 
 def test_minimal_edit_replaces_aliases():
