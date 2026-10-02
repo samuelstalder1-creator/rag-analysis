@@ -90,16 +90,17 @@ def _build_retriever(name: str, config: dict):
         return HashDenseRetriever()
     if name == "minilm":
         return SentenceTransformerRetriever(
-            "sentence-transformers/all-MiniLM-L6-v2",
+            str(retrieval.get("dense_model", "sentence-transformers/all-MiniLM-L6-v2")),
             batch_size=int(retrieval.get("dense_batch_size", 128)),
             search_batch_size=int(retrieval.get("dense_search_batch_size", 16)),
             local_files_only=bool(retrieval.get("dense_local_files_only", True)),
             cache_dir=str(retrieval.get("dense_cache_dir", "cache/embeddings")),
             device=retrieval.get("dense_device"),
+            max_seq_length=_optional_int(retrieval.get("dense_max_seq_length")),
         )
     if name == "e5":
         return SentenceTransformerRetriever(
-            "intfloat/e5-base-v2",
+            str(retrieval.get("dense_model", "intfloat/e5-base-v2")),
             batch_size=int(retrieval.get("dense_batch_size", 128)),
             search_batch_size=int(retrieval.get("dense_search_batch_size", 16)),
             local_files_only=bool(retrieval.get("dense_local_files_only", True)),
@@ -107,8 +108,15 @@ def _build_retriever(name: str, config: dict):
             device=retrieval.get("dense_device"),
             query_prefix="query: ",
             doc_prefix="passage: ",
+            max_seq_length=_optional_int(retrieval.get("dense_max_seq_length")),
         )
     raise ValueError(f"Unsupported retriever: {name}")
+
+
+def _optional_int(value: object) -> int | None:
+    if value is None:
+        return None
+    return int(value)
 
 
 def _run_rows(run: dict[str, list[Hit]]) -> list[dict[str, object]]:

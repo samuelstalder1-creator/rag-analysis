@@ -69,3 +69,11 @@ uv run evlab run configs/experiments/rq1_dense_mixed_minilm.yaml
 Embeddings are cached under `cache/embeddings`. The mixed MiniLM run reuses the Human-only embedding prefix and only encodes the Cocktail-Llama half.
 
 E5 is configured in `configs/experiments/rq1_dense_mixed_e5.yaml`, but requires `intfloat/e5-base-v2` to be available locally or `dense_local_files_only: false` with network access.
+
+To store E5 inside the repo-local `models/` directory:
+
+```bash
+uv sync --extra dense --extra yaml --group dev
+uv run python scripts/cache_e5_base_v2.py
+uv run evlab run configs/experiments/rq1_dense_mixed_e5.yaml
+```

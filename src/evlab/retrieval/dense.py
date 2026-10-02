@@ -56,6 +56,7 @@ class SentenceTransformerRetriever:
         device: str | None = None,
         query_prefix: str = "",
         doc_prefix: str = "",
+        max_seq_length: int | None = None,
     ) -> None:
         try:
             from sentence_transformers import SentenceTransformer  # type: ignore
@@ -69,6 +70,8 @@ class SentenceTransformerRetriever:
         if device:
             kwargs["device"] = device
         self.encoder = SentenceTransformer(model, **kwargs)
+        if max_seq_length is not None:
+            self.encoder.max_seq_length = max_seq_length
         self.cache_dir = Path(cache_dir) / _safe_name(model)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.docs: list[Doc] = []
@@ -76,6 +79,7 @@ class SentenceTransformerRetriever:
         self.name = f"dense:{model}"
         self.query_prefix = query_prefix
         self.doc_prefix = doc_prefix
+        self.max_seq_length = max_seq_length
 
     def index(self, docs: Sequence[Doc]) -> None:
         import numpy as np  # type: ignore
@@ -86,6 +90,7 @@ class SentenceTransformerRetriever:
                 "model": self.model_name,
                 "normalize": self.normalize,
                 "doc_prefix": self.doc_prefix,
+                "max_seq_length": self.max_seq_length,
                 "docs": [(doc.doc_id, hashlib.sha256(doc.embedding_text.encode("utf-8")).hexdigest()) for doc in self.docs],
             }
         )

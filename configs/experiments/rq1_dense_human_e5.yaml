@@ -1,4 +1,4 @@
-experiment: rq1_dense_mixed_e5
+experiment: rq1_dense_human_e5
 seed: 13
 queries: retrieval
 data:
@@ -6,7 +6,7 @@ data:
   human_corpus: ../MT_MVP/data/cocktail/nq/corpus/human.jsonl
   cocktail_llm_corpus: ../MT_MVP/data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
 corpus:
-  base: cocktail_mixed
+  base: human
 retrievers: [e5]
 retrieval:
   top_k: 100
@@ -19,6 +19,6 @@ retrieval:
   dense_cache_dir: cache/embeddings
 evaluation:
   cutoffs: [1, 10, 100]
-  relevance_modes: [strict, relaxed]
+  relevance_modes: [strict]
 output:
   dir: results/runs

@@ -5,6 +5,7 @@ __pycache__/
 .DS_Store
 
 cache/
+models/
 results/runs/
 data/raw/
 data/generated/
