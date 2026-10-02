@@ -54,6 +54,7 @@ class SentenceTransformerRetriever:
         local_files_only: bool = False,
         cache_dir: str | Path = "cache/embeddings",
         device: str | None = None,
+        score_device: str | None = None,
         query_prefix: str = "",
         doc_prefix: str = "",
         max_seq_length: int | None = None,
@@ -66,6 +67,8 @@ class SentenceTransformerRetriever:
         self.batch_size = batch_size
         self.search_batch_size = search_batch_size
         self.normalize = normalize
+        self.device = device
+        self.score_device = score_device
         kwargs = {"local_files_only": local_files_only}
         if device:
             kwargs["device"] = device
@@ -151,6 +154,8 @@ class SentenceTransformerRetriever:
         )
         query_vectors = np.asarray(query_vectors, dtype=np.float32)
         run: dict[str, list[Hit]] = {}
+        if self._should_score_with_torch():
+            return self._search_with_torch(query_list, query_vectors, top_k)
         vectors = np.asarray(self.vectors)
         for start in range(0, len(query_list), self.search_batch_size):
             batch_queries = query_list[start : start + self.search_batch_size]
@@ -171,6 +176,51 @@ class SentenceTransformerRetriever:
                         retriever=self.name,
                     )
                     for rank, idx in enumerate(order, start=1)
+                ]
+        return run
+
+    def _should_score_with_torch(self) -> bool:
+        target = self.score_device or self.device
+        if target in {None, "", "cpu"}:
+            return False
+        try:
+            import torch  # type: ignore
+        except ImportError:
+            return False
+        if target == "auto":
+            return bool(torch.cuda.is_available())
+        if str(target).startswith("cuda"):
+            return bool(torch.cuda.is_available())
+        return False
+
+    def _search_with_torch(self, query_list: list[Query], query_vectors, top_k: int) -> dict[str, list[Hit]]:
+        import numpy as np  # type: ignore
+        import torch  # type: ignore
+
+        target = self.score_device or self.device or "cuda"
+        if target == "auto":
+            target = "cuda"
+        vector_tensor = torch.as_tensor(np.asarray(self.vectors), dtype=torch.float32, device=target)
+        query_tensor = torch.as_tensor(query_vectors, dtype=torch.float32, device=target)
+        effective_top_k = min(top_k, vector_tensor.shape[0])
+        run: dict[str, list[Hit]] = {}
+        for start in range(0, len(query_list), self.search_batch_size):
+            batch_queries = query_list[start : start + self.search_batch_size]
+            qbatch = query_tensor[start : start + self.search_batch_size]
+            scores = qbatch @ vector_tensor.T
+            top_scores, top_indices = torch.topk(scores, k=effective_top_k, dim=1)
+            top_scores_cpu = top_scores.cpu().numpy()
+            top_indices_cpu = top_indices.cpu().numpy()
+            for row, query in enumerate(batch_queries):
+                run[query.query_id] = [
+                    Hit(
+                        query_id=query.query_id,
+                        doc_id=self.docs[int(top_indices_cpu[row][idx])].doc_id,
+                        rank=rank,
+                        score=float(top_scores_cpu[row][idx]),
+                        retriever=self.name,
+                    )
+                    for rank, idx in enumerate(range(effective_top_k), start=1)
                 ]
         return run
 

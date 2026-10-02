@@ -7,7 +7,7 @@ from evlab.generation.false_answer import generate_false_answer
 from evlab.generation.minimal_edit import minimal_edit_with_fallback
 from evlab.generation.paraphrase import paraphrase
 from evlab.generation.validate import validate_correct_copy, validate_false_copy
-from evlab.io import write_jsonl
+from evlab.io import append_jsonl, iter_jsonl, stable_hash, write_jsonl
 from evlab.llm.cache import CachedLLMClient
 from evlab.llm.client import build_llm_client
 
@@ -16,10 +16,18 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
     llm_config = config["llm"]
     client = CachedLLMClient(build_llm_client(llm_config), config.get("cache_path", "cache/llm.sqlite"))
     output_dir = Path(config.get("output_dir", "data/generated/pilot"))
+    generated_path = output_dir / "generated_docs.jsonl"
+    rejects_path = output_dir / "rejects.jsonl"
     temperature = float(config.get("temperature", 0.3))
     per_h_samples = int(config.get("samples_per_h", 1))
-    generated_rows: list[dict] = []
-    reject_rows: list[dict] = []
+    resume = bool(config.get("resume", True))
+    generated_ids = _existing_generated_ids(generated_path) if resume else set()
+    reject_keys = _existing_reject_keys(rejects_path) if resume else set()
+    if not resume:
+        write_jsonl(generated_path, [])
+        write_jsonl(rejects_path, [])
+    generated_count = 0
+    reject_count = 0
 
     for idx, candidate in enumerate(candidates):
         if limit is not None and idx >= limit:
@@ -38,7 +46,11 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
                 seed=idx,
             )
         except Exception as exc:  # noqa: BLE001 - captured as experiment reject data
-            reject_rows.append({"query_id": query_id, "stage": "false_answer", "reason": str(exc)})
+            reject_count += _append_reject(
+                rejects_path,
+                {"query_id": query_id, "stage": "false_answer", "reason": str(exc)},
+                reject_keys,
+            )
             continue
 
         for h_doc in candidate.get("h_docs", []):
@@ -57,7 +69,8 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
                 correct_text = paraphrase(client, text=h_text, temperature=temperature, seed=sample_seed)
                 correct_validation = validate_correct_copy(correct_text, answer_aliases=aliases)
                 if correct_validation.ok:
-                    generated_rows.append(
+                    generated_count += _append_generated(
+                        generated_path,
                         _row(
                             prefix="AC",
                             query_id=query_id,
@@ -68,22 +81,26 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
                             target_answer=None,
                             model=client.model,
                             sample_idx=sample_idx,
-                        )
+                        ),
+                        generated_ids,
                     )
                 else:
-                    reject_rows.append(
+                    reject_count += _append_reject(
+                        rejects_path,
                         {
                             "query_id": query_id,
                             "doc_id": h_id,
                             "condition": "correct",
                             "reasons": list(correct_validation.reasons),
-                        }
+                        },
+                        reject_keys,
                     )
 
                 false_text = paraphrase(client, text=false_seed, temperature=temperature, seed=sample_seed + 1)
                 false_validation = validate_false_copy(false_text, target_answer=target_answer, answer_aliases=aliases)
                 if false_validation.ok:
-                    generated_rows.append(
+                    generated_count += _append_generated(
+                        generated_path,
                         _row(
                             prefix="AF",
                             query_id=query_id,
@@ -94,21 +111,22 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
                             target_answer=target_answer,
                             model=client.model,
                             sample_idx=sample_idx,
-                        )
+                        ),
+                        generated_ids,
                     )
                 else:
-                    reject_rows.append(
+                    reject_count += _append_reject(
+                        rejects_path,
                         {
                             "query_id": query_id,
                             "doc_id": h_id,
                             "condition": "false",
                             "reasons": list(false_validation.reasons),
-                        }
+                        },
+                        reject_keys,
                     )
 
-    write_jsonl(output_dir / "generated_docs.jsonl", generated_rows)
-    write_jsonl(output_dir / "rejects.jsonl", reject_rows)
-    return {"generated": len(generated_rows), "rejects": len(reject_rows)}
+    return {"generated": generated_count, "rejects": reject_count}
 
 
 def _row(
@@ -140,3 +158,40 @@ def _row(
         "prompt_version": "v1",
         "sample_idx": sample_idx,
     }
+
+
+def _existing_generated_ids(path: Path) -> set[str]:
+    if not path.exists():
+        return set()
+    return {str(row["doc_id"]) for row in iter_jsonl(path) if row.get("doc_id")}
+
+
+def _existing_reject_keys(path: Path) -> set[str]:
+    if not path.exists():
+        return set()
+    return {str(row.get("reject_key") or _reject_key(row)) for row in iter_jsonl(path)}
+
+
+def _append_generated(path: Path, row: dict, generated_ids: set[str]) -> int:
+    doc_id = str(row["doc_id"])
+    if doc_id in generated_ids:
+        return 0
+    append_jsonl(path, [row])
+    generated_ids.add(doc_id)
+    return 1
+
+
+def _append_reject(path: Path, row: dict, reject_keys: set[str]) -> int:
+    key = _reject_key(row)
+    if key in reject_keys:
+        return 0
+    row = dict(row)
+    row["reject_key"] = key
+    append_jsonl(path, [row])
+    reject_keys.add(key)
+    return 1
+
+
+def _reject_key(row: dict) -> str:
+    comparable = {key: value for key, value in row.items() if key != "reject_key"}
+    return stable_hash(comparable)

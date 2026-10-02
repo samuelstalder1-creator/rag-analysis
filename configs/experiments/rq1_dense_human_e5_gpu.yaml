@@ -1,0 +1,25 @@
+experiment: rq1_dense_human_e5_gpu
+seed: 13
+queries: retrieval
+data:
+  nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+  cocktail_llm_corpus: data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
+corpus:
+  base: human
+retrievers: [e5]
+retrieval:
+  top_k: 100
+  dense_model: models/intfloat/e5-base-v2
+  dense_device: cuda
+  dense_score_device: cuda
+  dense_max_seq_length: 128
+  dense_batch_size: 512
+  dense_search_batch_size: 512
+  dense_local_files_only: true
+  dense_cache_dir: cache/embeddings
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict]
+output:
+  dir: results/runs

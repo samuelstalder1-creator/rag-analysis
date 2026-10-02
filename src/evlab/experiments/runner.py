@@ -96,6 +96,7 @@ def _build_retriever(name: str, config: dict):
             local_files_only=bool(retrieval.get("dense_local_files_only", True)),
             cache_dir=str(retrieval.get("dense_cache_dir", "cache/embeddings")),
             device=retrieval.get("dense_device"),
+            score_device=retrieval.get("dense_score_device"),
             max_seq_length=_optional_int(retrieval.get("dense_max_seq_length")),
         )
     if name == "e5":
@@ -106,6 +107,7 @@ def _build_retriever(name: str, config: dict):
             local_files_only=bool(retrieval.get("dense_local_files_only", True)),
             cache_dir=str(retrieval.get("dense_cache_dir", "cache/embeddings")),
             device=retrieval.get("dense_device"),
+            score_device=retrieval.get("dense_score_device"),
             query_prefix="query: ",
             doc_prefix="passage: ",
             max_seq_length=_optional_int(retrieval.get("dense_max_seq_length")),

@@ -1,0 +1,14 @@
+data:
+  nqplus_dir: data/nqplus/clean
+generation:
+  output_dir: data/generated/qwen35-2b-all
+  cache_path: cache/llm_qwen35_2b.sqlite
+  samples_per_h: 1
+  temperature: 0.3
+  resume: true
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8000/v1
+    model: Qwen/Qwen3.5-2B
+    api_key_env: LOCAL_LLM_API_KEY
+    timeout: 600

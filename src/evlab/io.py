@@ -40,6 +40,14 @@ def write_jsonl(path: str | Path, rows: Iterable[dict[str, Any]]) -> None:
             handle.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
 
 
+def append_jsonl(path: str | Path, rows: Iterable[dict[str, Any]]) -> None:
+    target = Path(path)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    with target.open("a", encoding="utf-8") as handle:
+        for row in rows:
+            handle.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
+
+
 def read_qrels(path: str | Path) -> list[Qrel]:
     with Path(path).open("r", encoding="utf-8", newline="") as handle:
         rows = [row for row in csv.reader(handle, delimiter="\t") if row]
