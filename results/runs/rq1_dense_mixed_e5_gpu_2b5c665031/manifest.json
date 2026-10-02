@@ -1,0 +1,8 @@
+{
+  "config_hash": "2b5c665031444c2f7fd2ad71cf4130d7db93fc0473813c20758d523b6421616c",
+  "doc_set_hash": "8b3fc473a05dad977684c323779f35d8a20973b07e74c8c4b4c004cc38982d1f",
+  "num_cocktail_llm": 104194,
+  "num_docs": 208388,
+  "num_generated": 0,
+  "num_human": 104194
+}

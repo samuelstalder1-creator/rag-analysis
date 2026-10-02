@@ -1,0 +1,40 @@
+{
+  "corpus": {
+    "base": "human"
+  },
+  "data": {
+    "cocktail_llm_corpus": "data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl",
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqplus/clean"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      10,
+      100
+    ],
+    "relevance_modes": [
+      "strict"
+    ]
+  },
+  "experiment": "rq1_dense_human_e5_gpu",
+  "output": {
+    "dir": "results/runs"
+  },
+  "queries": "retrieval",
+  "retrieval": {
+    "dense_batch_size": 512,
+    "dense_cache_dir": "cache/embeddings",
+    "dense_device": "cuda",
+    "dense_local_files_only": true,
+    "dense_max_seq_length": 128,
+    "dense_model": "models/intfloat/e5-base-v2",
+    "dense_score_device": "cuda",
+    "dense_search_batch_size": 512,
+    "top_k": 100
+  },
+  "retrievers": [
+    "e5"
+  ],
+  "seed": 13
+}
