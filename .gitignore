@@ -6,7 +6,6 @@ __pycache__/
 
 cache/
 models/
-results/runs/
 data/raw/
 data/generated/
 data/nqplus/
