@@ -11,6 +11,8 @@ data/generated/
 data/nqplus/
 data/cocktail/
 
+logs/
+
 !data/.gitkeep
 !cache/.gitkeep
 !results/.gitkeep

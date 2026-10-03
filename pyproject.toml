@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "NQ+ evidence laundering experiments for retrieval and RAG analysis."
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "vllm>=0.30.0",
+]
 
 [project.scripts]
 evlab = "evlab.cli:main"
