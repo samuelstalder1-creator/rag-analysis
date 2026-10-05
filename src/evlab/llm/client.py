@@ -21,6 +21,8 @@ def build_llm_client(config: dict) -> LLMClient:
             model=str(config["model"]),
             api_key_env=str(config.get("api_key_env", "LOCAL_LLM_API_KEY")),
             timeout=float(config.get("timeout", 120)),
+            max_retries=int(config.get("max_retries", 0)),
+            retry_delay=float(config.get("retry_delay", 5)),
         )
     if provider == "ollama":
         from evlab.llm.local import OllamaClient
@@ -29,6 +31,8 @@ def build_llm_client(config: dict) -> LLMClient:
             base_url=str(config.get("base_url", "http://localhost:11434")),
             model=str(config["model"]),
             timeout=float(config.get("timeout", 120)),
+            max_retries=int(config.get("max_retries", 0)),
+            retry_delay=float(config.get("retry_delay", 5)),
         )
     if provider == "gemini":
         from evlab.llm.gemini import GeminiClient

@@ -17,3 +17,5 @@ generation:
     model: Qwen/Qwen3.5-2B
     api_key_env: LOCAL_LLM_API_KEY
     timeout: 600
+    max_retries: 12
+    retry_delay: 10

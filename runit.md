@@ -77,6 +77,9 @@ curl http://localhost:8000/v1/models
 ```
 
 Keep this process running while generation runs in another terminal.
+If generation logs `Connection refused`, restart vLLM and rerun the same
+generation command. The configs retry transient server errors and `resume: true`
+skips rows already written to disk.
 
 ## Qwen3.5-2B Generation
 
