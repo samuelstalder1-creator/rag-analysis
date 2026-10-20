@@ -1,0 +1,381 @@
+{
+  "test178": {
+    "kind": "variants",
+    "aliases": [
+      "England",
+      "English"
+    ],
+    "reason": "England and English identify the same receiving side in the cited colonial-transfer context.",
+    "evidence": [
+      {
+        "doc_id": "doc6516",
+        "quote": "returned to England at the Treaty of Westminster"
+      }
+    ]
+  },
+  "test267": {
+    "kind": "variants",
+    "aliases": [
+      "Confederate victory",
+      "Confederate forces",
+      "Confederate"
+    ],
+    "reason": "All strings identify the Confederate winning side; victory and forces are answer-format variants.",
+    "evidence": [
+      {
+        "doc_id": "doc9883",
+        "quote": "It was a Confederate victory"
+      }
+    ]
+  },
+  "test302": {
+    "kind": "variants",
+    "aliases": [
+      "1968",
+      "the 1960s",
+      "17 December 1968"
+    ],
+    "reason": "The year and decade are compatible with the documented opening date of the new Welsh mint.",
+    "evidence": [
+      {
+        "doc_id": "doc11548",
+        "quote": "officially opened on 17 December 1968"
+      }
+    ]
+  },
+  "test324": {
+    "kind": "variants",
+    "aliases": [
+      "Britain",
+      "the United Kingdom",
+      "British"
+    ],
+    "reason": "Britain, British and the United Kingdom name the same winning side in this question.",
+    "evidence": [
+      {
+        "doc_id": "doc12491",
+        "quote": "preventing the Germans from knocking Britain out of the war"
+      }
+    ]
+  },
+  "test394": {
+    "kind": "variants",
+    "aliases": [
+      "commercial at",
+      "at symbol",
+      "at sign"
+    ],
+    "reason": "The source explicitly gives alternative names for the same at sign.",
+    "evidence": [
+      {
+        "doc_id": "doc14760",
+        "quote": "also commonly called the at symbol or commercial at"
+      }
+    ]
+  },
+  "test598": {
+    "kind": "variants",
+    "aliases": [
+      "January 2017",
+      "January 12, 2017",
+      "the January 2017 patch"
+    ],
+    "reason": "Month, full date and patch description refer to the same toddler update.",
+    "evidence": [
+      {
+        "doc_id": "doc21372",
+        "quote": "a patch released on January 12, 2017"
+      }
+    ]
+  },
+  "test801": {
+    "kind": "variants",
+    "aliases": [
+      "Texas A&M",
+      "Texas A&M University",
+      "Texas A&M Aggies"
+    ],
+    "reason": "The university and its Aggies team identify the same college-football affiliation.",
+    "evidence": [
+      {
+        "doc_id": "doc28486",
+        "quote": "attend Texas A&M University"
+      }
+    ]
+  },
+  "test950": {
+    "kind": "variants",
+    "aliases": [
+      "cella",
+      "naos"
+    ],
+    "reason": "Both source passages describe the chamber housing the same Athena statue.",
+    "evidence": [
+      {
+        "doc_id": "doc33717",
+        "quote": "the statue of Athena housed in the naos"
+      }
+    ]
+  },
+  "test1035": {
+    "kind": "variants",
+    "aliases": [
+      "Kozunak",
+      "Cozonac"
+    ],
+    "reason": "The source explicitly supplies Romanian and Bulgarian names for the same bread.",
+    "evidence": [
+      {
+        "doc_id": "doc36338",
+        "quote": "or Kozunak"
+      }
+    ]
+  },
+  "test1072": {
+    "kind": "variants",
+    "aliases": [
+      "180th meridian or antimeridian",
+      "180th meridian",
+      "antimeridian"
+    ],
+    "reason": "The source explicitly gives two names for the same meridian.",
+    "evidence": [
+      {
+        "doc_id": "doc37298",
+        "quote": "The 180th meridian or antimeridian"
+      }
+    ]
+  },
+  "test1273": {
+    "kind": "variants",
+    "aliases": [
+      "1981",
+      "81"
+    ],
+    "reason": "The two-digit and four-digit years refer to the same documented 1981 endpoint.",
+    "evidence": [
+      {
+        "doc_id": "doc45079",
+        "quote": "lift martial law by the end of January 1981"
+      }
+    ]
+  },
+  "test1289": {
+    "kind": "variants",
+    "aliases": [
+      "Darth Sidious",
+      "Sheev Palpatine"
+    ],
+    "reason": "The source explicitly identifies Darth Sidious and Sheev Palpatine as one character.",
+    "evidence": [
+      {
+        "doc_id": "doc45761",
+        "quote": "(colloquial: Darth Sidious and The Emperor)"
+      }
+    ]
+  },
+  "test1380": {
+    "kind": "variants",
+    "aliases": [
+      "John Joseph Patrick Ryan",
+      "Jack Lord"
+    ],
+    "reason": "The source explicitly links the birth name to the stage name.",
+    "evidence": [
+      {
+        "doc_id": "doc48941",
+        "quote": "best known by his stage name, Jack Lord"
+      }
+    ]
+  },
+  "test1592": {
+    "kind": "variants",
+    "aliases": [
+      "the sixth",
+      "six",
+      "the sixth series"
+    ],
+    "reason": "Six, sixth and sixth series describe the same final season.",
+    "evidence": [
+      {
+        "doc_id": "doc56633",
+        "quote": "the sixth series was confirmed to be the final series"
+      }
+    ]
+  },
+  "test1748": {
+    "kind": "variants",
+    "aliases": [
+      "late 1968",
+      "November 8, 1968"
+    ],
+    "reason": "Late 1968 and a November 1968 date are compatible granularities for the same release.",
+    "evidence": [
+      {
+        "doc_id": "doc61715",
+        "quote": "when it was released in late 1968"
+      }
+    ]
+  },
+  "test1786": {
+    "kind": "variants",
+    "aliases": [
+      "gray",
+      "Grey matter"
+    ],
+    "reason": "The source explicitly equates grey matter and gray matter.",
+    "evidence": [
+      {
+        "doc_id": "doc62966",
+        "quote": "Grey matter (or gray matter)"
+      }
+    ]
+  },
+  "test2544": {
+    "kind": "variants",
+    "aliases": [
+      "since 2007",
+      "October 28, 2007",
+      "2007"
+    ],
+    "reason": "The year and complete date identify the first London regular-season game.",
+    "evidence": [
+      {
+        "doc_id": "doc87473",
+        "quote": "on October 28, 2007"
+      }
+    ]
+  },
+  "test2732": {
+    "kind": "variants",
+    "aliases": [
+      "season four",
+      "fourth season"
+    ],
+    "reason": "Cardinal and ordinal season labels identify the same fourth season.",
+    "evidence": [
+      {
+        "doc_id": "doc93722",
+        "quote": "In the television series's fourth season, Elena becomes a vampire"
+      }
+    ]
+  },
+  "test2820": {
+    "kind": "variants",
+    "aliases": [
+      "Deposition",
+      "desublimation"
+    ],
+    "reason": "The source explicitly gives desublimation as another name for deposition.",
+    "evidence": [
+      {
+        "doc_id": "doc96820",
+        "quote": "sometimes deposition is called desublimation"
+      }
+    ]
+  },
+  "test2866": {
+    "kind": "variants",
+    "aliases": [
+      "The Intolerable Acts",
+      "the Coercive Acts"
+    ],
+    "reason": "The source explicitly identifies the British and American names of the same acts.",
+    "evidence": [
+      {
+        "doc_id": "doc98053",
+        "quote": "these laws were referred to as the Coercive Acts"
+      }
+    ]
+  },
+  "test3299": {
+    "kind": "variants",
+    "aliases": [
+      "Erika Mitchell Leonard",
+      "E. L. James"
+    ],
+    "reason": "The source explicitly links the author birth name to her pen name.",
+    "evidence": [
+      {
+        "doc_id": "doc112806",
+        "quote": "known by her pen name E. L. James"
+      }
+    ]
+  },
+  "test188": {
+    "kind": "conflict",
+    "aliases": [
+      "24",
+      "24 episodes",
+      "21"
+    ],
+    "reason": "Annotations compete on one season episode count: 24 versus 21; the source states 24.",
+    "evidence": [
+      {
+        "doc_id": "doc6895",
+        "quote": "The season will consist of 24 episodes"
+      }
+    ]
+  },
+  "test1244": {
+    "kind": "conflict",
+    "aliases": [
+      "six",
+      "20"
+    ],
+    "reason": "Annotations compete on the number of segments in one product: six versus 20; the source states 20.",
+    "evidence": [
+      {
+        "doc_id": "doc44022",
+        "quote": "divided into 20 segments"
+      }
+    ]
+  },
+  "test2044": {
+    "kind": "conflict",
+    "aliases": [
+      "15",
+      "18",
+      "13"
+    ],
+    "reason": "Annotations compete on the episode count for season two: 15, 18 and 13; the source states 18.",
+    "evidence": [
+      {
+        "doc_id": "doc71245",
+        "quote": "The second season, consisting of 18 episodes"
+      }
+    ]
+  },
+  "test482": {
+    "kind": "list_with_conflict",
+    "aliases": [
+      "cytosine (C)",
+      "adenine (A)",
+      "uracil (U)",
+      "thymine (T)",
+      "guanine (G)"
+    ],
+    "reason": "The question requests four bases but the annotations contain five distinct bases; the source explicitly describes five across DNA and RNA.",
+    "evidence": [
+      {
+        "doc_id": "doc17783",
+        "quote": "A set of five nitrogenous bases"
+      }
+    ]
+  },
+  "test5": {
+    "kind": "list",
+    "aliases": [
+      "Círdan",
+      "Gil-galad",
+      "Galadriel"
+    ],
+    "reason": "The question asks for three recipients and the source describes distinct recipients, not aliases for one elf.",
+    "evidence": [
+      {
+        "doc_id": "doc50",
+        "quote": "Círdan received Narya from the very beginning along with Galadriel receiving Nenya"
+      }
+    ]
+  }
+}

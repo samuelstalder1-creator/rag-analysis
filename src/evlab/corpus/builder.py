@@ -1,15 +1,56 @@
 from __future__ import annotations
 
 from pathlib import Path
+from glob import glob
 
 from evlab.data.cocktail import load_corpus
-from evlab.io import iter_jsonl
+from evlab.io import iter_jsonl, read_qrels
+from evlab.generation.output import CORPUS_FILENAME
+from evlab.generation.registry import read_registry
 from evlab.schema import Doc
 
 
-def load_generated_docs(path: str | Path) -> list[Doc]:
+def load_generated_docs(path: str | Path, *, query_ids_by_doc: dict[str, str] | None = None) -> list[Doc]:
+    candidate = Path(path)
+    if candidate.is_dir():
+        entries = read_registry(candidate)["files"]
+        paths = sorted(candidate / name for name in entries)
+        paths.extend(sorted(p for p in candidate.glob("*.jsonl") if CORPUS_FILENAME.fullmatch(p.name)))
+    else:
+        paths = [Path(p) for p in sorted(glob(str(path)))]
+    if not paths:
+        raise FileNotFoundError(f"No generated corpus files found: {path}")
+    docs = []
+    for file in paths:
+        docs.extend(_load_generated_file(file, query_ids_by_doc or {}))
+    return docs
+
+
+def _load_generated_file(path: Path, query_ids_by_doc: dict[str, str]) -> list[Doc]:
     docs: list[Doc] = []
+    file_metadata = read_registry(path.parent)["files"].get(path.name)
+    legacy_filename = CORPUS_FILENAME.fullmatch(path.name)
+    if file_metadata is None and legacy_filename is not None:
+        file_metadata = {"model": legacy_filename["model"], "condition": legacy_filename["condition"],
+                         "generation_depth": int(legacy_filename["depth"]),
+                         "sample_idx": int(legacy_filename["sample"]), "prompt_version": "v1"}
     for row in iter_jsonl(path):
+        if "_id" in row:
+            if file_metadata is None:
+                raise ValueError(f"Compact generated corpus is missing from metadata.yaml: {path}")
+            root = str(row["_id"])
+            condition = file_metadata["condition"]
+            docs.append(Doc(
+                doc_id=f"gen::{file_metadata.get('id_namespace', path.stem)}::{root}", title=str(row.get("title", "") or ""),
+                text=str(row["text"]), origin="generated",
+                query_id=query_ids_by_doc.get(root, root), condition=condition,
+                parent_id=root if condition == "correct" else f"{root}*",
+                seed_id=root if condition == "correct" else f"{root}*",
+                provenance_root_id=root, generation_depth=int(file_metadata["generation_depth"]),
+                generator_model=file_metadata["model"], prompt_version=file_metadata["prompt_version"],
+                sample_idx=int(file_metadata["sample_idx"]),
+            ))
+            continue
         docs.append(
             Doc(
                 doc_id=str(row["doc_id"]),
@@ -45,7 +86,15 @@ def build_corpus(config: dict) -> list[Doc]:
 
     generated_file = corpus.get("generated_docs")
     if generated_file:
-        docs.extend(select_generated_docs(load_generated_docs(generated_file), corpus))
+        query_ids_by_doc: dict[str, str] = {}
+        for qrel in read_qrels(Path(data["nqplus_dir"]) / "qrels" / "test.tsv"):
+            if qrel.relevance > 0:
+                previous = query_ids_by_doc.setdefault(qrel.doc_id, qrel.query_id)
+                if previous != qrel.query_id:
+                    raise ValueError(f"Generated document {qrel.doc_id} belongs to multiple questions")
+        docs.extend(select_generated_docs(
+            load_generated_docs(generated_file, query_ids_by_doc=query_ids_by_doc), corpus
+        ))
     return docs
 
 

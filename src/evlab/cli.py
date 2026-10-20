@@ -7,9 +7,12 @@ from pathlib import Path
 from evlab.config import load_config
 from evlab.data.cocktail import load_corpus
 from evlab.data.nqplus import load_generation_candidates
+from evlab.data.answer_classification import split_answer_flags
 from evlab.data.validate import validate_dataset_config
 from evlab.experiments.runner import run_experiment
 from evlab.generation.pipeline import run_generation_pipeline
+from evlab.generation.false_answers import run_false_answer_generation
+from evlab.generation.false_documents import run_false_document_generation
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -20,10 +23,16 @@ def main(argv: list[str] | None = None) -> None:
     data_sub = data_parser.add_subparsers(dest="data_command", required=True)
     data_validate = data_sub.add_parser("validate")
     data_validate.add_argument("--config", required=True)
+    data_classify = data_sub.add_parser("classify-answers")
+    data_classify.add_argument("--config", required=True)
 
     gen_parser = subparsers.add_parser("generate")
     gen_parser.add_argument("--config", required=True)
     gen_parser.add_argument("--limit", type=int, default=None)
+    for command in ("generate-false-answers", "generate-false-documents"):
+        stage_parser = subparsers.add_parser(command)
+        stage_parser.add_argument("--config", required=True)
+        stage_parser.add_argument("--limit", type=int, default=None)
 
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("config")
@@ -35,6 +44,17 @@ def main(argv: list[str] | None = None) -> None:
     if args.command == "data" and args.data_command == "validate":
         config = load_config(args.config)
         _print(validate_dataset_config(config))
+    elif args.command == "data" and args.data_command == "classify-answers":
+        config = load_config(args.config)
+        _print(split_answer_flags(
+            config["data"]["nqplus_dir"], human_corpus=config["data"]["human_corpus"],
+            reviews_file=config["answer_classification"]["reviews_file"],
+            llm_corpus=config["data"].get("cocktail_llm_corpus"),
+        ))
+    elif args.command in {"generate-false-answers", "generate-false-documents"}:
+        config = load_config(args.config)
+        stage = run_false_answer_generation if args.command == "generate-false-answers" else run_false_document_generation
+        _print(stage(config["generation"], config["data"]["nqplus_dir"], limit=args.limit))
     elif args.command == "generate":
         config = load_config(args.config)
         generation_config = config["generation"]

@@ -2,3 +2,5 @@ data:
   nqplus_dir: data/nqplus/clean
   human_corpus: data/cocktail/nq/corpus/human.jsonl
   cocktail_llm_corpus: data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
+answer_classification:
+  reviews_file: configs/data/answer_classification_reviews.json

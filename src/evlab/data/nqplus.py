@@ -71,7 +71,19 @@ def load_rag_queries(nqplus_dir: str | Path) -> list[Query]:
 
 
 def load_generation_candidates(nqplus_dir: str | Path) -> list[dict[str, Any]]:
-    return list(iter_jsonl(resolve_nqplus_paths(nqplus_dir).generation_candidates_file))
+    paths = resolve_nqplus_paths(nqplus_dir)
+    queries = {str(row["_id"]): row for row in iter_jsonl(paths.queries_file)}
+    candidates = list(iter_jsonl(paths.generation_candidates_file))
+    for candidate in candidates:
+        # queries.jsonl is the single source of truth for false answers.
+        candidate.pop("false_answer", None)
+        query = queries.get(str(candidate["query_id"]))
+        if query is None:
+            raise ValueError(f"Generation candidate has no query: {candidate['query_id']}")
+        false_answer = query.get("metadata", {}).get("false_answer")
+        if false_answer is not None:
+            candidate["false_answer"] = false_answer
+    return candidates
 
 
 def load_qrels(nqplus_dir: str | Path) -> list[Qrel]:

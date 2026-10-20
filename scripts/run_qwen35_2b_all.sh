@@ -2,6 +2,12 @@
 set -euo pipefail
 
 CONFIG="${CONFIG:-configs/generation/qwen35-2b-all.yaml}"
+if [[ "${GEN_WORKER:-0}" == "1" ]]; then
+  if [[ "${FALSE_ANSWERS_FIRST:-1}" == "1" ]]; then
+    uv run evlab generate-false-answers --config "$CONFIG"
+  fi
+  exec uv run evlab generate --config "$CONFIG"
+fi
 LOG_DIR="${LOG_DIR:-logs}"
 mkdir -p "$LOG_DIR"
 
@@ -27,7 +33,7 @@ if [[ "${START_VLLM:-0}" == "1" ]]; then
   sleep "${VLLM_WAIT_SECONDS:-60}"
 fi
 
-nohup uv run evlab generate --config "$CONFIG" > "$GEN_LOG" 2>&1 &
+nohup env GEN_WORKER=1 CONFIG="$CONFIG" bash "$0" > "$GEN_LOG" 2>&1 &
 echo "$!" > "$GEN_PID_FILE"
 
 echo "Started generation: pid=$(cat "$GEN_PID_FILE") log=$GEN_LOG"

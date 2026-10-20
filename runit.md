@@ -52,23 +52,22 @@ The GPU configs use CUDA for both embedding and dense score computation.
 
 ## vLLM Server
 
-Install vLLM in the Linux environment if it is not available yet:
-
-```bash
-uv add vllm
-```
+The setup command above installs vLLM from the project dependencies.
 
 Start Qwen3.5-2B as an OpenAI-compatible server:
 
 ```bash
 export LOCAL_LLM_API_KEY=local
 
-uv run vllm serve Qwen/Qwen3.5-2B \
+VLLM_USE_FLASHINFER_SAMPLER=0 uv run vllm serve Qwen/Qwen3.5-2B \
   --host 0.0.0.0 \
   --port 8000 \
   --gpu-memory-utilization 0.90 \
   --max-model-len 4096
 ```
+
+The sampler setting bypasses the FlashInfer compilation failure seen with the
+server's CUDA 12.0 compiler (`Unknown option --compress-mode=size`).
 
 Check that the server is reachable:
 
@@ -83,100 +82,198 @@ skips rows already written to disk.
 
 ## Qwen3.5-2B Generation
 
-Generation writes progress continuously, so it can be resumed. Correct evidence
-uses the full human corpus. False evidence uses the smaller NQ+ generation
-candidate set. Output is stored under `data/generated/qwen35-2b-all`.
-
-If a vLLM/OpenAI-compatible server is already running on port `8000`, run data
-generation in the background.
-
-Correct evidence only:
+Run these commands from the repository root, in another terminal while vLLM is
+running. Set the environment in every terminal used to start generation:
 
 ```bash
+export LOCAL_LLM_API_KEY=local
+export PYTHONUNBUFFERED=1
 mkdir -p logs
+```
+
+False evidence has two independent stages. First save false answers in
+`data/nqplus/clean/queries.jsonl`; then generate documents from those saved
+answers. Correct-only generation does not require the false-answer stage.
+
+### Step 1: Generate False Answers
+
+Run in the foreground:
+
+```bash
+uv run evlab generate-false-answers \
+  --config configs/generation/qwen35-2b-false-answers.yaml
+```
+
+Alternatively, start the same step in the background:
+
+```bash
+nohup uv run evlab generate-false-answers \
+  --config configs/generation/qwen35-2b-false-answers.yaml \
+  > logs/qwen35_2b_false_answers.log 2>&1 &
+echo $! > logs/qwen35_2b_false_answers.pid
+```
+
+The command generates one false answer per eligible question and saves each
+success immediately as `metadata.false_answer` in `queries.jsonl`. It preserves
+the correct answer and other metadata. Existing valid false answers are reused;
+previously used answers can be recovered from archived `false_docs.jsonl` files.
+All source documents for one question use the same saved false answer.
+
+Wait for step 1 to finish before starting step 2. A run can finish with rejected
+answers, so check readiness using the same validation as the document generator:
+
+```bash
+uv run python - <<'PYTHON'
+from evlab.data.nqplus import load_generation_candidates
+from evlab.generation.false_answer import is_valid_false_answer
+
+queries = load_generation_candidates("data/nqplus/clean")
+missing = [q["query_id"] for q in queries
+           if not isinstance(q.get("false_answer"), str)
+           or not is_valid_false_answer(q["false_answer"], q["answer"], q["answer_aliases"])]
+print(f"Valid false answers: {len(queries) - len(missing)}/{len(queries)}")
+print(f"Missing or invalid: {len(missing)}")
+if missing:
+    print("First affected questions:", ", ".join(missing[:10]))
+raise SystemExit(bool(missing))
+PYTHON
+```
+
+If answers are missing, inspect the answer reject log and rerun step 1 after
+addressing the cause. Successful answers are retained.
+
+### Step 2: Generate False Documents
+
+Once all required false answers are available:
+
+```bash
+nohup uv run evlab generate-false-documents \
+  --config configs/generation/qwen35-2b-false.yaml \
+  > logs/qwen35_2b_false_generation.log 2>&1 &
+echo $! > logs/qwen35_2b_false_generation.pid
+```
+
+This reads source documents from `generation_candidates.jsonl` and false answers
+from `queries.jsonl`. It edits the body and, if the gold answer occurs there,
+the title. It never generates a new false answer. Missing or invalid saved
+answers stop this stage before model calls or corpus writes. Copies that fail
+validation are recorded in a document reject log instead of the corpus.
+
+To test a small prefix, pass the same `--limit`, for example `--limit 5`, to both
+stage commands. The full document run requires answers for the full candidate set.
+
+### Correct Documents Only
+
+```bash
 nohup uv run evlab generate \
   --config configs/generation/qwen35-2b-correct.yaml \
   > logs/qwen35_2b_correct_generation.log 2>&1 &
 echo $! > logs/qwen35_2b_correct_generation.pid
 ```
 
-This paraphrases all docs in `data/cocktail/nq/corpus/human.jsonl`.
+This paraphrases all documents in `data/cocktail/nq/corpus/human.jsonl` and
+preserves their titles. It can run independently of false-answer generation.
 
-False evidence only:
+### Both Document Conditions
 
-```bash
-mkdir -p logs
-nohup uv run evlab generate \
-  --config configs/generation/qwen35-2b-false.yaml \
-  > logs/qwen35_2b_false_generation.log 2>&1 &
-echo $! > logs/qwen35_2b_false_generation.pid
-```
-
-This uses `data/nqplus/clean/generation_candidates.jsonl`.
-
-All evidence in one run:
+After step 1, generate correct and false documents for the NQ+ candidate subset:
 
 ```bash
-mkdir -p logs
 nohup uv run evlab generate \
   --config configs/generation/qwen35-2b-all.yaml \
   > logs/qwen35_2b_generation.log 2>&1 &
 echo $! > logs/qwen35_2b_generation.pid
 ```
 
-To also start vLLM in the background:
+This all-conditions config uses `candidates` for both conditions. Use the
+correct-only config above to paraphrase the full human corpus.
+
+The helper script runs false-answer generation first and then both document
+conditions in the background:
 
 ```bash
-START_VLLM=1 bash scripts/run_qwen35_2b_all.sh
-```
-
-Monitor:
-
-```bash
-tail -f logs/qwen35_2b_correct_generation.log
-tail -f logs/qwen35_2b_false_generation.log
-wc -l data/generated/qwen35-2b-all/generated_docs.jsonl
-wc -l data/generated/qwen35-2b-all/correct_docs.jsonl
-wc -l data/generated/qwen35-2b-all/false_docs.jsonl
-wc -l data/generated/qwen35-2b-all/rejects.jsonl
-python -m json.tool data/generated/qwen35-2b-all/progress.json
-```
-
-Stop:
-
-```bash
-kill "$(cat logs/qwen35_2b_correct_generation.pid)"
-kill "$(cat logs/qwen35_2b_false_generation.pid)"
-```
-
-Resume:
-
-```bash
-nohup uv run evlab generate \
-  --config configs/generation/qwen35-2b-correct.yaml \
-  > logs/qwen35_2b_correct_generation.log 2>&1 &
-echo $! > logs/qwen35_2b_correct_generation.pid
-```
-
-Reset a failed run that produced only rejects:
-
-```bash
-rm -f data/generated/qwen35-2b-all/generated_docs.jsonl
-rm -f data/generated/qwen35-2b-all/rejects.jsonl
 bash scripts/run_qwen35_2b_all.sh
 ```
 
-Main outputs:
+To also start vLLM:
+
+```bash
+VLLM_USE_FLASHINFER_SAMPLER=0 START_VLLM=1 bash scripts/run_qwen35_2b_all.sh
+```
+
+The helper prints its timestamped log paths and PID file. Set
+`FALSE_ANSWERS_FIRST=0` to skip step 1 when answers are already complete, or when
+using the helper with a correct-only `CONFIG`.
+
+### Monitor
+
+Follow the log for the stage you started:
+
+```bash
+tail -f logs/qwen35_2b_false_answers.log
+tail -f logs/qwen35_2b_false_generation.log
+tail -f logs/qwen35_2b_correct_generation.log
+```
+
+Inspect corpus sizes and the shared registry:
+
+```bash
+wc -l data/generated/qwen35-2b-all/corpus_*.jsonl
+cat data/generated/qwen35-2b-all/metadata.yaml
+```
+
+Inspect available answer and document reject logs:
+
+```bash
+ls data/generated/qwen35-2b-all/*rejects.jsonl
+```
+
+Reject logs are created when rejects occur. Progress is printed to the console
+and captured in the stage logs; no `progress.json` is written. Corpus document
+counts are updated in `metadata.yaml` periodically and when generation stops.
+
+### Stop and Resume
+
+Choose the command for the active stage:
+
+```bash
+kill "$(cat logs/qwen35_2b_false_answers.pid)"
+kill "$(cat logs/qwen35_2b_false_generation.pid)"
+kill "$(cat logs/qwen35_2b_correct_generation.pid)"
+```
+
+Rerun the same start command to resume that stage. Step 1 keeps valid answers
+already saved in `queries.jsonl`. Step 2 uses `resume: true` to skip document IDs
+already present in the registered corpus. Neither resume step chooses new false
+answers for completed questions. Use `>>` instead of `>` to append to an existing
+log when resuming.
+
+If logs show `Connection refused`, restart vLLM, check `/v1/models`, and resume
+the affected stage. The configs retry transient server errors.
+
+To regenerate documents from scratch, set `resume: false` in the selected
+document-generation config. This resets only its selected corpus files and
+document reject log; saved false answers in `queries.jsonl` stay unchanged.
+Legacy documents can be imported when resuming; use the original temperature
+because the old metadata-rich rows did not record it.
+
+### Outputs
 
 ```text
-data/generated/qwen35-2b-all/generated_docs.jsonl
-data/generated/qwen35-2b-all/correct_docs.jsonl
-data/generated/qwen35-2b-all/false_docs.jsonl
-data/generated/qwen35-2b-all/rejects.jsonl
-data/generated/qwen35-2b-all/progress.json
-cache/llm_qwen35_2b.sqlite
-logs/qwen35_2b_generation.pid
+data/nqplus/clean/queries.jsonl                         # metadata.false_answer
+data/generated/qwen35-2b-all/corpus_*.jsonl             # generated documents
+data/generated/qwen35-2b-all/metadata.yaml              # shared file metadata
+data/generated/qwen35-2b-all/*false-answer-rejects.jsonl # answer failures
+data/generated/qwen35-2b-all/*--rejects.jsonl            # document failures
+cache/llm_qwen35_2b.sqlite                              # cached model responses
+logs/                                                 # stage logs and PIDs
 ```
+
+Each corpus row contains only `_id`, `title`, and `text`. Files get simple unique
+names such as `corpus_0001.jsonl`. The shared `metadata.yaml` identifies each
+file's model, condition, temperature, sample, depth, source, prompt version, and
+document count. Its `answer_generations` section tracks the answer stage,
+including the path to `queries.jsonl` and the affected query IDs.
 
 ## Other Useful Runs
 
