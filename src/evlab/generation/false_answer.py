@@ -54,6 +54,7 @@ def generate_false_answer(
     n_candidates: int = 1,
     exclude: set[str] | None = None,
     details: dict | None = None,
+    sources: list[str] | None = None,
 ) -> str:
     """Request candidates in one call and return the first structurally valid one.
 
@@ -93,9 +94,13 @@ def generate_false_answer(
     excluded = (exclude or set()) if n_candidates > 1 else set()
     try:
         proposals = [parse_candidate(response)] if n_candidates == 1 else parse_candidates(response)
+        if n_candidates > 1:
+            proposals = list(dict.fromkeys(match_article(item, answer) for item in proposals))
         candidate = proposals[0]
         checked = [
-            {"text": item, "status": proposal_status(item, answer, aliases, question, excluded)}
+            {"text": item,
+             "status": proposal_status(item, answer, aliases, question, excluded,
+                                       sources if n_candidates > 1 else None)}
             for item in proposals
         ]
         if details is not None:
@@ -114,15 +119,49 @@ def generate_false_answer(
     return candidate
 
 
+def copies_question(candidate: str, question: str) -> bool:
+    """True if the candidate mostly repeats the question instead of answering it."""
+    q_tokens = _name_tokens(question)
+    c_tokens = _name_tokens(candidate)
+    if not q_tokens or not c_tokens:
+        return False
+    return len(c_tokens & q_tokens) / len(q_tokens) >= 0.8 and len(c_tokens) >= 3
+
+
+# Lowercase only: "The Beatles" is a name, "the tail" is an article plus noun.
+ARTICLE = re.compile(r"^(the|a|an)\s+")
+GOLD_ARTICLE = re.compile(r"^(the|a|an)\s+", re.IGNORECASE)
+
+
+def match_article(candidate: str, answer: str) -> str:
+    """Drop a leading article when gold has none ("the tail" for gold "midpiece")."""
+    if GOLD_ARTICLE.match(answer.strip()) or not ARTICLE.match(candidate.strip()):
+        return candidate.strip()
+    stripped = ARTICLE.sub("", candidate.strip(), count=1)
+    return stripped or candidate.strip()
+
+
+def occurs_in_sources(candidate: str, sources: list[str]) -> bool:
+    # Imported lazily to avoid a cycle with evlab.generation.validate.
+    from evlab.generation.validate import contains_alias
+
+    return any(contains_alias(text, candidate) for text in sources)
+
+
 def proposal_status(candidate: str, answer: str, aliases: list[str], question: str,
-                    excluded: set[str]) -> str:
+                    excluded: set[str], sources: list[str] | None = None) -> str:
     """Rule-based status of one proposal; "valid" means it may be used as a false answer."""
     if canonical(candidate) in {canonical(answer), *(canonical(a) for a in aliases)}:
         return "gold_equivalent"
+    if copies_question(candidate, question):
+        return "copies_question"
     if canonical(candidate) in excluded:
         return "previously_rejected"
     if not is_valid_false_answer(candidate, answer, aliases, question=question):
         return "near_alias" if is_near_alias(candidate, answer, aliases) else "invalid_type_or_placeholder"
+    # A target already in the source would make the edited document contradict itself.
+    if sources and occurs_in_sources(candidate, sources):
+        return "occurs_in_source"
     return "valid"
 
 
@@ -258,6 +297,8 @@ def is_valid_false_answer(
             and target_number != target_number.to_integral()
         )
     if other in {"number", "year", "date", "quantity"}:
+        return False
+    if question and copies_question(candidate, question):
         return False
     return not is_near_alias(candidate, answer, aliases)
 

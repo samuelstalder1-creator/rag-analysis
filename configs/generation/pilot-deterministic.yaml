@@ -17,6 +17,7 @@ generation:
   progress_every: 1
   conditions: ["false"]
   skip_missing_false_answers: true  # skip questions whose answer stage failed
+  span_selection: all  # replace every gold-alias occurrence; "llm" lets the model pick spans
   validation:
     mode: deterministic
     max_similarity: 0.95

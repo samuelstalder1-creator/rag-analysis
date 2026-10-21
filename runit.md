@@ -133,7 +133,14 @@ Each saved answer keeps the whole pool: `candidates` (every proposal with its
 rule-based `status` and `attempt`), `valid_candidates`, and `selection`
 (`method: first_valid_in_model_order`, `selector_model: null`). A later LLM
 selection step is meant to choose from `valid_candidates` and update
-`selection`; until then `false_answer` is the first valid proposal. `llm.max_tokens` caps
+`selection`; until then `false_answer` is the first valid proposal.
+Further proposal rules: a candidate that repeats the question (`copies_question`)
+or already occurs in a source document (`occurs_in_source`, which would make the
+edited document contradict itself) is not valid; a lowercase leading article is
+dropped when gold has none. `span_selection: all` (pilot config) replaces every
+gold-alias occurrence by rule instead of asking the model which spans to edit; this
+can over-edit unrelated mentions (e.g. "order 3" next to "3 lines"). With
+`span_selection: llm`, failed selections keep the raw model response in the reject log. `llm.max_tokens` caps
 responses, and HTTP 4xx errors now include the server's explanation.
 
 ### Step 1: Generate False Answers

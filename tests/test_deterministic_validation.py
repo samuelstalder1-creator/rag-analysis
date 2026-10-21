@@ -187,3 +187,67 @@ def test_all_proposals_are_saved_for_later_selection(tmp_path, monkeypatch):
     assert row["selection"] == {"method": "first_valid_in_model_order",
                                 "selected": "22", "selector_model": None}
     assert row["false_answer"] == "22"
+
+
+def test_question_copy_is_not_a_false_answer():
+    q = "nitty gritty dirt band fishin in the dark album"
+    assert not is_valid_false_answer(q, "Hold On", ["Hold On"], question=q)
+    assert is_valid_false_answer("Plain Dirt Fashion", "Hold On", ["Hold On"], question=q)
+
+
+def test_rule_based_span_selection_edits_all_mentions(tmp_path, monkeypatch):
+    class NoSpanClient(GeneratorClient):
+        def generate(self, prompt, **kwargs):
+            assert not prompt.startswith("Select only answer-bearing")
+            return super().generate(prompt, **kwargs)
+
+    client = NoSpanClient()
+    root, config, _ = _run_answers(tmp_path, monkeypatch, client)
+    config = {**config, "span_selection": "all"}
+    docs = run_false_document_generation(config, root, human_corpus=tmp_path / "human.jsonl")
+    assert docs == {"generated": 2, "rejects": 0}
+
+
+def test_failed_llm_span_selection_logs_raw_response(tmp_path, monkeypatch):
+    client = GeneratorClient()
+    root, config, _ = _run_answers(tmp_path, monkeypatch, client)
+    client.generate = lambda prompt, **kw: "not json" if prompt.startswith("Select only") else "x"
+    docs = run_false_document_generation(config, root, human_corpus=tmp_path / "human.jsonl")
+    assert docs["generated"] == 0
+    rejects = [r for p in (tmp_path / "output").glob("*--rejects.jsonl") for r in read_jsonl(p)]
+    assert rejects and all(r["attempts"][0]["response"] == "not json" for r in rejects)
+
+
+def test_targets_in_source_and_articles_are_handled(tmp_path, monkeypatch):
+    class ListClient(GeneratorClient):
+        def generate(self, prompt, **kwargs):
+            if "WRONG multiple-choice distractors" in prompt:
+                # "episodes" occurs in the source; "the 22" loses its article.
+                return '{"candidates": ["23", "episodes", "the 21"]}'
+            return super().generate(prompt, **kwargs)
+
+    root, config = setup_data(tmp_path)
+    config = {**_deterministic(config), "false_answer_candidates_per_call": 5}
+    monkeypatch.setattr(false_answers, "build_llm_client", lambda c: ListClient())
+    monkeypatch.setattr(false_answers, "build_verifier", _no_judge)
+    run_false_answer_generation(config, root, human_corpus=tmp_path / "human.jsonl")
+    [row] = read_jsonl(tmp_path / "output" / "generated_false_answers.jsonl")
+    assert [(c["text"], c["status"]) for c in row["candidates"]] == [
+        ("23", "gold_equivalent"), ("episodes", "invalid_type_or_placeholder"), ("21", "valid"),
+    ]
+    assert row["false_answer"] == "21"
+
+
+def test_entity_already_in_source_is_rejected():
+    from evlab.generation.false_answer import proposal_status
+    src = ["One B-29 dropped Little Boy on Hiroshima; Fat Man was dropped on Nagasaki."]
+    args = ("Little Boy", ["Little Boy"], "name of the bomb dropped on hiroshima", set(), src)
+    assert proposal_status("Fat Man", *args) == "occurs_in_source"
+    assert proposal_status("Trinity", *args) == "valid"
+
+
+def test_article_matching_keeps_proper_names():
+    from evlab.generation.false_answer import match_article
+    assert match_article("the tail", "midpiece") == "tail"
+    assert match_article("The Beatles", "Elvis Presley") == "The Beatles"
+    assert match_article("the tail", "the midpiece") == "the tail"

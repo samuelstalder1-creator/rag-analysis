@@ -5,7 +5,7 @@ from typing import Iterable
 from difflib import SequenceMatcher
 
 from evlab.generation.false_answer import is_valid_false_answer, FALSE_ANSWER_PROMPT
-from evlab.generation.minimal_edit import edit_answer_spans, MINIMAL_EDIT_PROMPT
+from evlab.generation.minimal_edit import edit_answer_spans, edit_all_answer_spans, MINIMAL_EDIT_PROMPT
 from evlab.generation.paraphrase import paraphrase, PARAPHRASE_PROMPT
 from evlab.generation.output import GenerationOutput
 from evlab.generation.validate import (
@@ -38,6 +38,9 @@ def run_generation_pipeline(
     if not 0 < float(config.get("validation", {}).get("max_similarity", 0.95)) <= 1:
         raise ValueError("validation.max_similarity must be in (0, 1]")
     semantic = validation_mode(config) == "semantic"
+    span_selection = str(config.get("span_selection", "llm"))
+    if span_selection not in {"llm", "all"}:
+        raise ValueError("span_selection must be 'llm' or 'all'")
     selected = list(candidates)
     if limit is not None:
         selected = selected[:limit]
@@ -166,7 +169,8 @@ def run_generation_pipeline(
                         try:
                             seed_receipt = None
                             if condition == "false":
-                                edited_text, edits["body"] = edit_answer_spans(
+                                edited_text, edits["body"] = _edit_spans(
+                                    span_selection,
                                     verifier,
                                     text=text,
                                     aliases=aliases,
@@ -177,7 +181,8 @@ def run_generation_pipeline(
                                 if any(
                                     contains_alias(title, alias) for alias in aliases
                                 ):
-                                    edited_title, edits["title"] = edit_answer_spans(
+                                    edited_title, edits["title"] = _edit_spans(
+                                        span_selection,
                                         verifier,
                                         text=title,
                                         aliases=aliases,
@@ -340,6 +345,13 @@ def run_generation_pipeline(
     if config.get("skip_missing_false_answers", False):
         result["skipped_questions"] = len(skipped)
     return result
+
+
+def _edit_spans(mode: str, client, *, text, aliases, target_answer, question, seed):
+    if mode == "all":
+        return edit_all_answer_spans(text, aliases, target_answer)
+    return edit_answer_spans(client, text=text, aliases=aliases, target_answer=target_answer,
+                             question=question, seed=seed)
 
 
 def _check_document(semantic: bool, verifier, **kwargs) -> dict:

@@ -284,6 +284,10 @@ def run_false_answer_generation(
                         n_candidates=n_candidates,
                         exclude=rejected_targets,
                         details=details,
+                        sources=[
+                            f"{doc.get('title', '')}\n{doc.get('text', '')}"
+                            for doc in candidate["h_docs"]
+                        ],
                     )
                 except ModelOutputError as exc:
                     candidate_pool.extend(
