@@ -8,7 +8,7 @@ from evlab.generation.false_answer import (
     fallback_false_answers,
     generate_false_answer,
     is_valid_false_answer,
-    parse_candidates,
+    parse_candidate,
 )
 from evlab.generation.pipeline import _conditions, run_generation_pipeline
 from evlab.generation.minimal_edit import deterministic_minimal_edit
@@ -23,8 +23,8 @@ from evlab.corpus.builder import (
 )
 
 
-def test_parse_false_answer_candidates():
-    assert parse_candidates('{"candidates": ["22", "24", "25"]}') == ["22", "24", "25"]
+def test_parse_single_false_answer_candidate():
+    assert parse_candidate('{"candidate": "24"}') == "24"
 
 
 def test_false_answer_rejects_gold_alias():
@@ -104,7 +104,7 @@ def test_false_generation_preserves_title_without_gold_answer(
         model = "title-test"
 
         def generate(self, prompt, *, temperature=0.0, seed=None):
-            if "Generate three plausible but incorrect answers" in prompt:
+            if "Generate one plausible but incorrect answer" in prompt:
                 raise AssertionError(
                     "Document generation must use the saved false answer"
                 )
@@ -191,8 +191,8 @@ def test_generation_reject_logs_text_for_analysis(tmp_path, monkeypatch, verifie
         model = "bad-paraphrase"
 
         def generate(self, prompt, *, temperature=0.0, seed=None):
-            if "Generate three plausible but incorrect answers" in prompt:
-                return '{"candidates": ["24"]}'
+            if "Generate one plausible but incorrect answer" in prompt:
+                return '{"candidate": "24"}'
             return "This rewrite removed the answer."
 
     config = {

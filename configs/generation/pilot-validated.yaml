@@ -5,6 +5,7 @@ generation:
   output_dir: data/generated/false-validated
   cache_path: cache/llm_validated.sqlite
   samples_per_h: 1
+  false_answer_max_attempts: 3  # Total generator calls per question, including the first.
   temperature: 0.3
   resume: true
   progress_every: 1

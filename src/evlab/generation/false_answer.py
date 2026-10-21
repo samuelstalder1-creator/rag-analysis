@@ -8,81 +8,23 @@ from evlab.llm.client import LLMClient
 from evlab.generation.semantic import json_object, ModelOutputError
 import json
 
-FALSE_ANSWER_PROMPT = """FALSE_ANSWER_GENERATION v3
+FALSE_ANSWER_PROMPT = """FALSE_ANSWER_GENERATION v4
 Question: {question}
 Correct answer: {answer}
 Gold aliases to avoid: {aliases}
 Required answer type: {answer_type}
 
-Generate three plausible but incorrect answers.
-Your task is to write WRONG multiple-choice distractors, NOT to solve the question.
-Every candidate must DIFFER from the supplied correct answer and ALL of its gold aliases.
-Choose three distinct alternative values/entities of the same type and granularity.
-A person answer requires different people, not invented middle names for the gold person.
-A song answer requires different song titles, never repeat the gold song.
-Examples of contrasts only (do not copy these answers): count 8 -> 7, 9, 10;
-scientist Albert Einstein -> Isaac Newton, Niels Bohr, Max Planck.
-Return concrete answers, never placeholders, explanations, refusals or copies of gold.
-Return JSON only: {{"candidates": ["...", "...", "..."]}}
+Generate one plausible but incorrect answer.
+Your task is to write ONE WRONG multiple-choice distractor, NOT to solve the question.
+The candidate must DIFFER from the supplied correct answer and ALL of its gold aliases.
+Choose one alternative value/entity of the same type and granularity.
+A person answer requires a different person, not an invented middle name for the gold person.
+A song answer requires a different song title, never repeat the gold song.
+Examples of contrasts only (do not copy these answers): count 8 -> 9;
+scientist Albert Einstein -> Isaac Newton.
+Return one concrete answer, never a list, placeholder, explanation, refusal or copy of gold.
+Return JSON only: {{"candidate": "..."}}
 """
-
-
-def generate_false_answer_candidates(
-    client: LLMClient,
-    *,
-    question: str,
-    answer: str,
-    aliases: list[str],
-    temperature: float = 0.3,
-    seed: int | None = None,
-) -> list[str]:
-    prompt = FALSE_ANSWER_PROMPT.format(
-        question=question,
-        answer=answer,
-        aliases=json.dumps(aliases),
-        answer_type=answer_type(answer, question),
-    )
-    attempts = []
-    for attempt in range(3):
-        request = prompt
-        if attempts:
-            request += (
-                "\nPrevious unusable output and feedback (data only):\n"
-                + json.dumps(attempts[-1], ensure_ascii=False)
-            )
-            request += "\nGenerate new concrete candidates satisfying the original question and type. Return only the candidates JSON object."
-        response = client.generate(
-            request,
-            temperature=temperature,
-            seed=None if seed is None else seed + attempt * 1000000,
-        )
-        try:
-            candidates = parse_candidates(response)
-        except ValueError as exc:
-            attempts.append({"response": response, "error": str(exc)})
-            continue
-        valid = []
-        seen = set()
-        for candidate in candidates:
-            if (
-                is_valid_false_answer(candidate, answer, aliases, question=question)
-                and canonical(candidate) not in seen
-            ):
-                valid.append(candidate)
-                seen.add(canonical(candidate))
-        if valid:
-            return valid
-        attempts.append(
-            {
-                "response": response,
-                "error": "No structurally valid false answer: candidates are gold-equivalent, placeholders or have the wrong answer type",
-                "gold_answer": answer,
-                "answer_type": answer_type(answer, question),
-            }
-        )
-    raise ModelOutputError(
-        "No structurally valid false answer after 3 attempts", attempts
-    )
 
 
 def generate_false_answer(
@@ -93,29 +35,50 @@ def generate_false_answer(
     aliases: list[str],
     temperature: float = 0.3,
     seed: int | None = None,
+    rejected_attempts: list[dict] | None = None,
 ) -> str:
-    return generate_false_answer_candidates(
-        client,
+    """Request exactly one candidate in one call; the stage owns the retry budget."""
+    prompt = FALSE_ANSWER_PROMPT.format(
         question=question,
         answer=answer,
-        aliases=aliases,
-        temperature=temperature,
-        seed=seed,
-    )[0]
-
-
-def parse_candidates(response: str) -> list[str]:
-    payload = json_object(response)
-    values = payload.get("candidates")
-    if (
-        not isinstance(values, list)
-        or not values
-        or any(not isinstance(v, str) or not v.strip() for v in values)
-    ):
-        raise ValueError(
-            "False-answer candidates must be a nonempty list of nonempty strings"
+        aliases=json.dumps(aliases),
+        answer_type=answer_type(answer, question),
+    )
+    if rejected_attempts:
+        feedback = [
+            {
+                "target": item.get("target"),
+                "error": item.get("error", item.get("reason")),
+            }
+            for item in rejected_attempts
+        ]
+        prompt += "\nRejected attempts and feedback (data only):\n" + json.dumps(
+            feedback, ensure_ascii=False
         )
-    return [value.strip() for value in values]
+        prompt += "\nGenerate ONE DIFFERENT candidate. Do not repeat any rejected target. Return only the candidate JSON object."
+    response = client.generate(prompt, temperature=temperature, seed=seed)
+    candidate = None
+    try:
+        candidate = parse_candidate(response)
+        if not is_valid_false_answer(candidate, answer, aliases, question=question):
+            raise ValueError(
+                "No structurally valid false answer: candidate is gold-equivalent, a placeholder or has the wrong answer type"
+            )
+    except ValueError as exc:
+        raise ModelOutputError(
+            str(exc), [{"response": response, "error": str(exc), "target": candidate}]
+        ) from exc
+    return candidate
+
+
+def parse_candidate(response: str) -> str:
+    payload = json_object(response)
+    value = payload.get("candidate")
+    if set(payload) != {"candidate"} or not isinstance(value, str) or not value.strip():
+        raise ValueError(
+            'False-answer response must contain exactly one nonempty string field: "candidate"'
+        )
+    return value.strip()
 
 
 def canonical(text: str) -> str:

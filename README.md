@@ -58,15 +58,24 @@ False-answer assessment uses categorical `gold_support` and `target_relation`
 verdicts rather than an ambiguous `incorrect` boolean. Only `SUPPORTED` gold and
 `CONTRADICTED` target are accepted, with a verbatim source quote containing a gold
 alias. `EQUIVALENT`, `SUPPORTED` targets and `UNKNOWN` are rejected. A reason string
-never overrides the category. Distinct candidate alternatives are checked in order;
-a rejected target is not retried for approval. Rejected alternatives are retained
-in the successful target's receipt, or in the reject log if none passes.
-Malformed validator output is retried up to three times with an explicit JSON
-schema and format feedback. Well-formed negative or uncertain verdicts are final:
-they are not retried to obtain approval. Unusable answer candidates receive up to
-three attempts with type/alias feedback. Exhausted attempts produce a reject
-record with raw model responses and errors, and no saved answer. Rejected cases require review or revised evidence before retrying;
-rerunning unchanged inputs reuses the cached verdict.
+never overrides the category.
+
+Each generator call requests exactly one answer: `{"candidate": "..."}`. A question
+has one shared generation budget, configured under `generation` with
+`false_answer_max_attempts: 3` (three total attempts, including the first call).
+Malformed output, structural rejection, semantic rejection, and a repeated rejected
+target each consume one attempt. The next call includes the rejected targets and
+failure feedback and uses a different seed. Repeated rejected targets are not
+sent to the verifier again. The first verified answer is saved immediately; all
+previous failed attempts are retained in its receipt. If the budget is exhausted,
+no answer is saved and the complete attempt history goes into the reject log.
+
+Malformed validator output has its own separate limit of three format attempts.
+A well-formed negative or uncertain verdict is final for that candidate; the
+pipeline may generate a different candidate within the question's remaining
+budget. There is no nested generator retry loop. Transport retries remain governed
+by `llm.max_retries`. Rerunning unchanged inputs reuses cached model responses.
+
 
 Accepted targets are saved atomically in `generated_false_answers.jsonl`, keyed
 by question and gold-answer fingerprint, with evidence hashes and verifier

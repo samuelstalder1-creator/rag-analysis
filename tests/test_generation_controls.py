@@ -6,7 +6,7 @@ import pytest
 from evlab.generation.false_answer import (
     generate_false_answer,
     is_valid_false_answer,
-    parse_candidates,
+    parse_candidate,
 )
 from evlab.generation.minimal_edit import deterministic_minimal_edit, edit_answer_spans
 from evlab.generation.semantic import judge, verify_answer, verify_document
@@ -25,6 +25,10 @@ from evlab.rag.reader import parse_reader_response
         "[]",
         "null",
         "{}",
+        '{"candidate":null}',
+        '{"candidate":["24","25"]}',
+        '{"candidate":"24","extra":"25"}',
+        '{"candidates":["24","25"]}',
         '{"candidates":[null]}',
         '{"candidates":[{}]}',
         '{"candidates":[true]}',
@@ -32,7 +36,7 @@ from evlab.rag.reader import parse_reader_response
 )
 def test_reject_malformed_candidate_shapes(response):
     with pytest.raises(ValueError):
-        parse_candidates(response)
+        parse_candidate(response)
 
 
 @pytest.mark.parametrize(
@@ -234,7 +238,7 @@ def test_unknown_verdict_never_saves_false_answer(tmp_path, monkeypatch):
         model = provider = "test"
 
         def generate(self, *args, **kwargs):
-            return '{"candidates":["24"]}'
+            return '{"candidate":"24"}'
 
     class Uncertain:
         model = provider = "test"
@@ -465,19 +469,16 @@ def test_negative_semantic_verdict_is_not_retried_for_approval():
     assert client.calls == 1
 
 
-def test_false_answer_retries_unusable_candidates_with_feedback():
+def test_generator_helper_makes_exactly_one_call_and_returns_one_candidate():
     class Client:
         def __init__(self):
             self.prompts = []
 
         def generate(self, prompt, **kwargs):
             self.prompts.append(prompt)
-            if len(self.prompts) == 1:
-                return '{"candidates":["23","023","23.0"]}'
-            assert "Required answer type: number" in prompt
-            assert 'Gold aliases to avoid: ["23"]' in prompt
-            assert "No structurally valid false answer" in prompt
-            return '{"candidates":["24","25","26"]}'
+            assert 'Return JSON only: {"candidate": "..."}' in prompt
+            assert "Generate one plausible but incorrect answer" in prompt
+            return '{"candidate":"24"}'
 
     client = Client()
     assert (
@@ -486,7 +487,7 @@ def test_false_answer_retries_unusable_candidates_with_feedback():
         )
         == "24"
     )
-    assert len(client.prompts) == 2
+    assert len(client.prompts) == 1
 
 
 def test_false_answer_failure_records_raw_attempts_in_reject_log(
@@ -501,7 +502,7 @@ def test_false_answer_failure_records_raw_attempts_in_reject_log(
         model = provider = "test"
 
         def generate(self, *args, **kwargs):
-            return '{"candidates":["23"]}'
+            return '{"candidate":"23"}'
 
     monkeypatch.setattr(false_answers, "build_llm_client", lambda config: Client())
     result = run_false_answer_generation(
@@ -512,7 +513,7 @@ def test_false_answer_failure_records_raw_attempts_in_reject_log(
         next((tmp_path / "output").glob("*false-answer-rejects.jsonl"))
     )[0]
     assert len(reject["attempts"]) == 3
-    assert reject["attempts"][0]["response"] == '{"candidates":["23"]}'
+    assert reject["attempts"][0]["response"] == '{"candidate":"23"}'
 
 
 @pytest.mark.parametrize("relation", ["EQUIVALENT", "SUPPORTED", "UNKNOWN"])
@@ -600,13 +601,20 @@ def test_distinct_candidates_are_checked_without_retrying_negative_target(
 
     root, cfg = setup_data(tmp_path)
     targets = []
+    prompts = []
+    seeds = []
 
     class Generator:
         model = provider = "test"
 
         def generate(self, prompt, **kwargs):
-            assert "WRONG multiple-choice distractors" in prompt
-            return '{"candidates":["24","24","25"]}'
+            prompts.append(prompt)
+            seeds.append(kwargs["seed"])
+            assert "ONE WRONG multiple-choice distractor" in prompt
+            if len(prompts) > 1:
+                assert "Rejected attempts and feedback" in prompt
+                assert "24" in prompt
+            return json.dumps({"candidate": "24" if len(prompts) <= 2 else "25"})
 
     class Assessor:
         model = provider = "test"
@@ -633,6 +641,82 @@ def test_distinct_candidates_are_checked_without_retrying_negative_target(
     )
     assert result == {"generated": 1, "reused": 0, "rejects": 0}
     assert targets == ["24", "25"]
+    assert len(prompts) == 3
+    assert len(set(seeds)) == 3
     saved = read_jsonl(tmp_path / "output/generated_false_answers.jsonl")[0]
     assert saved["false_answer"] == "25"
     assert saved["verification"]["rejected_candidates"][0]["target"] == "24"
+    assert (
+        saved["verification"]["rejected_candidates"][1]["error"]
+        == "Repeated previously rejected target"
+    )
+    assert saved["verification"]["generation_attempts"] == 3
+
+
+def test_one_retry_budget_covers_structural_and_semantic_rejection(
+    tmp_path, monkeypatch, verifier
+):
+    from test_false_answer_stages import setup_data
+    from evlab.generation import false_answers
+    from evlab.generation.semantic import ModelOutputError
+
+    root, cfg = setup_data(tmp_path)
+    cfg["false_answer_max_attempts"] = 2
+    prompts = []
+    verified = []
+
+    class Generator:
+        model = provider = "test"
+
+        def generate(self, prompt, **kwargs):
+            prompts.append(prompt)
+            if len(prompts) == 2:
+                assert "gold-equivalent" in prompt
+                assert '"target": "23"' in prompt
+            return json.dumps({"candidate": "23" if len(prompts) == 1 else "24"})
+
+    def reject(verifier, candidate, target):
+        verified.append(target)
+        raise ModelOutputError(
+            "Unknown target relation", [{"response": "UNKNOWN", "error": "uncertain"}]
+        )
+
+    monkeypatch.setattr(false_answers, "build_llm_client", lambda config: Generator())
+    monkeypatch.setattr(false_answers, "verify_answer", reject)
+    result = run_false_answer_generation(
+        cfg, root, human_corpus=tmp_path / "human.jsonl", limit=1
+    )
+    assert result == {"generated": 0, "reused": 0, "rejects": 1}
+    assert len(prompts) == 2 and verified == ["24"]
+    assert not (tmp_path / "output/generated_false_answers.jsonl").exists()
+    reject_row = read_jsonl(
+        next((tmp_path / "output").glob("*false-answer-rejects.jsonl"))
+    )[0]
+    assert [item["stage"] for item in reject_row["attempts"]] == [
+        "generation",
+        "validation",
+    ]
+    assert "after 2 generation attempts" in reject_row["reason"]
+
+
+@pytest.mark.parametrize("budget", [0, -1, True, 1.5, "3"])
+def test_invalid_generation_budget_fails_before_data_or_model_access(tmp_path, budget):
+    cfg = config(tmp_path)
+    cfg["false_answer_max_attempts"] = budget
+    with pytest.raises(ValueError, match="positive integer"):
+        run_false_answer_generation(cfg, tmp_path / "missing-data")
+
+
+def test_generator_does_not_retry_batch_output_inside_single_call():
+    class Client:
+        def __init__(self):
+            self.calls = 0
+
+        def generate(self, *args, **kwargs):
+            self.calls += 1
+            return '{"candidates":["24","25","26"]}'
+
+    client = Client()
+    with pytest.raises(ValueError, match="exactly one"):
+        generate_false_answer(client, question="How many?", answer="23", aliases=["23"])
+    assert client.calls == 1

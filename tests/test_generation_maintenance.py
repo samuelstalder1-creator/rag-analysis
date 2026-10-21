@@ -192,7 +192,7 @@ def test_reset_does_not_resurrect_legacy_false_answers_or_documents(
         model = "test"
 
         def generate(self, prompt, **kwargs):
-            return '{"candidates": ["25"]}'
+            return '{"candidate": "25"}'
 
     monkeypatch.setattr(false_answers, "build_llm_client", lambda config: Client())
     generation = {

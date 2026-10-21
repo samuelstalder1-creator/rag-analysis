@@ -1,16 +1,16 @@
-FALSE_ANSWER_GENERATION v3
+FALSE_ANSWER_GENERATION v4
 Question: {question}
 Correct answer: {answer}
 Gold aliases to avoid: {aliases}
 Required answer type: {answer_type}
 
-Generate three plausible but incorrect answers.
-Your task is to write WRONG multiple-choice distractors, NOT to solve the question.
-Every candidate must DIFFER from the supplied correct answer and ALL of its gold aliases.
-Choose three distinct alternative values/entities of the same type and granularity.
-A person answer requires different people, not invented middle names for the gold person.
-A song answer requires different song titles, never repeat the gold song.
-Examples of contrasts only (do not copy these answers): count 8 -> 7, 9, 10;
-scientist Albert Einstein -> Isaac Newton, Niels Bohr, Max Planck.
-Return concrete answers, never placeholders, explanations, refusals or copies of gold.
-Return JSON only: {{"candidates": ["...", "...", "..."]}}
+Generate one plausible but incorrect answer.
+Your task is to write ONE WRONG multiple-choice distractor, NOT to solve the question.
+The candidate must DIFFER from the supplied correct answer and ALL of its gold aliases.
+Choose one alternative value/entity of the same type and granularity.
+A person answer requires a different person, not an invented middle name for the gold person.
+A song answer requires a different song title, never repeat the gold song.
+Examples of contrasts only (do not copy these answers): count 8 -> 9;
+scientist Albert Einstein -> Isaac Newton.
+Return one concrete answer, never a list, placeholder, explanation, refusal or copy of gold.
+Return JSON only: {{"candidate": "..."}}

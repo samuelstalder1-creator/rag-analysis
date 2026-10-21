@@ -9,7 +9,8 @@ from pathlib import Path
 
 from evlab.data.nqplus import load_generation_candidates, resolve_nqplus_paths
 from evlab.generation.false_answer import (
-    generate_false_answer_candidates,
+    generate_false_answer,
+    canonical,
     is_valid_false_answer,
 )
 from evlab.generation.output import output_label
@@ -177,6 +178,9 @@ def run_false_answer_generation(
     human_corpus: str | Path | None = None,
     limit: int | None = None,
 ) -> dict[str, int]:
+    max_attempts = config.get("false_answer_max_attempts", 3)
+    if type(max_attempts) is not int or max_attempts < 1:
+        raise ValueError("false_answer_max_attempts must be a positive integer")
     output_dir = Path(config.get("output_dir", "data/generated/pilot"))
     source_path = resolve_nqplus_paths(nqplus_dir).queries_file
     path = answers_path(config)
@@ -224,29 +228,59 @@ def run_false_answer_generation(
             )
             verifier = build_verifier(config)
         try:
-            proposed = generate_false_answer_candidates(
-                client,
-                question=candidate["query"],
-                answer=gold,
-                aliases=aliases,
-                temperature=temperature,
-                seed=idx,
-            )
-            rejected_candidates = []
-            for answer in proposed:
+            rejected_attempts = []
+            rejected_targets = set()
+            for attempt in range(max_attempts):
+                try:
+                    answer = generate_false_answer(
+                        client,
+                        question=candidate["query"],
+                        answer=gold,
+                        aliases=aliases,
+                        temperature=temperature,
+                        seed=idx + attempt * 1000000,
+                        rejected_attempts=rejected_attempts,
+                    )
+                except ModelOutputError as exc:
+                    rejected_attempts.append(
+                        {
+                            "attempt": attempt + 1,
+                            "stage": "generation",
+                            **exc.attempts[0],
+                        }
+                    )
+                    continue
+                if canonical(answer) in rejected_targets:
+                    rejected_attempts.append(
+                        {
+                            "attempt": attempt + 1,
+                            "stage": "generation",
+                            "target": answer,
+                            "error": "Repeated previously rejected target",
+                        }
+                    )
+                    continue
+                rejected_targets.add(canonical(answer))
                 try:
                     verification = verify_answer(verifier, candidate, answer)
                     break
                 except ModelOutputError as exc:
-                    rejected_candidates.append(
-                        {"target": answer, "reason": str(exc), "attempts": exc.attempts}
+                    rejected_attempts.append(
+                        {
+                            "attempt": attempt + 1,
+                            "stage": "validation",
+                            "target": answer,
+                            "reason": str(exc),
+                            "attempts": exc.attempts,
+                        }
                     )
             else:
                 raise ModelOutputError(
-                    "All distinct false-answer candidates failed validation",
-                    rejected_candidates,
+                    f"No accepted false answer after {max_attempts} generation attempts",
+                    rejected_attempts,
                 )
-            verification["rejected_candidates"] = rejected_candidates
+            verification["rejected_candidates"] = rejected_attempts
+            verification["generation_attempts"] = attempt + 1
             saved = _save_answers(
                 path,
                 {qid: answer},

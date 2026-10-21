@@ -101,16 +101,16 @@ def test_cli_two_stages_share_saved_answer_and_resume(tmp_path, monkeypatch, ver
         model = "test/stages"
 
         def generate(self, prompt, **kwargs):
-            assert "Generate three plausible but incorrect answers" in prompt
+            assert "Generate one plausible but incorrect answer" in prompt
             calls.append("answer")
-            return '{"candidates": ["24"]}'
+            return '{"candidate": "24"}'
 
     class DocumentClient:
         provider = "test"
         model = "test/stages"
 
         def generate(self, prompt, **kwargs):
-            assert "Generate three plausible but incorrect answers" not in prompt
+            assert "Generate one plausible but incorrect answer" not in prompt
             calls.append("document")
             return "A total of 24 episodes were broadcast."
 
@@ -185,8 +185,8 @@ def test_answer_checkpoints_survive_failure_and_retry_only_missing(
             if "How many seasons?" in prompt:
                 if failing:
                     raise RuntimeError("Server temporarily unavailable")
-                return '{"candidates": ["25"]}'
-            return '{"candidates": ["24"]}'
+                return '{"candidate": "25"}'
+            return '{"candidate": "24"}'
 
     monkeypatch.setattr(false_answers, "build_llm_client", lambda config: Client())
     result = run_false_answer_generation(
