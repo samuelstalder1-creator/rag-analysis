@@ -91,8 +91,19 @@ export PYTHONUNBUFFERED=1
 mkdir -p logs
 ```
 
+Prepare eligibility labels first (this writes only `generated_labels.jsonl`):
+
+```bash
+uv run evlab data classify-answers --config configs/data/nqplus.yaml
+uv run evlab generation-status --config configs/generation/qwen35-2b-all.yaml
+```
+
+Review list, conflict, and unresolved cases before expanding the eligible set.
+The current generator uses reader-eligible single answers or equivalent answer
+variants. An answer in the title is allowed; false-document generation edits it.
+
 False evidence has two independent stages. First save false answers in
-`data/nqplus/clean/queries.jsonl`; then generate documents from those saved
+`data/generated/qwen35-2b-all/generated_false_answers.jsonl`; then generate documents from those saved
 answers. Correct-only generation does not require the false-answer stage.
 
 ### Step 1: Generate False Answers
@@ -114,9 +125,9 @@ echo $! > logs/qwen35_2b_false_answers.pid
 ```
 
 The command generates one false answer per eligible question and saves each
-success immediately as `metadata.false_answer` in `queries.jsonl`. It preserves
-the correct answer and other metadata. Existing valid false answers are reused;
-previously used answers can be recovered from archived `false_docs.jsonl` files.
+success immediately in `generated_false_answers.jsonl` inside the configured
+output directory. Source `queries.jsonl` is never written. Existing valid false answers are reused.
+Deleted answers are not automatically restored from archived legacy documents.
 All source documents for one question use the same saved false answer.
 
 Wait for step 1 to finish before starting step 2. A run can finish with rejected
@@ -126,8 +137,14 @@ answers, so check readiness using the same validation as the document generator:
 uv run python - <<'PYTHON'
 from evlab.data.nqplus import load_generation_candidates
 from evlab.generation.false_answer import is_valid_false_answer
+from evlab.generation.false_answers import attach_saved_answers
+from evlab.config import load_config
 
-queries = load_generation_candidates("data/nqplus/clean")
+config = load_config("configs/generation/qwen35-2b-false-answers.yaml")
+queries = attach_saved_answers(
+    load_generation_candidates(config["data"]["nqplus_dir"], include_text=False),
+    config["generation"],
+)
 missing = [q["query_id"] for q in queries
            if not isinstance(q.get("false_answer"), str)
            or not is_valid_false_answer(q["false_answer"], q["answer"], q["answer_aliases"])]
@@ -153,8 +170,9 @@ nohup uv run evlab generate-false-documents \
 echo $! > logs/qwen35_2b_false_generation.pid
 ```
 
-This reads source documents from `generation_candidates.jsonl` and false answers
-from `queries.jsonl`. It edits the body and, if the gold answer occurs there,
+This derives candidates from source queries plus `generated_labels.jsonl`, joins
+saved answers from `generated_false_answers.jsonl` in the output directory, then loads
+source documents from the configured original human corpus. It edits the body and, if the gold answer occurs there,
 the title. It never generates a new false answer. Missing or invalid saved
 answers stop this stage before model calls or corpus writes. Copies that fail
 validation are recorded in a document reject log instead of the corpus.
@@ -188,22 +206,28 @@ echo $! > logs/qwen35_2b_generation.pid
 This all-conditions config uses `candidates` for both conditions. Use the
 correct-only config above to paraphrase the full human corpus.
 
-The helper script runs false-answer generation first and then both document
-conditions in the background:
+The helper defaults to correct-only generation and never starts the false-answer
+stage automatically:
 
 ```bash
 bash scripts/run_qwen35_2b_all.sh
 ```
 
-To also start vLLM:
+To also start vLLM for that correct-only run:
 
 ```bash
 VLLM_USE_FLASHINFER_SAMPLER=0 START_VLLM=1 bash scripts/run_qwen35_2b_all.sh
 ```
 
-The helper prints its timestamped log paths and PID file. Set
-`FALSE_ANSWERS_FIRST=0` to skip step 1 when answers are already complete, or when
-using the helper with a correct-only `CONFIG`.
+To explicitly request both false-answer and document generation in one job:
+
+```bash
+CONFIG=configs/generation/qwen35-2b-all.yaml FALSE_ANSWERS_FIRST=1 \
+  bash scripts/run_qwen35_2b_all.sh
+```
+
+The helper prints its timestamped log paths and PID file. `FALSE_ANSWERS_FIRST`
+defaults to `0`; it must be set to `1` to run the answer stage in the helper.
 
 ### Monitor
 
@@ -243,7 +267,7 @@ kill "$(cat logs/qwen35_2b_correct_generation.pid)"
 ```
 
 Rerun the same start command to resume that stage. Step 1 keeps valid answers
-already saved in `queries.jsonl`. Step 2 uses `resume: true` to skip document IDs
+already saved in `generated_false_answers.jsonl`. Step 2 uses `resume: true` to skip document IDs
 already present in the registered corpus. Neither resume step chooses new false
 answers for completed questions. Use `>>` instead of `>` to append to an existing
 log when resuming.
@@ -253,14 +277,17 @@ the affected stage. The configs retry transient server errors.
 
 To regenerate documents from scratch, set `resume: false` in the selected
 document-generation config. This resets only its selected corpus files and
-document reject log; saved false answers in `queries.jsonl` stay unchanged.
-Legacy documents can be imported when resuming; use the original temperature
-because the old metadata-rich rows did not record it.
+document reject log; saved false answers in `generated_false_answers.jsonl` stay unchanged.
+Legacy correct documents can be imported when resuming; use the original
+temperature because old metadata-rich rows did not record it. Legacy false
+answers and false documents are not automatically imported.
 
 ### Outputs
 
 ```text
-data/nqplus/clean/queries.jsonl                         # metadata.false_answer
+data/nqplus/clean/queries.jsonl                         # unchanged source
+data/nqplus/clean/generated_labels.jsonl                # derived classification
+data/generated/qwen35-2b-all/generated_false_answers.jsonl # false targets
 data/generated/qwen35-2b-all/corpus_*.jsonl             # generated documents
 data/generated/qwen35-2b-all/metadata.yaml              # shared file metadata
 data/generated/qwen35-2b-all/*false-answer-rejects.jsonl # answer failures
@@ -273,7 +300,38 @@ Each corpus row contains only `_id`, `title`, and `text`. Files get simple uniqu
 names such as `corpus_0001.jsonl`. The shared `metadata.yaml` identifies each
 file's model, condition, temperature, sample, depth, source, prompt version, and
 document count. Its `answer_generations` section tracks the answer stage,
-including the path to `queries.jsonl` and the affected query IDs.
+including the generated answer-file path and the affected query IDs.
+
+## Inventory and False-Generation Reset
+
+The original dataset lives under `data/cocktail/nq/`. Its supplied Llama corpus
+is a Cocktail baseline, separate from our Qwen generated outputs. Prepared NQ+
+questions are a filtered, annotated subset of the original Cocktail questions.
+
+Show current source counts, generated coverage, saved false answers, and missing
+outputs without starting generation:
+
+```bash
+uv run evlab generation-status --config configs/generation/qwen35-2b-all.yaml
+```
+
+The report checks IDs against the restored original human corpus. It also checks
+registry counts, missing files, duplicate IDs, and empty generated text. Correct
+copies in the full human-corpus output also cover their NQ+ candidate source IDs.
+
+To delete all derived false answers/documents from this output directory and
+prepared dataset:
+
+```bash
+uv run evlab cleanup-false --config configs/generation/qwen35-2b-all.yaml
+uv run evlab generation-status --config configs/generation/qwen35-2b-all.yaml
+```
+
+This clears saved false-answer fields, false corpus files, false-generation
+reject entries, their metadata, and the configured generation SQLite cache.
+Correct documents, correct reject entries, and original Cocktail files are
+preserved. Repeating cleanup is safe. No legacy false answers/documents are
+restored when generation resumes; step 1 must be started explicitly.
 
 ## Other Useful Runs
 

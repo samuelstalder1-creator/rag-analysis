@@ -1,2 +1,2 @@
-{"_id":"test1","text":"how many episodes are in chicago fire season 4","metadata":{"answer":"23","answer_aliases":["23"]}}
-{"_id":"test2","text":"who wrote hamlet","metadata":{"answer":"William Shakespeare","answer_aliases":["William Shakespeare","Shakespeare"]}}
+{"_id": "test1", "metadata": {"answer": "23", "answer_aliases": ["23"], "answer_kind": "single", "docs_with_answer": ["doc6"], "relevant_docs": ["doc6"], "usable_for": {"generation": true, "reader": true, "retrieval": true}}, "text": "how many episodes are in chicago fire season 4"}
+{"_id": "test2", "metadata": {"answer": "William Shakespeare", "answer_aliases": ["William Shakespeare", "Shakespeare"], "answer_kind": "variants", "docs_with_answer": ["doc7"], "relevant_docs": ["doc7"], "usable_for": {"generation": false, "reader": true, "retrieval": true}}, "text": "who wrote hamlet"}

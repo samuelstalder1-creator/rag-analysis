@@ -28,7 +28,7 @@ def run_generation_pipeline(config: dict, candidates: Iterable[dict], *, limit: 
         if invalid:
             raise ValueError(
                 f"Missing or invalid saved false answers for {len(invalid)} questions: {', '.join(invalid[:10])}. "
-                "Run evlab generate-false-answers --config <config> first; answers are read from queries.jsonl."
+                "Run evlab generate-false-answers --config <config> first; answers are read from generated_false_answers.jsonl in the output directory."
             )
     llm_config = config["llm"]
     client = CachedLLMClient(build_llm_client(llm_config), config.get("cache_path", "cache/llm.sqlite"))

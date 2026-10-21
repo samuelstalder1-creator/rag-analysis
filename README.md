@@ -61,7 +61,7 @@ All generation calls are cached in SQLite under `cache/llm.sqlite`.
 False-evidence generation has two separate stages:
 
 ```bash
-# Step 1: add metadata.false_answer to eligible questions in queries.jsonl.
+# Step 1: save false answers under data/generated/, keeping queries unchanged.
 uv run evlab generate-false-answers --config configs/generation/qwen35-2b-false-answers.yaml
 
 # Step 2: read those answers and create false corpus documents.
@@ -70,8 +70,10 @@ uv run evlab generate-false-documents --config configs/generation/qwen35-2b-fals
 
 Step 1 is implemented in `src/evlab/generation/false_answers.py`; step 2 has its
 own entry point in `src/evlab/generation/false_documents.py`. Each successful
-answer is saved atomically to `data/nqplus/clean/queries.jsonl`, alongside the
-correct answer in its existing `metadata` object. Valid saved answers are reused
+answer is saved atomically to
+`data/generated/qwen35-2b-all/generated_false_answers.jsonl`, keyed by query ID
+and a fingerprint of the question and gold answer. Source `queries.jsonl` stays
+unchanged. Valid saved answers are reused
 without replacement, even if document generation uses a different model. Every
 source document belonging to the question uses that same saved false answer.
 
@@ -81,14 +83,14 @@ The generic `evlab generate` command also requires saved answers when its
 conditions include `false`; correct-only generation is independent of step 1.
 `--limit` selects the same candidate prefix in both stages.
 
-Step 1 imports previously used targets from legacy `false_docs.jsonl` files,
-including archived backups, before making new model calls. Conflicting old
-answers require resolution rather than an arbitrary replacement. Answer-generation
-provenance is tracked in the same shared `metadata.yaml` under
-`answer_generations`; it does not add metadata fields to corpus rows. Failed
+False answers and false documents are never automatically restored from legacy
+backups. Fresh answers are generated only when you explicitly run step 1.
+Answer-generation provenance is tracked in the shared `metadata.yaml` under
+`answer_generations`; corpus rows keep their three-field structure. Failed
 answer attempts have a separate reject log. Neither stage writes progress JSON.
-The background all-generation script runs step 1 before document generation;
-set `FALSE_ANSWERS_FIRST=0` when using that script for a correct-only config.
+The background helper defaults to the correct-only config and skips false-answer
+generation. To explicitly run both stages and both document conditions, use
+`CONFIG=configs/generation/qwen35-2b-all.yaml FALSE_ANSWERS_FIRST=1 bash scripts/run_qwen35_2b_all.sh`.
 
 Generated corpus rows contain only `_id`, `title`, and `text`; `_id` is the
 original human document ID. Corpus files use simple unique names such as
@@ -117,14 +119,14 @@ remain separate from corpus rows; progress is printed to the console.
 
 With `resume: true`, matching registered files are reused and completed documents
 are skipped. Previous metadata-rich filenames are automatically renamed and
-registered without changing their contents. Old `generated_docs.jsonl`,
-`correct_docs.jsonl`, and `false_docs.jsonl` can also be imported; originals remain.
+registered without changing their contents. Correct rows from old `generated_docs.jsonl` and `correct_docs.jsonl` can also
+be imported; legacy false rows are ignored.
 Use the original temperature when importing those legacy files, which did not
 record it. Existing blank legacy titles remain blank.
 
 Experiment `corpus.generated_docs` accepts a file, directory, or glob. Directory
 loading includes the corpora listed in its shared `metadata.yaml`; the registry
-provides generation metadata, and NQ+ qrels restore question mappings. Documents
+provides generation metadata, and relevance annotations in NQ+ `queries.jsonl` restore question mappings. Documents
 receive unique internal IDs per corpus file while keeping their original ID as
 the provenance root. Renamed corpora retain their previous internal ID namespace.
 
@@ -136,6 +138,41 @@ reader eligibility and the `single`/`variants` answer requirement still apply.
 Resuming a run keeps documents already written; title handling applies to newly
 generated documents.
 
+## Generation Inventory and Cleanup
+
+`data/cocktail/nq/` contains the original Cocktail dataset: `queries.jsonl`,
+`qrels/test.tsv`, and the supplied human and Llama corpora under `corpus/`.
+Prepared answer annotations and generation candidates live separately under
+`data/nqplus/clean/`. Our Qwen outputs live under `data/generated/`.
+
+Inspect what exists and what is missing without starting a model:
+
+```bash
+uv run evlab generation-status --config configs/generation/qwen35-2b-all.yaml
+```
+
+The report compares document IDs against the current original human corpus and
+prepared generation candidates. It includes original question/document counts,
+saved false-answer counts, per-file coverage, duplicate IDs, empty text, registry
+count mismatches, and unregistered files. Candidate correct-copy coverage can be
+satisfied by the full human-corpus generation; a second candidate-only file is
+not needed to cover those source IDs. ID coverage does not certify text quality
+or establish that old outputs were produced from the current source version.
+
+Delete derived false-generation artifacts and reset their metadata:
+
+```bash
+uv run evlab cleanup-false --config configs/generation/qwen35-2b-all.yaml
+```
+
+Cleanup removes `generated_false_answers.jsonl`, registered false corpora,
+legacy false-document copies, false-generation reject
+records, and answer-generation metadata. It also clears the configured generation
+SQLite cache, which may contain false answers and paraphrased false text. Correct
+corpora, correct reject records, source queries, generated eligibility labels,
+and the original Cocktail dataset are retained.
+The operation is repeatable; the status command shows the resulting inventory.
+
 ## Answer Classification
 
 Split the former `answer_list_or_conflict` flag using the question structure,
@@ -145,9 +182,15 @@ answer annotations, and source-backed reviews:
 uv run evlab data classify-answers --config configs/data/nqplus.yaml
 ```
 
-The command updates NQ+ queries, RAG answer metadata, generation candidates, and
-the dataset report. Existing candidate order is preserved, and recovered
-variants are appended so generation seeds remain stable. Reviewed decisions in
+`data/nqplus/clean/queries.jsonl` is the only prepared query file required.
+Reader queries, generation candidates, and relevance annotations are derived
+from source metadata and optional `generated_labels.jsonl` when needed; source titles and text come from the original
+human corpus. No separate RAG, candidate, report, or prepared qrels files are
+required. Candidates follow the order of eligible rows in `queries.jsonl`.
+
+The classification command writes `data/nqplus/clean/generated_labels.jsonl`
+and never changes `queries.jsonl`. Loaders join these labels by query ID and
+reject stale labels if the source record changed. Reviewed decisions in
 `configs/data/answer_classification_reviews.json` include source document IDs and
 quotes; the command verifies both the answer strings and source quotes before
 changing the data.
@@ -165,10 +208,12 @@ absence. List detection does not certify that every annotated member is correct.
 Distinct dates or names alone are insufficient to establish a conflict, since
 they may refer to different periods, roles, or scopes.
 
-All former combined cases and the classification reasons are recorded in
-`data/nqplus/clean/answer_classification.jsonl`. Cases still needing review are
-listed in `data/nqplus/clean/answer_review.jsonl`. Add evidence-backed decisions
-to the reviews file and rerun the command to resolve them. Only reader-eligible
+Classification reasons, evidence, flags, and eligibility are stored in
+`generated_labels.jsonl`. Entries with
+`metadata.flags.answer_review_required: true` still need review. Add
+evidence-backed decisions to `configs/data/answer_classification_reviews.json`
+and rerun the command to resolve them. `evlab generation-status` reports counts
+directly from the current queries and generated files. Only reader-eligible
 `single`/`variants` questions enter the current generation pipeline; lists,
 conflicts, and unresolved cases remain excluded. Answer strings and gold answers
 are preserved by classification; resolving a conflict requires a separate

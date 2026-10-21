@@ -9,7 +9,7 @@ from collections import Counter
 from pathlib import Path
 
 from evlab.generation.validate import contains_alias
-from evlab.io import iter_jsonl, write_json, write_jsonl
+from evlab.io import iter_jsonl, write_jsonl, stable_hash
 
 
 CARDINAL = r"(?:\d+|two|three|four|five|six|seven|eight|nine|ten)"
@@ -70,18 +70,18 @@ def split_answer_flags(
     *,
     human_corpus: str | Path,
     reviews_file: str | Path,
-    llm_corpus: str | Path | None = None,
 ) -> dict:
     root = Path(nqplus_dir)
     queries = list(iter_jsonl(root / "queries.jsonl"))
-    candidates = list(iter_jsonl(root / "generation_candidates.jsonl"))
+    source_hashes = {str(row["_id"]): stable_hash(row) for row in queries}
+    # Source records are the input on every run; stale labels can be regenerated.
+    labels_path = root / "generated_labels.jsonl"
+    previous_rows = list(iter_jsonl(labels_path)) if labels_path.exists() else queries
+    previous_generation = {row["_id"] for row in previous_rows if row["metadata"]["usable_for"]["generation"]}
     reviews = json.loads(Path(reviews_file).read_text(encoding="utf-8"))
     needed = {str(did) for row in queries for did in row["metadata"].get("relevant_docs", [])}
     human = {str(row["_id"]): row for row in iter_jsonl(human_corpus) if str(row["_id"]) in needed}
-    llm = ({str(row["_id"]): row for row in iter_jsonl(llm_corpus) if str(row["_id"]) in needed}
-           if llm_corpus is not None else {})
     classified = []
-    review_queue = []
     for row in queries:
         metadata = row["metadata"]
         flags = metadata["flags"]
@@ -101,8 +101,6 @@ def split_answer_flags(
             classified.append({"query_id": row["_id"], "query": row["text"],
                                "answer_aliases": metadata["answer_aliases"],
                                "relevant_docs": metadata["relevant_docs"], **result})
-            if kind == "unresolved":
-                review_queue.append(classified[-1])
         flags["answer_is_list"] = kind in {"list", "list_with_conflict"}
         flags["answer_conflict"] = kind in {"conflict", "list_with_conflict"}
         flags["answer_review_required"] = kind == "unresolved"
@@ -110,65 +108,23 @@ def split_answer_flags(
             metadata["usable_for"]["reader"] and kind in {"single", "variants"}
         )
 
-    query_by_id = {row["_id"]: row for row in queries}
-    # Preserve existing order so generation seeds and resume behavior remain stable.
-    candidates = [row for row in candidates if query_by_id[row["query_id"]]["metadata"]["usable_for"]["generation"]]
-    existing = {row["query_id"] for row in candidates}
-    added = []
-    for row in queries:
-        metadata = row["metadata"]
-        if not metadata["usable_for"]["generation"] or row["_id"] in existing:
-            continue
-        aliases = metadata["answer_aliases"]
-        h_docs = []
-        for did in metadata["docs_with_answer"]:
-            source = human[did]
-            source_content = source.get("title", "") + "\n" + source["text"]
-            llm_doc = llm.get(did)
-            h_docs.append({"doc_id": did, "title": source.get("title", ""), "text": source["text"],
-                           "aliases_in_doc": [alias for alias in aliases if contains_alias(source_content, alias)],
-                           "llm_copy_keeps_answer": (
-                               any(contains_alias(llm_doc.get("title", "") + "\n" + llm_doc["text"], alias) for alias in aliases)
-                               if llm_doc else None
-                           )})
-        candidates.append({"query_id": row["_id"], "query": row["text"], "answer": metadata["answer"],
-                           "answer_aliases": aliases, "answer_kind": metadata["answer_kind"], "h_docs": h_docs,
-                           "other_relevant_docs": [did for did in metadata["relevant_docs"] if did not in metadata["docs_with_answer"]]})
-        added.append(row["_id"])
-
-    rag = list(iter_jsonl(root / "rag_queries.jsonl"))
-    for row in rag:
-        metadata = query_by_id[row["query_id"]]["metadata"]
-        row["answer_kind"] = metadata["answer_kind"]
-        row["answer_flags"] = {key: metadata["flags"][key] for key in
-                               ("answer_is_list", "answer_conflict", "answer_review_required")}
+    eligible = [row for row in queries if row["metadata"]["usable_for"]["generation"]]
+    added = [row["_id"] for row in eligible if row["_id"] not in previous_generation]
     summary = {"previously_combined_cases": len(classified),
                "classification": dict(Counter(row["kind"] for row in classified)),
                "new_generation_candidates": len(added), "new_generation_query_ids": added,
-               "generation_candidates": len(candidates),
-               "excluded_generation": len(queries) - len(candidates),
+               "generation_candidates": len(eligible),
+               "excluded_generation": len(queries) - len(eligible),
                "excluded_generation_by_kind": dict(Counter(row["metadata"]["answer_kind"] for row in queries
                                                           if not row["metadata"]["usable_for"]["generation"])),
-               "note": "Flags indicate detected conditions; unresolved cases require review. List detection does not certify list membership."}
-    report = json.loads((root / "report.json").read_text(encoding="utf-8"))
-    report.setdefault("pre_cleaning_no_qrels", report.get("flag_no_qrels", 0))
-    report["flag_counts_scope"] = "clean_queries"
-    report.pop("flag_answer_list_or_conflict", None)
-    for key in queries[0]["metadata"]["flags"]:
-        report[f"flag_{key}"] = sum(bool(row["metadata"]["flags"][key]) for row in queries)
-    h_docs = [doc for row in candidates for doc in row["h_docs"]]
-    report.update({"3_generation": len(candidates), "gen_h_docs_total": len(h_docs),
-                   "gen_unique_h_docs": len({doc["doc_id"] for doc in h_docs}),
-                   "gen_multiple_h_docs": sum(len(row["h_docs"]) > 1 for row in candidates),
-                   "gen_kind_single": sum(row["answer_kind"] == "single" for row in candidates),
-                   "gen_kind_variants": sum(row["answer_kind"] == "variants" for row in candidates),
-                   "gen_llm_copy_keeps_answer_all_h": sum(all(doc.get("llm_copy_keeps_answer") is True for doc in row["h_docs"]) for row in candidates),
-                   "answer_classification": summary})
-    # Build and check everything before changing the dataset.
-    write_jsonl(root / "queries.jsonl", queries)
-    write_jsonl(root / "rag_queries.jsonl", rag)
-    write_jsonl(root / "generation_candidates.jsonl", candidates)
-    write_jsonl(root / "answer_classification.jsonl", classified)
-    write_jsonl(root / "answer_review.jsonl", review_queue)
-    write_json(root / "report.json", report)
+               "review_required": sum(row["metadata"]["flags"]["answer_review_required"] for row in queries),
+               "labels_file": str(root / "generated_labels.jsonl"),
+               "note": "Source queries are unchanged; labels are joined by query ID when loading."}
+    # Save only derived fields, with a hash linking them to unchanged source rows.
+    write_jsonl(root / "generated_labels.jsonl", [
+        {"_id": row["_id"], "source_hash": source_hashes[str(row["_id"])],
+         "metadata": {key: row["metadata"][key] for key in
+                      ("answer_kind", "flags", "usable_for", "answer_classification") if key in row["metadata"]}}
+        for row in queries
+    ])
     return summary

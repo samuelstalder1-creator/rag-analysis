@@ -2,6 +2,7 @@ import json
 
 import pytest
 
+from evlab.data.nqplus import load_generation_candidates, load_query_rows
 from evlab.data.answer_classification import classify_answer_set, split_answer_flags
 from evlab.io import read_jsonl, write_json, write_jsonl
 
@@ -25,7 +26,7 @@ def test_review_must_match_answers():
         classify_answer_set("Who?", ["Alice"], {"kind": "variants", "aliases": ["Bob"]})
 
 
-def test_split_updates_flags_candidates_report_and_review_queue(tmp_path):
+def test_split_writes_generated_labels_and_preserves_queries(tmp_path):
     rows = []
     cases = [
         ("q0", "How many?", ["23"], "single"),
@@ -42,11 +43,6 @@ def test_split_updates_flags_candidates_report_and_review_queue(tmp_path):
             "usable_for": {"retrieval": True, "reader": True, "generation": kind == "single"},
         }})
     write_jsonl(tmp_path / "queries.jsonl", rows)
-    write_jsonl(tmp_path / "rag_queries.jsonl", [{"query_id": qid} for qid, *_ in cases])
-    existing = {"query_id": "q0", "query": "How many?", "answer": "23", "answer_aliases": ["23"],
-                "answer_kind": "single", "h_docs": [{"doc_id": "d0", "title": "", "text": "23",
-                                                      "llm_copy_keeps_answer": True}], "other_relevant_docs": []}
-    write_jsonl(tmp_path / "generation_candidates.jsonl", [existing])
     write_jsonl(tmp_path / "human.jsonl", [
         {"_id": "d0", "title": "", "text": "23"},
         {"_id": "d1", "title": "Leader", "text": "Alice Adams is also known as A. Adams."},
@@ -54,7 +50,6 @@ def test_split_updates_flags_candidates_report_and_review_queue(tmp_path):
         {"_id": "d3", "title": "Season", "text": "The season has 24 episodes."},
         {"_id": "d4", "title": "Opening", "text": "1970 and 1971 refer to different openings."},
     ])
-    write_json(tmp_path / "report.json", {"flag_answer_list_or_conflict": 4})
     reviews = {
         "q1": {"kind": "variants", "aliases": ["Alice Adams", "A. Adams"], "reason": "Explicit alias.",
                "evidence": [{"doc_id": "d1", "quote": "also known as A. Adams"}]},
@@ -74,21 +69,32 @@ def test_split_updates_flags_candidates_report_and_review_queue(tmp_path):
     result = split_answer_flags(tmp_path, **kwargs)
     assert result["classification"] == {"variants": 1, "list": 1, "conflict": 1, "unresolved": 1}
     assert result["new_generation_query_ids"] == ["q1"]
-    migrated = {row["_id"]: row["metadata"] for row in read_jsonl(tmp_path / "queries.jsonl")}
+    assert (tmp_path / "queries.jsonl").read_bytes() == original_queries
+    migrated = {row["_id"]: row["metadata"] for row in load_query_rows(tmp_path)}
     assert all("answer_list_or_conflict" not in row["flags"] for row in migrated.values())
     assert migrated["q2"]["flags"]["answer_is_list"]
     assert migrated["q3"]["flags"]["answer_conflict"]
     assert migrated["q4"]["flags"]["answer_review_required"]
     assert not migrated["q4"]["flags"]["answer_conflict"]
-    assert read_jsonl(tmp_path / "answer_review.jsonl")[0]["query_id"] == "q4"
-    candidates = read_jsonl(tmp_path / "generation_candidates.jsonl")
-    assert candidates[0] == existing
+    assert [qid for qid, metadata in migrated.items() if metadata["flags"]["answer_review_required"]] == ["q4"]
+    candidates = load_generation_candidates(tmp_path, tmp_path / "human.jsonl")
+    assert candidates[0]["h_docs"][0]["text"] == "23"
     assert [row["query_id"] for row in candidates] == ["q0", "q1"]
     second = split_answer_flags(tmp_path, **kwargs)
     assert second["classification"] == result["classification"]
     assert second["new_generation_candidates"] == 0
-    assert read_jsonl(tmp_path / "generation_candidates.jsonl") == candidates
-    report = json.loads((tmp_path / "report.json").read_text())
-    assert "flag_answer_list_or_conflict" not in report
-    assert report["flag_answer_is_list"] == 1
-    assert report["flag_answer_conflict"] == 1
+    assert load_generation_candidates(tmp_path, tmp_path / "human.jsonl") == candidates
+    assert sum(m["flags"]["answer_is_list"] for m in migrated.values()) == 1
+    assert sum(m["flags"]["answer_conflict"] for m in migrated.values()) == 1
+    assert not any((tmp_path / name).exists() for name in [
+        "rag_queries.jsonl", "generation_candidates.jsonl", "report.json",
+        "answer_classification.jsonl", "answer_review.jsonl",
+    ])
+
+    # Changed source queries must not silently inherit old labels.
+    rows[0]["text"] = "Changed question"
+    write_jsonl(tmp_path / "queries.jsonl", rows)
+    with pytest.raises(ValueError, match="Stale generated labels"):
+        load_generation_candidates(tmp_path, include_text=False)
+    split_answer_flags(tmp_path, **kwargs)
+    assert load_generation_candidates(tmp_path, include_text=False)[0]["query"] == "Changed question"

@@ -4,7 +4,8 @@ from pathlib import Path
 from glob import glob
 
 from evlab.data.cocktail import load_corpus
-from evlab.io import iter_jsonl, read_qrels
+from evlab.io import iter_jsonl
+from evlab.data.nqplus import load_qrels
 from evlab.generation.output import CORPUS_FILENAME
 from evlab.generation.registry import read_registry
 from evlab.schema import Doc
@@ -87,7 +88,7 @@ def build_corpus(config: dict) -> list[Doc]:
     generated_file = corpus.get("generated_docs")
     if generated_file:
         query_ids_by_doc: dict[str, str] = {}
-        for qrel in read_qrels(Path(data["nqplus_dir"]) / "qrels" / "test.tsv"):
+        for qrel in load_qrels(data["nqplus_dir"]):
             if qrel.relevance > 0:
                 previous = query_ids_by_doc.setdefault(qrel.doc_id, qrel.query_id)
                 if previous != qrel.query_id:

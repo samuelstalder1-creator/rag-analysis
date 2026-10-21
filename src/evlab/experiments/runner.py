@@ -6,7 +6,7 @@ from typing import Sequence
 from evlab.config import load_config
 from evlab.corpus.builder import build_corpus
 from evlab.corpus.conditions import corpus_manifest
-from evlab.data.nqplus import load_generation_candidates, load_qrels, load_rag_queries, load_retrieval_queries
+from evlab.data.nqplus import load_generation_queries, load_qrels, load_rag_queries, load_retrieval_queries
 from evlab.evaluation.retrieval import evaluate_retrieval
 from evlab.evaluation.source import evaluate_source_metrics
 from evlab.io import stable_hash, write_json, write_jsonl
@@ -71,8 +71,7 @@ def _load_queries(config: dict) -> list[Query]:
     if mode == "rag":
         return load_rag_queries(nqplus_dir)
     if mode == "generation":
-        wanted = {str(row["query_id"]) for row in load_generation_candidates(nqplus_dir)}
-        return [query for query in load_retrieval_queries(nqplus_dir) if query.query_id in wanted]
+        return load_generation_queries(nqplus_dir)
     raise ValueError(f"Unsupported query set: {mode}")
 
 

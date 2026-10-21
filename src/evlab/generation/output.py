@@ -79,6 +79,8 @@ class GenerationOutput:
             if not path.exists():
                 continue
             for row in iter_jsonl(path):
+                if row.get("condition") == "false":
+                    continue
                 if row.get("generator_model") != self.model:
                     continue
                 source = "human_corpus" if row.get("query_id") == row.get("provenance_root_id") else "candidates"

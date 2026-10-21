@@ -13,6 +13,7 @@ from evlab.experiments.runner import run_experiment
 from evlab.generation.pipeline import run_generation_pipeline
 from evlab.generation.false_answers import run_false_answer_generation
 from evlab.generation.false_documents import run_false_document_generation
+from evlab.generation.maintenance import cleanup_false_generation, generation_status
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -33,6 +34,9 @@ def main(argv: list[str] | None = None) -> None:
         stage_parser = subparsers.add_parser(command)
         stage_parser.add_argument("--config", required=True)
         stage_parser.add_argument("--limit", type=int, default=None)
+    for command in ("generation-status", "cleanup-false"):
+        maintenance_parser = subparsers.add_parser(command)
+        maintenance_parser.add_argument("--config", required=True)
 
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("config")
@@ -49,12 +53,18 @@ def main(argv: list[str] | None = None) -> None:
         _print(split_answer_flags(
             config["data"]["nqplus_dir"], human_corpus=config["data"]["human_corpus"],
             reviews_file=config["answer_classification"]["reviews_file"],
-            llm_corpus=config["data"].get("cocktail_llm_corpus"),
         ))
+    elif args.command in {"generation-status", "cleanup-false"}:
+        config = load_config(args.config)
+        operation = generation_status if args.command == "generation-status" else cleanup_false_generation
+        _print(operation(config))
     elif args.command in {"generate-false-answers", "generate-false-documents"}:
         config = load_config(args.config)
         stage = run_false_answer_generation if args.command == "generate-false-answers" else run_false_document_generation
-        _print(stage(config["generation"], config["data"]["nqplus_dir"], limit=args.limit))
+        kwargs = {"limit": args.limit}
+        if args.command == "generate-false-documents":
+            kwargs["human_corpus"] = config["data"].get("human_corpus")
+        _print(stage(config["generation"], config["data"]["nqplus_dir"], **kwargs))
     elif args.command == "generate":
         config = load_config(args.config)
         generation_config = config["generation"]
@@ -64,9 +74,11 @@ def main(argv: list[str] | None = None) -> None:
                 raise ValueError("generation source 'human_corpus' requires data.human_corpus in the config")
             candidates = _human_corpus_generation_candidates(config["data"]["human_corpus"])
         elif source == "candidates":
-            candidates = load_generation_candidates(config["data"]["nqplus_dir"])
+            candidates = load_generation_candidates(config["data"]["nqplus_dir"], config["data"].get("human_corpus"))
         else:
             raise ValueError(f"Unsupported generation source: {source}")
+        from evlab.generation.false_answers import attach_saved_answers
+        candidates = attach_saved_answers(candidates, generation_config)
         _print(run_generation_pipeline(generation_config, candidates, limit=args.limit))
     elif args.command == "run":
         _print(run_experiment(args.config))

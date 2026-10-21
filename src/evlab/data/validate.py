@@ -9,7 +9,7 @@ from evlab.data.nqplus import validate_nqplus
 def validate_dataset_config(config: dict) -> dict[str, int]:
     data = config.get("data", config)
     nqplus_dir = Path(data["nqplus_dir"])
-    stats = validate_nqplus(nqplus_dir)
+    stats = validate_nqplus(nqplus_dir, human_corpus=data.get("human_corpus"))
     if "human_corpus" in data:
         stats["human_docs"] = len(load_corpus(data["human_corpus"], origin="human", namespace="human"))
     if "cocktail_llm_corpus" in data:
