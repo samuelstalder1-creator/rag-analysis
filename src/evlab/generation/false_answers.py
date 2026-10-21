@@ -8,13 +8,17 @@ import tempfile
 from pathlib import Path
 
 from evlab.data.nqplus import load_generation_candidates, resolve_nqplus_paths
-from evlab.generation.false_answer import generate_false_answer, is_valid_false_answer
+from evlab.generation.false_answer import (
+    generate_false_answer_candidates,
+    is_valid_false_answer,
+)
 from evlab.generation.output import output_label
 from evlab.generation.semantic import (
     build_verifier,
     verify_answer,
     VALIDATOR_VERSION,
     validator_signature,
+    ModelOutputError,
 )
 from evlab.generation.false_answer import answer_type
 from evlab.generation.registry import update_registry
@@ -220,7 +224,7 @@ def run_false_answer_generation(
             )
             verifier = build_verifier(config)
         try:
-            answer = generate_false_answer(
+            proposed = generate_false_answer_candidates(
                 client,
                 question=candidate["query"],
                 answer=gold,
@@ -228,7 +232,21 @@ def run_false_answer_generation(
                 temperature=temperature,
                 seed=idx,
             )
-            verification = verify_answer(verifier, candidate, answer)
+            rejected_candidates = []
+            for answer in proposed:
+                try:
+                    verification = verify_answer(verifier, candidate, answer)
+                    break
+                except ModelOutputError as exc:
+                    rejected_candidates.append(
+                        {"target": answer, "reason": str(exc), "attempts": exc.attempts}
+                    )
+            else:
+                raise ModelOutputError(
+                    "All distinct false-answer candidates failed validation",
+                    rejected_candidates,
+                )
+            verification["rejected_candidates"] = rejected_candidates
             saved = _save_answers(
                 path,
                 {qid: answer},

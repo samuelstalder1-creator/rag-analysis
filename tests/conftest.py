@@ -10,6 +10,17 @@ class VerifierClient:
     def generate(self, prompt, **kwargs):
         if prompt.startswith("SEMANTIC_VALIDATION"):
             payload = json.loads(prompt.split("\n")[-1])
+            if "target_relation" in payload["checks"]:
+                return json.dumps(
+                    {
+                        "gold_support": "SUPPORTED",
+                        "target_relation": "CONTRADICTED",
+                        "same_type": True,
+                        "plausible": True,
+                        "evidence_quote": payload["evidence"]["sources"][0]["text"],
+                        "reason": "Reviewed fixture contrast",
+                    }
+                )
             return json.dumps(
                 {
                     **{key: True for key in payload["checks"]},

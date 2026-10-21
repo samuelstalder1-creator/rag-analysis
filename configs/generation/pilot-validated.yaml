@@ -7,11 +7,12 @@ generation:
   samples_per_h: 1
   temperature: 0.3
   resume: true
-  progress_every: 25
+  progress_every: 1
   conditions: ["false"]
   validation:
     max_similarity: 0.95
-    # Add llm settings here to use a separate verifier endpoint/model.
+    # For experiments, configure a separately calibrated verifier with llm settings here.
+    # The 2B generator is not a calibrated factual judge.
   llm:
     provider: local_openai
     base_url: http://localhost:8000/v1

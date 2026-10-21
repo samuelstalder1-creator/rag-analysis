@@ -54,6 +54,13 @@ small reviewed pilot. Stage 1 requires concrete string candidates, rejects known
 answer aliases and equivalent numeric/date forms, and checks answer type. There
 are no synthetic fallback answers. A semantic verifier must affirm source support
 for the gold answer, target plausibility, matching type, and target incorrectness.
+False-answer assessment uses categorical `gold_support` and `target_relation`
+verdicts rather than an ambiguous `incorrect` boolean. Only `SUPPORTED` gold and
+`CONTRADICTED` target are accepted, with a verbatim source quote containing a gold
+alias. `EQUIVALENT`, `SUPPORTED` targets and `UNKNOWN` are rejected. A reason string
+never overrides the category. Distinct candidate alternatives are checked in order;
+a rejected target is not retried for approval. Rejected alternatives are retained
+in the successful target's receipt, or in the reject log if none passes.
 Malformed validator output is retried up to three times with an explicit JSON
 schema and format feedback. Well-formed negative or uncertain verdicts are final:
 they are not retried to obtain approval. Unusable answer candidates receive up to

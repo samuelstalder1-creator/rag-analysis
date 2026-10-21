@@ -513,3 +513,126 @@ def test_false_answer_failure_records_raw_attempts_in_reject_log(
     )[0]
     assert len(reject["attempts"]) == 3
     assert reject["attempts"][0]["response"] == '{"candidates":["23"]}'
+
+
+@pytest.mark.parametrize("relation", ["EQUIVALENT", "SUPPORTED", "UNKNOWN"])
+def test_categorical_verifier_rejects_noncontradictions_even_with_positive_reason(
+    relation,
+):
+    class Client:
+        model = provider = "test"
+
+        def generate(self, prompt, **kwargs):
+            assert "CONTRADICTED = the evidence establishes" in prompt
+            return json.dumps(
+                {
+                    "gold_support": "SUPPORTED",
+                    "target_relation": relation,
+                    "same_type": True,
+                    "plausible": True,
+                    "evidence_quote": "There were 23 episodes.",
+                    "reason": "The target is factually incorrect.",
+                }
+            )
+
+    with pytest.raises(ValueError, match="negative semantic verdict"):
+        verify_answer(Client(), candidate(), "22")
+
+
+def test_categorical_verifier_accepts_grounded_contradiction():
+    class Client:
+        model = provider = "test"
+
+        def generate(self, prompt, **kwargs):
+            assert '"target_relation"' in prompt
+            assert '"incorrect"' not in prompt
+            return json.dumps(
+                {
+                    "gold_support": "SUPPORTED",
+                    "target_relation": "CONTRADICTED",
+                    "same_type": True,
+                    "plausible": True,
+                    "evidence_quote": "There were 23 episodes.",
+                    "reason": "The source specifies 23 episodes; 22 is a conflicting count.",
+                }
+            )
+
+    receipt = verify_answer(Client(), candidate(), "22")
+    assert receipt["judgment"]["target_relation"] == "CONTRADICTED"
+
+
+def test_categorical_verifier_rejects_fabricated_evidence_quote():
+    class Client:
+        model = provider = "test"
+
+        def generate(self, prompt, **kwargs):
+            return json.dumps(
+                {
+                    "gold_support": "SUPPORTED",
+                    "target_relation": "CONTRADICTED",
+                    "same_type": True,
+                    "plausible": True,
+                    "evidence_quote": "The season had 23 episodes and not 22.",
+                    "reason": "Conflicting episode count.",
+                }
+            )
+
+    with pytest.raises(ValueError, match="unverified evidence quote"):
+        verify_answer(Client(), candidate(), "22")
+
+
+def test_old_inverted_boolean_output_is_not_silently_reinterpreted():
+    class Client:
+        model = provider = "test"
+
+        def generate(self, prompt, **kwargs):
+            return '{"source_supports_gold":true,"same_type":true,"plausible":true,"incorrect":false,"reason":"22 is factually incorrect."}'
+
+    with pytest.raises(ValueError, match="invalid validator output"):
+        verify_answer(Client(), candidate(), "22")
+
+
+def test_distinct_candidates_are_checked_without_retrying_negative_target(
+    tmp_path, monkeypatch, verifier
+):
+    from test_false_answer_stages import setup_data
+    from evlab.generation import false_answers
+
+    root, cfg = setup_data(tmp_path)
+    targets = []
+
+    class Generator:
+        model = provider = "test"
+
+        def generate(self, prompt, **kwargs):
+            assert "WRONG multiple-choice distractors" in prompt
+            return '{"candidates":["24","24","25"]}'
+
+    class Assessor:
+        model = provider = "test"
+
+        def generate(self, prompt, **kwargs):
+            payload = json.loads(prompt.split("\n")[-1])
+            target = payload["evidence"]["target"]
+            targets.append(target)
+            return json.dumps(
+                {
+                    "gold_support": "SUPPORTED",
+                    "target_relation": "UNKNOWN" if target == "24" else "CONTRADICTED",
+                    "same_type": True,
+                    "plausible": True,
+                    "evidence_quote": "There were 23 episodes.",
+                    "reason": "Uncertain first alternative; grounded contrast for the second.",
+                }
+            )
+
+    monkeypatch.setattr(false_answers, "build_llm_client", lambda config: Generator())
+    monkeypatch.setattr(false_answers, "build_verifier", lambda config: Assessor())
+    result = run_false_answer_generation(
+        cfg, root, human_corpus=tmp_path / "human.jsonl", limit=1
+    )
+    assert result == {"generated": 1, "reused": 0, "rejects": 0}
+    assert targets == ["24", "25"]
+    saved = read_jsonl(tmp_path / "output/generated_false_answers.jsonl")[0]
+    assert saved["false_answer"] == "25"
+    assert saved["verification"]["rejected_candidates"][0]["target"] == "24"

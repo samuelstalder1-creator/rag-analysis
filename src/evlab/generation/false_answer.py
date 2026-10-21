@@ -8,20 +8,26 @@ from evlab.llm.client import LLMClient
 from evlab.generation.semantic import json_object, ModelOutputError
 import json
 
-FALSE_ANSWER_PROMPT = """FALSE_ANSWER_GENERATION v2
+FALSE_ANSWER_PROMPT = """FALSE_ANSWER_GENERATION v3
 Question: {question}
 Correct answer: {answer}
 Gold aliases to avoid: {aliases}
 Required answer type: {answer_type}
 
 Generate three plausible but incorrect answers.
-They must answer the question, differ from the correct answer, and have the same type and granularity.
-Return concrete answers, never placeholders or refusals.
+Your task is to write WRONG multiple-choice distractors, NOT to solve the question.
+Every candidate must DIFFER from the supplied correct answer and ALL of its gold aliases.
+Choose three distinct alternative values/entities of the same type and granularity.
+A person answer requires different people, not invented middle names for the gold person.
+A song answer requires different song titles, never repeat the gold song.
+Examples of contrasts only (do not copy these answers): count 8 -> 7, 9, 10;
+scientist Albert Einstein -> Isaac Newton, Niels Bohr, Max Planck.
+Return concrete answers, never placeholders, explanations, refusals or copies of gold.
 Return JSON only: {{"candidates": ["...", "...", "..."]}}
 """
 
 
-def generate_false_answer(
+def generate_false_answer_candidates(
     client: LLMClient,
     *,
     question: str,
@@ -29,7 +35,7 @@ def generate_false_answer(
     aliases: list[str],
     temperature: float = 0.3,
     seed: int | None = None,
-) -> str:
+) -> list[str]:
     prompt = FALSE_ANSWER_PROMPT.format(
         question=question,
         answer=answer,
@@ -55,9 +61,17 @@ def generate_false_answer(
         except ValueError as exc:
             attempts.append({"response": response, "error": str(exc)})
             continue
+        valid = []
+        seen = set()
         for candidate in candidates:
-            if is_valid_false_answer(candidate, answer, aliases, question=question):
-                return candidate
+            if (
+                is_valid_false_answer(candidate, answer, aliases, question=question)
+                and canonical(candidate) not in seen
+            ):
+                valid.append(candidate)
+                seen.add(canonical(candidate))
+        if valid:
+            return valid
         attempts.append(
             {
                 "response": response,
@@ -69,6 +83,25 @@ def generate_false_answer(
     raise ModelOutputError(
         "No structurally valid false answer after 3 attempts", attempts
     )
+
+
+def generate_false_answer(
+    client: LLMClient,
+    *,
+    question: str,
+    answer: str,
+    aliases: list[str],
+    temperature: float = 0.3,
+    seed: int | None = None,
+) -> str:
+    return generate_false_answer_candidates(
+        client,
+        question=question,
+        answer=answer,
+        aliases=aliases,
+        temperature=temperature,
+        seed=seed,
+    )[0]
 
 
 def parse_candidates(response: str) -> list[str]:
