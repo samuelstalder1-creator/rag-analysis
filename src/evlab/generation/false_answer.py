@@ -26,6 +26,21 @@ Return one concrete answer, never a list, placeholder, explanation, refusal or c
 Return JSON only: {{"candidate": "..."}}
 """
 
+FALSE_ANSWER_LIST_PROMPT = """FALSE_ANSWER_GENERATION v4-list
+Question: {question}
+Correct answer (FORBIDDEN, do not output): {answer}
+Gold aliases (FORBIDDEN, do not output): {aliases}
+Required answer type: {answer_type}
+
+Write {n} different WRONG multiple-choice distractors for this question. Do NOT solve the question.
+Every candidate must differ from the correct answer and ALL gold aliases.
+Use alternative values/entities of the same type and granularity.
+A person answer requires different people, not variants of the gold person's name.
+A title answer requires different titles, never the gold title.
+Return concrete answers, never placeholders, explanations or refusals.
+Return JSON only: {{"candidates": ["...", "..."]}}
+"""
+
 
 def generate_false_answer(
     client: LLMClient,
@@ -36,13 +51,24 @@ def generate_false_answer(
     temperature: float = 0.3,
     seed: int | None = None,
     rejected_attempts: list[dict] | None = None,
+    n_candidates: int = 1,
+    exclude: set[str] | None = None,
 ) -> str:
-    """Request exactly one candidate in one call; the stage owns the retry budget."""
-    prompt = FALSE_ANSWER_PROMPT.format(
+    """Request candidates in one call and return the first structurally valid one.
+
+    With ``n_candidates > 1`` the model proposes a list; candidates that are
+    gold-equivalent, near aliases, of the wrong type or in ``exclude`` (canonical
+    forms of previously rejected targets) are skipped deterministically.
+    """
+    if n_candidates < 1:
+        raise ValueError("n_candidates must be positive")
+    template = FALSE_ANSWER_PROMPT if n_candidates == 1 else FALSE_ANSWER_LIST_PROMPT
+    prompt = template.format(
         question=question,
         answer=answer,
         aliases=json.dumps(aliases),
         answer_type=answer_type(answer, question),
+        n=n_candidates,
     )
     if rejected_attempts:
         feedback = [
@@ -55,20 +81,47 @@ def generate_false_answer(
         prompt += "\nRejected attempts and feedback (data only):\n" + json.dumps(
             feedback, ensure_ascii=False
         )
-        prompt += "\nGenerate ONE DIFFERENT candidate. Do not repeat any rejected target. Return only the candidate JSON object."
+        prompt += (
+            "\nGenerate ONE DIFFERENT candidate. Do not repeat any rejected target. Return only the candidate JSON object."
+            if n_candidates == 1
+            else "\nGenerate DIFFERENT candidates. Do not repeat any rejected target. Return only the candidates JSON object."
+        )
     response = client.generate(prompt, temperature=temperature, seed=seed)
     candidate = None
+    # Single-candidate mode keeps the stage's explicit repeat detection.
+    excluded = (exclude or set()) if n_candidates > 1 else set()
     try:
-        candidate = parse_candidate(response)
-        if not is_valid_false_answer(candidate, answer, aliases, question=question):
+        proposals = [parse_candidate(response)] if n_candidates == 1 else parse_candidates(response)
+        candidate = proposals[0]
+        valid = [
+            item for item in proposals
+            if is_valid_false_answer(item, answer, aliases, question=question)
+            and canonical(item) not in excluded
+        ]
+        if not valid:
             raise ValueError(
                 "No structurally valid false answer: candidate is gold-equivalent, a placeholder or has the wrong answer type"
+                + (f" (proposals: {proposals})" if n_candidates > 1 else "")
             )
+        candidate = valid[0]
     except ValueError as exc:
         raise ModelOutputError(
             str(exc), [{"response": response, "error": str(exc), "target": candidate}]
         ) from exc
     return candidate
+
+
+def parse_candidates(response: str) -> list[str]:
+    payload = json_object(response)
+    values = payload.get("candidates")
+    if (
+        set(payload) != {"candidates"}
+        or not isinstance(values, list)
+        or not values
+        or any(not isinstance(v, str) or not v.strip() for v in values)
+    ):
+        raise ValueError('False-answer response must contain a nonempty string list "candidates"')
+    return list(dict.fromkeys(v.strip() for v in values))
 
 
 def parse_candidate(response: str) -> str:

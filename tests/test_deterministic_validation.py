@@ -113,3 +113,54 @@ def test_unknown_validation_mode_fails(tmp_path, monkeypatch):
     with pytest.raises(ValueError, match="validation.mode"):
         run_false_answer_generation({**config, "validation": {"mode": "none"}}, root,
                                     human_corpus=tmp_path / "human.jsonl")
+
+
+def test_document_stage_can_skip_questions_without_answer(tmp_path, monkeypatch):
+    root, config = setup_data(tmp_path, two_questions=True)
+    config = {**_deterministic(config), "skip_missing_false_answers": True}
+    client = GeneratorClient()  # always proposes "24", which is gold for q2
+    monkeypatch.setattr(false_answers, "build_llm_client", lambda c: client)
+    monkeypatch.setattr(pipeline, "build_llm_client", lambda c: client)
+    monkeypatch.setattr(false_answers, "build_verifier", _no_judge)
+    monkeypatch.setattr(pipeline, "build_verifier", _no_judge)
+    human = tmp_path / "human.jsonl"
+    answers = run_false_answer_generation(config, root, human_corpus=human)
+    assert answers == {"generated": 1, "reused": 0, "rejects": 1}
+    docs = run_false_document_generation(config, root, human_corpus=human)
+    assert docs == {"generated": 2, "rejects": 0, "skipped_questions": 1}
+
+    strict = {k: v for k, v in config.items() if k != "skip_missing_false_answers"}
+    with pytest.raises(ValueError, match="q2"):
+        run_false_document_generation(strict, root, human_corpus=human)
+
+
+def test_candidate_list_skips_gold_and_rejected_proposals(tmp_path, monkeypatch):
+    class ListClient(GeneratorClient):
+        def generate(self, prompt, **kwargs):
+            if "WRONG multiple-choice distractors" in prompt:
+                assert "Write 5 different" in prompt
+                return '{"candidates": ["23", "twenty-three", "22", "21"]}'
+            return super().generate(prompt, **kwargs)
+
+    root, config = setup_data(tmp_path)
+    config = {**_deterministic(config), "false_answer_candidates_per_call": 5}
+    client = ListClient()
+    monkeypatch.setattr(false_answers, "build_llm_client", lambda c: client)
+    monkeypatch.setattr(false_answers, "build_verifier", _no_judge)
+    run_false_answer_generation(config, root, human_corpus=tmp_path / "human.jsonl")
+    [row] = read_jsonl(tmp_path / "output" / "generated_false_answers.jsonl")
+    assert row["false_answer"] == "22"
+    assert row["verification"]["candidates_per_call"] == 5
+
+
+def test_candidate_list_with_only_gold_is_rejected(tmp_path, monkeypatch):
+    class GoldClient(GeneratorClient):
+        def generate(self, prompt, **kwargs):
+            return '{"candidates": ["23", "23"]}'
+
+    root, config = setup_data(tmp_path)
+    config = {**_deterministic(config), "false_answer_candidates_per_call": 3}
+    monkeypatch.setattr(false_answers, "build_llm_client", lambda c: GoldClient())
+    monkeypatch.setattr(false_answers, "build_verifier", _no_judge)
+    result = run_false_answer_generation(config, root, human_corpus=tmp_path / "human.jsonl")
+    assert result == {"generated": 0, "reused": 0, "rejects": 1}

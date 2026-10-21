@@ -221,6 +221,9 @@ def run_false_answer_generation(
     temperature = float(config.get("temperature", 0.3))
     # Raise temperature on retries so the generator does not repeat itself.
     temperature_step = float(config.get("false_answer_retry_temperature_step", 0.0))
+    n_candidates = config.get("false_answer_candidates_per_call", 1)
+    if type(n_candidates) is not int or n_candidates < 1:
+        raise ValueError("false_answer_candidates_per_call must be a positive integer")
     semantic = validation_mode(config) == "semantic"
     model = str(config["llm"]["model"])
     label = output_label(model, temperature, "candidates")
@@ -272,6 +275,8 @@ def run_false_answer_generation(
                         temperature=min(1.0, temperature + temperature_step * attempt),
                         seed=idx + attempt * 1000000,
                         rejected_attempts=rejected_attempts,
+                        n_candidates=n_candidates,
+                        exclude=rejected_targets,
                     )
                 except ModelOutputError as exc:
                     rejected_attempts.append(
@@ -317,6 +322,7 @@ def run_false_answer_generation(
                 )
             verification["rejected_candidates"] = rejected_attempts
             verification["generation_attempts"] = attempt + 1
+            verification["candidates_per_call"] = n_candidates
             saved = _save_answers(
                 path,
                 {qid: answer},

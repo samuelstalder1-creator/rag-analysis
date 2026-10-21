@@ -41,6 +41,7 @@ def run_generation_pipeline(
     selected = list(candidates)
     if limit is not None:
         selected = selected[:limit]
+    skipped: list[str] = []
     if "false" in conditions:
         invalid = []
         for candidate in selected:
@@ -67,7 +68,16 @@ def run_generation_pipeline(
                 or (semantic and receipt_mode(verification) != "semantic")
             ):
                 invalid.append(str(candidate["query_id"]))
-        if invalid:
+        if invalid and config.get("skip_missing_false_answers", False):
+            # Questions whose answer stage failed are left out, not silently filled.
+            skipped = invalid
+            selected = [c for c in selected if str(c["query_id"]) not in set(invalid)]
+            print(
+                f"generation: skipping {len(skipped)} question(s) without a valid saved "
+                f"false answer: {', '.join(skipped[:10])}",
+                flush=True,
+            )
+        elif invalid:
             raise ValueError(
                 f"Missing, stale or unverified saved false answers: {', '.join(invalid[:10])}. Run evlab generate-false-answers --config <config> first"
             )
@@ -89,6 +99,7 @@ def run_generation_pipeline(
                     "cache_path",
                     "conditions",
                     "samples_per_h",
+                    "skip_missing_false_answers",
                 }
             },
             "prompts": [FALSE_ANSWER_PROMPT, MINIMAL_EDIT_PROMPT, PARAPHRASE_PROMPT],
@@ -325,7 +336,10 @@ def run_generation_pipeline(
                 )
     finally:
         output.update_counts()
-    return {"generated": generated_count, "rejects": reject_count}
+    result = {"generated": generated_count, "rejects": reject_count}
+    if config.get("skip_missing_false_answers", False):
+        result["skipped_questions"] = len(skipped)
+    return result
 
 
 def _check_document(semantic: bool, verifier, **kwargs) -> dict:

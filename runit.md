@@ -121,8 +121,14 @@ uv run evlab generate-false-documents --config configs/generation/pilot-determin
 
 Receipts carry `mode: deterministic` and `semantic_verified: false`; registry
 entries carry `validation_mode: deterministic`. Semantic runs refuse these
-answers, so judged and unjudged data cannot be mixed by accident. Retries raise
-the temperature by `false_answer_retry_temperature_step`. `llm.max_tokens` caps
+answers, so judged and unjudged data cannot be mixed by accident.
+With `skip_missing_false_answers: true` (set in the pilot config), the document
+stage skips questions whose answer stage failed and reports them as
+`skipped_questions` instead of aborting; without it, missing answers stop the run. Retries raise
+the temperature by `false_answer_retry_temperature_step`. With
+`false_answer_candidates_per_call: 5` the generator proposes five distractors per call
+and the first one passing the rule-based checks is used; proposals equal to gold or
+to earlier rejects are skipped. `llm.max_tokens` caps
 responses, and HTTP 4xx errors now include the server's explanation.
 
 ### Step 1: Generate False Answers
