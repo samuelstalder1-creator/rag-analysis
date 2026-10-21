@@ -1,0 +1,29 @@
+# False-answer and false-document generation WITHOUT an LLM judge.
+# Only rule-based checks run (answer type, gold/near-alias, target present,
+# gold residue, near-duplicates). Receipts are marked semantic_verified: false,
+# and semantic runs refuse these answers. Judge them separately before use.
+data:
+  nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  output_dir: data/generated/false-deterministic
+  cache_path: cache/llm_deterministic.sqlite
+  samples_per_h: 1
+  false_answer_max_attempts: 3  # Total generator calls per question, including the first.
+  false_answer_retry_temperature_step: 0.3  # 0.3 -> 0.6 -> 0.9 on retries
+  temperature: 0.3
+  resume: true
+  progress_every: 1
+  conditions: ["false"]
+  validation:
+    mode: deterministic
+    max_similarity: 0.95
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8000/v1
+    model: Qwen/Qwen3.5-2B
+    api_key_env: LOCAL_LLM_API_KEY
+    timeout: 600
+    max_retries: 2
+    retry_delay: 5
+    max_tokens: 2048  # longest source ~1.1k tokens; prompt + output must fit max-model-len 4096

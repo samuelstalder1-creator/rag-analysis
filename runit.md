@@ -106,6 +106,25 @@ False evidence has two independent stages. First save false answers in
 `data/generated/qwen35-2b-all/generated_false_answers.jsonl`; then generate documents from those saved
 answers. Correct-only generation does not require the false-answer stage.
 
+### Without an LLM Judge (deterministic validation)
+
+`validation.mode: deterministic` skips the semantic judge in both stages. Only
+rule-based checks run: answer type, gold and near-alias exclusion (e.g.
+"Christopher Lloyd" for "Christopher Allen Lloyd"), target present in the
+document, no extra gold mentions after paraphrasing, and near-duplicate limits.
+Span selection for the minimal edit still uses the generator model.
+
+```bash
+uv run evlab generate-false-answers --config configs/generation/pilot-deterministic.yaml --limit 15
+uv run evlab generate-false-documents --config configs/generation/pilot-deterministic.yaml --limit 15
+```
+
+Receipts carry `mode: deterministic` and `semantic_verified: false`; registry
+entries carry `validation_mode: deterministic`. Semantic runs refuse these
+answers, so judged and unjudged data cannot be mixed by accident. Retries raise
+the temperature by `false_answer_retry_temperature_step`. `llm.max_tokens` caps
+responses, and HTTP 4xx errors now include the server's explanation.
+
 ### Step 1: Generate False Answers
 
 Run in the foreground:

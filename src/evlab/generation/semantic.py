@@ -37,6 +37,54 @@ def build_verifier(config: dict):
     )
 
 
+VALIDATION_MODES = {"semantic", "deterministic"}
+
+
+def validation_mode(config: dict) -> str:
+    """Return the configured validation mode.
+
+    ``semantic`` uses an LLM judge. ``deterministic`` uses only rule-based checks;
+    its receipts are marked ``semantic_verified: False`` so that outputs can never
+    be mistaken for judged data.
+    """
+    settings = config.get("validation", {}) or {}
+    if settings.get("enabled") is False:
+        raise ValueError(
+            "Semantic validation cannot be disabled with enabled: false; "
+            "set validation.mode: deterministic to run without an LLM judge"
+        )
+    mode = str(settings.get("mode", "semantic"))
+    if mode not in VALIDATION_MODES:
+        raise ValueError(f"validation.mode must be one of {sorted(VALIDATION_MODES)}")
+    return mode
+
+
+def receipt_mode(receipt: dict) -> str:
+    # Receipts written before modes existed came from the semantic judge.
+    return str(receipt.get("mode", "semantic"))
+
+
+def deterministic_receipt(*, stage: str, evidence: dict, checks: dict) -> dict:
+    """Rule-based receipt. It records which checks ran; it is not a semantic proof."""
+    if any(value is not True for value in checks.values()):
+        raise ModelOutputError(
+            f"{stage}: deterministic validation failed: {checks}",
+            [{"response": None, "error": "negative deterministic verdict", "checks": checks}],
+        )
+    return {
+        "stage": stage,
+        "version": VALIDATOR_VERSION,
+        "mode": "deterministic",
+        "semantic_verified": False,
+        "model": None,
+        "provider": None,
+        "validator_hash": validator_signature(),
+        "evidence_hash": stable_hash(evidence),
+        "judgment": checks,
+        "format_attempts": [],
+    }
+
+
 class ModelOutputError(ValueError):
     """Unusable model output, with the raw attempts retained for diagnosis."""
 
@@ -114,6 +162,8 @@ def _receipt(client, stage, evidence, result, attempts):
     return {
         "stage": stage,
         "version": VALIDATOR_VERSION,
+        "mode": "semantic",
+        "semantic_verified": True,
         "model": client.model,
         "provider": client.provider,
         "validator_hash": validator_signature(),

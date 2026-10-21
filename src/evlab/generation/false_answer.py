@@ -135,6 +135,30 @@ def answer_type(answer: str, question: str = "") -> str:
     return "entity_or_text"
 
 
+NEAR_ALIAS_STOPWORDS = {"the", "a", "an", "of", "and", "jr", "sr", "mr", "mrs", "dr", "sir"}
+
+
+def _name_tokens(text: str) -> set[str]:
+    return {t for t in re.findall(r"\w+", canonical(text)) if t not in NEAR_ALIAS_STOPWORDS}
+
+
+def is_near_alias(candidate: str, answer: str, aliases: list[str]) -> bool:
+    """True if one answer's content tokens are a subset of the other's.
+
+    Catches shortened or extended forms of the gold answer, such as
+    "Christopher Lloyd" for "Christopher Allen Lloyd", "Patrick Brown Jr." for
+    "Patrick Brown" or "Hold On Tight" for "Hold On".
+    """
+    tokens = _name_tokens(candidate)
+    if not tokens:
+        return False
+    for gold in {answer, *aliases}:
+        gold_tokens = _name_tokens(gold)
+        if gold_tokens and (tokens <= gold_tokens or gold_tokens <= tokens):
+            return True
+    return False
+
+
 def is_valid_false_answer(
     candidate: str, answer: str, aliases: list[str], *, question: str = ""
 ) -> bool:
@@ -165,7 +189,9 @@ def is_valid_false_answer(
             gold_number == gold_number.to_integral()
             and target_number != target_number.to_integral()
         )
-    return other not in {"number", "year", "date", "quantity"}
+    if other in {"number", "year", "date", "quantity"}:
+        return False
+    return not is_near_alias(candidate, answer, aliases)
 
 
 def fallback_false_answers(answer: str, aliases: list[str]) -> list[str]:

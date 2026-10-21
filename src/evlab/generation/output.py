@@ -56,6 +56,8 @@ class GenerationOutput:
                         "source": self.source,
                         "prompt_version": "v1",
                     }
+                    if config.get("validation_mode"):
+                        metadata["validation_mode"] = config["validation_mode"]
                     if config.get("generation_signature"):
                         metadata["generation_signature"] = config[
                             "generation_signature"

@@ -19,7 +19,11 @@ from evlab.generation.semantic import (
     verify_document,
     VALIDATOR_VERSION,
     validator_signature,
+    deterministic_receipt,
+    receipt_mode,
+    validation_mode,
 )
+from evlab.generation.minimal_edit import occurrences
 from evlab.io import append_jsonl, iter_jsonl, stable_hash, write_jsonl
 from evlab.llm.cache import CachedLLMClient
 from evlab.llm.client import build_llm_client
@@ -33,6 +37,7 @@ def run_generation_pipeline(
         raise ValueError("samples_per_h must be positive")
     if not 0 < float(config.get("validation", {}).get("max_similarity", 0.95)) <= 1:
         raise ValueError("validation.max_similarity must be in (0, 1]")
+    semantic = validation_mode(config) == "semantic"
     selected = list(candidates)
     if limit is not None:
         selected = selected[:limit]
@@ -59,6 +64,7 @@ def run_generation_pipeline(
                 or verification.get("version") != VALIDATOR_VERSION
                 or verification.get("validator_hash") != validator_signature()
                 or verification.get("evidence_hash") != stable_hash(evidence)
+                or (semantic and receipt_mode(verification) != "semantic")
             ):
                 invalid.append(str(candidate["query_id"]))
         if invalid:
@@ -68,7 +74,8 @@ def run_generation_pipeline(
     client = CachedLLMClient(
         build_llm_client(config["llm"]), config.get("cache_path", "cache/llm.sqlite")
     )
-    verifier = build_verifier(config)
+    # Without a judge, span selection is a generation step run by the generator.
+    verifier = build_verifier(config) if semantic else client
     signature = stable_hash(
         {
             "config": {
@@ -90,7 +97,8 @@ def run_generation_pipeline(
     )
     output = GenerationOutput(
         Path(config.get("output_dir", "data/generated/pilot")),
-        {**config, "generation_signature": signature},
+        {**config, "generation_signature": signature,
+         **({} if semantic else {"validation_mode": "deterministic"})},
         client.model,
         conditions,
     )
@@ -166,7 +174,8 @@ def run_generation_pipeline(
                                         question=question,
                                         seed=idx,
                                     )
-                                seed_receipt = verify_document(
+                                seed_receipt = _check_document(
+                                    semantic,
                                     verifier,
                                     question=question,
                                     gold=gold,
@@ -227,7 +236,14 @@ def run_generation_pipeline(
                                 for previous in output.previous_texts(condition, did)
                             ):
                                 raise ValueError("near_duplicate_of_other_sample")
-                            receipt = verify_document(
+                            # Gold mentions may survive only where the edit left
+                            # unrelated occurrences; anything more is residue.
+                            if condition == "false" and len(
+                                occurrences(generated, aliases)
+                            ) > len(occurrences(edited_text, aliases)):
+                                raise ValueError("gold_answer_residue")
+                            receipt = _check_document(
+                                semantic,
                                 verifier,
                                 question=question,
                                 gold=gold,
@@ -310,6 +326,16 @@ def run_generation_pipeline(
     finally:
         output.update_counts()
     return {"generated": generated_count, "rejects": reject_count}
+
+
+def _check_document(semantic: bool, verifier, **kwargs) -> dict:
+    if semantic:
+        return verify_document(verifier, **kwargs)
+    evidence = {key: kwargs[key] for key in
+                ("question", "gold", "aliases", "target", "source", "seed", "generated", "condition")}
+    # The lexical, similarity and residue checks ran before this point.
+    checks = {"nonempty": bool(kwargs["generated"].strip())}
+    return deterministic_receipt(stage=kwargs["stage"], evidence=evidence, checks=checks)
 
 
 def _conditions(config: dict) -> set[str]:

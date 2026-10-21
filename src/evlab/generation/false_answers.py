@@ -20,6 +20,9 @@ from evlab.generation.semantic import (
     VALIDATOR_VERSION,
     validator_signature,
     ModelOutputError,
+    deterministic_receipt,
+    receipt_mode,
+    validation_mode,
 )
 from evlab.generation.false_answer import answer_type
 from evlab.generation.registry import update_registry
@@ -43,6 +46,8 @@ def answer_source_hash(question: str, gold: str, aliases: list[str]) -> str:
 
 def attach_saved_answers(candidates: list[dict], config: dict) -> list[dict]:
     path = answers_path(config)
+    # Deterministic runs may use any receipt; semantic runs require judged answers.
+    require_semantic = validation_mode(config) == "semantic"
     saved = {}
     if path.exists():
         for row in iter_jsonl(path):
@@ -61,6 +66,10 @@ def attach_saved_answers(candidates: list[dict], config: dict) -> list[dict]:
                 row.get("verification", {}).get("version") == VALIDATOR_VERSION
                 and row.get("verification", {}).get("validator_hash")
                 == validator_signature()
+                and (
+                    not require_semantic
+                    or receipt_mode(row.get("verification", {})) == "semantic"
+                )
             ):
                 candidate["false_answer"] = row.get("false_answer")
                 candidate["false_answer_record"] = row
@@ -115,7 +124,7 @@ def _save_answers(
                 continue
             if not verifications or qid not in verifications:
                 raise ValueError(
-                    "A semantic verification receipt is required to save a false answer"
+                    "A verification receipt is required to save a false answer"
                 )
             by_id[qid] = {
                 "_id": qid,
@@ -171,6 +180,26 @@ def _record_answers(
     update_registry(output_dir, change)
 
 
+def deterministic_answer_receipt(candidate: dict, target: str) -> dict:
+    """Receipt for runs without an LLM judge; records the rule-based checks only."""
+    evidence = {
+        "question": candidate["query"],
+        "gold": candidate["answer"],
+        "aliases": candidate["answer_aliases"],
+        "target": target,
+        "sources": candidate["h_docs"],
+    }
+    checks = {
+        "structurally_valid": is_valid_false_answer(
+            target, candidate["answer"], candidate["answer_aliases"], question=candidate["query"]
+        ),
+        "gold_in_sources": any(doc.get("aliases_in_doc") for doc in candidate["h_docs"]),
+    }
+    receipt = deterministic_receipt(stage="false_answer", evidence=evidence, checks=checks)
+    receipt["sources_hash"] = stable_hash(candidate["h_docs"])
+    return receipt
+
+
 def run_false_answer_generation(
     config: dict,
     nqplus_dir: str | Path,
@@ -190,6 +219,9 @@ def run_false_answer_generation(
     if limit is not None:
         candidates = candidates[:limit]
     temperature = float(config.get("temperature", 0.3))
+    # Raise temperature on retries so the generator does not repeat itself.
+    temperature_step = float(config.get("false_answer_retry_temperature_step", 0.0))
+    semantic = validation_mode(config) == "semantic"
     model = str(config["llm"]["model"])
     label = output_label(model, temperature, "candidates")
     rejects_path = output_dir / f"{label}--false-answer-rejects.jsonl"
@@ -226,7 +258,7 @@ def run_false_answer_generation(
                 build_llm_client(config["llm"]),
                 config.get("cache_path", "cache/llm.sqlite"),
             )
-            verifier = build_verifier(config)
+            verifier = build_verifier(config) if semantic else None
         try:
             rejected_attempts = []
             rejected_targets = set()
@@ -237,7 +269,7 @@ def run_false_answer_generation(
                         question=candidate["query"],
                         answer=gold,
                         aliases=aliases,
-                        temperature=temperature,
+                        temperature=min(1.0, temperature + temperature_step * attempt),
                         seed=idx + attempt * 1000000,
                         rejected_attempts=rejected_attempts,
                     )
@@ -262,7 +294,11 @@ def run_false_answer_generation(
                     continue
                 rejected_targets.add(canonical(answer))
                 try:
-                    verification = verify_answer(verifier, candidate, answer)
+                    verification = (
+                        verify_answer(verifier, candidate, answer)
+                        if semantic
+                        else deterministic_answer_receipt(candidate, answer)
+                    )
                     break
                 except ModelOutputError as exc:
                     rejected_attempts.append(

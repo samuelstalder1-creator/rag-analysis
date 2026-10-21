@@ -19,9 +19,11 @@ class LocalOpenAIClient:
         timeout: float = 120,
         max_retries: int = 0,
         retry_delay: float = 5.0,
+        max_tokens: int | None = None,
     ) -> None:
         self.base_url = base_url.rstrip("/")
         self.model = model
+        self.max_tokens = max_tokens
         self.api_key_env = api_key_env
         self.timeout = timeout
         self.max_retries = max_retries
@@ -35,6 +37,8 @@ class LocalOpenAIClient:
         }
         if seed is not None:
             payload["seed"] = seed
+        if self.max_tokens is not None:
+            payload["max_tokens"] = self.max_tokens
         body = json.dumps(payload).encode("utf-8")
         request = urllib.request.Request(
             f"{self.base_url}/chat/completions",
@@ -55,7 +59,16 @@ class LocalOpenAIClient:
                     return json.loads(response.read().decode("utf-8"))
             except urllib.error.HTTPError as exc:
                 if exc.code < 500 or attempt >= self.max_retries:
-                    raise
+                    # Keep the server's explanation (e.g. context length) in the error.
+                    try:
+                        detail = exc.read().decode("utf-8", "replace")[:500]
+                    except Exception:
+                        detail = ""
+                    if not detail:
+                        raise
+                    raise urllib.error.HTTPError(
+                        exc.url, exc.code, f"{exc.reason}: {detail}", exc.headers, None
+                    ) from exc
             except urllib.error.URLError:
                 if attempt >= self.max_retries:
                     raise
