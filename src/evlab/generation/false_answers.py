@@ -83,6 +83,7 @@ def _save_answers(
     expected: dict,
     source_path: Path,
     verifications: dict | None = None,
+    extras: dict | None = None,
 ) -> dict[str, str]:
     """Checkpoint generated answers atomically; never write source queries."""
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -132,6 +133,7 @@ def _save_answers(
                 "source_hash": fingerprint,
                 "answer_type": answer_type(gold, question),
                 "verification": verifications[qid],
+                **((extras or {}).get(qid, {})),
             }
             saved[qid] = answer
         if saved:
@@ -265,7 +267,11 @@ def run_false_answer_generation(
         try:
             rejected_attempts = []
             rejected_targets = set()
+            # Every proposal from every call, with its rule-based status, so a later
+            # selection step can choose among all valid candidates.
+            candidate_pool: list[dict] = []
             for attempt in range(max_attempts):
+                details: dict = {}
                 try:
                     answer = generate_false_answer(
                         client,
@@ -277,8 +283,12 @@ def run_false_answer_generation(
                         rejected_attempts=rejected_attempts,
                         n_candidates=n_candidates,
                         exclude=rejected_targets,
+                        details=details,
                     )
                 except ModelOutputError as exc:
+                    candidate_pool.extend(
+                        {**item, "attempt": attempt + 1} for item in details.get("proposals", [])
+                    )
                     rejected_attempts.append(
                         {
                             "attempt": attempt + 1,
@@ -297,6 +307,9 @@ def run_false_answer_generation(
                         }
                     )
                     continue
+                candidate_pool.extend(
+                    {**item, "attempt": attempt + 1} for item in details.get("proposals", [])
+                )
                 rejected_targets.add(canonical(answer))
                 try:
                     verification = (
@@ -306,6 +319,9 @@ def run_false_answer_generation(
                     )
                     break
                 except ModelOutputError as exc:
+                    for item in candidate_pool:
+                        if canonical(item["text"]) == canonical(answer):
+                            item["status"] = "rejected_by_judge"
                     rejected_attempts.append(
                         {
                             "attempt": attempt + 1,
@@ -320,6 +336,19 @@ def run_false_answer_generation(
                     f"No accepted false answer after {max_attempts} generation attempts",
                     rejected_attempts,
                 )
+            valid_pool = list(dict.fromkeys(
+                item["text"] for item in candidate_pool if item["status"] == "valid"
+            ))
+            extras = {
+                "candidates": candidate_pool,
+                "valid_candidates": valid_pool,
+                "selection": {
+                    # Placeholder choice until a selector picks the best candidate.
+                    "method": "first_valid_in_model_order",
+                    "selected": answer,
+                    "selector_model": None,
+                },
+            }
             verification["rejected_candidates"] = rejected_attempts
             verification["generation_attempts"] = attempt + 1
             verification["candidates_per_call"] = n_candidates
@@ -329,6 +358,7 @@ def run_false_answer_generation(
                 expected={qid: (candidate["query"], gold, aliases)},
                 source_path=source_path,
                 verifications={qid: verification},
+                extras={qid: extras},
             )
             _record_answers(
                 output_dir,

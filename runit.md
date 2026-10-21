@@ -128,7 +128,12 @@ stage skips questions whose answer stage failed and reports them as
 the temperature by `false_answer_retry_temperature_step`. With
 `false_answer_candidates_per_call: 5` the generator proposes five distractors per call
 and the first one passing the rule-based checks is used; proposals equal to gold or
-to earlier rejects are skipped. `llm.max_tokens` caps
+to earlier rejects are skipped.
+Each saved answer keeps the whole pool: `candidates` (every proposal with its
+rule-based `status` and `attempt`), `valid_candidates`, and `selection`
+(`method: first_valid_in_model_order`, `selector_model: null`). A later LLM
+selection step is meant to choose from `valid_candidates` and update
+`selection`; until then `false_answer` is the first valid proposal. `llm.max_tokens` caps
 responses, and HTTP 4xx errors now include the server's explanation.
 
 ### Step 1: Generate False Answers

@@ -164,3 +164,26 @@ def test_candidate_list_with_only_gold_is_rejected(tmp_path, monkeypatch):
     monkeypatch.setattr(false_answers, "build_verifier", _no_judge)
     result = run_false_answer_generation(config, root, human_corpus=tmp_path / "human.jsonl")
     assert result == {"generated": 0, "reused": 0, "rejects": 1}
+
+
+def test_all_proposals_are_saved_for_later_selection(tmp_path, monkeypatch):
+    class ListClient(GeneratorClient):
+        def generate(self, prompt, **kwargs):
+            if "WRONG multiple-choice distractors" in prompt:
+                return '{"candidates": ["23", "22", "21", "22", "lots"]}'
+            return super().generate(prompt, **kwargs)
+
+    root, config = setup_data(tmp_path)
+    config = {**_deterministic(config), "false_answer_candidates_per_call": 5}
+    monkeypatch.setattr(false_answers, "build_llm_client", lambda c: ListClient())
+    monkeypatch.setattr(false_answers, "build_verifier", _no_judge)
+    run_false_answer_generation(config, root, human_corpus=tmp_path / "human.jsonl")
+    [row] = read_jsonl(tmp_path / "output" / "generated_false_answers.jsonl")
+    assert [(c["text"], c["status"]) for c in row["candidates"]] == [
+        ("23", "gold_equivalent"), ("22", "valid"), ("21", "valid"),
+        ("lots", "invalid_type_or_placeholder"),
+    ]
+    assert row["valid_candidates"] == ["22", "21"]
+    assert row["selection"] == {"method": "first_valid_in_model_order",
+                                "selected": "22", "selector_model": None}
+    assert row["false_answer"] == "22"

@@ -53,6 +53,7 @@ def generate_false_answer(
     rejected_attempts: list[dict] | None = None,
     n_candidates: int = 1,
     exclude: set[str] | None = None,
+    details: dict | None = None,
 ) -> str:
     """Request candidates in one call and return the first structurally valid one.
 
@@ -93,11 +94,13 @@ def generate_false_answer(
     try:
         proposals = [parse_candidate(response)] if n_candidates == 1 else parse_candidates(response)
         candidate = proposals[0]
-        valid = [
-            item for item in proposals
-            if is_valid_false_answer(item, answer, aliases, question=question)
-            and canonical(item) not in excluded
+        checked = [
+            {"text": item, "status": proposal_status(item, answer, aliases, question, excluded)}
+            for item in proposals
         ]
+        if details is not None:
+            details["proposals"] = checked
+        valid = [item["text"] for item in checked if item["status"] == "valid"]
         if not valid:
             raise ValueError(
                 "No structurally valid false answer: candidate is gold-equivalent, a placeholder or has the wrong answer type"
@@ -109,6 +112,18 @@ def generate_false_answer(
             str(exc), [{"response": response, "error": str(exc), "target": candidate}]
         ) from exc
     return candidate
+
+
+def proposal_status(candidate: str, answer: str, aliases: list[str], question: str,
+                    excluded: set[str]) -> str:
+    """Rule-based status of one proposal; "valid" means it may be used as a false answer."""
+    if canonical(candidate) in {canonical(answer), *(canonical(a) for a in aliases)}:
+        return "gold_equivalent"
+    if canonical(candidate) in excluded:
+        return "previously_rejected"
+    if not is_valid_false_answer(candidate, answer, aliases, question=question):
+        return "near_alias" if is_near_alias(candidate, answer, aliases) else "invalid_type_or_placeholder"
+    return "valid"
 
 
 def parse_candidates(response: str) -> list[str]:
