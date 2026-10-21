@@ -1,3 +1,9 @@
 Answer the question using only the numbered context.
 If the context is insufficient or conflicting, answer "I don't know".
-Return JSON only: {"answer": "...", "citations": [1, 3]}
+Return a concise answer value without explanations or alternative answers.
+Return JSON only: {{"answer": "...", "citations": [1, 3]}}
+
+Question: {question}
+
+Context:
+{context}

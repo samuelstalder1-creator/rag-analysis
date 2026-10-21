@@ -30,13 +30,22 @@ NUMBER_WORDS = {
 }
 
 
-def classify_answer(answer: str, *, gold_aliases: list[str], target_answer: str | None = None) -> str:
+def classify_answer(
+    answer: str, *, gold_aliases: list[str], target_answer: str | None = None
+) -> str:
     normalized = normalize(answer)
-    if normalized in ABSTAINS:
+    if normalized in {normalize(value) for value in ABSTAINS}:
         return "abstain"
-    if target_answer and contains_answer(normalized, normalize(target_answer)):
+    gold = any(contains_answer(normalized, normalize(alias)) for alias in gold_aliases)
+    target = bool(
+        target_answer and contains_answer(normalized, normalize(target_answer))
+    )
+    if gold and target:
+        return "ambiguous"
+    # Mention-only prose is not enough to establish adoption, especially with negation.
+    if target and normalized == normalize(target_answer):
         return "target"
-    if any(contains_answer(normalized, normalize(alias)) for alias in gold_aliases):
+    if gold and any(normalized == normalize(alias) for alias in gold_aliases):
         return "correct"
     return "other"
 
@@ -44,7 +53,11 @@ def classify_answer(answer: str, *, gold_aliases: list[str], target_answer: str 
 def normalize(text: str) -> str:
     text = text.lower().strip()
     text = text.translate(str.maketrans({char: " " for char in string.punctuation}))
-    tokens = [NUMBER_WORDS.get(token, token) for token in text.split() if token not in {"a", "an", "the"}]
+    tokens = [
+        NUMBER_WORDS.get(token, token)
+        for token in text.split()
+        if token not in {"a", "an", "the"}
+    ]
     return " ".join(tokens)
 
 

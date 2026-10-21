@@ -50,20 +50,30 @@ def main(argv: list[str] | None = None) -> None:
         _print(validate_dataset_config(config))
     elif args.command == "data" and args.data_command == "classify-answers":
         config = load_config(args.config)
-        _print(split_answer_flags(
-            config["data"]["nqplus_dir"], human_corpus=config["data"]["human_corpus"],
-            reviews_file=config["answer_classification"]["reviews_file"],
-        ))
+        _print(
+            split_answer_flags(
+                config["data"]["nqplus_dir"],
+                human_corpus=config["data"]["human_corpus"],
+                reviews_file=config["answer_classification"]["reviews_file"],
+            )
+        )
     elif args.command in {"generation-status", "cleanup-false"}:
         config = load_config(args.config)
-        operation = generation_status if args.command == "generation-status" else cleanup_false_generation
+        operation = (
+            generation_status
+            if args.command == "generation-status"
+            else cleanup_false_generation
+        )
         _print(operation(config))
     elif args.command in {"generate-false-answers", "generate-false-documents"}:
         config = load_config(args.config)
-        stage = run_false_answer_generation if args.command == "generate-false-answers" else run_false_document_generation
+        stage = (
+            run_false_answer_generation
+            if args.command == "generate-false-answers"
+            else run_false_document_generation
+        )
         kwargs = {"limit": args.limit}
-        if args.command == "generate-false-documents":
-            kwargs["human_corpus"] = config["data"].get("human_corpus")
+        kwargs["human_corpus"] = config["data"].get("human_corpus")
         _print(stage(config["generation"], config["data"]["nqplus_dir"], **kwargs))
     elif args.command == "generate":
         config = load_config(args.config)
@@ -71,13 +81,20 @@ def main(argv: list[str] | None = None) -> None:
         source = str(generation_config.get("source", "candidates"))
         if source == "human_corpus":
             if "human_corpus" not in config["data"]:
-                raise ValueError("generation source 'human_corpus' requires data.human_corpus in the config")
-            candidates = _human_corpus_generation_candidates(config["data"]["human_corpus"])
+                raise ValueError(
+                    "generation source 'human_corpus' requires data.human_corpus in the config"
+                )
+            candidates = _human_corpus_generation_candidates(
+                config["data"]["human_corpus"]
+            )
         elif source == "candidates":
-            candidates = load_generation_candidates(config["data"]["nqplus_dir"], config["data"].get("human_corpus"))
+            candidates = load_generation_candidates(
+                config["data"]["nqplus_dir"], config["data"].get("human_corpus")
+            )
         else:
             raise ValueError(f"Unsupported generation source: {source}")
         from evlab.generation.false_answers import attach_saved_answers
+
         candidates = attach_saved_answers(candidates, generation_config)
         _print(run_generation_pipeline(generation_config, candidates, limit=args.limit))
     elif args.command == "run":
@@ -89,14 +106,21 @@ def main(argv: list[str] | None = None) -> None:
 def _collect_reports(run_dir: Path) -> list[dict]:
     rows: list[dict] = []
     for metrics_path in sorted(run_dir.glob("*/*/metrics.json")):
-        rows.append({"path": str(metrics_path), "metrics": json.loads(metrics_path.read_text(encoding="utf-8"))})
+        rows.append(
+            {
+                "path": str(metrics_path),
+                "metrics": json.loads(metrics_path.read_text(encoding="utf-8")),
+            }
+        )
     return rows
 
 
 def _human_corpus_generation_candidates(path: str) -> list[dict]:
     candidates: list[dict] = []
     for doc in load_corpus(path, origin="human", namespace="human"):
-        original_id = str(doc.metadata.get("_id") or doc.provenance_root_id or doc.doc_id)
+        original_id = str(
+            doc.metadata.get("_id") or doc.provenance_root_id or doc.doc_id
+        )
         candidates.append(
             {
                 "query_id": original_id,

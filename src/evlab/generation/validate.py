@@ -23,11 +23,19 @@ def validate_nonempty(text: str) -> ValidationResult:
     return ValidationResult(bool(text.strip()), () if text.strip() else ("empty_text",))
 
 
-def validate_false_copy(text: str, *, target_answer: str, answer_aliases: list[str]) -> ValidationResult:
+def validate_false_copy(
+    text: str,
+    *,
+    target_answer: str,
+    answer_aliases: list[str],
+    allow_unrelated_gold: bool = False,
+) -> ValidationResult:
     reasons: list[str] = []
     if not contains_alias(text, target_answer):
         reasons.append("missing_target_answer")
-    if any(contains_alias(text, alias) for alias in answer_aliases):
+    if not allow_unrelated_gold and any(
+        contains_alias(text, alias) for alias in answer_aliases
+    ):
         reasons.append("still_contains_gold_answer")
     if not text.strip():
         reasons.append("empty_text")

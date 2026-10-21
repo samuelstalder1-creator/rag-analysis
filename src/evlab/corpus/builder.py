@@ -4,19 +4,28 @@ from pathlib import Path
 from glob import glob
 
 from evlab.data.cocktail import load_corpus
-from evlab.io import iter_jsonl
-from evlab.data.nqplus import load_qrels
+from evlab.io import iter_jsonl, stable_hash
+from evlab.data.nqplus import load_qrels, load_retrieval_queries
 from evlab.generation.output import CORPUS_FILENAME
 from evlab.generation.registry import read_registry
+from evlab.generation.manifest import read_manifest, checked_receipt
 from evlab.schema import Doc
 
 
-def load_generated_docs(path: str | Path, *, query_ids_by_doc: dict[str, str] | None = None) -> list[Doc]:
+def load_generated_docs(
+    path: str | Path, *, query_ids_by_doc: dict[str, str] | None = None
+) -> list[Doc]:
     candidate = Path(path)
     if candidate.is_dir():
         entries = read_registry(candidate)["files"]
         paths = sorted(candidate / name for name in entries)
-        paths.extend(sorted(p for p in candidate.glob("*.jsonl") if CORPUS_FILENAME.fullmatch(p.name)))
+        paths.extend(
+            sorted(
+                p
+                for p in candidate.glob("*.jsonl")
+                if CORPUS_FILENAME.fullmatch(p.name)
+            )
+        )
     else:
         paths = [Path(p) for p in sorted(glob(str(path)))]
     if not paths:
@@ -32,26 +41,64 @@ def _load_generated_file(path: Path, query_ids_by_doc: dict[str, str]) -> list[D
     file_metadata = read_registry(path.parent)["files"].get(path.name)
     legacy_filename = CORPUS_FILENAME.fullmatch(path.name)
     if file_metadata is None and legacy_filename is not None:
-        file_metadata = {"model": legacy_filename["model"], "condition": legacy_filename["condition"],
-                         "generation_depth": int(legacy_filename["depth"]),
-                         "sample_idx": int(legacy_filename["sample"]), "prompt_version": "v1"}
+        file_metadata = {
+            "model": legacy_filename["model"],
+            "condition": legacy_filename["condition"],
+            "generation_depth": int(legacy_filename["depth"]),
+            "sample_idx": int(legacy_filename["sample"]),
+            "prompt_version": "v1",
+        }
+    manifest = read_manifest(path)
     for row in iter_jsonl(path):
         if "_id" in row:
             if file_metadata is None:
-                raise ValueError(f"Compact generated corpus is missing from metadata.yaml: {path}")
+                raise ValueError(
+                    f"Compact generated corpus is missing from metadata.yaml: {path}"
+                )
             root = str(row["_id"])
             condition = file_metadata["condition"]
-            docs.append(Doc(
-                doc_id=f"gen::{file_metadata.get('id_namespace', path.stem)}::{root}", title=str(row.get("title", "") or ""),
-                text=str(row["text"]), origin="generated",
-                query_id=query_ids_by_doc.get(root, root), condition=condition,
-                parent_id=root if condition == "correct" else f"{root}*",
-                seed_id=root if condition == "correct" else f"{root}*",
-                provenance_root_id=root, generation_depth=int(file_metadata["generation_depth"]),
-                generator_model=file_metadata["model"], prompt_version=file_metadata["prompt_version"],
-                sample_idx=int(file_metadata["sample_idx"]),
-            ))
+            receipt = (
+                checked_receipt(row, manifest)
+                if file_metadata.get("generation_signature") or condition == "false"
+                else {}
+            )
+            mapped_query = query_ids_by_doc.get(root, root)
+            if (
+                file_metadata.get("source") != "human_corpus"
+                and receipt.get("query_id")
+                and mapped_query != root
+                and receipt["query_id"] != mapped_query
+            ):
+                raise ValueError(f"Generated document {root} has a stale query mapping")
+            docs.append(
+                Doc(
+                    doc_id=f"gen::{file_metadata.get('id_namespace', path.stem)}::{root}",
+                    title=str(row.get("title", "") or ""),
+                    text=str(row["text"]),
+                    origin="generated",
+                    query_id=(
+                        mapped_query
+                        if file_metadata.get("source") == "human_corpus"
+                        else receipt.get("query_id", mapped_query)
+                    ),
+                    condition=condition,
+                    gold_answer=receipt.get("gold_answer"),
+                    target_answer=receipt.get("target_answer"),
+                    metadata={"validation_receipt": receipt},
+                    parent_id=root if condition == "correct" else f"{root}*",
+                    seed_id=root if condition == "correct" else f"{root}*",
+                    provenance_root_id=root,
+                    generation_depth=int(file_metadata["generation_depth"]),
+                    generator_model=file_metadata["model"],
+                    prompt_version=file_metadata["prompt_version"],
+                    sample_idx=int(file_metadata["sample_idx"]),
+                )
+            )
             continue
+        if row.get("condition") == "false":
+            raise ValueError(
+                f"Unverified legacy false document in {path}; regenerate with validation manifests"
+            )
         docs.append(
             Doc(
                 doc_id=str(row["doc_id"]),
@@ -68,7 +115,11 @@ def _load_generated_file(path: Path, query_ids_by_doc: dict[str, str]) -> list[D
                 generation_depth=int(row.get("generation_depth", 1)),
                 generator_model=_optional_str(row.get("generator_model")),
                 prompt_version=_optional_str(row.get("prompt_version")),
-                sample_idx=int(row["sample_idx"]) if row.get("sample_idx") is not None else None,
+                sample_idx=(
+                    int(row["sample_idx"])
+                    if row.get("sample_idx") is not None
+                    else None
+                ),
                 metadata=dict(row),
             )
         )
@@ -81,7 +132,13 @@ def build_corpus(config: dict) -> list[Doc]:
     base = str(corpus.get("base", "human"))
     docs = load_corpus(data["human_corpus"], origin="human", namespace="human")
     if base == "cocktail_mixed":
-        docs.extend(load_corpus(data["cocktail_llm_corpus"], origin="cocktail_llm", namespace="cocktail_llm"))
+        docs.extend(
+            load_corpus(
+                data["cocktail_llm_corpus"],
+                origin="cocktail_llm",
+                namespace="cocktail_llm",
+            )
+        )
     elif base != "human":
         raise ValueError(f"Unsupported base corpus: {base}")
 
@@ -92,10 +149,54 @@ def build_corpus(config: dict) -> list[Doc]:
             if qrel.relevance > 0:
                 previous = query_ids_by_doc.setdefault(qrel.doc_id, qrel.query_id)
                 if previous != qrel.query_id:
-                    raise ValueError(f"Generated document {qrel.doc_id} belongs to multiple questions")
-        docs.extend(select_generated_docs(
-            load_generated_docs(generated_file, query_ids_by_doc=query_ids_by_doc), corpus
-        ))
+                    raise ValueError(
+                        f"Generated document {qrel.doc_id} belongs to multiple questions"
+                    )
+        generated = select_generated_docs(
+            load_generated_docs(generated_file, query_ids_by_doc=query_ids_by_doc),
+            corpus,
+        )
+        originals = {doc.root_id: doc for doc in docs if doc.origin == "human"}
+        queries = {
+            query.query_id: query
+            for query in load_retrieval_queries(data["nqplus_dir"])
+        }
+        for doc in generated:
+            receipt = doc.metadata.get("validation_receipt", {})
+            source = originals.get(doc.root_id)
+            if receipt.get("source_content_hash"):
+                expected = (
+                    stable_hash(
+                        {
+                            "doc_id": doc.root_id,
+                            "title": source.title,
+                            "text": source.text,
+                        }
+                    )
+                    if source
+                    else None
+                )
+                if receipt["source_content_hash"] != expected:
+                    raise ValueError(f"Stale source evidence for {doc.doc_id}")
+            if receipt.get("question_hash"):
+                query = queries.get(doc.query_id)
+                expected = (
+                    stable_hash(
+                        {
+                            "question": query.text,
+                            "gold": query.answer,
+                            "aliases": list(query.aliases),
+                        }
+                    )
+                    if query
+                    else None
+                )
+                if receipt["question_hash"] != expected:
+                    raise ValueError(
+                        f"Stale question or gold annotations for {doc.doc_id}"
+                    )
+        docs.extend(generated)
+
     return docs
 
 
@@ -113,7 +214,9 @@ def select_generated_docs(generated_docs: list[Doc], corpus_config: dict) -> lis
         grouped.setdefault((doc.query_id, doc.condition), []).append(doc)
     for (query_id, condition), docs in grouped.items():
         limit = k_correct if condition == "correct" else k_false
-        selected.extend(sorted(docs, key=lambda doc: (doc.sample_idx or 0, doc.doc_id))[:limit])
+        selected.extend(
+            sorted(docs, key=lambda doc: (doc.sample_idx or 0, doc.doc_id))[:limit]
+        )
     return selected
 
 

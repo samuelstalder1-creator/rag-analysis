@@ -41,102 +41,110 @@ uv run evlab run configs/experiments/rq1_dense_mixed_minilm.yaml
 
 ## Generation
 
-Local OpenAI-compatible endpoint, e.g. vLLM or llama.cpp server:
+False evidence has two explicit stages. Both read the current prepared query
+annotations and original human evidence; neither changes source queries.
 
 ```bash
-uv run evlab generate-false-answers --config configs/generation/pilot-local.yaml --limit 5
-uv run evlab generate --config configs/generation/pilot-local.yaml --limit 5
+uv run evlab generate-false-answers --config configs/generation/pilot-validated.yaml --limit 5
+uv run evlab generate-false-documents --config configs/generation/pilot-validated.yaml --limit 5
 ```
 
-Gemini:
+The same candidate prefix is selected by `--limit` in both stages. Start with a
+small reviewed pilot. Stage 1 requires concrete string candidates, rejects known
+answer aliases and equivalent numeric/date forms, and checks answer type. There
+are no synthetic fallback answers. A semantic verifier must affirm source support
+for the gold answer, target plausibility, matching type, and target incorrectness.
+Unknown, malformed, or negative verdicts produce a reject record and no saved
+answer. Rejected cases require review or revised evidence before retrying;
+rerunning unchanged inputs reuses the cached verdict.
 
-```bash
-export GEMINI_API_KEY=...
-uv run evlab generate-false-answers --config configs/generation/pilot-gemini.yaml --limit 5
-uv run evlab generate --config configs/generation/pilot-gemini.yaml --limit 5
-```
+Accepted targets are saved atomically in `generated_false_answers.jsonl`, keyed
+by question and gold-answer fingerprint, with evidence hashes and verifier
+receipts. One saved target is reused across all human documents for that question,
+including when the document generator changes. Changed evidence or validator code
+invalidates saved verification. Document generation checks every selected answer
+before any model calls or corpus writes. It never generates its own target.
 
-All generation calls are cached in SQLite under `cache/llm.sqlite`.
+Stage 2 asks the verifier to select answer-bearing occurrence indices in source
+text and titles. Only selected spans change. A single replacement pass preserves
+full-date/year granularity and leaves unrelated occurrences alone. A semantic
+seed check rejects changes to unrelated claims or broad identity substitutions
+that alter other facts. The generated paraphrase must affirm the target, cease
+supporting gold as the answer, preserve the seed's other claims, and remain
+relevant. Unrelated mentions of a gold string are allowed when the semantic check
+confirms they do not answer the question. Correct paraphrases undergo factual
+preservation and relevance checks too, including full-human-corpus generation.
 
-False-evidence generation has two separate stages:
-
-```bash
-# Step 1: save false answers under data/generated/, keeping queries unchanged.
-uv run evlab generate-false-answers --config configs/generation/qwen35-2b-false-answers.yaml
-
-# Step 2: read those answers and create false corpus documents.
-uv run evlab generate-false-documents --config configs/generation/qwen35-2b-false.yaml
-```
-
-Step 1 is implemented in `src/evlab/generation/false_answers.py`; step 2 has its
-own entry point in `src/evlab/generation/false_documents.py`. Each successful
-answer is saved atomically to
-`data/generated/qwen35-2b-all/generated_false_answers.jsonl`, keyed by query ID
-and a fingerprint of the question and gold answer. Source `queries.jsonl` stays
-unchanged. Valid saved answers are reused
-without replacement, even if document generation uses a different model. Every
-source document belonging to the question uses that same saved false answer.
-
-Document generation never calls the false-answer generator. Missing or invalid
-saved answers cause an error before any document model calls or corpus writes.
-The generic `evlab generate` command also requires saved answers when its
-conditions include `false`; correct-only generation is independent of step 1.
-`--limit` selects the same candidate prefix in both stages.
-
-False answers and false documents are never automatically restored from legacy
-backups. Fresh answers are generated only when you explicitly run step 1.
-Answer-generation provenance is tracked in the shared `metadata.yaml` under
-`answer_generations`; corpus rows keep their three-field structure. Failed
-answer attempts have a separate reject log. Neither stage writes progress JSON.
-The background helper defaults to the correct-only config and skips false-answer
-generation. To explicitly run both stages and both document conditions, use
-`CONFIG=configs/generation/qwen35-2b-all.yaml FALSE_ANSWERS_FIRST=1 bash scripts/run_qwen35_2b_all.sh`.
-
-Generated corpus rows contain only `_id`, `title`, and `text`; `_id` is the
-original human document ID. Corpus files use simple unique names such as
-`corpus_0001.jsonl`. One shared `metadata.yaml` in each output directory tracks
-all corpus files, for example:
+Generation uses the configured model as verifier by default. To use a separate
+verifier, add this under `generation` (all normal LLM settings are supported):
 
 ```yaml
-version: 1
-files:
-  corpus_0001.jsonl:
-    model: "Qwen/Qwen3.5-2B"
-    condition: "false"
-    temperature: 0.3
-    sample_idx: 0
-    generation_depth: 1
-    source: "candidates"
-    prompt_version: "v1"
-    document_count: 204
+validation:
+  max_similarity: 0.95
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8001/v1
+    model: your-verifier-model
 ```
 
-Each model, condition, temperature, sample, source, depth, and prompt version has
-its own registered file. Registry updates are locked so separate correct and
-false runs can share the same output directory. Counts update with progress and
-when generation stops. Correct copies preserve the source title. Reject logs
-remain separate from corpus rows; progress is printed to the console.
+Semantic validation cannot be disabled. These judgments are operational checks,
+not proofs of factual correctness; calibrate the chosen verifier against manual
+reviews. Character-sequence similarity rejects copies at or above the configured
+threshold relative to the source, false seed, or another sample for the same
+source and condition. It is not corpus-wide semantic deduplication.
 
-With `resume: true`, matching registered files are reused and completed documents
-are skipped. Previous metadata-rich filenames are automatically renamed and
-registered without changing their contents. Correct rows from old `generated_docs.jsonl` and `correct_docs.jsonl` can also
-be imported; legacy false rows are ignored.
-Use the original temperature when importing those legacy files, which did not
-record it. Existing blank legacy titles remain blank.
+Each model, condition, temperature, sample, source, prompt/config signature has a
+registered `corpus_0001.jsonl`-style file in shared `metadata.yaml`. Corpus rows
+remain exactly `_id`, `title`, and `text`, using the original human document ID.
+Each corpus has an append-only `corpus_0001.manifest` sidecar with source and row
+hashes, question/gold/target linkage, selected edits, seed text, and validation
+receipts. Keep corpus, manifest, and registry together. Writes use a per-corpus
+lock; manifest receipts are written before corpus rows.
 
-Experiment `corpus.generated_docs` accepts a file, directory, or glob. Directory
-loading includes the corpora listed in its shared `metadata.yaml`; the registry
-provides generation metadata, and relevance annotations in NQ+ `queries.jsonl` restore question mappings. Documents
-receive unique internal IDs per corpus file while keeping their original ID as
-the provenance root. Renamed corpora retain their previous internal ID namespace.
+Resume compares fingerprints including source text/title, question, gold aliases,
+false-answer receipt, prompts, model settings, and validator code. Changed inputs
+raise a stale-output error. Use a new output directory or explicitly set
+`resume: false` to regenerate the matching corpus. Changed generation settings
+allocate a separate registered corpus. Existing corpora are retained; controlled
+generation never imports unverified legacy rows. Loading false corpora without
+matching manifest receipts fails. Old correct corpora remain loadable as legacy
+artifacts but are not certified by the new checks.
 
-False documents retain the source title. If it contains a gold-answer alias,
-generation replaces that alias with the same false answer used in the body and
-rejects titles that still contain a gold-answer alias. An answer in the source
-title is therefore not an exclusion criterion for generation candidates;
-reader eligibility and the `single`/`variants` answer requirement still apply.
-Resuming a run keeps documents already written; title handling applies to newly
-generated documents.
+The generic `evlab generate` command still supports correct-only generation and
+requires verified saved answers for false conditions. Corpus paths accept a file,
+directory, or glob. When old and new generations coexist, point an experiment at
+the intended corpus files so older copies do not enter it accidentally.
+
+All model calls are cached in SQLite. Reject logs include the stage, source,
+edits, generated text when available, and failure reason. No model is invoked by
+`generation-status`.
+
+## RAG Reader Evaluation
+
+`queries: rag` now runs the reader after retrieval and requires an explicit reader
+configuration. Retrieval-only experiments retain their current behavior.
+
+```yaml
+queries: rag
+reader:
+  top_k: 10
+  cache_path: cache/reader.sqlite
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8000/v1
+    model: your-reader-model
+```
+
+Each retriever's output includes `answers.jsonl`: answer, parse validity, numbered
+citations, context/cited document IDs, citation-range validity, gold aliases,
+validated target, and classification. Manifest receipts restore targets; conflicting
+targets for one question fail evaluation. Exact normalized concise answers are
+classified as correct/target; mixed gold-and-target mentions are ambiguous,
+mention-only or negated prose is other, malformed JSON is invalid, and abstentions
+are separate. This deliberately conservative classifier does not infer semantic
+adoption from prose. Citation-range validity does not certify citation support.
+Metrics include category rates over all evaluated questions and target adoption
+among questions with a selected false target.
 
 ## Generation Inventory and Cleanup
 

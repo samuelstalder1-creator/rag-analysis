@@ -16,10 +16,13 @@ class CachedLLMClient:
         self.cache_path.parent.mkdir(parents=True, exist_ok=True)
         self._init_db()
 
-    def generate(self, prompt: str, *, temperature: float = 0.0, seed: int | None = None) -> str:
+    def generate(
+        self, prompt: str, *, temperature: float = 0.0, seed: int | None = None
+    ) -> str:
         key = stable_hash(
             {
                 "provider": self.provider,
+                "endpoint": getattr(self.client, "base_url", None),
                 "model": self.model,
                 "prompt": prompt,
                 "temperature": temperature,
@@ -27,12 +30,14 @@ class CachedLLMClient:
             }
         )
         with sqlite3.connect(self.cache_path) as conn:
-            row = conn.execute("select response from llm_cache where cache_key = ?", (key,)).fetchone()
+            row = conn.execute(
+                "select response from llm_cache where cache_key = ?", (key,)
+            ).fetchone()
             if row:
                 return str(row[0])
             response = self.client.generate(prompt, temperature=temperature, seed=seed)
             conn.execute(
-                "insert into llm_cache(cache_key, provider, model, prompt, response) values (?, ?, ?, ?, ?)",
+                "insert or ignore into llm_cache(cache_key, provider, model, prompt, response) values (?, ?, ?, ?, ?)",
                 (key, self.provider, self.model, prompt, response),
             )
             return response

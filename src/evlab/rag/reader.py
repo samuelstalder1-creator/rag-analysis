@@ -1,13 +1,13 @@
 from __future__ import annotations
 
-import json
-import re
 
 from evlab.llm.client import LLMClient
+from evlab.generation.semantic import json_object
 
 
 READER_PROMPT = """Answer the question using only the numbered context.
 If the context is insufficient or conflicting, answer "I don't know".
+Return a concise answer value without explanations or alternative answers.
 Return JSON only: {{"answer": "...", "citations": [1, 3]}}
 
 Question: {question}
@@ -17,21 +17,27 @@ Context:
 """
 
 
-def read_answer(client: LLMClient, *, question: str, context: str, temperature: float = 0.0) -> dict:
-    response = client.generate(READER_PROMPT.format(question=question, context=context), temperature=temperature)
+def read_answer(
+    client: LLMClient, *, question: str, context: str, temperature: float = 0.0
+) -> dict:
+    response = client.generate(
+        READER_PROMPT.format(question=question, context=context),
+        temperature=temperature,
+    )
     return parse_reader_response(response)
 
 
 def parse_reader_response(response: str) -> dict:
     try:
-        payload = json.loads(response)
-    except json.JSONDecodeError:
-        match = re.search(r"\{.*\}", response, flags=re.DOTALL)
-        if not match:
-            return {"answer": response.strip(), "citations": [], "valid_json": False}
-        payload = json.loads(match.group(0))
-    return {
-        "answer": str(payload.get("answer", "")).strip(),
-        "citations": [int(item) for item in payload.get("citations", []) if str(item).isdigit()],
-        "valid_json": True,
-    }
+        payload = json_object(response)
+        answer = payload.get("answer")
+        citations = payload.get("citations")
+        if (
+            not isinstance(answer, str)
+            or not isinstance(citations, list)
+            or any(type(i) is not int or i < 1 for i in citations)
+        ):
+            raise ValueError("Invalid reader answer schema")
+        return {"answer": answer.strip(), "citations": citations, "valid_json": True}
+    except (ValueError, TypeError):
+        return {"answer": response.strip(), "citations": [], "valid_json": False}

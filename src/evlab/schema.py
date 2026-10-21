@@ -34,7 +34,11 @@ class Doc:
 
     @property
     def embedding_text(self) -> str:
-        return f"{self.title}\n{self.text}".strip() if self.title.strip() else self.text.strip()
+        return (
+            f"{self.title}\n{self.text}".strip()
+            if self.title.strip()
+            else self.text.strip()
+        )
 
     @property
     def root_id(self) -> str:
@@ -72,7 +76,7 @@ class ReaderAnswer:
     query_id: str
     answer: str
     citations: tuple[str, ...] = ()
-    label: Literal["correct", "target", "abstain", "other"] = "other"
+    label: Literal["correct", "target", "abstain", "other", "ambiguous"] = "other"
 
 
 def namespaced_id(namespace: str, original: str) -> str:
