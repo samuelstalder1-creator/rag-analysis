@@ -396,3 +396,120 @@ def test_cache_separates_same_model_on_different_endpoints(tmp_path):
 
 def test_malformed_code_fence_is_invalid_reader_json():
     assert parse_reader_response("```json```")["valid_json"] is False
+
+
+def test_validator_repairs_missing_reason_with_explicit_schema():
+    class Client:
+        provider = model = "test"
+
+        def __init__(self):
+            self.prompts = []
+
+        def generate(self, prompt, **kwargs):
+            self.prompts.append(prompt)
+            assert '"required": ["supports_target", "reason"]' in prompt
+            if len(self.prompts) == 1:
+                return '{"supports_target":true}'
+            assert "missing nonempty top-level reason string" in prompt
+            return '{"supports_target":true,"reason":"The target is affirmatively supported."}'
+
+    client = Client()
+    receipt = judge(
+        client,
+        stage="test",
+        checks={"supports_target": "affirmative support"},
+        evidence={},
+    )
+    assert len(client.prompts) == 2
+    assert client.prompts[0] != client.prompts[1]
+    assert receipt["format_attempts"][0]["response"] == '{"supports_target":true}'
+
+
+def test_validator_bad_format_retries_are_bounded_and_logged():
+    from evlab.generation.semantic import ModelOutputError
+
+    class Client:
+        model = provider = "test"
+
+        def __init__(self):
+            self.calls = 0
+
+        def generate(self, *args, **kwargs):
+            self.calls += 1
+            return '{"supports_target":true}'
+
+    client = Client()
+    with pytest.raises(ModelOutputError) as caught:
+        judge(client, stage="test", checks={"supports_target": "support"}, evidence={})
+    assert client.calls == 3
+    assert len(caught.value.attempts) == 3
+    assert caught.value.attempts[-1]["response"] == '{"supports_target":true}'
+
+
+def test_negative_semantic_verdict_is_not_retried_for_approval():
+    from evlab.generation.semantic import ModelOutputError
+
+    class Client:
+        model = provider = "test"
+
+        def __init__(self):
+            self.calls = 0
+
+        def generate(self, *args, **kwargs):
+            self.calls += 1
+            return '{"supports_target":false,"reason":"The text denies the target."}'
+
+    client = Client()
+    with pytest.raises(ModelOutputError, match="semantic validation failed"):
+        judge(client, stage="test", checks={"supports_target": "support"}, evidence={})
+    assert client.calls == 1
+
+
+def test_false_answer_retries_unusable_candidates_with_feedback():
+    class Client:
+        def __init__(self):
+            self.prompts = []
+
+        def generate(self, prompt, **kwargs):
+            self.prompts.append(prompt)
+            if len(self.prompts) == 1:
+                return '{"candidates":["23","023","23.0"]}'
+            assert "Required answer type: number" in prompt
+            assert 'Gold aliases to avoid: ["23"]' in prompt
+            assert "No structurally valid false answer" in prompt
+            return '{"candidates":["24","25","26"]}'
+
+    client = Client()
+    assert (
+        generate_false_answer(
+            client, question="How many episodes?", answer="23", aliases=["23"]
+        )
+        == "24"
+    )
+    assert len(client.prompts) == 2
+
+
+def test_false_answer_failure_records_raw_attempts_in_reject_log(
+    tmp_path, monkeypatch, verifier
+):
+    from test_false_answer_stages import setup_data
+    from evlab.generation import false_answers
+
+    root, cfg = setup_data(tmp_path)
+
+    class Client:
+        model = provider = "test"
+
+        def generate(self, *args, **kwargs):
+            return '{"candidates":["23"]}'
+
+    monkeypatch.setattr(false_answers, "build_llm_client", lambda config: Client())
+    result = run_false_answer_generation(
+        cfg, root, human_corpus=tmp_path / "human.jsonl", limit=1
+    )
+    assert result == {"generated": 0, "reused": 0, "rejects": 1}
+    reject = read_jsonl(
+        next((tmp_path / "output").glob("*false-answer-rejects.jsonl"))
+    )[0]
+    assert len(reject["attempts"]) == 3
+    assert reject["attempts"][0]["response"] == '{"candidates":["23"]}'

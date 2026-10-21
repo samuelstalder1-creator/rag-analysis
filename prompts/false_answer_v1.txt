@@ -1,5 +1,8 @@
+FALSE_ANSWER_GENERATION v2
 Question: {question}
 Correct answer: {answer}
+Gold aliases to avoid: {aliases}
+Required answer type: {answer_type}
 
 Generate three plausible but incorrect answers.
 They must answer the question, differ from the correct answer, and have the same type and granularity.

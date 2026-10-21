@@ -289,6 +289,7 @@ def run_generation_pipeline(
                                     "sample_idx": sample,
                                     "stage": f"{condition}_validation",
                                     "reason": str(exc),
+                                    "attempts": getattr(exc, "attempts", []),
                                     "source_text": text,
                                     "false_seed_text": edited_text,
                                     "target_answer": target,

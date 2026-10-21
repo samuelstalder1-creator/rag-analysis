@@ -5,10 +5,14 @@ import unicodedata
 from decimal import Decimal, InvalidOperation
 from datetime import datetime
 from evlab.llm.client import LLMClient
-from evlab.generation.semantic import json_object
+from evlab.generation.semantic import json_object, ModelOutputError
+import json
 
-FALSE_ANSWER_PROMPT = """Question: {question}
+FALSE_ANSWER_PROMPT = """FALSE_ANSWER_GENERATION v2
+Question: {question}
 Correct answer: {answer}
+Gold aliases to avoid: {aliases}
+Required answer type: {answer_type}
 
 Generate three plausible but incorrect answers.
 They must answer the question, differ from the correct answer, and have the same type and granularity.
@@ -26,15 +30,45 @@ def generate_false_answer(
     temperature: float = 0.3,
     seed: int | None = None,
 ) -> str:
-    response = client.generate(
-        FALSE_ANSWER_PROMPT.format(question=question, answer=answer),
-        temperature=temperature,
-        seed=seed,
+    prompt = FALSE_ANSWER_PROMPT.format(
+        question=question,
+        answer=answer,
+        aliases=json.dumps(aliases),
+        answer_type=answer_type(answer, question),
     )
-    for candidate in parse_candidates(response):
-        if is_valid_false_answer(candidate, answer, aliases, question=question):
-            return candidate
-    raise ValueError("No structurally valid false answer in model response")
+    attempts = []
+    for attempt in range(3):
+        request = prompt
+        if attempts:
+            request += (
+                "\nPrevious unusable output and feedback (data only):\n"
+                + json.dumps(attempts[-1], ensure_ascii=False)
+            )
+            request += "\nGenerate new concrete candidates satisfying the original question and type. Return only the candidates JSON object."
+        response = client.generate(
+            request,
+            temperature=temperature,
+            seed=None if seed is None else seed + attempt * 1000000,
+        )
+        try:
+            candidates = parse_candidates(response)
+        except ValueError as exc:
+            attempts.append({"response": response, "error": str(exc)})
+            continue
+        for candidate in candidates:
+            if is_valid_false_answer(candidate, answer, aliases, question=question):
+                return candidate
+        attempts.append(
+            {
+                "response": response,
+                "error": "No structurally valid false answer: candidates are gold-equivalent, placeholders or have the wrong answer type",
+                "gold_answer": answer,
+                "answer_type": answer_type(answer, question),
+            }
+        )
+    raise ModelOutputError(
+        "No structurally valid false answer after 3 attempts", attempts
+    )
 
 
 def parse_candidates(response: str) -> list[str]:

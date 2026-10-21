@@ -250,7 +250,12 @@ def run_false_answer_generation(
             Exception
         ) as exc:  # Preserve successful answers if another question fails.
             rejects += 1
-            reject = {"query_id": qid, "stage": "false_answer", "reason": str(exc)}
+            reject = {
+                "query_id": qid,
+                "stage": "false_answer",
+                "reason": str(exc),
+                "attempts": getattr(exc, "attempts", []),
+            }
             key = stable_hash(reject)
             if key not in reject_keys:
                 append_jsonl(rejects_path, [{**reject, "reject_key": key}])

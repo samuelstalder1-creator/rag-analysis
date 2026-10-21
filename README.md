@@ -54,8 +54,11 @@ small reviewed pilot. Stage 1 requires concrete string candidates, rejects known
 answer aliases and equivalent numeric/date forms, and checks answer type. There
 are no synthetic fallback answers. A semantic verifier must affirm source support
 for the gold answer, target plausibility, matching type, and target incorrectness.
-Unknown, malformed, or negative verdicts produce a reject record and no saved
-answer. Rejected cases require review or revised evidence before retrying;
+Malformed validator output is retried up to three times with an explicit JSON
+schema and format feedback. Well-formed negative or uncertain verdicts are final:
+they are not retried to obtain approval. Unusable answer candidates receive up to
+three attempts with type/alias feedback. Exhausted attempts produce a reject
+record with raw model responses and errors, and no saved answer. Rejected cases require review or revised evidence before retrying;
 rerunning unchanged inputs reuses the cached verdict.
 
 Accepted targets are saved atomically in `generated_false_answers.jsonl`, keyed
