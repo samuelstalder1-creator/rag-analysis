@@ -119,13 +119,22 @@ def generate_false_answer(
     return candidate
 
 
+QUESTION_WORDS = {"who", "what", "when", "where", "which", "how", "why", "is", "are", "was",
+                  "were", "did", "does", "do", "in", "on", "at", "by", "to", "for"}
+
+
 def copies_question(candidate: str, question: str) -> bool:
-    """True if the candidate mostly repeats the question instead of answering it."""
-    q_tokens = _name_tokens(question)
-    c_tokens = _name_tokens(candidate)
+    """True if the candidate mostly re-uses the question's content words.
+
+    Catches "nitty gritty dirt band fishin in the dark album" and variants such as
+    "... fishing in the dark" or "... fishin at the hospital" for that question.
+    """
+    q_tokens = _name_tokens(question) - QUESTION_WORDS
+    c_tokens = _name_tokens(candidate) - QUESTION_WORDS
     if not q_tokens or not c_tokens:
         return False
-    return len(c_tokens & q_tokens) / len(q_tokens) >= 0.8 and len(c_tokens) >= 3
+    shared = c_tokens & q_tokens
+    return len(shared) >= 3 and len(shared) / len(c_tokens) >= 0.5
 
 
 # Lowercase only: "The Beatles" is a name, "the tail" is an article plus noun.

@@ -104,16 +104,65 @@ def edit_answer_spans(
     return apply_spans(text, [found[i] for i in sorted(selected)], target_answer)
 
 
-def edit_all_answer_spans(text: str, aliases: list[str], target_answer: str) -> tuple[str, list[dict]]:
+NAME_SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "mpp", "mp", "md", "phd"}
+PERSON_TOKEN = re.compile(r"^[A-Z][\w'\-]*\.?$")
+
+
+def person_name_parts(name: str) -> tuple[str, str] | None:
+    """(first, last) for a capitalised 2-4 token personal name, else None."""
+    tokens = [t for t in name.split() if t.strip(".,").lower() not in NAME_SUFFIXES]
+    if not 2 <= len(tokens) <= 4 or not all(PERSON_TOKEN.match(t) for t in tokens):
+        return None
+    if tokens[0].lower() in {"the", "a", "an"}:
+        return None
+    return tokens[0], tokens[-1].rstrip(".,")
+
+
+def edit_all_answer_spans(text: str, aliases: list[str], target_answer: str, *,
+                          gold: str | None = None) -> tuple[str, list[dict]]:
     """Rule-based edit: replace every gold-alias occurrence (no model involved).
 
     Unrelated occurrences of the same string are replaced as well, which keeps
     the document free of gold mentions at the cost of occasional over-editing.
+    For a personal-name gold answer, "First Last" (middle name dropped) is
+    replaced by the target and a standalone surname by the target's surname,
+    so that "Brown was elected" or "Presley's company" do not keep the gold.
     """
-    found = occurrences(text, aliases)
-    if not found:
+    parts = person_name_parts(gold or (aliases[0] if aliases else ""))
+    full = list(aliases)
+    if parts:
+        full.append(f"{parts[0]} {parts[1]}")
+    found = occurrences(text, full)
+    surname_spans: list[dict] = []
+    if parts:
+        taken = [(s["start"], s["end"]) for s in found]
+        surname_spans = [s for s in occurrences(text, [parts[1]])
+                         if not any(a <= s["start"] < b for a, b in taken)]
+    if not found and not surname_spans:
         raise ValueError("No editable gold-answer spans in source")
-    return apply_spans(text, found, target_answer)
+    if not found:
+        # Only a surname is present; the body never states the full answer.
+        raise ValueError("No editable gold-answer spans in source (surname only)")
+    edited, edits = apply_spans(text, found, target_answer)
+    if surname_spans:
+        target_parts = person_name_parts(target_answer)
+        target_surname = target_parts[1] if target_parts else target_answer
+        # Re-locate surnames in the edited text so offsets stay correct.
+        remaining = [s for s in occurrences(edited, [parts[1]])
+                     if not any(s["start"] < e["start"] + len(e["replacement"]) and s["end"] > e["start"]
+                                for e in _shifted(edits))]
+        edited, surname_edits = apply_spans(edited, remaining, target_surname)
+        edits = edits + [{**e, "kind": "surname"} for e in surname_edits]
+    return edited, edits
+
+
+def _shifted(edits: list[dict]) -> list[dict]:
+    """Positions of applied replacements in the edited text."""
+    shift, out = 0, []
+    for edit in edits:
+        out.append({**edit, "start": edit["start"] + shift})
+        shift += len(edit["replacement"]) - (edit["end"] - edit["start"])
+    return out
 
 
 def minimal_edit_with_fallback(

@@ -23,6 +23,25 @@ def validate_nonempty(text: str) -> ValidationResult:
     return ValidationResult(bool(text.strip()), () if text.strip() else ("empty_text",))
 
 
+NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+                "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+                "seventeen", "eighteen", "nineteen", "twenty"]
+
+
+def number_variants(value: str) -> list[str]:
+    """The value plus its digit/word counterpart for 0-20 ("4" <-> "four")."""
+    text = value.strip()
+    if text.isdigit() and int(text) < len(NUMBER_WORDS):
+        return [text, NUMBER_WORDS[int(text)]]
+    if text.lower() in NUMBER_WORDS:
+        return [text, str(NUMBER_WORDS.index(text.lower()))]
+    return [text]
+
+
+def expand_number_aliases(aliases: list[str]) -> list[str]:
+    return list(dict.fromkeys(v for alias in aliases for v in number_variants(alias)))
+
+
 def validate_false_copy(
     text: str,
     *,
@@ -31,7 +50,8 @@ def validate_false_copy(
     allow_unrelated_gold: bool = False,
 ) -> ValidationResult:
     reasons: list[str] = []
-    if not contains_alias(text, target_answer):
+    # A paraphrase may write "four" for target "4"; both forms count.
+    if not any(contains_alias(text, form) for form in number_variants(target_answer)):
         reasons.append("missing_target_answer")
     if not allow_unrelated_gold and any(
         contains_alias(text, alias) for alias in answer_aliases

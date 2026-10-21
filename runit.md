@@ -140,7 +140,12 @@ edited document contradict itself) is not valid; a lowercase leading article is
 dropped when gold has none. `span_selection: all` (pilot config) replaces every
 gold-alias occurrence by rule instead of asking the model which spans to edit; this
 can over-edit unrelated mentions (e.g. "order 3" next to "3 lines"). With
-`span_selection: llm`, failed selections keep the raw model response in the reject log. `llm.max_tokens` caps
+`span_selection: llm`, failed selections keep the raw model response in the reject log.
+For personal-name gold answers the rule-based edit also replaces "First Last"
+(e.g. a title "Christopher Lloyd" for gold "Christopher Allen Lloyd") and standalone
+surnames ("Brown was elected", "Presley's label") with the target (surname); a body
+that mentions only the surname is rejected. Number words 0-20 count as the same
+value for the target check and the gold-residue check ("4" = "four"). `llm.max_tokens` caps
 responses, and HTTP 4xx errors now include the server's explanation.
 
 ### Step 1: Generate False Answers

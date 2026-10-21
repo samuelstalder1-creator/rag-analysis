@@ -5,7 +5,7 @@ from typing import Iterable
 from difflib import SequenceMatcher
 
 from evlab.generation.false_answer import is_valid_false_answer, FALSE_ANSWER_PROMPT
-from evlab.generation.minimal_edit import edit_answer_spans, edit_all_answer_spans, MINIMAL_EDIT_PROMPT
+from evlab.generation.minimal_edit import edit_answer_spans, edit_all_answer_spans, person_name_parts, MINIMAL_EDIT_PROMPT
 from evlab.generation.paraphrase import paraphrase, PARAPHRASE_PROMPT
 from evlab.generation.output import GenerationOutput
 from evlab.generation.validate import (
@@ -13,6 +13,7 @@ from evlab.generation.validate import (
     validate_correct_copy,
     validate_false_copy,
     validate_nonempty,
+    expand_number_aliases,
 )
 from evlab.generation.semantic import (
     build_verifier,
@@ -173,6 +174,7 @@ def run_generation_pipeline(
                                     span_selection,
                                     verifier,
                                     text=text,
+                                    gold=gold,
                                     aliases=aliases,
                                     target_answer=target,
                                     question=question,
@@ -185,11 +187,20 @@ def run_generation_pipeline(
                                         span_selection,
                                         verifier,
                                         text=title,
+                                        gold=gold,
                                         aliases=aliases,
                                         target_answer=target,
                                         question=question,
                                         seed=idx,
                                     )
+                                elif span_selection == "all" and person_name_parts(gold):
+                                    # Titles often use a shortened name ("Christopher
+                                    # Lloyd" for "Christopher Allen Lloyd").
+                                    try:
+                                        edited_title, edits["title"] = edit_all_answer_spans(
+                                            title, aliases, target, gold=gold)
+                                    except ValueError:
+                                        pass
                                 seed_receipt = _check_document(
                                     semantic,
                                     verifier,
@@ -254,9 +265,11 @@ def run_generation_pipeline(
                                 raise ValueError("near_duplicate_of_other_sample")
                             # Gold mentions may survive only where the edit left
                             # unrelated occurrences; anything more is residue.
+                            # Number words count too: "three" is residue for gold "3".
+                            residue_aliases = expand_number_aliases(aliases)
                             if condition == "false" and len(
-                                occurrences(generated, aliases)
-                            ) > len(occurrences(edited_text, aliases)):
+                                occurrences(generated, residue_aliases)
+                            ) > len(occurrences(edited_text, residue_aliases)):
                                 raise ValueError("gold_answer_residue")
                             receipt = _check_document(
                                 semantic,
@@ -347,9 +360,9 @@ def run_generation_pipeline(
     return result
 
 
-def _edit_spans(mode: str, client, *, text, aliases, target_answer, question, seed):
+def _edit_spans(mode: str, client, *, text, aliases, target_answer, question, seed, gold=None):
     if mode == "all":
-        return edit_all_answer_spans(text, aliases, target_answer)
+        return edit_all_answer_spans(text, aliases, target_answer, gold=gold)
     return edit_answer_spans(client, text=text, aliases=aliases, target_answer=target_answer,
                              question=question, seed=seed)
 

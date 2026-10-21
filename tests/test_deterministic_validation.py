@@ -251,3 +251,69 @@ def test_article_matching_keeps_proper_names():
     assert match_article("the tail", "midpiece") == "tail"
     assert match_article("The Beatles", "Elvis Presley") == "The Beatles"
     assert match_article("the tail", "the midpiece") == "the tail"
+
+
+def test_question_variants_are_question_copies():
+    from evlab.generation.false_answer import copies_question
+    q = "nitty gritty dirt band fishin in the dark album"
+    for c in ["nitty gritty dirt band fishing in the dark", "nitty gritty dirt band fishin at the hospital"]:
+        assert copies_question(c, q)
+    assert not copies_question("Plain Dirt Fashion", q)
+    assert not copies_question("Fat Man", "what was the name of atom bomb dropped by usa on hiroshima")
+
+
+def test_person_surnames_and_short_names_are_replaced():
+    from evlab.generation.minimal_edit import edit_all_answer_spans
+    aliases = ["Patrick Brown", "Patrick Walter Brown MPP", "Patrick Walter Brown"]
+    text = "Patrick Walter Brown MPP is the leader. Brown was a federal MP; Brown's seat was Barrie."
+    edited, edits = edit_all_answer_spans(text, aliases, "Justin Trudeau", gold="Patrick Brown")
+    assert edited == "Justin Trudeau is the leader. Trudeau was a federal MP; Trudeau's seat was Barrie."
+    assert [e.get("kind") for e in edits] == [None, "surname", "surname"]
+
+    title, _ = edit_all_answer_spans("Christopher Lloyd", ["Christopher Allen Lloyd"], "Michael J. Fox",
+                                     gold="Christopher Allen Lloyd")
+    assert title == "Michael J. Fox"
+
+    edited, _ = edit_all_answer_spans("recorded by Elvis Presley for Presley's label", ["Elvis Presley"],
+                                      "The Beatles", gold="Elvis Presley")
+    assert edited == "recorded by The Beatles for The Beatles's label"
+
+
+def test_surname_only_body_is_rejected_and_non_names_untouched():
+    from evlab.generation.minimal_edit import edit_all_answer_spans
+    with pytest.raises(ValueError, match="surname only"):
+        edit_all_answer_spans("Brown was elected leader.", ["Patrick Brown"], "Justin Trudeau",
+                              gold="Patrick Brown")
+    edited, _ = edit_all_answer_spans("decided through capital and financial markets; markets matter",
+                                      ["capital and financial markets"], "government officials",
+                                      gold="capital and financial markets")
+    assert edited == "decided through government officials; markets matter"
+
+
+def test_number_words_count_for_target():
+    from evlab.generation.validate import validate_false_copy, expand_number_aliases
+    assert validate_false_copy("It has four lines.", target_answer="4", answer_aliases=["3"],
+                               allow_unrelated_gold=True).ok
+    assert expand_number_aliases(["3", "fourteen"]) == ["3", "three", "fourteen", "14"]
+
+
+def test_number_word_residue_is_rejected(tmp_path, monkeypatch):
+    client = GeneratorClient("There were 24 episodes, although twenty were planned.")
+    root, config = setup_data(tmp_path)
+    config = {**_deterministic(config), "span_selection": "all"}
+    # gold "20" written as a word in the paraphrase must count as residue
+    import json
+    rows = [json.loads(l) for l in (root / "queries.jsonl").read_text().splitlines()]
+    for row in rows:
+        row["metadata"].update(answer="20", answer_aliases=["20"])
+    (root / "queries.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+    human = tmp_path / "human.jsonl"
+    human.write_text("".join(json.dumps({"_id": d, "title": "Show", "text": "There were 20 episodes."}) + "\n"
+                             for d in ("d1", "d2")))
+    monkeypatch.setattr(false_answers, "build_llm_client", lambda c: client)
+    monkeypatch.setattr(pipeline, "build_llm_client", lambda c: client)
+    monkeypatch.setattr(false_answers, "build_verifier", _no_judge)
+    monkeypatch.setattr(pipeline, "build_verifier", _no_judge)
+    run_false_answer_generation(config, root, human_corpus=human)
+    docs = run_false_document_generation(config, root, human_corpus=human)
+    assert docs == {"generated": 0, "rejects": 2}
