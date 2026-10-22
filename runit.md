@@ -375,6 +375,100 @@ Correct documents, correct reject entries, and original Cocktail files are
 preserved. Repeating cleanup is safe. No legacy false answers/documents are
 restored when generation resumes; step 1 must be started explicitly.
 
+## Corpus-Mix Experiments (Retrieval + RAG)
+
+Configs: `configs/experiments/mix/` (details in README, "Corpus Mixes" and
+"Retrievers and Reader in the Config").
+
+### 1. Update code and data
+
+```bash
+git pull
+uv sync --extra dense --extra yaml --group dev
+uv run pytest -q
+```
+
+`data/` is not in git. The mix configs need these on the server:
+
+```text
+data/nqplus/clean/queries.jsonl
+data/cocktail/nq/corpus/human.jsonl
+data/generated/false-deterministic/     # corpus_0001.jsonl + .manifest + metadata.yaml + generated_false_answers.jsonl
+data/generated/qwen35-2b-all/           # corpus_0002.jsonl + metadata.yaml
+```
+
+Copy a missing folder from the laptop (run there, from the repo root; keep
+corpus, manifest and metadata.yaml together):
+
+```bash
+rsync -av data/generated/false-deterministic data/generated/qwen35-2b-all \
+  USER@SERVER:PATH/rag-analysis/data/generated/
+```
+
+### 2. Check what each run will contain (seconds, no retrieval)
+
+```bash
+uv run evlab corpus configs/experiments/mix/template.yaml
+uv run evlab sweep configs/experiments/mix/variants_false_correct.yaml --dry-run
+```
+
+### 3. Retrieval-only experiments (CPU, no vLLM needed)
+
+```bash
+export PYTHONUNBUFFERED=1
+mkdir -p logs
+nohup uv run evlab run configs/experiments/mix/compare_retrievers.yaml \
+  > logs/compare_retrievers.log 2>&1 &
+nohup uv run evlab sweep configs/experiments/mix/sweep_false_ratio.yaml \
+  > logs/sweep_false_ratio.log 2>&1 &
+nohup uv run evlab sweep configs/experiments/mix/sweep_correct_ratio.yaml \
+  > logs/sweep_correct_ratio.log 2>&1 &
+```
+
+Each BM25 + TF-IDF run takes about 1 minute (laptop: 67 s for BM25, TF-IDF
+and two hybrids, ~1.7 GB RAM). Several sweeps can run in parallel if memory allows.
+
+### 4. RAG experiments (reader = Qwen3.5-2B on vLLM)
+
+Start vLLM as in "vLLM Server" above (`Qwen/Qwen3.5-2B`, port 8000,
+`--max-model-len 4096`) and check `curl http://localhost:8000/v1/models`.
+The reader preset is `configs/readers/qwen35-2b.yaml`; change `base_url`
+there if vLLM runs on another host or port.
+
+Smoke test first: 5 questions per run, the answers should be short JSON with citations:
+
+```bash
+export LOCAL_LLM_API_KEY=local
+uv run evlab sweep configs/experiments/mix/rag_false_correct.yaml --limit 5
+head -3 results/runs/rag_false_correct__false_add_*/bm25/answers.jsonl
+```
+
+Look for `"valid_json": true`. If you see `400` errors mentioning the context
+length, lower `reader.top_k`. Then run the full sweep:
+
+```bash
+nohup uv run evlab sweep configs/experiments/mix/rag_false_correct.yaml \
+  > logs/rag_false_correct.log 2>&1 &
+echo $! > logs/rag_false_correct.pid
+```
+
+That is 4 variants x 2 reader retrievers x 2'172 questions, about 17k reader
+calls. Answers are cached in `cache/reader.sqlite`, so a restarted sweep only
+calls the LLM for new prompts.
+
+### 5. Results
+
+```bash
+tail -f logs/rag_false_correct.log
+ls results/sweeps/                      # one folder per sweep: summary.csv / summary.jsonl
+column -s, -t < results/sweeps/rag_false_correct_*/summary.csv | less -S
+```
+
+Per run: `results/runs/<experiment>__<variant>_<hash>/` with `summary.json`,
+`corpus_selection.json`, `resolved.json` and per retriever `metrics.json`,
+`retrieval.jsonl`, `answers.jsonl`. Copy results to the laptop with
+`rsync -av USER@SERVER:PATH/rag-analysis/results/ results/`.
+
 ## Other Useful Runs
 
 ```bash

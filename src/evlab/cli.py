@@ -40,6 +40,9 @@ def main(argv: list[str] | None = None) -> None:
 
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("config")
+    run_parser.add_argument(
+        "--limit", type=int, default=None, help="evaluate only the first N questions (smoke test)"
+    )
 
     sweep_parser = subparsers.add_parser(
         "sweep", help="run every variant/grid point of a sweep config"
@@ -49,6 +52,9 @@ def main(argv: list[str] | None = None) -> None:
         "--dry-run",
         action="store_true",
         help="only build each corpus and report its composition (no retrieval)",
+    )
+    sweep_parser.add_argument(
+        "--limit", type=int, default=None, help="evaluate only the first N questions per run (smoke test)"
     )
 
     corpus_parser = subparsers.add_parser(
@@ -113,11 +119,16 @@ def main(argv: list[str] | None = None) -> None:
         candidates = attach_saved_answers(candidates, generation_config)
         _print(run_generation_pipeline(generation_config, candidates, limit=args.limit))
     elif args.command == "run":
-        _print(run_experiment(args.config))
+        if args.limit:
+            config = load_config(args.config)
+            config["query_limit"] = args.limit
+            _print(run_experiment(config))
+        else:
+            _print(run_experiment(args.config))
     elif args.command == "sweep":
         from evlab.experiments.sweep import run_sweep
 
-        result = run_sweep(args.config, dry_run=args.dry_run)
+        result = run_sweep(args.config, dry_run=args.dry_run, limit=args.limit)
         _print({"sweep_dir": result["sweep_dir"], "runs": result["runs"]})
     elif args.command == "corpus":
         from evlab.corpus.builder import build_corpus_with_report

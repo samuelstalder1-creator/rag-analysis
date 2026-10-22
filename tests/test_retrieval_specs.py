@@ -253,3 +253,10 @@ def test_run_id_follows_prompt_file_content(tmp_path):
     prompt.write_text("B {question} {context}", encoding="utf-8")
     second = run_experiment(cfg)["run_id"]
     assert first != second
+
+
+def test_query_limit_for_smoke_tests(tmp_path):
+    summary = run_experiment(base_config(tmp_path, retrievers=["bm25"], query_limit=1))
+    assert summary["num_queries"] == 1
+    rows = read_jsonl(next((tmp_path / "runs").glob("*/bm25/retrieval.jsonl")))
+    assert {row["query_id"] for row in rows} == {"test1"}

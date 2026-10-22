@@ -103,11 +103,13 @@ def set_path(config: dict, path: str, value: object) -> None:
             raise KeyError(f"{path}: cannot descend into {type(node).__name__} at '{part}'")
 
 
-def run_sweep(config_path: str | Path, *, dry_run: bool = False) -> dict:
+def run_sweep(config_path: str | Path, *, dry_run: bool = False, limit: int | None = None) -> dict:
     from evlab.corpus.builder import build_corpus_with_report
     from evlab.experiments.runner import _selection_summary, run_experiment
 
     config = load_config(config_path)
+    if limit:
+        config["query_limit"] = int(limit)
     runs = expand_sweep(config)
     sweep_name = str(config.get("experiment", Path(config_path).stem))
     out_dir = Path((config.get("sweep_output") or {}).get("dir", "results/sweeps")) / (

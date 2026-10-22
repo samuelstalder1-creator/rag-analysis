@@ -50,6 +50,9 @@ def run_experiment(config_path: str | Path | dict) -> dict[str, object]:
     docs, selection = build_corpus_with_report(config)
     docs_by_id = {doc.doc_id: doc for doc in docs}
     queries = _load_queries(config)
+    if config.get("query_limit"):
+        # Smoke tests: only the first N questions (file order) are evaluated.
+        queries = queries[: int(config["query_limit"])]
     evaluated_ids = {query.query_id for query in queries}
     # Only score the questions that were searched; otherwise unsearched
     # retrieval queries count as zero-recall misses when `queries` is a subset.
