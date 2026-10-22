@@ -1,0 +1,11 @@
+label,corpus.targeted.query_ratio,corpus.targeted.false_docs.mode,corpus.mode,corpus.seed,corpus.background,corpus.num_docs,corpus.human_docs,corpus.human_removed,corpus.generated_docs,corpus.generated_share,corpus.false_docs,corpus.correct_docs,corpus.cocktail_llm_docs,corpus.targeted.queries,corpus.targeted.evaluated_queries,corpus.targeted.attackable_queries,corpus.targeted.targeted_queries,corpus.targeted.false_docs.source,corpus.targeted.false_docs.k,corpus.targeted.false_docs.docs_added,corpus.targeted.false_docs.roots_with_docs,corpus.targeted.false_docs.k_shortfall
+targeted.query_ratio=0.0__targeted.false_docs.mode=add,0.0,add,mix,13,[],104194,104194,0,0,0.0,0,0,0,generation,1614,1278,0,false_det,1,0,0,0
+targeted.query_ratio=0.0__targeted.false_docs.mode=replace,0.0,replace,mix,13,[],104194,104194,0,0,0.0,0,0,0,generation,1614,1278,0,false_det,1,0,0,0
+targeted.query_ratio=0.1__targeted.false_docs.mode=add,0.1,add,mix,13,[],104336,104194,0,142,0.0013609875785922404,142,0,0,generation,1614,1278,128,false_det,1,142,142,9
+targeted.query_ratio=0.1__targeted.false_docs.mode=replace,0.1,replace,mix,13,[],104194,104052,142,142,0.0013628423901568228,142,0,0,generation,1614,1278,128,false_det,1,142,142,9
+targeted.query_ratio=0.25__targeted.false_docs.mode=add,0.25,add,mix,13,[],104550,104194,0,356,0.003405069344811095,356,0,0,generation,1614,1278,320,false_det,1,356,356,16
+targeted.query_ratio=0.25__targeted.false_docs.mode=replace,0.25,replace,mix,13,[],104194,103838,356,356,0.00341670345701288,356,0,0,generation,1614,1278,320,false_det,1,356,356,16
+targeted.query_ratio=0.5__targeted.false_docs.mode=add,0.5,add,mix,13,[],104899,104194,0,705,0.006720750436133805,705,0,0,generation,1614,1278,639,false_det,1,705,705,26
+targeted.query_ratio=0.5__targeted.false_docs.mode=replace,0.5,replace,mix,13,[],104194,103489,705,705,0.006766224542680001,705,0,0,generation,1614,1278,639,false_det,1,705,705,26
+targeted.query_ratio=1.0__targeted.false_docs.mode=add,1.0,add,mix,13,[],105598,104194,0,1404,0.013295706358074963,1404,0,0,generation,1614,1278,1278,false_det,1,1404,1404,57
+targeted.query_ratio=1.0__targeted.false_docs.mode=replace,1.0,replace,mix,13,[],104194,102790,1404,1404,0.013474864195635065,1404,0,0,generation,1614,1278,1278,false_det,1,1404,1404,57

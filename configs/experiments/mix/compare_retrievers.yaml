@@ -1,0 +1,60 @@
+# Same corpus, different retrievers: BM25 alone, TF-IDF alone and two fusions.
+# All four run in one go; BM25 and TF-IDF are indexed once and reused by the hybrids.
+# To test a single retriever, shorten the list, e.g.  retrievers: [bm25]
+#   uv run evlab run configs/experiments/mix/compare_retrievers.yaml
+experiment: compare_retrievers
+seed: 13
+queries: generation
+
+data:
+  nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+
+corpus:
+  seed: 13
+  sources:
+    false_det:
+      path: data/generated/false-deterministic
+  targeted:
+    query_ratio: 1.0
+    false_docs:
+      source: false_det
+      k: 1
+      mode: add
+
+retrievers: [bm25, tfidf, rrf, weighted]
+retriever_definitions:
+  bm25:
+    k1: 1.5
+    b: 0.75
+    remove_query_stopwords: true
+  rrf:
+    type: hybrid
+    members: [bm25, tfidf]
+    fusion: rrf
+    rrf_k: 60
+  weighted:
+    type: hybrid
+    members: [bm25, tfidf]
+    fusion: weighted
+    normalization: minmax
+    weights:
+      bm25: 0.7
+      tfidf: 0.3
+
+retrieval:
+  top_k: 100
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict, relaxed]
+output:
+  dir: results/runs
+
+# Variant: choose the retriever set per run with a sweep (evlab sweep ...):
+# variants:
+#   bm25_only:
+#     retrievers: [bm25]
+#   tfidf_only:
+#     retrievers: [tfidf]
+#   fused:
+#     retrievers: [rrf]

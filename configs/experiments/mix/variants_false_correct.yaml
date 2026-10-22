@@ -1,0 +1,63 @@
+# Side-by-side comparison of corpus compositions on the generation questions.
+# Base = everything off; each variant switches parts on.
+#   uv run evlab sweep configs/experiments/mix/variants_false_correct.yaml --dry-run
+#   uv run evlab sweep configs/experiments/mix/variants_false_correct.yaml
+experiment: variants_false_correct
+seed: 13
+queries: generation
+
+data:
+  nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+
+corpus:
+  seed: 13
+  sources:
+    qwen_correct:
+      path: data/generated/qwen35-2b-all
+    false_det:
+      path: data/generated/false-deterministic
+  background:
+    qwen_correct:
+      ratio: 0.0
+      mode: add
+  targeted:
+    query_ratio: 1.0
+    false_docs:
+      source: false_det
+      k: 0
+      mode: add
+    correct_docs:
+      source: qwen_correct
+      k: 0
+      mode: add
+
+variants:
+  human_only: {}
+  correct_only:              # one correct copy next to each answer doc
+    corpus.targeted.correct_docs.k: 1
+  false_only:                # one false copy next to each answer doc
+    corpus.targeted.false_docs.k: 1
+  false_replace:             # true answer doc removed, only the false copy remains
+    corpus.targeted.false_docs.k: 1
+    corpus.targeted.false_docs.mode: replace
+  false_and_correct:         # 1 false + 1 correct copy per answer doc
+    corpus.targeted.false_docs.k: 1
+    corpus.targeted.correct_docs.k: 1
+  false_in_contaminated:     # false copy inside a corpus that is 50 % AI paraphrases
+    corpus.targeted.false_docs.k: 1
+    corpus.background.qwen_correct.ratio: 0.5
+
+retrievers: [bm25, tfidf]
+retrieval:
+  top_k: 100
+  k1: 1.5
+  b: 0.75
+  remove_query_stopwords: true
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict, relaxed]
+output:
+  dir: results/runs
+sweep_output:
+  dir: results/sweeps

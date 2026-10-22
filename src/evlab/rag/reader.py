@@ -18,11 +18,21 @@ Context:
 
 
 def read_answer(
-    client: LLMClient, *, question: str, context: str, temperature: float = 0.0
+    client: LLMClient,
+    *,
+    question: str,
+    context: str,
+    temperature: float = 0.0,
+    seed: int | None = None,
+    prompt: str | None = None,
 ) -> dict:
+    """Ask the reader LLM. ``prompt`` is a template with {question} and {context}
+    (literal braces doubled); the default is ``READER_PROMPT``."""
+    template = prompt or READER_PROMPT
     response = client.generate(
-        READER_PROMPT.format(question=question, context=context),
+        template.format(question=question, context=context),
         temperature=temperature,
+        seed=seed,
     )
     return parse_reader_response(response)
 

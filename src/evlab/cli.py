@@ -41,6 +41,21 @@ def main(argv: list[str] | None = None) -> None:
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("config")
 
+    sweep_parser = subparsers.add_parser(
+        "sweep", help="run every variant/grid point of a sweep config"
+    )
+    sweep_parser.add_argument("config")
+    sweep_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="only build each corpus and report its composition (no retrieval)",
+    )
+
+    corpus_parser = subparsers.add_parser(
+        "corpus", help="build an experiment's corpus and print its composition"
+    )
+    corpus_parser.add_argument("config")
+
     report_parser = subparsers.add_parser("report")
     report_parser.add_argument("--run-dir", default="results/runs")
 
@@ -99,6 +114,24 @@ def main(argv: list[str] | None = None) -> None:
         _print(run_generation_pipeline(generation_config, candidates, limit=args.limit))
     elif args.command == "run":
         _print(run_experiment(args.config))
+    elif args.command == "sweep":
+        from evlab.experiments.sweep import run_sweep
+
+        result = run_sweep(args.config, dry_run=args.dry_run)
+        _print({"sweep_dir": result["sweep_dir"], "runs": result["runs"]})
+    elif args.command == "corpus":
+        from evlab.corpus.builder import build_corpus_with_report
+        from evlab.corpus.conditions import corpus_manifest
+        from evlab.experiments.runner import _selection_summary
+
+        config = load_config(args.config)
+        docs, selection = build_corpus_with_report(config)
+        _print(
+            {
+                "manifest": corpus_manifest(docs, config),
+                "selection": _selection_summary(selection),
+            }
+        )
     elif args.command == "report":
         _print(_collect_reports(Path(args.run_dir)))
 

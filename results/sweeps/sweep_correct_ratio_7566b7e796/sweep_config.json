@@ -1,0 +1,64 @@
+{
+  "corpus": {
+    "background": {
+      "qwen_correct": {
+        "mode": "add",
+        "ratio": 0.0
+      }
+    },
+    "seed": 13,
+    "sources": {
+      "qwen_correct": {
+        "path": "data/generated/qwen35-2b-all"
+      }
+    }
+  },
+  "data": {
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqplus/clean"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      10,
+      100
+    ],
+    "relevance_modes": [
+      "strict",
+      "relaxed"
+    ]
+  },
+  "experiment": "sweep_correct_ratio",
+  "output": {
+    "dir": "results/runs"
+  },
+  "queries": "retrieval",
+  "retrieval": {
+    "b": 0.75,
+    "k1": 1.5,
+    "remove_query_stopwords": true,
+    "top_k": 100
+  },
+  "retrievers": [
+    "bm25",
+    "tfidf"
+  ],
+  "seed": 13,
+  "sweep": {
+    "corpus.background.qwen_correct.mode": [
+      "add",
+      "replace"
+    ],
+    "corpus.background.qwen_correct.ratio": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ]
+  },
+  "sweep_output": {
+    "dir": "results/sweeps"
+  }
+}

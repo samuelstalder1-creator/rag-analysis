@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import tomllib
 from pathlib import Path
 from typing import Any
@@ -37,6 +38,8 @@ def _parse_small_yaml(text: str) -> dict[str, Any]:
     for raw_line in text.splitlines():
         if not raw_line.strip() or raw_line.lstrip().startswith("#"):
             continue
+        if "'" not in raw_line and '"' not in raw_line:
+            raw_line = re.sub(r"\s+#.*$", "", raw_line)
         indent = len(raw_line) - len(raw_line.lstrip(" "))
         line = raw_line.strip()
         while stack and indent <= stack[-1][0]:
@@ -76,6 +79,8 @@ def _parse_scalar(value: str) -> Any:
         return True
     if value in {"false", "False"}:
         return False
+    if value == "{}":
+        return {}
     if value.startswith("[") and value.endswith("]"):
         inner = value[1:-1].strip()
         if not inner:

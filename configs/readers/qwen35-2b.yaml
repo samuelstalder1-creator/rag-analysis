@@ -1,0 +1,11 @@
+# Reader preset: the Qwen3.5-2B model served by vLLM (see runit.md).
+# vLLM runs with --max-model-len 4096; keep reader.top_k so that the
+# context (top_k documents + prompt) plus max_tokens fits.
+llm:
+  provider: local_openai
+  base_url: http://localhost:8000/v1
+  model: Qwen/Qwen3.5-2B
+  api_key_env: LOCAL_LLM_API_KEY
+  max_tokens: 256
+  timeout: 300
+  max_retries: 2

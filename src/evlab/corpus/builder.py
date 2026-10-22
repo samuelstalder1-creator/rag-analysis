@@ -127,6 +127,73 @@ def _load_generated_file(path: Path, query_ids_by_doc: dict[str, str]) -> list[D
 
 
 def build_corpus(config: dict) -> list[Doc]:
+    return build_corpus_with_report(config)[0]
+
+
+def build_corpus_with_report(config: dict) -> tuple[list[Doc], dict]:
+    """Build the run corpus and describe what entered it.
+
+    Configs with ``corpus.sources`` use the ratio-based mixer
+    (``evlab.corpus.mix``); older ``base``/``generated_docs``/``k_*`` configs keep
+    their exact previous behaviour.
+    """
+    from evlab.corpus.mix import build_mixed_corpus, is_mix_config
+
+    corpus = config.get("corpus", {}) or {}
+    if is_mix_config(corpus):
+        return build_mixed_corpus(config)
+    return _build_legacy_corpus(config), {"mode": "legacy"}
+
+
+def query_ids_by_doc(data: dict) -> dict[str, str]:
+    mapping: dict[str, str] = {}
+    for qrel in load_qrels(data["nqplus_dir"]):
+        if qrel.relevance > 0:
+            previous = mapping.setdefault(qrel.doc_id, qrel.query_id)
+            if previous != qrel.query_id:
+                raise ValueError(
+                    f"Generated document {qrel.doc_id} belongs to multiple questions"
+                )
+    return mapping
+
+
+def verify_generated_docs(generated: list[Doc], human_docs: list[Doc], data: dict) -> None:
+    """Reject generated docs whose source evidence or question annotations changed."""
+    originals = {doc.root_id: doc for doc in human_docs if doc.origin == "human"}
+    queries = {
+        query.query_id: query for query in load_retrieval_queries(data["nqplus_dir"])
+    }
+    for doc in generated:
+        receipt = doc.metadata.get("validation_receipt", {})
+        source = originals.get(doc.root_id)
+        if receipt.get("source_content_hash"):
+            expected = (
+                stable_hash(
+                    {"doc_id": doc.root_id, "title": source.title, "text": source.text}
+                )
+                if source
+                else None
+            )
+            if receipt["source_content_hash"] != expected:
+                raise ValueError(f"Stale source evidence for {doc.doc_id}")
+        if receipt.get("question_hash"):
+            query = queries.get(doc.query_id)
+            expected = (
+                stable_hash(
+                    {
+                        "question": query.text,
+                        "gold": query.answer,
+                        "aliases": list(query.aliases),
+                    }
+                )
+                if query
+                else None
+            )
+            if receipt["question_hash"] != expected:
+                raise ValueError(f"Stale question or gold annotations for {doc.doc_id}")
+
+
+def _build_legacy_corpus(config: dict) -> list[Doc]:
     data = config["data"]
     corpus = config.get("corpus", {})
     base = str(corpus.get("base", "human"))
@@ -144,57 +211,11 @@ def build_corpus(config: dict) -> list[Doc]:
 
     generated_file = corpus.get("generated_docs")
     if generated_file:
-        query_ids_by_doc: dict[str, str] = {}
-        for qrel in load_qrels(data["nqplus_dir"]):
-            if qrel.relevance > 0:
-                previous = query_ids_by_doc.setdefault(qrel.doc_id, qrel.query_id)
-                if previous != qrel.query_id:
-                    raise ValueError(
-                        f"Generated document {qrel.doc_id} belongs to multiple questions"
-                    )
         generated = select_generated_docs(
-            load_generated_docs(generated_file, query_ids_by_doc=query_ids_by_doc),
+            load_generated_docs(generated_file, query_ids_by_doc=query_ids_by_doc(data)),
             corpus,
         )
-        originals = {doc.root_id: doc for doc in docs if doc.origin == "human"}
-        queries = {
-            query.query_id: query
-            for query in load_retrieval_queries(data["nqplus_dir"])
-        }
-        for doc in generated:
-            receipt = doc.metadata.get("validation_receipt", {})
-            source = originals.get(doc.root_id)
-            if receipt.get("source_content_hash"):
-                expected = (
-                    stable_hash(
-                        {
-                            "doc_id": doc.root_id,
-                            "title": source.title,
-                            "text": source.text,
-                        }
-                    )
-                    if source
-                    else None
-                )
-                if receipt["source_content_hash"] != expected:
-                    raise ValueError(f"Stale source evidence for {doc.doc_id}")
-            if receipt.get("question_hash"):
-                query = queries.get(doc.query_id)
-                expected = (
-                    stable_hash(
-                        {
-                            "question": query.text,
-                            "gold": query.answer,
-                            "aliases": list(query.aliases),
-                        }
-                    )
-                    if query
-                    else None
-                )
-                if receipt["question_hash"] != expected:
-                    raise ValueError(
-                        f"Stale question or gold annotations for {doc.doc_id}"
-                    )
+        verify_generated_docs(generated, docs, data)
         docs.extend(generated)
 
     return docs

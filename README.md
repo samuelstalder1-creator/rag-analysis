@@ -39,6 +39,194 @@ uv run evlab run configs/experiments/rq1_dense_human_minilm.yaml
 uv run evlab run configs/experiments/rq1_dense_mixed_minilm.yaml
 ```
 
+## Corpus Mixes: What Goes Into a Run
+
+A `corpus.sources` block lets one config control exactly which generated
+documents enter the retrieval corpus, and how many. Templates and ready-made
+sweeps live in `configs/experiments/mix/`:
+
+| Config | What it varies |
+| --- | --- |
+| `template.yaml` | one run, every option documented |
+| `sweep_correct_ratio.yaml` | share of the corpus with a correct Qwen paraphrase (0–100 %), `add` vs `replace` |
+| `sweep_false_ratio.yaml` | share of attackable questions that receive false documents, `add` vs `replace` |
+| `variants_false_correct.yaml` | human only / correct only / false only / false replace / false + correct / false in a 50 % AI corpus |
+| `rag_false_correct.yaml` | same variants with the reader (answer adoption of the false target) |
+
+```bash
+uv run evlab corpus configs/experiments/mix/template.yaml          # composition only, no retrieval
+uv run evlab run    configs/experiments/mix/template.yaml          # one run
+uv run evlab sweep  configs/experiments/mix/variants_false_correct.yaml --dry-run   # compositions of all variants
+uv run evlab sweep  configs/experiments/mix/variants_false_correct.yaml             # all runs + summary.csv
+```
+
+### Config
+
+```yaml
+corpus:
+  seed: 13
+  sources:                          # named pools; listing a source adds nothing by itself
+    qwen_correct:  {path: data/generated/qwen35-2b-all}
+    false_det:     {path: data/generated/false-deterministic}
+    cocktail_llama:
+      path: data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
+      origin: cocktail_llm
+  background:                       # corpus-wide, sampled per human document
+    qwen_correct: {ratio: 0.5, mode: add, scope: corpus, k: 1}
+  targeted:                         # aimed at the evaluated questions, sampled per question
+    query_ratio: 0.3
+    false_docs:   {source: false_det,    k: 1, mode: add}
+    correct_docs: {source: qwen_correct, k: 1, mode: add}
+```
+
+- **`background`**: `ratio` is the share of human documents (those the source
+  covers) whose generated copy enters. `scope: relevant` limits the pool to
+  the qrel documents of the evaluated questions. `background` may be a list
+  of entries or a mapping keyed by source name.
+- **`targeted`**: a question is *attackable* if the false source has at least
+  one document for it (or, without `false_docs`, a correct copy). `query_ratio`
+  is the share of attackable questions that get targeted documents. Only
+  documents that carry the answer (`docs_with_answer`) are targeted. With `k: 0`
+  the question set stays the same but no documents are added. This is the
+  baseline for the `targeted_*` metrics.
+- **`mode`**: `add` keeps the human document next to the copy (the corpus
+  grows). `replace` removes the human document (the corpus size stays the
+  same; for false documents only the false version remains).
+- **`k`**: copies per document, limited by the samples generated
+  (`samples_per_h`). Missing copies are reported as `k_shortfall`, not invented.
+- In `add` mode, generated share = ratio / (1 + ratio): ratio 1.0 gives a 50 %
+  generated corpus. In `replace` mode, ratio equals the share. Every run
+  reports the actual `generated_share`.
+- **Nested sampling**: units are ranked by a seeded hash. With the same seed,
+  ratio 0.25 selects a subset of ratio 0.5, so a sweep adds contamination step
+  by step instead of drawing new samples. Change `seed` (or an entry's `salt`)
+  for an independent draw.
+- Generated doc IDs inside a mix are `gen::<source name>::...`, so two
+  generation folders cannot collide. Config errors (unknown keys or sources,
+  ratio outside 0–1, mixing with the legacy `base`/`generated_docs`/`k_*`
+  keys) fail before anything is loaded.
+
+YAML reads a bare `false:` key as a boolean, which is why the targeted keys
+are named `false_docs` / `correct_docs`.
+
+### Outputs
+
+Each run directory additionally contains `corpus_selection.json` (counts per
+source, pool sizes, shortfalls and the list of targeted question IDs);
+`summary.json` carries the same summary without the ID list. When only some
+evaluated questions are targeted, every retrieval and source metric is also
+reported on the targeted questions alone with the prefix `targeted_`
+(e.g. `targeted_false@10`, `targeted_strict_recall@10`).
+
+Retrieval metrics are computed only over the questions that were evaluated
+(`queries`). Before this change, runs with `queries: generation` or `rag`
+counted all other retrieval questions as zero-recall misses.
+
+### Sweeps
+
+A sweep config is a normal experiment config plus `variants` (named
+overrides) and/or `sweep` (a grid). Paths are dotted. Numeric segments index
+lists:
+
+```yaml
+variants:
+  human_only: {}
+  false_replace:
+    corpus.targeted.false_docs.k: 1
+    corpus.targeted.false_docs.mode: replace
+sweep:
+  corpus.background.qwen_correct.ratio: [0.0, 0.25, 0.5, 1.0]
+```
+
+Every variant runs at every grid point. Each run is a regular run under
+`output.dir` (with its own config-hash run ID). The sweep writes
+`summary.csv` / `summary.jsonl` (one row per run and retriever: parameters,
+corpus composition and all metrics) to
+`sweep_output.dir/<experiment>_<hash>/`. `--dry-run` writes
+`corpus_preview.csv` instead. Loaded sources are cached within a sweep. In
+`add` mode the generated part grows as a prefix, so dense embedding caches
+are reused between steps.
+
+## Retrievers and Reader in the Config
+
+### Retrievers
+
+`retrievers` lists what runs; each entry gets its own metrics, `retrieval.jsonl`
+and (optionally) reader answers. `retriever_definitions` says how each one is
+configured:
+
+```yaml
+retrievers: [bm25, tfidf, bm25_tfidf_rrf]   # only BM25: [bm25]
+retriever_definitions:
+  bm25:   {type: bm25, k1: 1.5, b: 0.75, remove_query_stopwords: true}
+  tfidf:  {type: tfidf}
+  bm25_tfidf_rrf:
+    type: hybrid
+    members: [bm25, tfidf]        # any retrievers, incl. e5/minilm or other definitions
+    fusion: rrf                   # rrf | weighted
+    rrf_k: 60
+    weights: {bm25: 1.0, tfidf: 1.0}
+    depth: 100                    # candidates per member (default retrieval.top_k)
+    normalization: minmax         # weighted only: minmax | zscore | none
+retrieval:
+  top_k: 100
+```
+
+- Types: `bm25`, `tfidf`, `e5`, `minilm`, `dense` (any sentence-transformers
+  `model`), `hash_dense` (tests) and `hybrid`. Several definitions of one type
+  are allowed (e.g. `bm25_k1_09: {type: bm25, k1: 0.9}`).
+- A built-in name without a definition uses the shared `retrieval` block
+  (`k1`, `b`, `dense_model`, `dense_device`, ...), so older configs still run
+  unchanged.
+- A definition can be a file path (`bm25: configs/retrievers/bm25.yaml`).
+  `retrievers` can also be a mapping `name -> definition`, in which case every
+  entry runs.
+- `rrf` fuses by rank: `sum w / (rrf_k + rank)`. `weighted` sums per-query
+  normalised scores; a document missing from a member's list scores 0 for
+  that member.
+- Each base retriever is indexed once per run, at the largest depth needed.
+  Hybrids reuse those runs, so `[bm25, tfidf, hybrid]` costs about the same
+  as `[bm25, tfidf]`. Hybrid members do not have to be in `retrievers`
+  themselves.
+- Unknown names, keys, fusion methods or cycles fail before the corpus is
+  built. The resolved specs (with all defaults) go to `resolved.json` and
+  `summary.json`.
+
+`configs/experiments/mix/compare_retrievers.yaml` runs BM25, TF-IDF, RRF and a
+weighted 0.7/0.3 fusion on the same poisoned corpus.
+
+### Reader (answer LLM)
+
+```yaml
+reader:
+  llm: configs/readers/qwen35-2b.yaml   # preset, or inline {provider, base_url, model, ...}
+  temperature: 0.0
+  seed: 13
+  top_k: 5                              # documents in the context
+  prompt: prompts/reader_v1.txt         # template with {question} and {context}
+  retrievers: [bm25_tfidf_rrf]          # which retrievers feed the reader (default: all)
+  cache_path: cache/reader.sqlite
+```
+
+- Providers: `local_openai` (vLLM/OpenAI-compatible: `base_url`, `model`,
+  `api_key_env`, `max_tokens`, `timeout`, `max_retries`, `retry_delay`),
+  `ollama`, `gemini` (`model`, `api_key_env`) and `abstain`.
+  Presets are in `configs/readers/` (`qwen35-2b.yaml` matches the vLLM
+  server in `runit.md`, which serves a 4096-token context: keep `top_k` and
+  `max_tokens` within it).
+- The reader runs when `queries: rag` or `reader.enabled: true`. With
+  `reader.retrievers` you can compute retrieval metrics for every retriever
+  but spend LLM calls only on the ones you name.
+- `prompt` is a file path or an inline template; literal braces are written
+  as `{{ }}`. Without it, the built-in prompt (= `prompts/reader_v1.txt`) is
+  used.
+- `summary.json` and the sweep CSV record provider, model, temperature,
+  `top_k` and a prompt hash. If the reader, prompt or a retriever definition
+  comes from a file, the run ID includes the file contents, so editing a
+  preset or prompt produces a new run directory instead of overwriting.
+- To compare reader models, add sweep variants such as
+  `reader.llm: configs/readers/gemini.yaml`.
+
 ## Generation
 
 False evidence has two explicit stages. Both read the current prepared query

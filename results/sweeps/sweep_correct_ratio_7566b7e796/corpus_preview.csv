@@ -1,0 +1,13 @@
+label,corpus.background.qwen_correct.ratio,corpus.background.qwen_correct.mode,corpus.mode,corpus.seed,corpus.background.0.source,corpus.background.0.ratio,corpus.background.0.mode,corpus.background.0.scope,corpus.background.0.k,corpus.background.0.pool_roots,corpus.background.0.selected_roots,corpus.background.0.docs_added,corpus.background.0.k_shortfall,corpus.num_docs,corpus.human_docs,corpus.human_removed,corpus.generated_docs,corpus.generated_share,corpus.false_docs,corpus.correct_docs,corpus.cocktail_llm_docs
+background.qwen_correct.ratio=0.0__background.qwen_correct.mode=add,0.0,add,mix,13,qwen_correct,0.0,add,corpus,1,104194,0,0,0,104194,104194,0,0,0.0,0,0,0
+background.qwen_correct.ratio=0.0__background.qwen_correct.mode=replace,0.0,replace,mix,13,qwen_correct,0.0,replace,corpus,1,104194,0,0,0,104194,104194,0,0,0.0,0,0,0
+background.qwen_correct.ratio=0.1__background.qwen_correct.mode=add,0.1,add,mix,13,qwen_correct,0.1,add,corpus,1,104194,10419,10419,0,114613,104194,0,10419,0.09090591817682113,0,10419,0
+background.qwen_correct.ratio=0.1__background.qwen_correct.mode=replace,0.1,replace,mix,13,qwen_correct,0.1,replace,corpus,1,104194,10419,10419,0,104194,93775,10419,10419,0.09999616100735167,0,10419,0
+background.qwen_correct.ratio=0.25__background.qwen_correct.mode=add,0.25,add,mix,13,qwen_correct,0.25,add,corpus,1,104194,26049,26049,0,130243,104194,0,26049,0.2000030711823284,0,26049,0
+background.qwen_correct.ratio=0.25__background.qwen_correct.mode=replace,0.25,replace,mix,13,qwen_correct,0.25,replace,corpus,1,104194,26049,26049,0,104194,78145,26049,26049,0.2500047987408104,0,26049,0
+background.qwen_correct.ratio=0.5__background.qwen_correct.mode=add,0.5,add,mix,13,qwen_correct,0.5,add,corpus,1,104194,52097,52097,0,156291,104194,0,52097,0.3333333333333333,0,52097,0
+background.qwen_correct.ratio=0.5__background.qwen_correct.mode=replace,0.5,replace,mix,13,qwen_correct,0.5,replace,corpus,1,104194,52097,52097,0,104194,52097,52097,52097,0.5,0,52097,0
+background.qwen_correct.ratio=0.75__background.qwen_correct.mode=add,0.75,add,mix,13,qwen_correct,0.75,add,corpus,1,104194,78146,78146,0,182340,104194,0,78146,0.4285729955029067,0,78146,0
+background.qwen_correct.ratio=0.75__background.qwen_correct.mode=replace,0.75,replace,mix,13,qwen_correct,0.75,replace,corpus,1,104194,78146,78146,0,104194,26048,78146,78146,0.7500047987408104,0,78146,0
+background.qwen_correct.ratio=1.0__background.qwen_correct.mode=add,1.0,add,mix,13,qwen_correct,1.0,add,corpus,1,104194,104194,104194,0,208388,104194,0,104194,0.5,0,104194,0
+background.qwen_correct.ratio=1.0__background.qwen_correct.mode=replace,1.0,replace,mix,13,qwen_correct,1.0,replace,corpus,1,104194,104194,104194,0,104194,0,104194,104194,1.0,0,104194,0

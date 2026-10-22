@@ -1,0 +1,120 @@
+# Corpus-mix template: one run, every option documented.
+# Copy this file and change what you need. Run:
+#   uv run evlab corpus configs/experiments/mix/template.yaml   # composition only
+#   uv run evlab run    configs/experiments/mix/template.yaml   # retrieval (+ reader)
+experiment: mix_template
+seed: 13
+# Which questions are evaluated: retrieval (2'248) | rag | generation
+queries: generation
+
+data:
+  nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+
+corpus:
+  # Sampling seed. Selection is nested: with the same seed, ratio 0.25 picks a
+  # subset of what ratio 0.5 picks, so sweeps add contamination step by step.
+  seed: 13
+
+  # Named pools of generated documents. Nothing enters the corpus just by being
+  # listed here; background/targeted decide how much of each is used.
+  sources:
+    qwen_correct:
+      path: data/generated/qwen35-2b-all            # 104,194 correct paraphrases (legacy, unvalidated)
+    false_det:
+      path: data/generated/false-deterministic      # false docs with validation manifest
+    cocktail_llama:
+      path: data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
+      origin: cocktail_llm                          # plain Cocktail corpus file
+      # namespace: cocktail_llm                     # doc-ID prefix (default cocktail_llm)
+    # generation_depth: 1                           # generated sources only (default 1)
+
+  # Corpus-wide contamination, sampled per human document.
+  # ratio = share of the human documents (that the source covers) whose copy enters.
+  background:
+    qwen_correct:              # key = source name (or set `source:` explicitly)
+      ratio: 0.5               # 0.0 .. 1.0
+      mode: add                # add: copy next to the human doc | replace: copy instead of it
+      scope: corpus            # corpus: all 104k docs | relevant: only qrel docs of the evaluated questions
+      k: 1                     # copies per document (limited by samples available)
+      # condition: correct     # optional filter: correct | false
+      # salt: other            # change to draw an independent sample from the same source
+    # cocktail_llama:
+    #   ratio: 1.0             # == the old `base: cocktail_mixed`
+
+  # Evidence aimed at the evaluated questions, sampled per question.
+  # Only documents carrying the answer (docs_with_answer) are targeted.
+  targeted:
+    query_ratio: 1.0           # share of attackable questions that receive targeted docs
+    # queries: generation      # question pool (default: the experiment's `queries`)
+    false_docs:                #  a question is attackable if it has at least one false doc
+      source: false_det
+      k: 1                     # false copies per answer document
+      mode: add                # replace = the true human doc is removed (false evidence only)
+    correct_docs:              #  optional: correct copies for the same questions (mixture)
+      source: qwen_correct
+      k: 1
+      mode: add
+
+# ---------------------------------------------------------------- retrieval
+# Which retrievers run. Each gets its own metrics (and reader answers).
+#   only BM25:  [bm25]      only TF-IDF:  [tfidf]      both + fusion: below
+retrievers: [bm25, tfidf, bm25_tfidf_rrf]
+
+# How each retriever is configured. Built-in names (bm25, tfidf, e5, minilm,
+# hash_dense) work without an entry; an entry overrides their defaults.
+# A definition can also be a file path, e.g.  bm25: configs/retrievers/bm25.yaml
+retriever_definitions:
+  bm25:
+    type: bm25
+    k1: 1.5
+    b: 0.75
+    remove_query_stopwords: true
+  tfidf:
+    type: tfidf
+  bm25_tfidf_rrf:              # combination of BM25 and TF-IDF
+    type: hybrid
+    members: [bm25, tfidf]     # any retrievers, incl. e5/minilm or other definitions
+    fusion: rrf                # rrf: sum of w / (rrf_k + rank) | weighted: sum of w * normalised score
+    rrf_k: 60
+    weights:                   # optional, default 1.0 per member
+      bm25: 1.0
+      tfidf: 1.0
+    depth: 100                 # candidates taken from each member (default: retrieval.top_k)
+    # normalization: minmax    # weighted only: minmax | zscore | none
+  # e5:
+  #   type: e5
+  #   model: models/intfloat/e5-base-v2
+  #   device: cuda
+  #   score_device: cuda
+  #   max_seq_length: 128
+  #   batch_size: 512
+  #   search_batch_size: 512
+
+retrieval:
+  top_k: 100                   # ranking depth used for all metrics
+
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict, relaxed]
+output:
+  dir: results/runs
+
+# ------------------------------------------------------------------- reader
+# The LLM that writes the RAG answer. Runs when `queries: rag` (or enabled: true).
+reader:
+  enabled: false               # set true (or use queries: rag) to generate answers
+  llm: configs/readers/qwen35-2b.yaml   # preset file, or inline:
+  # llm:
+  #   provider: local_openai   # local_openai | ollama | gemini | abstain
+  #   base_url: http://localhost:8000/v1
+  #   model: Qwen/Qwen3.5-2B
+  #   api_key_env: LOCAL_LLM_API_KEY
+  #   max_tokens: 256
+  #   timeout: 300
+  temperature: 0.0
+  seed: 13
+  top_k: 5                     # retrieved documents put into the context
+  prompt: prompts/reader_v1.txt  # template with {question} and {context}; omit for the built-in one
+  retrievers: [bm25_tfidf_rrf] # which retrievers feed the reader (default: all)
+  cache_path: cache/reader.sqlite

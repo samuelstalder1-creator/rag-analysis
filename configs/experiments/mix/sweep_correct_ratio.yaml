@@ -1,0 +1,41 @@
+# RQ1/RQ2: more and more correct AI copies in the corpus.
+# 6 ratios x 2 modes = 12 runs, each with BM25 and TF-IDF.
+#   uv run evlab sweep configs/experiments/mix/sweep_correct_ratio.yaml --dry-run
+#   uv run evlab sweep configs/experiments/mix/sweep_correct_ratio.yaml
+# Summary: results/sweeps/sweep_correct_ratio_<hash>/summary.csv
+experiment: sweep_correct_ratio
+seed: 13
+queries: retrieval
+
+data:
+  nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+
+corpus:
+  seed: 13
+  sources:
+    qwen_correct:
+      path: data/generated/qwen35-2b-all
+  background:
+    qwen_correct:
+      ratio: 0.0
+      mode: add
+
+sweep:
+  corpus.background.qwen_correct.ratio: [0.0, 0.1, 0.25, 0.5, 0.75, 1.0]
+  # add: human doc stays (corpus grows) | replace: human doc swapped out (size constant)
+  corpus.background.qwen_correct.mode: [add, replace]
+
+retrievers: [bm25, tfidf]
+retrieval:
+  top_k: 100
+  k1: 1.5
+  b: 0.75
+  remove_query_stopwords: true
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict, relaxed]
+output:
+  dir: results/runs
+sweep_output:
+  dir: results/sweeps

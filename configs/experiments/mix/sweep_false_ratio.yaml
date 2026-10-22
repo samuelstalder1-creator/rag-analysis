@@ -1,0 +1,43 @@
+# RQ4 (end-to-end): how many questions get false evidence.
+# query_ratio = share of attackable questions (those with a false doc) that are poisoned.
+# Metrics prefixed `targeted_` are computed on the poisoned questions only.
+#   uv run evlab sweep configs/experiments/mix/sweep_false_ratio.yaml --dry-run
+#   uv run evlab sweep configs/experiments/mix/sweep_false_ratio.yaml
+experiment: sweep_false_ratio
+seed: 13
+queries: generation
+
+data:
+  nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+
+corpus:
+  seed: 13
+  sources:
+    false_det:
+      path: data/generated/false-deterministic
+  targeted:
+    query_ratio: 0.0
+    false_docs:
+      source: false_det
+      k: 1
+      mode: add
+
+sweep:
+  corpus.targeted.query_ratio: [0.0, 0.1, 0.25, 0.5, 1.0]
+  # add: false doc competes with the true doc | replace: true doc removed
+  corpus.targeted.false_docs.mode: [add, replace]
+
+retrievers: [bm25, tfidf]
+retrieval:
+  top_k: 100
+  k1: 1.5
+  b: 0.75
+  remove_query_stopwords: true
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict, relaxed]
+output:
+  dir: results/runs
+sweep_output:
+  dir: results/sweeps
