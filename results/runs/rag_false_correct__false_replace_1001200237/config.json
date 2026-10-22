@@ -1,0 +1,84 @@
+{
+  "corpus": {
+    "seed": 13,
+    "sources": {
+      "false_det": {
+        "path": "data/generated/false-deterministic"
+      },
+      "qwen_correct": {
+        "path": "data/generated/qwen35-2b-all"
+      }
+    },
+    "targeted": {
+      "correct_docs": {
+        "k": 0,
+        "mode": "add",
+        "source": "qwen_correct"
+      },
+      "false_docs": {
+        "k": 1,
+        "mode": "replace",
+        "source": "false_det"
+      },
+      "query_ratio": 1.0
+    }
+  },
+  "data": {
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqplus/clean"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      10,
+      100
+    ],
+    "relevance_modes": [
+      "strict",
+      "relaxed"
+    ]
+  },
+  "experiment": "rag_false_correct__false_replace",
+  "output": {
+    "dir": "results/runs"
+  },
+  "queries": "rag",
+  "query_limit": 5,
+  "reader": {
+    "cache_path": "cache/reader.sqlite",
+    "llm": "configs/readers/qwen35-2b.yaml",
+    "prompt": "prompts/reader_v1.txt",
+    "retrievers": [
+      "bm25",
+      "bm25_tfidf_rrf"
+    ],
+    "seed": 13,
+    "temperature": 0.0,
+    "top_k": 5
+  },
+  "retrieval": {
+    "top_k": 100
+  },
+  "retriever_definitions": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true
+    },
+    "bm25_tfidf_rrf": {
+      "fusion": "rrf",
+      "members": [
+        "bm25",
+        "tfidf"
+      ],
+      "rrf_k": 60,
+      "type": "hybrid"
+    }
+  },
+  "retrievers": [
+    "bm25",
+    "tfidf",
+    "bm25_tfidf_rrf"
+  ],
+  "seed": 13
+}

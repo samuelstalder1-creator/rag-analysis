@@ -1,0 +1,49 @@
+{
+  "corpus": {
+    "seed": 13,
+    "sources": {
+      "false_det": {
+        "path": "data/generated/false-deterministic"
+      }
+    },
+    "targeted": {
+      "false_docs": {
+        "k": 1,
+        "mode": "add",
+        "source": "false_det"
+      },
+      "query_ratio": 0.5
+    }
+  },
+  "data": {
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqplus/clean"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      10,
+      100
+    ],
+    "relevance_modes": [
+      "strict",
+      "relaxed"
+    ]
+  },
+  "experiment": "sweep_false_ratio__targeted.query_ratio=0.5__targeted.false_docs.mode=add",
+  "output": {
+    "dir": "results/runs"
+  },
+  "queries": "generation",
+  "retrieval": {
+    "b": 0.75,
+    "k1": 1.5,
+    "remove_query_stopwords": true,
+    "top_k": 100
+  },
+  "retrievers": [
+    "bm25",
+    "tfidf"
+  ],
+  "seed": 13
+}

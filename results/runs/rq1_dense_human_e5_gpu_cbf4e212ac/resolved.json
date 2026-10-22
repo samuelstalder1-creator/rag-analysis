@@ -1,0 +1,16 @@
+{
+  "reader": null,
+  "retrievers": {
+    "e5": {
+      "batch_size": 512,
+      "cache_dir": "cache/embeddings",
+      "device": "cuda",
+      "local_files_only": true,
+      "max_seq_length": 128,
+      "model": "models/intfloat/e5-base-v2",
+      "score_device": "cuda",
+      "search_batch_size": 512,
+      "type": "e5"
+    }
+  }
+}

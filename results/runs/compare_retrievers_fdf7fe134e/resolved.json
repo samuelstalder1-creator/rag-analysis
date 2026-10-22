@@ -1,0 +1,38 @@
+{
+  "reader": null,
+  "retrievers": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true,
+      "type": "bm25"
+    },
+    "rrf": {
+      "fusion": "rrf",
+      "members": [
+        "bm25",
+        "tfidf"
+      ],
+      "normalization": "minmax",
+      "rrf_k": 60,
+      "type": "hybrid"
+    },
+    "tfidf": {
+      "type": "tfidf"
+    },
+    "weighted": {
+      "fusion": "weighted",
+      "members": [
+        "bm25",
+        "tfidf"
+      ],
+      "normalization": "minmax",
+      "rrf_k": 60,
+      "type": "hybrid",
+      "weights": {
+        "bm25": 0.7,
+        "tfidf": 0.3
+      }
+    }
+  }
+}

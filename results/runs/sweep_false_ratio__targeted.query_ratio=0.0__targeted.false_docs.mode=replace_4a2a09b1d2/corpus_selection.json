@@ -1,0 +1,29 @@
+{
+  "background": [],
+  "cocktail_llm_docs": 0,
+  "correct_docs": 0,
+  "false_docs": 0,
+  "generated_docs": 0,
+  "generated_share": 0.0,
+  "human_docs": 104194,
+  "human_removed": 0,
+  "mode": "mix",
+  "num_docs": 104194,
+  "seed": 13,
+  "targeted": {
+    "attackable_queries": 1278,
+    "evaluated_queries": 1614,
+    "false_docs": {
+      "docs_added": 0,
+      "k": 1,
+      "k_shortfall": 0,
+      "mode": "replace",
+      "roots_with_docs": 0,
+      "source": "false_det"
+    },
+    "queries": "generation",
+    "query_ids": [],
+    "query_ratio": 0.0,
+    "targeted_queries": 0
+  }
+}

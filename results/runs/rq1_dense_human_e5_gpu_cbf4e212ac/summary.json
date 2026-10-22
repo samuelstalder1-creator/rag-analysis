@@ -1,6 +1,23 @@
 {
+  "corpus": {
+    "mode": "legacy"
+  },
   "num_docs": 104194,
   "num_queries": 2248,
+  "reader": null,
+  "retriever_specs": {
+    "e5": {
+      "batch_size": 512,
+      "cache_dir": "cache/embeddings",
+      "device": "cuda",
+      "local_files_only": true,
+      "max_seq_length": 128,
+      "model": "models/intfloat/e5-base-v2",
+      "score_device": "cuda",
+      "search_batch_size": 512,
+      "type": "e5"
+    }
+  },
   "retrievers": {
     "e5": {
       "correct_copy@1": 0.0,

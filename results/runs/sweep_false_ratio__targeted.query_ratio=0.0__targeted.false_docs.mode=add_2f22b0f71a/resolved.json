@@ -1,0 +1,14 @@
+{
+  "reader": null,
+  "retrievers": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true,
+      "type": "bm25"
+    },
+    "tfidf": {
+      "type": "tfidf"
+    }
+  }
+}

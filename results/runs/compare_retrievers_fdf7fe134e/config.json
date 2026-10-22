@@ -1,0 +1,77 @@
+{
+  "corpus": {
+    "seed": 13,
+    "sources": {
+      "false_det": {
+        "path": "data/generated/false-deterministic"
+      }
+    },
+    "targeted": {
+      "false_docs": {
+        "k": 1,
+        "mode": "add",
+        "source": "false_det"
+      },
+      "query_ratio": 1.0
+    }
+  },
+  "data": {
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqplus/clean"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      10,
+      100
+    ],
+    "relevance_modes": [
+      "strict",
+      "relaxed"
+    ]
+  },
+  "experiment": "compare_retrievers",
+  "output": {
+    "dir": "results/runs"
+  },
+  "queries": "generation",
+  "retrieval": {
+    "top_k": 100
+  },
+  "retriever_definitions": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true
+    },
+    "rrf": {
+      "fusion": "rrf",
+      "members": [
+        "bm25",
+        "tfidf"
+      ],
+      "rrf_k": 60,
+      "type": "hybrid"
+    },
+    "weighted": {
+      "fusion": "weighted",
+      "members": [
+        "bm25",
+        "tfidf"
+      ],
+      "normalization": "minmax",
+      "type": "hybrid",
+      "weights": {
+        "bm25": 0.7,
+        "tfidf": 0.3
+      }
+    }
+  },
+  "retrievers": [
+    "bm25",
+    "tfidf",
+    "rrf",
+    "weighted"
+  ],
+  "seed": 13
+}
