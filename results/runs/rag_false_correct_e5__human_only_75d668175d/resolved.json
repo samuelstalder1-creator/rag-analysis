@@ -1,0 +1,37 @@
+{
+  "reader": {
+    "cache_path": "cache/reader.sqlite",
+    "llm": {
+      "api_key_env": "LOCAL_LLM_API_KEY",
+      "base_url": "http://localhost:8000/v1",
+      "max_retries": 2,
+      "max_tokens": 256,
+      "model": "Qwen/Qwen3.5-2B",
+      "provider": "local_openai",
+      "timeout": 300
+    },
+    "llm_source": "configs/readers/qwen35-2b.yaml",
+    "prompt_hash": "2eb940b12aa8",
+    "prompt_source": "prompts/reader_v1.txt",
+    "prompt_template": "Answer the question using only the numbered context.\nIf the context is insufficient or conflicting, answer \"I don't know\".\nReturn a concise answer value without explanations or alternative answers.\nReturn JSON only: {{\"answer\": \"...\", \"citations\": [1, 3]}}\n\nQuestion: {question}\n\nContext:\n{context}\n",
+    "retrievers": [
+      "e5"
+    ],
+    "seed": 13,
+    "temperature": 0.0,
+    "top_k": 5
+  },
+  "retrievers": {
+    "e5": {
+      "batch_size": 128,
+      "cache_dir": "cache/embeddings",
+      "device": "cuda",
+      "local_files_only": true,
+      "max_seq_length": 128,
+      "model": "models/intfloat/e5-base-v2",
+      "score_device": "cuda",
+      "search_batch_size": 128,
+      "type": "e5"
+    }
+  }
+}
