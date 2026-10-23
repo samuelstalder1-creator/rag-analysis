@@ -57,6 +57,66 @@ def test_generic_paraphrase_retains_existing_contract():
     assert paraphrase(Client(), text="Source.") == "Rewritten."
 
 
+def test_copied_false_passage_is_retried_with_feedback_and_new_seed():
+    calls = []
+
+    class Client:
+        def generate(self, prompt, **kwargs):
+            calls.append((prompt, kwargs))
+            if len(calls) == 1:
+                return "The season contained 25 episodes."
+            assert "previous attempt was rejected" in prompt
+            return "Chicago Fire aired a total of 25 episodes during its fourth season."
+
+    result = paraphrase_false(
+        Client(), question="How many episodes?", target_answer="25",
+        title="Chicago Fire (season 4)", text="The season contained 25 episodes.",
+        temperature=0.3, seed=1, max_attempts=3,
+    )
+    assert result.startswith("Chicago Fire aired")
+    assert len(calls) == 2
+    assert calls[0][1]["seed"] != calls[1][1]["seed"]
+    assert calls[1][1]["temperature"] > calls[0][1]["temperature"]
+
+
+def test_copying_every_attempt_fails_with_responses_for_diagnosis():
+    class Client:
+        def generate(self, prompt, **kwargs):
+            return "The season contained 25 episodes."
+
+    with pytest.raises(ModelOutputError, match="near_duplicate_of_seed") as error:
+        paraphrase_false(
+            Client(), question="How many episodes?", target_answer="25", title="Season",
+            text="The season contained 25 episodes.", max_attempts=3,
+        )
+    assert len(error.value.attempts) == 3
+    assert all(a["response"] == "The season contained 25 episodes." for a in error.value.attempts)
+
+
+def test_album_title_does_not_trigger_surname_replacement():
+    from evlab.generation.minimal_edit import edit_all_answer_spans
+
+    text = "Their album Hold On reached number one on the charts. It was certified on September 12."
+    edited, edits = edit_all_answer_spans(text, ["Hold On"], "Moonlit Adventures", gold="Hold On")
+    assert edited == text.replace("Hold On", "Moonlit Adventures")
+    assert len(edits) == 1
+
+
+def test_surname_body_expands_only_with_explicit_source_title():
+    from evlab.generation.minimal_edit import edit_all_answer_spans
+
+    text = "In May 2015, Brown became party leader. Brown had been an MP."
+    edited, edits = edit_all_answer_spans(
+        text, ["Patrick Brown"], "Michael Thompson", gold="Patrick Brown",
+        context_title="Patrick Brown (politician)",
+    )
+    assert edited == "In May 2015, Michael Thompson became party leader. Thompson had been an MP."
+    assert edits[0]["kind"] == "surname_from_title"
+    with pytest.raises(ValueError, match="surname only"):
+        edit_all_answer_spans(text, ["Patrick Brown"], "Michael Thompson", gold="Patrick Brown",
+                              context_title="Unrelated politician")
+
+
 @pytest.mark.parametrize(
     "failed_check", [None, "supports_target", "no_gold_support", "unambiguous_answer"]
 )

@@ -40,6 +40,9 @@ def run_generation_pipeline(
         raise ValueError("samples_per_h must be positive")
     if not 0 < float(config.get("validation", {}).get("max_similarity", 0.95)) <= 1:
         raise ValueError("validation.max_similarity must be in (0, 1]")
+    max_attempts = config.get("false_document_max_attempts", 1)
+    if type(max_attempts) is not int or max_attempts < 1:
+        raise ValueError("false_document_max_attempts must be a positive integer")
     semantic = validation_mode(config) == "semantic"
     span_selection = str(config.get("span_selection", "llm"))
     if span_selection not in {"llm", "all"}:
@@ -164,6 +167,7 @@ def run_generation_pipeline(
                                     span_selection,
                                     verifier,
                                     text=text,
+                                    context_title=title,
                                     gold=gold,
                                     aliases=aliases,
                                     target_answer=target,
@@ -213,6 +217,9 @@ def run_generation_pipeline(
                                     text=edited_text,
                                     temperature=temperature,
                                     seed=seed,
+                                    max_attempts=config.get("false_document_max_attempts", 1),
+                                    max_similarity=float(config.get("validation", {}).get("max_similarity", 0.95)),
+                                    source_text=text,
                                 )
                             else:
                                 generated = paraphrase(
@@ -334,6 +341,9 @@ def run_generation_pipeline(
                                 }
                             )
                         except Exception as exc:
+                            attempts = getattr(exc, "attempts", [])
+                            if generated is None and attempts and attempts[-1].get("stage") == "paraphrase":
+                                generated = attempts[-1].get("response")
                             reject_count += _append_reject(
                                 rejects_path,
                                 {
@@ -369,9 +379,9 @@ def run_generation_pipeline(
     return result
 
 
-def _edit_spans(mode: str, client, *, text, aliases, target_answer, question, seed, gold=None):
+def _edit_spans(mode: str, client, *, text, aliases, target_answer, question, seed, gold=None, context_title=""):
     if mode == "all":
-        return edit_all_answer_spans(text, aliases, target_answer, gold=gold)
+        return edit_all_answer_spans(text, aliases, target_answer, gold=gold, context_title=context_title)
     return edit_answer_spans(client, text=text, aliases=aliases, target_answer=target_answer,
                              question=question, seed=seed)
 

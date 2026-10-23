@@ -106,6 +106,8 @@ def edit_answer_spans(
 
 NAME_SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "mpp", "mp", "md", "phd"}
 PERSON_TOKEN = re.compile(r"^[A-Z][\w'\-]*\.?$")
+NON_NAME_WORDS = {"on", "off", "in", "to", "of", "for", "at", "from", "by",
+                  "up", "out", "down", "over", "under", "into", "with", "and", "or"}
 
 
 def person_name_parts(name: str) -> tuple[str, str] | None:
@@ -115,11 +117,13 @@ def person_name_parts(name: str) -> tuple[str, str] | None:
         return None
     if tokens[0].lower() in {"the", "a", "an"}:
         return None
+    if any(token.strip(".,").lower() in NON_NAME_WORDS for token in tokens):
+        return None
     return tokens[0], tokens[-1].rstrip(".,")
 
 
 def edit_all_answer_spans(text: str, aliases: list[str], target_answer: str, *,
-                          gold: str | None = None) -> tuple[str, list[dict]]:
+                          gold: str | None = None, context_title: str = "") -> tuple[str, list[dict]]:
     """Rule-based edit: replace every gold-alias occurrence (no model involved).
 
     Unrelated occurrences of the same string are replaced as well, which keeps
@@ -137,18 +141,29 @@ def edit_all_answer_spans(text: str, aliases: list[str], target_answer: str, *,
     if parts:
         taken = [(s["start"], s["end"]) for s in found]
         surname_spans = [s for s in occurrences(text, [parts[1]])
+                         if s["text"] == parts[1]
                          if not any(a <= s["start"] < b for a, b in taken)]
     if not found and not surname_spans:
         raise ValueError("No editable gold-answer spans in source")
     if not found:
-        # Only a surname is present; the body never states the full answer.
-        raise ValueError("No editable gold-answer spans in source (surname only)")
+        # Only expand a surname if the original title explicitly names the gold.
+        if not occurrences(context_title, full):
+            raise ValueError("No editable gold-answer spans in source (surname only)")
+        target_parts = person_name_parts(target_answer)
+        surname = target_parts[1] if target_parts else target_answer
+        edits = [{**span, "replacement": target_answer if i == 0 else surname,
+                  "kind": "surname_from_title"} for i, span in enumerate(surname_spans)]
+        edited = text
+        for edit in reversed(edits):
+            edited = edited[:edit["start"]] + edit["replacement"] + edited[edit["end"]:]
+        return edited, edits
     edited, edits = apply_spans(text, found, target_answer)
     if surname_spans:
         target_parts = person_name_parts(target_answer)
         target_surname = target_parts[1] if target_parts else target_answer
         # Re-locate surnames in the edited text so offsets stay correct.
         remaining = [s for s in occurrences(edited, [parts[1]])
+                     if s["text"] == parts[1]
                      if not any(s["start"] < e["start"] + len(e["replacement"]) and s["end"] > e["start"]
                                 for e in _shifted(edits))]
         edited, surname_edits = apply_spans(edited, remaining, target_surname)

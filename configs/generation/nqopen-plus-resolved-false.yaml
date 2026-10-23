@@ -16,6 +16,7 @@ generation:
   conditions: ["false"]
   skip_missing_false_answers: true  # Retain all 1614 queries; report blocked targets separately.
   span_selection: all
+  false_document_max_attempts: 3  # Retry copied passages with rewrite feedback and a different seed.
   validation:
     mode: deterministic
     max_similarity: 0.95

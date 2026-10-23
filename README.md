@@ -456,6 +456,18 @@ uv run evlab generate-false-documents --config configs/generation/nqopen-plus-re
 uv run evlab generate-false-documents --config configs/generation/nqopen-plus-resolved-false.yaml --limit 5
 ```
 
+The resolved false-document config retries passages that exceed the 0.95
+similarity limit up to three times (`false_document_max_attempts: 3`). Each
+retry adds rewrite feedback and changes the sampling seed and temperature.
+Copies that still fail are rejected, with the attempted responses retained in
+the reject log. The revised rewrite prompt uses a new cache key, so previously
+cached copied passages do not require clearing the cache.
+
+For surname-only bodies, the editor expands the first surname to the complete
+target name only when the original title explicitly identifies the gold person.
+Without that title context, the body remains rejected. Album titles such as
+`Hold On` do not trigger surname replacement of ordinary words such as `on`.
+
 The corrected values are authored in
 `configs/data/nqopen-plus-context-resolutions.json`. Rebuild refuses missing cases,
 unsupported document reassignment, absent gold or targets present in sources.

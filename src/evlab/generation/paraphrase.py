@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+from difflib import SequenceMatcher
+
 from evlab.llm.client import LLMClient
-from evlab.generation.semantic import judge
+from evlab.generation.semantic import judge, ModelOutputError
 
 
 PARAPHRASE_PROMPT = """Original Text: {text}
@@ -12,7 +14,7 @@ Change wording and style.
 Return only the rewritten text.
 """
 
-FALSE_DOCUMENT_PROMPT = """FALSE_EVIDENCE_GENERATION v2: TARGET-ANSWER-PRESERVING
+FALSE_DOCUMENT_PROMPT = """FALSE_EVIDENCE_GENERATION v3: TARGET-ANSWER-PRESERVING
 Question: {question}
 Target answer for this counterfactual passage: {target_answer}
 
@@ -26,6 +28,8 @@ Do not restore the original answer or support a conflicting answer to the questi
 Unrelated background details may be reworded or omitted; reproducing every source
 claim is not required. Do not invent extra information.
 Use different wording and sentence structure; do not merely change punctuation.
+Begin with a newly written sentence that directly supports the target answer.
+Restructure the passage instead of copying the edited source sentence by sentence.
 Use the title to expand an unambiguous shortened subject when needed.
 
 Edited Title: {title}
@@ -44,11 +48,40 @@ def paraphrase_false(
     text: str,
     temperature: float = 0.4,
     seed: int | None = None,
+    max_attempts: int = 1,
+    max_similarity: float = 0.95,
+    source_text: str | None = None,
 ) -> str:
+    if type(max_attempts) is not int or max_attempts < 1:
+        raise ValueError("false_document_max_attempts must be a positive integer")
     prompt = FALSE_DOCUMENT_PROMPT.format(
         question=question, target_answer=target_answer, title=title, text=text
     )
-    return client.generate(prompt, temperature=temperature, seed=seed).strip()
+    attempts = []
+    for attempt in range(max_attempts):
+        response = client.generate(
+            prompt, temperature=min(1.0, temperature + 0.2 * attempt),
+            seed=seed + attempt * 1000000 if seed is not None else None,
+        ).strip()
+        reason = None
+        for reference, label in ((text, "seed"), (source_text, "source")):
+            if reference is not None and SequenceMatcher(
+                None, reference.casefold(), response.casefold()
+            ).ratio() >= max_similarity:
+                reason = f"near_duplicate_of_{label}"
+                break
+        if reason is None:
+            return response
+        attempts.append({"stage": "paraphrase", "attempt": attempt + 1,
+                         "response": response, "error": reason})
+        prompt += (
+            "\n\nThe previous attempt was rejected because it copied too much of the "
+            "source. Write a substantially different passage, starting with the "
+            "target-bearing claim. Reorganize sentences and use different wording. "
+            "Keep the complete target answer verbatim and preserve its relation, "
+            "units and scope. Do not just remove citations or change punctuation."
+        )
+    raise ModelOutputError(reason, attempts)
 
 
 def verify_false_answerability(client, **evidence) -> dict:

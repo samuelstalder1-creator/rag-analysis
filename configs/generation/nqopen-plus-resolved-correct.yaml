@@ -1,0 +1,27 @@
+# Correct evidence from the revised nqopen+ questions and unchanged human sources.
+# One candidate per call, at most three attempts per selected document.
+data:
+  nqplus_dir: data/nqopen+/resolved
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  scope: all_answer_documents
+  output_dir: data/generated/nqopen-plus-resolved-correct
+  cache_path: cache/llm_nqopen_plus_resolved_correct.sqlite
+  correct_max_attempts: 3
+  correct_retry_temperature_step: 0.2  # 0.3 -> 0.5 -> 0.7; all checks remain mandatory.
+  samples_per_h: 1
+  temperature: 0.3
+  resume: true
+  progress_every: 10
+  validation:
+    mode: deterministic
+    max_similarity: 0.95
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8000/v1
+    model: Qwen/Qwen3.5-2B
+    api_key_env: LOCAL_LLM_API_KEY
+    timeout: 600
+    max_retries: 2
+    retry_delay: 5
+    max_tokens: 2048
