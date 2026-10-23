@@ -232,8 +232,10 @@ def select_repairs(config: dict) -> tuple[list[tuple[dict, dict, dict]], dict]:
 
 
 def run_correct_repair(
-    config: dict, *, limit: int | None = None, dry_run: bool = False
+    config: dict, *, limit: int | None = None, dry_run: bool = False, retry_seed: int = 0
 ) -> dict:
+    if type(retry_seed) is not int or retry_seed < 0:
+        raise ValueError("retry_seed must be a non-negative integer")
     settings = config["generation"]
     if settings.get("samples_per_h", 1) != 1:
         raise ValueError("Correct replacement generation supports samples_per_h: 1")
@@ -348,7 +350,10 @@ def run_correct_repair(
                 if failures:
                     request += retry_feedback(failures[-1], mentions, attempt, maximum)
                 attempt_temperature = min(1.0, temperature + temperature_step * attempt)
-                seed = int(stable_hash({"doc_id": did, "attempt": attempt})[:8], 16) % (
+                seed_inputs = {"doc_id": did, "attempt": attempt}
+                if retry_seed:
+                    seed_inputs["retry_seed"] = retry_seed
+                seed = int(stable_hash(seed_inputs)[:8], 16) % (
                     2**31
                 )
                 # Transport failures propagate: do not spend the content-retry budget on a broken server.
@@ -448,6 +453,7 @@ def run_correct_repair(
                             ),
                             "replaced_text": old["text"] if old is not None else None,
                             "generation_attempts": attempt + 1,
+                            "retry_seed": retry_seed,
                             "temperature": attempt_temperature,
                             "seed": seed,
                             "matched_aliases": [
@@ -471,6 +477,7 @@ def run_correct_repair(
                             "doc_id": did,
                             "stage": stage,
                             "reason": "attempt_budget_exhausted",
+                            "retry_seed": retry_seed,
                             "attempts": failures,
                         }
                     ],
@@ -488,7 +495,7 @@ def run_correct_repair(
 
 
 def run_correct_generation(
-    config: dict, *, limit: int | None = None, dry_run: bool = False
+    config: dict, *, limit: int | None = None, dry_run: bool = False, retry_seed: int = 0
 ) -> dict:
     """Generate all annotated answer documents into a separate replacement corpus."""
     return run_correct_repair(
@@ -498,4 +505,5 @@ def run_correct_generation(
         },
         limit=limit,
         dry_run=dry_run,
+        retry_seed=retry_seed,
     )

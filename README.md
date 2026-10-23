@@ -463,6 +463,23 @@ Copies that still fail are rejected, with the attempted responses retained in
 the reject log. The revised rewrite prompt uses a new cache key, so previously
 cached copied passages do not require clearing the cache.
 
+To retry missing/rejected documents with fresh rewrite sampling, keep the same
+config and `resume: true`, and increment `--retry-seed` for each fresh retry:
+
+```bash
+uv run evlab generate-false-documents \
+  --config configs/generation/nqopen-plus-resolved-false.yaml \
+  --retry-seed 1
+```
+
+Completed documents are skipped and missing documents are appended to the same
+corpus. The retry seed is recorded in new document receipts and does not
+invalidate existing fingerprints. Reusing a retry seed reuses its cache entries.
+Reject logs retain historical failures; a reject record alone does not mean the
+document is still missing. Input/span problems need correction separately;
+changing the rewrite seed does not fix them. `--dry-run` reports input readiness,
+including blocked questions, rather than the number of missing output rows.
+
 For surname-only bodies, the editor expands the first surname to the complete
 target name only when the original title explicitly identifies the gold person.
 Without that title context, the body remains rejected. Album titles such as
@@ -477,6 +494,19 @@ Use `configs/experiments/nqopen-plus-resolved-human.yaml` for the RAG baseline o
 New generation outputs are isolated under `data/generated/nqopen-plus-resolved-false/`.
 
 ## Generate All Correct Answer Documents
+
+Retry rejected/missing correct documents with fresh sampling while preserving
+completed rows in the registered corpus:
+
+```bash
+uv run evlab generate-correct-documents \
+  --config configs/generation/nqopen-plus-resolved-correct.yaml \
+  --retry-seed 1
+```
+
+Keep `resume: true`; increment the retry seed for each fresh round. The same
+option is available for `repair-correct-documents`. Existing reject logs are
+historical and may include documents that succeeded in a later round.
 
 Generate one new correct copy per original answer-bearing document in the NQ+
 generation subset, independent of the old 104k generated corpus:

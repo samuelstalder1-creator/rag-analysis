@@ -232,6 +232,45 @@ def test_all_correct_generation_preserves_ids_titles_and_includes_title_context(
     assert len(prompts) == 3
 
 
+def test_correct_retry_seed_preserves_successes_and_retries_only_missing(tmp_path, monkeypatch):
+    config = setup(tmp_path)
+    calls = []
+    fresh = False
+
+    class Client:
+        provider = model = "test"
+
+        def generate(self, prompt, **kwargs):
+            calls.append(kwargs["seed"])
+            if "Original Title: Season one" in prompt:
+                return "A total of 23 episodes were broadcast."
+            if "Original Title: Season two" in prompt:
+                return "Viewers enjoyed 10 episodes over the season." if fresh else "The programme was televised."
+            return "The winter series consisted of 7 episodes."
+
+    monkeypatch.setattr(correct_repair, "build_llm_client", lambda cfg: Client())
+    queries = Path(config["data"]["nqplus_dir"]) / "queries.jsonl"
+    source_before = queries.read_bytes()
+    first = correct_repair.run_correct_generation(config)
+    assert first["generated"] == 2 and first["rejects"] == 1
+    corpus = next((tmp_path / "repair").glob("corpus_*.jsonl"))
+    before = read_jsonl(corpus)
+    assert len(calls) == 5
+    fresh = True
+    # Ordinary resume replays the cached failed responses.
+    repeated = correct_repair.run_correct_generation(config)
+    assert repeated["reused"] == 2 and repeated["rejects"] == 1
+    assert len(calls) == 5
+    result = correct_repair.run_correct_generation(config, retry_seed=1)
+    assert result["generated"] == 1 and result["reused"] == 2 and result["rejects"] == 0
+    assert len(calls) == 6
+    assert read_jsonl(corpus)[:2] == before
+    assert len(read_jsonl(corpus)) == 3
+    assert len(list((tmp_path / "repair").glob("corpus_*.jsonl"))) == 1
+    assert read_manifest(corpus)["d2"]["retry_seed"] == 1
+    assert queries.read_bytes() == source_before
+
+
 def test_all_correct_flags_missing_answer_context_instead_of_inventing_it(tmp_path):
     config = setup(tmp_path)
     originals = read_jsonl(config["data"]["human_corpus"])

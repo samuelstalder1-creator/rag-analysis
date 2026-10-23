@@ -17,7 +17,10 @@ def run_false_document_generation(
     human_corpus: str | Path | None = None,
     limit: int | None = None,
     dry_run: bool = False,
+    retry_seed: int = 0,
 ) -> dict:
+    if type(retry_seed) is not int or retry_seed < 0:
+        raise ValueError("retry_seed must be a non-negative integer")
     if config.get("source", "candidates") != "candidates":
         raise ValueError(
             "False-document generation requires query candidates with persisted false answers"
@@ -55,5 +58,5 @@ def run_false_document_generation(
             "false_answer_source": config.get("false_answer_source", "generated"),
         }
     return run_generation_pipeline(
-        {**config, "conditions": ["false"]}, candidates, limit=limit
+        {**config, "conditions": ["false"], "retry_seed": retry_seed}, candidates, limit=limit
     )

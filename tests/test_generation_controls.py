@@ -214,6 +214,39 @@ def test_changed_target_invalidates_resume(tmp_path, monkeypatch, certify):
         run_generation_pipeline(cfg, [row])
 
 
+def test_retry_seed_keeps_completed_rows_and_bypasses_cached_failure(tmp_path, monkeypatch, certify):
+    from evlab.generation import pipeline
+
+    calls = []
+
+    class Client:
+        model = provider = "test"
+
+        def generate(self, prompt, **kwargs):
+            calls.append(kwargs["seed"])
+            if "Across the season" in prompt:
+                return ("Across this season, audiences watched a total of 24 episodes."
+                        if kwargs["seed"] >= 10000000 else "There were no broadcasts.")
+            return "A total of 24 episodes were broadcast."
+
+    monkeypatch.setattr(pipeline, "build_llm_client", lambda config: Client())
+    row = candidate()
+    row["h_docs"].append({"doc_id": "d2", "title": "Season", "text": "Across the season, 23 episodes aired."})
+    row = certify(row)
+    cfg = {**config(tmp_path), "span_selection": "all", "validation": {"mode": "deterministic"}}
+    assert run_generation_pipeline(cfg, [row]) == {"generated": 1, "rejects": 1}
+    corpus = next((tmp_path / "out").glob("corpus_*.jsonl"))
+    before = read_jsonl(corpus)[0]
+    assert run_generation_pipeline(cfg, [row]) == {"generated": 0, "rejects": 0}
+    assert len(calls) == 2  # Cached failed response; no new model call.
+    assert run_generation_pipeline({**cfg, "retry_seed": 1}, [row]) == {"generated": 1, "rejects": 0}
+    assert len(calls) == 3  # Only the rejected document is regenerated.
+    assert read_jsonl(corpus)[0] == before
+    assert len(read_jsonl(corpus)) == 2
+    assert len(list((tmp_path / "out").glob("corpus_*.jsonl"))) == 1
+    assert read_manifest(corpus)["d2"]["retry_seed"] == 1
+
+
 def test_near_duplicate_and_failed_verification_never_write_document(
     tmp_path, monkeypatch, certify
 ):

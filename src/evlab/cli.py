@@ -38,6 +38,8 @@ def main(argv: list[str] | None = None) -> None:
         stage_parser.add_argument("--limit", type=int, default=None)
         if command == "generate-false-documents":
             stage_parser.add_argument("--dry-run", action="store_true")
+            stage_parser.add_argument("--retry-seed", type=int, default=0,
+                                      help="fresh rewrite sampling for missing documents; keeps completed rows")
     for command in ("generation-status", "cleanup-false"):
         maintenance_parser = subparsers.add_parser(command)
         maintenance_parser.add_argument("--config", required=True)
@@ -47,6 +49,8 @@ def main(argv: list[str] | None = None) -> None:
         correct_parser.add_argument("--config", required=True)
         correct_parser.add_argument("--limit", type=int, default=None)
         correct_parser.add_argument("--dry-run", action="store_true")
+        correct_parser.add_argument("--retry-seed", type=int, default=0,
+                                    help="fresh sampling for missing correct documents; keeps completed rows")
 
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("config")
@@ -109,12 +113,14 @@ def main(argv: list[str] | None = None) -> None:
         kwargs = {"limit": args.limit}
         if args.command == "generate-false-documents":
             kwargs["dry_run"] = args.dry_run
+            kwargs["retry_seed"] = args.retry_seed
         kwargs["human_corpus"] = config["data"].get("human_corpus")
         _print(stage(config["generation"], config["data"]["nqplus_dir"], **kwargs))
     elif args.command in {"repair-correct-documents", "generate-correct-documents"}:
         from evlab.generation.correct_repair import run_correct_repair, run_correct_generation
         stage = run_correct_generation if args.command == "generate-correct-documents" else run_correct_repair
-        _print(stage(load_config(args.config), limit=args.limit, dry_run=args.dry_run))
+        _print(stage(load_config(args.config), limit=args.limit, dry_run=args.dry_run,
+                     retry_seed=args.retry_seed))
     elif args.command == "generate":
         config = load_config(args.config)
         generation_config = config["generation"]

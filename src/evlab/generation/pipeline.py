@@ -43,6 +43,9 @@ def run_generation_pipeline(
     max_attempts = config.get("false_document_max_attempts", 1)
     if type(max_attempts) is not int or max_attempts < 1:
         raise ValueError("false_document_max_attempts must be a positive integer")
+    retry_seed = config.get("retry_seed", 0)
+    if type(retry_seed) is not int or retry_seed < 0:
+        raise ValueError("retry_seed must be a non-negative integer")
     semantic = validation_mode(config) == "semantic"
     span_selection = str(config.get("span_selection", "llm"))
     if span_selection not in {"llm", "all"}:
@@ -96,6 +99,7 @@ def run_generation_pipeline(
                     "conditions",
                     "samples_per_h",
                     "skip_missing_false_answers",
+                    "retry_seed",  # Operational retry control; completed fingerprints stay valid.
                 }
             },
             "prompts": [FALSE_ANSWER_PROMPT, MINIMAL_EDIT_PROMPT, PARAPHRASE_PROMPT, FALSE_DOCUMENT_PROMPT],
@@ -157,7 +161,7 @@ def run_generation_pipeline(
                     for sample in range(int(config.get("samples_per_h", 1))):
                         if output.contains(condition, sample, did, fingerprint):
                             continue
-                        seed = idx * 1000 + sample * 2 + int(condition == "false")
+                        seed = idx * 1000 + sample * 2 + int(condition == "false") + retry_seed * 10000000
                         edited_title, edited_text, edits = title, text, {}
                         generated = None
                         try:
@@ -300,6 +304,7 @@ def run_generation_pipeline(
                                     "title": edited_title,
                                     "text": generated,
                                     "validation_receipt": {
+                                        "retry_seed": retry_seed,
                                         "fingerprint": fingerprint,
                                         "query_id": candidate["query_id"],
                                         "gold_answer": gold,
