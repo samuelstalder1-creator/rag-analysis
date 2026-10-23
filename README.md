@@ -353,6 +353,65 @@ adoption from prose. Citation-range validity does not certify citation support.
 Metrics include category rates over all evaluated questions and target adoption
 among questions with a selected false target.
 
+## Generate All Correct Answer Documents
+
+Generate one new correct copy per original answer-bearing document in the NQ+
+generation subset, independent of the old 104k generated corpus:
+
+```bash
+uv run evlab generate-correct-documents --config configs/generation/qwen35-2b-correct-candidates.yaml --dry-run
+uv run evlab generate-correct-documents --config configs/generation/qwen35-2b-correct-candidates.yaml --limit 5
+uv run evlab generate-correct-documents --config configs/generation/qwen35-2b-correct-candidates.yaml
+```
+
+Scope is `docs_with_answer` for generation-eligible questions, not every qrel or
+reader question. The current audit covers 1,819 source documents for 1,614 questions:
+1,802 have a gold alias in the original title/body and are selected; 17 are flagged
+for review. Of the selected sources, 21 contain an answer alias only in the title.
+The generator receives both original title and body. It may expand an unambiguous
+shortened subject from the title, but must preserve the original answer claim and
+include an answer mention in its body without inventing relations.
+
+The output directory is `data/generated/qwen35-2b-correct-candidates/`. Registered
+`corpus_*.jsonl` files contain only `_id`, `title`, and `text`, with the **original
+human IDs and titles**. Successful rows can be manually substituted by `_id` in a
+copy of the old 104k corpus. The pipeline does not merge, replace or modify that
+file. Review the audit, reject log and coverage before substituting rows; failed
+or unsupported cases produce no replacement. `--limit` counts documents, not
+questions. Resume skips matching accepted copies. Up to three attempts are made
+per document. Default checks cover gold-alias presence, nonempty output and the
+near-duplicate threshold; full claim preservation is not certified without a
+calibrated semantic verifier (`validation.mode: semantic`, `validation.llm`).
+
+## Repair Correct Copies Missing Gold Answers
+
+Regenerate only existing correct copies that lack every annotated gold alias in
+their body. The repair starts from the original human body with a prompt that
+explicitly preserves an answer mention and its claim. Matching correct copies are
+not regenerated. Cases where the original body also lacks a gold alias are flagged
+for review rather than filled with an unsupported answer.
+
+```bash
+uv run evlab repair-correct-documents --config configs/generation/qwen35-2b-correct-repair.yaml --dry-run
+uv run evlab repair-correct-documents --config configs/generation/qwen35-2b-correct-repair.yaml --limit 5
+uv run evlab repair-correct-documents --config configs/generation/qwen35-2b-correct-repair.yaml
+```
+
+The current audit covers 1,819 generation-source documents, not the full 104k
+corpus: 270 generated bodies lack a gold alias; 238 have one in the original body
+and can be repaired automatically, while 32 need review. This is a literal alias
+audit, not a semantic finding that all 270 lost the answer claim.
+
+Outputs go to `data/generated/qwen35-2b-correct-repair/`, with the normal compact
+corpus, manifest, registry, audit and separate reject log. This is a replacement
+subset, not a new full 104k corpus. Use it to replace the corresponding original
+copies by source ID rather than adding both versions as independent evidence.
+The baseline and source queries are never overwritten. Resume skips matching
+successful repairs; each document has up to `correct_max_attempts: 3` attempts.
+The default deterministic checks require a gold alias and sufficient rewording;
+receipts remain `semantic_verified: false`. Set `validation.mode: semantic` and
+configure a calibrated `validation.llm` for claim-preservation checks.
+
 ## Generation Inventory and Cleanup
 
 `data/cocktail/nq/` contains the original Cocktail dataset: `queries.jsonl`,

@@ -1,0 +1,26 @@
+# Generate all 1,819 answer-bearing documents of the NQ+ generation subset.
+# One compact replacement corpus with original IDs; no edits to the 104k file.
+data:
+  nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  scope: all_answer_documents
+  output_dir: data/generated/qwen35-2b-correct-candidates
+  cache_path: cache/llm_correct_candidates.sqlite
+  correct_max_attempts: 3
+  samples_per_h: 1
+  temperature: 0.3
+  resume: true
+  progress_every: 10
+  validation:
+    mode: deterministic
+    max_similarity: 0.95
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8000/v1
+    model: Qwen/Qwen3.5-2B
+    api_key_env: LOCAL_LLM_API_KEY
+    timeout: 600
+    max_retries: 2
+    retry_delay: 5
+    max_tokens: 2048

@@ -38,6 +38,12 @@ def main(argv: list[str] | None = None) -> None:
         maintenance_parser = subparsers.add_parser(command)
         maintenance_parser.add_argument("--config", required=True)
 
+    for command in ("repair-correct-documents", "generate-correct-documents"):
+        correct_parser = subparsers.add_parser(command, help="generate checked correct document copies")
+        correct_parser.add_argument("--config", required=True)
+        correct_parser.add_argument("--limit", type=int, default=None)
+        correct_parser.add_argument("--dry-run", action="store_true")
+
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("config")
     run_parser.add_argument(
@@ -96,6 +102,10 @@ def main(argv: list[str] | None = None) -> None:
         kwargs = {"limit": args.limit}
         kwargs["human_corpus"] = config["data"].get("human_corpus")
         _print(stage(config["generation"], config["data"]["nqplus_dir"], **kwargs))
+    elif args.command in {"repair-correct-documents", "generate-correct-documents"}:
+        from evlab.generation.correct_repair import run_correct_repair, run_correct_generation
+        stage = run_correct_generation if args.command == "generate-correct-documents" else run_correct_repair
+        _print(stage(load_config(args.config), limit=args.limit, dry_run=args.dry_run))
     elif args.command == "generate":
         config = load_config(args.config)
         generation_config = config["generation"]
