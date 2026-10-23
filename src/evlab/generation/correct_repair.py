@@ -14,53 +14,83 @@ from evlab.generation.semantic import (
     deterministic_receipt,
     validation_mode,
     validator_signature,
-    verify_document,
+    judge,
 )
 from evlab.generation.validate import contains_alias, validate_correct_copy
 from evlab.io import append_jsonl, iter_jsonl, stable_hash, write_json
 from evlab.llm.cache import CachedLLMClient
 from evlab.llm.client import build_llm_client
 
-RETRY_POLICY_VERSION = 2
+RETRY_POLICY_VERSION = 3
+VALIDATION_GOAL = "query_answerability"
 
-REPAIR_PROMPT = """CORRECT_EVIDENCE_REPAIR v2
-Task: write a substantially reworded paragraph from the source below.
-Preserve every factual claim, quantity, unit and date. Preserve the answer claim.
-Protected answer mention: {protected_answer}
-Other equivalent source forms: {mentions}
-Include at least one complete answer form verbatim in a factual sentence.
-Do not reduce all full answer mentions to a surname or pronoun.
+REPAIR_PROMPT = """CORRECT_EVIDENCE_REPAIR v3: ANSWER-PRESERVING
+Question: {question}
+Correct answer from the source: {protected_answer}
+Equivalent source answer forms: {mentions}
 
-Use different sentence structures, clause order and wording. Start the paragraph
-differently from the original. Merely removing quotes or changing punctuation
-is not a rewrite. Keep the facts and names; rewrite the language around them.
-Do not add facts, headings, explanations or a bare answer list.
+Rewrite the source as a natural, self-contained evidence passage. The question
+must remain answerable with the supplied correct answer using this passage alone.
+Preserve the answer-bearing relationship, units, dates and qualifiers needed for
+THIS question. Keep at least one complete answer form verbatim in its supporting
+sentence; a bare mention, list, surname-only reference or denial is insufficient.
+Use only the source, not current outside knowledge, to answer the question.
+Unrelated background details may be reworded or omitted; reproducing every source
+claim is not required. Do not invent extra information.
+Use different wording and sentence structure; do not merely change punctuation.
 
 Original Text: {text}
 
-Return only the rewritten body.
+Return only the rewritten body, not a question-answer pair or commentary.
 """
 
-CORRECT_PROMPT = """CORRECT_EVIDENCE_GENERATION v2
-Task: write a substantially reworded paragraph from the source below.
-Preserve every factual claim, quantity, unit and date. Preserve the answer claim.
-Protected answer mention: {protected_answer}
-Other equivalent source forms: {mentions}
-Include at least one complete answer form verbatim in a factual sentence.
-Do not reduce all full answer mentions to a surname or pronoun.
+CORRECT_PROMPT = """CORRECT_EVIDENCE_GENERATION v3: ANSWER-PRESERVING
+Question: {question}
+Correct answer from the source: {protected_answer}
+Equivalent source answer forms: {mentions}
 
-Use different sentence structures, clause order and wording. Start the paragraph
-differently from the original. Merely removing quotes or changing punctuation
-is not a rewrite. Keep the facts and names; rewrite the language around them.
-The title identifies the subject. Expand an unambiguous shortened subject from
-the title when needed to retain a complete answer mention in the body.
-Do not invent relationships, omit claims, change scope, or append a bare answer.
+Rewrite the source as a natural, self-contained evidence passage. The question
+must remain answerable with the supplied correct answer using this passage alone.
+Preserve the answer-bearing relationship, units, dates and qualifiers needed for
+THIS question. Keep at least one complete answer form verbatim in its supporting
+sentence; a bare mention, list, surname-only reference or denial is insufficient.
+Use only the source, not current outside knowledge, to answer the question.
+Unrelated background details may be reworded or omitted; reproducing every source
+claim is not required. Do not invent extra information.
+Use different wording and sentence structure; do not merely change punctuation.
+Use the title as context to expand an unambiguous shortened subject when needed.
 
 Original Title: {title}
 Original Text: {text}
 
-Return only the rewritten body, without a heading or commentary.
+Return only the rewritten body, not a question-answer pair or commentary.
 """
+
+
+def verify_correct_answerability(client, *, evidence: dict, stage: str) -> dict:
+    """Assess the query's answer claim; unrelated claim drift is not a veto."""
+    return judge(
+        client,
+        stage=stage,
+        evidence={**evidence, "validation_goal": VALIDATION_GOAL},
+        checks={
+            "source_supports_gold": (
+                "The original source title/body supports the supplied gold answer to this exact question, "
+                "in the source's own temporal context, without needing current outside knowledge."
+            ),
+            "supports_gold": (
+                "The generated passage makes the exact question answerable with the gold answer or an equivalent alias. "
+                "It preserves the answer-bearing relation, units, dates and scope needed for that question. "
+                "A bare mention, negation or answer to a different question does not count."
+            ),
+            "unambiguous_answer": (
+                "The generated passage does not also support an incompatible answer to the SAME question. "
+                "Ignore omissions, additions or factual changes unrelated to answering this question: "
+                "they are not rejection reasons unless they change, contradict or obscure its answer claim. "
+                "Do not require every original claim to survive."
+            ),
+        },
+    )
 
 
 def retry_feedback(
@@ -82,7 +112,7 @@ def retry_feedback(
             "A surname or pronoun alone is insufficient. Use the title for an unambiguous full subject."
         )
     else:
-        guidance = "The last rewrite failed validation. Rephrase the original source again while preserving every fact and its answer claim."
+        guidance = "The last rewrite failed validation. Rephrase the original source again while preserving the correct answer claim, its relationship and the qualifiers needed for the question."
     return (
         f"\nAttempt {attempt + 1} of {maximum}. Previous validation error: {reason}.\n"
         + guidance
@@ -302,6 +332,7 @@ def run_correct_repair(
                 alias for alias in aliases if contains_alias(mention_source, alias)
             ]
             prompt = template.format(
+                question=candidate["query"],
                 title=doc["title"],
                 text=doc["text"],
                 mentions=mentions,
@@ -347,7 +378,9 @@ def run_correct_repair(
                     if similarity >= threshold:
                         raise ValueError("near_duplicate_of_source")
                     validation = (
-                        verify_document(verifier, **evidence, stage=stage)
+                        verify_correct_answerability(
+                            verifier, evidence=evidence, stage=stage
+                        )
                         if verifier
                         else deterministic_receipt(
                             stage=stage,
@@ -358,6 +391,8 @@ def run_correct_repair(
                             },
                         )
                     )
+                    validation["validation_goal"] = VALIDATION_GOAL
+                    validation["answerability_verified"] = verifier is not None
                 except ValueError as exc:
                     failures.append(
                         {
@@ -399,6 +434,7 @@ def run_correct_repair(
                             ),
                             "validation": validation,
                             "scope": scope,
+                            "validation_goal": VALIDATION_GOAL,
                             "answer_in_original_body": any(
                                 contains_alias(doc["text"], alias) for alias in aliases
                             ),

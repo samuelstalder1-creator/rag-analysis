@@ -368,11 +368,11 @@ Scope is `docs_with_answer` for generation-eligible questions, not every qrel or
 reader question. The current audit covers 1,819 source documents for 1,614 questions:
 1,802 have a gold alias in the original title/body and are selected; 17 are flagged
 for review. Of the selected sources, 21 contain an answer alias only in the title.
-The generator receives both original title and body. It may expand an unambiguous
+The generator receives the question, gold answer, original title and body. It may expand an unambiguous
 shortened subject from the title, but must preserve the original answer claim and
 include an answer mention in its body without inventing relations.
 
-The current output directory is `data/generated/qwen35-2b-correct-candidates-v2/`.
+The current output directory is `data/generated/qwen35-2b-correct-candidates-v3/`.
 The previous pilot remains in `data/generated/qwen35-2b-correct-candidates/`. Registered
 `corpus_*.jsonl` files contain only `_id`, `title`, and `text`, with the **original
 human IDs and titles**. Successful rows can be manually substituted by `_id` in a
@@ -380,14 +380,19 @@ copy of the old 104k corpus. The pipeline does not merge, replace or modify that
 file. Review the audit, reject log and coverage before substituting rows; failed
 or unsupported cases produce no replacement. `--limit` counts documents, not
 questions. Resume skips matching accepted copies. Up to three attempts are made
-per document. Prompt v2 explicitly requires a different opening and sentence
-structure. Retries use specific feedback for copying versus missing answer forms,
+per document. Prompt v3 prioritizes answerability for the exact question and
+requires different wording and sentence structure. Unrelated background details
+may be omitted; preserving every source claim is not required. Retries use specific feedback for copying versus missing answer forms,
 without repeating the failed rewrite as a copying anchor. Temperatures rise from
 0.3 to 0.5 to 0.7 (`correct_retry_temperature_step: 0.2`, capped at 1.0).
 The threshold is unchanged; exhausted cases remain rejected. Default checks cover
 gold-alias presence, nonempty output and the
-near-duplicate threshold; full claim preservation is not certified without a
-calibrated semantic verifier (`validation.mode: semantic`, `validation.llm`).
+near-duplicate threshold. These rules cannot verify answerability; receipts mark
+`answerability_verified: false`. With a calibrated semantic verifier
+(`validation.mode: semantic`, `validation.llm`), checks assess source support, the
+correct answer-bearing relation and absence of conflicting answers to the same
+question. Unrelated factual drift is not a rejection reason. Both modes record
+`validation_goal: query_answerability`.
 
 ## Repair Correct Copies Missing Gold Answers
 
@@ -416,7 +421,7 @@ The baseline and source queries are never overwritten. Resume skips matching
 successful repairs; each document has up to `correct_max_attempts: 3` attempts.
 The default deterministic checks require a gold alias and sufficient rewording;
 receipts remain `semantic_verified: false`. Set `validation.mode: semantic` and
-configure a calibrated `validation.llm` for claim-preservation checks.
+configure a calibrated `validation.llm` for the same query-answerability checks.
 
 ## Generation Inventory and Cleanup
 

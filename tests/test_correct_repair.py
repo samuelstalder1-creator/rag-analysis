@@ -102,7 +102,7 @@ def test_repair_retries_retains_originals_and_resumes(tmp_path, monkeypatch):
             seeds.append(kwargs["seed"])
             assert "There were 23 episodes." in prompt
             assert "['23']" in prompt
-            assert "How many episodes" not in prompt
+            assert "Question: How many episodes" in prompt
             return (
                 "A televised season."
                 if len(prompts) == 1
@@ -126,6 +126,8 @@ def test_repair_retries_retains_originals_and_resumes(tmp_path, monkeypatch):
     receipt = read_manifest(corpus)["d1"]
     assert receipt["generation_attempts"] == 2
     assert receipt["validation"]["semantic_verified"] is False
+    assert receipt["validation"]["validation_goal"] == "query_answerability"
+    assert receipt["validation"]["answerability_verified"] is False
     assert receipt["replaced_text"] == "The season aired on television."
     assert correct_repair.run_correct_repair(config)["reused"] == 1
     assert len(prompts) == 2
@@ -278,7 +280,7 @@ def test_correct_retries_copy_then_missing_answer_with_specific_feedback(
 
         def generate(self, prompt, **kwargs):
             calls.append((prompt, kwargs))
-            assert "Protected answer mention: 23" in prompt
+            assert "Correct answer from the source: 23" in prompt
             if len(calls) == 1:
                 return "There were 23 episodes."
             if len(calls) == 2:
@@ -330,3 +332,50 @@ def test_invalid_retry_temperature_step_rejected(tmp_path, step):
     config["generation"]["correct_retry_temperature_step"] = step
     with pytest.raises(ValueError, match="correct_retry_temperature_step"):
         correct_repair.run_correct_generation(config, dry_run=True)
+
+
+@pytest.mark.parametrize("failed_check", [None, "supports_gold", "unambiguous_answer"])
+def test_answerability_judge_uses_question_specific_checks(failed_check):
+    from evlab.generation.semantic import ModelOutputError
+
+    class Judge:
+        provider = model = "test"
+
+        def generate(self, prompt, **kwargs):
+            payload = json.loads(prompt.split("\n")[-1])
+            assert set(payload["checks"]) == {
+                "source_supports_gold",
+                "supports_gold",
+                "unambiguous_answer",
+            }
+            assert payload["evidence"]["validation_goal"] == "query_answerability"
+            assert payload["evidence"]["question"] == "How many episodes?"
+            assert "bare mention" in payload["checks"]["supports_gold"]
+            assert "unrelated" in payload["checks"]["unambiguous_answer"]
+            verdict = {name: name != failed_check for name in payload["checks"]}
+            return json.dumps({**verdict, "reason": "Controlled test verdict"})
+
+    # The positive case changes an irrelevant background detail. The negative
+    # cases still contain the gold string, but lose or contradict its relation.
+    generated = {
+        None: "23 episodes aired in spring.",
+        "supports_gold": "23 actors appeared in 24 episodes.",
+        "unambiguous_answer": "There were 23 episodes. There were 24 episodes.",
+    }[failed_check]
+    evidence = {
+        "question": "How many episodes?",
+        "gold": "23",
+        "aliases": ["23"],
+        "source": "23 episodes aired in winter.",
+        "generated": generated,
+    }
+    if failed_check:
+        with pytest.raises(ModelOutputError):
+            correct_repair.verify_correct_answerability(
+                Judge(), evidence=evidence, stage="correct_generation"
+            )
+    else:
+        receipt = correct_repair.verify_correct_answerability(
+            Judge(), evidence=evidence, stage="correct_generation"
+        )
+        assert receipt["semantic_verified"] is True
