@@ -1,0 +1,78 @@
+{
+  "corpus": {
+    "seed": 13,
+    "sources": {
+      "false_det": {
+        "path": "data/generated/false-deterministic"
+      },
+      "qwen_correct": {
+        "path": "data/generated/qwen35-2b-all"
+      }
+    },
+    "targeted": {
+      "correct_docs": {
+        "k": 0,
+        "mode": "add",
+        "source": "qwen_correct"
+      },
+      "false_docs": {
+        "k": 1,
+        "mode": "add",
+        "source": "false_det"
+      },
+      "query_ratio": 1.0
+    }
+  },
+  "data": {
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqplus/clean"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      10,
+      100
+    ],
+    "relevance_modes": [
+      "strict",
+      "relaxed"
+    ]
+  },
+  "experiment": "rag_false_correct_e5__false_add",
+  "output": {
+    "dir": "results/runs"
+  },
+  "queries": "rag",
+  "query_limit": 5,
+  "reader": {
+    "cache_path": "cache/reader.sqlite",
+    "llm": "configs/readers/qwen35-2b.yaml",
+    "prompt": "prompts/reader_v1.txt",
+    "retrievers": [
+      "e5"
+    ],
+    "seed": 13,
+    "temperature": 0.0,
+    "top_k": 5
+  },
+  "retrieval": {
+    "top_k": 100
+  },
+  "retriever_definitions": {
+    "e5": {
+      "batch_size": 128,
+      "cache_dir": "cache/embeddings",
+      "device": "cuda",
+      "local_files_only": true,
+      "max_seq_length": 128,
+      "model": "models/intfloat/e5-base-v2",
+      "score_device": "cuda",
+      "search_batch_size": 128,
+      "type": "e5"
+    }
+  },
+  "retrievers": [
+    "e5"
+  ],
+  "seed": 13
+}
