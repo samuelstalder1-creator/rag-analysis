@@ -26,6 +26,8 @@ def main(argv: list[str] | None = None) -> None:
     data_validate.add_argument("--config", required=True)
     data_classify = data_sub.add_parser("classify-answers")
     data_classify.add_argument("--config", required=True)
+    data_build = data_sub.add_parser("build-nqopen-plus")
+    data_build.add_argument("--config", required=True)
 
     gen_parser = subparsers.add_parser("generate")
     gen_parser.add_argument("--config", required=True)
@@ -34,6 +36,8 @@ def main(argv: list[str] | None = None) -> None:
         stage_parser = subparsers.add_parser(command)
         stage_parser.add_argument("--config", required=True)
         stage_parser.add_argument("--limit", type=int, default=None)
+        if command == "generate-false-documents":
+            stage_parser.add_argument("--dry-run", action="store_true")
     for command in ("generation-status", "cleanup-false"):
         maintenance_parser = subparsers.add_parser(command)
         maintenance_parser.add_argument("--config", required=True)
@@ -84,6 +88,9 @@ def main(argv: list[str] | None = None) -> None:
                 reviews_file=config["answer_classification"]["reviews_file"],
             )
         )
+    elif args.command == "data" and args.data_command == "build-nqopen-plus":
+        from evlab.data.nqopen_plus import build_nqopen_plus
+        _print(build_nqopen_plus(load_config(args.config)))
     elif args.command in {"generation-status", "cleanup-false"}:
         config = load_config(args.config)
         operation = (
@@ -100,6 +107,8 @@ def main(argv: list[str] | None = None) -> None:
             else run_false_document_generation
         )
         kwargs = {"limit": args.limit}
+        if args.command == "generate-false-documents":
+            kwargs["dry_run"] = args.dry_run
         kwargs["human_corpus"] = config["data"].get("human_corpus")
         _print(stage(config["generation"], config["data"]["nqplus_dir"], **kwargs))
     elif args.command in {"repair-correct-documents", "generate-correct-documents"}:

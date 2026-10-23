@@ -358,6 +358,112 @@ adoption from prose. Citation-range validity does not certify citation support.
 Metrics include category rates over all evaluated questions and target adoption
 among questions with a selected false target.
 
+## NQOpen+ Subset and Imported False Targets
+
+`data/nqopen+/` combines the **same 1,614 effective generation-eligible NQ+ questions**
+with Cocktail IDs/qrels and complete local NQ-Open CSV records. Question selection
+is fixed before target validation; review cases remain available for RAG testing.
+Original gold answers, aliases and IDs are retained. No answer-generator call is
+needed in this workflow.
+
+```bash
+uv run evlab data build-nqopen-plus --config configs/data/nqopen-plus.yaml
+uv run evlab data validate --config configs/data/nqopen-plus.yaml
+uv run evlab generate-false-documents --config configs/generation/nqopen-plus-false.yaml --dry-run
+uv run evlab generate-false-documents --config configs/generation/nqopen-plus-false.yaml --limit 5
+```
+
+The builder joins only unique matching question texts and checks Cocktail ID/text
+identity and qrel consistency. The current subset contains 1,614 RAG/generation
+queries, 1,819 answer-bearing documents and 1,933 relevant documents/qrels.
+`queries.jsonl` retains raw `correct_answers`, `incorrect_answers`, CSV fields and
+source metadata. `qrels/test.tsv` contains the subset's original qrels;
+`corpus/relevant.jsonl` is a convenient relevant-document extract. Retrieval still
+uses the full **104,194-document human corpus**, referenced by the configs and
+`dataset.json`; the extract is not a replacement background corpus.
+
+`false_answers.jsonl` contains **1,129 usable imported targets**, with provenance
+and deterministic validation receipts. **485 questions need review**; they remain
+in `queries.jsonl` and are listed in `false_answer_review.jsonl`. Imported targets
+are checked against all supplied correct answers, legacy type/alias rules and
+source occurrences. Some `incorrect_answers` actually equal gold (112 proposals),
+while other rejected entries may be legitimate targets blocked by conservative
+format rules. Eleven questions lack a matching gold alias in their sources;
+review reasons overlap. Rule acceptance does not establish semantic incorrectness.
+No target is silently invented or replaced with an LLM fallback.
+
+The nqopen+ document workflow now additionally enforces source constraints before
+model calls: the **complete gold answer must occur in every assigned original
+document**, and the false target must occur in none. Title and body are checked
+together after Unicode/whitespace normalization, with equivalent full date and
+number forms. A year-only alias does not establish a complete date. These checks
+are also applied on resume to existing target receipts. The 1,129/485 counts above
+describe the initial import; source-constrained readiness must be read from the
+current `--dry-run` or a rebuilt dataset.
+
+The separate `false_answer_review_cleaned.jsonl` retains all 485 reviewed rows and
+now records `validation.source_constraints.documents` per source ID. Of these,
+455 satisfy both presence constraints; 30 are blocked because at least one source
+lacks the complete gold answer. Every cleaned target is absent from its original
+sources under this check. Context/gold review notes remain independent of these
+lexical constraints. This cleaned review file is not a replacement for the
+receipt-bearing target file and is not automatically activated.
+
+The false-document config reads this target file directly using
+`false_answers_file` and writes to `data/generated/nqopen-plus-false/`.
+`skip_missing_false_answers: true` reports and skips blocked targets, without
+changing the dataset's 1,614-question evaluation scope. Fingerprints detect stale
+questions, sources and validation code. Rebuild after such changes. The answer
+model command refuses to overwrite imported targets. Previous generated corpora
+and saved answers remain separate.
+
+RAG configs:
+
+```bash
+# Human-only baseline: all 1,614 queries; no generated corpus required.
+uv run evlab run configs/experiments/nqopen-plus-human.yaml --limit 5
+# After generating false documents: human / false-add / false-replace.
+uv run evlab sweep configs/experiments/mix/nqopen-plus-rag.yaml --limit 5
+```
+
+Both configs use BM25 and the configured Qwen reader. Imported ready targets are
+also available to reader evaluation in the human-only baseline; review cases have
+no selected target. A generated document with a different target is rejected.
+Target adoption is scored on queries with selected targets; actual attack coverage
+is separately reported by corpus selection. Remove `--limit` for all questions.
+
+## Source-Grounded Resolution of the 48 Context Cases
+
+A separate revision in `data/nqopen+/resolved/` resolves the 48 context-review
+cases using unchanged relevant source documents. It contains all 1,614 queries,
+1,548 ready targets and 66 source-blocked cases. **43 questions were refined,
+five gold answers corrected, eight targets changed and five evidence assignments
+changed.** This is a versioned revision, not unchanged original-benchmark parity.
+Original questions, answers and qrels are retained in per-case lineage. Changed
+questions use reviewed evidence qrels (1,926 total); 1,814 answer documents remain.
+
+The `context_cases_resolved.jsonl` artifact includes each original/corrected pair,
+its full source text and presence checks. Gold occurs in every assigned source;
+the false target is absent from both assigned and all originally relevant sources.
+The assistant reviewed answer claims in context; no independent judge is claimed.
+For example, the Star Wars passages support a novelization preceding the film,
+while the South Korea passage counts all Games rather than only Winter Games.
+
+```bash
+uv run python scripts/resolve_nqopen_context_cases.py --config configs/data/nqopen-plus-resolved.yaml
+uv run evlab data validate --config configs/data/nqopen-plus-resolved.yaml
+uv run evlab generate-false-documents --config configs/generation/nqopen-plus-resolved-false.yaml --dry-run
+uv run evlab generate-false-documents --config configs/generation/nqopen-plus-resolved-false.yaml --limit 5
+```
+
+The corrected values are authored in
+`configs/data/nqopen-plus-context-resolutions.json`. Rebuild refuses missing cases,
+unsupported document reassignment, absent gold or targets present in sources.
+Ready-target receipts are regenerated against the revised question/gold/aliases.
+Use `configs/experiments/nqopen-plus-resolved-human.yaml` for the RAG baseline or
+`configs/experiments/mix/nqopen-plus-resolved-rag.yaml` for human/add/replace runs.
+New generation outputs are isolated under `data/generated/nqopen-plus-resolved-false/`.
+
 ## Generate All Correct Answer Documents
 
 Generate one new correct copy per original answer-bearing document in the NQ+

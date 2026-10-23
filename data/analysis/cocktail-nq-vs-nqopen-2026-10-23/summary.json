@@ -1,0 +1,119 @@
+{
+  "cocktail_rows": 3452,
+  "cocktail_unique": 3452,
+  "nqopen_rows": 3610,
+  "nqopen_unique": 3610,
+  "exact_matches": 2255,
+  "additional_normalized_matches": 0,
+  "cocktail_only": 1197,
+  "nqopen_only": 1355,
+  "shared": 2255,
+  "cocktail_coverage_pct": 65.32444959443801,
+  "nqopen_coverage_pct": 62.46537396121884,
+  "ambiguous_matches": 0,
+  "all_cocktail_with_qrels": 3446,
+  "shared_with_qrels": 2250,
+  "prepared_rows": 2248,
+  "prepared_all_exact_match": true,
+  "shared_not_prepared": [
+    {
+      "query_id": "test777",
+      "question": "when does like cage season 2 come out",
+      "has_qrel": false
+    },
+    {
+      "query_id": "test1276",
+      "question": "how many levels of protein structure are there",
+      "has_qrel": false
+    },
+    {
+      "query_id": "test1312",
+      "question": "who wrote from now on from the greatest showman",
+      "has_qrel": false
+    },
+    {
+      "query_id": "test1834",
+      "question": "who has been designed as the new finance secretary of india",
+      "has_qrel": false
+    },
+    {
+      "query_id": "test1887",
+      "question": "in another world with my smartphone japanese title",
+      "has_qrel": true
+    },
+    {
+      "query_id": "test2104",
+      "question": "what season does bart bass die in gossip girl",
+      "has_qrel": true
+    },
+    {
+      "query_id": "test2411",
+      "question": "who was the top scorer in 2014 world cup",
+      "has_qrel": false
+    }
+  ],
+  "prepared_answer_exact_matches": 2209,
+  "prepared_answer_format_differences": 39,
+  "prepared_answer_normalized_disagreements": 0,
+  "csv_type_counts": {
+    "Adversarial": 3610
+  },
+  "csv_category_counts": {
+    "Misconceptions": 3610
+  },
+  "csv_incorrect_nonempty": 3610,
+  "question_starters": {
+    "shared": {
+      "how": 108,
+      "who": 784,
+      "other": 279,
+      "where": 287,
+      "when": 413,
+      "what": 331,
+      "which": 43,
+      "why": 10
+    },
+    "cocktail_only": {
+      "what": 270,
+      "other": 336,
+      "when": 90,
+      "how": 87,
+      "why": 34,
+      "who": 173,
+      "which": 14,
+      "where": 193
+    },
+    "nqopen_only": {
+      "when": 255,
+      "who": 532,
+      "where": 102,
+      "what": 194,
+      "other": 179,
+      "how": 66,
+      "which": 26,
+      "why": 1
+    }
+  },
+  "median_question_word_count": {
+    "shared": 9,
+    "cocktail_only": 9
+  },
+  "sources": {
+    "cocktail": {
+      "path": "/Users/ssl/Documents/ZHAW/HS26/github/rag-analysis/data/cocktail/nq/queries.jsonl",
+      "sha256": "72f08f0cd333a47e393dac61cf1e56d4fb41eabf1d6ad5ca99f40250b0b491c8"
+    },
+    "nqopen": {
+      "path": "/Users/ssl/Documents/ZHAW/HS26/github/rag-analysis/data/nqopen/NQOpen.csv",
+      "sha256": "bed837b5c2f98353c51d8be324df9616b71b4d46446baf1553cd5832fd77751d"
+    },
+    "prepared": {
+      "path": "/Users/ssl/Documents/ZHAW/HS26/github/rag-analysis/data/nqplus/clean/queries.jsonl",
+      "sha256": "ffecc97a8c5a73a9697dde559765cf38862eaa6feb83a04bb816f716e0251e32"
+    },
+    "qrels": {
+      "path": "/Users/ssl/Documents/ZHAW/HS26/github/rag-analysis/data/cocktail/nq/qrels/test.tsv",
+      "sha256": "13d274d375518f87d753ae5f963061edcffd269f1e40683221b8da9a34006402"
+    }
+  }
+}

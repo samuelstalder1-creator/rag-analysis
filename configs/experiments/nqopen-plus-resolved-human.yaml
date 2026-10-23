@@ -1,0 +1,29 @@
+# Revised question/gold version; original benchmark remains separate.
+# RAG baseline on all 1614 queries; no generated documents required.
+experiment: nqopen_plus_resolved_human
+seed: 13
+queries: rag
+data:
+  nqplus_dir: data/nqopen+/resolved
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+corpus:
+  base: human
+retrievers: [bm25]
+retrieval:
+  top_k: 100
+  k1: 1.5
+  b: 0.75
+  remove_query_stopwords: true
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict]
+reader:
+  llm: configs/readers/qwen35-2b.yaml
+  temperature: 0.0
+  seed: 13
+  top_k: 5
+  prompt: prompts/reader_v1.txt
+  retrievers: [bm25]
+  cache_path: cache/reader_nqopen_plus_resolved.sqlite
+output:
+  dir: results/runs

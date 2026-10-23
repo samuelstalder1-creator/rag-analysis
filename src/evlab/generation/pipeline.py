@@ -4,7 +4,8 @@ from pathlib import Path
 from typing import Iterable
 from difflib import SequenceMatcher
 
-from evlab.generation.false_answer import is_valid_false_answer, FALSE_ANSWER_PROMPT
+from evlab.generation.false_answer import FALSE_ANSWER_PROMPT
+from evlab.generation.false_answers import valid_saved_answer
 from evlab.generation.minimal_edit import edit_answer_spans, edit_all_answer_spans, person_name_parts, MINIMAL_EDIT_PROMPT
 from evlab.generation.paraphrase import (
     paraphrase, PARAPHRASE_PROMPT, paraphrase_false, FALSE_DOCUMENT_PROMPT,
@@ -21,10 +22,8 @@ from evlab.generation.validate import (
 from evlab.generation.semantic import (
     build_verifier,
     verify_document,
-    VALIDATOR_VERSION,
     validator_signature,
     deterministic_receipt,
-    receipt_mode,
     validation_mode,
 )
 from evlab.generation.minimal_edit import occurrences
@@ -52,27 +51,9 @@ def run_generation_pipeline(
     if "false" in conditions:
         invalid = []
         for candidate in selected:
-            answer = candidate.get("false_answer")
-            evidence = {
-                "question": candidate["query"],
-                "gold": candidate["answer"],
-                "aliases": candidate["answer_aliases"],
-                "target": answer,
-                "sources": candidate["h_docs"],
-            }
-            record = candidate.get("false_answer_record", {})
-            verification = record.get("verification", {})
-            if (
-                not is_valid_false_answer(
-                    answer,
-                    candidate["answer"],
-                    candidate["answer_aliases"],
-                    question=candidate["query"],
-                )
-                or verification.get("version") != VALIDATOR_VERSION
-                or verification.get("validator_hash") != validator_signature()
-                or verification.get("evidence_hash") != stable_hash(evidence)
-                or (semantic and receipt_mode(verification) != "semantic")
+            if not valid_saved_answer(
+                candidate, require_semantic=semantic,
+                require_source_constraints=config.get("require_source_constraints", config.get("false_answer_source") == "nqopen_import"),
             ):
                 invalid.append(str(candidate["query_id"]))
         if invalid and config.get("skip_missing_false_answers", False):
@@ -85,8 +66,13 @@ def run_generation_pipeline(
                 flush=True,
             )
         elif invalid:
+            remedy = (
+                "Rebuild nqopen+ and review false_answer_review.jsonl"
+                if config.get("false_answer_source") == "nqopen_import"
+                else "Run evlab generate-false-answers --config <config> first"
+            )
             raise ValueError(
-                f"Missing, stale or unverified saved false answers: {', '.join(invalid[:10])}. Run evlab generate-false-answers --config <config> first"
+                f"Missing, stale or unverified saved false answers: {', '.join(invalid[:10])}. {remedy}"
             )
     client = CachedLLMClient(
         build_llm_client(config["llm"]), config.get("cache_path", "cache/llm.sqlite")
@@ -311,6 +297,14 @@ def run_generation_pipeline(
                                         "query_id": candidate["query_id"],
                                         "gold_answer": gold,
                                         "target_answer": target,
+                                        "false_answer_origin": (
+                                            candidate.get("false_answer_record", {}).get("origin", "generated")
+                                            if condition == "false" else None
+                                        ),
+                                        "false_answer_record_hash": (
+                                            stable_hash(candidate["false_answer_record"])
+                                            if condition == "false" else None
+                                        ),
                                         "source_hash": stable_hash(doc),
                                         "source_content_hash": stable_hash(
                                             {

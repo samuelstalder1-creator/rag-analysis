@@ -32,6 +32,8 @@ from evlab.llm.client import build_llm_client
 
 
 def answers_path(config: dict) -> Path:
+    if config.get("false_answers_file"):
+        return Path(config["false_answers_file"])
     return (
         Path(config.get("output_dir", "data/generated/pilot"))
         / "generated_false_answers.jsonl"
@@ -46,6 +48,11 @@ def answer_source_hash(question: str, gold: str, aliases: list[str]) -> str:
 
 def attach_saved_answers(candidates: list[dict], config: dict) -> list[dict]:
     path = answers_path(config)
+    if config.get("false_answer_source") == "nqopen_import" and not path.exists():
+        raise ValueError(
+            "Missing nqopen+ targets; run evlab data build-nqopen-plus "
+            "--config configs/data/nqopen-plus.yaml"
+        )
     # Deterministic runs may use any receipt; semantic runs require judged answers.
     require_semantic = validation_mode(config) == "semantic"
     saved = {}
@@ -74,6 +81,36 @@ def attach_saved_answers(candidates: list[dict], config: dict) -> list[dict]:
                 candidate["false_answer"] = row.get("false_answer")
                 candidate["false_answer_record"] = row
     return candidates
+
+
+def valid_saved_answer(
+    candidate: dict, *, require_semantic: bool, require_source_constraints: bool = False
+) -> bool:
+    answer = candidate.get("false_answer")
+    verification = candidate.get("false_answer_record", {}).get("verification", {})
+    evidence = {
+        "question": candidate["query"],
+        "gold": candidate["answer"],
+        "aliases": candidate["answer_aliases"],
+        "target": answer,
+        "sources": candidate["h_docs"],
+    }
+    if require_source_constraints:
+        from evlab.generation.source_constraints import check_source_constraints
+        if not check_source_constraints(
+            gold=candidate["answer"], target=answer, documents=candidate["h_docs"]
+        )["eligible"]:
+            return False
+    return (
+        is_valid_false_answer(
+            answer, candidate["answer"], candidate["answer_aliases"],
+            question=candidate["query"],
+        )
+        and verification.get("version") == VALIDATOR_VERSION
+        and verification.get("validator_hash") == validator_signature()
+        and verification.get("evidence_hash") == stable_hash(evidence)
+        and (not require_semantic or receipt_mode(verification) == "semantic")
+    )
 
 
 def _save_answers(
@@ -209,6 +246,11 @@ def run_false_answer_generation(
     human_corpus: str | Path | None = None,
     limit: int | None = None,
 ) -> dict[str, int]:
+    if config.get("false_answers_file") or config.get("false_answer_source") == "nqopen_import":
+        raise ValueError(
+            "Imported nqopen+ targets are read-only; rebuild the subset with "
+            "evlab data build-nqopen-plus instead of generating answers"
+        )
     max_attempts = config.get("false_answer_max_attempts", 3)
     if type(max_attempts) is not int or max_attempts < 1:
         raise ValueError("false_answer_max_attempts must be a positive integer")

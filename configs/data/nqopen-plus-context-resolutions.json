@@ -1,0 +1,284 @@
+{
+  "version": 1,
+  "method": "assistant_review_against_unchanged_relevant_documents",
+  "resolutions": [
+    {
+      "query_id": "test88",
+      "reason": "The source is explicitly the 2017 film; specify that adaptation and its opening historical setting.",
+      "question": "In which historical setting does the story of the 2017 film Beauty and the Beast open?"
+    },
+    {
+      "query_id": "test116",
+      "reason": "Replace the moving last-player cutoff with the specific draft event explicitly documented.",
+      "question": "Which player was drafted tenth by the Milwaukee Bucks directly from a Canadian high school in 2016?"
+    },
+    {
+      "query_id": "test166",
+      "reason": "The passage explicitly locates the vasomotor center, not both named centers independently.",
+      "question": "In which part of the brain is the vasomotor center located?"
+    },
+    {
+      "query_id": "test183",
+      "reason": "The DJ-joining step identifies V uniquely. Retain its explicit source, and use absent L rather than the C segments already discussed.",
+      "question": "Which heavy-chain gene segment is joined to an already formed DJ complex during recombination?",
+      "false_answer": "L",
+      "answer_doc_ids": [
+        "doc6672"
+      ]
+    },
+    {
+      "query_id": "test204",
+      "reason": "The plot explicitly places Bruno in World War II; publication date is irrelevant."
+    },
+    {
+      "query_id": "test211",
+      "reason": "The source explicitly identifies the Super Bowl LII-winning season; remove the changing last-appearance question.",
+      "question": "In which season did the Eagles win Super Bowl LII, according to the source?"
+    },
+    {
+      "query_id": "test221",
+      "reason": "Peace is an explicitly supported meaning in both passages; war is absent and incompatible with that meaning."
+    },
+    {
+      "query_id": "test295",
+      "reason": "Hijab is a supported answer in both clothing passages; the absent kimono is not an alternative Islamic garment mentioned by either."
+    },
+    {
+      "query_id": "test412",
+      "reason": "The source documents subtractive notation, not a universal clock-face convention. VI denotes a different numeral and neither VI nor six occurs here.",
+      "question": "Which subtractive Roman numeral generally replaces IIII for four?",
+      "false_answer": "VI"
+    },
+    {
+      "query_id": "test470",
+      "reason": "The passage dates the case to 1959 but only says jury abolition followed soon after. Ask the dated event it actually establishes.",
+      "question": "In which year did the K. M. Nanavati v. State of Maharashtra court case take place?"
+    },
+    {
+      "query_id": "test491",
+      "reason": "Anchor the question to the historical tally expressly stated by the source.",
+      "question": "According to the source, which NFL team held the record with six Super Bowl championships?"
+    },
+    {
+      "query_id": "test635",
+      "reason": "The passage expressly contrasts Lignux and GNU/Linux; no unsupported generic Unix-clone origin claim is needed.",
+      "question": "What system designation did Richard Stallman favor after abandoning the spelling Lignux?"
+    },
+    {
+      "query_id": "test697",
+      "reason": "Specify the solar reference frame and distinguish the sidereal duration stated alongside it.",
+      "question": "How long does one Earth rotation take with respect to the Sun, according to the source?"
+    },
+    {
+      "query_id": "test750",
+      "reason": "Remove the leading or from the answer fragment and identify the second expressly named election body.",
+      "question": "Besides the Baseball Writers' Association of America, which body can elect players to the Baseball Hall of Fame according to the source?",
+      "gold": "Veterans Committee"
+    },
+    {
+      "query_id": "test810",
+      "reason": "The passage supplies a Gregorian date, not a BS-calendar conversion.",
+      "question": "On what Gregorian date was Nepal's Interim Constitution promulgated, according to the source?"
+    },
+    {
+      "query_id": "test965",
+      "reason": "Ask exactly the angular measurement definition stated by the passage.",
+      "question": "The ratio of circular arc length to radius measures an angle in which unit?"
+    },
+    {
+      "query_id": "test985",
+      "reason": "Use the document explicitly establishing the legal milestone rather than inferring a date from dam construction.",
+      "question": "In which year did Nevada legalize local gambling and Las Vegas issue its first gambling license, according to the source?",
+      "answer_doc_ids": [
+        "doc34541"
+      ]
+    },
+    {
+      "query_id": "test1064",
+      "reason": "The passage identifies the particular ship and scene, avoiding other vessels associated with Vader.",
+      "question": "What is the name of Darth Vader's flagship chasing the Tantive IV in the opening scene of Star Wars?"
+    },
+    {
+      "query_id": "test1256",
+      "reason": "The passage explicitly states reduced energy loss; it does not itself define the enclosed loop area.",
+      "question": "Which physical quantity associated with hysteresis is reduced by using iron with low coercivity?"
+    },
+    {
+      "query_id": "test1280",
+      "reason": "The last-Ice-Age clause describes the earlier low sea level. Use the explicitly stated formation condition instead.",
+      "question": "Under what sea-level change did the Solent river valley flood and the Isle of Wight form?",
+      "gold": "As sea levels rose",
+      "false_answer": "As sea levels fell",
+      "answer_aliases": [
+        "As sea levels rose",
+        "rising sea levels"
+      ]
+    },
+    {
+      "query_id": "test1305",
+      "reason": "Specify the seasons explicitly qualifying the Cadillac Mountain claim.",
+      "question": "Where does the source place the first US sunrise during fall and winter?"
+    },
+    {
+      "query_id": "test1374",
+      "reason": "The source dates the agreement; it does not establish a uniquely defined Harvard membership date.",
+      "question": "In which year did the presidents of the eight schools sign the first Ivy Group Agreement?"
+    },
+    {
+      "query_id": "test1456",
+      "reason": "Both passages explicitly establish the first Test victory in 1952.",
+      "question": "In which year did India's national cricket team win its first Test match?"
+    },
+    {
+      "query_id": "test1464",
+      "reason": "Keep the specifically stated accession date; do not conflate it with military events or the state title date range.",
+      "question": "On what date does the source say the princely state of Hyderabad acceded to the Indian Union?"
+    },
+    {
+      "query_id": "test1589",
+      "reason": "Preserve the rejected premise as a negative answer. A complete contrary clause can replace the source claim grammatically.",
+      "question": "According to the source, did the black core of pencils ever contain elemental lead?",
+      "false_answer": "contained the element lead until 1800"
+    },
+    {
+      "query_id": "test1671",
+      "reason": "Ask the status explicitly stated in the source; individual issue-series interruptions do not imply permanent discontinuation.",
+      "question": "How does the source describe the currency status of the US two-dollar bill?",
+      "false_answer": "discontinued denomination of U.S. currency"
+    },
+    {
+      "query_id": "test1722",
+      "reason": "The passage establishes this event and its magnitude, but contains no comparison proving a regional superlative.",
+      "question": "Which earthquake occurred along the Cascadia subduction zone on January 26 with an estimated moment magnitude of 8.7–9.2?"
+    },
+    {
+      "query_id": "test1745",
+      "reason": "The source states the US definition and the consistency contrast; no species change is asserted.",
+      "question": "In the US, in which physical property does tomato puree differ from tomato paste according to the source?"
+    },
+    {
+      "query_id": "test1852",
+      "reason": "Replace the compressed succession question with the explicitly documented coup.",
+      "question": "Whose coup brought down the French Directory, according to the source?",
+      "answer_doc_ids": [
+        "doc65122"
+      ]
+    },
+    {
+      "query_id": "test1960",
+      "reason": "The actions identify Dolley Madison specifically instead of asking which of many women changed the role.",
+      "question": "Which First Lady saved iconic treasures during the War of 1812 and set the standard for the role, according to the source?"
+    },
+    {
+      "query_id": "test1985",
+      "reason": "Use the historical Act actually described, without asking for current legislation.",
+      "question": "Which UK Act described by the source protects personal data stored on computers or in an organised paper filing system?"
+    },
+    {
+      "query_id": "test2125",
+      "reason": "The source dates establishment, not commencement of flights.",
+      "question": "When was Virgin Blue, now Virgin Australia, established according to the source?"
+    },
+    {
+      "query_id": "test2285",
+      "reason": "Ask for the replacement material explicitly stated rather than incorrectly labeling support cells as a repair process.",
+      "question": "What tissue does the body use to replace a cell that cannot be regenerated, according to the source?",
+      "gold": "stromal connective tissue",
+      "false_answer": "epithelial tissue"
+    },
+    {
+      "query_id": "test2314",
+      "reason": "The source gives an event year, not an elapsed duration.",
+      "question": "In which year did the Eagles win their third Super Bowl appearance, according to the source?"
+    },
+    {
+      "query_id": "test2343",
+      "reason": "Tie the incumbent to the historical source account rather than the present day.",
+      "question": "Who is identified as the current New York State Senate majority leader in the source's account following Dean Skelos's May 2015 resignation?"
+    },
+    {
+      "query_id": "test2391",
+      "reason": "The passage counts all Games, with no Winter-specific count. Remove the unsupported Winter restriction.",
+      "question": "According to the source, on how many occasions has the Republic of Korea hosted the Olympic Games?"
+    },
+    {
+      "query_id": "test2473",
+      "reason": "Both passages establish a novelization before the film, contradicting the original film gold.",
+      "question": "Which published format of Star Wars preceded the theatrical release of the 1977 film?",
+      "gold": "novelization",
+      "answer_aliases": [
+        "novelization",
+        "novelisation",
+        "book"
+      ]
+    },
+    {
+      "query_id": "test2632",
+      "reason": "Use the already relevant passage about the millionth hamburger, not another passage about one restaurant selling over four million. The relative time is literal in the source.",
+      "question": "How long after introducing the Golden Arches logo did McDonald's sell its millionth hamburger, according to the source?",
+      "gold": "A year later",
+      "false_answer": "Ten years later",
+      "answer_doc_ids": [
+        "doc90117"
+      ],
+      "answer_aliases": [
+        "A year later",
+        "one year later",
+        "one year",
+        "1 year"
+      ]
+    },
+    {
+      "query_id": "test2744",
+      "reason": "The explicit period and achievement identify Gandhi rather than any INC leader.",
+      "question": "Under whose leadership, especially after 1920, did Congress become the principal leader of the Indian independence movement?"
+    },
+    {
+      "query_id": "test2810",
+      "reason": "Frame the answer as the source-described usual requirement, without a universal or current legal claim.",
+      "question": "According to the source's description of shooting ranges in the United States, is a license typically required to use a range?"
+    },
+    {
+      "query_id": "test2819",
+      "reason": "The source explicitly supports this Einstein claim; it does not uniquely attribute electron-wave discovery to him.",
+      "question": "Who received the 1921 Nobel Prize for suggesting quantized light, according to the source?",
+      "answer_doc_ids": [
+        "doc96775"
+      ]
+    },
+    {
+      "query_id": "test2845",
+      "reason": "The passage counts series, not individual paintings.",
+      "question": "How many series of still life paintings does the source describe under the name Sunflowers?"
+    },
+    {
+      "query_id": "test2918",
+      "reason": "Remove Poland: the passage explicitly describes only the Baltic states.",
+      "question": "On what date does the source place the Soviet military occupation of the Baltic states under the Molotov–Ribbentrop Pact?"
+    },
+    {
+      "query_id": "test2988",
+      "reason": "Ask the literal Celsius value established by the source, not an unstated Kelvin conversion.",
+      "question": "What boiling-point temperature does the described Celsius scale assign to water at one atmosphere?"
+    },
+    {
+      "query_id": "test3148",
+      "reason": "The passage explicitly concludes the play was on stage prior to June 1592; the later false bound contradicts that conclusion."
+    },
+    {
+      "query_id": "test3297",
+      "reason": "The record-holder and eleven championships are explicit; retain the original 2017 reference."
+    },
+    {
+      "query_id": "test3322",
+      "reason": "The document establishes layer order, not physical addressing. Align the question to that documented claim.",
+      "question": "Which is the first and lowest layer of the seven-layer OSI model?"
+    },
+    {
+      "query_id": "test3417",
+      "reason": "Use the dated appointment. Replace the old false target because its shorter name Georgina Wood already occurs in the document.",
+      "question": "Who was sworn in as Chief Justice of Ghana on 19 June 2017, according to the source?",
+      "false_answer": "Anin Yeboah"
+    }
+  ]
+}

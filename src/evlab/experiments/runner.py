@@ -198,7 +198,14 @@ def _references_files(config: dict) -> bool:
 
 
 def _evaluate_reader(client, queries, run, docs_by_id, config):
-    targets = {}
+    # Imported targets also define the human-only baseline's target-adoption
+    # denominator. Documents may not silently override a dataset's target.
+    targets = {
+        query.query_id: query.metadata["false_answer"]
+        for query in queries
+        if query.metadata.get("false_answer_status") == "ready"
+        and query.metadata.get("false_answer")
+    }
     for doc in docs_by_id.values():
         if doc.condition == "false":
             if not doc.target_answer:

@@ -1,0 +1,8 @@
+data:
+  nqplus_dir: data/nqopen+/resolved
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+dataset_resolution:
+  source_dir: data/nqopen+
+  resolutions_file: configs/data/nqopen-plus-context-resolutions.json
+  expected_questions: 1614
+  expected_context_cases: 48

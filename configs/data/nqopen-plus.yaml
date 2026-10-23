@@ -1,0 +1,9 @@
+data:
+  nqplus_dir: data/nqopen+
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+dataset_build:
+  source_nqplus_dir: data/nqplus/clean
+  cocktail_queries: data/cocktail/nq/queries.jsonl
+  cocktail_qrels: data/cocktail/nq/qrels/test.tsv
+  nqopen_csv: data/nqopen/NQOpen.csv
+  expected_questions: 1614

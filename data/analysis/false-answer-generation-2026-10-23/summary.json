@@ -1,0 +1,95 @@
+{
+  "all_questions": 2248,
+  "eligible": 1614,
+  "excluded": 634,
+  "saved": 1572,
+  "missing": 42,
+  "attempts": {
+    "1": 1361,
+    "2": 157,
+    "3": 54
+  },
+  "by_answer_type": {
+    "number": {
+      "eligible": 47,
+      "saved": 47,
+      "first": 45,
+      "retry": 2
+    },
+    "person_or_organization": {
+      "eligible": 558,
+      "saved": 555,
+      "retry": 117,
+      "first": 438,
+      "missing": 3
+    },
+    "entity_or_text": {
+      "eligible": 597,
+      "missing": 34,
+      "saved": 563,
+      "first": 489,
+      "retry": 74
+    },
+    "location": {
+      "eligible": 194,
+      "saved": 194,
+      "first": 185,
+      "retry": 9
+    },
+    "date": {
+      "eligible": 109,
+      "saved": 105,
+      "first": 96,
+      "retry": 9,
+      "missing": 4
+    },
+    "year": {
+      "eligible": 107,
+      "saved": 107,
+      "first": 107
+    },
+    "quantity": {
+      "eligible": 2,
+      "saved": 1,
+      "first": 1,
+      "missing": 1
+    }
+  },
+  "missing_proposal_statuses_recomputed": {
+    "copies_question": 54,
+    "gold_equivalent": 17,
+    "invalid_type_or_placeholder": 409,
+    "malformed_response": 9,
+    "occurs_in_source": 2,
+    "near_alias": 35,
+    "gold_missing_in_source": 28
+  },
+  "all_observed_proposal_statuses": {
+    "valid": 6847,
+    "copies_question": 220,
+    "gold_equivalent": 577,
+    "occurs_in_source": 409,
+    "near_alias": 495,
+    "invalid_type_or_placeholder": 790,
+    "malformed_response": 9,
+    "gold_missing_in_source": 28
+  },
+  "missing_with_no_gold_alias_in_any_source": 11,
+  "missing_dominant_rejection": {
+    "copies_question": 5,
+    "invalid_type_or_placeholder": 24,
+    "gold_missing_in_source": 9,
+    "near_alias": 4
+  },
+  "saved_candidates_per_call": {
+    "5": 1572
+  },
+  "raw_exclusions_by_answer_kind": {
+    "list": 72,
+    "unresolved": 505,
+    "single": 42,
+    "conflict": 3,
+    "variants": 11,
+    "list_with_conflict": 1
+  }
+}

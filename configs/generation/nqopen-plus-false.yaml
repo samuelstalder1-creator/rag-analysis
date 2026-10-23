@@ -1,0 +1,29 @@
+# Imported targets: no generate-false-answers stage required.
+data:
+  nqplus_dir: data/nqopen+
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  false_answer_source: nqopen_import
+  require_source_constraints: true  # Full gold present and target absent in EVERY original title/body.
+  false_answers_file: data/nqopen+/false_answers.jsonl
+  output_dir: data/generated/nqopen-plus-false
+  cache_path: cache/llm_nqopen_plus.sqlite
+  samples_per_h: 1
+  temperature: 0.3
+  resume: true
+  progress_every: 10
+  conditions: ["false"]
+  skip_missing_false_answers: true  # Retain all 1614 queries; report blocked targets separately.
+  span_selection: all
+  validation:
+    mode: deterministic
+    max_similarity: 0.95
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8000/v1
+    model: Qwen/Qwen3.5-2B
+    api_key_env: LOCAL_LLM_API_KEY
+    timeout: 600
+    max_retries: 2
+    retry_delay: 5
+    max_tokens: 2048
