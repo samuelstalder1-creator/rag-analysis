@@ -1,0 +1,74 @@
+# Tables for the supervisor: duplication only, human + duplication, false/correct mixed.
+# Same 1,614 generation questions in every variant.
+#   uv run evlab sweep configs/experiments/mix/supervisor_tables.yaml
+experiment: supervisor_tables
+seed: 13
+queries: generation
+
+data:
+  nqplus_dir: data/nqplus/clean
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+
+corpus:
+  seed: 13
+  sources:
+    qwen_correct:
+      path: data/generated/qwen35-2b-all
+    cocktail_llama:
+      path: data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
+      origin: cocktail_llm
+    false_det:
+      path: data/generated/false-deterministic
+  background:
+    qwen_correct:
+      ratio: 0.0
+      mode: add
+    cocktail_llama:
+      ratio: 0.0
+      mode: add
+  targeted:
+    query_ratio: 1.0
+    false_docs:
+      source: false_det
+      k: 0
+      mode: add
+    correct_docs:
+      source: qwen_correct
+      k: 0
+      mode: add
+
+variants:
+  human_only: {}
+  dup_only_qwen:
+    corpus.background.qwen_correct.ratio: 1.0
+    corpus.background.qwen_correct.mode: replace
+  dup_only_llama:
+    corpus.background.cocktail_llama.ratio: 1.0
+    corpus.background.cocktail_llama.mode: replace
+  human_plus_qwen:
+    corpus.background.qwen_correct.ratio: 1.0
+  human_plus_llama:
+    corpus.background.cocktail_llama.ratio: 1.0
+  correct_only:
+    corpus.targeted.correct_docs.k: 1
+  false_only:
+    corpus.targeted.false_docs.k: 1
+  false_and_correct:
+    corpus.targeted.false_docs.k: 1
+    corpus.targeted.correct_docs.k: 1
+
+retrievers: [bm25, tfidf]
+retriever_definitions:
+  bm25:
+    k1: 1.5
+    b: 0.75
+    remove_query_stopwords: true
+retrieval:
+  top_k: 100
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict, relaxed]
+output:
+  dir: results/runs
+sweep_output:
+  dir: results/sweeps

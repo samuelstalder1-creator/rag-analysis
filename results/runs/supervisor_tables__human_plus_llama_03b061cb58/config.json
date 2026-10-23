@@ -1,0 +1,75 @@
+{
+  "corpus": {
+    "background": {
+      "cocktail_llama": {
+        "mode": "add",
+        "ratio": 1.0
+      },
+      "qwen_correct": {
+        "mode": "add",
+        "ratio": 0.0
+      }
+    },
+    "seed": 13,
+    "sources": {
+      "cocktail_llama": {
+        "origin": "cocktail_llm",
+        "path": "data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl"
+      },
+      "false_det": {
+        "path": "data/generated/false-deterministic"
+      },
+      "qwen_correct": {
+        "path": "data/generated/qwen35-2b-all"
+      }
+    },
+    "targeted": {
+      "correct_docs": {
+        "k": 0,
+        "mode": "add",
+        "source": "qwen_correct"
+      },
+      "false_docs": {
+        "k": 0,
+        "mode": "add",
+        "source": "false_det"
+      },
+      "query_ratio": 1.0
+    }
+  },
+  "data": {
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqplus/clean"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      10,
+      100
+    ],
+    "relevance_modes": [
+      "strict",
+      "relaxed"
+    ]
+  },
+  "experiment": "supervisor_tables__human_plus_llama",
+  "output": {
+    "dir": "results/runs"
+  },
+  "queries": "generation",
+  "retrieval": {
+    "top_k": 100
+  },
+  "retriever_definitions": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true
+    }
+  },
+  "retrievers": [
+    "bm25",
+    "tfidf"
+  ],
+  "seed": 13
+}
