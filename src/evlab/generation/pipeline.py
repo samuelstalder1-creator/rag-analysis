@@ -6,7 +6,10 @@ from difflib import SequenceMatcher
 
 from evlab.generation.false_answer import is_valid_false_answer, FALSE_ANSWER_PROMPT
 from evlab.generation.minimal_edit import edit_answer_spans, edit_all_answer_spans, person_name_parts, MINIMAL_EDIT_PROMPT
-from evlab.generation.paraphrase import paraphrase, PARAPHRASE_PROMPT
+from evlab.generation.paraphrase import (
+    paraphrase, PARAPHRASE_PROMPT, paraphrase_false, FALSE_DOCUMENT_PROMPT,
+    verify_false_answerability,
+)
 from evlab.generation.output import GenerationOutput
 from evlab.generation.validate import (
     contains_alias,
@@ -106,7 +109,8 @@ def run_generation_pipeline(
                     "skip_missing_false_answers",
                 }
             },
-            "prompts": [FALSE_ANSWER_PROMPT, MINIMAL_EDIT_PROMPT, PARAPHRASE_PROMPT],
+            "prompts": [FALSE_ANSWER_PROMPT, MINIMAL_EDIT_PROMPT, PARAPHRASE_PROMPT, FALSE_DOCUMENT_PROMPT],
+            "false_document_validation_goal": "query_target_answerability_v1",
             "validator": validator_signature(),
         }
     )
@@ -214,12 +218,23 @@ def run_generation_pipeline(
                                     condition=condition,
                                     stage="false_seed",
                                 )
-                            generated = paraphrase(
-                                client,
-                                text=edited_text,
-                                temperature=temperature,
-                                seed=seed,
-                            )
+                            if condition == "false":
+                                generated = paraphrase_false(
+                                    client,
+                                    question=question,
+                                    target_answer=target,
+                                    title=edited_title,
+                                    text=edited_text,
+                                    temperature=temperature,
+                                    seed=seed,
+                                )
+                            else:
+                                generated = paraphrase(
+                                    client,
+                                    text=edited_text,
+                                    temperature=temperature,
+                                    seed=seed,
+                                )
                             lexical = (
                                 validate_false_copy(
                                     generated,
@@ -368,13 +383,19 @@ def _edit_spans(mode: str, client, *, text, aliases, target_answer, question, se
 
 
 def _check_document(semantic: bool, verifier, **kwargs) -> dict:
+    target_goal = kwargs["condition"] == "false" and kwargs["stage"] == "paraphrase"
     if semantic:
+        if target_goal:
+            return verify_false_answerability(verifier, **kwargs)
         return verify_document(verifier, **kwargs)
     evidence = {key: kwargs[key] for key in
                 ("question", "gold", "aliases", "target", "source", "seed", "generated", "condition")}
     # The lexical, similarity and residue checks ran before this point.
     checks = {"nonempty": bool(kwargs["generated"].strip())}
-    return deterministic_receipt(stage=kwargs["stage"], evidence=evidence, checks=checks)
+    receipt = deterministic_receipt(stage=kwargs["stage"], evidence=evidence, checks=checks)
+    if target_goal:
+        receipt.update(validation_goal="query_target_answerability", answerability_verified=False)
+    return receipt
 
 
 def _conditions(config: dict) -> set[str]:

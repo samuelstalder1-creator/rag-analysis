@@ -276,9 +276,14 @@ Stage 2 asks the verifier to select answer-bearing occurrence indices in source
 text and titles. Only selected spans change. A single replacement pass preserves
 full-date/year granularity and leaves unrelated occurrences alone. A semantic
 seed check rejects changes to unrelated claims or broad identity substitutions
-that alter other facts. The generated paraphrase must affirm the target, cease
-supporting gold as the answer, preserve the seed's other claims, and remain
-relevant. Unrelated mentions of a gold string are allowed when the semantic check
+that alter other facts. The false-document prompt receives the question, target
+answer, edited title and edited body. Its generated paraphrase must support the
+target as the unambiguous answer to that exact question and cease supporting gold
+as the answer. Unrelated background details may be omitted; preserving every seed
+claim is not required. The optional semantic judge checks source support for gold,
+seed and generated support for the target, absence of gold support and conflicting
+answers. Deterministic validation remains rule-based and records
+`answerability_verified: false` with `validation_goal: query_target_answerability`. Unrelated mentions of a gold string are allowed when the semantic check
 confirms they do not answer the question. Correct paraphrases undergo factual
 preservation and relevance checks too, including full-human-corpus generation.
 
