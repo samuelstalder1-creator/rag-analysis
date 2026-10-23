@@ -263,3 +263,70 @@ def test_cli_all_correct_generation_audit(tmp_path, capsys):
     )
     result = json.loads(capsys.readouterr().out)
     assert result["selected_documents"] == 2 and result["eligible_documents"] == 3
+
+
+def test_correct_retries_copy_then_missing_answer_with_specific_feedback(
+    tmp_path, monkeypatch
+):
+    config = setup(tmp_path)
+    config["generation"].pop("repair_from")
+    config["generation"]["correct_retry_temperature_step"] = 0.2
+    calls = []
+
+    class Client:
+        provider = model = "test"
+
+        def generate(self, prompt, **kwargs):
+            calls.append((prompt, kwargs))
+            assert "Protected answer mention: 23" in prompt
+            if len(calls) == 1:
+                return "There were 23 episodes."
+            if len(calls) == 2:
+                assert "Reorganize the sentence structure" in prompt
+                assert "Previous failed rewrite" not in prompt
+                assert "All original requirements still apply" in prompt
+                return "The complete season was broadcast."
+            assert "A surname or pronoun alone is insufficient" in prompt
+            assert "The complete season was broadcast." not in prompt
+            return "A total of 23 episodes were broadcast."
+
+    monkeypatch.setattr(correct_repair, "build_llm_client", lambda cfg: Client())
+    result = correct_repair.run_correct_generation(config, limit=1)
+    assert result["generated"] == 1 and result["rejects"] == 0
+    assert [call[1]["temperature"] for call in calls] == pytest.approx([0.3, 0.5, 0.7])
+    assert len({call[1]["seed"] for call in calls}) == 3
+    corpus = next((tmp_path / "repair").glob("corpus_*.jsonl"))
+    receipt = read_manifest(corpus)["d1"]
+    assert [item["reason"] for item in receipt["failed_attempts"]] == [
+        "near_duplicate_of_source",
+        "missing_gold_answer",
+    ]
+    assert receipt["failed_attempts"][0]["similarity"] == 1
+    assert receipt["matched_aliases"] == ["23"]
+    assert receipt["temperature"] == pytest.approx(0.7)
+
+
+def test_copied_source_remains_rejected_at_every_temperature(tmp_path, monkeypatch):
+    config = setup(tmp_path)
+    calls = []
+
+    class Client:
+        provider = model = "test"
+
+        def generate(self, prompt, **kwargs):
+            calls.append(kwargs["temperature"])
+            return "There were 23 episodes."
+
+    monkeypatch.setattr(correct_repair, "build_llm_client", lambda cfg: Client())
+    result = correct_repair.run_correct_generation(config, limit=1)
+    assert result["generated"] == 0 and result["rejects"] == 1
+    assert len(calls) == 3
+    assert not read_jsonl(next((tmp_path / "repair").glob("corpus_*.jsonl")))
+
+
+@pytest.mark.parametrize("step", [-0.1, float("inf"), float("nan")])
+def test_invalid_retry_temperature_step_rejected(tmp_path, step):
+    config = setup(tmp_path)
+    config["generation"]["correct_retry_temperature_step"] = step
+    with pytest.raises(ValueError, match="correct_retry_temperature_step"):
+        correct_repair.run_correct_generation(config, dry_run=True)

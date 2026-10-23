@@ -8,6 +8,7 @@ generation:
   output_dir: data/generated/qwen35-2b-correct-repair
   cache_path: cache/llm_correct_repair.sqlite
   correct_max_attempts: 3
+  correct_retry_temperature_step: 0.2  # 0.3 -> 0.5 -> 0.7; all checks remain mandatory.
   temperature: 0.3
   resume: true
   progress_every: 10

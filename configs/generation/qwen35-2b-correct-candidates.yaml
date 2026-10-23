@@ -1,13 +1,15 @@
 # Generate all 1,819 answer-bearing documents of the NQ+ generation subset.
-# One compact replacement corpus with original IDs; no edits to the 104k file.
+# Prompt v2 uses explicit restructuring and error-specific retries.
+# Outputs are separate from the earlier pilot and keep original IDs.
 data:
   nqplus_dir: data/nqplus/clean
   human_corpus: data/cocktail/nq/corpus/human.jsonl
 generation:
   scope: all_answer_documents
-  output_dir: data/generated/qwen35-2b-correct-candidates
+  output_dir: data/generated/qwen35-2b-correct-candidates-v2
   cache_path: cache/llm_correct_candidates.sqlite
   correct_max_attempts: 3
+  correct_retry_temperature_step: 0.2  # 0.3 -> 0.5 -> 0.7; all checks remain mandatory.
   samples_per_h: 1
   temperature: 0.3
   resume: true

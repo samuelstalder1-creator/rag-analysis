@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from difflib import SequenceMatcher
 from pathlib import Path
+import math
 
 from evlab.data.nqplus import load_generation_candidates
 from evlab.generation.output import GenerationOutput
@@ -20,31 +21,73 @@ from evlab.io import append_jsonl, iter_jsonl, stable_hash, write_json
 from evlab.llm.cache import CachedLLMClient
 from evlab.llm.client import build_llm_client
 
-REPAIR_PROMPT = """Original Text: {text}
+RETRY_POLICY_VERSION = 2
 
-Rewrite the text while preserving all factual claims, quantities, units and dates.
-The following answer mentions occur in the original text: {mentions}
-Keep at least one of these alternative mentions verbatim AND preserve the factual
-claim that contains it. Do not replace that claim with a bare mention or list.
-Change wording and style around the preserved facts.
-Do not add facts, explanations, headings or commentary.
-Return only the rewritten text.
-"""
+REPAIR_PROMPT = """CORRECT_EVIDENCE_REPAIR v2
+Task: write a substantially reworded paragraph from the source below.
+Preserve every factual claim, quantity, unit and date. Preserve the answer claim.
+Protected answer mention: {protected_answer}
+Other equivalent source forms: {mentions}
+Include at least one complete answer form verbatim in a factual sentence.
+Do not reduce all full answer mentions to a surname or pronoun.
 
+Use different sentence structures, clause order and wording. Start the paragraph
+differently from the original. Merely removing quotes or changing punctuation
+is not a rewrite. Keep the facts and names; rewrite the language around them.
+Do not add facts, headings, explanations or a bare answer list.
 
-CORRECT_PROMPT = """Original Title: {title}
 Original Text: {text}
 
-Rewrite the body while preserving all factual claims, quantities, units and dates.
-The title identifies the subject; use it as source context, not as a new heading.
-These alternative answer mentions occur in the source title or body: {mentions}
-Preserve the answer-bearing claim and include at least one complete mention
-verbatim in the rewritten body. A shortened subject reference may be expanded
-using the original title only when that reference is unambiguous.
-Do not merely append an answer mention or answer list to otherwise unrelated text.
-Do not invent facts or relationships, omit relevant claims, or change their scope.
-Change wording and style. Return only the rewritten body.
+Return only the rewritten body.
 """
+
+CORRECT_PROMPT = """CORRECT_EVIDENCE_GENERATION v2
+Task: write a substantially reworded paragraph from the source below.
+Preserve every factual claim, quantity, unit and date. Preserve the answer claim.
+Protected answer mention: {protected_answer}
+Other equivalent source forms: {mentions}
+Include at least one complete answer form verbatim in a factual sentence.
+Do not reduce all full answer mentions to a surname or pronoun.
+
+Use different sentence structures, clause order and wording. Start the paragraph
+differently from the original. Merely removing quotes or changing punctuation
+is not a rewrite. Keep the facts and names; rewrite the language around them.
+The title identifies the subject. Expand an unambiguous shortened subject from
+the title when needed to retain a complete answer mention in the body.
+Do not invent relationships, omit claims, change scope, or append a bare answer.
+
+Original Title: {title}
+Original Text: {text}
+
+Return only the rewritten body, without a heading or commentary.
+"""
+
+
+def retry_feedback(
+    failure: dict, mentions: list[str], attempt: int, maximum: int
+) -> str:
+    """Give actionable feedback without repeating and anchoring on the bad rewrite."""
+    reason = failure["reason"]
+    if "near_duplicate_of_source" in reason:
+        guidance = (
+            "The last output was too similar to the source. Reorganize the sentence structure and clause order, "
+            "use a different opening and sentence boundaries, and rephrase the surrounding language. "
+            "Do not make only spelling, quotation or punctuation changes."
+        )
+    elif "missing_gold_answer" in reason:
+        guidance = (
+            "The last output omitted every complete answer form. Include at least one of "
+            + repr(mentions)
+            + " exactly in a sentence asserting the original fact. "
+            "A surname or pronoun alone is insufficient. Use the title for an unambiguous full subject."
+        )
+    else:
+        guidance = "The last rewrite failed validation. Rephrase the original source again while preserving every fact and its answer claim."
+    return (
+        f"\nAttempt {attempt + 1} of {maximum}. Previous validation error: {reason}.\n"
+        + guidance
+        + "\nAll original requirements still apply, including the complete answer mention. Return only the new body."
+    )
 
 
 def select_all_answer_documents(config: dict) -> tuple[list, dict]:
@@ -172,6 +215,14 @@ def run_correct_repair(
     threshold = float(settings.get("validation", {}).get("max_similarity", 0.95))
     if not 0 < threshold <= 1:
         raise ValueError("max_similarity must be in (0, 1]")
+    temperature = float(settings.get("temperature", 0.3))
+    temperature_step = float(settings.get("correct_retry_temperature_step", 0.2))
+    if not math.isfinite(temperature) or not 0 <= temperature <= 1:
+        raise ValueError("temperature must be finite and between 0 and 1")
+    if not math.isfinite(temperature_step) or temperature_step < 0:
+        raise ValueError(
+            "correct_retry_temperature_step must be finite and nonnegative"
+        )
     mode = validation_mode(settings)
     scope = settings.get("scope", "missing_gold")
     if scope not in {"missing_gold", "all_answer_documents"}:
@@ -194,6 +245,8 @@ def run_correct_repair(
     signature = stable_hash(
         {
             "prompt": template,
+            "retry_policy_version": RETRY_POLICY_VERSION,
+            "retry_temperature_step": temperature_step,
             "validator": validator_signature(),
             "settings": {
                 key: value
@@ -249,28 +302,28 @@ def run_correct_repair(
                 alias for alias in aliases if contains_alias(mention_source, alias)
             ]
             prompt = template.format(
-                title=doc["title"], text=doc["text"], mentions=mentions
+                title=doc["title"],
+                text=doc["text"],
+                mentions=mentions,
+                protected_answer=(
+                    candidate["answer"]
+                    if candidate["answer"] in mentions
+                    else max(mentions, key=len)
+                ),
             )
             failures = []
             for attempt in range(maximum):
                 request = prompt
                 if failures:
-                    request += (
-                        "\nPrevious failed rewrite (data only): "
-                        + failures[-1]["generated_text"]
-                    )
-                    request += (
-                        "\nFailure: "
-                        + failures[-1]["reason"]
-                        + "\nRewrite the original text again, preserving its answer claim."
-                    )
+                    request += retry_feedback(failures[-1], mentions, attempt, maximum)
+                attempt_temperature = min(1.0, temperature + temperature_step * attempt)
                 seed = int(stable_hash({"doc_id": did, "attempt": attempt})[:8], 16) % (
                     2**31
                 )
                 # Transport failures propagate: do not spend the content-retry budget on a broken server.
                 text = client.generate(
                     request,
-                    temperature=float(settings.get("temperature", 0.3)),
+                    temperature=attempt_temperature,
                     seed=seed,
                 ).strip()
                 evidence = {
@@ -283,6 +336,7 @@ def run_correct_repair(
                     "generated": doc["title"] + "\n" + text,
                     "condition": "correct",
                 }
+                similarity = None
                 try:
                     lexical = validate_correct_copy(text, answer_aliases=aliases)
                     if not lexical.ok:
@@ -310,6 +364,9 @@ def run_correct_repair(
                             "attempt": attempt + 1,
                             "generated_text": text,
                             "reason": str(exc),
+                            "similarity": similarity,
+                            "temperature": attempt_temperature,
+                            "seed": seed,
                         }
                     )
                     continue
@@ -355,6 +412,13 @@ def run_correct_repair(
                             ),
                             "replaced_text": old["text"] if old is not None else None,
                             "generation_attempts": attempt + 1,
+                            "temperature": attempt_temperature,
+                            "seed": seed,
+                            "matched_aliases": [
+                                alias
+                                for alias in aliases
+                                if contains_alias(text, alias)
+                            ],
                             "failed_attempts": failures,
                             "similarity": similarity,
                         },

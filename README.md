@@ -372,14 +372,20 @@ The generator receives both original title and body. It may expand an unambiguou
 shortened subject from the title, but must preserve the original answer claim and
 include an answer mention in its body without inventing relations.
 
-The output directory is `data/generated/qwen35-2b-correct-candidates/`. Registered
+The current output directory is `data/generated/qwen35-2b-correct-candidates-v2/`.
+The previous pilot remains in `data/generated/qwen35-2b-correct-candidates/`. Registered
 `corpus_*.jsonl` files contain only `_id`, `title`, and `text`, with the **original
 human IDs and titles**. Successful rows can be manually substituted by `_id` in a
 copy of the old 104k corpus. The pipeline does not merge, replace or modify that
 file. Review the audit, reject log and coverage before substituting rows; failed
 or unsupported cases produce no replacement. `--limit` counts documents, not
 questions. Resume skips matching accepted copies. Up to three attempts are made
-per document. Default checks cover gold-alias presence, nonempty output and the
+per document. Prompt v2 explicitly requires a different opening and sentence
+structure. Retries use specific feedback for copying versus missing answer forms,
+without repeating the failed rewrite as a copying anchor. Temperatures rise from
+0.3 to 0.5 to 0.7 (`correct_retry_temperature_step: 0.2`, capped at 1.0).
+The threshold is unchanged; exhausted cases remain rejected. Default checks cover
+gold-alias presence, nonempty output and the
 near-duplicate threshold; full claim preservation is not certified without a
 calibrated semantic verifier (`validation.mode: semantic`, `validation.llm`).
 
