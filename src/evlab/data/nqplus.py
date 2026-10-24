@@ -76,26 +76,69 @@ def load_generation_queries(nqplus_dir: str | Path) -> list[Query]:
     return _load_queries(nqplus_dir, "generation")
 
 
+def is_clean_dataset(nqplus_dir: str | Path) -> bool:
+    """BEIR-style folder: queries.jsonl, qrels/test.tsv and answers.jsonl (e.g. data/nqopen1520)."""
+    root = Path(nqplus_dir)
+    return (root / "answers.jsonl").exists() and (root / "qrels" / "test.tsv").exists()
+
+
+def _load_clean_candidates(root: Path) -> list[dict[str, Any]]:
+    answers: dict[str, dict] = {}
+    for row in iter_jsonl(root / "answers.jsonl"):
+        qid = str(row["_id"])
+        if qid in answers:
+            raise ValueError(f"Duplicate answer ID: {qid}")
+        answers[qid] = row
+    docs_by_query: dict[str, list[str]] = {}
+    with (root / "qrels" / "test.tsv").open(encoding="utf-8") as handle:
+        for line_no, line in enumerate(handle):
+            parts = line.rstrip("\r\n").split("\t")
+            if len(parts) < 3 or (line_no == 0 and parts[0] == "query-id"):
+                continue
+            if float(parts[2]) > 0:
+                docs_by_query.setdefault(parts[0], [])
+                if parts[1] not in docs_by_query[parts[0]]:
+                    docs_by_query[parts[0]].append(parts[1])
+    candidates, seen = [], set()
+    for row in iter_jsonl(root / "queries.jsonl"):
+        qid = str(row["_id"])
+        if qid in seen:
+            raise ValueError(f"Duplicate query ID: {qid}")
+        seen.add(qid)
+        answer = answers.get(qid, {}).get("answer")
+        docs = docs_by_query.get(qid, [])
+        if not answer or not docs:
+            raise ValueError(f"Query {qid} needs an entry in answers.jsonl and at least one qrel")
+        aliases = [str(a) for a in answers[qid].get("answer_aliases") or []] or [str(answer)]
+        candidates.append({"query_id": qid, "query": str(row["text"]), "answer": str(answer),
+                           "answer_aliases": aliases, "answer_kind": "single",
+                           "h_docs": [{"doc_id": did} for did in docs], "other_relevant_docs": []})
+    return candidates
+
+
 def load_generation_candidates(
     nqplus_dir: str | Path, human_corpus: str | Path | None = None, *, include_text: bool = True,
 ) -> list[dict[str, Any]]:
     """Build candidates in memory from query annotations and original documents."""
-    queries = load_generation_queries(nqplus_dir)
-    candidates = []
-    for query in queries:
-        docs = list(dict.fromkeys(str(did) for did in query.metadata.get("docs_with_answer", [])))
-        if not query.answer or not docs:
-            raise ValueError(f"Generation query {query.query_id} needs an answer and docs_with_answer")
-        if not set(docs) <= set(query.relevant_doc_ids):
-            raise ValueError(f"Generation query {query.query_id} references answer documents outside relevant_docs")
-        candidate = {"query_id": query.query_id, "query": query.text, "answer": query.answer,
-                     "answer_aliases": list(query.aliases), "answer_kind": query.metadata.get("answer_kind", "single"),
-                     "h_docs": [{"doc_id": did} for did in docs],
-                     "other_relevant_docs": [did for did in query.relevant_doc_ids if did not in docs]}
-        candidates.append(candidate)
+    root = Path(nqplus_dir)
+    clean = is_clean_dataset(root)
+    if clean:
+        candidates = _load_clean_candidates(root)
+    else:
+        candidates = []
+        for query in load_generation_queries(nqplus_dir):
+            docs = list(dict.fromkeys(str(did) for did in query.metadata.get("docs_with_answer", [])))
+            if not query.answer or not docs:
+                raise ValueError(f"Generation query {query.query_id} needs an answer and docs_with_answer")
+            if not set(docs) <= set(query.relevant_doc_ids):
+                raise ValueError(f"Generation query {query.query_id} references answer documents outside relevant_docs")
+            candidates.append({"query_id": query.query_id, "query": query.text, "answer": query.answer,
+                               "answer_aliases": list(query.aliases), "answer_kind": query.metadata.get("answer_kind", "single"),
+                               "h_docs": [{"doc_id": did} for did in docs],
+                               "other_relevant_docs": [did for did in query.relevant_doc_ids if did not in docs]})
     if include_text and candidates:
-        root = Path(nqplus_dir)
-        source_path = Path(human_corpus) if human_corpus is not None else root.parent.parent / "cocktail/nq/corpus/human.jsonl"
+        default = root.parent / "cocktail/nq/corpus/human.jsonl" if clean else root.parent.parent / "cocktail/nq/corpus/human.jsonl"
+        source_path = Path(human_corpus) if human_corpus is not None else default
         needed = {doc["doc_id"] for candidate in candidates for doc in candidate["h_docs"]}
         sources = {}
         for row in iter_jsonl(source_path):

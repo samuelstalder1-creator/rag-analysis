@@ -66,6 +66,18 @@ def attach_saved_answers(candidates: list[dict], config: dict) -> list[dict]:
         candidate.pop("false_answer", None)
         candidate.pop("false_answer_record", None)
         row = saved.get(str(candidate["query_id"]))
+        if row is not None and "verification" not in row and row.get("false_answer"):
+            # Plain answers.jsonl (data/nqopen1520): the target is imported and receives
+            # a rule-based receipt here; it must belong to the same gold answer.
+            if row.get("answer") in (None, candidate["answer"]):
+                candidate["false_answer"] = row["false_answer"]
+                candidate["false_answer_record"] = {
+                    "_id": row["_id"], "false_answer": row["false_answer"],
+                    "origin": "answers_jsonl", "source_hash": answer_source_hash(
+                        candidate["query"], candidate["answer"], candidate["answer_aliases"]),
+                    "verification": deterministic_answer_receipt(candidate, row["false_answer"]),
+                }
+            continue
         if row is not None and row.get("source_hash") == answer_source_hash(
             candidate["query"], candidate["answer"], candidate["answer_aliases"]
         ):

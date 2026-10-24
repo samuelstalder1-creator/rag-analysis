@@ -2,7 +2,7 @@
 # Correct evidence from the revised nqopen+ questions and unchanged human sources.
 # One candidate per call, at most three attempts per selected document.
 data:
-  nqplus_dir: data/nqopen+/base1520
+  nqplus_dir: data/nqopen1520  # queries.jsonl, qrels/test.tsv, answers.jsonl
   human_corpus: data/cocktail/nq/corpus/human.jsonl
 generation:
   scope: all_answer_documents

@@ -1,0 +1,1520 @@
+{"_id": "test1", "answer": "23", "answer_aliases": ["23"], "false_answer": "25"}
+{"_id": "test2", "answer": "Timothy B. Schmit", "answer_aliases": ["Timothy B. Schmit"], "false_answer": "Don Henley"}
+{"_id": "test3", "answer": "Patrick Brown", "answer_aliases": ["Patrick Brown", "Patrick Walter Brown MPP", "Patrick Walter Brown"], "false_answer": "Michael Thompson"}
+{"_id": "test4", "answer": "Hold On", "answer_aliases": ["Hold On"], "false_answer": "Moonlit Adventures"}
+{"_id": "test6", "answer": "Panning", "answer_aliases": ["Panning"], "false_answer": "Stereophonic reduction"}
+{"_id": "test9", "answer": "capital and financial markets", "answer_aliases": ["capital and financial markets"], "false_answer": "The government"}
+{"_id": "test10", "answer": "by June 15, 2018", "answer_aliases": ["by June 15, 2018", "June 15, 2018"], "false_answer": "December 2022"}
+{"_id": "test11", "answer": "Elvis Presley", "answer_aliases": ["Elvis Presley"], "false_answer": "Frank Sinatra"}
+{"_id": "test12", "answer": "Christopher Allen Lloyd", "answer_aliases": ["Christopher Allen Lloyd"], "false_answer": "Michael J. Fox"}
+{"_id": "test14", "answer": "Sakshi Malik", "answer_aliases": ["Sakshi Malik"], "false_answer": "Angelina Jolie"}
+{"_id": "test15", "answer": "five", "answer_aliases": ["five", "5"], "false_answer": "three"}
+{"_id": "test16", "answer": "Little Boy", "answer_aliases": ["Little Boy"], "false_answer": "Trinity"}
+{"_id": "test19", "answer": "midpiece", "answer_aliases": ["midpiece"], "false_answer": "In the tail"}
+{"_id": "test20", "answer": "3", "answer_aliases": ["3", "three"], "false_answer": "4"}
+{"_id": "test22", "answer": "fourteen", "answer_aliases": ["fourteen", "14"], "false_answer": "Season 20"}
+{"_id": "test24", "answer": "Sharecropping", "answer_aliases": ["Sharecropping"], "false_answer": "Serfs"}
+{"_id": "test27", "answer": "Paradise, Nevada", "answer_aliases": ["Paradise, Nevada", "in Paradise, Nevada"], "false_answer": "Las Vegas, Nevada"}
+{"_id": "test30", "answer": "enemy", "answer_aliases": ["enemy"], "false_answer": "People of the Plains"}
+{"_id": "test31", "answer": "Saint Peter", "answer_aliases": ["Saint Peter"], "false_answer": "Saint Paul"}
+{"_id": "test35", "answer": "commemorating fealty and filial piety", "answer_aliases": ["commemorating fealty and filial piety"], "false_answer": "Celebrating dragons' birthdays"}
+{"_id": "test36", "answer": "Adam Caine", "answer_aliases": ["Adam Caine"], "false_answer": "Edmund Jennings"}
+{"_id": "test39", "answer": "more than a million", "answer_aliases": ["more than a million"], "false_answer": "1.5 million"}
+{"_id": "test42", "answer": "the late 6th century BCE", "answer_aliases": ["the late 6th century BCE"], "false_answer": "the late 5th century BCE"}
+{"_id": "test47", "answer": "four years", "answer_aliases": ["four years"], "false_answer": "6 years"}
+{"_id": "test48", "answer": "Utah", "answer_aliases": ["Utah"], "false_answer": "Grand Canyon National Park"}
+{"_id": "test51", "answer": "Dr. Jesse Bennett", "answer_aliases": ["Dr. Jesse Bennett"], "false_answer": "Dr. William Shippen"}
+{"_id": "test53", "answer": "Sicily", "answer_aliases": ["Sicily"], "false_answer": "To Rome, Italy"}
+{"_id": "test54", "answer": "April 13, 2018", "answer_aliases": ["April 13, 2018", "13 April 2018", "13 Apr 2018", "Apr 13, 2018", "2018-04-13"], "false_answer": "June 15, 2018"}
+{"_id": "test58", "answer": "Domhnall Gleeson", "answer_aliases": ["Domhnall Gleeson"], "false_answer": "Ewan McGregor"}
+{"_id": "test62", "answer": "Lalo Schifrin", "answer_aliases": ["Lalo Schifrin", "Argentine composer Lalo Schifrin"], "false_answer": "John Williams"}
+{"_id": "test64", "answer": "stage", "answer_aliases": ["stage", "on the microscope's stage"], "false_answer": "Underneath the objective lens"}
+{"_id": "test72", "answer": "September 21, 2017", "answer_aliases": ["September 21, 2017", "21 September 2017", "21 Sep 2017", "Sep 21, 2017", "2017-09-21"], "false_answer": "September 19, 2019"}
+{"_id": "test74", "answer": "Adam", "answer_aliases": ["Adam"], "false_answer": "Noah"}
+{"_id": "test75", "answer": "24 hours", "answer_aliases": ["24 hours"], "false_answer": "48 hours"}
+{"_id": "test76", "answer": "November 26, 1956", "answer_aliases": ["November 26, 1956", "1956", "26 November 1956", "26 Nov 1956", "Nov 26, 1956", "1956-11-26"], "false_answer": "June 15, 1955"}
+{"_id": "test77", "answer": "Thespis", "answer_aliases": ["Thespis"], "false_answer": "Aeschylus"}
+{"_id": "test79", "answer": "Louis Prima", "answer_aliases": ["Louis Prima"], "false_answer": "Frank Sinatra"}
+{"_id": "test83", "answer": "the Gilbert building", "answer_aliases": ["the Gilbert building"], "false_answer": "In a cave"}
+{"_id": "test84", "answer": "the states", "answer_aliases": ["the states"], "false_answer": "State governments"}
+{"_id": "test85", "answer": "1871 A.D", "answer_aliases": ["1871 A.D", "1871"], "false_answer": "1905 A.D"}
+{"_id": "test86", "answer": "10", "answer_aliases": ["10", "ten", "ten times"], "false_answer": "12"}
+{"_id": "test87", "answer": "1850", "answer_aliases": ["1850"], "false_answer": "1875"}
+{"_id": "test88", "answer": "Rococo-era France", "answer_aliases": ["Rococo-era France", "France"], "false_answer": "Victorian-era England"}
+{"_id": "test90", "answer": "Numbers 22:28", "answer_aliases": ["Numbers 22:28"], "false_answer": "The Book of Limericks"}
+{"_id": "test91", "answer": "Asha Bhosle", "answer_aliases": ["Asha Bhosle"], "false_answer": "Michael Jackson"}
+{"_id": "test93", "answer": "Pope Gregory I the Great", "answer_aliases": ["Pope Gregory I the Great"], "false_answer": "Ancient Rome"}
+{"_id": "test94", "answer": "Lesley Gore", "answer_aliases": ["Lesley Gore"], "false_answer": "Madonna"}
+{"_id": "test96", "answer": "1978", "answer_aliases": ["1978"], "false_answer": "1950"}
+{"_id": "test97", "answer": "1945", "answer_aliases": ["1945"], "false_answer": "1962"}
+{"_id": "test98", "answer": "late 1967", "answer_aliases": ["late 1967", "1967"], "false_answer": "late 1968"}
+{"_id": "test101", "answer": "Tim Duncan", "answer_aliases": ["Tim Duncan"], "false_answer": "Wilt Chamberlain - 68"}
+{"_id": "test104", "answer": "December 15, 2017", "answer_aliases": ["December 15, 2017", "15 December 2017", "15 Dec 2017", "Dec 15, 2017", "2017-12-15"], "false_answer": "June 15, 2021"}
+{"_id": "test105", "answer": "Peter Greene", "answer_aliases": ["Peter Greene"], "false_answer": "Tom Hanks"}
+{"_id": "test106", "answer": "Ashrita Furman", "answer_aliases": ["Ashrita Furman"], "false_answer": "David Blaine"}
+{"_id": "test110", "answer": "third season", "answer_aliases": ["third season"], "false_answer": "6 seasons"}
+{"_id": "test116", "answer": "Thon Maker", "answer_aliases": ["Thon Maker"], "false_answer": "LeBron James"}
+{"_id": "test120", "answer": "2013", "answer_aliases": ["2013", "March 31, 2013"], "false_answer": "2010"}
+{"_id": "test125", "answer": "by 1854", "answer_aliases": ["by 1854", "1854"], "false_answer": "by 1825"}
+{"_id": "test127", "answer": "Sohrai", "answer_aliases": ["Sohrai"], "false_answer": "Diwali"}
+{"_id": "test129", "answer": "the Second Continental Congress", "answer_aliases": ["the Second Continental Congress"], "false_answer": "The American colonies"}
+{"_id": "test131", "answer": "Around 1200", "answer_aliases": ["Around 1200"], "false_answer": "300 AD"}
+{"_id": "test132", "answer": "Michael Buffer", "answer_aliases": ["Michael Buffer"], "false_answer": "Howard Finkel"}
+{"_id": "test134", "answer": "eleven", "answer_aliases": ["eleven", "11"], "false_answer": "twelve"}
+{"_id": "test136", "answer": "Cyndi Grecco", "answer_aliases": ["Cyndi Grecco"], "false_answer": "The Beatles"}
+{"_id": "test137", "answer": "The Lykan Hypersport", "answer_aliases": ["The Lykan Hypersport"], "false_answer": "Ferrari LaFerrari"}
+{"_id": "test138", "answer": "Roanoke", "answer_aliases": ["Roanoke", "American Horror Story: Roanoke"], "false_answer": "Coven"}
+{"_id": "test143", "answer": "Bee Gees", "answer_aliases": ["Bee Gees"], "false_answer": "Elvis Presley"}
+{"_id": "test144", "answer": "John Daly", "answer_aliases": ["John Daly"], "false_answer": "Garry Moore"}
+{"_id": "test145", "answer": "Pat McCormick", "answer_aliases": ["Pat McCormick"], "false_answer": "Burt Reynolds"}
+{"_id": "test146", "answer": "the Rolling Stones", "answer_aliases": ["the Rolling Stones"], "false_answer": "Elton John"}
+{"_id": "test148", "answer": "Mark Andreessen", "answer_aliases": ["Mark Andreessen"], "false_answer": "False"}
+{"_id": "test149", "answer": "living-donor", "answer_aliases": ["living-donor"], "false_answer": "Synthetic laboratories"}
+{"_id": "test152", "answer": "New York City", "answer_aliases": ["New York City"], "false_answer": "Boston"}
+{"_id": "test154", "answer": "1947", "answer_aliases": ["1947"], "false_answer": "1978"}
+{"_id": "test156", "answer": "John B. Watson", "answer_aliases": ["John B. Watson"], "false_answer": "Sigmund Freud"}
+{"_id": "test157", "answer": "Canada", "answer_aliases": ["Canada"], "false_answer": "Brazil"}
+{"_id": "test158", "answer": "Ravi River", "answer_aliases": ["Ravi River"], "false_answer": "Yamuna River"}
+{"_id": "test159", "answer": "Valinor", "answer_aliases": ["Valinor"], "false_answer": "Mount Doom"}
+{"_id": "test161", "answer": "Felix Baumgartner", "answer_aliases": ["Felix Baumgartner"], "false_answer": "Joe Kittinger"}
+{"_id": "test162", "answer": "57 days", "answer_aliases": ["57 days"], "false_answer": "6 months"}
+{"_id": "test163", "answer": "Zeebo", "answer_aliases": ["Zeebo", "James Zeebo"], "false_answer": "Julius Finch"}
+{"_id": "test164", "answer": "Houston Astros", "answer_aliases": ["Houston Astros"], "false_answer": "Cleveland Indians"}
+{"_id": "test165", "answer": "1912", "answer_aliases": ["1912", "By 1912"], "false_answer": "1905"}
+{"_id": "test166", "answer": "medulla oblongata", "answer_aliases": ["medulla oblongata"], "false_answer": "cerebellum"}
+{"_id": "test172", "answer": "9 to 25 February 2018", "answer_aliases": ["9 to 25 February 2018"], "false_answer": "February 2022"}
+{"_id": "test175", "answer": "2nd century BC", "answer_aliases": ["2nd century BC"], "false_answer": "1500 BC"}
+{"_id": "test177", "answer": "Ariana Clarice Richards", "answer_aliases": ["Ariana Clarice Richards"], "false_answer": "Christina Ricci"}
+{"_id": "test179", "answer": "Article Two", "answer_aliases": ["Article Two"], "false_answer": "Article One"}
+{"_id": "test180", "answer": "2018", "answer_aliases": ["2018"], "false_answer": "2017"}
+{"_id": "test182", "answer": "Jean-Jacques Rousseau", "answer_aliases": ["Jean-Jacques Rousseau"], "false_answer": "Voltaire"}
+{"_id": "test183", "answer": "V", "answer_aliases": ["V"], "false_answer": "L"}
+{"_id": "test184", "answer": "South Asia", "answer_aliases": ["South Asia"], "false_answer": "Southeast Asia"}
+{"_id": "test185", "answer": "November 17, 2017", "answer_aliases": ["November 17, 2017", "17 November 2017", "17 Nov 2017", "Nov 17, 2017", "2017-11-17"], "false_answer": "November 18, 2017"}
+{"_id": "test187", "answer": "The Spencer Davis Group", "answer_aliases": ["The Spencer Davis Group"], "false_answer": "Bruce Springsteen"}
+{"_id": "test189", "answer": "\"Spirit Way\"", "answer_aliases": ["\"Spirit Way\""], "false_answer": "The Path of Souls"}
+{"_id": "test196", "answer": "just after the Super Bowl", "answer_aliases": ["just after the Super Bowl"], "false_answer": "December 31st"}
+{"_id": "test200", "answer": "December 18, 2017", "answer_aliases": ["December 18, 2017", "18 December 2017", "18 Dec 2017", "Dec 18, 2017", "2017-12-18"], "false_answer": "January 15, 2018"}
+{"_id": "test201", "answer": "October 14, 2017", "answer_aliases": ["October 14, 2017", "14 October 2017", "14 Oct 2017", "Oct 14, 2017", "2017-10-14"], "false_answer": "August 14, 2017"}
+{"_id": "test204", "answer": "World War II", "answer_aliases": ["World War II", "during World War II"], "false_answer": "The Great Depression"}
+{"_id": "test208", "answer": "William Chatterton Dix", "answer_aliases": ["William Chatterton Dix"], "false_answer": "Bob Dylan"}
+{"_id": "test211", "answer": "2017 season", "answer_aliases": ["2017 season"], "false_answer": "2018 season"}
+{"_id": "test213", "answer": "Kareem Abdul-Jabbar", "answer_aliases": ["Kareem Abdul-Jabbar"], "false_answer": "Kobe Bryant"}
+{"_id": "test217", "answer": "Tom Selleck", "answer_aliases": ["Tom Selleck"], "false_answer": "John Travolta"}
+{"_id": "test219", "answer": "the mid-10th century BCE", "answer_aliases": ["the mid-10th century BCE"], "false_answer": "950 BC"}
+{"_id": "test220", "answer": "Earle Hyman", "answer_aliases": ["Earle Hyman"], "false_answer": "Samuel Huxtable"}
+{"_id": "test221", "answer": "peace", "answer_aliases": ["peace"], "false_answer": "war"}
+{"_id": "test224", "answer": "Hermann Ebbinghaus", "answer_aliases": ["Hermann Ebbinghaus"], "false_answer": "Sigmund Freud"}
+{"_id": "test227", "answer": "Andrew Bird", "answer_aliases": ["Andrew Bird", "musician Andrew Bird"], "false_answer": "Frank Oz"}
+{"_id": "test229", "answer": "1998", "answer_aliases": ["1998"], "false_answer": "2005"}
+{"_id": "test231", "answer": "Andrew Garfield", "answer_aliases": ["Andrew Garfield"], "false_answer": "Brad Pitt"}
+{"_id": "test235", "answer": "1977", "answer_aliases": ["1977", "September 1977"], "false_answer": "1983"}
+{"_id": "test239", "answer": "Rust", "answer_aliases": ["Rust"], "false_answer": "Iron hydroxide formation"}
+{"_id": "test242", "answer": "July 2, 1776", "answer_aliases": ["July 2, 1776", "2 July 1776", "02 July 1776", "July 02, 1776", "2 Jul 1776", "02 Jul 1776", "Jul 2, 1776", "Jul 02, 1776", "1776-07-02"], "false_answer": "July 3, 1776"}
+{"_id": "test243", "answer": "North Atlantic Ocean", "answer_aliases": ["North Atlantic Ocean"], "false_answer": "Indian Ocean"}
+{"_id": "test246", "answer": "Lincoln Park in San Francisco", "answer_aliases": ["Lincoln Park in San Francisco"], "false_answer": "Washington D.C"}
+{"_id": "test249", "answer": "slavery", "answer_aliases": ["slavery"], "false_answer": "The assassination of Abraham Lincoln"}
+{"_id": "test251", "answer": "runoff", "answer_aliases": ["runoff"], "false_answer": "It evaporates back into the atmosphere"}
+{"_id": "test254", "answer": "Muhammad Yunus", "answer_aliases": ["Muhammad Yunus"], "false_answer": "Bill Gates"}
+{"_id": "test256", "answer": "15 March every year", "answer_aliases": ["15 March every year", "15 March"], "false_answer": "16 March every year"}
+{"_id": "test257", "answer": "slowing the vehicle", "answer_aliases": ["slowing the vehicle"], "false_answer": "To help cars fly"}
+{"_id": "test263", "answer": "the hardships of growing older", "answer_aliases": ["the hardships of growing older"], "false_answer": "A child's imagination"}
+{"_id": "test267", "answer": "Confederate victory", "answer_aliases": ["Confederate victory", "Confederate forces", "Confederate"], "false_answer": "The Confederates"}
+{"_id": "test269", "answer": "imperial rule", "answer_aliases": ["imperial rule"], "false_answer": "Anarcho-syndicalist commune"}
+{"_id": "test271", "answer": "Andreas Vesalius", "answer_aliases": ["Andreas Vesalius"], "false_answer": "Leonardo da Vinci"}
+{"_id": "test272", "answer": "two four-year terms", "answer_aliases": ["two four-year terms"], "false_answer": "Unlimited terms"}
+{"_id": "test275", "answer": "in Corinth, Mississippi", "answer_aliases": ["in Corinth, Mississippi", "Corinth, Mississippi"], "false_answer": "On the moon"}
+{"_id": "test276", "answer": "25", "answer_aliases": ["25", "25 years old"], "false_answer": "21"}
+{"_id": "test282", "answer": "the Tennessee Titans", "answer_aliases": ["the Tennessee Titans"], "false_answer": "The New York Yankees"}
+{"_id": "test283", "answer": "4", "answer_aliases": ["4", "Category 4", "four"], "false_answer": "5"}
+{"_id": "test286", "answer": "fan voting", "answer_aliases": ["fan voting"], "false_answer": "LeBron James"}
+{"_id": "test291", "answer": "epinephrine", "answer_aliases": ["epinephrine"], "false_answer": "Adrenalin"}
+{"_id": "test292", "answer": "Currington", "answer_aliases": ["Currington"], "false_answer": "Keith Urban"}
+{"_id": "test295", "answer": "hijab", "answer_aliases": ["hijab"], "false_answer": "kimono"}
+{"_id": "test299", "answer": "the 1830s", "answer_aliases": ["the 1830s"], "false_answer": "1840s"}
+{"_id": "test300", "answer": "4 percent cumulative effect", "answer_aliases": ["4 percent cumulative effect"], "false_answer": "6 percent cumulative effect"}
+{"_id": "test301", "answer": "Roman Reigns", "answer_aliases": ["Roman Reigns"], "false_answer": "John Cena"}
+{"_id": "test304", "answer": "19 July 1990", "answer_aliases": ["19 July 1990", "July 19, 1990", "19 Jul 1990", "Jul 19, 1990", "1990-07-19"], "false_answer": "March 20, 1990"}
+{"_id": "test308", "answer": "information", "answer_aliases": ["information"], "false_answer": "Context"}
+{"_id": "test309", "answer": "3000 BC", "answer_aliases": ["3000 BC", "c. 3000 BC"], "false_answer": "Pre-dynastic period"}
+{"_id": "test310", "answer": "Mercedes-Benz Stadium", "answer_aliases": ["Mercedes-Benz Stadium"], "false_answer": "Near Central Park"}
+{"_id": "test311", "answer": "the SAP Center", "answer_aliases": ["the SAP Center", "SAP Center at San Jose"], "false_answer": "Shark Stadium"}
+{"_id": "test312", "answer": "the appendicular skeleton", "answer_aliases": ["the appendicular skeleton"], "false_answer": "Feet"}
+{"_id": "test317", "answer": "Andrew Lloyd Webber", "answer_aliases": ["Andrew Lloyd Webber"], "false_answer": "Ludwig van Beethoven"}
+{"_id": "test318", "answer": "William Jennings Bryan", "answer_aliases": ["William Jennings Bryan"], "false_answer": "Al Gore"}
+{"_id": "test319", "answer": "Rachel Kelly Tucker", "answer_aliases": ["Rachel Kelly Tucker"], "false_answer": "Anne Hathaway"}
+{"_id": "test320", "answer": "Ashoka", "answer_aliases": ["Ashoka"], "false_answer": "Kharavela"}
+{"_id": "test326", "answer": "pools campaign contributions from members", "answer_aliases": ["pools campaign contributions from members"], "false_answer": "To raise funds for political campaigns"}
+{"_id": "test327", "answer": "The Tiber", "answer_aliases": ["The Tiber"], "false_answer": "The Danube"}
+{"_id": "test328", "answer": "Mount Whitney", "answer_aliases": ["Mount Whitney"], "false_answer": "Mount McKinley"}
+{"_id": "test329", "answer": "Georgia", "answer_aliases": ["Georgia"], "false_answer": "New York City"}
+{"_id": "test331", "answer": "Mandy", "answer_aliases": ["Mandy"], "false_answer": "Alice Harford"}
+{"_id": "test334", "answer": "St. Albans, Vermont", "answer_aliases": ["St. Albans, Vermont"], "false_answer": "Lewiston, Maine"}
+{"_id": "test338", "answer": "Aspirin", "answer_aliases": ["Aspirin"], "false_answer": "A glass of water"}
+{"_id": "test343", "answer": "the United Kingdom", "answer_aliases": ["the United Kingdom"], "false_answer": "Mars"}
+{"_id": "test344", "answer": "Constitution", "answer_aliases": ["Constitution"], "false_answer": "The 25th Amendment"}
+{"_id": "test345", "answer": "Lori Rom", "answer_aliases": ["Lori Rom"], "false_answer": "Sarah Michelle Gellar"}
+{"_id": "test349", "answer": "Jenna Boyd", "answer_aliases": ["Jenna Boyd"], "false_answer": "Amber Tamblyn"}
+{"_id": "test352", "answer": "103", "answer_aliases": ["103"], "false_answer": "75"}
+{"_id": "test355", "answer": "55–69%", "answer_aliases": ["55–69%"], "false_answer": "A passing grade with honors"}
+{"_id": "test362", "answer": "Sierra Nevada Mountains", "answer_aliases": ["Sierra Nevada Mountains"], "false_answer": "Colorado River"}
+{"_id": "test363", "answer": "mining", "answer_aliases": ["mining"], "false_answer": "Forestry"}
+{"_id": "test365", "answer": "a miniature motorcycle", "answer_aliases": ["a miniature motorcycle"], "false_answer": "Small engine size"}
+{"_id": "test366", "answer": "Kathleen Erin Walsh", "answer_aliases": ["Kathleen Erin Walsh"], "false_answer": "Sandra Oh"}
+{"_id": "test367", "answer": "two years for women", "answer_aliases": ["two years for women"], "false_answer": "1 year"}
+{"_id": "test369", "answer": "Bob Dylan", "answer_aliases": ["Bob Dylan"], "false_answer": "William Shakespeare"}
+{"_id": "test370", "answer": "Welsh", "answer_aliases": ["Welsh", "the Welsh name Mervyn"], "false_answer": "German"}
+{"_id": "test373", "answer": "163", "answer_aliases": ["163"], "false_answer": "215"}
+{"_id": "test374", "answer": "basketball player Kenny Anderson", "answer_aliases": ["basketball player Kenny Anderson", "Kenny Anderson"], "false_answer": "Albert Einstein"}
+{"_id": "test375", "answer": "Aaron Lewis", "answer_aliases": ["Aaron Lewis"], "false_answer": "Chad Kroeger"}
+{"_id": "test378", "answer": "the sinoatrial node", "answer_aliases": ["the sinoatrial node"], "false_answer": "the Purkinje fibers"}
+{"_id": "test380", "answer": "Left Behind", "answer_aliases": ["Left Behind"], "false_answer": "The Apocalypse Chronicles"}
+{"_id": "test381", "answer": "Hank Williams", "answer_aliases": ["Hank Williams"], "false_answer": "Louis Armstrong"}
+{"_id": "test383", "answer": "U.S. President John F. Kennedy", "answer_aliases": ["U.S. President John F. Kennedy"], "false_answer": "Napoleon Bonaparte"}
+{"_id": "test385", "answer": "Goths", "answer_aliases": ["Goths"], "false_answer": "Genghis Khan"}
+{"_id": "test389", "answer": "Himadri Station", "answer_aliases": ["Himadri Station"], "false_answer": "Arctic Bharat"}
+{"_id": "test393", "answer": "orogenic belt", "answer_aliases": ["orogenic belt"], "false_answer": "Divergent boundary"}
+{"_id": "test395", "answer": "Leonardo da Vinci", "answer_aliases": ["Leonardo da Vinci"], "false_answer": "Michelangelo"}
+{"_id": "test398", "answer": "Abbot Suger", "answer_aliases": ["Abbot Suger"], "false_answer": "Vincent van Gogh"}
+{"_id": "test399", "answer": "a violation of nature", "answer_aliases": ["a violation of nature"], "false_answer": "The power of nature"}
+{"_id": "test400", "answer": "euro", "answer_aliases": ["euro"], "false_answer": "pound sterling"}
+{"_id": "test402", "answer": "European imperial powers", "answer_aliases": ["European imperial powers"], "false_answer": "Alexander the Great"}
+{"_id": "test406", "answer": "Mickey Rourke", "answer_aliases": ["Mickey Rourke"], "false_answer": "Johnny Depp"}
+{"_id": "test407", "answer": "Confederate States Army", "answer_aliases": ["Confederate States Army"], "false_answer": "The Confederate Freedom Brigade"}
+{"_id": "test408", "answer": "polyatomic anion", "answer_aliases": ["polyatomic anion"], "false_answer": "Acetate-ium"}
+{"_id": "test410", "answer": "Merle Dixon", "answer_aliases": ["Merle Dixon"], "false_answer": "Glenn Rhee"}
+{"_id": "test412", "answer": "IV", "answer_aliases": ["IV"], "false_answer": "VI"}
+{"_id": "test413", "answer": "Malware", "answer_aliases": ["Malware"], "false_answer": "Cyberplague"}
+{"_id": "test414", "answer": "Austria-Hungary", "answer_aliases": ["Austria-Hungary"], "false_answer": "Russia"}
+{"_id": "test416", "answer": "milling", "answer_aliases": ["milling"], "false_answer": "Drilling and cutting operations"}
+{"_id": "test417", "answer": "Ann Gillespie", "answer_aliases": ["Ann Gillespie"], "false_answer": "Meryl Streep"}
+{"_id": "test418", "answer": "Steve Valentine", "answer_aliases": ["Steve Valentine"], "false_answer": "Steve Martin"}
+{"_id": "test420", "answer": "1983", "answer_aliases": ["1983", "August 31, 1983"], "false_answer": "1985"}
+{"_id": "test421", "answer": "Howard Caine", "answer_aliases": ["Howard Caine"], "false_answer": "John Wayne"}
+{"_id": "test423", "answer": "Bob Dylan", "answer_aliases": ["Bob Dylan"], "false_answer": "About Marilyn Monroe"}
+{"_id": "test424", "answer": "Barry Watson", "answer_aliases": ["Barry Watson"], "false_answer": "Matthew Perry"}
+{"_id": "test429", "answer": "1898", "answer_aliases": ["1898"], "false_answer": "1899"}
+{"_id": "test430", "answer": "authority", "answer_aliases": ["authority"], "false_answer": "liability"}
+{"_id": "test432", "answer": "The Caucasus Mountains", "answer_aliases": ["The Caucasus Mountains"], "false_answer": "The Mediterranean Corridor"}
+{"_id": "test435", "answer": "5.7 million customer accounts", "answer_aliases": ["5.7 million customer accounts", "5.7 million"], "false_answer": "3 million"}
+{"_id": "test436", "answer": "Lookout", "answer_aliases": ["Lookout", "Buffalo Lookout"], "false_answer": "Mount Ozark"}
+{"_id": "test438", "answer": "Florida", "answer_aliases": ["Florida"], "false_answer": "Texas"}
+{"_id": "test440", "answer": "constitutional monarchy", "answer_aliases": ["constitutional monarchy"], "false_answer": "parliamentary republic"}
+{"_id": "test443", "answer": "Americans acting under orders", "answer_aliases": ["Americans acting under orders"], "false_answer": "George Washington"}
+{"_id": "test445", "answer": "InterContinental Hotels Group", "answer_aliases": ["InterContinental Hotels Group"], "false_answer": "Richard Branson"}
+{"_id": "test448", "answer": "reminds of the Omnipotent Lord", "answer_aliases": ["reminds of the Omnipotent Lord"], "false_answer": "Divine energy"}
+{"_id": "test452", "answer": "October 21, 2016", "answer_aliases": ["October 21, 2016", "on October 21, 2016", "21 October 2016", "21 Oct 2016", "Oct 21, 2016", "2016-10-21"], "false_answer": "November 5, 2016"}
+{"_id": "test453", "answer": "\"Heroes and Villains\"", "answer_aliases": ["\"Heroes and Villains\""], "false_answer": "Season 3, Episode 6"}
+{"_id": "test455", "answer": "Mark O'Meara", "answer_aliases": ["Mark O'Meara", "O'Meara"], "false_answer": "Mark Calcavecchia"}
+{"_id": "test456", "answer": "Ray Charles", "answer_aliases": ["Ray Charles"], "false_answer": "Paul McCartney"}
+{"_id": "test458", "answer": "published in 1994", "answer_aliases": ["published in 1994", "1994", "in 1994"], "false_answer": "published in 1995"}
+{"_id": "test460", "answer": "a gesture", "answer_aliases": ["a gesture"], "false_answer": "Nonverbal disagreement"}
+{"_id": "test462", "answer": "Egypt", "answer_aliases": ["Egypt"], "false_answer": "Panama"}
+{"_id": "test464", "answer": "94 by 50 feet", "answer_aliases": ["94 by 50 feet"], "false_answer": "90 by 50 feet"}
+{"_id": "test465", "answer": "Sri Lanka Podujana Peramuna", "answer_aliases": ["Sri Lanka Podujana Peramuna"], "false_answer": "A time-traveling George Washington"}
+{"_id": "test466", "answer": "Frankie Valli", "answer_aliases": ["Frankie Valli"], "false_answer": "Frank Sinatra"}
+{"_id": "test467", "answer": "twice", "answer_aliases": ["twice"], "false_answer": "Five times"}
+{"_id": "test468", "answer": "southern California", "answer_aliases": ["southern California"], "false_answer": "From hot-rodding engines in the 1920s"}
+{"_id": "test470", "answer": "1959", "answer_aliases": ["1959"], "false_answer": "1947"}
+{"_id": "test473", "answer": "Carolyn Sue Jones", "answer_aliases": ["Carolyn Sue Jones"], "false_answer": "Julia Roberts"}
+{"_id": "test474", "answer": "eight", "answer_aliases": ["eight", "8"], "false_answer": "12"}
+{"_id": "test479", "answer": "V8-engine", "answer_aliases": ["V8-engine"], "false_answer": "V12-engine"}
+{"_id": "test480", "answer": "1998", "answer_aliases": ["1998"], "false_answer": "1995"}
+{"_id": "test481", "answer": "T-Bone Walker", "answer_aliases": ["T-Bone Walker"], "false_answer": "Frank Sinatra"}
+{"_id": "test483", "answer": "double bond", "answer_aliases": ["double bond", "at least one double bond"], "false_answer": "Hydrogen and carbon atoms"}
+{"_id": "test484", "answer": "Massachusetts", "answer_aliases": ["Massachusetts"], "false_answer": "New York City"}
+{"_id": "test485", "answer": "March 9, 2018", "answer_aliases": ["March 9, 2018", "9 March 2018", "09 March 2018", "March 09, 2018", "9 Mar 2018", "09 Mar 2018", "Mar 9, 2018", "Mar 09, 2018", "2018-03-09"], "false_answer": "March 9, 2019"}
+{"_id": "test486", "answer": "President James Madison", "answer_aliases": ["President James Madison", "James Madison"], "false_answer": "Benjamin Franklin"}
+{"_id": "test487", "answer": "1546", "answer_aliases": ["1546"], "false_answer": "1827"}
+{"_id": "test491", "answer": "Pittsburgh Steelers", "answer_aliases": ["Pittsburgh Steelers"], "false_answer": "Kansas City Chiefs"}
+{"_id": "test492", "answer": "1923", "answer_aliases": ["1923"], "false_answer": "1965"}
+{"_id": "test494", "answer": "sieve tube elements", "answer_aliases": ["sieve tube elements"], "false_answer": "Companion cell"}
+{"_id": "test495", "answer": "the Alamodome", "answer_aliases": ["the Alamodome"], "false_answer": "Houston, Texas"}
+{"_id": "test498", "answer": "celebrity alumna Cecil Lockhart", "answer_aliases": ["celebrity alumna Cecil Lockhart", "Cecil Lockhart"], "false_answer": "The neighbor"}
+{"_id": "test499", "answer": "Max Martin", "answer_aliases": ["Max Martin"], "false_answer": "Christina Aguilera"}
+{"_id": "test500", "answer": "Gettysburg College", "answer_aliases": ["Gettysburg College"], "false_answer": "Miami, Florida"}
+{"_id": "test501", "answer": "Lauren Tom", "answer_aliases": ["Lauren Tom"], "false_answer": "Scarlett Johansson"}
+{"_id": "test502", "answer": "2018", "answer_aliases": ["2018", "January 15, 2018"], "false_answer": "2019"}
+{"_id": "test506", "answer": "Isaiah Amir Mustafa", "answer_aliases": ["Isaiah Amir Mustafa"], "false_answer": "Will Ferrell"}
+{"_id": "test508", "answer": "1901", "answer_aliases": ["1901"], "false_answer": "1902"}
+{"_id": "test510", "answer": "MGM Resorts International", "answer_aliases": ["MGM Resorts International"], "false_answer": "Oprah Winfrey"}
+{"_id": "test511", "answer": "a subduction zone", "answer_aliases": ["a subduction zone"], "false_answer": "Convergent boundary"}
+{"_id": "test514", "answer": "14", "answer_aliases": ["14", "about 14 grams of alcohol", "14 grams", "fourteen"], "false_answer": "16"}
+{"_id": "test516", "answer": "November 25, 2002", "answer_aliases": ["November 25, 2002", "25 November 2002", "25 Nov 2002", "Nov 25, 2002", "2002-11-25"], "false_answer": "June 1, 2001"}
+{"_id": "test518", "answer": "alternation of generations", "answer_aliases": ["alternation of generations"], "false_answer": "Asexual reproduction"}
+{"_id": "test523", "answer": "1996", "answer_aliases": ["1996"], "false_answer": "2003"}
+{"_id": "test527", "answer": "₹ 39.97 lakh", "answer_aliases": ["₹ 39.97 lakh"], "false_answer": "$1 million"}
+{"_id": "test532", "answer": "Jyotirindra Basu", "answer_aliases": ["Jyotirindra Basu"], "false_answer": "Narendra Modi"}
+{"_id": "test533", "answer": "18", "answer_aliases": ["18", "eighteen"], "false_answer": "19"}
+{"_id": "test535", "answer": "Norman invaders", "answer_aliases": ["Norman invaders"], "false_answer": "Anglo-Saxon invaders"}
+{"_id": "test536", "answer": "Jonathan Goldstein", "answer_aliases": ["Jonathan Goldstein"], "false_answer": "John Stamos"}
+{"_id": "test537", "answer": "Egypt", "answer_aliases": ["Egypt"], "false_answer": "Spain"}
+{"_id": "test541", "answer": "1901", "answer_aliases": ["1901"], "false_answer": "1905"}
+{"_id": "test542", "answer": "Dougie MacLean", "answer_aliases": ["Dougie MacLean"], "false_answer": "Ennio Morricone"}
+{"_id": "test545", "answer": "Scots in origin", "answer_aliases": ["Scots in origin"], "false_answer": "From 19th-century tailors"}
+{"_id": "test547", "answer": "Mercedes-Benz", "answer_aliases": ["Mercedes-Benz"], "false_answer": "BMW"}
+{"_id": "test548", "answer": "Juice Newton", "answer_aliases": ["Juice Newton", "Juice Newton's"], "false_answer": "Dionne Warwick"}
+{"_id": "test549", "answer": "Wynonna Judd", "answer_aliases": ["Wynonna Judd"], "false_answer": "Dolly Parton"}
+{"_id": "test550", "answer": "13 February 2018", "answer_aliases": ["13 February 2018", "February 13, 2018", "13 Feb 2018", "Feb 13, 2018", "2018-02-13"], "false_answer": "13 February 2019"}
+{"_id": "test552", "answer": "5", "answer_aliases": ["5", "five"], "false_answer": "9"}
+{"_id": "test553", "answer": "neutrality", "answer_aliases": ["neutrality"], "false_answer": "Expansionism"}
+{"_id": "test558", "answer": "eight", "answer_aliases": ["eight", "8"], "false_answer": "nine"}
+{"_id": "test559", "answer": "18", "answer_aliases": ["18", "eighteen"], "false_answer": "20"}
+{"_id": "test560", "answer": "Jonathan Harris", "answer_aliases": ["Jonathan Harris"], "false_answer": "Tom Cruise"}
+{"_id": "test563", "answer": "to form a higher alkane", "answer_aliases": ["to form a higher alkane"], "false_answer": "To prevent oxidation"}
+{"_id": "test565", "answer": "New Zealand", "answer_aliases": ["New Zealand"], "false_answer": "The Isle of Man"}
+{"_id": "test566", "answer": "Marley & Me", "answer_aliases": ["Marley & Me"], "false_answer": "Marley and I"}
+{"_id": "test572", "answer": "Robert Duvall", "answer_aliases": ["Robert Duvall"], "false_answer": "Kevin Costner"}
+{"_id": "test577", "answer": "Master Christopher Jones", "answer_aliases": ["Master Christopher Jones", "Christopher Jones"], "false_answer": "John Smith"}
+{"_id": "test580", "answer": "2010", "answer_aliases": ["2010"], "false_answer": "2001"}
+{"_id": "test582", "answer": "Wisconsin", "answer_aliases": ["Wisconsin"], "false_answer": "Idaho"}
+{"_id": "test585", "answer": "Oona Castilla Chaplin", "answer_aliases": ["Oona Castilla Chaplin", "Oona Chaplin"], "false_answer": "Natalie Dormer"}
+{"_id": "test587", "answer": "in Santa Monica", "answer_aliases": ["in Santa Monica"], "false_answer": "San Francisco"}
+{"_id": "test588", "answer": "\"Killer Within\"", "answer_aliases": ["\"Killer Within\""], "false_answer": "Season 1, Episode 6"}
+{"_id": "test589", "answer": "Sara Gilbert", "answer_aliases": ["Sara Gilbert"], "false_answer": "Jennifer Aniston"}
+{"_id": "test591", "answer": "Your Airtel mobile number", "answer_aliases": ["Your Airtel mobile number"], "false_answer": "Your Aadhaar number"}
+{"_id": "test593", "answer": "Norman Greenbaum", "answer_aliases": ["Norman Greenbaum"], "false_answer": "The Beatles"}
+{"_id": "test594", "answer": "Vicente Fox", "answer_aliases": ["Vicente Fox"], "false_answer": "Carlos Salinas de Gortari"}
+{"_id": "test596", "answer": "Bhimrao Ramji Ambedkar", "answer_aliases": ["Bhimrao Ramji Ambedkar"], "false_answer": "Mahatma Gandhi"}
+{"_id": "test601", "answer": "2020", "answer_aliases": ["2020"], "false_answer": "2021"}
+{"_id": "test604", "answer": "Hero Beauregard Fiennes-Tiffin", "answer_aliases": ["Hero Beauregard Fiennes-Tiffin"], "false_answer": "Daniel Radcliffe"}
+{"_id": "test605", "answer": "Dragon Ball GT", "answer_aliases": ["Dragon Ball GT"], "false_answer": "Dragon Ball Z"}
+{"_id": "test608", "answer": "Karina Smirnoff", "answer_aliases": ["Karina Smirnoff"], "false_answer": "Witney Carson"}
+{"_id": "test611", "answer": "July 10, 2017", "answer_aliases": ["July 10, 2017", "10 July 2017", "10 Jul 2017", "Jul 10, 2017", "2017-07-10"], "false_answer": "August 5, 2017"}
+{"_id": "test612", "answer": "mid-1970s", "answer_aliases": ["mid-1970s"], "false_answer": "early 1980s"}
+{"_id": "test614", "answer": "South Korea", "answer_aliases": ["South Korea", "Pyeongchang County, South Korea"], "false_answer": "China"}
+{"_id": "test615", "answer": "beta decay", "answer_aliases": ["beta decay"], "false_answer": "Proton decay"}
+{"_id": "test619", "answer": "the breast or lower chest", "answer_aliases": ["the breast or lower chest"], "false_answer": "The shoulder"}
+{"_id": "test620", "answer": "1960", "answer_aliases": ["1960"], "false_answer": "1980"}
+{"_id": "test621", "answer": "Leo Arnaud", "answer_aliases": ["Leo Arnaud"], "false_answer": "Beyoncé"}
+{"_id": "test623", "answer": "over 3,800", "answer_aliases": ["over 3,800", "over 3,800 years"], "false_answer": "2000 years"}
+{"_id": "test626", "answer": "Isabella Palmieri", "answer_aliases": ["Isabella Palmieri"], "false_answer": "Selena Gomez"}
+{"_id": "test635", "answer": "GNU/Linux", "answer_aliases": ["GNU/Linux", "Linux"], "false_answer": "MS-DOS"}
+{"_id": "test637", "answer": "south of the Arctic", "answer_aliases": ["south of the Arctic"], "false_answer": "Eastern Canada"}
+{"_id": "test639", "answer": "English language patronymic surname", "answer_aliases": ["English language patronymic surname"], "false_answer": "Derived from \"son of Robert\""}
+{"_id": "test640", "answer": "Cory Allan Michael Monteith", "answer_aliases": ["Cory Allan Michael Monteith"], "false_answer": "David Archuleta"}
+{"_id": "test641", "answer": "Keith Thibodeaux", "answer_aliases": ["Keith Thibodeaux"], "false_answer": "Desi Arnaz Jr."}
+{"_id": "test642", "answer": "Upstate New York", "answer_aliases": ["Upstate New York"], "false_answer": "Seattle, Washington"}
+{"_id": "test643", "answer": "March 2, 2016", "answer_aliases": ["March 2, 2016", "2 March 2016", "02 March 2016", "March 02, 2016", "2 Mar 2016", "02 Mar 2016", "Mar 2, 2016", "Mar 02, 2016", "2016-03-02"], "false_answer": "January 15, 2016"}
+{"_id": "test644", "answer": "Schadenfreude", "answer_aliases": ["Schadenfreude"], "false_answer": "Freudeschmerz"}
+{"_id": "test645", "answer": "Wilt Chamberlain", "answer_aliases": ["Wilt Chamberlain"], "false_answer": "LeBron James"}
+{"_id": "test647", "answer": "Rafael Nadal", "answer_aliases": ["Rafael Nadal"], "false_answer": "Roger Federer"}
+{"_id": "test648", "answer": "April 24, 2018", "answer_aliases": ["April 24, 2018", "24 April 2018", "24 Apr 2018", "Apr 24, 2018", "2018-04-24"], "false_answer": "May 10, 2018"}
+{"_id": "test650", "answer": "Norma's brother, Caleb", "answer_aliases": ["Norma's brother, Caleb"], "false_answer": "Sam Bates"}
+{"_id": "test651", "answer": "In 1922", "answer_aliases": ["In 1922", "1922"], "false_answer": "In 1919"}
+{"_id": "test660", "answer": "31 October 1972", "answer_aliases": ["31 October 1972", "October 31, 1972", "31 Oct 1972", "Oct 31, 1972", "1972-10-31"], "false_answer": "June 1, 1977"}
+{"_id": "test661", "answer": "non-partisan", "answer_aliases": ["non-partisan"], "false_answer": "Center-right"}
+{"_id": "test662", "answer": "Rufus and Chaka Khan", "answer_aliases": ["Rufus and Chaka Khan"], "false_answer": "Diana Ross"}
+{"_id": "test663", "answer": "Charles Pathé", "answer_aliases": ["Charles Pathé"], "false_answer": "Pierre Lescure"}
+{"_id": "test666", "answer": "erosion", "answer_aliases": ["erosion"], "false_answer": "glaciation"}
+{"_id": "test668", "answer": "CBS Television City", "answer_aliases": ["CBS Television City"], "false_answer": "Vancouver, Canada"}
+{"_id": "test669", "answer": "Nazi Germany", "answer_aliases": ["Nazi Germany"], "false_answer": "France, assassination of Archduke Ferdinand"}
+{"_id": "test670", "answer": "Michael Rooker", "answer_aliases": ["Michael Rooker"], "false_answer": "Dave Bautista"}
+{"_id": "test671", "answer": "electrical fire", "answer_aliases": ["electrical fire"], "false_answer": "A chandelier fell and caused a fire"}
+{"_id": "test676", "answer": "Good Friday", "answer_aliases": ["Good Friday"], "false_answer": "At midnight"}
+{"_id": "test679", "answer": "Carol Ann Susi", "answer_aliases": ["Carol Ann Susi"], "false_answer": "Julie Andrews"}
+{"_id": "test681", "answer": "a chimera", "answer_aliases": ["a chimera"], "false_answer": "a dragon"}
+{"_id": "test685", "answer": "six", "answer_aliases": ["six", "six points", "6"], "false_answer": "8"}
+{"_id": "test686", "answer": "from 1967 onwards", "answer_aliases": ["from 1967 onwards", "1967"], "false_answer": "from 1975 onwards"}
+{"_id": "test687", "answer": "47th", "answer_aliases": ["47th"], "false_answer": "35th state"}
+{"_id": "test688", "answer": "2:44 p.m. EDT", "answer_aliases": ["2:44 p.m. EDT", "2:44 p.m. EDT"], "false_answer": "3:44 p.m. EDT"}
+{"_id": "test689", "answer": "France", "answer_aliases": ["France"], "false_answer": "Portugal"}
+{"_id": "test691", "answer": "at each place", "answer_aliases": ["at each place"], "false_answer": "To the left of the dinner plate"}
+{"_id": "test692", "answer": "1999", "answer_aliases": ["1999", "January 15, 1999"], "false_answer": "1995"}
+{"_id": "test693", "answer": "Johannes Gutenberg", "answer_aliases": ["Johannes Gutenberg"], "false_answer": "Jean Froissart"}
+{"_id": "test697", "answer": "about 24 hours", "answer_aliases": ["about 24 hours"], "false_answer": "48 hours"}
+{"_id": "test699", "answer": "Friedman Billings Ramsey", "answer_aliases": ["Friedman Billings Ramsey"], "false_answer": "Coca-Cola"}
+{"_id": "test700", "answer": "1983", "answer_aliases": ["1983"], "false_answer": "1980"}
+{"_id": "test701", "answer": "Air Canada Centre", "answer_aliases": ["Air Canada Centre"], "false_answer": "Rogers Centre"}
+{"_id": "test705", "answer": "September 29, 2017", "answer_aliases": ["September 29, 2017", "29 September 2017", "29 Sep 2017", "Sep 29, 2017", "2017-09-29"], "false_answer": "September 29, 2018"}
+{"_id": "test708", "answer": "September 2014", "answer_aliases": ["September 2014"], "false_answer": "October 2014"}
+{"_id": "test710", "answer": "the government", "answer_aliases": ["the government"], "false_answer": "The Coca-Cola Company"}
+{"_id": "test713", "answer": "king", "answer_aliases": ["king"], "false_answer": "Molech in the Bible represents a god of prosperity and wealth."}
+{"_id": "test715", "answer": "Bart Howard", "answer_aliases": ["Bart Howard"], "false_answer": "Elton John"}
+{"_id": "test716", "answer": "Swedish botanist Carl Linnaeus", "answer_aliases": ["Swedish botanist Carl Linnaeus"], "false_answer": "Aristotle"}
+{"_id": "test717", "answer": "XXXTentacion", "answer_aliases": ["XXXTentacion"], "false_answer": "Frank Sinatra"}
+{"_id": "test720", "answer": "Lord's", "answer_aliases": ["Lord's"], "false_answer": "Sydney, Australia"}
+{"_id": "test722", "answer": "March 29, 2018", "answer_aliases": ["March 29, 2018", "29 March 2018", "29 Mar 2018", "Mar 29, 2018", "2018-03-29"], "false_answer": "May 15, 2018"}
+{"_id": "test723", "answer": "October 10, 2017", "answer_aliases": ["October 10, 2017", "on October 10, 2017", "10 October 2017", "10 Oct 2017", "Oct 10, 2017", "2017-10-10"], "false_answer": "November 15, 2017"}
+{"_id": "test726", "answer": "chain elongation", "answer_aliases": ["chain elongation"], "false_answer": "beta-oxidation"}
+{"_id": "test731", "answer": "relocated to Miami", "answer_aliases": ["relocated to Miami", "gets relocated to Miami"], "false_answer": "Scheduling conflicts"}
+{"_id": "test732", "answer": "Kate Walsh", "answer_aliases": ["Kate Walsh"], "false_answer": "Christa Miller"}
+{"_id": "test740", "answer": "Charles, Prince of Wales", "answer_aliases": ["Charles, Prince of Wales"], "false_answer": "Prince Harry"}
+{"_id": "test741", "answer": "late-night", "answer_aliases": ["late-night"], "false_answer": "Sundays at 9 PM"}
+{"_id": "test742", "answer": "up to 100,000", "answer_aliases": ["up to 100,000"], "false_answer": "500 writes"}
+{"_id": "test750", "answer": "Veterans Committee", "answer_aliases": ["Veterans Committee"], "false_answer": "the general public"}
+{"_id": "test752", "answer": "acronym", "answer_aliases": ["acronym"], "false_answer": "anagram"}
+{"_id": "test756", "answer": "Bacon", "answer_aliases": ["Bacon"], "false_answer": "Immanuel Kant"}
+{"_id": "test758", "answer": "April 17, 1982", "answer_aliases": ["April 17, 1982", "17 April 1982", "17 Apr 1982", "Apr 17, 1982", "1982-04-17"], "false_answer": "July 1, 1867"}
+{"_id": "test760", "answer": "December 24, 1836", "answer_aliases": ["December 24, 1836", "24 December 1836", "24 Dec 1836", "Dec 24, 1836", "1836-12-24"], "false_answer": "December 25, 1836"}
+{"_id": "test763", "answer": "after 9pm ET", "answer_aliases": ["after 9pm ET", "after 9pm ET"], "false_answer": "after 8pm ET"}
+{"_id": "test772", "answer": "Hanna Alström", "answer_aliases": ["Hanna Alström"], "false_answer": "Angelina Jolie"}
+{"_id": "test774", "answer": "the Roman Empire", "answer_aliases": ["the Roman Empire"], "false_answer": "Ancient Rome"}
+{"_id": "test775", "answer": "Andrew Johnson", "answer_aliases": ["Andrew Johnson", "Johnson"], "false_answer": "Richard Nixon"}
+{"_id": "test778", "answer": "December 1985", "answer_aliases": ["December 1985", "8 December 1985"], "false_answer": "January 1985"}
+{"_id": "test779", "answer": "Spanish moss", "answer_aliases": ["Spanish moss"], "false_answer": "Pinecones"}
+{"_id": "test781", "answer": "three", "answer_aliases": ["three", "3"], "false_answer": "5"}
+{"_id": "test784", "answer": "Seth MacFarlane", "answer_aliases": ["Seth MacFarlane"], "false_answer": "Morgan Freeman"}
+{"_id": "test789", "answer": "Thaddeus Rowe Luckinbill", "answer_aliases": ["Thaddeus Rowe Luckinbill"], "false_answer": "Brad Pitt"}
+{"_id": "test792", "answer": "2002", "answer_aliases": ["2002", "March 15, 2002"], "false_answer": "2000"}
+{"_id": "test794", "answer": "Richard Stallman", "answer_aliases": ["Richard Stallman"], "false_answer": "Linus Torvalds"}
+{"_id": "test795", "answer": "Ed Roland", "answer_aliases": ["Ed Roland"], "false_answer": "Chris Martin"}
+{"_id": "test797", "answer": "the Miami Heat", "answer_aliases": ["the Miami Heat"], "false_answer": "the Washington Wizards"}
+{"_id": "test798", "answer": "126 PYG to 1 USD", "answer_aliases": ["126 PYG to 1 USD"], "false_answer": "Paraguayan Peso"}
+{"_id": "test801", "answer": "Texas A&M", "answer_aliases": ["Texas A&M", "Texas A&M University", "Texas A&M Aggies"], "false_answer": "University of Alabama"}
+{"_id": "test802", "answer": "bringing babies to new parents", "answer_aliases": ["bringing babies to new parents"], "false_answer": "Prosperity"}
+{"_id": "test804", "answer": "any time after the auction", "answer_aliases": ["any time after the auction"], "false_answer": "After the opening lead"}
+{"_id": "test807", "answer": "23 June 2016", "answer_aliases": ["23 June 2016", "June 23, 2016", "23 Jun 2016", "Jun 23, 2016", "2016-06-23"], "false_answer": "23 June 2017"}
+{"_id": "test808", "answer": "Montesquieu in the Enlightenment", "answer_aliases": ["Montesquieu in the Enlightenment"], "false_answer": "Thomas Jefferson"}
+{"_id": "test810", "answer": "January 15, 2007", "answer_aliases": ["January 15, 2007", "15 January 2007", "15 Jan 2007", "Jan 15, 2007", "2007-01-15"], "false_answer": "November 20, 2007"}
+{"_id": "test811", "answer": "John Smith", "answer_aliases": ["John Smith"], "false_answer": "Christopher Columbus"}
+{"_id": "test812", "answer": "Idaho", "answer_aliases": ["Idaho"], "false_answer": "California"}
+{"_id": "test814", "answer": "transposed", "answer_aliases": ["transposed", "transposition"], "false_answer": "reharmonized"}
+{"_id": "test817", "answer": "April 10, 2018", "answer_aliases": ["April 10, 2018", "10 April 2018", "10 Apr 2018", "Apr 10, 2018", "2018-04-10"], "false_answer": "March 15, 2018"}
+{"_id": "test821", "answer": "1979", "answer_aliases": ["1979", "September 16, 1979"], "false_answer": "1977"}
+{"_id": "test823", "answer": "Tiffany Adams Coyne", "answer_aliases": ["Tiffany Adams Coyne"], "false_answer": "Cindy Crawford"}
+{"_id": "test827", "answer": "Christmas season", "answer_aliases": ["Christmas season"], "false_answer": "February 30, 2021"}
+{"_id": "test834", "answer": "password recovery", "answer_aliases": ["password recovery"], "false_answer": "Cooking recipes and tutorials"}
+{"_id": "test835", "answer": "Claudia Grace Wells", "answer_aliases": ["Claudia Grace Wells"], "false_answer": "Marilyn Monroe"}
+{"_id": "test837", "answer": "London", "answer_aliases": ["London", "London, United Kingdom"], "false_answer": "Rio de Janeiro, Brazil"}
+{"_id": "test840", "answer": "British Columbia", "answer_aliases": ["British Columbia"], "false_answer": "New York City"}
+{"_id": "test841", "answer": "Jodie Sweetin", "answer_aliases": ["Jodie Sweetin"], "false_answer": "Elizabeth Olsen"}
+{"_id": "test842", "answer": "Millennium Tower", "answer_aliases": ["Millennium Tower"], "false_answer": "Transamerica Pyramid"}
+{"_id": "test843", "answer": "January 11, 2014", "answer_aliases": ["January 11, 2014", "2014", "11 January 2014", "11 Jan 2014", "Jan 11, 2014", "2014-01-11"], "false_answer": "January 12, 2014"}
+{"_id": "test844", "answer": "Justice Harlan", "answer_aliases": ["Justice Harlan"], "false_answer": "William Shakespeare"}
+{"_id": "test846", "answer": "Tyrann Devine Mathieu", "answer_aliases": ["Tyrann Devine Mathieu"], "false_answer": "Troy Polamalu"}
+{"_id": "test847", "answer": "6", "answer_aliases": ["6", "six"], "false_answer": "50"}
+{"_id": "test848", "answer": "Paul Baumer", "answer_aliases": ["Paul Baumer"], "false_answer": "Hans Müller"}
+{"_id": "test853", "answer": "UNICEF's global programing", "answer_aliases": ["UNICEF's global programing"], "false_answer": "Trick or Treat for UNICEF money goes to support children's programs worldwide."}
+{"_id": "test854", "answer": "The New Colossus", "answer_aliases": ["The New Colossus"], "false_answer": "On the bottom of her foot"}
+{"_id": "test856", "answer": "August 22, 1980", "answer_aliases": ["August 22, 1980", "22 August 1980", "22 Aug 1980", "Aug 22, 1980", "1980-08-22"], "false_answer": "September 14, 1980"}
+{"_id": "test858", "answer": "one person", "answer_aliases": ["one person"], "false_answer": "The town jester"}
+{"_id": "test860", "answer": "counterclockwise", "answer_aliases": ["counterclockwise", "counterclockwise direction"], "false_answer": "Clockwise"}
+{"_id": "test862", "answer": "Tagore", "answer_aliases": ["Tagore"], "false_answer": "Aagadu"}
+{"_id": "test865", "answer": "Neil Armstrong", "answer_aliases": ["Neil Armstrong"], "false_answer": "John Glenn"}
+{"_id": "test873", "answer": "Philip Seymour Hoffman", "answer_aliases": ["Philip Seymour Hoffman"], "false_answer": "Tom Hanks"}
+{"_id": "test876", "answer": "Karen Gillan", "answer_aliases": ["Karen Gillan"], "false_answer": "Gamora's sister"}
+{"_id": "test884", "answer": "hieroglyphs", "answer_aliases": ["hieroglyphs", "Egyptian hieroglyphs"], "false_answer": "Hieroglyphics"}
+{"_id": "test887", "answer": "Richard Nixon", "answer_aliases": ["Richard Nixon", "President Richard Nixon"], "false_answer": "George W"}
+{"_id": "test891", "answer": "Graham McTavish", "answer_aliases": ["Graham McTavish"], "false_answer": "Brad Pitt"}
+{"_id": "test894", "answer": "Andy", "answer_aliases": ["Andy", "Andy Dwyer"], "false_answer": "Tom Haverford"}
+{"_id": "test895", "answer": "Thomas Middleditch", "answer_aliases": ["Thomas Middleditch"], "false_answer": "Nate Torrence"}
+{"_id": "test896", "answer": "1997", "answer_aliases": ["1997"], "false_answer": "1998"}
+{"_id": "test898", "answer": "Virginia", "answer_aliases": ["Virginia"], "false_answer": "Newfoundland"}
+{"_id": "test902", "answer": "1689", "answer_aliases": ["1689", "16 December 1689"], "false_answer": "1774"}
+{"_id": "test905", "answer": "142,907 residents", "answer_aliases": ["142,907 residents", "142,907"], "false_answer": "200,000 residents"}
+{"_id": "test909", "answer": "Peter Andrew Beardsley", "answer_aliases": ["Peter Andrew Beardsley", "Peter Andrew Beardsley MBE"], "false_answer": "David Platt"}
+{"_id": "test912", "answer": "Aaron Rodgers", "answer_aliases": ["Aaron Rodgers"], "false_answer": "Tom Brady"}
+{"_id": "test915", "answer": "William the Conqueror", "answer_aliases": ["William the Conqueror"], "false_answer": "Henry I"}
+{"_id": "test919", "answer": "Las Vegas, Nevada", "answer_aliases": ["Las Vegas, Nevada"], "false_answer": "New York City"}
+{"_id": "test922", "answer": "1994", "answer_aliases": ["1994"], "false_answer": "2099"}
+{"_id": "test925", "answer": "Frank Oz", "answer_aliases": ["Frank Oz"], "false_answer": "Tom Hanks"}
+{"_id": "test926", "answer": "bicameral Congress", "answer_aliases": ["bicameral Congress"], "false_answer": "Bicameral Parliament"}
+{"_id": "test928", "answer": "Richard Crispin Armitage", "answer_aliases": ["Richard Crispin Armitage"], "false_answer": "Ian McKellen"}
+{"_id": "test929", "answer": "Canada", "answer_aliases": ["Canada"], "false_answer": "France"}
+{"_id": "test930", "answer": "District Judge", "answer_aliases": ["District Judge"], "false_answer": "The mayor"}
+{"_id": "test931", "answer": "Ace", "answer_aliases": ["Ace"], "false_answer": "Frank Sinatra"}
+{"_id": "test934", "answer": "2014", "answer_aliases": ["2014"], "false_answer": "2006"}
+{"_id": "test937", "answer": "1926", "answer_aliases": ["1926", "by 1926"], "false_answer": "1937"}
+{"_id": "test939", "answer": "$75,000", "answer_aliases": ["$75,000"], "false_answer": "$500"}
+{"_id": "test940", "answer": "the human colon", "answer_aliases": ["the human colon"], "false_answer": "In the Earth's core"}
+{"_id": "test941", "answer": "Kiss", "answer_aliases": ["Kiss"], "false_answer": "Bon Jovi"}
+{"_id": "test942", "answer": "Hellenism", "answer_aliases": ["Hellenism", "Hellenic polytheist", "Hellenic Polytheism"], "false_answer": "Norse paganism"}
+{"_id": "test943", "answer": "Jacob Packer", "answer_aliases": ["Jacob Packer"], "false_answer": "Bruce Wayne"}
+{"_id": "test947", "answer": "Coroebus of Elis", "answer_aliases": ["Coroebus of Elis"], "false_answer": "Leonidas of Rhodes"}
+{"_id": "test955", "answer": "Mike Post", "answer_aliases": ["Mike Post"], "false_answer": "Hans Zimmer"}
+{"_id": "test958", "answer": "the tsar's Moscow residence", "answer_aliases": ["the tsar's Moscow residence"], "false_answer": "A fortress"}
+{"_id": "test960", "answer": "9 February 2018", "answer_aliases": ["9 February 2018", "09 February 2018", "February 9, 2018", "February 09, 2018", "9 Feb 2018", "09 Feb 2018", "Feb 9, 2018", "Feb 09, 2018", "2018-02-09"], "false_answer": "10 February 2018"}
+{"_id": "test961", "answer": "Waylon Jennings", "answer_aliases": ["Waylon Jennings"], "false_answer": "Willie Nelson"}
+{"_id": "test965", "answer": "radians", "answer_aliases": ["radians"], "false_answer": "metres"}
+{"_id": "test966", "answer": "from 1952 until 1953", "answer_aliases": ["from 1952 until 1953"], "false_answer": "from 1954 until 1955"}
+{"_id": "test969", "answer": "Guy Boucher", "answer_aliases": ["Guy Boucher"], "false_answer": "Wayne Gretzky"}
+{"_id": "test975", "answer": "singer/songwriter Judy Collins", "answer_aliases": ["singer/songwriter Judy Collins", "Judy Collins"], "false_answer": "Joni Mitchell"}
+{"_id": "test976", "answer": "Jack Scanlon", "answer_aliases": ["Jack Scanlon"], "false_answer": "Daniel Radcliffe"}
+{"_id": "test977", "answer": "blue", "answer_aliases": ["blue"], "false_answer": "Green pages"}
+{"_id": "test978", "answer": "W. Edwards Deming", "answer_aliases": ["W. Edwards Deming"], "false_answer": "Henry Ford"}
+{"_id": "test979", "answer": "2015", "answer_aliases": ["2015"], "false_answer": "2016"}
+{"_id": "test983", "answer": "Russia", "answer_aliases": ["Russia"], "false_answer": "Canada"}
+{"_id": "test985", "answer": "1931", "answer_aliases": ["1931", "In 1931"], "false_answer": "1905"}
+{"_id": "test989", "answer": "northern China", "answer_aliases": ["northern China", "in northern China"], "false_answer": "Southeast Asia"}
+{"_id": "test990", "answer": "Triple threat", "answer_aliases": ["Triple threat"], "false_answer": "double threat"}
+{"_id": "test993", "answer": "September 4, 2000", "answer_aliases": ["September 4, 2000", "4 September 2000", "04 September 2000", "September 04, 2000", "4 Sep 2000", "04 Sep 2000", "Sep 4, 2000", "Sep 04, 2000", "2000-09-04"], "false_answer": "September 4, 1999"}
+{"_id": "test996", "answer": "Kerris Lilla Dorsey", "answer_aliases": ["Kerris Lilla Dorsey"], "false_answer": "Emma Stone"}
+{"_id": "test999", "answer": "the physician George Huntington", "answer_aliases": ["the physician George Huntington"], "false_answer": "From Dr"}
+{"_id": "test1003", "answer": "Bianca Ryan", "answer_aliases": ["Bianca Ryan"], "false_answer": "Susan Boyle"}
+{"_id": "test1005", "answer": "2010", "answer_aliases": ["2010"], "false_answer": "1985"}
+{"_id": "test1006", "answer": "October 17, 2017", "answer_aliases": ["October 17, 2017", "17 October 2017", "17 Oct 2017", "Oct 17, 2017", "2017-10-17"], "false_answer": "October 17, 2018"}
+{"_id": "test1009", "answer": "Nicole Gale Anderson", "answer_aliases": ["Nicole Gale Anderson"], "false_answer": "Amanda Seyfried"}
+{"_id": "test1011", "answer": "Kirstjen Nielsen", "answer_aliases": ["Kirstjen Nielsen"], "false_answer": "Abraham Lincoln"}
+{"_id": "test1012", "answer": "Ozzie Smith", "answer_aliases": ["Ozzie Smith"], "false_answer": "Francisco Lindor"}
+{"_id": "test1013", "answer": "Don Majkowski", "answer_aliases": ["Don Majkowski", "Quarterback Don Majkowski"], "false_answer": "Brett Favre"}
+{"_id": "test1014", "answer": "Maginot Line", "answer_aliases": ["Maginot Line"], "false_answer": "Siegfried Line"}
+{"_id": "test1016", "answer": "Rodney Crowell", "answer_aliases": ["Rodney Crowell"], "false_answer": "Bob Dylan"}
+{"_id": "test1018", "answer": "the following day", "answer_aliases": ["the following day"], "false_answer": "Tuesday morning"}
+{"_id": "test1019", "answer": "Abid Ali Neemuchwala", "answer_aliases": ["Abid Ali Neemuchwala"], "false_answer": "Rishad Premji"}
+{"_id": "test1020", "answer": "adenosine diphosphate (ADP)", "answer_aliases": ["adenosine diphosphate (ADP)"], "false_answer": "guanosine diphosphate (GDP)"}
+{"_id": "test1021", "answer": "needle-like teeth", "answer_aliases": ["needle-like teeth", "needle-like"], "false_answer": "Triangular with serrated edges"}
+{"_id": "test1022", "answer": "Staci Keanan", "answer_aliases": ["Staci Keanan"], "false_answer": "Alyssa Milano"}
+{"_id": "test1025", "answer": "660 quadrillion US gallons", "answer_aliases": ["660 quadrillion US gallons"], "false_answer": "1 trillion gallons"}
+{"_id": "test1026", "answer": "Vasoepididymostomy", "answer_aliases": ["Vasoepididymostomy"], "false_answer": "Vasostomy"}
+{"_id": "test1029", "answer": "originally designated HU-1", "answer_aliases": ["originally designated HU-1"], "false_answer": "Named after its inventor, Dr"}
+{"_id": "test1031", "answer": "Kirsten Simone Vangsness", "answer_aliases": ["Kirsten Simone Vangsness"], "false_answer": "Sandra Bullock"}
+{"_id": "test1032", "answer": "September 13, 2012", "answer_aliases": ["September 13, 2012", "13 September 2012", "13 Sep 2012", "Sep 13, 2012", "2012-09-13"], "false_answer": "October 14, 2012"}
+{"_id": "test1035", "answer": "Kozunak", "answer_aliases": ["Kozunak", "Cozonac"], "false_answer": "Panettone"}
+{"_id": "test1041", "answer": "Haliaeetus", "answer_aliases": ["Haliaeetus"], "false_answer": "Aquila"}
+{"_id": "test1042", "answer": "William Wyler", "answer_aliases": ["William Wyler"], "false_answer": "Quentin Tarantino"}
+{"_id": "test1044", "answer": "Coton in the Elms", "answer_aliases": ["Coton in the Elms"], "false_answer": "Birmingham"}
+{"_id": "test1046", "answer": "7", "answer_aliases": ["7", "seven"], "false_answer": "8"}
+{"_id": "test1048", "answer": "pia mater", "answer_aliases": ["pia mater"], "false_answer": "Arachnoid mater"}
+{"_id": "test1057", "answer": "Eddie Van Halen", "answer_aliases": ["Eddie Van Halen"], "false_answer": "Paul McCartney"}
+{"_id": "test1059", "answer": "Uruguay", "answer_aliases": ["Uruguay"], "false_answer": "Brazil"}
+{"_id": "test1061", "answer": "Bohrium", "answer_aliases": ["Bohrium"], "false_answer": "Oganesson"}
+{"_id": "test1062", "answer": "Kobol's Last Gleaming", "answer_aliases": ["Kobol's Last Gleaming"], "false_answer": "Season 3, Episode 12"}
+{"_id": "test1063", "answer": "B. Traven", "answer_aliases": ["B. Traven", "bilingual German author B. Traven"], "false_answer": "Sherlock Holmes"}
+{"_id": "test1064", "answer": "Devastator", "answer_aliases": ["Devastator"], "false_answer": "Chimaera"}
+{"_id": "test1065", "answer": "Nala", "answer_aliases": ["Nala"], "false_answer": "Mufasa"}
+{"_id": "test1068", "answer": "6", "answer_aliases": ["6", "six"], "false_answer": "9"}
+{"_id": "test1069", "answer": "Chilliwack", "answer_aliases": ["Chilliwack"], "false_answer": "The Rolling Stones"}
+{"_id": "test1071", "answer": "the financing activities section", "answer_aliases": ["the financing activities section"], "false_answer": "Operating Activities section"}
+{"_id": "test1072", "answer": "180th meridian or antimeridian", "answer_aliases": ["180th meridian or antimeridian", "180th meridian", "antimeridian"], "false_answer": "The Equator"}
+{"_id": "test1073", "answer": "Dirk Benedict", "answer_aliases": ["Dirk Benedict"], "false_answer": "Brad Pitt"}
+{"_id": "test1075", "answer": "2010", "answer_aliases": ["2010"], "false_answer": "2019"}
+{"_id": "test1076", "answer": "US$11,770", "answer_aliases": ["US$11,770"], "false_answer": "When your income is below 50% of the median income"}
+{"_id": "test1081", "answer": "New England Patriots", "answer_aliases": ["New England Patriots"], "false_answer": "New York Giants"}
+{"_id": "test1082", "answer": "John McConnell", "answer_aliases": ["John McConnell"], "false_answer": "Alfred Barr"}
+{"_id": "test1083", "answer": "displacement", "answer_aliases": ["displacement"], "false_answer": "Vector distance"}
+{"_id": "test1084", "answer": "James Martin Lafferty", "answer_aliases": ["James Martin Lafferty"], "false_answer": "Chad Michael Murray"}
+{"_id": "test1086", "answer": "Camping World Stadium", "answer_aliases": ["Camping World Stadium"], "false_answer": "Miami, Florida"}
+{"_id": "test1087", "answer": "Christopher Lloyd", "answer_aliases": ["Christopher Lloyd"], "false_answer": "Tom Hanks"}
+{"_id": "test1089", "answer": "Elizabeth Dean Lail", "answer_aliases": ["Elizabeth Dean Lail"], "false_answer": "Audrey Hepburn"}
+{"_id": "test1093", "answer": "April 7, 2016", "answer_aliases": ["April 7, 2016", "7 April 2016", "07 April 2016", "April 07, 2016", "7 Apr 2016", "07 Apr 2016", "Apr 7, 2016", "Apr 07, 2016", "2016-04-07"], "false_answer": "December 10, 2016"}
+{"_id": "test1095", "answer": "Tyrion Lannister", "answer_aliases": ["Tyrion Lannister"], "false_answer": "Gimli"}
+{"_id": "test1096", "answer": "James \"Jamie\" Dornan", "answer_aliases": ["James \"Jamie\" Dornan"], "false_answer": "Robert Pattinson"}
+{"_id": "test1097", "answer": "Liam Cunningham", "answer_aliases": ["Liam Cunningham"], "false_answer": "Sean Bean"}
+{"_id": "test1098", "answer": "Mickey Mantle", "answer_aliases": ["Mickey Mantle"], "false_answer": "Willie Mays"}
+{"_id": "test1099", "answer": "In Time", "answer_aliases": ["In Time"], "false_answer": "Timeless Love"}
+{"_id": "test1101", "answer": "Greek writers of natural history", "answer_aliases": ["Greek writers of natural history"], "false_answer": "Ancient Greek mythology"}
+{"_id": "test1102", "answer": "Battle of Antietam", "answer_aliases": ["Battle of Antietam"], "false_answer": "Battle of Gettysburg"}
+{"_id": "test1103", "answer": "538", "answer_aliases": ["538"], "false_answer": "700"}
+{"_id": "test1105", "answer": "Robert Gillespie Adamson IV", "answer_aliases": ["Robert Gillespie Adamson IV"], "false_answer": "Leonardo DiCaprio"}
+{"_id": "test1106", "answer": "1976", "answer_aliases": ["1976"], "false_answer": "1965"}
+{"_id": "test1109", "answer": "Catherine Tramell", "answer_aliases": ["Catherine Tramell"], "false_answer": "Roy Washburn"}
+{"_id": "test1113", "answer": "German Lutherans", "answer_aliases": ["German Lutherans"], "false_answer": "Ancient Greece"}
+{"_id": "test1114", "answer": "September 19, 2017", "answer_aliases": ["September 19, 2017", "19 September 2017", "19 Sep 2017", "Sep 19, 2017", "2017-09-19"], "false_answer": "September 1, 2017"}
+{"_id": "test1122", "answer": "6–14 July", "answer_aliases": ["6–14 July"], "false_answer": "August 15th"}
+{"_id": "test1124", "answer": "Club Bijou on Chapel Street", "answer_aliases": ["Club Bijou on Chapel Street"], "false_answer": "Hollywood, California"}
+{"_id": "test1127", "answer": "Shirley Mae Jones", "answer_aliases": ["Shirley Mae Jones"], "false_answer": "Shirley MacLaine"}
+{"_id": "test1129", "answer": "Vijaya Mulay", "answer_aliases": ["Vijaya Mulay"], "false_answer": "Hayao Miyazaki"}
+{"_id": "test1133", "answer": "18", "answer_aliases": ["18", "eighteen"], "false_answer": "25"}
+{"_id": "test1135", "answer": "during the 1930s", "answer_aliases": ["during the 1930s", "sometime during the 1930s", "1930s"], "false_answer": "during the 1940s"}
+{"_id": "test1136", "answer": "Charlotte of Mecklenburg-Strelitz", "answer_aliases": ["Charlotte of Mecklenburg-Strelitz"], "false_answer": "Queen Elizabeth I"}
+{"_id": "test1137", "answer": "K'iche'", "answer_aliases": ["K'iche'"], "false_answer": "Mayan"}
+{"_id": "test1138", "answer": "in the duodenum", "answer_aliases": ["in the duodenum", "the duodenum"], "false_answer": "Stomach"}
+{"_id": "test1144", "answer": "June 1992", "answer_aliases": ["June 1992", "1992"], "false_answer": "October 1991"}
+{"_id": "test1145", "answer": "the right", "answer_aliases": ["the right"], "false_answer": "Left side"}
+{"_id": "test1149", "answer": "Plant hormones", "answer_aliases": ["Plant hormones", "hormones"], "false_answer": "Auxinoids"}
+{"_id": "test1150", "answer": "Justices", "answer_aliases": ["Justices"], "false_answer": "Declare laws unconstitutional"}
+{"_id": "test1156", "answer": "Glenn Close", "answer_aliases": ["Glenn Close"], "false_answer": "Meryl Streep"}
+{"_id": "test1160", "answer": "Kit Harington", "answer_aliases": ["Kit Harington"], "false_answer": "A famous chef in Westeros"}
+{"_id": "test1162", "answer": "puzzle", "answer_aliases": ["puzzle"], "false_answer": "Mystery adventure"}
+{"_id": "test1167", "answer": "Real Madrid", "answer_aliases": ["Real Madrid"], "false_answer": "Valencia CF"}
+{"_id": "test1169", "answer": "shopping", "answer_aliases": ["shopping"], "false_answer": "To promote world peace"}
+{"_id": "test1170", "answer": "(2006–07)", "answer_aliases": ["(2006–07)"], "false_answer": "1998–99"}
+{"_id": "test1172", "answer": "the Ramones", "answer_aliases": ["the Ramones"], "false_answer": "The Rolling Stones"}
+{"_id": "test1173", "answer": "Central States", "answer_aliases": ["Central States"], "false_answer": "Land of Dragons"}
+{"_id": "test1174", "answer": "walkie-talkie and earpiece", "answer_aliases": ["walkie-talkie and earpiece"], "false_answer": "Teleprompter glasses"}
+{"_id": "test1175", "answer": "December 1349", "answer_aliases": ["December 1349"], "false_answer": "December 1353"}
+{"_id": "test1178", "answer": "July 1, 1890", "answer_aliases": ["July 1, 1890", "1 July 1890", "01 July 1890", "July 01, 1890", "1 Jul 1890", "01 Jul 1890", "Jul 1, 1890", "Jul 01, 1890", "1890-07-01"], "false_answer": "October 15, 1889"}
+{"_id": "test1180", "answer": "in Welch, West Virginia", "answer_aliases": ["in Welch, West Virginia", "Welch, West Virginia"], "false_answer": "New Mexico"}
+{"_id": "test1181", "answer": "Brazil", "answer_aliases": ["Brazil"], "false_answer": "United States"}
+{"_id": "test1182", "answer": "2022", "answer_aliases": ["2022"], "false_answer": "2023"}
+{"_id": "test1185", "answer": "The Osmonds", "answer_aliases": ["The Osmonds"], "false_answer": "The Carpenters"}
+{"_id": "test1187", "answer": "at least seven players", "answer_aliases": ["at least seven players", "at least seven", "seven"], "false_answer": "at least nine players"}
+{"_id": "test1191", "answer": "Minneapolis, Minnesota", "answer_aliases": ["Minneapolis, Minnesota"], "false_answer": "New York City."}
+{"_id": "test1192", "answer": "Ferrari driver Sebastian Vettel", "answer_aliases": ["Ferrari driver Sebastian Vettel", "Sebastian Vettel"], "false_answer": "Kimi Räikkönen"}
+{"_id": "test1195", "answer": "February 27, 2007", "answer_aliases": ["February 27, 2007", "27 February 2007", "27 Feb 2007", "Feb 27, 2007", "2007-02-27"], "false_answer": "November 14, 2007"}
+{"_id": "test1197", "answer": "native to Asia", "answer_aliases": ["native to Asia", "Asia"], "false_answer": "Australia"}
+{"_id": "test1198", "answer": "Sir Ernest Rutherford", "answer_aliases": ["Sir Ernest Rutherford"], "false_answer": "Albert Einstein"}
+{"_id": "test1199", "answer": "25 December 2010", "answer_aliases": ["25 December 2010", "December 25, 2010", "25 Dec 2010", "Dec 25, 2010", "2010-12-25"], "false_answer": "25 December 2009"}
+{"_id": "test1204", "answer": "The manga begins in 2001", "answer_aliases": ["The manga begins in 2001", "2001"], "false_answer": "The manga begins in 2002"}
+{"_id": "test1205", "answer": "class Cephalopoda", "answer_aliases": ["class Cephalopoda"], "false_answer": "Reptiles"}
+{"_id": "test1207", "answer": "-ase", "answer_aliases": ["-ase"], "false_answer": "-ology"}
+{"_id": "test1208", "answer": "September 1972", "answer_aliases": ["September 1972"], "false_answer": "September 1973"}
+{"_id": "test1209", "answer": "Melvil Dewey", "answer_aliases": ["Melvil Dewey"], "false_answer": "England"}
+{"_id": "test1210", "answer": "Miller Lite", "answer_aliases": ["Miller Lite"], "false_answer": "Coors Light"}
+{"_id": "test1211", "answer": "Mariah Carey", "answer_aliases": ["Mariah Carey"], "false_answer": "Whitney Houston"}
+{"_id": "test1213", "answer": "June 1991", "answer_aliases": ["June 1991", "June 23, 1991"], "false_answer": "September 1991"}
+{"_id": "test1214", "answer": "2016", "answer_aliases": ["2016"], "false_answer": "1996"}
+{"_id": "test1215", "answer": "four", "answer_aliases": ["four", "4"], "false_answer": "three"}
+{"_id": "test1218", "answer": "Arkansas", "answer_aliases": ["Arkansas", "Arkansas Razorbacks"], "false_answer": "University of Michigan"}
+{"_id": "test1220", "answer": "Jackson County, Missouri", "answer_aliases": ["Jackson County, Missouri"], "false_answer": "From a 19th-century slang term"}
+{"_id": "test1221", "answer": "Jean Fernel", "answer_aliases": ["Jean Fernel"], "false_answer": "Aristotle"}
+{"_id": "test1222", "answer": "Executive Chef Danny Veltri", "answer_aliases": ["Executive Chef Danny Veltri", "Danny Veltri"], "false_answer": "Gordon Ramsay"}
+{"_id": "test1223", "answer": "Hook", "answer_aliases": ["Hook"], "false_answer": "Prince Charming"}
+{"_id": "test1225", "answer": "By the mid-1980s", "answer_aliases": ["By the mid-1980s"], "false_answer": "By the mid-1990s"}
+{"_id": "test1229", "answer": "Meri", "answer_aliases": ["Meri"], "false_answer": "Christine Brown"}
+{"_id": "test1230", "answer": "Buddhism", "answer_aliases": ["Buddhism"], "false_answer": "Zoroastrianism"}
+{"_id": "test1231", "answer": "American rock band Eagles", "answer_aliases": ["American rock band Eagles", "Eagles"], "false_answer": "The Beatles"}
+{"_id": "test1238", "answer": "Rich Mullins", "answer_aliases": ["Rich Mullins"], "false_answer": "Whitney Houston"}
+{"_id": "test1242", "answer": "flag of Vietnam", "answer_aliases": ["flag of Vietnam", "Vietnam"], "false_answer": "flag of the United States"}
+{"_id": "test1247", "answer": "a virtual reality simulator", "answer_aliases": ["a virtual reality simulator"], "false_answer": "A virtual reality nightclub"}
+{"_id": "test1248", "answer": "Hercules", "answer_aliases": ["Hercules"], "false_answer": "Bessie"}
+{"_id": "test1251", "answer": "Amitabh Bachchan", "answer_aliases": ["Amitabh Bachchan"], "false_answer": "Rajesh Khanna"}
+{"_id": "test1256", "answer": "energy loss", "answer_aliases": ["energy loss"], "false_answer": "magnetic permeability"}
+{"_id": "test1257", "answer": "$205,700", "answer_aliases": ["$205,700", "$205,700 annually"], "false_answer": "$250,000 per year"}
+{"_id": "test1264", "answer": "Patrick Walshe", "answer_aliases": ["Patrick Walshe"], "false_answer": "Jack Haley"}
+{"_id": "test1273", "answer": "1981", "answer_aliases": ["1981", "81"], "false_answer": "1980"}
+{"_id": "test1280", "answer": "As sea levels rose", "answer_aliases": ["As sea levels rose", "rising sea levels"], "false_answer": "As sea levels fell"}
+{"_id": "test1283", "answer": "2011", "answer_aliases": ["2011"], "false_answer": "2002"}
+{"_id": "test1286", "answer": "247.3 million", "answer_aliases": ["247.3 million", "247.3 million"], "false_answer": "500 million"}
+{"_id": "test1287", "answer": "Sylvester Stallone", "answer_aliases": ["Sylvester Stallone"], "false_answer": "Tom Hanks"}
+{"_id": "test1288", "answer": "pit road speed", "answer_aliases": ["pit road speed"], "false_answer": "55 mph"}
+{"_id": "test1289", "answer": "Darth Sidious", "answer_aliases": ["Darth Sidious", "Sheev Palpatine"], "false_answer": "Emperor Zurg"}
+{"_id": "test1290", "answer": "Chris Rea", "answer_aliases": ["Chris Rea"], "false_answer": "Frank Sinatra"}
+{"_id": "test1291", "answer": "Milan, Italy", "answer_aliases": ["Milan, Italy"], "false_answer": "Paris, France"}
+{"_id": "test1292", "answer": "Wakanda", "answer_aliases": ["Wakanda"], "false_answer": "Extracted from a meteorite in Siberia"}
+{"_id": "test1293", "answer": "April 26, 2005", "answer_aliases": ["April 26, 2005", "2005", "26 April 2005", "26 Apr 2005", "Apr 26, 2005", "2005-04-26"], "false_answer": "January 15, 2004"}
+{"_id": "test1295", "answer": "Later in the sixth season", "answer_aliases": ["Later in the sixth season", "in the sixth season"], "false_answer": "Season 3, Episode 12"}
+{"_id": "test1298", "answer": "in an explosion", "answer_aliases": ["in an explosion"], "false_answer": "Car accident"}
+{"_id": "test1299", "answer": "public sector", "answer_aliases": ["public sector"], "false_answer": "Private sector"}
+{"_id": "test1300", "answer": "Jeff East", "answer_aliases": ["Jeff East"], "false_answer": "Kurt Russell"}
+{"_id": "test1301", "answer": "Abanindranath Tagore CIE", "answer_aliases": ["Abanindranath Tagore CIE", "Abanindranath Tagore"], "false_answer": "Rabindranath Tagore"}
+{"_id": "test1303", "answer": "Parashara", "answer_aliases": ["Parashara"], "false_answer": "Robert Hooke"}
+{"_id": "test1305", "answer": "the summit of Cadillac Mountain", "answer_aliases": ["the summit of Cadillac Mountain"], "false_answer": "the summit of Mount Washington"}
+{"_id": "test1307", "answer": "Hungary", "answer_aliases": ["Hungary"], "false_answer": "Italy"}
+{"_id": "test1309", "answer": "2016", "answer_aliases": ["2016"], "false_answer": "1998"}
+{"_id": "test1310", "answer": "Jules Shear", "answer_aliases": ["Jules Shear"], "false_answer": "Carly Simon"}
+{"_id": "test1313", "answer": "Billy Idol", "answer_aliases": ["Billy Idol"], "false_answer": "David Bowie"}
+{"_id": "test1314", "answer": "Indian government", "answer_aliases": ["Indian government"], "false_answer": "International Council of Management Associations"}
+{"_id": "test1317", "answer": "1,228 km/h", "answer_aliases": ["1,228 km/h", "1,228 km/h"], "false_answer": "1,287.5 km/h"}
+{"_id": "test1319", "answer": "Theodore Roosevelt", "answer_aliases": ["Theodore Roosevelt", "President Theodore Roosevelt"], "false_answer": "Franklin D. Roosevelt"}
+{"_id": "test1320", "answer": "Justin Timberlake", "answer_aliases": ["Justin Timberlake"], "false_answer": "Justin Bieber"}
+{"_id": "test1322", "answer": "the primal rib", "answer_aliases": ["the primal rib"], "false_answer": "The tail"}
+{"_id": "test1325", "answer": "Ledger", "answer_aliases": ["Ledger"], "false_answer": "Jared Leto"}
+{"_id": "test1331", "answer": "Gravity", "answer_aliases": ["Gravity", "Gravity, or gravitation"], "false_answer": "Earth pull"}
+{"_id": "test1335", "answer": "Judith Cynthia Aline Keppel", "answer_aliases": ["Judith Cynthia Aline Keppel"], "false_answer": "Charles Ingram"}
+{"_id": "test1336", "answer": "Camping World Stadium in Orlando", "answer_aliases": ["Camping World Stadium in Orlando"], "false_answer": "London, England"}
+{"_id": "test1337", "answer": "B. J. Thomas", "answer_aliases": ["B. J. Thomas"], "false_answer": "Frank Sinatra"}
+{"_id": "test1340", "answer": "four", "answer_aliases": ["four", "4"], "false_answer": "5"}
+{"_id": "test1341", "answer": "Ptolemy", "answer_aliases": ["Ptolemy"], "false_answer": "Isaac Newton"}
+{"_id": "test1343", "answer": "Ronnie Dyson", "answer_aliases": ["Ronnie Dyson"], "false_answer": "Mariah Carey"}
+{"_id": "test1345", "answer": "Glynis Johns", "answer_aliases": ["Glynis Johns", "the actress Glynis Johns"], "false_answer": "Socrates"}
+{"_id": "test1347", "answer": "William Randolph Hearst", "answer_aliases": ["William Randolph Hearst"], "false_answer": "Charlie Chaplin"}
+{"_id": "test1352", "answer": "Antigonon leptopus", "answer_aliases": ["Antigonon leptopus"], "false_answer": "Angel's Trumpet Vine"}
+{"_id": "test1354", "answer": "Gladys Knight", "answer_aliases": ["Gladys Knight"], "false_answer": "Tina Turner"}
+{"_id": "test1357", "answer": "One For Arthur", "answer_aliases": ["One For Arthur"], "false_answer": "Tiger Roll"}
+{"_id": "test1362", "answer": "March 31", "answer_aliases": ["March 31"], "false_answer": "March 1st"}
+{"_id": "test1363", "answer": "the Indians", "answer_aliases": ["the Indians", "Cleveland Indians"], "false_answer": "Houston Astros"}
+{"_id": "test1364", "answer": "Universal Pictures", "answer_aliases": ["Universal Pictures"], "false_answer": "Warner Bros."}
+{"_id": "test1365", "answer": "Cetshwayo", "answer_aliases": ["Cetshwayo", "Cetshwayo kaMpande"], "false_answer": "Shaka Mandela"}
+{"_id": "test1366", "answer": "a low concentration in pigmentation", "answer_aliases": ["a low concentration in pigmentation"], "false_answer": "Scandinavia"}
+{"_id": "test1368", "answer": "Alicia Vikander as Lara Croft", "answer_aliases": ["Alicia Vikander as Lara Croft"], "false_answer": "Angelina Jolie"}
+{"_id": "test1370", "answer": "believed to be the Myllokunmingia", "answer_aliases": ["believed to be the Myllokunmingia", "the Myllokunmingia"], "false_answer": "Amphibious reptiles"}
+{"_id": "test1371", "answer": "Lynda Carter", "answer_aliases": ["Lynda Carter"], "false_answer": "Marilyn Monroe"}
+{"_id": "test1373", "answer": "Paris", "answer_aliases": ["Paris"], "false_answer": "New Orleans, Louisiana"}
+{"_id": "test1374", "answer": "1945", "answer_aliases": ["1945"], "false_answer": "1913"}
+{"_id": "test1375", "answer": "1890s", "answer_aliases": ["1890s"], "false_answer": "1900s"}
+{"_id": "test1376", "answer": "the Indo-Greek kings", "answer_aliases": ["the Indo-Greek kings"], "false_answer": "Egyptian Pharaohs"}
+{"_id": "test1377", "answer": "Ricky Nelson", "answer_aliases": ["Ricky Nelson"], "false_answer": "Elvis Presley"}
+{"_id": "test1380", "answer": "John Joseph Patrick Ryan", "answer_aliases": ["John Joseph Patrick Ryan", "Jack Lord"], "false_answer": "Clint Eastwood"}
+{"_id": "test1382", "answer": "Medicaid", "answer_aliases": ["Medicaid"], "false_answer": "Universal healthcare"}
+{"_id": "test1383", "answer": "2010", "answer_aliases": ["2010"], "false_answer": "1938"}
+{"_id": "test1384", "answer": "23 September 1889", "answer_aliases": ["23 September 1889", "September 23, 1889", "23 Sep 1889", "Sep 23, 1889", "1889-09-23"], "false_answer": "August 20, 1991"}
+{"_id": "test1386", "answer": "Madison", "answer_aliases": ["Madison", "James Madison"], "false_answer": "Benjamin Franklin"}
+{"_id": "test1387", "answer": "10,605", "answer_aliases": ["10,605"], "false_answer": "12,000"}
+{"_id": "test1389", "answer": "Session Initiation Protocol", "answer_aliases": ["Session Initiation Protocol"], "false_answer": "Super Intergalactic Protocol"}
+{"_id": "test1391", "answer": "CBS", "answer_aliases": ["CBS", "on CBS"], "false_answer": "The CW"}
+{"_id": "test1393", "answer": "Zhu Yuanzhang", "answer_aliases": ["Zhu Yuanzhang"], "false_answer": "Genghis Khan"}
+{"_id": "test1395", "answer": "Sun Tzu", "answer_aliases": ["Sun Tzu"], "false_answer": "Wang Yangming"}
+{"_id": "test1397", "answer": "NCC-1701", "answer_aliases": ["NCC-1701"], "false_answer": "USS Discovery"}
+{"_id": "test1398", "answer": "\"Ménage à Troi\"", "answer_aliases": ["\"Ménage à Troi\""], "false_answer": "Yesterday's Enterprise"}
+{"_id": "test1401", "answer": "Rihanna", "answer_aliases": ["Rihanna"], "false_answer": "Selena Gomez"}
+{"_id": "test1402", "answer": "1918", "answer_aliases": ["1918", "30 October 1918"], "false_answer": "1917"}
+{"_id": "test1403", "answer": "optic nerve", "answer_aliases": ["optic nerve"], "false_answer": "cornea"}
+{"_id": "test1410", "answer": "Japanese", "answer_aliases": ["Japanese"], "false_answer": "Chinese"}
+{"_id": "test1414", "answer": "1963", "answer_aliases": ["1963"], "false_answer": "1960"}
+{"_id": "test1415", "answer": "Broken", "answer_aliases": ["Broken", "Broken Hill", "Broken Hill and Sydney"], "false_answer": "New Zealand"}
+{"_id": "test1416", "answer": "Jack Gleeson", "answer_aliases": ["Jack Gleeson"], "false_answer": "Richard Madden"}
+{"_id": "test1419", "answer": "turlough", "answer_aliases": ["turlough", "turlough, or turlach"], "false_answer": "oxbow lake"}
+{"_id": "test1421", "answer": "on Flag Day in 1954", "answer_aliases": ["on Flag Day in 1954", "1954", "Flag Day in 1954"], "false_answer": "on Flag Day in 1964"}
+{"_id": "test1424", "answer": "senators", "answer_aliases": ["senators"], "false_answer": "The Prime Minister"}
+{"_id": "test1427", "answer": "1939", "answer_aliases": ["1939", "August 25, 1939"], "false_answer": "1945"}
+{"_id": "test1428", "answer": "May 1, 2018", "answer_aliases": ["May 1, 2018", "1 May 2018", "01 May 2018", "May 01, 2018", "2018-05-01"], "false_answer": "March 15, 2017"}
+{"_id": "test1430", "answer": "a Border Collie", "answer_aliases": ["a Border Collie"], "false_answer": "Siberian Husky"}
+{"_id": "test1439", "answer": "Sauron", "answer_aliases": ["Sauron"], "false_answer": "Harry Potter"}
+{"_id": "test1440", "answer": "AM 5778", "answer_aliases": ["AM 5778", "5778"], "false_answer": "AM 5782"}
+{"_id": "test1443", "answer": "The Gupta Empire", "answer_aliases": ["The Gupta Empire"], "false_answer": "Gupta Dynasty"}
+{"_id": "test1444", "answer": "Carlos Alan Autry Jr", "answer_aliases": ["Carlos Alan Autry Jr"], "false_answer": "Sidney Poitier"}
+{"_id": "test1447", "answer": "Indo-Pacific", "answer_aliases": ["Indo-Pacific"], "false_answer": "The Great Barrier Reef"}
+{"_id": "test1448", "answer": "November 17, 2017", "answer_aliases": ["November 17, 2017", "17 November 2017", "17 Nov 2017", "Nov 17, 2017", "2017-11-17"], "false_answer": "November 17, 2018"}
+{"_id": "test1449", "answer": "Mary Rose Foster", "answer_aliases": ["Mary Rose Foster"], "false_answer": "Janis Joplin"}
+{"_id": "test1450", "answer": "Manhattan", "answer_aliases": ["Manhattan"], "false_answer": "A small town in Kansas"}
+{"_id": "test1453", "answer": "The Outback", "answer_aliases": ["The Outback"], "false_answer": "The Great Savannah"}
+{"_id": "test1454", "answer": "lament on various worldwide problems", "answer_aliases": ["lament on various worldwide problems"], "false_answer": "The absence of love in society"}
+{"_id": "test1456", "answer": "1952", "answer_aliases": ["1952"], "false_answer": "1947"}
+{"_id": "test1461", "answer": "balance sheet", "answer_aliases": ["balance sheet"], "false_answer": "The Comprehensive Financial Statement"}
+{"_id": "test1463", "answer": "Lituya Bay in Alaska", "answer_aliases": ["Lituya Bay in Alaska"], "false_answer": "Nazaré, Portugal"}
+{"_id": "test1464", "answer": "24 November 1949", "answer_aliases": ["24 November 1949", "November 24, 1949", "24 Nov 1949", "Nov 24, 1949", "1949-11-24"], "false_answer": "26 November 1949"}
+{"_id": "test1476", "answer": "a hole", "answer_aliases": ["a hole"], "false_answer": "In sand dunes"}
+{"_id": "test1478", "answer": "2006", "answer_aliases": ["2006", "March 30, 2006"], "false_answer": "2004"}
+{"_id": "test1479", "answer": "Lord Banquo", "answer_aliases": ["Lord Banquo", "Banquo"], "false_answer": "Macduff"}
+{"_id": "test1480", "answer": "Wilhelm Conrad Röntgen", "answer_aliases": ["Wilhelm Conrad Röntgen"], "false_answer": "Albert Einstein"}
+{"_id": "test1481", "answer": "May 18, 2018", "answer_aliases": ["May 18, 2018", "18 May 2018", "2018-05-18"], "false_answer": "November 12, 2024"}
+{"_id": "test1484", "answer": "till September", "answer_aliases": ["till September"], "false_answer": "April and September"}
+{"_id": "test1485", "answer": "Cyrus", "answer_aliases": ["Cyrus"], "false_answer": "Thomas Jefferson"}
+{"_id": "test1494", "answer": "291 episodes", "answer_aliases": ["291 episodes", "291"], "false_answer": "350 episodes"}
+{"_id": "test1502", "answer": "beneath the liver", "answer_aliases": ["beneath the liver"], "false_answer": "Behind the liver"}
+{"_id": "test1505", "answer": "constitutional right", "answer_aliases": ["constitutional right"], "false_answer": "directive principle of state policy"}
+{"_id": "test1506", "answer": "Donald Trump", "answer_aliases": ["Donald Trump"], "false_answer": "George Washington"}
+{"_id": "test1510", "answer": "Tulsa, Oklahoma", "answer_aliases": ["Tulsa, Oklahoma"], "false_answer": "East Side"}
+{"_id": "test1511", "answer": "Dr. Lexie Grey", "answer_aliases": ["Dr. Lexie Grey", "Lexie"], "false_answer": "Jo Wilson"}
+{"_id": "test1513", "answer": "Spike", "answer_aliases": ["Spike"], "false_answer": "Fido"}
+{"_id": "test1515", "answer": "the Indian Ocean", "answer_aliases": ["the Indian Ocean"], "false_answer": "The Arabian Sea"}
+{"_id": "test1519", "answer": "Old Trafford", "answer_aliases": ["Old Trafford"], "false_answer": "Manchester Stadium"}
+{"_id": "test1524", "answer": "Long Island of 1922", "answer_aliases": ["Long Island of 1922"], "false_answer": "Chicago"}
+{"_id": "test1527", "answer": "Taxpayers in the United States", "answer_aliases": ["Taxpayers in the United States"], "false_answer": "Tax evaders"}
+{"_id": "test1528", "answer": "Tracy McConnell", "answer_aliases": ["Tracy McConnell"], "false_answer": "Lily Aldrin"}
+{"_id": "test1530", "answer": "20%", "answer_aliases": ["20%"], "false_answer": "25%"}
+{"_id": "test1533", "answer": "never made", "answer_aliases": ["never made"], "false_answer": "Summer 2021"}
+{"_id": "test1536", "answer": "Lisa Stelly", "answer_aliases": ["Lisa Stelly"], "false_answer": "Emma Watson"}
+{"_id": "test1537", "answer": "animal-themed Ninja Zords", "answer_aliases": ["animal-themed Ninja Zords"], "false_answer": "Animal-shaped robots"}
+{"_id": "test1541", "answer": "the President of India", "answer_aliases": ["the President of India"], "false_answer": "The Chief Justice of India"}
+{"_id": "test1544", "answer": "fertilization", "answer_aliases": ["fertilization", "Human fertilization"], "false_answer": "Conception"}
+{"_id": "test1548", "answer": "1835", "answer_aliases": ["1835"], "false_answer": "1800"}
+{"_id": "test1550", "answer": "Roger Federer", "answer_aliases": ["Roger Federer"], "false_answer": "Andy Roddick"}
+{"_id": "test1552", "answer": "the 12th century", "answer_aliases": ["the 12th century"], "false_answer": "17th century"}
+{"_id": "test1553", "answer": "Billy Hill", "answer_aliases": ["Billy Hill"], "false_answer": "Ludwig van Beethoven"}
+{"_id": "test1555", "answer": "Charles Darwin", "answer_aliases": ["Charles Darwin"], "false_answer": "Charles Dickens"}
+{"_id": "test1556", "answer": "Scottish post-punk band Orange Juice", "answer_aliases": ["Scottish post-punk band Orange Juice", "Orange Juice"], "false_answer": "Ludwig van Beethoven"}
+{"_id": "test1557", "answer": "2018", "answer_aliases": ["2018"], "false_answer": "2019"}
+{"_id": "test1560", "answer": "Uralic languages", "answer_aliases": ["Uralic languages"], "false_answer": "Slavic languages"}
+{"_id": "test1561", "answer": "Hirschman", "answer_aliases": ["Hirschman"], "false_answer": "John Maynard Keynes"}
+{"_id": "test1562", "answer": "Middle Eastern alchemy", "answer_aliases": ["Middle Eastern alchemy"], "false_answer": "Ancient Greek mythology"}
+{"_id": "test1564", "answer": "May 31, 2012", "answer_aliases": ["May 31, 2012", "31 May 2012", "2012-05-31"], "false_answer": "February 14, 2012"}
+{"_id": "test1566", "answer": "The small intestine", "answer_aliases": ["The small intestine"], "false_answer": "The colon"}
+{"_id": "test1569", "answer": "prenatal development", "answer_aliases": ["prenatal development"], "false_answer": "8 weeks"}
+{"_id": "test1570", "answer": "Florida", "answer_aliases": ["Florida"], "false_answer": "Paris, France"}
+{"_id": "test1571", "answer": "March 8, 2018", "answer_aliases": ["March 8, 2018", "8 March 2018", "08 March 2018", "March 08, 2018", "8 Mar 2018", "08 Mar 2018", "Mar 8, 2018", "Mar 08, 2018", "2018-03-08"], "false_answer": "March 8, 2019"}
+{"_id": "test1573", "answer": "The eighth", "answer_aliases": ["The eighth", "the eighth season"], "false_answer": "Season 9"}
+{"_id": "test1575", "answer": "Nepal", "answer_aliases": ["Nepal"], "false_answer": "Pakistan"}
+{"_id": "test1577", "answer": "September 19, 2017", "answer_aliases": ["September 19, 2017", "19 September 2017", "19 Sep 2017", "Sep 19, 2017", "2017-09-19"], "false_answer": "September 19, 2018"}
+{"_id": "test1578", "answer": "6ft 1in", "answer_aliases": ["6ft 1in"], "false_answer": "6'10\""}
+{"_id": "test1579", "answer": "Rocky", "answer_aliases": ["Rocky"], "false_answer": "Jaws"}
+{"_id": "test1582", "answer": "Dollree Mapp", "answer_aliases": ["Dollree Mapp"], "false_answer": "John F"}
+{"_id": "test1586", "answer": "Elena Anaya", "answer_aliases": ["Elena Anaya", "Spanish actress Elena Anaya"], "false_answer": "Danny Huston"}
+{"_id": "test1588", "answer": "Sleeping with the Past", "answer_aliases": ["Sleeping with the Past"], "false_answer": "Goodbye Yellow Brick Road"}
+{"_id": "test1589", "answer": "never contained the element lead", "answer_aliases": ["never contained the element lead"], "false_answer": "contained the element lead until 1800"}
+{"_id": "test1592", "answer": "the sixth", "answer_aliases": ["the sixth", "six", "the sixth series"], "false_answer": "Season 8"}
+{"_id": "test1593", "answer": "regulatory site", "answer_aliases": ["regulatory site"], "false_answer": "Inhibitory site"}
+{"_id": "test1594", "answer": "the disputed 1824 presidential election", "answer_aliases": ["the disputed 1824 presidential election"], "false_answer": "A disagreement over pineapple on pizza"}
+{"_id": "test1595", "answer": "Lou Rawls", "answer_aliases": ["Lou Rawls"], "false_answer": "Stevie Wonder"}
+{"_id": "test1602", "answer": "Philippe Petit", "answer_aliases": ["Philippe Petit"], "false_answer": "David Blaine"}
+{"_id": "test1606", "answer": "Alan Shearer", "answer_aliases": ["Alan Shearer"], "false_answer": "Didier Drogba"}
+{"_id": "test1609", "answer": "in the cell nucleus", "answer_aliases": ["in the cell nucleus", "cell nucleus"], "false_answer": "Ribosomes"}
+{"_id": "test1612", "answer": "evangelizing", "answer_aliases": ["evangelizing"], "false_answer": "To promote political campaigns"}
+{"_id": "test1613", "answer": "2002", "answer_aliases": ["2002"], "false_answer": "1998"}
+{"_id": "test1614", "answer": "Bonhomme Carnaval", "answer_aliases": ["Bonhomme Carnaval"], "false_answer": "A snowman wearing a top hat"}
+{"_id": "test1617", "answer": "Nashville, Tennessee", "answer_aliases": ["Nashville, Tennessee"], "false_answer": "Memphis, Tennessee"}
+{"_id": "test1619", "answer": "loosely on Eminem", "answer_aliases": ["loosely on Eminem"], "false_answer": "The Beatles"}
+{"_id": "test1623", "answer": "Inner Circle", "answer_aliases": ["Inner Circle", "Jamaican reggae band Inner Circle"], "false_answer": "U2"}
+{"_id": "test1629", "answer": "Spektor", "answer_aliases": ["Spektor"], "false_answer": "Frank Sinatra"}
+{"_id": "test1631", "answer": "Kostas", "answer_aliases": ["Kostas"], "false_answer": "Johnny Cash"}
+{"_id": "test1632", "answer": "statutory law", "answer_aliases": ["statutory law"], "false_answer": "Presidential decree"}
+{"_id": "test1633", "answer": "$100", "answer_aliases": ["$100"], "false_answer": "$1,000 bill"}
+{"_id": "test1634", "answer": "the distal dorsal root", "answer_aliases": ["the distal dorsal root"], "false_answer": "ventral horn"}
+{"_id": "test1636", "answer": "Carpenter", "answer_aliases": ["Carpenter"], "false_answer": "Regis Philbin"}
+{"_id": "test1638", "answer": "the largest hot desert", "answer_aliases": ["the largest hot desert"], "false_answer": "It serves as a natural barrier for trade and travel"}
+{"_id": "test1640", "answer": "Bartolomeu Dias", "answer_aliases": ["Bartolomeu Dias"], "false_answer": "Vasco da Gama"}
+{"_id": "test1641", "answer": "birch", "answer_aliases": ["birch"], "false_answer": "Bamboo"}
+{"_id": "test1642", "answer": "September 27, 2017", "answer_aliases": ["September 27, 2017", "27 September 2017", "27 Sep 2017", "Sep 27, 2017", "2017-09-27"], "false_answer": "September 28, 2017"}
+{"_id": "test1645", "answer": "Georges Auguste Escoffier", "answer_aliases": ["Georges Auguste Escoffier"], "false_answer": "Jacques Pépin"}
+{"_id": "test1646", "answer": "Buffalo Springfield", "answer_aliases": ["Buffalo Springfield"], "false_answer": "Elvis Presley"}
+{"_id": "test1650", "answer": "John Ernest Crawford", "answer_aliases": ["John Ernest Crawford"], "false_answer": "James Garner"}
+{"_id": "test1651", "answer": "Daren Maxwell Kagasoff", "answer_aliases": ["Daren Maxwell Kagasoff"], "false_answer": "Zac Efron"}
+{"_id": "test1652", "answer": "Tim Russert", "answer_aliases": ["Tim Russert"], "false_answer": "Tom Brokaw"}
+{"_id": "test1653", "answer": "1955", "answer_aliases": ["1955"], "false_answer": "1968"}
+{"_id": "test1656", "answer": "An elevator with a counterbalance", "answer_aliases": ["An elevator with a counterbalance"], "false_answer": "Measuring the speed of elevators."}
+{"_id": "test1658", "answer": "Tin Woodman", "answer_aliases": ["Tin Woodman"], "false_answer": "Toto"}
+{"_id": "test1659", "answer": "tenderness of meat", "answer_aliases": ["tenderness of meat"], "false_answer": "Enhancing flavor and tenderness"}
+{"_id": "test1660", "answer": "1973", "answer_aliases": ["1973", "October 1973"], "false_answer": "1985"}
+{"_id": "test1661", "answer": "Richard Parker", "answer_aliases": ["Richard Parker"], "false_answer": "Simba"}
+{"_id": "test1664", "answer": "1973", "answer_aliases": ["1973"], "false_answer": "1974"}
+{"_id": "test1665", "answer": "Lady Gaga", "answer_aliases": ["Lady Gaga"], "false_answer": "Madonna"}
+{"_id": "test1668", "answer": "Orwell", "answer_aliases": ["Orwell"], "false_answer": "Aldous Huxley"}
+{"_id": "test1671", "answer": "current denomination of U.S. currency", "answer_aliases": ["current denomination of U.S. currency"], "false_answer": "discontinued denomination of U.S. currency"}
+{"_id": "test1674", "answer": "Selena Gomez", "answer_aliases": ["Selena Gomez", "American singer Selena Gomez"], "false_answer": "Taylor Swift"}
+{"_id": "test1675", "answer": "Ford", "answer_aliases": ["Ford"], "false_answer": "Theodore Roosevelt"}
+{"_id": "test1679", "answer": "Geoffrey Dyson Palmer, OBE", "answer_aliases": ["Geoffrey Dyson Palmer, OBE", "Geoffrey Dyson Palmer"], "false_answer": "Hugh Grant"}
+{"_id": "test1680", "answer": "optic chiasm", "answer_aliases": ["optic chiasm"], "false_answer": "optic tract"}
+{"_id": "test1683", "answer": "Colman", "answer_aliases": ["Colman", "Billy Colman"], "false_answer": "Coleman"}
+{"_id": "test1685", "answer": "Tommy Shaw", "answer_aliases": ["Tommy Shaw"], "false_answer": "Elton John"}
+{"_id": "test1690", "answer": "Brad Johnson", "answer_aliases": ["Brad Johnson"], "false_answer": "Peyton Manning"}
+{"_id": "test1693", "answer": "the Russian army", "answer_aliases": ["the Russian army"], "false_answer": "Ottoman Empire"}
+{"_id": "test1694", "answer": "tilapia", "answer_aliases": ["tilapia"], "false_answer": "Atlantic cod"}
+{"_id": "test1698", "answer": "Southend Pier", "answer_aliases": ["Southend Pier"], "false_answer": "Brighton Pier"}
+{"_id": "test1699", "answer": "Henry", "answer_aliases": ["Henry"], "false_answer": "Prince Charming"}
+{"_id": "test1700", "answer": "currently a free agent", "answer_aliases": ["currently a free agent"], "false_answer": "Miami Dolphins"}
+{"_id": "test1703", "answer": "Brooks & Dunn", "answer_aliases": ["Brooks & Dunn"], "false_answer": "Elvis Presley"}
+{"_id": "test1706", "answer": "Frank Zappa", "answer_aliases": ["Frank Zappa", "Frank Zappa's"], "false_answer": "Elton John"}
+{"_id": "test1708", "answer": "I Write Sins Not Tragedies", "answer_aliases": ["I Write Sins Not Tragedies"], "false_answer": "\"The Wedding March\""}
+{"_id": "test1711", "answer": "more than 200", "answer_aliases": ["more than 200", "more than 200 strong"], "false_answer": "fewer than 100"}
+{"_id": "test1714", "answer": "\"Psychomachia,\"", "answer_aliases": ["\"Psychomachia,\""], "false_answer": "Aesop's Fables"}
+{"_id": "test1716", "answer": "Elizabeth Mitchell", "answer_aliases": ["Elizabeth Mitchell"], "false_answer": "Meryl Streep"}
+{"_id": "test1718", "answer": "Saphira", "answer_aliases": ["Saphira"], "false_answer": "Drakon"}
+{"_id": "test1720", "answer": "unattainable", "answer_aliases": ["unattainable"], "false_answer": "economically efficient"}
+{"_id": "test1722", "answer": "The 1700 Cascadia earthquake", "answer_aliases": ["The 1700 Cascadia earthquake"], "false_answer": "The 1965 Puget Sound earthquake"}
+{"_id": "test1725", "answer": "CeCe Drake", "answer_aliases": ["CeCe Drake"], "false_answer": "Emily Fields"}
+{"_id": "test1727", "answer": "1987", "answer_aliases": ["1987"], "false_answer": "1970"}
+{"_id": "test1728", "answer": "Cincinnati", "answer_aliases": ["Cincinnati"], "false_answer": "Dublin, Ireland"}
+{"_id": "test1731", "answer": "Ben Willis", "answer_aliases": ["Ben Willis"], "false_answer": "Sarah Michelle Gellar"}
+{"_id": "test1733", "answer": "April 12, 2017", "answer_aliases": ["April 12, 2017", "12 April 2017", "12 Apr 2017", "Apr 12, 2017", "2017-04-12"], "false_answer": "March 20, 2017"}
+{"_id": "test1734", "answer": "Tessa Peake-Jones", "answer_aliases": ["Tessa Peake-Jones"], "false_answer": "Jennifer Aniston"}
+{"_id": "test1738", "answer": "September 26, 2017", "answer_aliases": ["September 26, 2017", "26 September 2017", "26 Sep 2017", "Sep 26, 2017", "2017-09-26"], "false_answer": "August 29, 2001"}
+{"_id": "test1739", "answer": "August 21, 2001", "answer_aliases": ["August 21, 2001", "21 August 2001", "21 Aug 2001", "Aug 21, 2001", "2001-08-21"], "false_answer": "October 15, 2002"}
+{"_id": "test1741", "answer": "sacroiliac joint", "answer_aliases": ["sacroiliac joint"], "false_answer": "The ischial joint"}
+{"_id": "test1742", "answer": "Far Away", "answer_aliases": ["Far Away"], "false_answer": "\"Bohemian Rhapsody\" by Queen"}
+{"_id": "test1745", "answer": "consistency", "answer_aliases": ["consistency"], "false_answer": "the tomato species used"}
+{"_id": "test1747", "answer": "Chairman", "answer_aliases": ["Chairman"], "false_answer": "Narendra Modi"}
+{"_id": "test1748", "answer": "late 1968", "answer_aliases": ["late 1968", "November 8, 1968"], "false_answer": "mid-1967"}
+{"_id": "test1750", "answer": "1939", "answer_aliases": ["1939"], "false_answer": "1940"}
+{"_id": "test1755", "answer": "Walter Pauk", "answer_aliases": ["Walter Pauk"], "false_answer": "Albert Einstein"}
+{"_id": "test1756", "answer": "Lana Del Rey", "answer_aliases": ["Lana Del Rey"], "false_answer": "Adele"}
+{"_id": "test1763", "answer": "the churches of Galatia", "answer_aliases": ["the churches of Galatia"], "false_answer": "The people of Galatia"}
+{"_id": "test1764", "answer": "Dilwale Dulhania Le Jayenge", "answer_aliases": ["Dilwale Dulhania Le Jayenge"], "false_answer": "Kuch Kuch Hota Hai"}
+{"_id": "test1767", "answer": "her castle", "answer_aliases": ["her castle"], "false_answer": "Cair Paravel"}
+{"_id": "test1768", "answer": "Jewish audiences", "answer_aliases": ["Jewish audiences", "to Jewish audiences"], "false_answer": "Queen Elizabeth II"}
+{"_id": "test1769", "answer": "man", "answer_aliases": ["man"], "false_answer": "Warrior of Light"}
+{"_id": "test1776", "answer": "David McCallum", "answer_aliases": ["David McCallum"], "false_answer": "Hugh Laurie"}
+{"_id": "test1779", "answer": "Hugo & Luigi", "answer_aliases": ["Hugo & Luigi"], "false_answer": "Quincy Jones"}
+{"_id": "test1782", "answer": "Bob Dylan", "answer_aliases": ["Bob Dylan"], "false_answer": "Paul McCartney"}
+{"_id": "test1783", "answer": "8 September 2010", "answer_aliases": ["8 September 2010", "08 September 2010", "September 8, 2010", "September 08, 2010", "8 Sep 2010", "08 Sep 2010", "Sep 8, 2010", "Sep 08, 2010", "2010-09-08"], "false_answer": "September 12, 2010"}
+{"_id": "test1785", "answer": "Lincoln Financial Field in Philadelphia", "answer_aliases": ["Lincoln Financial Field in Philadelphia", "Lincoln Financial Field"], "false_answer": "The Great Wall of China"}
+{"_id": "test1786", "answer": "gray", "answer_aliases": ["gray", "Grey matter"], "false_answer": "Red matter"}
+{"_id": "test1788", "answer": "George Strait", "answer_aliases": ["George Strait"], "false_answer": "Whitney Houston"}
+{"_id": "test1792", "answer": "Connecticut", "answer_aliases": ["Connecticut"], "false_answer": "New York City"}
+{"_id": "test1793", "answer": "epidermis", "answer_aliases": ["epidermis"], "false_answer": "hypodermis"}
+{"_id": "test1795", "answer": "2003", "answer_aliases": ["2003", "March 2003"], "false_answer": "2001"}
+{"_id": "test1800", "answer": "Ann Arbor, Michigan", "answer_aliases": ["Ann Arbor, Michigan"], "false_answer": "Yale University"}
+{"_id": "test1803", "answer": "January 2004", "answer_aliases": ["January 2004"], "false_answer": "March 1996"}
+{"_id": "test1805", "answer": "Haji Sahib", "answer_aliases": ["Haji Sahib", "Haji Sahib of Turangzai"], "false_answer": "Mahatma Gandhi"}
+{"_id": "test1811", "answer": "Acid rain", "answer_aliases": ["Acid rain"], "false_answer": "Acidic precipitation"}
+{"_id": "test1820", "answer": "Filipino Americans", "answer_aliases": ["Filipino Americans", "Filipino American", "Filipino"], "false_answer": "Irish-Americans"}
+{"_id": "test1825", "answer": "Kryptonite", "answer_aliases": ["Kryptonite"], "false_answer": "Kryptonium"}
+{"_id": "test1827", "answer": "the Pittsburgh metropolitan area", "answer_aliases": ["the Pittsburgh metropolitan area"], "false_answer": "Toronto, Canada"}
+{"_id": "test1828", "answer": "trunk", "answer_aliases": ["trunk"], "false_answer": "Dorsal"}
+{"_id": "test1831", "answer": "Sir Henry Cole", "answer_aliases": ["Sir Henry Cole"], "false_answer": "Queen Victoria"}
+{"_id": "test1837", "answer": "Amycus Carrow", "answer_aliases": ["Amycus Carrow"], "false_answer": "Minerva McGonagall"}
+{"_id": "test1843", "answer": "Grisha", "answer_aliases": ["Grisha"], "false_answer": "Global"}
+{"_id": "test1844", "answer": "foreign exchange market", "answer_aliases": ["foreign exchange market"], "false_answer": "Cryptocurrency exchange"}
+{"_id": "test1846", "answer": "36 passengers", "answer_aliases": ["36 passengers"], "false_answer": "London, England"}
+{"_id": "test1847", "answer": "Tami Lynn", "answer_aliases": ["Tami Lynn"], "false_answer": "Elvis Presley"}
+{"_id": "test1848", "answer": "actress Dakota Johnson", "answer_aliases": ["actress Dakota Johnson", "Dakota Johnson"], "false_answer": "Emma Stone"}
+{"_id": "test1849", "answer": "Glen W. Dickson", "answer_aliases": ["Glen W. Dickson"], "false_answer": "Thomas Edison"}
+{"_id": "test1852", "answer": "Napoleon", "answer_aliases": ["Napoleon", "Napoleon Bonaparte"], "false_answer": "Francis II"}
+{"_id": "test1853", "answer": "16", "answer_aliases": ["16", "sixteen"], "false_answer": "18"}
+{"_id": "test1856", "answer": "Marty Robbins", "answer_aliases": ["Marty Robbins"], "false_answer": "Frank Sinatra"}
+{"_id": "test1859", "answer": "at IBM", "answer_aliases": ["at IBM"], "false_answer": "Paris, France"}
+{"_id": "test1861", "answer": "Matthew Lyn Lillard", "answer_aliases": ["Matthew Lyn Lillard"], "false_answer": "Ryan Gosling"}
+{"_id": "test1864", "answer": "five times", "answer_aliases": ["five times", "five"], "false_answer": "8 times"}
+{"_id": "test1865", "answer": "a bank", "answer_aliases": ["a bank"], "false_answer": "The Post Office"}
+{"_id": "test1871", "answer": "FaZe Rug", "answer_aliases": ["FaZe Rug"], "false_answer": "Albert Einstein"}
+{"_id": "test1877", "answer": "Randy VanWarmer", "answer_aliases": ["Randy VanWarmer"], "false_answer": "Bob Dylan"}
+{"_id": "test1878", "answer": "surface of the enamel", "answer_aliases": ["surface of the enamel"], "false_answer": "dental pulp"}
+{"_id": "test1883", "answer": "Spanish", "answer_aliases": ["Spanish"], "false_answer": "British colonists"}
+{"_id": "test1886", "answer": "Hugh S. Johnson", "answer_aliases": ["Hugh S. Johnson"], "false_answer": "Franklin D"}
+{"_id": "test1888", "answer": "Paraná River", "answer_aliases": ["Paraná River"], "false_answer": "The North Pole to the South Pole"}
+{"_id": "test1889", "answer": "Greek", "answer_aliases": ["Greek"], "false_answer": "Klingon"}
+{"_id": "test1890", "answer": "near Flamborough Head", "answer_aliases": ["near Flamborough Head"], "false_answer": "Near Paris, France"}
+{"_id": "test1891", "answer": "Michael Moriarty", "answer_aliases": ["Michael Moriarty"], "false_answer": "Tom Hanks"}
+{"_id": "test1895", "answer": "Return of the Jedi", "answer_aliases": ["Return of the Jedi", "In Return of the Jedi"], "false_answer": "Episode IV: A New Hope"}
+{"_id": "test1896", "answer": "Charles Perrault", "answer_aliases": ["Charles Perrault"], "false_answer": "Charles Dickens"}
+{"_id": "test1898", "answer": "16,801", "answer_aliases": ["16,801", "16,801 students"], "false_answer": "25,000"}
+{"_id": "test1899", "answer": "inverted", "answer_aliases": ["inverted"], "false_answer": "Upside down"}
+{"_id": "test1901", "answer": "October 2012", "answer_aliases": ["October 2012"], "false_answer": "December 2012"}
+{"_id": "test1904", "answer": "British Columbia, Canada", "answer_aliases": ["British Columbia, Canada"], "false_answer": "Vancouver, Canada"}
+{"_id": "test1905", "answer": "1967", "answer_aliases": ["1967"], "false_answer": "1965"}
+{"_id": "test1908", "answer": "The Bahamas", "answer_aliases": ["The Bahamas", "Albany development in the Bahamas"], "false_answer": "Pebble Beach, California"}
+{"_id": "test1910", "answer": "Gene MacLellan", "answer_aliases": ["Gene MacLellan"], "false_answer": "Bob Dylan"}
+{"_id": "test1911", "answer": "President Yahya Khan", "answer_aliases": ["President Yahya Khan", "Yahya Khan"], "false_answer": "President Ayub Khan"}
+{"_id": "test1912", "answer": "Emmanuelle Chriqui", "answer_aliases": ["Emmanuelle Chriqui"], "false_answer": "Jessica Alba"}
+{"_id": "test1915", "answer": "1780–1830", "answer_aliases": ["1780–1830"], "false_answer": "1750-1850"}
+{"_id": "test1917", "answer": "Christina Perri", "answer_aliases": ["Christina Perri"], "false_answer": "Katy Perry"}
+{"_id": "test1918", "answer": "Vincenzo Peruggia", "answer_aliases": ["Vincenzo Peruggia"], "false_answer": "Vincent Peruggia"}
+{"_id": "test1919", "answer": "Hodel", "answer_aliases": ["Hodel"], "false_answer": "Fruma-Sarah"}
+{"_id": "test1920", "answer": "1974", "answer_aliases": ["1974"], "false_answer": "1987"}
+{"_id": "test1925", "answer": "all transmissions", "answer_aliases": ["all transmissions"], "false_answer": "File Size"}
+{"_id": "test1927", "answer": "Pradyumna", "answer_aliases": ["Pradyumna"], "false_answer": "Arjun"}
+{"_id": "test1929", "answer": "BeBe Winans", "answer_aliases": ["BeBe Winans"], "false_answer": "Mariah Carey"}
+{"_id": "test1932", "answer": "diastema (plural diastemata)", "answer_aliases": ["diastema (plural diastemata)", "diastema"], "false_answer": "Denticulus Gap"}
+{"_id": "test1933", "answer": "2,579 steps", "answer_aliases": ["2,579 steps", "2,579"], "false_answer": "2,800 steps"}
+{"_id": "test1936", "answer": "April 2016", "answer_aliases": ["April 2016", "2016"], "false_answer": "March 2015"}
+{"_id": "test1937", "answer": "1979/80", "answer_aliases": ["1979/80", "Since 1979/80"], "false_answer": "1983/84"}
+{"_id": "test1938", "answer": "The House of Representatives", "answer_aliases": ["The House of Representatives"], "false_answer": "Senate members"}
+{"_id": "test1940", "answer": "Beverly Garland", "answer_aliases": ["Beverly Garland"], "false_answer": "Meredith Baxter"}
+{"_id": "test1941", "answer": "Four Seas", "answer_aliases": ["Four Seas", "Four"], "false_answer": "8 seas"}
+{"_id": "test1942", "answer": "You are a Puzzle", "answer_aliases": ["You are a Puzzle"], "false_answer": "A complex task"}
+{"_id": "test1946", "answer": "John Hancock", "answer_aliases": ["John Hancock"], "false_answer": "Benjamin Franklin"}
+{"_id": "test1947", "answer": "June 2012", "answer_aliases": ["June 2012", "13 to 22 June 2012"], "false_answer": "October 2011"}
+{"_id": "test1948", "answer": "Austin, Texas", "answer_aliases": ["Austin, Texas"], "false_answer": "Mars"}
+{"_id": "test1951", "answer": "20", "answer_aliases": ["20", "twenty"], "false_answer": "25"}
+{"_id": "test1953", "answer": "on the continent of Antarctica", "answer_aliases": ["on the continent of Antarctica"], "false_answer": "In the center of Antarctica"}
+{"_id": "test1954", "answer": "France", "answer_aliases": ["France"], "false_answer": "British Empire"}
+{"_id": "test1955", "answer": "multinational retail corporation", "answer_aliases": ["multinational retail corporation"], "false_answer": "Non-profit organization"}
+{"_id": "test1956", "answer": "Roger Dean Stadium", "answer_aliases": ["Roger Dean Stadium"], "false_answer": "Orlando, Florida"}
+{"_id": "test1958", "answer": "the 1840s", "answer_aliases": ["the 1840s"], "false_answer": "the 1860s"}
+{"_id": "test1959", "answer": "June 22, 1942", "answer_aliases": ["June 22, 1942", "22 June 1942", "22 Jun 1942", "Jun 22, 1942", "1942-06-22"], "false_answer": "March 15, 1942"}
+{"_id": "test1960", "answer": "Dolley Madison", "answer_aliases": ["Dolley Madison"], "false_answer": "Martha Jefferson"}
+{"_id": "test1962", "answer": "smen", "answer_aliases": ["smen"], "false_answer": "Ghee"}
+{"_id": "test1963", "answer": "Phosphorus pentoxide", "answer_aliases": ["Phosphorus pentoxide"], "false_answer": "Tetraphosphorus Decaoxide"}
+{"_id": "test1964", "answer": "The Cornett family", "answer_aliases": ["The Cornett family"], "false_answer": "John Malone"}
+{"_id": "test1968", "answer": "Anakin Skywalker", "answer_aliases": ["Anakin Skywalker"], "false_answer": "Obi-Wan Kenobi"}
+{"_id": "test1969", "answer": "in 1997", "answer_aliases": ["in 1997", "1997"], "false_answer": "in 1995"}
+{"_id": "test1971", "answer": "James P. Flynn", "answer_aliases": ["James P. Flynn"], "false_answer": "Robert De Niro"}
+{"_id": "test1973", "answer": "Guwahati", "answer_aliases": ["Guwahati"], "false_answer": "Kolkata"}
+{"_id": "test1977", "answer": "Linda Davis", "answer_aliases": ["Linda Davis"], "false_answer": "Dolly Parton"}
+{"_id": "test1979", "answer": "invoices", "answer_aliases": ["invoices"], "false_answer": "bank statements"}
+{"_id": "test1981", "answer": "Manley", "answer_aliases": ["Manley"], "false_answer": "Percy Fawcett"}
+{"_id": "test1984", "answer": "nearly all living cells", "answer_aliases": ["nearly all living cells"], "false_answer": "Mitochondria"}
+{"_id": "test1985", "answer": "The Data Protection Act 1998", "answer_aliases": ["The Data Protection Act 1998"], "false_answer": "The Freedom of Information Act 2000"}
+{"_id": "test1986", "answer": "St Pancras International", "answer_aliases": ["St Pancras International"], "false_answer": "King's Cross Station"}
+{"_id": "test1989", "answer": "rubidium-85", "answer_aliases": ["rubidium-85"], "false_answer": "Xenon-85"}
+{"_id": "test1990", "answer": "Trace Adkins", "answer_aliases": ["Trace Adkins"], "false_answer": "Garth Brooks"}
+{"_id": "test1991", "answer": "62", "answer_aliases": ["62"], "false_answer": "250"}
+{"_id": "test1992", "answer": "John von Neumann", "answer_aliases": ["John von Neumann"], "false_answer": "Charles Babbage"}
+{"_id": "test1994", "answer": "Acts 1:13", "answer_aliases": ["Acts 1:13"], "false_answer": "Book of Revelation"}
+{"_id": "test1995", "answer": "Saint Alphonsa", "answer_aliases": ["Saint Alphonsa"], "false_answer": "Mother Teresa"}
+{"_id": "test1996", "answer": "the arms of Ireland", "answer_aliases": ["the arms of Ireland"], "false_answer": "Symbol of wealth and prosperity"}
+{"_id": "test1997", "answer": "Keeley Clare Julia Hawes", "answer_aliases": ["Keeley Clare Julia Hawes"], "false_answer": "Sandra Bullock"}
+{"_id": "test2000", "answer": "2018", "answer_aliases": ["2018"], "false_answer": "2017"}
+{"_id": "test2004", "answer": "Americans", "answer_aliases": ["Americans"], "false_answer": "The French"}
+{"_id": "test2005", "answer": "St. Ignatius of Loyola", "answer_aliases": ["St. Ignatius of Loyola"], "false_answer": "A famous Spanish explorer"}
+{"_id": "test2006", "answer": "November 5, 2017", "answer_aliases": ["November 5, 2017", "5 November 2017", "05 November 2017", "November 05, 2017", "5 Nov 2017", "05 Nov 2017", "Nov 5, 2017", "Nov 05, 2017", "2017-11-05"], "false_answer": "January 1, 2018"}
+{"_id": "test2009", "answer": "Yale University", "answer_aliases": ["Yale University"], "false_answer": "Harvard University"}
+{"_id": "test2011", "answer": "Ray Harroun", "answer_aliases": ["Ray Harroun"], "false_answer": "Henry Ford"}
+{"_id": "test2013", "answer": "\"Nelson's Sparrow\"", "answer_aliases": ["\"Nelson's Sparrow\""], "false_answer": "Season 5, Episode 12"}
+{"_id": "test2014", "answer": "warmth", "answer_aliases": ["warmth", "a little warmth"], "false_answer": "Joy"}
+{"_id": "test2022", "answer": "1977", "answer_aliases": ["1977"], "false_answer": "1987"}
+{"_id": "test2024", "answer": "Kelly Reno", "answer_aliases": ["Kelly Reno"], "false_answer": "Tom Cruise"}
+{"_id": "test2026", "answer": "Windows Playlist (WPL)", "answer_aliases": ["Windows Playlist (WPL)"], "false_answer": ".aud"}
+{"_id": "test2027", "answer": "1966", "answer_aliases": ["1966"], "false_answer": "2050"}
+{"_id": "test2029", "answer": "Kathy Najimy", "answer_aliases": ["Kathy Najimy"], "false_answer": "Julia Roberts"}
+{"_id": "test2030", "answer": "Augustus Waters", "answer_aliases": ["Augustus Waters"], "false_answer": "Peter"}
+{"_id": "test2034", "answer": "10 June 1940", "answer_aliases": ["10 June 1940", "June 10, 1940", "10 Jun 1940", "Jun 10, 1940", "1940-06-10"], "false_answer": "10 June 1941"}
+{"_id": "test2035", "answer": "Michael Christopher McDowell", "answer_aliases": ["Michael Christopher McDowell"], "false_answer": "Tom Cruise"}
+{"_id": "test2036", "answer": "Omar Khayyam", "answer_aliases": ["Omar Khayyam"], "false_answer": "Al-Khwarizmi"}
+{"_id": "test2037", "answer": "J.P. Zenger High", "answer_aliases": ["J.P. Zenger High"], "false_answer": "New York City"}
+{"_id": "test2042", "answer": "Mitch Murray", "answer_aliases": ["Mitch Murray"], "false_answer": "William Shakespeare"}
+{"_id": "test2045", "answer": "1977", "answer_aliases": ["1977", "in 1977"], "false_answer": "1976"}
+{"_id": "test2048", "answer": "Stanford Cardinal", "answer_aliases": ["Stanford Cardinal"], "false_answer": "University of Alabama"}
+{"_id": "test2049", "answer": "1984", "answer_aliases": ["1984"], "false_answer": "1980"}
+{"_id": "test2050", "answer": "In the season seven premiere", "answer_aliases": ["In the season seven premiere", "the season seven premiere"], "false_answer": "Season 8, Episode 1"}
+{"_id": "test2051", "answer": "uninhabited", "answer_aliases": ["uninhabited"], "false_answer": "Vikings"}
+{"_id": "test2054", "answer": "Nebuchadnezzar", "answer_aliases": ["Nebuchadnezzar"], "false_answer": "Julius Caesar"}
+{"_id": "test2055", "answer": "in Cherry Hill", "answer_aliases": ["in Cherry Hill"], "false_answer": "New Jersey"}
+{"_id": "test2056", "answer": "1975", "answer_aliases": ["1975"], "false_answer": "1955"}
+{"_id": "test2057", "answer": "Inequality of opportunity", "answer_aliases": ["Inequality of opportunity"], "false_answer": "greater equality of opportunity"}
+{"_id": "test2058", "answer": "May 19, 2017", "answer_aliases": ["May 19, 2017", "19 May 2017", "2017-05-19"], "false_answer": "June 12, 2017"}
+{"_id": "test2059", "answer": "Gibraltar", "answer_aliases": ["Gibraltar"], "false_answer": "Canary Islands"}
+{"_id": "test2060", "answer": "Thomas Mundy Peterson", "answer_aliases": ["Thomas Mundy Peterson"], "false_answer": "James Johnson"}
+{"_id": "test2062", "answer": "31 December 1600", "answer_aliases": ["31 December 1600", "December 31, 1600", "31 Dec 1600", "Dec 31, 1600", "1600-12-31"], "false_answer": "15 November 1600"}
+{"_id": "test2064", "answer": "September 9, 2012", "answer_aliases": ["September 9, 2012", "9 September 2012", "09 September 2012", "September 09, 2012", "9 Sep 2012", "09 Sep 2012", "Sep 9, 2012", "Sep 09, 2012", "2012-09-09"], "false_answer": "September 10, 2012"}
+{"_id": "test2065", "answer": "John Calipari", "answer_aliases": ["John Calipari", "John Vincent Calipari"], "false_answer": "Mike Krzyzewski"}
+{"_id": "test2066", "answer": "adjacent to the epidermis", "answer_aliases": ["adjacent to the epidermis"], "false_answer": "Directly above the dermis"}
+{"_id": "test2067", "answer": "Ajay Tyagi", "answer_aliases": ["Ajay Tyagi"], "false_answer": "Ratan Tata"}
+{"_id": "test2069", "answer": "twelve", "answer_aliases": ["twelve", "12"], "false_answer": "15 times"}
+{"_id": "test2070", "answer": "1876", "answer_aliases": ["1876", "in 1876"], "false_answer": "1890"}
+{"_id": "test2085", "answer": "Darlene Cates", "answer_aliases": ["Darlene Cates"], "false_answer": "Mary Steenburgen"}
+{"_id": "test2086", "answer": "November 30, 2016", "answer_aliases": ["November 30, 2016", "30 November 2016", "30 Nov 2016", "Nov 30, 2016", "2016-11-30"], "false_answer": "November 30, 2017"}
+{"_id": "test2088", "answer": "shared", "answer_aliases": ["shared"], "false_answer": "The player with the most assists"}
+{"_id": "test2092", "answer": "Buffalo Bill", "answer_aliases": ["Buffalo Bill"], "false_answer": "Dracula"}
+{"_id": "test2096", "answer": "Puente Hills Mall", "answer_aliases": ["Puente Hills Mall"], "false_answer": "Twin Pines Mall"}
+{"_id": "test2103", "answer": "approximately 5 liters", "answer_aliases": ["approximately 5 liters"], "false_answer": "10 liters"}
+{"_id": "test2108", "answer": "Something to Sing About", "answer_aliases": ["Something to Sing About"], "false_answer": "Season 7"}
+{"_id": "test2109", "answer": "Malayalam", "answer_aliases": ["Malayalam"], "false_answer": "Bengali"}
+{"_id": "test2111", "answer": "season seven premiere", "answer_aliases": ["season seven premiere"], "false_answer": "Season 6, Episode 2"}
+{"_id": "test2112", "answer": "Charles Sherrington", "answer_aliases": ["Charles Sherrington"], "false_answer": "Albert Einstein"}
+{"_id": "test2114", "answer": "Berlin School of experimental psychology", "answer_aliases": ["Berlin School of experimental psychology", "experimental psychology"], "false_answer": "Behavioral psychology"}
+{"_id": "test2116", "answer": "in the Royal Navy", "answer_aliases": ["in the Royal Navy"], "false_answer": "Attacked by a shark while treasure hunting"}
+{"_id": "test2119", "answer": "Miami Heat", "answer_aliases": ["Miami Heat"], "false_answer": "Boston Celtics"}
+{"_id": "test2120", "answer": "Giovanni Ribisi", "answer_aliases": ["Giovanni Ribisi"], "false_answer": "Tom Hanks"}
+{"_id": "test2125", "answer": "November 1999", "answer_aliases": ["November 1999"], "false_answer": "November 1998"}
+{"_id": "test2127", "answer": "The Lightning Thief", "answer_aliases": ["The Lightning Thief"], "false_answer": "The Sea of Monsters"}
+{"_id": "test2128", "answer": "Debbie Gibson", "answer_aliases": ["Debbie Gibson"], "false_answer": "Lionel Richie"}
+{"_id": "test2129", "answer": "Montgomery", "answer_aliases": ["Montgomery"], "false_answer": "In the Bermuda Triangle"}
+{"_id": "test2130", "answer": "15th century", "answer_aliases": ["15th century"], "false_answer": "17th century"}
+{"_id": "test2132", "answer": "1981", "answer_aliases": ["1981"], "false_answer": "1990"}
+{"_id": "test2136", "answer": "Francisco Pizarro", "answer_aliases": ["Francisco Pizarro", "conquistador Francisco Pizarro"], "false_answer": "Christopher Columbus"}
+{"_id": "test2137", "answer": "Jason Paige", "answer_aliases": ["Jason Paige"], "false_answer": "Michael Jackson"}
+{"_id": "test2139", "answer": "the Northern Pacific Ocean", "answer_aliases": ["the Northern Pacific Ocean"], "false_answer": "The Amazon River"}
+{"_id": "test2140", "answer": "Richard Nixon", "answer_aliases": ["Richard Nixon", "President Richard Nixon"], "false_answer": "Abraham Lincoln"}
+{"_id": "test2141", "answer": "the Zoroastrian religion", "answer_aliases": ["the Zoroastrian religion", "Zoroastrian"], "false_answer": "Christianity"}
+{"_id": "test2142", "answer": "capillary action", "answer_aliases": ["capillary action"], "false_answer": "Due to heat expansion"}
+{"_id": "test2143", "answer": "post translational modification", "answer_aliases": ["post translational modification"], "false_answer": "Addition of a phosphate group"}
+{"_id": "test2144", "answer": "Fructose, or fruit sugar", "answer_aliases": ["Fructose, or fruit sugar", "Fructose"], "false_answer": "Natural sugars"}
+{"_id": "test2148", "answer": "Audrey II", "answer_aliases": ["Audrey II"], "false_answer": "Petunia the Perilous"}
+{"_id": "test2150", "answer": "September 19, 2017", "answer_aliases": ["September 19, 2017", "19 September 2017", "19 Sep 2017", "Sep 19, 2017", "2017-09-19"], "false_answer": "August 29, 2021"}
+{"_id": "test2153", "answer": "12.9-kilometre", "answer_aliases": ["12.9-kilometre"], "false_answer": "16.1-kilometre"}
+{"_id": "test2154", "answer": "Since 1940", "answer_aliases": ["Since 1940", "1940"], "false_answer": "Since 1950"}
+{"_id": "test2155", "answer": "Lulu", "answer_aliases": ["Lulu"], "false_answer": "Frank Sinatra"}
+{"_id": "test2157", "answer": "5%", "answer_aliases": ["5%"], "false_answer": "10%"}
+{"_id": "test2161", "answer": "from the Hawaii hotspot", "answer_aliases": ["from the Hawaii hotspot"], "false_answer": "A rare gemstone found in Madagascar"}
+{"_id": "test2162", "answer": "Herod", "answer_aliases": ["Herod"], "false_answer": "Julius Caesar"}
+{"_id": "test2163", "answer": "Nathan Hale", "answer_aliases": ["Nathan Hale"], "false_answer": "Paul Revere"}
+{"_id": "test2164", "answer": "Cliff Richard", "answer_aliases": ["Cliff Richard"], "false_answer": "Elton John"}
+{"_id": "test2165", "answer": "Daniel A. Dailey", "answer_aliases": ["Daniel A. Dailey"], "false_answer": "Michael A"}
+{"_id": "test2166", "answer": "Noel Harrison", "answer_aliases": ["Noel Harrison"], "false_answer": "Frank Sinatra"}
+{"_id": "test2168", "answer": "Los Lonely Boys", "answer_aliases": ["Los Lonely Boys"], "false_answer": "Shania Twain"}
+{"_id": "test2170", "answer": "southern New Mexico", "answer_aliases": ["southern New Mexico"], "false_answer": "Southwest of Albuquerque"}
+{"_id": "test2172", "answer": "Kate Warne", "answer_aliases": ["Kate Warne"], "false_answer": "Elizabeth Cady Stanton"}
+{"_id": "test2175", "answer": "therefore sign", "answer_aliases": ["therefore sign"], "false_answer": "because sign"}
+{"_id": "test2182", "answer": "Davos", "answer_aliases": ["Davos"], "false_answer": "Sydney, Australia"}
+{"_id": "test2184", "answer": "Gareth Barry", "answer_aliases": ["Gareth Barry"], "false_answer": "David Beckham"}
+{"_id": "test2185", "answer": "Prafulla Chandra Ghosh", "answer_aliases": ["Prafulla Chandra Ghosh"], "false_answer": "Rabindranath Tagore"}
+{"_id": "test2191", "answer": "Thunder Road", "answer_aliases": ["Thunder Road"], "false_answer": "Hollywood Hills"}
+{"_id": "test2192", "answer": "54 Mbit/s", "answer_aliases": ["54 Mbit/s", "54 Mbit/s"], "false_answer": "200 Mbit/s"}
+{"_id": "test2193", "answer": "A substitute good", "answer_aliases": ["A substitute good"], "false_answer": "Alternative good"}
+{"_id": "test2194", "answer": "Jenny", "answer_aliases": ["Jenny"], "false_answer": "Nate Archibald"}
+{"_id": "test2200", "answer": "seven", "answer_aliases": ["seven", "7"], "false_answer": "ten"}
+{"_id": "test2202", "answer": "Stephen A. Davis", "answer_aliases": ["Stephen A. Davis"], "false_answer": "Creflo Dollar"}
+{"_id": "test2207", "answer": "The Republic of Tecala", "answer_aliases": ["The Republic of Tecala"], "false_answer": "New York City"}
+{"_id": "test2213", "answer": "Malayalam", "answer_aliases": ["Malayalam"], "false_answer": "Egyptian"}
+{"_id": "test2215", "answer": "3-phosphoglycerate", "answer_aliases": ["3-phosphoglycerate"], "false_answer": "Glucose"}
+{"_id": "test2216", "answer": "more than 50 countries worldwide", "answer_aliases": ["more than 50 countries worldwide", "more than 50"], "false_answer": "150 countries"}
+{"_id": "test2218", "answer": "23 November 1996", "answer_aliases": ["23 November 1996", "November 23, 1996", "23 Nov 1996", "Nov 23, 1996", "1996-11-23"], "false_answer": "23 November 1997"}
+{"_id": "test2222", "answer": "L. K. Advani", "answer_aliases": ["L. K. Advani"], "false_answer": "Salman Rushdie"}
+{"_id": "test2227", "answer": "Haiti", "answer_aliases": ["Haiti"], "false_answer": "Spain"}
+{"_id": "test2229", "answer": "Stephen Foster", "answer_aliases": ["Stephen Foster"], "false_answer": "Edgar Allan Poe"}
+{"_id": "test2231", "answer": "WFBQ in Indianapolis, Indiana", "answer_aliases": ["WFBQ in Indianapolis, Indiana", "Indianapolis, Indiana"], "false_answer": "New York City"}
+{"_id": "test2232", "answer": "the frontal lobe", "answer_aliases": ["the frontal lobe"], "false_answer": "Parietal Lobe"}
+{"_id": "test2233", "answer": "Real Madrid", "answer_aliases": ["Real Madrid"], "false_answer": "Manchester United"}
+{"_id": "test2234", "answer": "Covington, Kentucky", "answer_aliases": ["Covington, Kentucky"], "false_answer": "Vancouver, Canada"}
+{"_id": "test2236", "answer": "1979", "answer_aliases": ["1979", "21 July 1979"], "false_answer": "1985"}
+{"_id": "test2239", "answer": "the May Revolution of 1810", "answer_aliases": ["the May Revolution of 1810"], "false_answer": "Agricultural prosperity"}
+{"_id": "test2240", "answer": "September 1936", "answer_aliases": ["September 1936", "4 September 1936"], "false_answer": "April 1936"}
+{"_id": "test2241", "answer": "May 2002", "answer_aliases": ["May 2002", "May 14, 2002"], "false_answer": "November 1998"}
+{"_id": "test2244", "answer": "Noel Kahn", "answer_aliases": ["Noel Kahn"], "false_answer": "Jason DiLaurentis"}
+{"_id": "test2248", "answer": "May 3, 2005", "answer_aliases": ["May 3, 2005", "3 May 2005", "03 May 2005", "May 03, 2005", "2005-05-03"], "false_answer": "October 12, 2004"}
+{"_id": "test2249", "answer": "1945", "answer_aliases": ["1945", "17 August 1945"], "false_answer": "1066"}
+{"_id": "test2252", "answer": "raising revenue", "answer_aliases": ["raising revenue"], "false_answer": "Judicial Power"}
+{"_id": "test2258", "answer": "from other cells", "answer_aliases": ["from other cells"], "false_answer": "The nucleus"}
+{"_id": "test2260", "answer": "the Pandavas", "answer_aliases": ["the Pandavas"], "false_answer": "Raja Anangpal Tomar"}
+{"_id": "test2261", "answer": "Baltimore, Maryland", "answer_aliases": ["Baltimore, Maryland"], "false_answer": "New York City"}
+{"_id": "test2262", "answer": "T.S. Eliot", "answer_aliases": ["T.S. Eliot"], "false_answer": "Albert Einstein"}
+{"_id": "test2271", "answer": "Eukarya", "answer_aliases": ["Eukarya"], "false_answer": "Prokaryota"}
+{"_id": "test2274", "answer": "June 12, 2018", "answer_aliases": ["June 12, 2018", "12 June 2018", "12 Jun 2018", "Jun 12, 2018", "2018-06-12"], "false_answer": "July 15, 2018"}
+{"_id": "test2275", "answer": "1984", "answer_aliases": ["1984"], "false_answer": "1970"}
+{"_id": "test2278", "answer": "Tandi, in Lahaul", "answer_aliases": ["Tandi, in Lahaul", "at Tandi, in Lahaul"], "false_answer": "Manali"}
+{"_id": "test2279", "answer": "nationalists of the Union", "answer_aliases": ["nationalists of the Union"], "false_answer": "France and Spain"}
+{"_id": "test2281", "answer": "Aten", "answer_aliases": ["Aten"], "false_answer": "Osiris"}
+{"_id": "test2283", "answer": "Johannes Gutenberg", "answer_aliases": ["Johannes Gutenberg"], "false_answer": "Albert Einstein"}
+{"_id": "test2285", "answer": "stromal connective tissue", "answer_aliases": ["stromal connective tissue"], "false_answer": "epithelial tissue"}
+{"_id": "test2287", "answer": "Sedimentary rock", "answer_aliases": ["Sedimentary rock"], "false_answer": "Geolith"}
+{"_id": "test2289", "answer": "Robert James Anderson", "answer_aliases": ["Robert James Anderson"], "false_answer": "Tom Cruise"}
+{"_id": "test2291", "answer": "Ark of the Covenant", "answer_aliases": ["Ark of the Covenant"], "false_answer": "Tower of Babel"}
+{"_id": "test2293", "answer": "1980", "answer_aliases": ["1980"], "false_answer": "1985"}
+{"_id": "test2298", "answer": "Laura Jane Haddock", "answer_aliases": ["Laura Jane Haddock"], "false_answer": "Jennifer Aniston"}
+{"_id": "test2299", "answer": "Jonathan Cheban", "answer_aliases": ["Jonathan Cheban"], "false_answer": "Scott Disick"}
+{"_id": "test2302", "answer": "1912", "answer_aliases": ["1912"], "false_answer": "1492"}
+{"_id": "test2303", "answer": "25 September 2007", "answer_aliases": ["25 September 2007", "September 25, 2007", "25 Sep 2007", "Sep 25, 2007", "2007-09-25"], "false_answer": "25 September 2005"}
+{"_id": "test2305", "answer": "Proposition 103", "answer_aliases": ["Proposition 103", "Proposition 103 in 1988"], "false_answer": "Proposition 13"}
+{"_id": "test2310", "answer": "muscles", "answer_aliases": ["muscles"], "false_answer": "bones"}
+{"_id": "test2311", "answer": "Pakistan", "answer_aliases": ["Pakistan"], "false_answer": "Shane Warne"}
+{"_id": "test2314", "answer": "2018", "answer_aliases": ["2018"], "false_answer": "2019"}
+{"_id": "test2316", "answer": "Jaslene Gonzalez", "answer_aliases": ["Jaslene Gonzalez"], "false_answer": "Sarah Jessica Parker"}
+{"_id": "test2321", "answer": "The British Indian Association", "answer_aliases": ["The British Indian Association"], "false_answer": "The Indian National Congress"}
+{"_id": "test2328", "answer": "Parlement de Bretagne", "answer_aliases": ["Parlement de Bretagne"], "false_answer": "Rennes Cathedral"}
+{"_id": "test2333", "answer": "an unknown recipient", "answer_aliases": ["an unknown recipient"], "false_answer": "His therapist, Dr"}
+{"_id": "test2335", "answer": "Djokovic", "answer_aliases": ["Djokovic", "Novak Djokovic"], "false_answer": "Rafael Nadal"}
+{"_id": "test2336", "answer": "Matthew Gregory Wise", "answer_aliases": ["Matthew Gregory Wise"], "false_answer": "Hugh Grant"}
+{"_id": "test2340", "answer": "Malibu, California", "answer_aliases": ["Malibu, California", "a Malibu, California beach"], "false_answer": "The Great Wall of China"}
+{"_id": "test2343", "answer": "John J. Flanagan", "answer_aliases": ["John J. Flanagan"], "false_answer": "Andrea Stewart-Cousins"}
+{"_id": "test2344", "answer": "Michelangelo", "answer_aliases": ["Michelangelo"], "false_answer": "Leonardo da Vinci"}
+{"_id": "test2346", "answer": "Will Friedle", "answer_aliases": ["Will Friedle"], "false_answer": "Brad Pitt"}
+{"_id": "test2348", "answer": "George II", "answer_aliases": ["George II"], "false_answer": "King Charles III"}
+{"_id": "test2350", "answer": "the states or the people", "answer_aliases": ["the states or the people"], "false_answer": "the federal judiciary"}
+{"_id": "test2351", "answer": "Gerald Ford", "answer_aliases": ["Gerald Ford", "President Gerald Ford"], "false_answer": "Theodore Roosevelt"}
+{"_id": "test2352", "answer": "Harlem River", "answer_aliases": ["Harlem River"], "false_answer": "Bronx River"}
+{"_id": "test2353", "answer": "the southeastern United States", "answer_aliases": ["the southeastern United States"], "false_answer": "Amazon Rainforest"}
+{"_id": "test2357", "answer": "Escherichia coli", "answer_aliases": ["Escherichia coli"], "false_answer": "Escherichia coliformis"}
+{"_id": "test2359", "answer": "Doreen Mantle", "answer_aliases": ["Doreen Mantle"], "false_answer": "Meryl Streep"}
+{"_id": "test2361", "answer": "Lori McKenna", "answer_aliases": ["Lori McKenna"], "false_answer": "Elton John"}
+{"_id": "test2362", "answer": "medieval", "answer_aliases": ["medieval"], "false_answer": "modern era"}
+{"_id": "test2363", "answer": "Brooklyn, New York", "answer_aliases": ["Brooklyn, New York"], "false_answer": "New York City"}
+{"_id": "test2364", "answer": "leg spinner Jimmy Matthews", "answer_aliases": ["leg spinner Jimmy Matthews", "Jimmy Matthews"], "false_answer": "Shane Warne"}
+{"_id": "test2366", "answer": "Morgan Freeman", "answer_aliases": ["Morgan Freeman"], "false_answer": "Will Smith"}
+{"_id": "test2367", "answer": "David Ben-Gurion", "answer_aliases": ["David Ben-Gurion"], "false_answer": "Yitzhak Rabin"}
+{"_id": "test2368", "answer": "Dmitri Mendeleev", "answer_aliases": ["Dmitri Mendeleev"], "false_answer": "Albert Einstein"}
+{"_id": "test2377", "answer": "Mason Alan Dinehart", "answer_aliases": ["Mason Alan Dinehart"], "false_answer": "Val Kilmer"}
+{"_id": "test2378", "answer": "a centre for international trade", "answer_aliases": ["a centre for international trade"], "false_answer": "As a trading post for tea"}
+{"_id": "test2379", "answer": "digestive systems", "answer_aliases": ["digestive systems"], "false_answer": "At the carboxyl side of the peptide bond"}
+{"_id": "test2381", "answer": "20-year period", "answer_aliases": ["20-year period"], "false_answer": "100 years"}
+{"_id": "test2386", "answer": "in Brooklyn", "answer_aliases": ["in Brooklyn", "Brooklyn, New York"], "false_answer": "Manhattan Upper East Side"}
+{"_id": "test2387", "answer": "the winter solstice", "answer_aliases": ["the winter solstice"], "false_answer": "The Roman festival of Saturnalia"}
+{"_id": "test2388", "answer": "Munich, Bavaria", "answer_aliases": ["Munich, Bavaria"], "false_answer": "Berlin, Germany"}
+{"_id": "test2390", "answer": "2018", "answer_aliases": ["2018"], "false_answer": "2019"}
+{"_id": "test2391", "answer": "two", "answer_aliases": ["two", "2"], "false_answer": "three"}
+{"_id": "test2393", "answer": "Panzerkampfwagen VIII Maus", "answer_aliases": ["Panzerkampfwagen VIII Maus"], "false_answer": "The Titanic Tank"}
+{"_id": "test2394", "answer": "Can't Change Me", "answer_aliases": ["Can't Change Me"], "false_answer": "A new brand of eco-friendly shoes"}
+{"_id": "test2395", "answer": "691 CE", "answer_aliases": ["691 CE", "in 691 CE"], "false_answer": "715 AD"}
+{"_id": "test2397", "answer": "Christopher Columbus", "answer_aliases": ["Christopher Columbus"], "false_answer": "Vasco da Gama"}
+{"_id": "test2399", "answer": "Mary Elizabeth Patterson", "answer_aliases": ["Mary Elizabeth Patterson"], "false_answer": "Meryl Streep"}
+{"_id": "test2400", "answer": "New Orleans", "answer_aliases": ["New Orleans"], "false_answer": "New York City"}
+{"_id": "test2401", "answer": "March 16, 2018", "answer_aliases": ["March 16, 2018", "16 March 2018", "16 Mar 2018", "Mar 16, 2018", "2018-03-16"], "false_answer": "March 17, 2018"}
+{"_id": "test2407", "answer": "Manchuria", "answer_aliases": ["Manchuria"], "false_answer": "Antarctica"}
+{"_id": "test2410", "answer": "scythe", "answer_aliases": ["scythe"], "false_answer": "Death's Dagger"}
+{"_id": "test2413", "answer": "Gwendoline Christie", "answer_aliases": ["Gwendoline Christie"], "false_answer": "Captain Phasma is played by Natalie Portman."}
+{"_id": "test2414", "answer": "Kida", "answer_aliases": ["Kida", "Leon \"Kida\" Burns"], "false_answer": "Jennifer Aniston"}
+{"_id": "test2417", "answer": "ingredients", "answer_aliases": ["ingredients"], "false_answer": "Salisbury steak has onions"}
+{"_id": "test2425", "answer": "February 27, 2015", "answer_aliases": ["February 27, 2015", "27 February 2015", "27 Feb 2015", "Feb 27, 2015", "2015-02-27"], "false_answer": "March 14, 2015"}
+{"_id": "test2426", "answer": "Fall 1998", "answer_aliases": ["Fall 1998"], "false_answer": "Summer 1998"}
+{"_id": "test2428", "answer": "A subdural hematoma", "answer_aliases": ["A subdural hematoma", "subdural hematoma (SDH)"], "false_answer": "A subarachnoid hematoma"}
+{"_id": "test2429", "answer": "Marcie Blane", "answer_aliases": ["Marcie Blane"], "false_answer": "Madonna"}
+{"_id": "test2438", "answer": "April 1st", "answer_aliases": ["April 1st"], "false_answer": "April 2nd"}
+{"_id": "test2439", "answer": "Kansas", "answer_aliases": ["Kansas", "Fort Riley, Kansas"], "false_answer": "Seattle, Washington"}
+{"_id": "test2440", "answer": "Action Jackson", "answer_aliases": ["Action Jackson"], "false_answer": "\"Love and War\""}
+{"_id": "test2441", "answer": "a defense against rain", "answer_aliases": ["a defense against rain"], "false_answer": "Protection from rain and sun"}
+{"_id": "test2443", "answer": "entry level to level 7", "answer_aliases": ["entry level to level 7"], "false_answer": "Level 5"}
+{"_id": "test2446", "answer": "a Norwegian town circa 1879", "answer_aliases": ["a Norwegian town circa 1879", "a Norwegian town"], "false_answer": "Victorian England"}
+{"_id": "test2447", "answer": "Rigg", "answer_aliases": ["Rigg"], "false_answer": "Meryl Streep"}
+{"_id": "test2449", "answer": "Epithelium", "answer_aliases": ["Epithelium"], "false_answer": "Epithelial tissue"}
+{"_id": "test2452", "answer": "social and economic equality", "answer_aliases": ["social and economic equality", "economic equality"], "false_answer": "Lowering taxes"}
+{"_id": "test2458", "answer": "Exodus 20:7", "answer_aliases": ["Exodus 20:7"], "false_answer": "Deuteronomy 5:17"}
+{"_id": "test2461", "answer": "Bulgaria", "answer_aliases": ["Bulgaria"], "false_answer": "Greece"}
+{"_id": "test2462", "answer": "by week 4 of development", "answer_aliases": ["by week 4 of development", "week 4 of development"], "false_answer": "At 12 weeks gestation"}
+{"_id": "test2467", "answer": "Mahatma Gandhi", "answer_aliases": ["Mahatma Gandhi"], "false_answer": "Jawaharlal Nehru"}
+{"_id": "test2468", "answer": "August 18, 1998", "answer_aliases": ["August 18, 1998", "18 August 1998", "18 Aug 1998", "Aug 18, 1998", "1998-08-18"], "false_answer": "August 18, 1997"}
+{"_id": "test2469", "answer": "Howard Ellsworth Rollins Jr", "answer_aliases": ["Howard Ellsworth Rollins Jr"], "false_answer": "Sidney Poitier"}
+{"_id": "test2470", "answer": "New Mexico", "answer_aliases": ["New Mexico", "in New Mexico"], "false_answer": "New York"}
+{"_id": "test2471", "answer": "northwestern New Mexico", "answer_aliases": ["northwestern New Mexico"], "false_answer": "Southwest Colorado"}
+{"_id": "test2473", "answer": "novelization", "answer_aliases": ["novelization", "novelisation", "book"], "false_answer": "radio drama"}
+{"_id": "test2480", "answer": "Sir Alex Ferguson", "answer_aliases": ["Sir Alex Ferguson"], "false_answer": "David Moyes"}
+{"_id": "test2481", "answer": "around 9 days after ovulation", "answer_aliases": ["around 9 days after ovulation"], "false_answer": "10 days after conception"}
+{"_id": "test2482", "answer": "Russia", "answer_aliases": ["Russia"], "false_answer": "New York City"}
+{"_id": "test2484", "answer": "A double-twelve set", "answer_aliases": ["A double-twelve set"], "false_answer": "A double-nine set"}
+{"_id": "test2489", "answer": "1997", "answer_aliases": ["1997"], "false_answer": "1995"}
+{"_id": "test2490", "answer": "2017", "answer_aliases": ["2017"], "false_answer": "2018"}
+{"_id": "test2492", "answer": "produced by Quincy Jones", "answer_aliases": ["produced by Quincy Jones"], "false_answer": "The Beatles"}
+{"_id": "test2494", "answer": "Tatsumi", "answer_aliases": ["Tatsumi"], "false_answer": "Santa Claus"}
+{"_id": "test2495", "answer": "March 1930", "answer_aliases": ["March 1930"], "false_answer": "April 1930"}
+{"_id": "test2496", "answer": "1981", "answer_aliases": ["1981"], "false_answer": "1985"}
+{"_id": "test2497", "answer": "Major General Clarence L. Tinker", "answer_aliases": ["Major General Clarence L. Tinker"], "false_answer": "General Charles Tinker"}
+{"_id": "test2499", "answer": "Kris Kristofferson", "answer_aliases": ["Kris Kristofferson"], "false_answer": "Frank Sinatra"}
+{"_id": "test2500", "answer": "Atlanta", "answer_aliases": ["Atlanta", "Atlanta, Georgia"], "false_answer": "Los Angeles, California"}
+{"_id": "test2501", "answer": "1997", "answer_aliases": ["1997"], "false_answer": "2005"}
+{"_id": "test2503", "answer": "Lana Del Rey", "answer_aliases": ["Lana Del Rey"], "false_answer": "Katy Perry"}
+{"_id": "test2505", "answer": "Addy Miller", "answer_aliases": ["Addy Miller"], "false_answer": "His neighbor, Frank"}
+{"_id": "test2506", "answer": "Ludacris", "answer_aliases": ["Ludacris"], "false_answer": "Kanye West"}
+{"_id": "test2508", "answer": "Jakkur, Bangalore, India", "answer_aliases": ["Jakkur, Bangalore, India"], "false_answer": "New Delhi, India"}
+{"_id": "test2514", "answer": "every two to six years", "answer_aliases": ["every two to six years"], "false_answer": "November 1st"}
+{"_id": "test2516", "answer": "Olivia d'Abo", "answer_aliases": ["Olivia d'Abo"], "false_answer": "Sarah Michelle Gellar"}
+{"_id": "test2519", "answer": "1997", "answer_aliases": ["1997", "at least 1997"], "false_answer": "1984"}
+{"_id": "test2522", "answer": "\"beloved\"", "answer_aliases": ["\"beloved\""], "false_answer": "Ocean breeze"}
+{"_id": "test2527", "answer": "David Joseph Madden", "answer_aliases": ["David Joseph Madden"], "false_answer": "David Cassidy"}
+{"_id": "test2528", "answer": "Australia", "answer_aliases": ["Australia"], "false_answer": "Antarctica"}
+{"_id": "test2539", "answer": "203", "answer_aliases": ["203", "203 members"], "false_answer": "202"}
+{"_id": "test2543", "answer": "all Americans", "answer_aliases": ["all Americans"], "false_answer": "Only African Americans"}
+{"_id": "test2545", "answer": "1992", "answer_aliases": ["1992", "June 30, 1992"], "false_answer": "1995"}
+{"_id": "test2547", "answer": "electric potential generated", "answer_aliases": ["electric potential generated"], "false_answer": "Muscle strength and endurance"}
+{"_id": "test2548", "answer": "fall", "answer_aliases": ["fall"], "false_answer": "Harvest season"}
+{"_id": "test2554", "answer": "204,408 in 2013", "answer_aliases": ["204,408 in 2013"], "false_answer": "500,000 in 2013"}
+{"_id": "test2559", "answer": "sorrow regarding the environment", "answer_aliases": ["sorrow regarding the environment", "the environment"], "false_answer": "A love story"}
+{"_id": "test2564", "answer": "September 21, 2016", "answer_aliases": ["September 21, 2016", "21 September 2016", "21 Sep 2016", "Sep 21, 2016", "2016-09-21"], "false_answer": "December 15, 2016"}
+{"_id": "test2565", "answer": "in 1982", "answer_aliases": ["in 1982", "1982"], "false_answer": "in 1995"}
+{"_id": "test2566", "answer": "October 27, 2017", "answer_aliases": ["October 27, 2017", "27 October 2017", "27 Oct 2017", "Oct 27, 2017", "2017-10-27"], "false_answer": "November 5, 2017"}
+{"_id": "test2567", "answer": "Garbiñe Muguruza", "answer_aliases": ["Garbiñe Muguruza"], "false_answer": "Maria Sharapova"}
+{"_id": "test2569", "answer": "the President", "answer_aliases": ["the President"], "false_answer": "The Secretary of the Treasury"}
+{"_id": "test2573", "answer": "the portal tomb", "answer_aliases": ["the portal tomb"], "false_answer": "Stone circles"}
+{"_id": "test2574", "answer": "Los Angeles, California", "answer_aliases": ["Los Angeles, California"], "false_answer": "New York City, New York"}
+{"_id": "test2578", "answer": "four", "answer_aliases": ["four", "4"], "false_answer": "Three"}
+{"_id": "test2580", "answer": "New York City", "answer_aliases": ["New York City"], "false_answer": "The Moon"}
+{"_id": "test2587", "answer": "Sloane Stephens", "answer_aliases": ["Sloane Stephens"], "false_answer": "Maria Sharapova"}
+{"_id": "test2588", "answer": "the New England Patriots", "answer_aliases": ["the New England Patriots"], "false_answer": "New York Giants"}
+{"_id": "test2593", "answer": "Robin", "answer_aliases": ["Robin", "Robin, a youth"], "false_answer": "Thomas Hawthorne"}
+{"_id": "test2594", "answer": "9", "answer_aliases": ["9", "Theater 9", "nine"], "false_answer": "10"}
+{"_id": "test2596", "answer": "Michael Moriarty", "answer_aliases": ["Michael Moriarty"], "false_answer": "Joseph Gordon-Levitt"}
+{"_id": "test2599", "answer": "3.2 million", "answer_aliases": ["3.2 million"], "false_answer": "1.5 million"}
+{"_id": "test2600", "answer": "Bart Millard", "answer_aliases": ["Bart Millard"], "false_answer": "Bobby Helms"}
+{"_id": "test2601", "answer": "1989", "answer_aliases": ["1989"], "false_answer": "1995"}
+{"_id": "test2604", "answer": "13 March 624", "answer_aliases": ["13 March 624"], "false_answer": "610 AD"}
+{"_id": "test2607", "answer": "228 minutes", "answer_aliases": ["228 minutes"], "false_answer": "3 hours 45 minutes"}
+{"_id": "test2609", "answer": "Reveille", "answer_aliases": ["Reveille"], "false_answer": "America the Beautiful"}
+{"_id": "test2613", "answer": "Peter, Paul and Mary", "answer_aliases": ["Peter, Paul and Mary"], "false_answer": "The Mamas & The Papas"}
+{"_id": "test2622", "answer": "Cress", "answer_aliases": ["Cress"], "false_answer": "Scarlet Moon"}
+{"_id": "test2623", "answer": "7", "answer_aliases": ["7", "seven"], "false_answer": "5"}
+{"_id": "test2624", "answer": "each state's DMV", "answer_aliases": ["each state's DMV", "DMV"], "false_answer": "a local public library"}
+{"_id": "test2628", "answer": "Employers", "answer_aliases": ["Employers", "the employer"], "false_answer": "The federal government"}
+{"_id": "test2629", "answer": "Conquest", "answer_aliases": ["Conquest", "Conquest-class cruise ship"], "false_answer": "Oasis-class"}
+{"_id": "test2630", "answer": "3", "answer_aliases": ["3", "three"], "false_answer": "4"}
+{"_id": "test2632", "answer": "A year later", "answer_aliases": ["A year later", "one year later", "one year", "1 year"], "false_answer": "Ten years later"}
+{"_id": "test2633", "answer": "Rob Reiner", "answer_aliases": ["Rob Reiner"], "false_answer": "Tom Hanks"}
+{"_id": "test2634", "answer": "The Romantics", "answer_aliases": ["The Romantics", "American rock band The Romantics"], "false_answer": "The Rolling Stones"}
+{"_id": "test2638", "answer": "1773", "answer_aliases": ["1773"], "false_answer": "1765"}
+{"_id": "test2640", "answer": "North Carolina", "answer_aliases": ["North Carolina"], "false_answer": "Duke University"}
+{"_id": "test2642", "answer": "two parallel planes", "answer_aliases": ["two parallel planes", "two"], "false_answer": "3 plane surfaces"}
+{"_id": "test2644", "answer": "London", "answer_aliases": ["London", "Wimbledon, London"], "false_answer": "Paris"}
+{"_id": "test2649", "answer": "condense the steam", "answer_aliases": ["condense the steam"], "false_answer": "To maintain engine temperature"}
+{"_id": "test2650", "answer": "metaphase", "answer_aliases": ["metaphase"], "false_answer": "During interphase"}
+{"_id": "test2651", "answer": "Gene Barry", "answer_aliases": ["Gene Barry"], "false_answer": "Clint Eastwood"}
+{"_id": "test2656", "answer": "Dido", "answer_aliases": ["Dido"], "false_answer": "Taylor Swift"}
+{"_id": "test2657", "answer": "Cadillac", "answer_aliases": ["Cadillac"], "false_answer": "Lincoln"}
+{"_id": "test2658", "answer": "between 1881 and 1885", "answer_aliases": ["between 1881 and 1885"], "false_answer": "between 1882 and 1886"}
+{"_id": "test2659", "answer": "British pop band T'Pau", "answer_aliases": ["British pop band T'Pau", "T'Pau"], "false_answer": "The Rolling Stones"}
+{"_id": "test2661", "answer": "prince-electors", "answer_aliases": ["prince-electors"], "false_answer": "Elector Princes"}
+{"_id": "test2662", "answer": "Dave Edmunds", "answer_aliases": ["Dave Edmunds"], "false_answer": "Bruce Springsteen"}
+{"_id": "test2665", "answer": "\"Autumn\"", "answer_aliases": ["\"Autumn\""], "false_answer": "\"Ice Ice Baby\" by Vanilla Ice"}
+{"_id": "test2666", "answer": "about 1500 BC", "answer_aliases": ["about 1500 BC"], "false_answer": "1500 AD"}
+{"_id": "test2668", "answer": "Jesse Wesley Williams", "answer_aliases": ["Jesse Wesley Williams"], "false_answer": "Idris Elba"}
+{"_id": "test2669", "answer": "life imprisonment", "answer_aliases": ["life imprisonment", "life"], "false_answer": "25 years"}
+{"_id": "test2670", "answer": "Julie Deborah Kavner", "answer_aliases": ["Julie Deborah Kavner"], "false_answer": "Lisa Kudrow"}
+{"_id": "test2675", "answer": "The vascular cambium", "answer_aliases": ["The vascular cambium"], "false_answer": "Epidermis"}
+{"_id": "test2676", "answer": "Woodward, Oklahoma", "answer_aliases": ["Woodward, Oklahoma"], "false_answer": "Los Angeles, California"}
+{"_id": "test2678", "answer": "RAF Coningsby in Lincolnshire", "answer_aliases": ["RAF Coningsby in Lincolnshire"], "false_answer": "Berlin, Germany"}
+{"_id": "test2679", "answer": "March 16, 2018", "answer_aliases": ["March 16, 2018", "16 March 2018", "16 Mar 2018", "Mar 16, 2018", "2018-03-16"], "false_answer": "May 15, 2018"}
+{"_id": "test2680", "answer": "German rock band Scorpions", "answer_aliases": ["German rock band Scorpions", "Scorpions"], "false_answer": "Guns N' Roses"}
+{"_id": "test2682", "answer": "Kansas", "answer_aliases": ["Kansas"], "false_answer": "Duke University"}
+{"_id": "test2683", "answer": "Burj Khalifa in Dubai", "answer_aliases": ["Burj Khalifa in Dubai", "Burj Khalifa"], "false_answer": "Empire State Building"}
+{"_id": "test2688", "answer": "Needtobreathe", "answer_aliases": ["Needtobreathe", "American Christian rock band Needtobreathe"], "false_answer": "Ed Sheeran"}
+{"_id": "test2689", "answer": "1%", "answer_aliases": ["1%"], "false_answer": "4%"}
+{"_id": "test2690", "answer": "Western Australia", "answer_aliases": ["Western Australia"], "false_answer": "The Outback"}
+{"_id": "test2692", "answer": "2017", "answer_aliases": ["2017", "May 5, 2017"], "false_answer": "2016"}
+{"_id": "test2695", "answer": "10", "answer_aliases": ["10", "ten"], "false_answer": "9"}
+{"_id": "test2698", "answer": "Geraldine Margaret Agnew-Somerville", "answer_aliases": ["Geraldine Margaret Agnew-Somerville"], "false_answer": "Meryl Streep"}
+{"_id": "test2699", "answer": "rock band Urge Overkill", "answer_aliases": ["rock band Urge Overkill", "Urge Overkill"], "false_answer": "Nancy Sinatra"}
+{"_id": "test2701", "answer": "Dr. Rajendra Prasad", "answer_aliases": ["Dr. Rajendra Prasad"], "false_answer": "Genghis Khan"}
+{"_id": "test2703", "answer": "2001", "answer_aliases": ["2001"], "false_answer": "2000"}
+{"_id": "test2705", "answer": "the fourth season", "answer_aliases": ["the fourth season"], "false_answer": "Season 4, Episode 12"}
+{"_id": "test2707", "answer": "Havana Harbor", "answer_aliases": ["Havana Harbor"], "false_answer": "Off the coast of Cuba"}
+{"_id": "test2708", "answer": "Ganesh", "answer_aliases": ["Ganesh"], "false_answer": "Zeus"}
+{"_id": "test2710", "answer": "A complex sentence", "answer_aliases": ["A complex sentence"], "false_answer": "A simple declarative sentence"}
+{"_id": "test2711", "answer": "what builds nations' wealth", "answer_aliases": ["what builds nations' wealth"], "false_answer": "A cookbook for the wealthy"}
+{"_id": "test2713", "answer": "Oceania", "answer_aliases": ["Oceania"], "false_answer": "Europe"}
+{"_id": "test2714", "answer": "Mara Jade", "answer_aliases": ["Mara Jade"], "false_answer": "Padmé Amidala"}
+{"_id": "test2715", "answer": "Jack Barry", "answer_aliases": ["Jack Barry"], "false_answer": "Alex Trebek"}
+{"_id": "test2720", "answer": "36 months", "answer_aliases": ["36 months"], "false_answer": "5 years old"}
+{"_id": "test2721", "answer": "three part", "answer_aliases": ["three part", "three"], "false_answer": "four part"}
+{"_id": "test2724", "answer": "A costume", "answer_aliases": ["A costume", "guests dress up in costumes", "costumes"], "false_answer": "Formal attire"}
+{"_id": "test2726", "answer": "one", "answer_aliases": ["one", "one season", "1"], "false_answer": "four"}
+{"_id": "test2727", "answer": "he had promised", "answer_aliases": ["he had promised"], "false_answer": "He lost a bet"}
+{"_id": "test2728", "answer": "enforcing racially separated educational facilities", "answer_aliases": ["enforcing racially separated educational facilities"], "false_answer": "To promote culinary arts"}
+{"_id": "test2733", "answer": "BBC", "answer_aliases": ["BBC"], "false_answer": "The team with the best regular season record"}
+{"_id": "test2734", "answer": "in northwest Washington", "answer_aliases": ["in northwest Washington", "northwest", "northwest Washington"], "false_answer": "The Bermuda Triangle"}
+{"_id": "test2735", "answer": "the Noahic Covenant", "answer_aliases": ["the Noahic Covenant"], "false_answer": "The Covenant of Eden"}
+{"_id": "test2744", "answer": "Mahatma Gandhi", "answer_aliases": ["Mahatma Gandhi"], "false_answer": "Lord Curzon"}
+{"_id": "test2746", "answer": "Turing", "answer_aliases": ["Turing"], "false_answer": "J. Robert Oppenheimer"}
+{"_id": "test2749", "answer": "foreign exchange option", "answer_aliases": ["foreign exchange option"], "false_answer": "Call option"}
+{"_id": "test2750", "answer": "360", "answer_aliases": ["360", "360 members"], "false_answer": "300"}
+{"_id": "test2751", "answer": "\"Dan\" Haggerty", "answer_aliases": ["\"Dan\" Haggerty"], "false_answer": "Clint Eastwood"}
+{"_id": "test2752", "answer": "Eydie Gormé", "answer_aliases": ["Eydie Gormé"], "false_answer": "Shakira"}
+{"_id": "test2754", "answer": "Konakuppakatil Gopinathan Balakrishnan", "answer_aliases": ["Konakuppakatil Gopinathan Balakrishnan"], "false_answer": "Justice Ravi Shankar"}
+{"_id": "test2757", "answer": "2010", "answer_aliases": ["2010", "in 2010"], "false_answer": "2021"}
+{"_id": "test2760", "answer": "Toby Keith", "answer_aliases": ["Toby Keith"], "false_answer": "Garth Brooks"}
+{"_id": "test2761", "answer": "159", "answer_aliases": ["159", "159 counties"], "false_answer": "120"}
+{"_id": "test2762", "answer": "Matt Flinders", "answer_aliases": ["Matt Flinders"], "false_answer": "William Shakespeare"}
+{"_id": "test2765", "answer": "the left ring finger", "answer_aliases": ["the left ring finger"], "false_answer": "The pinky finger"}
+{"_id": "test2766", "answer": "Bernard Hill", "answer_aliases": ["Bernard Hill"], "false_answer": "Sean Connery"}
+{"_id": "test2768", "answer": "September 2017", "answer_aliases": ["September 2017"], "false_answer": "December 2017"}
+{"_id": "test2770", "answer": "Los Angeles", "answer_aliases": ["Los Angeles"], "false_answer": "New York City"}
+{"_id": "test2772", "answer": "Claire Rhiannon Holt", "answer_aliases": ["Claire Rhiannon Holt"], "false_answer": "Emma Watson"}
+{"_id": "test2781", "answer": "Rome", "answer_aliases": ["Rome"], "false_answer": "Florence"}
+{"_id": "test2783", "answer": "inorganic molecules such as water", "answer_aliases": ["inorganic molecules such as water"], "false_answer": "Liquid nitrogen"}
+{"_id": "test2784", "answer": "1988", "answer_aliases": ["1988"], "false_answer": "1990"}
+{"_id": "test2785", "answer": "Skat", "answer_aliases": ["Skat"], "false_answer": "Caballero"}
+{"_id": "test2786", "answer": "2%", "answer_aliases": ["2%"], "false_answer": "10%"}
+{"_id": "test2788", "answer": "the English", "answer_aliases": ["the English"], "false_answer": "Christopher Columbus"}
+{"_id": "test2789", "answer": "Gary Player", "answer_aliases": ["Gary Player"], "false_answer": "Jack Nicklaus"}
+{"_id": "test2793", "answer": "Speakeasies", "answer_aliases": ["Speakeasies"], "false_answer": "The local soda shop"}
+{"_id": "test2794", "answer": "in Edinburgh, Scotland", "answer_aliases": ["in Edinburgh, Scotland"], "false_answer": "London, England"}
+{"_id": "test2795", "answer": "Southport, North Carolina", "answer_aliases": ["Southport, North Carolina"], "false_answer": "New York City"}
+{"_id": "test2796", "answer": "The Washington Post", "answer_aliases": ["The Washington Post"], "false_answer": "Charles Dickens"}
+{"_id": "test2797", "answer": "Herbert Hoover", "answer_aliases": ["Herbert Hoover"], "false_answer": "Franklin D"}
+{"_id": "test2798", "answer": "Max", "answer_aliases": ["Max"], "false_answer": "Fido"}
+{"_id": "test2802", "answer": "each team", "answer_aliases": ["each team"], "false_answer": "Team owners"}
+{"_id": "test2805", "answer": "rear-view mirror", "answer_aliases": ["rear-view mirror"], "false_answer": "Convex mirror"}
+{"_id": "test2806", "answer": "Central Germany", "answer_aliases": ["Central Germany"], "false_answer": "Eastern Europe"}
+{"_id": "test2807", "answer": "1648-51", "answer_aliases": ["1648-51"], "false_answer": "1600-1700 AD"}
+{"_id": "test2809", "answer": "Amanda Leighton", "answer_aliases": ["Amanda Leighton"], "false_answer": "Laura Marano"}
+{"_id": "test2810", "answer": "Typically, no", "answer_aliases": ["Typically, no"], "false_answer": "Yes, a permit is required."}
+{"_id": "test2812", "answer": "New Mexico", "answer_aliases": ["New Mexico"], "false_answer": "Portugal"}
+{"_id": "test2816", "answer": "Billy Bishop Toronto City Airport", "answer_aliases": ["Billy Bishop Toronto City Airport"], "false_answer": "Pearson International Airport"}
+{"_id": "test2817", "answer": "A simple majority vote", "answer_aliases": ["A simple majority vote", "A simple majority"], "false_answer": "51 votes"}
+{"_id": "test2819", "answer": "Einstein", "answer_aliases": ["Einstein"], "false_answer": "Ernest Rutherford"}
+{"_id": "test2820", "answer": "Deposition", "answer_aliases": ["Deposition", "desublimation"], "false_answer": "Evaporation"}
+{"_id": "test2822", "answer": "potential of hydrogen", "answer_aliases": ["potential of hydrogen"], "false_answer": "The measure of acidity or alkalinity"}
+{"_id": "test2827", "answer": "to preserve slavery", "answer_aliases": ["to preserve slavery"], "false_answer": "Economic disagreements with the North."}
+{"_id": "test2832", "answer": "Jewel Akens", "answer_aliases": ["Jewel Akens"], "false_answer": "Frank Sinatra"}
+{"_id": "test2835", "answer": "a convergent plate boundary", "answer_aliases": ["a convergent plate boundary"], "false_answer": "a divergent plate boundary"}
+{"_id": "test2837", "answer": "Joanna Moskawa", "answer_aliases": ["Joanna Moskawa"], "false_answer": "Emma Stone"}
+{"_id": "test2842", "answer": "Matt Monro", "answer_aliases": ["Matt Monro"], "false_answer": "Frank Sinatra"}
+{"_id": "test2844", "answer": "the Chicago metropolitan area", "answer_aliases": ["the Chicago metropolitan area"], "false_answer": "London, England"}
+{"_id": "test2845", "answer": "two", "answer_aliases": ["two", "2"], "false_answer": "three"}
+{"_id": "test2848", "answer": "2009", "answer_aliases": ["2009"], "false_answer": "2015"}
+{"_id": "test2849", "answer": "1960", "answer_aliases": ["1960"], "false_answer": "1968"}
+{"_id": "test2851", "answer": "September 8, 2017", "answer_aliases": ["September 8, 2017", "8 September 2017", "08 September 2017", "September 08, 2017", "8 Sep 2017", "08 Sep 2017", "Sep 8, 2017", "Sep 08, 2017", "2017-09-08"], "false_answer": "October 15, 2017"}
+{"_id": "test2852", "answer": "Castleford", "answer_aliases": ["Castleford"], "false_answer": "Leeds"}
+{"_id": "test2853", "answer": "Neil Young", "answer_aliases": ["Neil Young"], "false_answer": "Elton John"}
+{"_id": "test2854", "answer": "Archduke Franz Ferdinand of Austria", "answer_aliases": ["Archduke Franz Ferdinand of Austria"], "false_answer": "Winston Churchill"}
+{"_id": "test2855", "answer": "effective gas exchange", "answer_aliases": ["effective gas exchange"], "false_answer": "Taste sensitivity"}
+{"_id": "test2856", "answer": "1924", "answer_aliases": ["1924"], "false_answer": "1900"}
+{"_id": "test2857", "answer": "pyloric valve", "answer_aliases": ["pyloric valve"], "false_answer": "The ileocecal valve"}
+{"_id": "test2861", "answer": "Sedimentary", "answer_aliases": ["Sedimentary", "sedimentary rock"], "false_answer": "Basalt"}
+{"_id": "test2864", "answer": "Gayla Peevey", "answer_aliases": ["Gayla Peevey"], "false_answer": "Wolfgang Amadeus Mozart"}
+{"_id": "test2866", "answer": "The Intolerable Acts", "answer_aliases": ["The Intolerable Acts", "the Coercive Acts"], "false_answer": "The Stamp Act"}
+{"_id": "test2867", "answer": "February 4, 2018", "answer_aliases": ["February 4, 2018", "4 February 2018", "04 February 2018", "February 04, 2018", "4 Feb 2018", "04 Feb 2018", "Feb 4, 2018", "Feb 04, 2018", "2018-02-04"], "false_answer": "March 1, 2018"}
+{"_id": "test2868", "answer": "Zachary John Quinto", "answer_aliases": ["Zachary John Quinto"], "false_answer": "Chris Pine"}
+{"_id": "test2870", "answer": "4.37 light-years", "answer_aliases": ["4.37 light-years"], "false_answer": "3.5 light years"}
+{"_id": "test2876", "answer": "Old French", "answer_aliases": ["Old French"], "false_answer": "Old German"}
+{"_id": "test2878", "answer": "2007", "answer_aliases": ["2007"], "false_answer": "2005"}
+{"_id": "test2880", "answer": "Neil Young", "answer_aliases": ["Neil Young"], "false_answer": "Carole King"}
+{"_id": "test2881", "answer": "Mel Gibson", "answer_aliases": ["Mel Gibson"], "false_answer": "Hugh Jackman"}
+{"_id": "test2882", "answer": "Sanchez Navarro", "answer_aliases": ["Sanchez Navarro"], "false_answer": "General Santa Anna"}
+{"_id": "test2883", "answer": "span", "answer_aliases": ["span"], "false_answer": "Spanlength"}
+{"_id": "test2889", "answer": "1990", "answer_aliases": ["1990"], "false_answer": "1986"}
+{"_id": "test2892", "answer": "Zhu Di", "answer_aliases": ["Zhu Di"], "false_answer": "Emperor Qin Shi Huang"}
+{"_id": "test2895", "answer": "Neela Montgomery", "answer_aliases": ["Neela Montgomery"], "false_answer": "Samantha Thompson"}
+{"_id": "test2897", "answer": "Amerigo Vespucci", "answer_aliases": ["Amerigo Vespucci"], "false_answer": "Ferdinand Magellan"}
+{"_id": "test2899", "answer": "Texhoma", "answer_aliases": ["Texhoma"], "false_answer": "Austin and Durant"}
+{"_id": "test2900", "answer": "Arousal regulation", "answer_aliases": ["Arousal regulation"], "false_answer": "Telekinesis training"}
+{"_id": "test2901", "answer": "the 1920s", "answer_aliases": ["the 1920s", "In the 1920s"], "false_answer": "the 1930s"}
+{"_id": "test2902", "answer": "Brian", "answer_aliases": ["Brian", "Sarah's brother, Brian"], "false_answer": "John Grisham"}
+{"_id": "test2903", "answer": "January 1, 2016", "answer_aliases": ["January 1, 2016", "1 January 2016", "01 January 2016", "January 01, 2016", "1 Jan 2016", "01 Jan 2016", "Jan 1, 2016", "Jan 01, 2016", "2016-01-01"], "false_answer": "March 1, 2016"}
+{"_id": "test2904", "answer": "Valentino Garavani", "answer_aliases": ["Valentino Garavani"], "false_answer": "Karl Lagerfeld"}
+{"_id": "test2906", "answer": "Pakistan", "answer_aliases": ["Pakistan"], "false_answer": "Australia"}
+{"_id": "test2907", "answer": "16", "answer_aliases": ["16", "16 episodes", "sixteen"], "false_answer": "30"}
+{"_id": "test2913", "answer": "John Quincy Adams", "answer_aliases": ["John Quincy Adams"], "false_answer": "Thomas Jefferson"}
+{"_id": "test2914", "answer": "Beorn", "answer_aliases": ["Beorn"], "false_answer": "Gandalf"}
+{"_id": "test2915", "answer": "February 3, 2017", "answer_aliases": ["February 3, 2017", "2017", "3 February 2017", "03 February 2017", "February 03, 2017", "3 Feb 2017", "03 Feb 2017", "Feb 3, 2017", "Feb 03, 2017", "2017-02-03"], "false_answer": "March 15, 2017"}
+{"_id": "test2918", "answer": "14 June 1940", "answer_aliases": ["14 June 1940", "June 14, 1940", "14 Jun 1940", "Jun 14, 1940", "1940-06-14"], "false_answer": "14 June 1941"}
+{"_id": "test2920", "answer": "separationism", "answer_aliases": ["separationism"], "false_answer": "Secularism"}
+{"_id": "test2921", "answer": "February 1993", "answer_aliases": ["February 1993"], "false_answer": "To become a head booker"}
+{"_id": "test2922", "answer": "Jason Lee", "answer_aliases": ["Jason Lee"], "false_answer": "Ben Stiller"}
+{"_id": "test2928", "answer": "\"Mirror Image\"", "answer_aliases": ["\"Mirror Image\""], "false_answer": "The Last Dance"}
+{"_id": "test2929", "answer": "Noah Schnapp", "answer_aliases": ["Noah Schnapp"], "false_answer": "Finn Wolfhard"}
+{"_id": "test2930", "answer": "around 10:30am", "answer_aliases": ["around 10:30am", "10:30am"], "false_answer": "3:00 PM"}
+{"_id": "test2931", "answer": "Thomas Hobbes in his Leviathan", "answer_aliases": ["Thomas Hobbes in his Leviathan"], "false_answer": "Ancient Greek philosophers"}
+{"_id": "test2936", "answer": "heaviest of the stable halogens", "answer_aliases": ["heaviest of the stable halogens"], "false_answer": "Group 17, Period 5"}
+{"_id": "test2937", "answer": "the Saudi Arab kingdom", "answer_aliases": ["the Saudi Arab kingdom"], "false_answer": "The Kingdom of Sand"}
+{"_id": "test2938", "answer": "Mesopotamia", "answer_aliases": ["Mesopotamia"], "false_answer": "Atlantis"}
+{"_id": "test2942", "answer": "farm-raised catfish", "answer_aliases": ["farm-raised catfish"], "false_answer": "Handcrafted wooden furniture"}
+{"_id": "test2944", "answer": "dorsally on the forearm", "answer_aliases": ["dorsally on the forearm", "located dorsally on the forearm"], "false_answer": "In the calf muscle"}
+{"_id": "test2946", "answer": "Marty J. Walsh", "answer_aliases": ["Marty J. Walsh", "Marty Walsh"], "false_answer": "Benjamin Franklin"}
+{"_id": "test2950", "answer": "in the Near East", "answer_aliases": ["in the Near East", "the Near East"], "false_answer": "Ancient Rome"}
+{"_id": "test2958", "answer": "Anatomy", "answer_aliases": ["Anatomy", "Human anatomy"], "false_answer": "Humanology"}
+{"_id": "test2963", "answer": "Celtic", "answer_aliases": ["Celtic"], "false_answer": "Manchester United"}
+{"_id": "test2964", "answer": "9 seasons", "answer_aliases": ["9 seasons", "9"], "false_answer": "10 seasons"}
+{"_id": "test2968", "answer": "International Baccalaureate", "answer_aliases": ["International Baccalaureate"], "false_answer": "International Banking Board"}
+{"_id": "test2969", "answer": "October 20, 1977", "answer_aliases": ["October 20, 1977", "20 October 1977", "20 Oct 1977", "Oct 20, 1977", "1977-10-20"], "false_answer": "October 20, 1976"}
+{"_id": "test2970", "answer": "2003", "answer_aliases": ["2003", "at age 18 in 2003"], "false_answer": "2001"}
+{"_id": "test2971", "answer": "the 1994 season", "answer_aliases": ["the 1994 season", "for the 1994 season", "1994"], "false_answer": "the 1995 season"}
+{"_id": "test2972", "answer": "South Africa", "answer_aliases": ["South Africa"], "false_answer": "Queen Elizabeth II"}
+{"_id": "test2973", "answer": "grass and sedges", "answer_aliases": ["grass and sedges"], "false_answer": "Cheeseburgers"}
+{"_id": "test2974", "answer": "August 19, 2016", "answer_aliases": ["August 19, 2016", "19 August 2016", "19 Aug 2016", "Aug 19, 2016", "2016-08-19"], "false_answer": "August 20, 2016"}
+{"_id": "test2975", "answer": "a normally inaccessible mini-game", "answer_aliases": ["a normally inaccessible mini-game"], "false_answer": "A hidden coffee shop"}
+{"_id": "test2976", "answer": "January 2018", "answer_aliases": ["January 2018"], "false_answer": "February 30, 2022"}
+{"_id": "test2978", "answer": "mitosis", "answer_aliases": ["mitosis"], "false_answer": "Osmosis"}
+{"_id": "test2979", "answer": "W. Edwards Deming", "answer_aliases": ["W. Edwards Deming"], "false_answer": "Henry Ford"}
+{"_id": "test2982", "answer": "Joseph Nye Welch", "answer_aliases": ["Joseph Nye Welch"], "false_answer": "Harry S. Truman"}
+{"_id": "test2984", "answer": "33% in 2013", "answer_aliases": ["33% in 2013"], "false_answer": "75%"}
+{"_id": "test2985", "answer": "Alex Ryan", "answer_aliases": ["Alex Ryan"], "false_answer": "Jack McLeod"}
+{"_id": "test2986", "answer": "Atomic Power", "answer_aliases": ["Atomic Power"], "false_answer": "Uranium"}
+{"_id": "test2987", "answer": "1996", "answer_aliases": ["1996"], "false_answer": "1998"}
+{"_id": "test2988", "answer": "100 °C", "answer_aliases": ["100 °C", "100 °C"], "false_answer": "273.15 K"}
+{"_id": "test2989", "answer": "John Cooper Clarke", "answer_aliases": ["John Cooper Clarke"], "false_answer": "Bob Dylan"}
+{"_id": "test2990", "answer": "Roxette", "answer_aliases": ["Roxette"], "false_answer": "Whitney Houston"}
+{"_id": "test2991", "answer": "leg", "answer_aliases": ["leg"], "false_answer": "forearm"}
+{"_id": "test2993", "answer": "Mary Chapin Carpenter", "answer_aliases": ["Mary Chapin Carpenter"], "false_answer": "Shania Twain"}
+{"_id": "test2998", "answer": "Joseph Sherrard Kearns", "answer_aliases": ["Joseph Sherrard Kearns"], "false_answer": "Walter Matthau plays Mr"}
+{"_id": "test3000", "answer": "Yugoslavia", "answer_aliases": ["Yugoslavia"], "false_answer": "Soviet Union"}
+{"_id": "test3003", "answer": "George Warren Barnes", "answer_aliases": ["George Warren Barnes"], "false_answer": "Thomas Edison"}
+{"_id": "test3004", "answer": "won", "answer_aliases": ["won"], "false_answer": "yuan"}
+{"_id": "test3007", "answer": "molecular clouds in interstellar space", "answer_aliases": ["molecular clouds in interstellar space"], "false_answer": "In the galactic center"}
+{"_id": "test3011", "answer": "1956", "answer_aliases": ["1956"], "false_answer": "1995"}
+{"_id": "test3017", "answer": "Billie Jean King", "answer_aliases": ["Billie Jean King"], "false_answer": "Monica Seles"}
+{"_id": "test3023", "answer": "Moscazzano", "answer_aliases": ["Moscazzano"], "false_answer": "Tuscany, Italy"}
+{"_id": "test3027", "answer": "December 1, 2017", "answer_aliases": ["December 1, 2017", "1 December 2017", "01 December 2017", "December 01, 2017", "1 Dec 2017", "01 Dec 2017", "Dec 1, 2017", "Dec 01, 2017", "2017-12-01"], "false_answer": "November 15, 2017"}
+{"_id": "test3029", "answer": "#4", "answer_aliases": ["#4"], "false_answer": "12th"}
+{"_id": "test3030", "answer": "Walter Egan", "answer_aliases": ["Walter Egan"], "false_answer": "Taylor Swift"}
+{"_id": "test3031", "answer": "Hyderabad", "answer_aliases": ["Hyderabad"], "false_answer": "Mysuru"}
+{"_id": "test3033", "answer": "Macon Blair", "answer_aliases": ["Macon Blair"], "false_answer": "Thomas A"}
+{"_id": "test3035", "answer": "Jacques Cartier", "answer_aliases": ["Jacques Cartier"], "false_answer": "Amerigo Vespucci"}
+{"_id": "test3036", "answer": "London", "answer_aliases": ["London"], "false_answer": "Birmingham"}
+{"_id": "test3037", "answer": "second season", "answer_aliases": ["second season"], "false_answer": "Season 2, Episode 8"}
+{"_id": "test3039", "answer": "Baker, California, USA", "answer_aliases": ["Baker, California, USA", "Baker, California"], "false_answer": "Sydney, Australia"}
+{"_id": "test3043", "answer": "season two", "answer_aliases": ["season two"], "false_answer": "Season 4"}
+{"_id": "test3044", "answer": "Nancy Jean Cartwright", "answer_aliases": ["Nancy Jean Cartwright"], "false_answer": "Pamela Hayden"}
+{"_id": "test3046", "answer": "digitization of social systems", "answer_aliases": ["digitization of social systems"], "false_answer": "Artificial Intelligence"}
+{"_id": "test3047", "answer": "re-education", "answer_aliases": ["re-education"], "false_answer": "Anger management"}
+{"_id": "test3048", "answer": "Frederik Barth", "answer_aliases": ["Frederik Barth"], "false_answer": "Karl Marx"}
+{"_id": "test3050", "answer": "southern Anatolia", "answer_aliases": ["southern Anatolia", "in southern Anatolia"], "false_answer": "Greece"}
+{"_id": "test3051", "answer": "Pangaea", "answer_aliases": ["Pangaea", "Pangaea or Pangea"], "false_answer": "Atlantica"}
+{"_id": "test3052", "answer": "April 21, 2017", "answer_aliases": ["April 21, 2017", "21 April 2017", "21 Apr 2017", "Apr 21, 2017", "2017-04-21"], "false_answer": "May 5, 2017"}
+{"_id": "test3055", "answer": "Hugo von Mohl", "answer_aliases": ["Hugo von Mohl", "German botanist Hugo von Mohl"], "false_answer": "Charles Darwin"}
+{"_id": "test3057", "answer": "17-year-old", "answer_aliases": ["17-year-old", "17"], "false_answer": "20 years old"}
+{"_id": "test3060", "answer": "economic recession", "answer_aliases": ["economic recession", "recession"], "false_answer": "Rapid economic growth"}
+{"_id": "test3062", "answer": "16 August 1975", "answer_aliases": ["16 August 1975", "August 16, 1975", "16 Aug 1975", "Aug 16, 1975", "1975-08-16"], "false_answer": "16 August 1976"}
+{"_id": "test3065", "answer": "Aegisthus", "answer_aliases": ["Aegisthus"], "false_answer": "Hercules"}
+{"_id": "test3066", "answer": "Wimpy", "answer_aliases": ["Wimpy"], "false_answer": "Abraham Lincoln"}
+{"_id": "test3068", "answer": "1920", "answer_aliases": ["1920"], "false_answer": "1996"}
+{"_id": "test3069", "answer": "Rashidun", "answer_aliases": ["Rashidun", "The Rashidun Caliphs"], "false_answer": "The Golden Caliphate"}
+{"_id": "test3071", "answer": "Divyanka Tripathi and Karan Patel", "answer_aliases": ["Divyanka Tripathi and Karan Patel"], "false_answer": "Leonardo DiCaprio"}
+{"_id": "test3072", "answer": "Ethel \"Edy\" Proctor", "answer_aliases": ["Ethel \"Edy\" Proctor"], "false_answer": "Danai Gurira"}
+{"_id": "test3075", "answer": "cadmium", "answer_aliases": ["cadmium"], "false_answer": "Lead."}
+{"_id": "test3080", "answer": "John C. Reilly", "answer_aliases": ["John C. Reilly"], "false_answer": "Joaquin Phoenix"}
+{"_id": "test3081", "answer": "New Orleans", "answer_aliases": ["New Orleans"], "false_answer": "Mars"}
+{"_id": "test3084", "answer": "American writer Nicholas Sparks", "answer_aliases": ["American writer Nicholas Sparks", "Nicholas Sparks"], "false_answer": "Charles Dickens"}
+{"_id": "test3088", "answer": "the Confederacy", "answer_aliases": ["the Confederacy"], "false_answer": "Abraham Lincoln"}
+{"_id": "test3091", "answer": "his brother", "answer_aliases": ["his brother"], "false_answer": "his friend"}
+{"_id": "test3092", "answer": "10.5%", "answer_aliases": ["10.5%"], "false_answer": "15%"}
+{"_id": "test3094", "answer": "Michael Clarke Duncan", "answer_aliases": ["Michael Clarke Duncan"], "false_answer": "Ving Rhames"}
+{"_id": "test3095", "answer": "Joseph Heller", "answer_aliases": ["Joseph Heller", "American author Joseph Heller"], "false_answer": "Kurt Vonnegut"}
+{"_id": "test3096", "answer": "September 29, 2017", "answer_aliases": ["September 29, 2017", "29 September 2017", "29 Sep 2017", "Sep 29, 2017", "2017-09-29"], "false_answer": "September 10, 2016"}
+{"_id": "test3098", "answer": "August 23, 1998", "answer_aliases": ["August 23, 1998", "23 August 1998", "23 Aug 1998", "Aug 23, 1998", "1998-08-23"], "false_answer": "September 1, 1997"}
+{"_id": "test3106", "answer": "775", "answer_aliases": ["775", "775 rooms"], "false_answer": "600"}
+{"_id": "test3111", "answer": "in season two", "answer_aliases": ["in season two", "season two"], "false_answer": "Season 0, Episode 1"}
+{"_id": "test3112", "answer": "Microfilaments", "answer_aliases": ["Microfilaments", "microfilament"], "false_answer": "Microtubules"}
+{"_id": "test3114", "answer": "in 1966", "answer_aliases": ["in 1966", "1966"], "false_answer": "in 1967"}
+{"_id": "test3115", "answer": "5,534 registered hospitals", "answer_aliases": ["5,534 registered hospitals", "5,534"], "false_answer": "8,500 registered hospitals"}
+{"_id": "test3120", "answer": "Dalveer Bhandari", "answer_aliases": ["Dalveer Bhandari"], "false_answer": "Ruth Bader Ginsburg"}
+{"_id": "test3121", "answer": "Mankombu Sambasivan Swaminathan", "answer_aliases": ["Mankombu Sambasivan Swaminathan"], "false_answer": "M.S"}
+{"_id": "test3122", "answer": "James Arthur", "answer_aliases": ["James Arthur"], "false_answer": "Justin Bieber"}
+{"_id": "test3123", "answer": "management team", "answer_aliases": ["management team"], "false_answer": "The Ghostbusters"}
+{"_id": "test3124", "answer": "origins of replication", "answer_aliases": ["origins of replication"], "false_answer": "In the ribosomes"}
+{"_id": "test3125", "answer": "Merry Clayton", "answer_aliases": ["Merry Clayton"], "false_answer": "Tina Turner"}
+{"_id": "test3127", "answer": "Michelle", "answer_aliases": ["Michelle"], "false_answer": "Emily"}
+{"_id": "test3128", "answer": "the Archies", "answer_aliases": ["the Archies"], "false_answer": "The Beatles"}
+{"_id": "test3129", "answer": "Ali", "answer_aliases": ["Ali"], "false_answer": "Samantha"}
+{"_id": "test3130", "answer": "1983", "answer_aliases": ["1983", "June 24, 1983"], "false_answer": "1985"}
+{"_id": "test3138", "answer": "glucose", "answer_aliases": ["glucose"], "false_answer": "fructose"}
+{"_id": "test3139", "answer": "Bhupendranath Dutt", "answer_aliases": ["Bhupendranath Dutt"], "false_answer": "Charles Dickens"}
+{"_id": "test3140", "answer": "After World War I", "answer_aliases": ["After World War I"], "false_answer": "1920s"}
+{"_id": "test3142", "answer": "Michael Rosen", "answer_aliases": ["Michael Rosen"], "false_answer": "Julia Donaldson"}
+{"_id": "test3147", "answer": "the President", "answer_aliases": ["the President"], "false_answer": "the Supreme Court"}
+{"_id": "test3148", "answer": "prior to June 1592", "answer_aliases": ["prior to June 1592"], "false_answer": "after June 1600"}
+{"_id": "test3153", "answer": "Persia", "answer_aliases": ["Persia"], "false_answer": "The Amazon Rainforest"}
+{"_id": "test3156", "answer": "seven", "answer_aliases": ["seven", "7"], "false_answer": "12"}
+{"_id": "test3157", "answer": "September 19, 1977", "answer_aliases": ["September 19, 1977", "19 September 1977", "19 Sep 1977", "Sep 19, 1977", "1977-09-19"], "false_answer": "March 21, 1976"}
+{"_id": "test3158", "answer": "Automobile drivetrains", "answer_aliases": ["Automobile drivetrains"], "false_answer": "Bicycle gears"}
+{"_id": "test3159", "answer": "Bryan Cranston", "answer_aliases": ["Bryan Cranston"], "false_answer": "Tim Allen"}
+{"_id": "test3160", "answer": "the New York Yankees", "answer_aliases": ["the New York Yankees"], "false_answer": "Chicago Cubs"}
+{"_id": "test3161", "answer": "King Saud University", "answer_aliases": ["King Saud University"], "false_answer": "Harvard University"}
+{"_id": "test3163", "answer": "the cast", "answer_aliases": ["the cast", "the cast members"], "false_answer": "Meryl Streep"}
+{"_id": "test3164", "answer": "Lord Irwin", "answer_aliases": ["Lord Irwin"], "false_answer": "Winston Churchill"}
+{"_id": "test3169", "answer": "Mediterranean Shipping Company S.A", "answer_aliases": ["Mediterranean Shipping Company S.A", "Mediterranean Shipping Company"], "false_answer": "Mediterranean Sea Cruises"}
+{"_id": "test3172", "answer": "at birth", "answer_aliases": ["at birth", "birth"], "false_answer": "At 6 months of age"}
+{"_id": "test3173", "answer": "David Gahan", "answer_aliases": ["David Gahan"], "false_answer": "Bono"}
+{"_id": "test3182", "answer": "The ulnar nerve", "answer_aliases": ["The ulnar nerve"], "false_answer": "The radial nerve"}
+{"_id": "test3184", "answer": "The aorta", "answer_aliases": ["The aorta"], "false_answer": "The main artery is called the Cardiac Artery."}
+{"_id": "test3185", "answer": "13.5%", "answer_aliases": ["13.5%", "In 2015, 13.5%"], "false_answer": "25%"}
+{"_id": "test3186", "answer": "Crepuscular", "answer_aliases": ["Crepuscular", "Crepuscular animals"], "false_answer": "Nocturnal animals"}
+{"_id": "test3188", "answer": "Vincent Price", "answer_aliases": ["Vincent Price", "actor Vincent Price"], "false_answer": "Morgan Freeman"}
+{"_id": "test3189", "answer": "Mark Richard Shuttleworth", "answer_aliases": ["Mark Richard Shuttleworth"], "false_answer": "Linus Torvalds"}
+{"_id": "test3190", "answer": "UTC−09:00", "answer_aliases": ["UTC−09:00"], "false_answer": "4:30 PM"}
+{"_id": "test3192", "answer": "18 January 1788", "answer_aliases": ["18 January 1788", "1788", "January 18, 1788", "18 Jan 1788", "Jan 18, 1788", "1788-01-18"], "false_answer": "18 January 1787"}
+{"_id": "test3193", "answer": "Dr. Hartwell Carver", "answer_aliases": ["Dr. Hartwell Carver"], "false_answer": "Theodore Judah"}
+{"_id": "test3196", "answer": "In the Season 5 premiere", "answer_aliases": ["In the Season 5 premiere"], "false_answer": "Season 1, Episode 1"}
+{"_id": "test3199", "answer": "Narendra Modi", "answer_aliases": ["Narendra Modi"], "false_answer": "Ravi Shankar Prasad"}
+{"_id": "test3202", "answer": "ancient Greece", "answer_aliases": ["ancient Greece"], "false_answer": "Between God of War and God of War II"}
+{"_id": "test3203", "answer": "Anguillara Sabazia outside of Rome", "answer_aliases": ["Anguillara Sabazia outside of Rome"], "false_answer": "The Moon"}
+{"_id": "test3206", "answer": "September 27, 2017", "answer_aliases": ["September 27, 2017", "27 September 2017", "27 Sep 2017", "Sep 27, 2017", "2017-09-27"], "false_answer": "September 28, 2017"}
+{"_id": "test3209", "answer": "Ringo Starr", "answer_aliases": ["Ringo Starr"], "false_answer": "George Harrison"}
+{"_id": "test3214", "answer": "about 3.99 degrees", "answer_aliases": ["about 3.99 degrees", "3.99 degrees", "at about 3.99 degrees"], "false_answer": "7 degrees"}
+{"_id": "test3215", "answer": "Michael Grimm", "answer_aliases": ["Michael Grimm", "Soul singer Michael Grimm"], "false_answer": "Susan Boyle"}
+{"_id": "test3217", "answer": "2026", "answer_aliases": ["2026", "the year 2026"], "false_answer": "2025"}
+{"_id": "test3218", "answer": "neuropsychology", "answer_aliases": ["neuropsychology"], "false_answer": "Structuralism"}
+{"_id": "test3222", "answer": "Milira", "answer_aliases": ["Milira"], "false_answer": "Marvin Gaye"}
+{"_id": "test3225", "answer": "2020", "answer_aliases": ["2020"], "false_answer": "2021"}
+{"_id": "test3234", "answer": "Kevin Spacey", "answer_aliases": ["Kevin Spacey"], "false_answer": "Frank Sinatra"}
+{"_id": "test3241", "answer": "2008", "answer_aliases": ["2008"], "false_answer": "2005"}
+{"_id": "test3243", "answer": "Rachel Sarah Bilson", "answer_aliases": ["Rachel Sarah Bilson"], "false_answer": "Mischa Barton"}
+{"_id": "test3244", "answer": "Virginia Dare", "answer_aliases": ["Virginia Dare"], "false_answer": "Elizabeth Dare"}
+{"_id": "test3245", "answer": "February 1834", "answer_aliases": ["February 1834"], "false_answer": "September 1834"}
+{"_id": "test3248", "answer": "San Francisco", "answer_aliases": ["San Francisco", "in San Francisco"], "false_answer": "Paris, France"}
+{"_id": "test3250", "answer": "10", "answer_aliases": ["10", "ten"], "false_answer": "13"}
+{"_id": "test3251", "answer": "Megan Park", "answer_aliases": ["Megan Park"], "false_answer": "Meryl Streep"}
+{"_id": "test3253", "answer": "action utility vehicles", "answer_aliases": ["action utility vehicles"], "false_answer": "Alien Utility Vehicle"}
+{"_id": "test3254", "answer": "Nodar Kumaritashvili", "answer_aliases": ["Nodar Kumaritashvili"], "false_answer": "John Stevens"}
+{"_id": "test3256", "answer": "Woody Paige", "answer_aliases": ["Woody Paige"], "false_answer": "Scott Van Pelt"}
+{"_id": "test3257", "answer": "13", "answer_aliases": ["13", "thirteen"], "false_answer": "4"}
+{"_id": "test3261", "answer": "Hydrogen", "answer_aliases": ["Hydrogen", "hydrogen"], "false_answer": "Helium"}
+{"_id": "test3262", "answer": "Landry's, Inc", "answer_aliases": ["Landry's, Inc"], "false_answer": "Donald Trump"}
+{"_id": "test3263", "answer": "around 1872", "answer_aliases": ["around 1872"], "false_answer": "around 1920"}
+{"_id": "test3265", "answer": "The Jewel of the Nile", "answer_aliases": ["The Jewel of the Nile"], "false_answer": "Beverly Hills Cop"}
+{"_id": "test3270", "answer": "Lake Superior", "answer_aliases": ["Lake Superior"], "false_answer": "Lake Huron"}
+{"_id": "test3271", "answer": "Austria-Hungary", "answer_aliases": ["Austria-Hungary"], "false_answer": "Italy"}
+{"_id": "test3272", "answer": "February 16, 2018", "answer_aliases": ["February 16, 2018", "16 February 2018", "16 Feb 2018", "Feb 16, 2018", "2018-02-16"], "false_answer": "January 1, 2021"}
+{"_id": "test3274", "answer": "four", "answer_aliases": ["four", "4"], "false_answer": "five"}
+{"_id": "test3276", "answer": "Holden Nowell", "answer_aliases": ["Holden Nowell"], "false_answer": "Taylor Lautner"}
+{"_id": "test3278", "answer": "close quarters and poor hygiene", "answer_aliases": ["close quarters and poor hygiene"], "false_answer": "Alien bacteria"}
+{"_id": "test3279", "answer": "Tachycardia", "answer_aliases": ["Tachycardia", "tachycardia in adults"], "false_answer": "Perfectly normal for an adult"}
+{"_id": "test3281", "answer": "7.6% Per Annum", "answer_aliases": ["7.6% Per Annum", "7.6%"], "false_answer": "12% annually"}
+{"_id": "test3285", "answer": "James Brown", "answer_aliases": ["James Brown"], "false_answer": "Stevie Wonder"}
+{"_id": "test3288", "answer": "Janie Crawford", "answer_aliases": ["Janie Crawford"], "false_answer": "Scarlett O'Hara"}
+{"_id": "test3290", "answer": "joins two or more vertebrae", "answer_aliases": ["joins two or more vertebrae"], "false_answer": "To combine two flavors"}
+{"_id": "test3291", "answer": "Australia", "answer_aliases": ["Australia"], "false_answer": "Japan and Germany"}
+{"_id": "test3292", "answer": "Sonnet 116", "answer_aliases": ["Sonnet 116"], "false_answer": "Love is unchanging despite circumstances"}
+{"_id": "test3296", "answer": "fourth", "answer_aliases": ["fourth"], "false_answer": "5th grade"}
+{"_id": "test3297", "answer": "Boston Celtics center Bill Russell", "answer_aliases": ["Boston Celtics center Bill Russell", "Bill Russell"], "false_answer": "LeBron James"}
+{"_id": "test3299", "answer": "Erika Mitchell Leonard", "answer_aliases": ["Erika Mitchell Leonard", "E. L. James"], "false_answer": "J.K. Rowling"}
+{"_id": "test3303", "answer": "The Royalettes", "answer_aliases": ["The Royalettes"], "false_answer": "Whitney Houston"}
+{"_id": "test3307", "answer": "Florida", "answer_aliases": ["Florida"], "false_answer": "Area 51, Nevada"}
+{"_id": "test3309", "answer": "Buckwheat Boyz", "answer_aliases": ["Buckwheat Boyz"], "false_answer": "Sesame Street"}
+{"_id": "test3313", "answer": "advisory speed limits", "answer_aliases": ["advisory speed limits"], "false_answer": "Caution for upcoming construction zone"}
+{"_id": "test3315", "answer": "fiat money", "answer_aliases": ["fiat money"], "false_answer": "A physical object used for trading"}
+{"_id": "test3321", "answer": "1939", "answer_aliases": ["1939"], "false_answer": "1938"}
+{"_id": "test3322", "answer": "physical layer or layer 1", "answer_aliases": ["physical layer or layer 1"], "false_answer": "network layer"}
+{"_id": "test3324", "answer": "Toto", "answer_aliases": ["Toto"], "false_answer": "Sparky"}
+{"_id": "test3326", "answer": "Thomas Jefferson", "answer_aliases": ["Thomas Jefferson"], "false_answer": "James Madison"}
+{"_id": "test3330", "answer": "March 5, 2015", "answer_aliases": ["March 5, 2015", "5 March 2015", "05 March 2015", "March 05, 2015", "5 Mar 2015", "05 Mar 2015", "Mar 5, 2015", "Mar 05, 2015", "2015-03-05"], "false_answer": "March 6, 2015"}
+{"_id": "test3332", "answer": "Dis Pater", "answer_aliases": ["Dis Pater"], "false_answer": "Julius Caesar"}
+{"_id": "test3333", "answer": "Austrian neurologist Sigmund Freud", "answer_aliases": ["Austrian neurologist Sigmund Freud", "Sigmund Freud"], "false_answer": "Carl Jung"}
+{"_id": "test3336", "answer": "Eyjafjallajökull", "answer_aliases": ["Eyjafjallajökull"], "false_answer": "Mount Vesuvius"}
+{"_id": "test3339", "answer": "in South America", "answer_aliases": ["in South America"], "false_answer": "In Africa"}
+{"_id": "test3340", "answer": "kiss", "answer_aliases": ["kiss"], "false_answer": "A golden necklace"}
+{"_id": "test3341", "answer": "newly formed vesicles", "answer_aliases": ["newly formed vesicles"], "false_answer": "Synaptic vesicle"}
+{"_id": "test3342", "answer": "2015", "answer_aliases": ["2015", "after the 2015 model year"], "false_answer": "2014"}
+{"_id": "test3345", "answer": "R.E.M", "answer_aliases": ["R.E.M"], "false_answer": "The Rolling Stones"}
+{"_id": "test3346", "answer": "Justice A.K Mathur", "answer_aliases": ["Justice A.K Mathur"], "false_answer": "Raghuram Rajan"}
+{"_id": "test3347", "answer": "1937", "answer_aliases": ["1937"], "false_answer": "1935"}
+{"_id": "test3350", "answer": "Disha Vakani", "answer_aliases": ["Disha Vakani"], "false_answer": "Munmun Dutta"}
+{"_id": "test3352", "answer": "4 January 2011", "answer_aliases": ["4 January 2011", "04 January 2011", "January 4, 2011", "January 04, 2011", "4 Jan 2011", "04 Jan 2011", "Jan 4, 2011", "Jan 04, 2011", "2011-01-04"], "false_answer": "4 April 2010"}
+{"_id": "test3353", "answer": "an undisclosed location", "answer_aliases": ["an undisclosed location"], "false_answer": "New York City"}
+{"_id": "test3354", "answer": "Lake Wales, Florida", "answer_aliases": ["Lake Wales, Florida"], "false_answer": "California"}
+{"_id": "test3356", "answer": "on the posterior aspect", "answer_aliases": ["on the posterior aspect"], "false_answer": "Along the outer edge of the foot"}
+{"_id": "test3358", "answer": "appellate court", "answer_aliases": ["appellate court"], "false_answer": "All state courts"}
+{"_id": "test3360", "answer": "Herman Hollerith", "answer_aliases": ["Herman Hollerith"], "false_answer": "Charles Babbage"}
+{"_id": "test3365", "answer": "Tristan Rogers", "answer_aliases": ["Tristan Rogers"], "false_answer": "Daniel Goddard"}
+{"_id": "test3368", "answer": "December 9, 2017", "answer_aliases": ["December 9, 2017", "9 December 2017", "09 December 2017", "December 09, 2017", "9 Dec 2017", "09 Dec 2017", "Dec 9, 2017", "Dec 09, 2017", "2017-12-09"], "false_answer": "December 31, 2017"}
+{"_id": "test3375", "answer": "2", "answer_aliases": ["2", "two"], "false_answer": "5"}
+{"_id": "test3377", "answer": "Portugal. The Man", "answer_aliases": ["Portugal. The Man"], "false_answer": "Selena Gomez"}
+{"_id": "test3379", "answer": "silk floss tree", "answer_aliases": ["silk floss tree"], "false_answer": "Thorny Acacia"}
+{"_id": "test3380", "answer": "Ernest Rutherford", "answer_aliases": ["Ernest Rutherford"], "false_answer": "Charles Darwin"}
+{"_id": "test3381", "answer": "in 1978", "answer_aliases": ["in 1978", "November 10, 1978", "1978"], "false_answer": "in 1979"}
+{"_id": "test3385", "answer": "Nicholas \"Nick\" Bakay", "answer_aliases": ["Nicholas \"Nick\" Bakay"], "false_answer": "Johnny Depp"}
+{"_id": "test3387", "answer": "June Gable", "answer_aliases": ["June Gable"], "false_answer": "Sandra Bullock"}
+{"_id": "test3391", "answer": "Edd Kimber", "answer_aliases": ["Edd Kimber"], "false_answer": "Mary Berry"}
+{"_id": "test3394", "answer": "Barry Bonds", "answer_aliases": ["Barry Bonds"], "false_answer": "Ken Griffey Jr."}
+{"_id": "test3395", "answer": "Arnold Schoenberg", "answer_aliases": ["Arnold Schoenberg"], "false_answer": "Igor Stravinsky"}
+{"_id": "test3396", "answer": "the com TLD", "answer_aliases": ["the com TLD"], "false_answer": "Eukarya"}
+{"_id": "test3399", "answer": "she who brings victory", "answer_aliases": ["she who brings victory"], "false_answer": "Veronica means \"true image\" in English."}
+{"_id": "test3400", "answer": "1038", "answer_aliases": ["1038"], "false_answer": "1600"}
+{"_id": "test3401", "answer": "$2 million in 2011", "answer_aliases": ["$2 million in 2011"], "false_answer": "A lifetime supply of golf balls"}
+{"_id": "test3402", "answer": "the drama series Gunsmoke", "answer_aliases": ["the drama series Gunsmoke"], "false_answer": "From the TV show \"Gunsmoke\""}
+{"_id": "test3408", "answer": "Zeus", "answer_aliases": ["Zeus"], "false_answer": "Hades"}
+{"_id": "test3409", "answer": "Steve Earle", "answer_aliases": ["Steve Earle"], "false_answer": "Celine Dion"}
+{"_id": "test3411", "answer": "the Four Seasons", "answer_aliases": ["the Four Seasons"], "false_answer": "The Beatles"}
+{"_id": "test3417", "answer": "Sophia Akuffo", "answer_aliases": ["Sophia Akuffo"], "false_answer": "Anin Yeboah"}
+{"_id": "test3418", "answer": "Glen Miller Road in Trenton", "answer_aliases": ["Glen Miller Road in Trenton"], "false_answer": "Toronto, Ontario to Ottawa, Ontario"}
+{"_id": "test3422", "answer": "Jack Nicklaus", "answer_aliases": ["Jack Nicklaus"], "false_answer": "Arnold Palmer"}
+{"_id": "test3426", "answer": "1992", "answer_aliases": ["1992"], "false_answer": "1994"}
+{"_id": "test3427", "answer": "May 29, 2018", "answer_aliases": ["May 29, 2018", "29 May 2018", "2018-05-29"], "false_answer": "June 5, 2023"}
+{"_id": "test3428", "answer": "Horace Lawson Hunley", "answer_aliases": ["Horace Lawson Hunley"], "false_answer": "Thomas Edison"}
+{"_id": "test3429", "answer": "Ralph Northam", "answer_aliases": ["Ralph Northam", "Democratic nominee Ralph Northam"], "false_answer": "Donald Trump"}
+{"_id": "test3433", "answer": "Stephen A. Douglas", "answer_aliases": ["Stephen A. Douglas"], "false_answer": "Abraham Lincoln"}
+{"_id": "test3434", "answer": "Madison, Wisconsin", "answer_aliases": ["Madison, Wisconsin"], "false_answer": "Milwaukee, Wisconsin"}
+{"_id": "test3435", "answer": "August 2, 1776", "answer_aliases": ["August 2, 1776", "2 August 1776", "02 August 1776", "August 02, 1776", "2 Aug 1776", "02 Aug 1776", "Aug 2, 1776", "Aug 02, 1776", "1776-08-02"], "false_answer": "July 2, 1776"}
+{"_id": "test3437", "answer": "Henry Purcell", "answer_aliases": ["Henry Purcell"], "false_answer": "William Shakespeare"}
+{"_id": "test3438", "answer": "Donna Mills", "answer_aliases": ["Donna Mills"], "false_answer": "Meryl Streep"}
+{"_id": "test3440", "answer": "1776", "answer_aliases": ["1776", "July 4, 1776", "In 1776"], "false_answer": "1770"}
+{"_id": "test3447", "answer": "31 March 2018", "answer_aliases": ["31 March 2018", "March 31, 2018", "31 Mar 2018", "Mar 31, 2018", "2018-03-31"], "false_answer": "15 August 2024"}
+{"_id": "test3448", "answer": "off the rez", "answer_aliases": ["off the rez"], "false_answer": "The Island of Serenity"}
+{"_id": "test3449", "answer": "Donna", "answer_aliases": ["Donna"], "false_answer": "Jackie Burkhart"}
+{"_id": "test3451", "answer": "2026", "answer_aliases": ["2026"], "false_answer": "2025"}
