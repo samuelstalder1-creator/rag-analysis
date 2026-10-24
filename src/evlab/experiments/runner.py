@@ -14,7 +14,7 @@ from evlab.data.nqplus import (
     load_retrieval_queries,
 )
 from evlab.evaluation.retrieval import evaluate_retrieval
-from evlab.evaluation.source import evaluate_source_metrics
+from evlab.evaluation.source import evaluate_origin_counts, evaluate_source_metrics, evaluate_version_recall
 from evlab.io import stable_hash, write_json, write_jsonl
 from evlab.retrieval.specs import RetrievalSession, resolve_retrievers
 from evlab.schema import Doc, Hit, Query
@@ -100,6 +100,14 @@ def run_experiment(config_path: str | Path | dict) -> dict[str, object]:
             ).items():
                 metrics[f"{mode}_{key}"] = value
         metrics.update(evaluate_source_metrics(run, docs_by_id, cutoffs=cutoffs))
+        metrics.update(evaluate_origin_counts(run, docs_by_id, cutoffs=cutoffs))
+        metrics.update(evaluate_version_recall(run, docs_by_id, qrels, cutoffs=cutoffs))
+        alias = config.get("evaluation", {}).get("recall_alias")
+        if alias:
+            # recall@k = the chosen relevance mode (relaxed: human, rewrite and poisoned
+            # versions of a relevant document all count as found).
+            for cutoff in cutoffs:
+                metrics[f"recall@{cutoff}"] = metrics[f"{alias}_recall@{cutoff}"]
         if targeted_ids and targeted_ids != evaluated_ids:
             # Same metrics on the attacked questions only, so a low query_ratio
             # does not dilute the effect on the questions that were attacked.

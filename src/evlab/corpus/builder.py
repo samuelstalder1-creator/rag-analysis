@@ -140,6 +140,8 @@ def build_corpus_with_report(config: dict) -> tuple[list[Doc], dict]:
     from evlab.corpus.mix import build_mixed_corpus, is_mix_config
 
     corpus = config.get("corpus", {}) or {}
+    if corpus.get("fixed") is not None:
+        return _build_fixed_corpus(config)
     if is_mix_config(corpus):
         return build_mixed_corpus(config)
     return _build_legacy_corpus(config), {"mode": "legacy"}
@@ -191,6 +193,55 @@ def verify_generated_docs(generated: list[Doc], human_docs: list[Doc], data: dic
             )
             if receipt["question_hash"] != expected:
                 raise ValueError(f"Stale question or gold annotations for {doc.doc_id}")
+
+
+def _build_fixed_corpus(config: dict) -> tuple[list[Doc], dict]:
+    """Human corpus plus complete generated files, added as they are.
+
+    ``corpus.fixed`` maps ``correct`` (LLM rewrites) and ``poisoned`` (false documents;
+    not named ``false`` because YAML reads that key as a boolean) to
+    ``{path, manifest?, enabled?}``. Every document of an enabled file is added next to
+    its human original; nothing is sampled. A document's root is the human document it
+    was generated from, so relaxed relevance counts any version as the relevant one.
+    """
+    data = config["data"]
+    docs = load_corpus(data["human_corpus"], origin="human", namespace="human")
+    owners = query_ids_by_doc(data)
+    report: dict = {"mode": "fixed", "sources": {}}
+    for name, spec in (config["corpus"]["fixed"] or {}).items():
+        if name not in {"correct", "poisoned"}:
+            raise ValueError(f"corpus.fixed keys must be 'correct' or 'poisoned', got {name!r}")
+        condition = "false" if name == "poisoned" else "correct"
+        spec = spec or {}
+        if not spec.get("enabled", True):
+            report["sources"][name] = {"enabled": False, "documents": 0}
+            continue
+        receipts = {}
+        if spec.get("manifest"):
+            receipts = {str(row["doc_id"]): row.get("receipt", {}) for row in iter_jsonl(spec["manifest"])}
+        added = []
+        for row in iter_jsonl(spec["path"]):
+            root = str(row["_id"])
+            if root not in owners:
+                raise ValueError(f"{spec['path']}: document {root} is not a relevant document of any query")
+            receipt = receipts.get(root, {})
+            added.append(Doc(
+                doc_id=f"gen::{spec.get('label', 'fixed')}-{condition}::{root}",
+                title=str(row.get("title", "") or ""), text=str(row["text"]), origin="generated",
+                query_id=owners[root], condition=condition,  # type: ignore[arg-type]
+                gold_answer=receipt.get("gold_answer"), target_answer=receipt.get("target_answer"),
+                parent_id=root, seed_id=root, provenance_root_id=root,
+                generation_depth=1, generator_model=spec.get("model"),
+                metadata={"origin": receipt.get("origin", "generated")},
+            ))
+        if len({d.doc_id for d in added}) != len(added):
+            raise ValueError(f"Duplicate documents in {spec['path']}")
+        docs.extend(added)
+        report["sources"][name] = {
+            "enabled": True, "path": str(spec["path"]), "documents": len(added),
+            "manual_documents": sum(1 for d in added if d.metadata["origin"].startswith("manual")),
+        }
+    return docs, report
 
 
 def _build_legacy_corpus(config: dict) -> list[Doc]:

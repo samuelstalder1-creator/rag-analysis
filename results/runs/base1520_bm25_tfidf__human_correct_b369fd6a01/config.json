@@ -1,0 +1,63 @@
+{
+  "corpus": {
+    "fixed": {
+      "correct": {
+        "enabled": true,
+        "label": "base1520",
+        "manifest": "data/generated/base-1520/manifest_correct.jsonl",
+        "model": "Qwen/Qwen3.5-2B",
+        "path": "data/generated/base-1520/corpus_correct.jsonl"
+      },
+      "poisoned": {
+        "enabled": false,
+        "label": "base1520",
+        "manifest": "data/generated/base-1520/manifest_false_complete.jsonl",
+        "model": "Qwen/Qwen3.5-2B (8 documents written manually)",
+        "path": "data/generated/base-1520/corpus_false_complete.jsonl"
+      }
+    }
+  },
+  "data": {
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqopen1520"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      5,
+      10,
+      20,
+      50,
+      100
+    ],
+    "recall_alias": "relaxed",
+    "relevance_modes": [
+      "strict",
+      "relaxed"
+    ]
+  },
+  "experiment": "base1520_bm25_tfidf__human_correct",
+  "output": {
+    "dir": "results/runs"
+  },
+  "queries": "retrieval",
+  "retrieval": {
+    "top_k": 100
+  },
+  "retriever_definitions": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true,
+      "type": "bm25"
+    },
+    "tfidf": {
+      "type": "tfidf"
+    }
+  },
+  "retrievers": [
+    "bm25",
+    "tfidf"
+  ],
+  "seed": 13
+}

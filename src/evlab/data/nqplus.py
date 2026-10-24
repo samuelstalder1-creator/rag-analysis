@@ -41,7 +41,22 @@ def load_query_rows(nqplus_dir: str | Path) -> list[dict]:
     return rows
 
 
+def _load_clean_queries(root: Path) -> list[Query]:
+    """Queries of a clean folder (queries.jsonl + answers.jsonl + qrels/test.tsv)."""
+    queries = []
+    for candidate, row in zip(_load_clean_candidates(root), iter_jsonl(root / "queries.jsonl")):
+        queries.append(Query(
+            query_id=candidate["query_id"], text=candidate["query"], answer=candidate["answer"],
+            aliases=tuple(candidate["answer_aliases"]),
+            relevant_doc_ids=tuple(doc["doc_id"] for doc in candidate["h_docs"]),
+            metadata=dict(row.get("metadata", {}) or {}),
+        ))
+    return queries
+
+
 def _load_queries(nqplus_dir: str | Path, usage: str) -> list[Query]:
+    if is_clean_dataset(nqplus_dir):
+        return _load_clean_queries(Path(nqplus_dir))
     queries = []
     seen = set()
     for row in load_query_rows(nqplus_dir):
