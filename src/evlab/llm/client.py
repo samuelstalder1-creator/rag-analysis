@@ -34,6 +34,9 @@ def build_llm_client(config: dict) -> LLMClient:
             timeout=float(config.get("timeout", 120)),
             max_retries=int(config.get("max_retries", 0)),
             retry_delay=float(config.get("retry_delay", 5)),
+            max_tokens=int(config["max_tokens"]) if config.get("max_tokens") else None,
+            num_ctx=int(config["num_ctx"]) if config.get("num_ctx") else None,
+            think=config["think"] if "think" in config else None,
         )
     if provider == "gemini":
         from evlab.llm.gemini import GeminiClient

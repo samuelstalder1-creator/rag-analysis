@@ -1,0 +1,28 @@
+# nqopen1520 base (1,520 questions with correct and false evidence), generated with deepseek-r1:8b via vLLM (port 8000).
+# Correct evidence from the revised nqopen+ questions and unchanged human sources.
+# One candidate per call, at most three attempts per selected document.
+data:
+  nqplus_dir: data/nqopen+/base1520
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  scope: all_answer_documents
+  output_dir: data/generated/nqopen1520-deepseek-r1-correct
+  cache_path: cache/llm_nqopen1520_deepseek_r1_correct.sqlite
+  correct_max_attempts: 3
+  correct_retry_temperature_step: 0.2  # 0.3 -> 0.5 -> 0.7; all checks remain mandatory.
+  samples_per_h: 1
+  temperature: 0.3
+  resume: true
+  progress_every: 10
+  validation:
+    mode: deterministic
+    max_similarity: 0.95
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8000/v1
+    model: deepseek-ai/DeepSeek-R1-0528-Qwen3-8B
+    api_key_env: LOCAL_LLM_API_KEY
+    max_tokens: 8192     # includes reasoning tokens; cut-off output is rejected
+    timeout: 1800
+    max_retries: 2
+    retry_delay: 5
