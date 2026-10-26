@@ -29,12 +29,12 @@ corpus:
       enabled: true
 
 reader:
-  llm: configs/readers/qwen35-2b.yaml   # or configs/readers/qwen25-7b.yaml
+  llm: configs/readers/qwen3-4b-instruct-2507.yaml
   temperature: 0.0
   top_k: 5
   prompt: prompts/reader_v1.txt
   retrievers: [bm25]
-  cache_path: cache/reader_base1520_qwen.sqlite
+  cache_path: cache/reader_base1520_qwen3_4b_instruct_2507.sqlite
 
 variants:
   human_only:

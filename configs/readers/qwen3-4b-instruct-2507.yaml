@@ -1,0 +1,9 @@
+# Non-thinking Qwen3 reader served on port 8000 with an 8,192-token context.
+llm:
+  provider: local_openai
+  base_url: http://localhost:8000/v1
+  model: Qwen/Qwen3-4B-Instruct-2507
+  api_key_env: LOCAL_LLM_API_KEY
+  max_tokens: 256
+  timeout: 300
+  max_retries: 2

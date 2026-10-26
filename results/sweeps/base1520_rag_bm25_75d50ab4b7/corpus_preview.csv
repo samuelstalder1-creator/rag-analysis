@@ -1,0 +1,5 @@
+label,variant,corpus.mode,corpus.sources.correct.enabled,corpus.sources.correct.documents,corpus.sources.poisoned.enabled,corpus.sources.poisoned.documents,corpus.sources.correct.path,corpus.sources.correct.manual_documents,corpus.sources.poisoned.path,corpus.sources.poisoned.manual_documents
+human_only,human_only,fixed,False,0,False,0,,,,
+human_correct,human_correct,fixed,True,1670,False,0,data/generated/base-1520/corpus_correct.jsonl,0,,
+human_false,human_false,fixed,False,0,True,1670,,,data/generated/base-1520/corpus_false_complete.jsonl,8
+human_correct_false,human_correct_false,fixed,True,1670,True,1670,data/generated/base-1520/corpus_correct.jsonl,0,data/generated/base-1520/corpus_false_complete.jsonl,8

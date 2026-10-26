@@ -1,0 +1,67 @@
+{
+  "corpus": {
+    "fixed": {
+      "correct": {
+        "enabled": true,
+        "label": "base1520",
+        "manifest": "data/generated/base-1520/manifest_correct.jsonl",
+        "model": "Qwen/Qwen3.5-2B",
+        "path": "data/generated/base-1520/corpus_correct.jsonl"
+      },
+      "poisoned": {
+        "enabled": true,
+        "label": "base1520",
+        "manifest": "data/generated/base-1520/manifest_false_complete.jsonl",
+        "model": "Qwen/Qwen3.5-2B (8 documents written manually)",
+        "path": "data/generated/base-1520/corpus_false_complete.jsonl"
+      }
+    }
+  },
+  "data": {
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqopen1520"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      5,
+      10
+    ],
+    "recall_alias": "relaxed",
+    "relevance_modes": [
+      "strict",
+      "relaxed"
+    ]
+  },
+  "experiment": "base1520_rag_bm25__human_correct_false",
+  "output": {
+    "dir": "results/runs"
+  },
+  "queries": "rag",
+  "query_limit": 2,
+  "reader": {
+    "cache_path": "cache/reader_base1520_qwen3_4b_instruct_2507.sqlite",
+    "llm": "configs/readers/qwen3-4b-instruct-2507.yaml",
+    "prompt": "prompts/reader_v1.txt",
+    "retrievers": [
+      "bm25"
+    ],
+    "temperature": 0.0,
+    "top_k": 5
+  },
+  "retrieval": {
+    "top_k": 10
+  },
+  "retriever_definitions": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true,
+      "type": "bm25"
+    }
+  },
+  "retrievers": [
+    "bm25"
+  ],
+  "seed": 13
+}

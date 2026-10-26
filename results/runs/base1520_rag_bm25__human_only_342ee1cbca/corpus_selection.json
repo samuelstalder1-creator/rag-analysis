@@ -1,0 +1,13 @@
+{
+  "mode": "fixed",
+  "sources": {
+    "correct": {
+      "documents": 0,
+      "enabled": false
+    },
+    "poisoned": {
+      "documents": 0,
+      "enabled": false
+    }
+  }
+}
