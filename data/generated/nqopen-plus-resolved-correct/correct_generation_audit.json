@@ -1,0 +1,50 @@
+{
+  "checked_documents": 1814,
+  "eligible_documents": 1806,
+  "generation_questions": 1614,
+  "needs_review": [
+    {
+      "doc_id": "doc2894",
+      "query_id": "test89",
+      "reason": "gold_alias_missing_from_original_title_and_body"
+    },
+    {
+      "doc_id": "doc41305",
+      "query_id": "test1163",
+      "reason": "gold_alias_missing_from_original_title_and_body"
+    },
+    {
+      "doc_id": "doc63553",
+      "query_id": "test1806",
+      "reason": "gold_alias_missing_from_original_title_and_body"
+    },
+    {
+      "doc_id": "doc64268",
+      "query_id": "test1826",
+      "reason": "gold_alias_missing_from_original_title_and_body"
+    },
+    {
+      "doc_id": "doc67132",
+      "query_id": "test1914",
+      "reason": "gold_alias_missing_from_original_title_and_body"
+    },
+    {
+      "doc_id": "doc78223",
+      "query_id": "test2257",
+      "reason": "gold_alias_missing_from_original_title_and_body"
+    },
+    {
+      "doc_id": "doc90330",
+      "query_id": "test2637",
+      "reason": "gold_alias_missing_from_original_title_and_body"
+    },
+    {
+      "doc_id": "doc90691",
+      "query_id": "test2648",
+      "reason": "gold_alias_missing_from_original_title_and_body"
+    }
+  ],
+  "scope": "all_answer_documents",
+  "selected_documents": 1806,
+  "title_only_answer_documents": 21
+}

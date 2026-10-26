@@ -1,0 +1,13 @@
+version: 1
+files:
+  corpus_0001.jsonl:
+    model: "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
+    condition: "false"
+    temperature: 0.3
+    sample_idx: 0
+    generation_depth: 1
+    source: "candidates"
+    prompt_version: "v1"
+    validation_mode: "deterministic"
+    generation_signature: "124617c0052c477460a0559675af41f6f30fc3b2d431ba38b186d43b0aa8a1cf"
+    document_count: 6

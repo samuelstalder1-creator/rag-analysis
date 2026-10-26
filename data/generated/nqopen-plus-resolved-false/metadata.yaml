@@ -1,0 +1,13 @@
+version: 1
+files:
+  corpus_0001.jsonl:
+    model: "Qwen/Qwen3.5-2B"
+    condition: "false"
+    temperature: 0.3
+    sample_idx: 0
+    generation_depth: 1
+    source: "candidates"
+    prompt_version: "v1"
+    validation_mode: "deterministic"
+    generation_signature: "2fd471b72c0cf75e1cd70c96dec196192f9f2f398cee959c86518f2fd108e2b0"
+    document_count: 1663
