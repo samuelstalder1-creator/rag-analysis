@@ -1,0 +1,26 @@
+# Fresh correct-evidence generation from the nqopen1520 base.
+data:
+  nqplus_dir: data/nqopen1520
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  scope: all_answer_documents
+  output_dir: data/generated/nqopen1520-qwen3-4b-instruct-2507-correct-v1
+  cache_path: cache/llm_nqopen1520_qwen3_4b_instruct_2507_correct_v1.sqlite
+  correct_max_attempts: 3
+  correct_retry_temperature_step: 0.2
+  samples_per_h: 1
+  temperature: 0.3
+  resume: true
+  progress_every: 1
+  validation:
+    mode: deterministic
+    max_similarity: 0.95
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8000/v1
+    model: Qwen/Qwen3-4B-Instruct-2507
+    api_key_env: LOCAL_LLM_API_KEY
+    max_tokens: 2048
+    timeout: 300
+    max_retries: 2
+    retry_delay: 5

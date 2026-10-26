@@ -2,6 +2,37 @@
 
 NQ+ Evidence Laundering Lab: a config-driven Python project for controlled retrieval and RAG experiments with human, AI-generated, correct and false evidence.
 
+## Qwen3-4B-Instruct-2507 dataset generation
+
+For a smaller non-thinking generator, use the nqopen1520 Qwen3 configs. These
+read the same base questions, gold/false answers and source-document mappings,
+with separate caches and output directories from DeepSeek.
+
+```bash
+bash scripts/run_qwen3_4b_generation.sh prepare
+bash scripts/run_qwen3_4b_generation.sh serve
+```
+
+Once the server is ready, use another terminal:
+
+```bash
+bash scripts/run_qwen3_4b_generation.sh smoke
+bash scripts/run_qwen3_4b_generation.sh all
+```
+
+The smoke run selects five correct documents and five false-document questions.
+The full run resumes its accepted documents. Both configs log progress after
+every processed document/question and use a 2,048-token output budget without
+reasoning. They write to `data/generated/nqopen1520-qwen3-4b-instruct-2507-{correct,false}-v1`.
+
+The shared overnight launcher can start the model server and run both stages:
+
+```bash
+GENERATION_MODEL=Qwen/Qwen3-4B-Instruct-2507 \
+GENERATION_LAUNCHER=scripts/run_qwen3_4b_generation.sh \
+bash scripts/run_overnight_generation.sh
+```
+
 ## DeepSeek R1 dataset generation
 
 The DeepSeek Qwen3 checkpoint advertises `LlamaTokenizerFast` despite using a
