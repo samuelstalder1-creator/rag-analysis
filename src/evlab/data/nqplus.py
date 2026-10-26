@@ -44,12 +44,21 @@ def load_query_rows(nqplus_dir: str | Path) -> list[dict]:
 def _load_clean_queries(root: Path) -> list[Query]:
     """Queries of a clean folder (queries.jsonl + answers.jsonl + qrels/test.tsv)."""
     queries = []
+    false_answers = {
+        str(row["_id"]): row.get("false_answer") for row in iter_jsonl(root / "answers.jsonl")
+    }
     for candidate, row in zip(_load_clean_candidates(root), iter_jsonl(root / "queries.jsonl")):
         queries.append(Query(
             query_id=candidate["query_id"], text=candidate["query"], answer=candidate["answer"],
             aliases=tuple(candidate["answer_aliases"]),
             relevant_doc_ids=tuple(doc["doc_id"] for doc in candidate["h_docs"]),
-            metadata=dict(row.get("metadata", {}) or {}),
+            metadata={
+                **dict(row.get("metadata", {}) or {}),
+                # Targets define the target-adoption denominator for every corpus
+                # variant, also those without poisoned documents.
+                **({"false_answer": false_answers[candidate["query_id"]], "false_answer_status": "ready"}
+                   if false_answers.get(candidate["query_id"]) else {}),
+            },
         ))
     return queries
 

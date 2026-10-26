@@ -1,0 +1,65 @@
+# RAG evaluation (BM25 -> Qwen reader) over the human corpus plus the complete generated files of base-1520.
+#   uv run evlab sweep configs/experiments/base1520_rag_bm25.yaml
+# recall@k  : relaxed relevance - the human, correct-rewrite or poisoned version of a
+#             relevant document all count as found (collapsed per source document).
+# rewrite@k : mean number of correct LLM rewrites in the top k per query.
+# poison@k  : mean number of poisoned (false) documents in the top k per query.
+# r_rewrite@k / r_poison@k / r_human@k : share of the relevant documents whose rewrite / poisoned version / human original is in the top k.
+experiment: base1520_rag_bm25
+seed: 13
+queries: rag
+
+data:
+  nqplus_dir: data/nqopen1520        # queries.jsonl, qrels/test.tsv, answers.jsonl
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+
+corpus:
+  fixed:
+    correct:
+      path: data/generated/base-1520/corpus_correct.jsonl
+      manifest: data/generated/base-1520/manifest_correct.jsonl
+      label: base1520
+      model: Qwen/Qwen3.5-2B
+      enabled: true
+    poisoned:
+      path: data/generated/base-1520/corpus_false_complete.jsonl
+      manifest: data/generated/base-1520/manifest_false_complete.jsonl
+      label: base1520
+      model: Qwen/Qwen3.5-2B (8 documents written manually)
+      enabled: true
+
+reader:
+  llm: configs/readers/qwen35-2b.yaml   # or configs/readers/qwen25-7b.yaml
+  temperature: 0.0
+  top_k: 5
+  prompt: prompts/reader_v1.txt
+  retrievers: [bm25]
+  cache_path: cache/reader_base1520_qwen.sqlite
+
+variants:
+  human_only:
+    corpus.fixed.correct.enabled: false
+    corpus.fixed.poisoned.enabled: false
+  human_correct:
+    corpus.fixed.poisoned.enabled: false
+  human_false:
+    corpus.fixed.correct.enabled: false
+  human_correct_false: {}
+
+retrievers: [bm25]
+retriever_definitions:
+  bm25:
+    type: bm25
+    k1: 1.5
+    b: 0.75
+    remove_query_stopwords: true
+retrieval:
+  top_k: 10
+evaluation:
+  cutoffs: [1, 5, 10]
+  relevance_modes: [strict, relaxed]
+  recall_alias: relaxed
+output:
+  dir: results/runs
+sweep_output:
+  dir: results/sweeps

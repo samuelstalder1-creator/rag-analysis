@@ -1,0 +1,9 @@
+# Reader preset: Qwen2.5-7B-Instruct on vLLM (port 8000); use qwen35-2b.yaml for the 2B model.
+llm:
+  provider: local_openai
+  base_url: http://localhost:8000/v1
+  model: Qwen/Qwen2.5-7B-Instruct
+  api_key_env: LOCAL_LLM_API_KEY
+  max_tokens: 256
+  timeout: 300
+  max_retries: 2
