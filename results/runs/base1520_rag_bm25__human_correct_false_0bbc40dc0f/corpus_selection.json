@@ -1,0 +1,17 @@
+{
+  "mode": "fixed",
+  "sources": {
+    "correct": {
+      "documents": 1670,
+      "enabled": true,
+      "manual_documents": 0,
+      "path": "data/generated/base-1520/corpus_correct.jsonl"
+    },
+    "poisoned": {
+      "documents": 1670,
+      "enabled": true,
+      "manual_documents": 8,
+      "path": "data/generated/base-1520/corpus_false_complete.jsonl"
+    }
+  }
+}

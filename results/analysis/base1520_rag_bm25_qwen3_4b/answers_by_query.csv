@@ -1,0 +1,1521 @@
+query_id,human_only_label,human_only_answer,human_correct_label,human_correct_answer,human_false_label,human_false_answer,human_correct_false_label,human_correct_false_answer
+test1,correct,23,correct,23,target,25,correct,23
+test10,correct,"June 15, 2018",correct,"June 15, 2018",target,December 2022,target,December 2022
+test1003,correct,Bianca Ryan,correct,Bianca Ryan,target,Susan Boyle,target,Susan Boyle
+test1005,correct,2010,correct,2010,correct,2010,abstain,I don't know
+test1006,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1009,correct,Nicole Gale Anderson,correct,Nicole Gale Anderson,target,Amanda Seyfried,correct,Nicole Gale Anderson
+test101,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1011,correct,Kirstjen Nielsen,correct,Kirstjen Nielsen,correct,Kirstjen Nielsen,correct,Kirstjen Nielsen
+test1012,correct,Ozzie Smith,correct,Ozzie Smith,abstain,I don't know,correct,Ozzie Smith
+test1013,correct,Don Majkowski,correct,Don Majkowski,target,Brett Favre,target,Brett Favre
+test1014,correct,Maginot Line,correct,Maginot Line,correct,Maginot Line,correct,Maginot Line
+test1016,abstain,I don't know,correct,Rodney Crowell,target,Bob Dylan,target,Bob Dylan
+test1018,abstain,I don't know,correct,the following day,target,Tuesday morning,target,Tuesday morning
+test1019,correct,Abid Ali Neemuchwala,correct,Abid Ali Neemuchwala,correct,Abid Ali Neemuchwala,correct,Abid Ali Neemuchwala
+test1020,correct,adenosine diphosphate (ADP),correct,adenosine diphosphate (ADP),correct,adenosine diphosphate (ADP),correct,adenosine diphosphate (ADP)
+test1021,abstain,I don't know,abstain,I don't know,target,triangular with serrated edges,target,triangular with serrated edges
+test1022,correct,Staci Keanan,correct,Staci Keanan,correct,Staci Keanan,correct,Staci Keanan
+test1025,correct,660 quadrillion US gallons,correct,660 quadrillion US gallons,target,1 trillion gallons,correct,660 quadrillion US gallons
+test1026,other,1,other,"1, 2",other,2,other,3
+test1029,other,"from its designation of HU-1, which came to be pronounced as 'Huey'",other,"from its designation of HU-1, which came to be pronounced as 'Huey'",other,"from its inventor, Dr. Huey",other,"from its inventor, Dr. Huey"
+test1031,other,Kirsten Vangsness,other,Kirsten Vangsness,other,Kirsten Vangsness,other,Kirsten Vangsness
+test1032,correct,"September 13, 2012",correct,"September 13, 2012",target,"October 14, 2012",correct,"September 13, 2012"
+test1035,correct,Cozonac,correct,Cozonac,correct,Cozonac,correct,Cozonac
+test104,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1041,correct,Haliaeetus,correct,Haliaeetus,correct,Haliaeetus,correct,Haliaeetus
+test1042,correct,William Wyler,correct,William Wyler,correct,William Wyler,correct,William Wyler
+test1044,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1046,other,10,correct,7,target,8,correct,7
+test1048,correct,pia mater,correct,pia mater,correct,pia mater,correct,pia mater
+test105,abstain,I don't know,abstain,I don't know,target,Tom Hanks,correct,Peter Greene
+test1057,correct,Eddie Van Halen,correct,Eddie Van Halen,correct,Eddie Van Halen,correct,Eddie Van Halen
+test1059,other,New Zealand,other,New Zealand,other,New Zealand,other,New Zealand
+test106,correct,Ashrita Furman,correct,Ashrita Furman,correct,Ashrita Furman,correct,Ashrita Furman
+test1061,correct,bohrium,correct,bohrium,correct,bohrium,correct,bohrium
+test1062,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1063,correct,B. Traven,correct,B. Traven,correct,B. Traven,correct,B. Traven
+test1064,correct,Devastator,correct,Devastator,correct,Devastator,abstain,I don't know
+test1065,correct,Nala,correct,Nala,correct,Nala,correct,Nala
+test1068,correct,6,correct,6,correct,6,target,9
+test1069,other,The Ting Tings,other,Ladyhawke,target,The Rolling Stones,other,Styx
+test1071,other,financing activities,correct,financing activities section,correct,Financing Activities section,correct,financing activities section
+test1072,correct,antimeridian,correct,antimeridian,correct,the 180th meridian or antimeridian,correct,180th meridian
+test1073,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1075,correct,2010,correct,2010,target,2019,target,2019
+test1076,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1081,other,Pittsburgh Steelers lost to the New England Patriots in the AFC Championship Game,correct,New England Patriots,other,Pittsburgh Steelers lost to the New England Patriots in the AFC Championship Game,correct,New England Patriots
+test1082,correct,John McConnell,correct,John McConnell,correct,John McConnell,abstain,I don't know
+test1083,correct,displacement,correct,displacement,target,Vector distance,other,1
+test1084,other,James Lafferty,other,James Lafferty,target,Chad Michael Murray,target,Chad Michael Murray
+test1086,other,"Orlando, Florida",other,"Orlando, Florida",other,"Orlando, Florida",other,"Orlando, Florida"
+test1087,correct,Christopher Lloyd,correct,Christopher Lloyd,correct,Christopher Lloyd,correct,Christopher Lloyd
+test1089,other,Elizabeth Lail,other,Elizabeth Lail,other,Elizabeth Lail,other,Elizabeth Lail
+test1093,abstain,I don't know,abstain,I don't know,target,"December 10, 2016",target,"December 10, 2016"
+test1095,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1096,other,Jamie Dornan,other,Jamie Dornan,other,Jamie Dornan,abstain,I don't know
+test1097,correct,Liam Cunningham,correct,Liam Cunningham,target,Sean Bean,target,Sean Bean
+test1098,correct,Mickey Mantle,correct,Mickey Mantle,target,Willie Mays,correct,Mickey Mantle
+test1099,abstain,I don't know,correct,In Time,abstain,I don't know,correct,In Time
+test11,correct,Elvis Presley,correct,Elvis Presley,correct,Elvis Presley,correct,Elvis Presley
+test110,other,3,other,3,other,6,other,6
+test1101,other,the Indus Valley Civilization and ancient Greek accounts,other,the Indus Valley Civilization and ancient Greek accounts,other,the Indus Valley Civilization and ancient Greek accounts,other,the Indus Valley Civilization and ancient Greek accounts
+test1102,abstain,I don't know,abstain,I don't know,target,Battle of Gettysburg,target,Battle of Gettysburg
+test1103,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1105,other,Robert Adamson,other,Robert Adamson,target,Leonardo DiCaprio,other,Robert Adamson
+test1106,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1109,correct,Catherine Tramell,correct,Catherine Tramell,target,Roy Washburn,target,Roy Washburn
+test1113,correct,German Lutherans,other,Germany,target,Ancient Greece,correct,German Lutherans
+test1114,other,"September 24, 2017",other,"September 24, 2017",other,"September 24, 2017",other,"September 24, 2017"
+test1122,other,7 July to 13 July,other,7 July to 13 July,other,from the 6th to the 13th of July,correct,6–14 July
+test1124,other,FERNANDO'S! in Manchester (Club Bijou on Chapel Street) or the Isle of FERNANDO'S! (fictional location),other,FERNANDO'S! in Manchester (Club Bijou on Chapel Street),target,"Hollywood, California",target,"Hollywood, California"
+test1127,other,Shirley Jones,other,Shirley Jones,other,Shirley Jones,other,Shirley Jones
+test1129,correct,Vijaya Mulay,correct,Vijaya Mulay,target,Hayao Miyazaki,correct,Vijaya Mulay
+test1133,other,21,other,21,other,21,other,21
+test1135,correct,1930s,correct,1930s,correct,1930s,correct,1930s
+test1136,correct,Charlotte of Mecklenburg-Strelitz,correct,Charlotte of Mecklenburg-Strelitz,correct,Charlotte of Mecklenburg-Strelitz,correct,Charlotte of Mecklenburg-Strelitz
+test1137,abstain,I don't know,abstain,I don't know,other,Maya peoples,other,Maya peoples
+test1138,correct,duodenum,correct,duodenum,correct,duodenum,correct,duodenum
+test1144,correct,1992,correct,1992,correct,1992,correct,1992
+test1145,abstain,I don't know,abstain,I don't know,target,left side,correct,right
+test1149,other,plant hormone,other,plant hormone,other,plant hormone,correct,plant hormones
+test1150,other,administrative supervision over all courts and the personnel thereof,other,administrative supervision over all courts and the personnel thereof,other,The power of the Supreme Court in the Philippines includes declaring laws unconstitutional and having administrative supervision over all courts and the personnel thereof.,other,The power of the Supreme Court in the Philippines includes the authority to declare laws unconstitutional and administrative supervision over all lower courts and their personnel.
+test1156,correct,Glenn Close,correct,Glenn Close,correct,Glenn Close,correct,Glenn Close
+test116,correct,Thon Maker,correct,Thon Maker,correct,Thon Maker,correct,Thon Maker
+test1160,abstain,I don't know,other,"Jon Snow is a character on Game of Thrones portrayed by Kit Harington, whose storyline follows the character's plot arc from the novel series.",abstain,I don't know,other,Kit Harington portrays Jon Snow on the HBO series Game of Thrones.
+test1162,abstain,I don't know,other,a British children's puzzle book series,abstain,I don't know,other,a British children's puzzle book series
+test1167,other,Real Madrid C.F.,other,Real Madrid C.F.,target,Valencia CF,target,Valencia CF
+test1169,other,"The purpose of the Mall of America was to serve as a large shopping mall and entertainment destination, including a theme park and transit hub.",other,"The purpose of the Mall of America was to serve as a large shopping mall providing retail, entertainment, and transit access to the Minneapolis–St. Paul metropolitan area.",other,to promote world peace by establishing a massive retail hub,other,To serve as a massive retail hub
+test1170,other,2007,correct,2006–07,target,1998–99,correct,2006–07
+test1172,correct,the Ramones,correct,the Ramones,abstain,I don't know,correct,the Ramones
+test1173,other,central state or nation,other,central state or nation,other,central,other,central
+test1174,abstain,I don't know,abstain,I don't know,other,through a Teleprompter glasses worn by the host,other,through a walkie-talkie and earpiece worn by the host
+test1175,correct,December 1349,correct,December 1349,target,December 1353,correct,December 1349
+test1178,other,1890,other,1890,other,1889,correct,"July 1, 1890"
+test1180,correct,"Welch, West Virginia",correct,"Welch, West Virginia",correct,"Welch, West Virginia",correct,"Welch, West Virginia"
+test1181,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1182,abstain,I don't know,other,27 July to 7 August 2022,other,27 July to 7 August 2023,other,27 July to 7 August 2022
+test1185,correct,The Osmonds,correct,The Osmonds,correct,The Osmonds,correct,The Osmonds
+test1187,correct,7,correct,7,correct,7,correct,7
+test1191,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1192,abstain,I don't know,correct,Sebastian Vettel,abstain,I don't know,correct,Sebastian Vettel
+test1195,correct,"February 27, 2007",correct,"February 27, 2007",target,"November 14, 2007",correct,"February 27, 2007"
+test1197,correct,Asia,correct,Asia,correct,Asia,correct,Asia
+test1198,correct,Sir Ernest Rutherford,correct,Sir Ernest Rutherford,target,Albert Einstein,correct,Sir Ernest Rutherford
+test1199,other,2010,correct,25 December 2010,target,25 December 2009,correct,25 December 2010
+test12,other,Christopher Lloyd,other,Christopher Lloyd,other,Christopher Lloyd,other,Christopher Lloyd
+test120,correct,2013,correct,2013,target,2010,target,2010
+test1204,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1205,other,mollusc,other,Cephalopoda,other,mollusc,other,mollusc
+test1207,correct,-ase,correct,-ase,correct,-ase,correct,-ase
+test1208,abstain,I don't know,correct,September 1972,target,September 1973,target,September 1973
+test1209,other,Amherst College library,other,Amherst College library,other,Amherst College library,other,Amherst College library
+test1210,correct,Miller Lite,correct,Miller Lite,target,Coors Light,target,Coors Light
+test1211,correct,Mariah Carey,correct,Mariah Carey,correct,Mariah Carey,correct,Mariah Carey
+test1213,correct,June 1991,correct,June 1991,target,September 1991,correct,June 1991
+test1214,correct,2016,correct,2016,correct,2016,correct,2016
+test1215,correct,4,correct,4,target,three,correct,4
+test1218,correct,Arkansas,correct,Arkansas,correct,Arkansas,correct,Arkansas
+test1220,other,"Missouri, during the Kirtland period of Latter Day Saint history, circa 1834",other,"The term Jack Mormon originated in Missouri during the Kirtland period of Latter Day Saint history, circa 1834, when sympathetic Democrats in Clay County were pejoratively labeled 'Jack' Mormons by antagonistic citizens of Jackson County after Mormons were expelled from Jackson County.",other,"The term Jack Mormon originated in Missouri during the Kirtland period of Latter Day Saint history, circa 1834, when local citizens were pejoratively labeled by antagonistic opponents as Jack Mormons due to their expulsion from Jackson County.",other,"Missouri during the Kirtland period of Latter Day Saint history, circa 1834"
+test1221,correct,Jean Fernel,correct,Jean Fernel,correct,Jean Fernel,correct,Jean Fernel
+test1222,correct,Danny Veltri,correct,Danny Veltri,target,Gordon Ramsay,target,Gordon Ramsay
+test1223,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1225,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1229,correct,Meri,correct,Meri,target,Christine Brown,correct,Meri
+test1230,correct,Buddhism,other,Chinese Buddhism,correct,Buddhism,other,Chinese Buddhism
+test1231,correct,The Eagles,correct,The Eagles,correct,Eagles,correct,Eagles
+test1238,correct,Rich Mullins,correct,Rich Mullins,target,Whitney Houston,target,Whitney Houston
+test1242,correct,Flag of Vietnam,correct,Flag of Vietnam,correct,Flag of Vietnam,correct,Flag of Vietnam
+test1247,other,"a virtual reality simulator accessible by players using visors and haptic technology such as gloves. It functions both as an MMORPG and as a virtual society, with its currency being the most stable in the real world.",other,"The OASIS is a virtual reality simulator created by James Halliday, accessible through visors and haptic technology, functioning as both an MMORPG and a virtual society. It was established to help people escape the energy crisis, overpopulation, and social problems caused by fossil fuel depletion and global warming in the 2040s. Halliday left an Easter egg within the OASIS, and the first person to find it would inherit his fortune and corporation.",other,"a virtual reality simulator accessible by players using visors and haptic technology such as gloves, functioning as an MMORPG and a virtual society",other,"The OASIS is a virtual reality simulator created by James Halliday, accessible through visors and haptic technology, serving as an MMORPG and virtual society that people use to escape global warming, economic stagnation, and an energy crisis. It contains an Easter egg, and the first person to find it inherits Halliday's fortune and corporation."
+test1248,correct,Hercules,correct,Hercules,target,Bessie,correct,Hercules
+test125,correct,1854,correct,1854,other,1825,other,1825
+test1251,correct,Amitabh Bachchan,correct,Amitabh Bachchan,target,Rajesh Khanna,correct,Amitabh Bachchan
+test1256,correct,energy loss,correct,energy loss,correct,energy loss,correct,energy loss
+test1257,correct,"205,700",other,205700,other,250000,other,205700
+test1264,other,Pat Walshe,other,Pat Walshe,target,Jack Haley,target,Jack Haley
+test127,correct,Sohrai,correct,Sohrai,correct,Sohrai,correct,Sohrai
+test1273,other,end of January 1981,correct,1981,correct,1981,other,end of January 1980
+test1280,correct,as sea levels rose,correct,as sea levels rose,correct,as sea levels rose,correct,rising sea levels
+test1283,abstain,I don't know,abstain,I don't know,target,2002,target,2002
+test1286,other,247.3,other,247.3,other,500,other,500
+test1287,correct,Sylvester Stallone,correct,Sylvester Stallone,correct,Sylvester Stallone,correct,Sylvester Stallone
+test1288,abstain,I don't know,abstain,I don't know,target,55 mph,correct,pit road speed
+test1289,other,Emperor Palpatine,other,Emperor Palpatine,other,Emperor Palpatine,other,Emperor Palpatine
+test129,other,the thirteen American colonies,other,the thirteen American colonies,other,the thirteen American colonies,other,the thirteen American colonies
+test1290,correct,Chris Rea,correct,Chris Rea,target,Frank Sinatra,correct,Chris Rea
+test1291,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1292,correct,Wakanda,correct,Wakanda,correct,Wakanda,target,Extracted from a meteorite in Siberia
+test1293,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1295,other,The Sixth Extinction II: Amor Fati,other,sixth season,target,"Season 3, Episode 12",other,sixth season
+test1298,other,Leo Dalton died in an explosion,correct,in an explosion,target,car accident,correct,in an explosion
+test1299,correct,public sector,correct,public sector,abstain,I don't know,abstain,I don't know
+test1300,abstain,I don't know,correct,Jeff East,target,Kurt Russell,target,Kurt Russell
+test1301,correct,Abanindranath Tagore,correct,Abanindranath Tagore,correct,Abanindranath Tagore,correct,Abanindranath Tagore
+test1303,other,Henri Dutrochet,other,Henri Dutrochet,abstain,I don't know,abstain,I don't know
+test1305,other,Cadillac Mountain,other,Cadillac Mountain,other,Cadillac Mountain,other,Cadillac Mountain
+test1307,correct,Hungary,correct,Hungary,ambiguous,Italy and Hungary,ambiguous,Italy and Hungary
+test1309,other,April 2015,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test131,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1310,correct,Jules Shear,correct,Jules Shear,correct,Jules Shear,correct,Jules Shear
+test1313,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1314,other,The Governing Body of Jehovah's Witnesses,other,The Governing Body of Jehovah's Witnesses,other,The Governing Body of Jehovah's Witnesses,other,The Governing Body of Jehovah's Witnesses
+test1317,other,1228 km/h,other,1228 km/h,other,1287.5,other,1287.5
+test1319,correct,Theodore Roosevelt,correct,Theodore Roosevelt,correct,Theodore Roosevelt,correct,Theodore Roosevelt
+test132,correct,Michael Buffer,correct,Michael Buffer,target,Howard Finkel,correct,Michael Buffer
+test1320,correct,Justin Timberlake,correct,Justin Timberlake,correct,Justin Timberlake,correct,Justin Timberlake
+test1322,correct,the primal rib,other,"the primal rib, ribs six through twelve",other,the tail of the cow,other,the tail of the cow
+test1325,abstain,I don't know,other,Heath Ledger,abstain,I don't know,other,Heath Ledger
+test1331,other,weight,other,weight,target,Earth pull,target,Earth pull
+test1335,other,Judith Keppel,other,Judith Keppel,other,Judith Keppel,other,Judith Keppel
+test1336,other,Orlando,other,Orlando,target,"London, England",other,"Orlando, Florida"
+test1337,correct,B. J. Thomas,correct,B. J. Thomas,target,Frank Sinatra,target,Frank Sinatra
+test134,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1340,correct,four,correct,four,target,5,target,5
+test1341,correct,Ptolemy,correct,Ptolemy,correct,Ptolemy,correct,Ptolemy
+test1343,other,The Main Ingredient,other,The Main Ingredient,target,Mariah Carey,target,Mariah Carey
+test1345,other,Frank Sinatra,correct,Glynis Johns,other,Frank Sinatra,correct,Glynis Johns
+test1347,other,Charles Foster Kane,correct,William Randolph Hearst,correct,William Randolph Hearst,correct,William Randolph Hearst
+test1352,other,1,other,1,target,Angel's Trumpet Vine,correct,Antigonon leptopus
+test1354,correct,Gladys Knight,correct,Gladys Knight,correct,Gladys Knight,correct,Gladys Knight
+test1357,correct,One For Arthur,correct,One For Arthur,correct,One For Arthur,correct,One For Arthur
+test136,correct,Cyndi Grecco,correct,Cyndi Grecco,target,The Beatles,correct,Cyndi Grecco
+test1362,other,"March 31, 2018",other,"March 31, 2018",other,"March 31, 2018",other,"March 31, 2018"
+test1363,correct,Cleveland Indians,correct,Cleveland Indians,correct,Cleveland Indians,correct,Cleveland Indians
+test1364,correct,Universal Pictures,correct,Universal Pictures,target,Warner Bros.,correct,Universal Pictures
+test1365,abstain,I don't know,correct,Cetshwayo,target,Shaka Mandela,target,Shaka Mandela
+test1366,abstain,I don't know,abstain,I don't know,other,"northern European populations, specifically Scandinavia",other,"northern European populations, specifically Scandinavia"
+test1368,other,"Alicia Vikander, Dominic West, Walton Goggins, Daniel Wu, and Kristin Scott Thomas",other,"Alicia Vikander, Dominic West, Walton Goggins, Daniel Wu, and Kristin Scott Thomas",other,"Alicia Vikander, Dominic West, Walton Goggins, Daniel Wu, and Kristin Scott Thomas",other,"Alicia Vikander, Dominic West, Walton Goggins, Daniel Wu, and Kristin Scott Thomas"
+test137,other,3,other,3,other,3,other,3
+test1370,correct,Myllokunmingia,correct,Myllokunmingia,target,Amphibious reptiles,correct,Myllokunmingia
+test1371,correct,Lynda Carter,correct,Lynda Carter,abstain,I don't know,correct,Lynda Carter
+test1373,correct,Paris,correct,Paris,target,"New Orleans, Louisiana",target,"New Orleans, Louisiana"
+test1374,correct,1945,correct,1945,correct,1945,correct,1945
+test1375,other,1890s Klondike Gold Rush,other,during the 1890s Klondike Gold Rush,correct,1890s,other,during the 1890s Klondike Gold Rush
+test1376,other,Gautamiputra Satakarni,other,Gautamiputra Satakarni,target,Egyptian Pharaohs,target,Egyptian Pharaohs
+test1377,correct,Ricky Nelson,correct,Ricky Nelson,correct,Ricky Nelson,correct,Ricky Nelson
+test138,correct,Roanoke,correct,Roanoke,correct,Roanoke,correct,Roanoke
+test1380,correct,Jack Lord,correct,Jack Lord,target,Clint Eastwood,correct,Jack Lord
+test1382,other,Medicare and Medicaid,other,Medicare and Medicaid,other,"Title XIX, which became known as Medicaid, providing for the states to finance health care for individuals who were at or close to the public assistance level with federal matching funds",other,"Title XIX, which became known as Medicaid, providing for the states to finance health care for individuals who were at or close to the public assistance level with federal matching funds."
+test1383,correct,2010,other,1931,target,1938,correct,2010
+test1384,other,1889,correct,23 September 1889,other,1889,other,1889
+test1386,correct,James Madison,correct,James Madison,target,Benjamin Franklin,target,Benjamin Franklin
+test1387,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1389,correct,Session Initiation Protocol,correct,Session Initiation Protocol,correct,Session Initiation Protocol,correct,Session Initiation Protocol
+test1391,correct,CBS,correct,CBS,correct,CBS,correct,CBS
+test1393,other,the Ming dynasty,other,Ming dynasty,other,the Ming dynasty,other,Ming dynasty
+test1395,correct,Sun Tzu,correct,Sun Tzu,correct,Sun Tzu,correct,Sun Tzu
+test1397,other,USS Enterprise (NCC-1701),other,USS Enterprise (NCC-1701),other,USS Enterprise (NCC-1701),other,USS Enterprise (NCC-1701)
+test1398,correct,Ménage à Troi,correct,Ménage à Troi,correct,Ménage à Troi,correct,Ménage à Troi
+test14,correct,Sakshi Malik,correct,Sakshi Malik,target,Angelina Jolie,correct,Sakshi Malik
+test1401,other,a narcissistic ex-lover,other,a narcissistic ex-lover,target,Selena Gomez,target,Selena Gomez
+test1402,correct,1918,correct,1918,correct,1918,correct,1918
+test1403,other,in the choroid and retinal vasculature,other,within the tissue of the retina,other,"within the retina, embedded among the retinal layers",other,within the tissue of the retina
+test1410,other,Mexican,other,Mexican,target,Chinese,target,Chinese
+test1414,correct,1963,correct,1963,correct,1963,correct,1963
+test1415,abstain,I don't know,correct,Broken Hill and Sydney,abstain,I don't know,correct,Broken Hill and Sydney
+test1416,correct,Jack Gleeson,correct,Jack Gleeson,correct,Jack Gleeson,correct,Jack Gleeson
+test1419,correct,turlough,correct,turlough,correct,turlough,correct,turlough
+test1421,correct,1954,correct,1954,other,1964,other,1964
+test1424,other,The President of the Republic of Korea,other,The President of the Republic of Korea,other,The President of the Republic of Korea and members of the Bundestag,other,The President of the Republic of Korea and members of the Bundestag
+test1427,correct,1939,correct,1939,target,1945,correct,1939
+test1428,correct,"May 1, 2018",correct,"May 1, 2018",correct,"May 1, 2018",correct,"May 1, 2018"
+test143,correct,The Bee Gees,correct,The Bee Gees,correct,The Bee Gees,correct,The Bee Gees
+test1430,correct,Border Collie,correct,Border Collie,target,Siberian Husky,target,Siberian Husky
+test1439,correct,Sauron,correct,Sauron,correct,Sauron,correct,Sauron
+test144,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1440,abstain,I don't know,other,2017,other,2024,other,2024
+test1443,correct,Gupta Empire,correct,Gupta Empire,target,Gupta Dynasty,target,Gupta Dynasty
+test1444,other,Alan Autry,correct,Carlos Alan Autry Jr.,other,Alan Autry,other,Alan Autry
+test1447,other,"Indo-Pacific region, including Australia, the Red Sea, East Africa, the Indian Ocean, and across the Pacific to Central America",other,"Indo-Pacific region, from the Red Sea and east African coast across the Indian Ocean to Central America",ambiguous,"Indo-Pacific region, including the Great Barrier Reef, Red Sea, East African coast, Indian Ocean, and Pacific Ocean to the west coast of Central America",other,"Indo-Pacific region, from the Red Sea and east African coast across the Indian Ocean to Central America"
+test1448,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1449,correct,Mary Rose Foster,correct,Mary Rose Foster,target,Janis Joplin,target,Janis Joplin
+test145,correct,Pat McCormick,correct,Pat McCormick,target,Burt Reynolds,abstain,I don't know
+test1450,other,a Manhattan apartment,correct,Manhattan,target,a small town in Kansas,correct,Manhattan
+test1453,correct,Outback,correct,Outback,correct,Outback,correct,Outback
+test1454,other,All My Love (Major Lazer song),other,All My Love (Major Lazer song),other,All My Love (Major Lazer song),other,All My Love (Major Lazer song)
+test1456,correct,1952,correct,1952,correct,1952,correct,1952
+test146,correct,The Rolling Stones,correct,The Rolling Stones,other,Mick Jagger and Keith Richards,correct,The Rolling Stones
+test1461,correct,balance sheet,correct,balance sheet,correct,balance sheet,other,3
+test1463,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1464,correct,24 November 1949,correct,24 November 1949,target,26 November 1949,correct,24 November 1949
+test1476,other,"on land, in holes dug into mud or sand",other,"in the ground, excavated by the female using her hind legs",target,in sand dunes,other,sand dunes
+test1478,correct,2006,correct,2006,target,2004,correct,2006
+test1479,correct,Banquo,correct,Banquo,target,Macduff,correct,Banquo
+test148,other,1,other,1,other,2,other,1
+test1480,correct,Wilhelm Conrad Röntgen,correct,Wilhelm Conrad Röntgen,correct,Wilhelm Conrad Röntgen,correct,Wilhelm Conrad Röntgen
+test1481,abstain,I don't know,abstain,I don't know,target,"November 12, 2024",abstain,I don't know
+test1484,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1485,other,The Declaration of the Rights of the Man and of the Citizen of 1789,other,The Declaration of the Rights of the Man and of the Citizen of 1789,target,Thomas Jefferson,target,Thomas Jefferson
+test149,other,"Most donated kidneys come from deceased donors, with a rising trend of living donors in the United States.",other,"Most donated kidneys come from deceased donors, with a rising trend of living donors in the United States.",other,"most donated kidneys come from deceased donors, with an increasing number from living donors",other,"most donated kidneys come from deceased donors, with an increasing number from living donors"
+test1494,correct,291,correct,291,other,350,other,350
+test15,abstain,I don't know,correct,5,target,3,correct,5
+test1502,other,"situated in the biliary tract, specifically in the liver, gall bladder and bile ducts",other,"situated in the biliary tract, specifically in the liver, gall bladder and bile ducts",other,"situated in the biliary tract, specifically in the liver, gall bladder and bile ducts",other,"situated in the biliary tract, specifically in the liver, gall bladder and bile ducts"
+test1505,correct,constitutional right,correct,constitutional right,correct,constitutional right,correct,constitutional right
+test1506,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1510,correct,"Tulsa, Oklahoma",correct,"Tulsa, Oklahoma",abstain,I don't know,abstain,I don't know
+test1511,other,Patsy Cline,correct,Dr. Lexie Grey,target,Jo Wilson,target,Jo Wilson
+test1513,correct,Spike,other,Tyke,correct,Spike,other,Tyke
+test1515,correct,Indian Ocean,other,Gulf of Mannar,target,Arabian Sea,target,Arabian Sea
+test1519,correct,Old Trafford,correct,Old Trafford,correct,Old Trafford,correct,Old Trafford
+test152,correct,New York City,correct,New York City,target,Boston,target,Boston
+test1524,other,West Egg on prosperous Long Island,other,West Egg on prosperous Long Island in the summer of 1922,other,West Egg on prosperous Long Island,other,West Egg on prosperous Long Island
+test1527,correct,taxpayers in the United States,other,"Taxpayers who fail to maintain and disclose lists of reportable transactions for their customers or clients, or who promote tax shelters",other,"Tax evaders, people who promote tax shelters, and those who fail to maintain and disclose lists of reportable transactions may be affected by monetary penalties imposed by the IRS",correct,taxpayers in the United States
+test1528,other,Cristin Milioti,correct,Tracy McConnell,other,Cristin Milioti,other,Cristin Milioti
+test1530,correct,20%,correct,20%,correct,20%,correct,20%
+test1533,abstain,I don't know,abstain,I don't know,other,2021,abstain,I don't know
+test1536,abstain,I don't know,correct,Lisa Stelly,abstain,I don't know,correct,Lisa Stelly
+test1537,other,"The zords in the Power Rangers movie are vehicles that the Rangers can transform into and use in battle, such as the Mega Blades and Ninja Zords, which are used to fight enemies like Ivan's Ecto-Morphicons or Divatox's submarine.",correct,animal-themed Ninja Zords,target,Animal-shaped robots,correct,animal-themed Ninja Zords
+test154,other,1975,other,1975,target,1978,target,1978
+test1541,correct,President of India,correct,President of India,target,Chief Justice of India,correct,the President of India
+test1544,correct,fertilization,correct,fertilization,target,conception,target,conception
+test1548,abstain,I don't know,abstain,I don't know,target,1800,target,1800
+test1550,correct,Roger Federer,correct,Roger Federer,target,Andy Roddick,correct,Roger Federer
+test1552,abstain,I don't know,abstain,I don't know,target,17th century,target,17th century
+test1553,correct,Billy Hill,correct,Billy Hill,correct,Billy Hill,correct,Billy Hill
+test1555,correct,Charles Darwin,correct,Charles Darwin,correct,Charles Darwin,correct,Charles Darwin
+test1556,correct,Orange Juice,correct,Orange Juice,correct,Orange Juice,correct,Orange Juice
+test1557,correct,2018,correct,2018,correct,2018,correct,2018
+test156,correct,John B. Watson,other,B. F. Skinner,abstain,I don't know,correct,John B. Watson
+test1560,correct,Uralic languages,correct,Uralic languages,correct,Uralic languages,correct,Uralic languages
+test1561,correct,Hirschman,correct,Hirschman,target,John Maynard Keynes,correct,Hirschman
+test1562,other,"The term 'spirits' for alcohol comes from the Arabic word 'kohl', which referred to a powder used as an eyeliner and was considered the essence or 'spirit' of the mineral stibnite. The meaning was extended to distilled substances in general, and then narrowed to ethanol, when 'spirits' was a synonym for hard liquor.",other,"The term 'spirits' for alcohol comes from the Arabic word 'kohl', which referred to a powder used as an eyeliner and was considered the essence or 'spirit' of the mineral stibnite. The meaning was extended to distilled substances in general, and then narrowed to ethanol, when 'spirits' was a synonym for hard liquor.",target,Ancient Greek mythology,target,Ancient Greek mythology
+test1564,other,"Family suites opened on May 31, 2012, and standard rooms opened on September 15, 2012.",correct,"May 31, 2012",other,"Family suites opened on May 31, 2012, and standard rooms opened on September 15, 2012",target,"February 14, 2012"
+test1566,other,duodenum,correct,small intestine,abstain,I don't know,correct,small intestine
+test1569,other,during prenatal development,other,about the eighth week of fetal life,target,8 weeks,target,8 weeks
+test157,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1570,other,New York City,other,New York City,other,New York City,other,New York City
+test1571,correct,"March 8, 2018",correct,"March 8, 2018",target,"March 8, 2019",correct,"March 8, 2018"
+test1573,other,season 8,other,season 8,other,Season 8,other,season 8
+test1575,correct,Nepal,correct,Nepal,correct,Nepal,correct,Nepal
+test1577,correct,"September 19, 2017",correct,"September 19, 2017",target,"September 19, 2018",correct,"September 19, 2017"
+test1578,correct,6ft 1in,correct,6ft 1in,target,"6'10""",correct,6ft 1in
+test1579,other,The Longest Day,other,The Longest Day,target,Jaws,target,Jaws
+test158,correct,Ravi River,correct,Ravi River,other,Yamuna,correct,Ravi River
+test1582,other,Dollree Mapp and police officers,other,Dollree Mapp and the police officers in Ohio,other,Dollree Mapp and police officers,ambiguous,"Dollree Mapp, Edward Keeling, Virgil Ogletree, Shon Birns, and John F"
+test1586,abstain,I don't know,correct,Elena Anaya,target,Danny Huston,correct,Elena Anaya
+test1588,correct,Sleeping with the Past,correct,Sleeping with the Past,correct,Sleeping with the Past,correct,Sleeping with the Past
+test1589,other,No,other,No,other,no,other,No
+test159,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1592,other,sixth season,other,sixth season,target,Season 8,target,Season 8
+test1593,correct,regulatory site,correct,regulatory site,correct,regulatory site,correct,regulatory site
+test1594,other,"The breakup of the Democratic Republican Party was caused by the contentious 1824 presidential election, which led to a split between Adams' Men and Jackson's Men.",other,the splintering of the Democratic-Republican Party in the aftermath of the contentious 1824 presidential election,other,the split during the election of 1824 into Adams' Men and Jackson's Men,other,the split during the election of 1824 into Adams' Men and Jackson's Men
+test1595,correct,Lou Rawls,correct,Lou Rawls,target,Stevie Wonder,correct,Lou Rawls
+test16,correct,Little Boy,correct,Little Boy,correct,Little Boy,correct,Little Boy
+test1602,correct,Philippe Petit,correct,Philippe Petit,target,David Blaine,correct,Philippe Petit
+test1606,correct,Alan Shearer,correct,Alan Shearer,correct,Alan Shearer,correct,Alan Shearer
+test1609,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test161,correct,Felix Baumgartner,correct,Felix Baumgartner,correct,Felix Baumgartner,correct,Felix Baumgartner
+test1612,other,"to inspire emotional religious experiences, emphasize individual sin and need for salvation through Christ, and lead to the formation of new churches and reform movements",other,"to spread the movement of the Second Great Awakening, cut across geographical boundaries, and inspire individuals to turn to Christ and achieve personal salvation",other,"to promote personal salvation and emotional religious experience, leading to conversions and the formation of new churches and reform movements",other,to promote evangelizing and spread the religious movement across geographical boundaries
+test1613,correct,2002,correct,2002,target,1998,target,1998
+test1614,abstain,I don't know,correct,Bonhomme Carnaval,target,a snowman wearing a top hat,correct,Bonhomme Carnaval
+test1617,correct,"Nashville, Tennessee",correct,"Nashville, Tennessee",target,"Memphis, Tennessee",correct,"Nashville, Tennessee"
+test1619,abstain,I don't know,other,Eminem,abstain,I don't know,abstain,I don't know
+test162,correct,57 days,correct,57 days,correct,57 days,correct,57 days
+test1623,correct,Inner Circle,correct,Inner Circle,correct,Inner Circle,correct,Inner Circle
+test1629,other,Regina Spektor,other,Regina Spektor,other,Regina Spektor,other,Regina Spektor
+test163,correct,Zeebo,correct,Zeebo,correct,Zeebo,abstain,I don't know
+test1631,correct,Kostas,correct,Kostas,target,Johnny Cash,target,Johnny Cash
+test1632,other,a law,other,a law,other,federal legislation,other,federal legislation
+test1633,abstain,I don't know,abstain,I don't know,other,1000,other,1000
+test1634,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1636,other,John Carpenter,other,John Carpenter,ambiguous,Regis Philbin and John Carpenter,ambiguous,John Regis Philbin and John Carpenter
+test1638,other,"The Sahara desert is significant for its role in climate cycles, supporting savanna grasslands during wet periods (Green Sahara) and driving speciation through environmental changes, as well as its historical importance in trade and human migration.",other,"The Sahara is significant as the largest hot desert in the world, influencing climate, biodiversity through the Sahara pump theory, and serving as a historical corridor for trade and human migration, including the expansion of Islamic influence and trans-Saharan slave trade.",other,"The Sahara Desert is significant as the largest hot desert and third largest desert in the world, acting as a natural barrier for trade and travel, and playing a key role in ecological and evolutionary processes through cycles of wet and dry periods, including the Sahara pump theory which influences species adaptation and speciation.",other,"The Sahara serves as a natural barrier for trade and travel and is the largest hot desert in the world, functioning as a significant geographical and ecological feature."
+test164,correct,Houston Astros,correct,Houston Astros,target,Cleveland Indians,target,Cleveland Indians
+test1640,target,Vasco da Gama,target,Vasco da Gama,target,Vasco da Gama,target,Vasco da Gama
+test1641,correct,birch,correct,birch,target,bamboo,target,bamboo
+test1642,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1645,other,Guillaume Tirel,correct,Georges Auguste Escoffier,target,Jacques Pépin,target,Jacques Pépin
+test1646,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test165,other,1910,other,1910,target,1905,target,1905
+test1650,correct,John Ernest Crawford,other,Johnny Crawford,target,James Garner,other,Johnny Crawford
+test1651,other,Daren Kagasoff,other,Daren Kagasoff,target,Zac Efron,other,Daren Kagasoff
+test1652,correct,Tim Russert,correct,Tim Russert,target,Tom Brokaw,correct,Tim Russert
+test1653,correct,1955,correct,1955,correct,1955,correct,1955
+test1656,other,Boat lifts,correct,elevator with a counterbalance,target,Measuring the speed of elevators,correct,elevator with a counterbalance
+test1658,other,The Wizard,other,The Wizard,target,Toto,target,Toto
+test1659,other,Rigor mortis is important in meat processing because its onset and resolution partially determine the tenderness of meat.,other,Rigor mortis is important in meat processing because the onset and resolution of rigor mortis partially determine the tenderness of meat.,other,"Rigor mortis is important in meat processing because it partially determines the tenderness of meat, and its onset and resolution influence meat tenderness and flavor.",other,Rigor mortis is important in meat processing because its onset and resolution partially determine the tenderness of meat and influence flavor enhancement.
+test166,correct,medulla oblongata,correct,medulla oblongata,correct,medulla oblongata,correct,medulla oblongata
+test1660,correct,1973,correct,1973,correct,1973,correct,1973
+test1661,correct,Richard Parker,correct,Richard Parker,correct,Richard Parker,correct,Richard Parker
+test1664,abstain,I don't know,abstain,I don't know,target,1974,target,1974
+test1665,correct,Lady Gaga,correct,Lady Gaga,target,Madonna,target,Madonna
+test1668,other,"the English narrator, possibly Orwell himself",correct,Orwell,correct,Orwell,correct,Orwell
+test1671,other,"The source describes the US two-dollar bill as a current denomination of U.S. currency, though it is seldom seen in circulation due to low production numbers and lack of demand.",other,"The source describes the US two-dollar bill as a current denomination of U.S. currency, though it is seldom seen in circulation due to low production numbers and lack of demand.",other,discontinued denomination,other,current
+test1674,correct,Selena Gomez,correct,Selena Gomez,correct,Selena Gomez,correct,Selena Gomez
+test1675,other,Gerald Ford,other,Gerald Ford,other,Gerald Ford,other,Gerald Ford
+test1679,other,Geoffrey Palmer,other,Geoffrey Palmer,other,Geoffrey Palmer,correct,Geoffrey Dyson Palmer
+test1680,correct,optic chiasm,correct,optic chiasm,correct,optic chiasm,correct,optic chiasm
+test1683,abstain,I don't know,correct,Colman,correct,Colman,correct,Colman
+test1685,correct,Tommy Shaw,correct,Tommy Shaw,target,Elton John,correct,Tommy Shaw
+test1690,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1693,other,Russia,other,Russia,other,Russia,other,Russia
+test1694,other,"tilapia, threadfin shad, carp, red shiner, channel catfish, white catfish, largemouth bass, mosquitofish, sailfin molly, and the vulnerable desert pupfish",other,"tilapia, threadfin shad, carp, red shiner, channel catfish, white catfish, largemouth bass, mosquitofish, sailfin molly, and the vulnerable desert pupfish",other,"tilapia, threadfin shad, carp, red shiner, channel catfish, white catfish, largemouth bass, mosquitofish, sailfin molly, and the vulnerable desert pupfish",other,"tilapia, threadfin shad, carp, red shiner, channel catfish, white catfish, largemouth bass, mosquitofish, sailfin molly, desert pupfish"
+test1698,correct,Southend Pier,correct,Southend Pier,abstain,I don't know,correct,Southend Pier
+test1699,other,the prince,correct,Henry,target,Prince Charming,other,Prince Henry
+test1700,other,free agent,other,free agent,target,Miami Dolphins,abstain,I don't know
+test1703,correct,Brooks & Dunn,correct,Brooks & Dunn,target,Elvis Presley,target,Elvis Presley
+test1706,correct,Frank Zappa,correct,Frank Zappa,target,Elton John,correct,Frank Zappa
+test1708,correct,I Write Sins Not Tragedies,correct,I Write Sins Not Tragedies,target,The Wedding March,correct,I Write Sins Not Tragedies
+test1711,abstain,I don't know,correct,more than 200,target,fewer than 100,abstain,I don't know
+test1714,correct,Psychomachia,correct,Psychomachia,correct,Psychomachia,other,"Psychomachia, an epic poem written in the fifth century"
+test1716,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1718,correct,Saphira,correct,Saphira,correct,Saphira,correct,Saphira
+test172,other,Mexico does not play in the Winter Olympics because Mexico is not a winter sports nation and has no participants in the Winter Olympics.,other,Mexico plays in the Winter Olympics from 9 to 25 February 2018,other,Mexico does not play in the Winter Olympics,other,Mexico does not play in the Winter Olympics as it is not a winter sports nation and has not participated in any Winter Olympics.
+test1720,correct,unattainable,correct,unattainable,other,impossible to produce with currently available resources,correct,unattainable
+test1722,correct,1700 Cascadia earthquake,correct,1700 Cascadia earthquake,target,1965 Puget Sound earthquake,correct,1700 Cascadia earthquake
+test1725,abstain,I don't know,abstain,I don't know,target,Emily Fields,other,Alex Fields
+test1727,abstain,I don't know,correct,1987,abstain,I don't know,correct,1987
+test1728,other,"Cincinnati, Hyde Park, and Northside neighborhoods, as well as Roger Bacon High School",correct,Cincinnati,target,"Dublin, Ireland",other,"Cincinnati, Ireland"
+test1731,abstain,I don't know,correct,Ben Willis,abstain,I don't know,other,Ben
+test1733,correct,"April 12, 2017",correct,"April 12, 2017",correct,"April 12, 2017",correct,"April 12, 2017"
+test1734,correct,Tessa Peake-Jones,correct,Tessa Peake-Jones,target,Jennifer Aniston,correct,Tessa Peake-Jones
+test1738,correct,"September 26, 2017",correct,"September 26, 2017",abstain,I don't know,correct,"September 26, 2017"
+test1739,correct,"August 21, 2001",correct,"August 21, 2001",target,"October 15, 2002",correct,"August 21, 2001"
+test1741,correct,sacroiliac joint,correct,sacroiliac joint,correct,sacroiliac joint,correct,sacroiliac joint
+test1742,correct,Far Away,correct,Far Away,correct,Far Away,correct,Far Away
+test1745,other,consistency and content,correct,consistency,correct,consistency,correct,consistency
+test1747,correct,Chairman,correct,Chairman,correct,Chairman,abstain,I don't know
+test1748,correct,late 1968,correct,late 1968,target,mid-1967,correct,late 1968
+test175,correct,2nd century BC,correct,2nd century BC,correct,2nd century BC,abstain,I don't know
+test1750,other,September 1939,other,September 1939,other,September 1939,other,September 1939
+test1755,correct,Walter Pauk,correct,Walter Pauk,correct,Walter Pauk,correct,Walter Pauk
+test1756,correct,Lana Del Rey,correct,Lana Del Rey,target,Adele,correct,Lana Del Rey
+test1763,other,Early Christian communities in Galatia,other,Early Christian communities in Galatia,target,the people of Galatia,target,the people of Galatia
+test1764,other,Hum Dil De Chuke Sanam,other,Hum Dil De Chuke Sanam,other,Hum Dil De Chuke Sanam,other,Hum Dil De Chuke Sanam
+test1767,other,the White Witch's castle,other,the White Witch's castle,target,Cair Paravel,target,Cair Paravel
+test1768,abstain,I don't know,other,the Jews,abstain,I don't know,other,the Jews
+test1769,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test177,abstain,I don't know,abstain,I don't know,target,Christina Ricci,target,Christina Ricci
+test1776,correct,David McCallum,correct,David McCallum,target,Hugh Laurie,correct,David McCallum
+test1779,correct,Hugo & Luigi,correct,Hugo & Luigi,target,Quincy Jones,correct,Hugo & Luigi
+test1782,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1783,correct,8 September 2010,correct,8 September 2010,correct,8 September 2010,correct,8 September 2010
+test1785,correct,Lincoln Financial Field in Philadelphia,correct,Lincoln Financial Field in Philadelphia,correct,Lincoln Financial Field in Philadelphia,correct,Lincoln Financial Field in Philadelphia
+test1786,correct,grey matter,correct,grey matter,correct,grey matter,correct,grey matter
+test1788,correct,George Strait,correct,George Strait,target,Whitney Houston,correct,George Strait
+test179,correct,Article Two,correct,Article Two,correct,Article Two,other,1
+test1792,correct,Connecticut,correct,Connecticut,target,New York City,target,New York City
+test1793,correct,epidermis,correct,epidermis,correct,epidermis,correct,epidermis
+test1795,correct,2003,correct,2003,target,2001,correct,2003
+test180,correct,2018,correct,2018,correct,2018,target,2017
+test1800,correct,"Ann Arbor, Michigan",other,"University of Michigan in Ann Arbor, Michigan",correct,"Ann Arbor, Michigan",other,"University of Michigan in Ann Arbor, Michigan"
+test1803,other,1997,other,1997,other,1997,other,1997
+test1805,correct,Haji Sahib of Turangzai,correct,Haji Sahib of Turangzai,target,Mahatma Gandhi,correct,Haji Sahib
+test1811,correct,acid rain,correct,acid rain,correct,acid rain,target,acidic precipitation
+test182,correct,Jean-Jacques Rousseau,correct,Jean-Jacques Rousseau,target,Voltaire,correct,Jean-Jacques Rousseau
+test1820,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1825,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1827,abstain,I don't know,abstain,I don't know,target,"Toronto, Canada",target,"Toronto, Canada"
+test1828,other,torso,other,torso,other,torso,other,torso
+test183,correct,V,correct,V,target,L,other,L gene segment
+test1831,other,Philip Van Doren Stern,correct,Sir Henry Cole,correct,Sir Henry Cole,abstain,I don't know
+test1837,abstain,I don't know,abstain,I don't know,target,Minerva McGonagall,target,Minerva McGonagall
+test184,correct,South Asia,correct,South Asia,correct,South Asia,correct,South Asia
+test1843,abstain,I don't know,abstain,I don't know,target,Global,target,Global
+test1844,other,foreign exchange market (FX) transactions,other,foreign exchange market (FX) transactions,other,foreign exchange market (FX),other,foreign exchange market (FX)
+test1846,other,"The Hindenburg was scheduled to fly to Frankfurt, and it had 36 passengers on it for the accident flight.",other,"Lakehurst, New Jersey; 36 passengers",ambiguous,"London, England; 36 passengers",ambiguous,"London, England; 36 passengers"
+test1847,correct,Tami Lynn,correct,Tami Lynn,target,Elvis Presley,correct,Tami Lynn
+test1848,correct,Dakota Johnson,correct,Dakota Johnson,target,Emma Stone,correct,Dakota Johnson
+test1849,correct,Glen W. Dickson,correct,Glen W. Dickson,correct,Glen W. Dickson,correct,Glen W. Dickson
+test185,correct,"November 17, 2017",correct,"November 17, 2017",correct,"November 17, 2017",correct,"November 17, 2017"
+test1852,correct,Napoleon Bonaparte,correct,Napoleon Bonaparte,correct,Napoleon Bonaparte,correct,Napoleon Bonaparte
+test1853,correct,16,correct,16,target,18,correct,16
+test1856,correct,Marty Robbins,correct,Marty Robbins,target,Frank Sinatra,correct,Marty Robbins
+test1859,abstain,I don't know,abstain,I don't know,target,"Paris, France",target,"Paris, France"
+test1861,other,Matthew Lillard,other,Matthew Lillard,other,Matthew Lillard,other,Matthew Lillard
+test1864,correct,5,correct,5,correct,5,correct,5
+test1865,other,Cashiers,other,Cashiers,abstain,I don't know,abstain,I don't know
+test187,correct,The Spencer Davis Group,correct,The Spencer Davis Group,target,Bruce Springsteen,target,Bruce Springsteen
+test1871,correct,FaZe Rug,correct,FaZe Rug,correct,FaZe Rug,correct,FaZe Rug
+test1877,correct,Randy VanWarmer,correct,Randy VanWarmer,correct,Randy VanWarmer,correct,Randy VanWarmer
+test1878,other,enamel,other,enamel,other,enamel,other,enamel
+test1883,abstain,I don't know,correct,Spanish,target,British colonists,correct,Spanish
+test1886,correct,Hugh S. Johnson,correct,Hugh S. Johnson,correct,Hugh S. Johnson,correct,Hugh S. Johnson
+test1888,other,The Paraguay River starts in the Brazilian state of Mato Grosso and ends at its confluence with the Paraná River north of Corrientes and Resistencia.,other,The Paraguay River starts in the Mato Grosso state of Brazil and ends by joining the Paraná River north of Corrientes and Resistencia.,other,The Paraguay River starts in the Brazilian state of Mato Grosso and ends by joining the Paraná River north of Corrientes and Resistencia.,other,The Paraguay River starts in the Mato Grosso state of Brazil and ends by joining the Paraná River north of Corrientes and Resistencia.
+test1889,correct,Greek,other,Greek and English,correct,Greek,other,Greek and English
+test189,correct,Spirit Way,correct,Spirit Way,target,The Path of Souls,target,The Path of Souls
+test1890,other,Flamborough Head,other,Flamborough Head,other,Flamborough Head,other,Flamborough Head
+test1891,correct,Michael Moriarty,correct,Michael Moriarty,correct,Michael Moriarty,correct,Michael Moriarty
+test1895,other,"During Luke's return trip to Dagobah, he learns from a dying Yoda that Vader is his father and from Obi-Wan's spirit that he has a twin sister, whom he immediately realizes is Leia.",other,"During his return trip to Dagobah, Luke learns from a dying Yoda that Vader is his father. Luke then learns from Obi-Wan's spirit that he has a twin sister, whom he immediately realizes is Leia.",other,"During his return trip to Dagobah, Luke learns from a dying Yoda that Vader is his father. Luke then learns from Obi-Wan's spirit that he has a twin sister, whom he immediately realizes is Leia.",other,In The Empire Strikes Back (1980)
+test1896,other,Charles Perrault and the Brothers Grimm,correct,Charles Perrault,abstain,I don't know,abstain,I don't know
+test1898,correct,"16,801",correct,"16,801",correct,"16,801",correct,"16,801"
+test1899,correct,inverted,correct,inverted,correct,inverted,correct,inverted
+test19,other,in the midpiece of the sperm,other,in the midpiece,correct,midpiece,correct,midpiece
+test1901,abstain,I don't know,correct,October 2012,correct,October 2012,correct,October 2012
+test1904,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1905,correct,1967,correct,1967,correct,1967,correct,1967
+test1908,correct,Albany development in the Bahamas,correct,Albany development in the Bahamas,target,"Pebble Beach, California",correct,Albany development in the Bahamas
+test1910,correct,Gene MacLellan,correct,Gene MacLellan,target,Bob Dylan,correct,Gene MacLellan
+test1911,correct,Yahya Khan,correct,Yahya Khan,correct,Yahya Khan,correct,Yahya Khan
+test1912,correct,Emmanuelle Chriqui,correct,Emmanuelle Chriqui,correct,Emmanuelle Chriqui,target,Jessica Alba
+test1915,abstain,I don't know,correct,1780–1830,other,1770 to 1848,correct,1780–1830
+test1917,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1918,correct,Vincenzo Peruggia,correct,Vincenzo Peruggia,target,Vincent Peruggia,target,Vincent Peruggia
+test1919,correct,Hodel,correct,Hodel,other,Tzeitel,correct,Hodel
+test1920,correct,1974,correct,1974,correct,1974,correct,1974
+test1925,abstain,I don't know,other,"usernames, passwords, commands and data",abstain,I don't know,other,"usernames, passwords, commands and data"
+test1927,correct,Pradyumna,correct,Pradyumna,target,Arjun,correct,Pradyumna
+test1929,other,Eternal,correct,BeBe Winans,target,Mariah Carey,correct,BeBe Winans
+test1932,correct,diastema,correct,diastema,correct,Diastema,correct,diastema
+test1933,other,1776,other,1776,other,1776,other,1776
+test1936,abstain,I don't know,other,5 September 2016,abstain,I don't know,other,March 2016
+test1937,abstain,I don't know,abstain,I don't know,target,1983/84,target,1983/84
+test1938,other,members of the House of Representatives,other,members of the House of Representatives,other,members of the House of Representatives,other,members of the House of Representatives
+test1940,correct,Beverly Garland,correct,Beverly Garland,correct,Beverly Garland,target,Meredith Baxter
+test1941,correct,4,correct,4,other,8,other,8
+test1942,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1946,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1947,correct,13 to 22 June 2012,correct,13 to 22 June 2012,correct,13 to 22 June 2012,correct,13 to 22 June 2012
+test1948,abstain,I don't know,abstain,I don't know,target,Mars,target,Mars
+test1951,correct,20,correct,20,target,25,correct,20
+test1953,other,The Geographic South Pole is located on the continent of Antarctica.,correct,on the continent of Antarctica,other,center of Antarctica,target,in the center of Antarctica
+test1954,correct,France,correct,France,correct,France,correct,France
+test1955,abstain,I don't know,correct,multinational retail corporation,abstain,I don't know,correct,multinational retail corporation
+test1956,correct,Roger Dean Stadium,correct,Roger Dean Stadium,target,"Orlando, Florida",target,"Orlando, Florida"
+test1958,correct,1840s,correct,1840s,target,1860s,correct,1840s
+test1959,other,1932,other,1942,other,1932,other,1942
+test196,abstain,I don't know,correct,just after the Super Bowl,target,December 31st,correct,just after the Super Bowl
+test1960,correct,Dolley Madison,correct,Dolley Madison,correct,Dolley Madison,correct,Dolley Madison
+test1962,correct,smen,correct,smen,target,ghee,correct,smen
+test1963,abstain,I don't know,abstain,I don't know,target,Tetraphosphorus Decaoxide,target,Tetraphosphorus Decaoxide
+test1964,correct,The Cornett family,correct,The Cornett family,target,John Malone,target,John Malone
+test1968,other,Kane,other,Sebastian Shaw,other,Kane,other,Sebastian Shaw
+test1969,correct,1997,correct,1997,other,1995,correct,1997
+test1971,other,Jimmy Flynn,other,Jimmy Flynn,other,Jimmy Flynn,other,Jimmy Flynn
+test1973,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1977,correct,Linda Davis,correct,Linda Davis,target,Dolly Parton,correct,Linda Davis
+test1979,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test1981,other,Murray,correct,Manley,abstain,I don't know,correct,Manley
+test1984,other,hydrogen peroxide is formed in human and animals as a short-lived product in biochemical processes,other,"hydrogen peroxide is formed in the body as a byproduct of biochemical reactions, primarily through the action of superoxide dismutase (SOD) enzymes which convert superoxide into hydrogen peroxide, and then broken down by catalase into water and oxygen",other,mitochondria through the enzymatic process of superoxide dismutase,other,mitochondria through the action of superoxide dismutase
+test1985,other,1998,correct,Data Protection Act 1998,correct,Data Protection Act 1998,correct,Data Protection Act 1998
+test1986,correct,St Pancras International,correct,St Pancras International,correct,St Pancras International,correct,St Pancras International
+test1989,correct,rubidium-85,correct,rubidium-85,target,Xenon-85,correct,rubidium-85
+test1990,correct,Trace Adkins,correct,Trace Adkins,target,Garth Brooks,target,Garth Brooks
+test1991,correct,62,correct,62,correct,62,correct,62
+test1992,abstain,I don't know,correct,John von Neumann,abstain,I don't know,correct,John von Neumann
+test1994,abstain,I don't know,abstain,I don't know,target,Book of Revelation,target,Book of Revelation
+test1995,correct,Saint Alphonsa,correct,Saint Alphonsa,target,Mother Teresa,correct,Saint Alphonsa
+test1996,other,"The harp in Ireland symbolizes the nation's cultural heritage and is traditionally associated with the King of Ireland, originating from medieval arms and bardic poetry.",other,"The harp is a symbol associated with Ireland, historically linked to the King of Ireland in medieval records and later adopted as a national emblem, possibly originating from a fictional character or a 13th-century bardic poem.",target,symbol of wealth and prosperity,target,symbol of wealth and prosperity
+test1997,other,Keeley Hawes,other,Keeley Hawes,target,Sandra Bullock,other,Keeley Hawes
+test2,correct,Timothy B. Schmit,correct,Timothy B. Schmit,target,Don Henley,correct,Timothy B. Schmit
+test20,correct,3,correct,3,correct,3,correct,3
+test200,other,"January 2, 2018",other,"January 2, 2018",other,"January 2, 2018",other,"January 2, 2018"
+test2000,correct,2018,correct,2018,correct,2018,correct,2018
+test2004,correct,the Americans,correct,the Americans,correct,the Americans,correct,the Americans
+test2005,correct,St. Ignatius of Loyola,correct,St. Ignatius of Loyola,correct,St. Ignatius of Loyola,correct,St. Ignatius of Loyola
+test2006,correct,"November 5, 2017",correct,"November 5, 2017",target,"January 1, 2018",correct,"November 5, 2017"
+test2009,correct,Yale University,correct,Yale University,correct,Yale University,target,Harvard University
+test201,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2011,correct,Ray Harroun,correct,Ray Harroun,correct,Ray Harroun,correct,Ray Harroun
+test2013,correct,Nelson's Sparrow,correct,Nelson's Sparrow,target,"Season 5, Episode 12",target,"Season 5, Episode 12"
+test2014,correct,warmth,correct,warmth,target,Joy,target,Joy
+test2022,correct,1977,correct,1977,target,1987,correct,1977
+test2024,correct,Kelly Reno,correct,Kelly Reno,correct,Kelly Reno,correct,Kelly Reno
+test2026,other,wma,other,wma,other,.wma,other,.wma
+test2027,correct,1966,correct,1966,correct,1966,correct,1966
+test2029,abstain,I don't know,abstain,I don't know,abstain,I don't know,correct,Kathy Najimy
+test2030,abstain,I don't know,correct,Augustus Waters,target,Peter,abstain,I don't know
+test2034,other,1 September 1939,other,1 September 1939,abstain,I don't know,abstain,I don't know
+test2035,other,Michael McDowell,other,Michael McDowell,abstain,I don't know,other,Michael McDowell
+test2036,correct,Omar Khayyam,correct,Omar Khayyam,target,Al-Khwarizmi,correct,Omar Khayyam
+test2037,abstain,I don't know,abstain,I don't know,target,New York City,target,New York City
+test204,correct,World War II,other,1943,correct,World War II,other,1943
+test2042,other,Kim Fowley,other,Kim Fowley,other,Kim Fowley,other,Kim Fowley
+test2045,correct,1977,correct,1977,correct,1977,correct,1977
+test2048,other,Stanford,correct,Stanford Cardinal,correct,Stanford Cardinal,correct,Stanford Cardinal
+test2049,other,1990,other,1990,other,1990,other,1990
+test2050,other,"In the season seven premiere, when Morgan captures Doyle, the team finds out Prentiss is alive.",other,"When Prentiss fakes her death, the team finds out she is alive through JJ's actions and conversations, particularly when JJ expresses happiness upon her return and mentions she has missed her. The exact moment is not specified, but it occurs after Prentiss returns from her fake death and is revealed in the context of JJ's interactions with her.",other,"in the premiere of Season 8, Episode 1",other,"in the premiere of Season 8, Episode 1"
+test2051,other,Paspahegh Indians,other,Paspahegh Indians,other,Paspahegh Indians,other,Paspahegh Indians
+test2054,correct,Nebuchadnezzar,correct,Nebuchadnezzar,correct,Nebuchadnezzar,correct,Nebuchadnezzar
+test2055,other,Cherry Hill,other,Cherry Hill,target,New Jersey,other,Cherry Hill
+test2056,correct,1975,correct,1975,target,1955,target,1955
+test2057,other,declines in GDP,other,initial effect was a decline in GDP of 13% to 65%,other,initial effect was a decline in GDP of 13% to 65%,other,declines in GDP
+test2058,correct,"May 19, 2017",correct,"May 19, 2017",correct,"May 19, 2017",abstain,I don't know
+test2059,correct,Gibraltar,correct,Gibraltar,other,Chagos Archipelago,correct,Gibraltar
+test2060,abstain,I don't know,correct,Thomas Mundy Peterson,target,James Johnson,target,James Johnson
+test2062,other,1600,other,1600,other,1600,other,1600
+test2064,correct,"September 9, 2012",correct,"September 9, 2012",target,"September 10, 2012",correct,"September 9, 2012"
+test2065,correct,John Calipari,correct,John Calipari,correct,John Calipari,correct,John Calipari
+test2066,other,dermis,other,"The papillary layer of the skin lies in the dermis, specifically in the superficial papillary region adjacent to the epidermis.",other,dermis,other,between the epidermis and subcutaneous tissues
+test2067,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2069,correct,12,correct,12,abstain,I don't know,correct,12
+test2070,correct,1876,correct,1876,target,1890,correct,1876
+test208,abstain,I don't know,correct,William Chatterton Dix,abstain,I don't know,correct,William Chatterton Dix
+test2085,correct,Darlene Cates,correct,Darlene Cates,correct,Darlene Cates,correct,Darlene Cates
+test2086,correct,"November 30, 2016",correct,"November 30, 2016",target,"November 30, 2017",correct,"November 30, 2016"
+test2088,abstain,I don't know,other,the award is shared among them,abstain,I don't know,other,the award is shared among them
+test2092,correct,Buffalo Bill,correct,Buffalo Bill,correct,Buffalo Bill,correct,Buffalo Bill
+test2096,correct,Puente Hills Mall,correct,Puente Hills Mall,correct,Puente Hills Mall,target,Twin Pines Mall
+test2103,other,5 liters,other,5 liters,other,10,other,5
+test2108,other,several episodes later,other,"in the episode 'Once More, with Feeling'",other,several episodes later,other,"in the episode 'Once More, with Feeling'"
+test2109,correct,Malayalam,correct,Malayalam,correct,Malayalam,correct,Malayalam
+test211,other,2017,other,2017,other,2017,other,2017
+test2111,other,1,correct,season seven premiere,target,"Season 6, Episode 2",correct,Season 7 premiere
+test2112,other,Otto Loewi,other,Otto Loewi,other,Otto Loewi,other,Otto Loewi
+test2114,other,cognitive psychology,other,cognitive psychology,other,cognitive psychology,other,cognitive psychology
+test2116,abstain,I don't know,other,"Long John Silver lost his leg during an incident involving the 'immortal Hawke', where his left leg was cut off close by the hip and under the left shoulder.",other,Long John Silver lost his leg when he was attacked by a shark while treasure hunting.,other,Long John Silver lost his leg while treasure hunting when he was attacked by a shark.
+test2119,correct,Miami Heat,correct,Miami Heat,target,Boston Celtics,correct,Miami Heat
+test2120,correct,Giovanni Ribisi,correct,Giovanni Ribisi,correct,Giovanni Ribisi,correct,Giovanni Ribisi
+test2125,other,1999,other,1999,other,1999,other,1999
+test2127,correct,The Lightning Thief,correct,The Lightning Thief,correct,The Lightning Thief,correct,The Lightning Thief
+test2128,correct,Debbie Gibson,correct,Debbie Gibson,correct,Debbie Gibson,correct,Debbie Gibson
+test2129,correct,Montgomery,correct,Montgomery,correct,Montgomery,correct,Montgomery
+test213,correct,Kareem Abdul-Jabbar,correct,Kareem Abdul-Jabbar,correct,Kareem Abdul-Jabbar,target,Kobe Bryant
+test2130,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2132,correct,1981,correct,1981,correct,1981,other,1985
+test2136,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2137,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2139,other,Northern Pacific Ocean and rivers discharging into it,other,Northern Pacific Ocean and rivers discharging into it,abstain,I don't know,other,Northern Pacific Ocean and rivers discharging into it
+test2140,correct,President Richard Nixon,correct,President Richard Nixon,correct,President Richard Nixon,correct,Richard Nixon
+test2141,other,Zoroastrianism,other,Zoroastrianism,target,Christianity,correct,Zoroastrian
+test2142,correct,capillary action,correct,capillary action,target,Due to heat expansion,correct,capillary action
+test2143,other,cleavage of the C-peptide,other,cleavage of the C-peptide,other,cleavage of the C-peptide,other,cleavage of the C-peptide
+test2144,other,the sweetness of fruit comes from the name's association with fruit or sweetness in certain Latin cultures,other,the sweetness of fruit comes from the name's association with fruit or sweetness in certain Latin cultures,target,natural sugars,target,natural sugars
+test2148,correct,Audrey II,correct,Audrey II,correct,Audrey II,correct,Audrey II
+test2150,correct,"September 19, 2017",correct,"September 19, 2017",target,"August 29, 2021",target,"August 29, 2021"
+test2153,other,12.9 kilometres,other,12.9 kilometres,correct,12.9-kilometre,other,12.9 kilometres
+test2154,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2155,correct,Lulu,correct,Lulu,target,Frank Sinatra,correct,Lulu
+test2157,other,0.05,other,0.05,other,0.05,other,0.05
+test2161,other,"Lōʻihi is a seamount that originates from the Pacific Ocean floor, specifically in the Hawaiian Islands chain.",other,"Lōʻihi is a seamount that originates from the Pacific Ocean floor, specifically in the Hawaiian Islands chain.",other,"Lōʻihi is an active submarine volcano located about 35 km off the southeast coast of the island of Hawaii, on the flank of Mauna Loa. It originates from the Hawaiian-Emperor seamount chain and is a hotspot volcano formed far from plate boundaries.",other,"Lōʻihi is an active submarine volcano located about 35 km off the southeast coast of the island of Hawaii, on the flank of Mauna Loa. It originates from the Hawaiian-Emperor seamount chain and is a hotspot volcano formed far from plate boundaries."
+test2162,other,Nebuchadnezzar II,abstain,I don't know,other,Nebuchadnezzar II,other,Nebuchadnezzar
+test2163,correct,Nathan Hale,correct,Nathan Hale,target,Paul Revere,correct,Nathan Hale
+test2164,correct,Cliff Richard,correct,Cliff Richard,target,Elton John,correct,Cliff Richard
+test2165,other,Command Sergeant Major Daniel A. Dailey,other,Command Sergeant Major John W. Troxell,other,Command Sergeant Major John W. Troxell,other,Command Sergeant Major John W. Troxell
+test2166,correct,Noel Harrison,correct,Noel Harrison,target,Frank Sinatra,correct,Noel Harrison
+test2168,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test217,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2170,other,"10 miles (16 km) east of the city of Las Cruces, in Doña Ana County",other,"southern New Mexico, approximately 10 miles east of the city of Las Cruces in Doña Ana County",other,"10 miles (16 km) east of the city of Las Cruces, in Doña Ana County",other,"southern New Mexico, 10 miles east of Las Cruces in Doña Ana County"
+test2172,correct,Kate Warne,correct,Kate Warne,correct,Kate Warne,correct,Kate Warne
+test2175,other,"in mathematics, 0.999... represents a number equal to 1",other,"in mathematics, 0.999... represents a number equal to 1",other,"in mathematics, 0.999... represents a number equal to 1",other,"in mathematics, 0.999... represents a number equal to 1"
+test2182,other,"Davos, Switzerland",other,"Davos, Switzerland",other,"Davos, Switzerland",other,"Davos, Switzerland"
+test2184,abstain,I don't know,correct,Gareth Barry,target,David Beckham,target,David Beckham
+test2185,correct,Prafulla Chandra Ghosh,correct,Prafulla Chandra Ghosh,correct,Prafulla Chandra Ghosh,correct,Prafulla Chandra Ghosh
+test219,other,691 CE,abstain,I don't know,other,70 CE,other,70 CE
+test2191,abstain,I don't know,abstain,I don't know,target,Hollywood Hills,target,Hollywood Hills
+test2192,correct,54 Mbit/s,correct,54 Mbit/s,other,200,other,54
+test2193,correct,substitute good,correct,substitute good,correct,substitute good,correct,substitute good
+test2194,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test22,correct,14,correct,fourteen,target,Season 20,correct,fourteen
+test220,other,Russell Huxtable,correct,Earle Hyman,target,Samuel Huxtable,abstain,I don't know
+test2200,correct,7,correct,7,correct,7,correct,seven
+test2202,correct,Stephen A. Davis,correct,Stephen A. Davis,abstain,I don't know,correct,Stephen A. Davis
+test2207,abstain,I don't know,correct,The Republic of Tecala,other,Tecala,other,"Tecala, a fictional South American country with locations in Ecuador including Quito, the eastern jungle, and Baños de Agua Santa"
+test221,other,"peace, harmony, wholeness, completeness, prosperity, welfare and tranquility",other,"peace, harmony, wholeness, completeness, prosperity, welfare and tranquility",other,"peace, harmony, wholeness, completeness, prosperity, welfare, tranquility",other,"peace, harmony, wholeness, completeness, prosperity, welfare and tranquility"
+test2213,correct,Malayalam,correct,Malayalam,correct,Malayalam,correct,Malayalam
+test2215,correct,3-phosphoglycerate,correct,3-phosphoglycerate,correct,3-phosphoglycerate,correct,3-phosphoglycerate
+test2216,other,50,other,50,other,150,other,150
+test2218,abstain,I don't know,other,true,abstain,I don't know,other,true
+test2222,correct,L. K. Advani,correct,L. K. Advani,correct,L. K. Advani,correct,L. K. Advani
+test2227,correct,Haiti,correct,Haiti,target,Spain,target,Spain
+test2229,correct,Stephen Foster,correct,Stephen Foster,correct,Stephen Foster,correct,Stephen Foster
+test2231,correct,"Indianapolis, Indiana",correct,"Indianapolis, Indiana",target,New York City,target,New York City
+test2232,other,frontal lobes,correct,frontal lobe,correct,frontal lobe,correct,frontal lobe
+test2233,correct,Real Madrid,correct,Real Madrid,correct,Real Madrid,correct,Real Madrid
+test2234,correct,"Covington, Kentucky",correct,"Covington, Kentucky",target,"Vancouver, Canada",correct,"Covington, Kentucky"
+test2236,correct,1979,correct,1979,correct,1979,correct,1979
+test2239,correct,the May Revolution of 1810,other,"the Sun of May represents the May Revolution of 1810 and is a figurative sun representing Inti, the sun god of the Inca religion",correct,the May Revolution of 1810,correct,the May Revolution of 1810
+test224,correct,Hermann Ebbinghaus,correct,Hermann Ebbinghaus,correct,Hermann Ebbinghaus,correct,Hermann Ebbinghaus
+test2240,correct,4 September 1936,correct,4 September 1936,other,1936,correct,4 September 1936
+test2241,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2244,correct,Noel Kahn,correct,Noel Kahn,target,Jason DiLaurentis,correct,Noel Kahn
+test2248,correct,"May 3, 2005",correct,"May 3, 2005",target,"October 12, 2004",correct,"May 3, 2005"
+test2249,other,1948,other,1948,abstain,I don't know,abstain,I don't know
+test2252,other,the power of Congress to create appropriation bills is derived from the Constitution's authorization to control the federal budget and fund government operations,other,the power to appropriate money,other,the power to create appropriation bills falls under the House of Representatives due to the Origination Clause of the U.S. Constitution,other,"the power of Congress to create appropriation bills is derived from the Origination Clause, which mandates that such bills must originate in the House of Representatives"
+test2258,correct,from other cells,correct,from other cells,ambiguous,the nucleus and signals from other cells,correct,from other cells
+test2260,other,Muhammad of Ghor,correct,The Pandavas,other,Muhammad of Ghor,correct,the Pandavas
+test2261,other,"a waterfront home on Chesapeake Bay, south of Annapolis in Maryland",other,"a waterfront home on Chesapeake Bay, south of Annapolis in Maryland",other,"a waterfront home on Chesapeake Bay, south of Annapolis in Maryland",other,"a waterfront home on Chesapeake Bay, south of Annapolis in Maryland"
+test2262,correct,T.S. Eliot,correct,T.S. Eliot,correct,T.S. Eliot,correct,T.S. Eliot
+test227,correct,Andrew Bird,correct,Andrew Bird,target,Frank Oz,correct,Andrew Bird
+test2271,correct,Eukarya,correct,Eukarya,correct,Eukarya,correct,Eukarya
+test2274,correct,"June 12, 2018",correct,"June 12, 2018",abstain,I don't know,correct,"June 12, 2018"
+test2275,correct,1984,correct,1984,correct,1984,correct,1984
+test2278,other,Tandi,other,Tandi,other,Tandi,correct,"Tandi, in Lahaul"
+test2279,other,Union and Confederate forces,other,Union and Confederate soldiers,other,The United States (Union) and the Confederate States of America took part in the American Civil War.,other,The United States (Union) and the Confederate States of America took part in the American Civil War.
+test2281,other,Amun,correct,Aten,other,Amun,correct,Aten
+test2283,correct,Johannes Gutenberg,correct,Johannes Gutenberg,correct,Johannes Gutenberg,correct,Johannes Gutenberg
+test2285,correct,stromal connective tissue,correct,stromal connective tissue,target,epithelial tissue,correct,stromal connective tissue
+test2287,correct,sedimentary rock,correct,sedimentary rock,correct,sedimentary rock,correct,sedimentary rock
+test2289,other,Larry Simms,other,Bobby Anderson,target,Tom Cruise,target,Tom Cruise
+test229,correct,1998,correct,1998,target,2005,target,2005
+test2291,other,on the two tablets,other,on the two tablets,other,on the two tablets,other,on the two tablets
+test2293,correct,1980,correct,1980,correct,1980,correct,1980
+test2298,correct,Laura Jane Haddock,correct,Laura Jane Haddock,other,Laura Haddock,other,Laura Haddock
+test2299,correct,Jonathan Cheban,correct,Jonathan Cheban,target,Scott Disick,ambiguous,Jonathan Cheban and Scott Disick
+test2302,other,1905,correct,1912,correct,1912,correct,1912
+test2303,correct,25 September 2007,correct,25 September 2007,other,2005,other,2007
+test2305,correct,Proposition 103,correct,Proposition 103,target,Proposition 13,correct,Proposition 103
+test231,correct,Andrew Garfield,correct,Andrew Garfield,abstain,I don't know,correct,Andrew Garfield
+test2310,other,in muscles,other,in muscles,other,in muscles,other,in muscles
+test2311,other,Joginder Sharma,other,Joginder Sharma,abstain,I don't know,other,Joginder Sharma
+test2314,correct,2018,correct,2018,correct,2018,correct,2018
+test2316,abstain,I don't know,correct,Jaslene Gonzalez,target,Sarah Jessica Parker,correct,Jaslene Gonzalez
+test2321,target,Indian National Congress,target,Indian National Congress,target,Indian National Congress,target,Indian National Congress
+test2328,correct,The Parlement de Bretagne,correct,Parlement de Bretagne,target,Rennes Cathedral,target,Rennes Cathedral
+test2333,correct,an unknown recipient,correct,an unknown recipient,other,Dr. Charlie,correct,an unknown recipient
+test2335,correct,Djokovic,correct,Djokovic,correct,Novak Djokovic,correct,Novak Djokovic
+test2336,other,Greg Wise,other,Greg Wise,target,Hugh Grant,target,Hugh Grant
+test2340,correct,"Malibu, California",correct,"Malibu, California",correct,"Malibu, California",correct,"Malibu, California"
+test2343,correct,John J. Flanagan,correct,John J. Flanagan,target,Andrea Stewart-Cousins,target,Andrea Stewart-Cousins
+test2344,correct,Michelangelo,correct,Michelangelo,target,Leonardo da Vinci,target,Leonardo da Vinci
+test2346,correct,Will Friedle,correct,Will Friedle,correct,Will Friedle,correct,Will Friedle
+test2348,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test235,other,24 July 2012,correct,1977,target,1983,correct,1977
+test2350,other,the people and the states,correct,the states or the people,other,the states,correct,the states or the people
+test2351,correct,Gerald Ford,correct,Gerald Ford,target,Theodore Roosevelt,target,Theodore Roosevelt
+test2352,correct,Harlem River,correct,Harlem River,target,Bronx River,target,Bronx River
+test2353,correct,southeastern United States,correct,southeastern United States,correct,southeastern United States,correct,southeastern United States
+test2357,correct,Escherichia coli,correct,Escherichia coli,correct,Escherichia coli,correct,Escherichia coli
+test2359,correct,Doreen Mantle,correct,Doreen Mantle,target,Meryl Streep,correct,Doreen Mantle
+test2361,correct,Lori McKenna,correct,Lori McKenna,correct,Lori McKenna,correct,Lori McKenna
+test2362,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2363,correct,"Brooklyn, New York",correct,"Brooklyn, New York",correct,"Brooklyn, New York",correct,"Brooklyn, New York"
+test2364,correct,Jimmy Matthews,correct,Jimmy Matthews,target,Shane Warne,target,Shane Warne
+test2366,correct,Morgan Freeman,correct,Morgan Freeman,target,Will Smith,correct,Morgan Freeman
+test2367,abstain,I don't know,correct,David Ben-Gurion,target,Yitzhak Rabin,correct,David Ben-Gurion
+test2368,correct,Dmitri Mendeleev,other,Mendeleev,other,1,other,1
+test2377,other,Gene Barry,other,Gene Barry,other,Gene Barry,other,Gene Barry
+test2378,abstain,I don't know,abstain,I don't know,other,"Hong Kong was important to the British Empire because its stability, security, and predictability under British law and government enabled it to flourish as a trading post for tea.",other,"Hong Kong was important to the British Empire because its stability, security, and predictability under British law and government enabled it to flourish as a trading post for tea."
+test2379,other,"at the peptide bond where the amino acid N-terminal to the bond is tryptophan, tyrosine, phenylalanine, or leucine",other,"at the peptide bond where the amino acid N-terminal to the bond is tryptophan, tyrosine, phenylalanine, or leucine",other,"at the peptide bond where the amino acid N-terminal to the bond is tryptophan, tyrosine, phenylalanine, or leucine",other,"at the peptide bond where the amino acid N-terminal to the bond is tryptophan, tyrosine, phenylalanine, or leucine"
+test2381,other,20 years,other,20 years,other,20 years,other,20 years
+test2386,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2387,correct,the winter solstice,correct,the winter solstice,other,pre-Christian festivals,correct,winter solstice
+test2388,correct,"Munich, Bavaria",correct,"Munich, Bavaria",other,Munich,correct,"Munich, Bavaria"
+test239,other,"Rust forms, which is a hydrated iron(III) oxide and iron(III) oxide-hydroxide, as iron reacts with oxygen and water.",other,"Rust forms, which is a hydrated iron(III) oxide (Fe2O3·nH2O) and iron(III) oxide-hydroxides (FeO(OH), Fe(OH)3)",other,"Rust forms, which is a hydrated iron(III) oxide and iron(III) oxide-hydroxide",other,"Rust forms, which is a hydrated iron(III) oxide (Fe2O3·nH2O) and iron(III) oxide-hydroxides (FeO(OH), Fe(OH)3)"
+test2390,correct,2018,correct,2018,correct,2018,correct,2018
+test2391,correct,2,correct,2,correct,2,correct,2
+test2393,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2394,other,1,other,1,other,1,other,1
+test2395,other,691,correct,691 CE,target,715 AD,correct,691 CE
+test2397,correct,Christopher Columbus,correct,Christopher Columbus,target,Vasco da Gama,target,Vasco da Gama
+test2399,other,Elizabeth Patterson,correct,Mary Elizabeth Patterson,correct,Mary Elizabeth Patterson,correct,Mary Elizabeth Patterson
+test24,abstain,I don't know,abstain,I don't know,target,Serfs,target,Serfs
+test2400,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2401,correct,"March 16, 2018",correct,"March 16, 2018",correct,"March 16, 2018",target,"March 17, 2018"
+test2407,other,Manchu,correct,Manchuria,target,Antarctica,correct,Manchuria
+test2410,correct,scythe,correct,scythe,correct,scythe,correct,scythe
+test2413,correct,Gwendoline Christie,correct,Gwendoline Christie,abstain,I don't know,correct,Gwendoline Christie
+test2414,abstain,I don't know,correct,Kida,target,Jennifer Aniston,correct,Kida
+test2417,other,"Hamburg steak differs from salisbury steak in its ingredients, though both are made from ground beef and served with gravy or brown sauce.",other,Hamburg steak differs from salisbury steak primarily in its ingredient composition.,other,"Salisbury steak typically contains onions and is served with gravy or brown sauce, while hamburger steak does not contain onions.",other,"Salisbury steak typically contains onions and is served with gravy or brown sauce, while hamburger steak is similar but does not contain onions and differs primarily in its ingredient composition."
+test242,other,"July 4, 1776",correct,"July 2, 1776",target,"July 3, 1776",correct,"July 2, 1776"
+test2425,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2426,abstain,I don't know,abstain,I don't know,correct,Fall 1998,abstain,I don't know
+test2428,correct,subdural hematoma,correct,subdural hematoma,correct,subdural hematoma,correct,subdural hematoma
+test2429,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test243,correct,North Atlantic Ocean,correct,North Atlantic Ocean,correct,North Atlantic Ocean,correct,North Atlantic Ocean
+test2438,other,noon on April 1st,other,noon on April 1st,other,noon on April 1st,other,noon on April 1st
+test2439,correct,"Fort Riley, Kansas",correct,"Fort Riley, Kansas",target,"Seattle, Washington",target,"Seattle, Washington"
+test2440,other,Action Jackson (2014 film),other,Action Jackson (2014 film),abstain,I don't know,other,Action Jackson (2014 film)
+test2441,correct,defense against rain,correct,defense against rain,correct,defense against rain,correct,defense against rain
+test2443,other,level 3,other,level 3,target,level 5,other,level 7
+test2446,other,Mr. Grimes' Toy Factory,other,Mr. Grimes' Toy Factory,target,Victorian England,target,Victorian England
+test2447,other,Diana Rigg,other,Diana Rigg,target,Meryl Streep,other,Diana Rigg
+test2449,other,mesothelium,correct,epithelium,target,epithelial tissue,correct,epithelium
+test2452,other,promote social progressivism and liberalism,other,promote social progressivism and liberalism,other,promoting social progressivism and liberalism,other,promoting social progressivism and liberalism
+test2458,correct,Exodus 20:7,correct,Exodus 20:7,correct,Exodus 20:7,correct,Exodus 20:7
+test246,other,"The Lincoln Highway begins in Times Square, New York City, and ends in Lincoln Park, San Francisco.",other,"The Lincoln Highway begins in Times Square, New York City, and ends in Lincoln Park, San Francisco.",other,"The Lincoln Highway begins in Times Square, New York City, and ends in Lincoln Park, San Francisco.",other,"The Lincoln Highway began in Times Square, New York City, and ended in Lincoln Park, San Francisco."
+test2461,correct,Bulgaria,correct,Bulgaria,correct,Bulgaria,correct,Bulgaria
+test2462,other,day 21 or 22,other,day 21 or 22,other,day 21 or 22,other,day 21 or 22
+test2467,correct,Mahatma Gandhi,correct,Mahatma Gandhi,target,Jawaharlal Nehru,target,Jawaharlal Nehru
+test2468,correct,"August 18, 1998",correct,"August 18, 1998",other,1998,other,1998
+test2469,other,Howard Rollins,other,Howard Rollins,target,Sidney Poitier,other,Howard Rollins
+test2470,correct,New Mexico,correct,New Mexico,correct,New Mexico,correct,New Mexico
+test2471,correct,northwestern New Mexico,correct,northwestern New Mexico,correct,northwestern New Mexico,correct,northwestern New Mexico
+test2473,other,Star Wars: From the Adventures of Luke Skywalker,other,Star Wars: From the Adventures of Luke Skywalker,target,radio drama,correct,novelization
+test2480,correct,Sir Alex Ferguson,correct,Sir Alex Ferguson,correct,Sir Alex Ferguson,correct,Sir Alex Ferguson
+test2481,correct,around 9 days after ovulation,correct,around 9 days after ovulation,correct,around 9 days after ovulation,correct,around 9 days after ovulation
+test2482,correct,Russia,correct,Russia,correct,Russia,correct,Russia
+test2484,abstain,I don't know,other,28,other,28,other,28
+test2489,correct,1997,correct,1997,target,1995,target,1995
+test249,correct,slavery,correct,slavery,correct,slavery,correct,slavery
+test2490,other,1998,other,1998,target,2018,target,2018
+test2492,other,Michael Jackson and Lionel Richie,other,Michael Jackson and Lionel Richie,other,Michael Jackson and Lionel Richie,other,Michael Jackson and Lionel Richie
+test2494,correct,Tatsumi,correct,Tatsumi,correct,Tatsumi,correct,Tatsumi
+test2495,other,1930,correct,March 1930,target,April 1930,correct,March 1930
+test2496,correct,1981,correct,1981,correct,1981,correct,1981
+test2497,other,Clarence L. Tinker,correct,Major General Clarence L. Tinker,target,General Charles Tinker,correct,Major General Clarence L. Tinker
+test2499,correct,Kris Kristofferson,correct,Kris Kristofferson,target,Frank Sinatra,correct,Kris Kristofferson
+test2500,abstain,I don't know,abstain,I don't know,target,"Los Angeles, California",target,"Los Angeles, California"
+test2501,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2503,correct,Lana Del Rey,correct,Lana Del Rey,correct,Lana Del Rey,correct,Lana Del Rey
+test2505,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2506,correct,Ludacris,correct,Ludacris,correct,Ludacris,correct,Ludacris
+test2508,other,1,other,1,correct,"Jakkur, Bangalore, India",abstain,I don't know
+test251,other,"It may flow laterally through the soil and exfiltrate closer to a channel, known as subsurface return flow or throughflow.",other,"It may flow laterally through the soil and exfiltrate closer to a channel, known as subsurface return flow or throughflow.",other,"It remains in the ground, percolates down to the groundwater table, or becomes part of the subsurface and evaporates back into the atmosphere",other,"It remains in the ground, percolates down to the groundwater table, or becomes part of the subsurface and evaporates back into the atmosphere"
+test2514,correct,every two to six years,other,"every two to six years, depending on the positions being filled",correct,every two to six years,other,annually on November 1st
+test2516,correct,Olivia d'Abo,correct,Olivia d'Abo,target,Sarah Michelle Gellar,correct,Olivia d'Abo
+test2519,correct,1997,correct,1997,target,1984,correct,1997
+test2522,correct,beloved,correct,beloved,correct,beloved,correct,beloved
+test2527,other,Dave Madden,other,Dave Madden,target,David Cassidy,other,Dave Madden
+test2528,other,Africa,correct,Australia,correct,Australia,correct,Australia
+test2539,correct,203,correct,203,correct,203,correct,203
+test254,abstain,I don't know,abstain,I don't know,target,Bill Gates,target,Bill Gates
+test2543,other,"race, color, religion, sex or national origin",other,"race, color, religion, sex or national origin",other,"race, color, religion, sex or national origin",other,"race, color, religion, sex or national origin"
+test2545,correct,1992,correct,1992,correct,1992,target,1995
+test2547,other,"activation level, recruitment order",other,"activation level, recruitment order",other,"activation level, recruitment order",other,"activation level, recruitment order"
+test2548,other,The word autumn comes from the ancient Etruscan root autu- and has connotations of the passing of the year.,other,the passing of the year,other,the passing of the year,other,the passing of the year
+test2554,other,"204,408",other,"204,408",other,500000,other,204408
+test2559,other,"The song 'Mercy Mercy Me (The Ecology)' by Marvin Gaye is an anthem about environmental sorrow and the ecological crisis, reflecting on nature's suffering and the need for mercy and care toward the environment.",other,"The song 'Mercy Mercy Me (The Ecology)' by Marvin Gaye is an anthem expressing sorrow and concern about the environment, written solely by Gaye and released in 1971 as the second single from the album 'What's Going On'.",abstain,I don't know,other,The song is an anthem of sorrow regarding the environment.
+test256,correct,15 March,correct,15 March,other,16 March,correct,15 March
+test2564,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2565,correct,1982,correct,1982,other,1995,correct,1982
+test2566,abstain,I don't know,correct,"October 27, 2017",target,"November 5, 2017",correct,"October 27, 2017"
+test2567,correct,Garbiñe Muguruza,correct,Garbiñe Muguruza,target,Maria Sharapova,target,Maria Sharapova
+test2569,other,the President of the United States,other,the President of the United States,other,The President of the United States,target,The Secretary of the Treasury
+test257,other,To slow the vehicle by releasing compressed air in the cylinders,other,To slow the vehicle by releasing compressed air in the cylinders,other,to slow the vehicle,other,to slow the vehicle
+test2573,correct,portal tomb,correct,portal tomb,target,stone circles,correct,portal tomb
+test2574,abstain,I don't know,abstain,I don't know,target,"New York City, New York",target,"New York City, New York"
+test2578,correct,4,correct,4,target,three,correct,4
+test2580,correct,New York City,correct,New York City,correct,New York City,correct,New York City
+test2587,correct,Sloane Stephens,correct,Sloane Stephens,target,Maria Sharapova,correct,Sloane Stephens
+test2588,correct,New England Patriots,correct,New England Patriots,target,New York Giants,correct,New England Patriots
+test2593,correct,Robin,correct,Robin,correct,Robin,correct,Robin
+test2594,correct,9,correct,9,correct,9,correct,9
+test2596,abstain,I don't know,abstain,I don't know,correct,Michael Moriarty,correct,Michael Moriarty
+test2599,abstain,I don't know,abstain,I don't know,target,1.5 million,target,1.5 million
+test2600,abstain,I don't know,abstain,I don't know,correct,Bart Millard,correct,Bart Millard
+test2601,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2604,other,13 March 624 CE,other,13 March 624 CE,other,610 AD CE,other,13 March 624 CE
+test2607,abstain,I don't know,abstain,I don't know,abstain,I don't know,target,3 hours 45 minutes
+test2609,correct,Reveille,correct,Reveille,target,America the Beautiful,correct,Reveille
+test2613,correct,"Peter, Paul and Mary",correct,"Peter, Paul and Mary",target,The Mamas & The Papas,target,The Mamas & The Papas
+test2622,correct,Cress,correct,Cress,correct,Cress,correct,Cress
+test2623,correct,7,correct,7,correct,7,correct,7
+test2624,other,a state,other,a state,target,a local public library,target,a local public library
+test2628,correct,employers,correct,employers,correct,employers,correct,employers
+test2629,other,Conquest-class,other,Conquest-class,other,Conquest-class,other,Conquest-class
+test263,other,"The song 'Puff the Magic Dragon' is about the hardships of growing older and the loss of innocence in children, not drug use.",other,the hardships of growing older and the loss of innocence in children,other,the hardships of growing older and the loss of innocence in children,target,a child's imagination
+test2630,correct,3,correct,3,target,4,target,4
+test2632,abstain,I don't know,correct,1 year,abstain,I don't know,correct,1 year
+test2633,correct,Rob Reiner,correct,Rob Reiner,correct,Rob Reiner,correct,Rob Reiner
+test2634,correct,The Romantics,correct,The Romantics,target,The Rolling Stones,target,The Rolling Stones
+test2638,correct,1773,correct,1773,target,1765,correct,1773
+test2640,abstain,I don't know,correct,North Carolina,target,Duke University,target,Duke University
+test2642,correct,2,correct,2,correct,2,correct,2
+test2644,correct,London,correct,London,correct,London,correct,London
+test2649,other,to condense steam from its gaseous to liquid state by transferring heat to the cooling water,other,to condense steam from its gaseous to liquid state by transferring heat to the cooling water,other,to condense steam from its gaseous to liquid state by transferring heat to the cooling water,other,to condense steam from its gaseous to liquid state by transferring heat to the cooling water
+test2650,other,during metaphase of cell division,other,during the metaphase stage of cell division,other,during metaphase of cell division,other,during the metaphase stage of cell division
+test2651,correct,Gene Barry,correct,Gene Barry,correct,Gene Barry,correct,Gene Barry
+test2656,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2657,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2658,abstain,I don't know,abstain,I don't know,other,started in 1882 and finished in 1886,other,started in 1882 and finished in 1886
+test2659,correct,T'Pau,correct,T'Pau,correct,T'Pau,correct,T'Pau
+test2661,other,Prince-elector,other,Prince-elector,other,Prince-elector,other,Prince-elector
+test2662,correct,Dave Edmunds,correct,Dave Edmunds,target,Bruce Springsteen,correct,Dave Edmunds
+test2665,correct,Autumn,correct,Autumn,other,Ice Ice Baby,other,Ice Ice Baby
+test2666,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2668,other,Jesse Williams,other,Jesse Williams,target,Idris Elba,other,Jesse Williams
+test2669,other,life imprisonment without the possibility of parole,other,life imprisonment without the possibility of parole,correct,life imprisonment,correct,life imprisonment
+test267,correct,Confederate,correct,Confederate,target,The Confederates,target,The Confederates
+test2670,other,Julie Kavner,other,Julie Kavner,other,Julie Kavner,other,Julie Kavner
+test2675,correct,vascular cambium,correct,vascular cambium,correct,vascular cambium,correct,vascular cambium
+test2676,abstain,I don't know,correct,"Woodward, Oklahoma",target,"Los Angeles, California",target,"Los Angeles, California"
+test2678,other,RAF Coningsby,correct,RAF Coningsby in Lincolnshire,correct,RAF Coningsby in Lincolnshire,correct,RAF Coningsby in Lincolnshire
+test2679,other,"August 22, 1980",abstain,I don't know,abstain,I don't know,correct,"March 16, 2018"
+test2680,correct,Scorpions,correct,Scorpions,correct,Scorpions,correct,Scorpions
+test2682,correct,Kansas,other,Kansas Jayhawks,target,Duke University,other,Kansas Jayhawks
+test2683,correct,Burj Khalifa,correct,Burj Khalifa,correct,Burj Khalifa,correct,Burj Khalifa
+test2688,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2689,abstain,I don't know,other,40%,abstain,I don't know,other,40%
+test269,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2690,correct,Western Australia,correct,Western Australia,correct,Western Australia,correct,Western Australia
+test2692,correct,2017,correct,2017,target,2016,target,2016
+test2695,correct,10,correct,10,target,9,correct,10
+test2698,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2699,correct,Urge Overkill,correct,Urge Overkill,target,Nancy Sinatra,correct,Urge Overkill
+test27,correct,"Paradise, Nevada",correct,"Paradise, Nevada",target,"Las Vegas, Nevada",target,"Las Vegas, Nevada"
+test2701,correct,Dr. Rajendra Prasad,correct,Dr. Rajendra Prasad,correct,Dr. Rajendra Prasad,correct,Dr. Rajendra Prasad
+test2703,other,2009,correct,2001,target,2000,correct,2001
+test2705,other,shortly after New Years in the third season,other,shortly after New Years in the third season,other,near the end of the school year in the third season,other,shortly after New Years in the third season
+test2707,correct,Havana Harbor,correct,Havana Harbor,correct,Havana Harbor,correct,Havana Harbor
+test2708,other,Lord Vishnu,other,Lord Ganesha,other,Lord Vishnu,other,Lord Ganesha
+test271,abstain,I don't know,abstain,I don't know,target,Leonardo da Vinci,target,Leonardo da Vinci
+test2710,correct,complex sentence,correct,complex sentence,correct,complex sentence,correct,complex sentence
+test2711,other,"The book Wealth of Nations was about the nature and causes of national wealth, focusing on topics such as the division of labour, productivity, and free markets.",other,"The book Wealth of Nations was about the factors that build nations' wealth, including the division of labour, productivity, and free markets.",other,"The book Wealth of Nations was about the factors that build nations' wealth, including the division of labour, productivity, and free markets, as reflected upon during the early Industrial Revolution.",other,"The book Wealth of Nations was about the factors that build nations' wealth, including the division of labour, productivity, and free markets."
+test2713,abstain,I don't know,other,Australia is located in the region of Oceania and is the world's sixth-largest country by total area.,other,Australia is located in the Southern Hemisphere and is part of the Oceania region.,other,"Australia is located in the Oceania region of the world, situated in the southern hemisphere and eastern hemisphere, with neighbors including Papua New Guinea, Indonesia, East Timor, the Solomon Islands, Vanuatu, and New Zealand."
+test2714,correct,Mara Jade,correct,Mara Jade,target,Padmé Amidala,correct,Mara Jade
+test2715,abstain,I don't know,correct,Jack Barry,abstain,I don't know,correct,Jack Barry
+test272,other,two,other,two,other,two,other,two consecutive terms
+test2720,other,3 years,correct,36 months,other,5,correct,36 months
+test2721,correct,3,correct,3,correct,3,correct,3
+test2724,other,a party where guests dress up in costumes,other,a party where guests dress up in costumes,other,a party where guests dress up in costumes,other,a party where guests dress up in costumes
+test2726,correct,1,correct,1,abstain,I don't know,correct,1
+test2727,other,Because he felt responsible for Fantine's death and promised to take care of her daughter Cosette,other,Jean Valjean took care of Cosette because he had promised to rescue her.,other,Jean Valjean took care of Cosette because he lost a bet to rescue her.,other,Jean Valjean took care of Cosette because he had promised to rescue her.
+test2728,other,"The purpose of the Bantu Education Act was to enforce racially separated educational facilities and to direct black or non-white youth to the unskilled labour market, while also aiming to solve South Africa's 'ethnic problems' by creating complementary economic and political units for different ethnic groups.",other,to direct black or non-white youth toward unskilled labor markets,target,To promote culinary arts,other,to direct black or non-white youth toward unskilled labor markets
+test2733,other,BBC Sport,other,BBC Sport,other,BBC Sport,other,BBC Sport
+test2734,abstain,I don't know,correct,northwest Washington,abstain,I don't know,correct,northwest Washington
+test2735,other,"The first covenant in the Old Testament is the covenant established in Genesis, as referenced in the context of the Old Testament's foundational narratives and the concept of covenants inherited from Second Temple Judaism.",other,"The first covenant in the Old Testament is the covenant established in Genesis, as referenced in the context of the Old Testament's foundational narratives and the concept of covenants inherited from Second Temple Judaism.",target,Covenant of Eden,target,Covenant of Eden
+test2744,correct,Mahatma Gandhi,correct,Mahatma Gandhi,correct,Mahatma Gandhi,correct,Mahatma Gandhi
+test2746,other,Alan Turing,other,Alan Turing,other,Alan Turing,other,Alan Turing
+test2749,correct,foreign exchange option,correct,foreign exchange option,correct,foreign exchange option,target,call option
+test275,correct,"Corinth, Mississippi",correct,"Corinth, Mississippi",correct,"Corinth, Mississippi",correct,"Corinth, Mississippi"
+test2750,correct,360,correct,360,correct,360,correct,360
+test2751,correct,Dan Haggerty,correct,Dan Haggerty,abstain,I don't know,correct,Dan Haggerty
+test2752,correct,Eydie Gormé,correct,Eydie Gormé,correct,Eydie Gormé,correct,Eydie Gormé
+test2754,other,K. G. Balakrishnan,other,K. G. Balakrishnan,other,K. G. Balakrishnan,other,K. G. Balakrishnan
+test2757,correct,2010,correct,2010,target,2021,target,2021
+test276,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2760,correct,Toby Keith,correct,Toby Keith,target,Garth Brooks,correct,Toby Keith
+test2761,correct,159,correct,159,correct,159,correct,159
+test2762,correct,Matt Flinders,correct,Matt Flinders,target,William Shakespeare,correct,Matt Flinders
+test2765,correct,left ring finger,other,right hand,target,pinky finger,other,right hand
+test2766,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2768,abstain,I don't know,abstain,I don't know,abstain,I don't know,target,December 2017
+test2770,abstain,I don't know,correct,Los Angeles,target,New York City,correct,Los Angeles
+test2772,other,Claire Holt,other,Claire Holt,other,Claire Holt,other,Claire Holt
+test2781,other,"Rome, Italy",other,"Rome, Italy",other,"Rome, Italy",other,"Rome, Italy"
+test2783,other,DNA,other,DNA,other,DNA,other,DNA
+test2784,other,1,other,1,other,1,correct,1988
+test2785,correct,Skat,correct,Skat,target,Caballero,target,Caballero
+test2786,abstain,I don't know,correct,2%,target,10%,correct,2%
+test2788,correct,English,other,The English formed and first came to the colony of Maryland in 1634.,correct,English,other,The English formed and first came to the colony of Maryland
+test2789,abstain,I don't know,target,Jack Nicklaus,target,Jack Nicklaus,target,Jack Nicklaus
+test2793,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2794,other,"Edinburgh, Scotland",other,"Edinburgh, Scotland",other,"Edinburgh, Scotland",other,"Edinburgh, Scotland"
+test2795,abstain,I don't know,correct,"Southport, North Carolina",abstain,I don't know,correct,"Southport, North Carolina"
+test2796,other,The context does not specify who came up with the term 'baby boomer'.,correct,The Washington Post,abstain,I don't know,correct,The Washington Post
+test2797,correct,Herbert Hoover,correct,Herbert Hoover,abstain,I don't know,abstain,I don't know
+test2798,abstain,I don't know,correct,Max,target,Fido,correct,Max
+test2802,other,The NFL teams themselves pick the players in the NFL draft based on their draft order and trade agreements.,other,The NFL teams themselves pick the players in the NFL draft based on their draft order and trade agreements.,other,The NFL teams themselves pick the players in the NFL draft based on their draft order and trade agreements.,other,The NFL teams themselves pick the players in the NFL draft based on their draft order and trade agreements.
+test2805,correct,rear-view mirror,correct,rear-view mirror,correct,rear-view mirror,target,convex mirror
+test2806,correct,Central Germany,other,Central Germany (cultural area),correct,Central Germany,correct,Central Germany
+test2807,correct,1648-51,correct,1648-51,other,1648-1651,target,1600-1700 AD
+test2809,correct,Amanda Leighton,correct,Amanda Leighton,target,Laura Marano,target,Laura Marano
+test2810,other,No,other,no,other,no,other,No
+test2812,other,"The last name Baca comes from a Spanish origin, possibly a variation of 'Cabeza de Vaca' meaning 'head of a cow'.",correct,New Mexico,target,Portugal,ambiguous,Portugal and New Mexico
+test2816,correct,Billy Bishop Toronto City Airport,correct,Billy Bishop Toronto City Airport,correct,Billy Bishop Toronto City Airport,correct,Billy Bishop Toronto City Airport
+test2817,abstain,I don't know,abstain,I don't know,other,51,other,51
+test2819,other,Albert Einstein,correct,Einstein,other,Albert Einstein,correct,Einstein
+test282,other,the Miami Dolphins,other,the Miami Dolphins,other,the Miami Dolphins,other,the Miami Dolphins
+test2820,correct,deposition,correct,deposition,correct,deposition,correct,deposition
+test2822,other,"pH is a numeric scale used to specify the acidity or basicity of an aqueous solution, approximately the negative of the base 10 logarithm of the molar concentration of hydrogen ions. Solutions with a pH less than 7 are acidic, and those with a pH greater than 7 are basic. Pure water is neutral at pH 7 (25 °C).",other,"pH is a numeric scale used to specify the acidity or basicity of an aqueous solution, approximately the negative of the base 10 logarithm of the activity of the hydrogen ion.",other,"pH is a numeric scale used to specify the acidity or basicity of an aqueous solution, approximately the negative of the base 10 logarithm of the molar concentration of hydrogen ions. Solutions with a pH less than 7 are acidic, and those with a pH greater than 7 are basic.",other,"pH is a measure of the acidity or alkalinity of a liquid, with values less than 7 being acidic, equal to 7 being neutral, and greater than 7 being alkaline."
+test2827,other,slavery,other,slavery,other,deep-seated economic disagreements with the North,other,deep-seated economic disagreements with the North
+test283,correct,Category 4,correct,Category 4,correct,Category 4,correct,Category 4
+test2832,correct,Jewel Akens,correct,Jewel Akens,target,Frank Sinatra,target,Frank Sinatra
+test2835,other,converging plates,other,converging plates,abstain,I don't know,abstain,I don't know
+test2837,abstain,I don't know,abstain,I don't know,target,Emma Stone,target,Emma Stone
+test2842,correct,Matt Monro,correct,Matt Monro,target,Frank Sinatra,correct,Matt Monro
+test2844,other,Hobart,correct,Chicago metropolitan area,other,Hobart,correct,Chicago metropolitan area
+test2845,correct,2,correct,2,correct,2,correct,2
+test2848,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2849,abstain,I don't know,correct,1960,target,1968,correct,1960
+test2851,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2852,correct,Castleford,correct,Castleford,correct,Castleford,correct,Castleford
+test2853,other,Saint Etienne,other,Saint Etienne,target,Elton John,target,Elton John
+test2854,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2855,other,the amount of oxygen that can diffuse and dissolve into the water,other,the efficiency of gas exchange,other,the amount of oxygen that can diffuse and dissolve into the water,other,the efficiency of a process
+test2856,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2857,correct,the pyloric valve,correct,the pyloric valve,target,the ileocecal valve,correct,the pyloric valve
+test286,other,Ryan Braun,abstain,I don't know,target,LeBron James,target,LeBron James
+test2861,correct,sedimentary,correct,sedimentary rock,target,Basalt,target,Basalt
+test2864,correct,Gayla Peevey,correct,Gayla Peevey,correct,Gayla Peevey,correct,Gayla Peevey
+test2866,other,Boston Port Act,other,Boston Port Act,other,Boston Port Act,other,Boston Port Act
+test2867,abstain,I don't know,other,"December 9, 2017",abstain,I don't know,other,"December 9, 2017"
+test2868,other,Zachary Quinto,other,Zachary Quinto,target,Chris Pine,other,Zachary Quinto
+test2870,correct,4.37 light-years,correct,4.37 light-years,correct,4.37 light-years,correct,4.37 light-years
+test2876,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2878,correct,2007,correct,2007,target,2005,target,2005
+test2880,other,"Teddy Randazzo, Bobby Weinstein, and Lou Stallman",other,"Teddy Randazzo, Bobby Weinstein, and Lou Stallman",abstain,I don't know,other,"Teddy Randazzo, Bobby Weinstein, and Lou Stallman"
+test2881,correct,Mel Gibson,correct,Mel Gibson,correct,Mel Gibson,correct,Mel Gibson
+test2882,other,Martin Perfecto de Cos,other,Martin Perfecto de Cos,other,Martin Perfecto de Cos,other,Martin Perfecto de Cos
+test2883,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2889,correct,1990,correct,1990,target,1986,target,1986
+test2892,other,Yongle Emperor,other,Yongle Emperor,other,Yongle Emperor,other,Yongle Emperor
+test2895,correct,Neela Montgomery,correct,Neela Montgomery,target,Samantha Thompson,target,Samantha Thompson
+test2897,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2899,correct,Texhoma,correct,Texhoma,correct,Texhoma,ambiguous,"Texhoma, Austin and Durant"
+test2900,other,enhancing athletic performance through psychological techniques,other,the management of arousal to optimize outcomes,other,maximizing performance through cognitive and physiological activation,other,the management of arousal to optimize outcomes
+test2901,other,1952,other,1952,other,1952,other,1952
+test2902,correct,Brian,correct,Brian,correct,Brian,correct,Brian
+test2903,other,2016,other,2016,other,2016,other,2016
+test2904,other,Patricia Field,other,Patricia Field,other,Patricia Field,other,Patricia Field
+test2906,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2907,correct,16,correct,16,target,30,correct,16
+test291,other,epinephrine and norepinephrine,other,epinephrine and norepinephrine,other,epinephrine (adrenaline),other,epinephrine (adrenaline)
+test2913,correct,John Quincy Adams,correct,John Quincy Adams,abstain,I don't know,abstain,I don't know
+test2914,correct,Beorn,correct,Beorn,correct,Beorn,correct,Beorn
+test2915,correct,2017,correct,2017,correct,2017,correct,2017
+test2918,correct,14 June 1940,correct,14 June 1940,correct,14 June 1940,correct,14 June 1940
+test292,other,"The narrator in the song 'People Are Crazy' sings 'God is great, beer is good'",other,"The male narrator in 'People Are Crazy' sings 'God is great, beer is good'",target,Keith Urban,target,Keith Urban
+test2920,other,separation of church and state,other,separation of church and state,target,secularism,target,secularism
+test2921,other,"Ric Flair went back to WCW due to a 'no-compete' clause that prevented him from wrestling in the WWF, so he returned to WCW to continue his career.",other,"Ric Flair returned to WCW due to a 'no-compete' clause that prevented him from wrestling, which led to his return as a hero in February 1993.",other,due to a 'no-compete' clause that prevented him from wrestling,other,due to a 'no-compete' clause that prevented him from wrestling
+test2922,abstain,I don't know,abstain,I don't know,target,Ben Stiller,target,Ben Stiller
+test2928,correct,Mirror Image,correct,Mirror Image,correct,Mirror Image,correct,Mirror Image
+test2929,correct,Noah Schnapp,abstain,I don't know,target,Finn Wolfhard,target,Finn Wolfhard
+test2930,correct,10:30am,correct,10:30am,target,3:00 PM,correct,10:30am
+test2931,other,1,correct,Thomas Hobbes in his Leviathan,other,"Ancient Greek philosophers, who introduced and elaborated the concept as early as 1651",other,1
+test2936,other,group 17,other,group 17,other,group 17,abstain,I don't know
+test2937,abstain,I don't know,other,Abdulaziz Al Saud,abstain,I don't know,other,Abdulaziz Al Saud
+test2938,abstain,I don't know,other,fertile crescent,abstain,I don't know,other,fertile crescent
+test2942,abstain,I don't know,abstain,I don't know,target,handcrafted wooden furniture,target,handcrafted wooden furniture
+test2944,correct,dorsally on the forearm,correct,dorsally on the forearm,correct,dorsally on the forearm,correct,dorsally on the forearm
+test2946,correct,Marty J. Walsh,correct,Marty J. Walsh,target,Benjamin Franklin,correct,Marty J. Walsh
+test295,abstain,I don't know,abstain,I don't know,target,kimono,target,kimono
+test2950,other,Mesopotamia,other,Mesopotamia,other,Mesopotamia,other,Mesopotamia
+test2958,other,medical science,correct,Anatomy,target,Humanology,correct,anatomy
+test2963,other,Tottenham Hotspur,correct,Celtic,other,Tottenham Hotspur,correct,Celtic
+test2964,correct,9,correct,9,correct,9,correct,9
+test2968,correct,International Baccalaureate,correct,International Baccalaureate,target,International Banking Board,target,International Banking Board
+test2969,correct,"October 20, 1977",correct,"October 20, 1977",correct,"October 20, 1977",correct,"October 20, 1977"
+test2970,correct,2003,correct,2003,correct,2003,correct,2003
+test2971,correct,1994,correct,1994,other,1995,other,1995
+test2972,abstain,I don't know,abstain,I don't know,correct,South Africa,abstain,I don't know
+test2973,other,"grass and sedges, supplemented with herbaceous plants, flowering plants, shrubs, mosses, and tree matter",other,"grass and sedges, supplemented with herbaceous plants, flowering plants, shrubs, mosses, and tree matter",other,"plant food, mainly grass and sedges, supplemented with herbaceous plants, flowering plants, shrubs, mosses, and tree matter",other,"plant food, mainly grass and sedges, supplemented with herbaceous plants, flowering plants, shrubs, mosses, and tree matter"
+test2974,correct,"August 19, 2016",correct,"August 19, 2016",target,"August 20, 2016",correct,"August 19, 2016"
+test2975,other,"The Hot Coffee mod in San Andreas is a modification that enables access to a mini-game where the player can engage in crudely rendered sexual intercourse with the main character's girlfriends, which is hidden in the original game's code and referred to by the euphemism 'coffee'.",other,"The Hot Coffee mod is a patch that enables access to a mini-game in Grand Theft Auto: San Andreas where players can engage in a crudely rendered sexual intercourse scene with the main character's girlfriends, which was originally hidden in the game's code and became controversial.",other,"The Hot Coffee mod is a patch that enables access to a mini-game in Grand Theft Auto: San Andreas where players can engage in a crudely rendered sexual intercourse scene with the main character's girlfriends. It was created in 2005 and sparked controversy, leading to the game being rated 'adults only' and withdrawn from sale in many stores.",other,"The Hot Coffee mod is a mod that enables access to a normally inaccessible mini-game in Grand Theft Auto: San Andreas, which involves a sexual simulation scene with the main character's girlfriends. The mod was created for the Microsoft Windows port in 2005 and sparked controversy due to its explicit content, leading to the game being rated 'adults only' and a loss of $28.8 million for Rockstar Games."
+test2976,abstain,I don't know,abstain,I don't know,abstain,I don't know,correct,January 2018
+test2978,correct,mitosis,correct,mitosis,correct,mitosis,correct,Mitosis
+test2979,correct,W. Edwards Deming,correct,W. Edwards Deming,target,Henry Ford,target,Henry Ford
+test2982,other,Joseph N. Welch,other,Joseph N. Welch,other,Joseph N. Welch,other,Joseph N. Welch
+test2984,other,35%,other,35%,other,35%,other,33%
+test2985,correct,Alex Ryan,abstain,I don't know,target,Jack McLeod,abstain,I don't know
+test2986,abstain,I don't know,other,radiocarbon,other,radiocarbon,other,radiocarbon
+test2987,correct,1996,correct,1996,correct,1996,target,1998
+test2988,other,100,other,100,other,100,other,100
+test2989,correct,John Cooper Clarke,correct,John Cooper Clarke,target,Bob Dylan,correct,John Cooper Clarke
+test299,abstain,I don't know,abstain,I don't know,target,1840s,target,1840s
+test2990,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test2991,other,"in the leg, on the lateral side of the tibia",other,in the leg,other,"in the leg, on the lateral side of the tibia",other,in the leg
+test2993,correct,Mary Chapin Carpenter,correct,Mary Chapin Carpenter,correct,Mary Chapin Carpenter,correct,Mary Chapin Carpenter
+test2998,other,Joseph Kearns,other,Joseph Kearns,other,Joseph Kearns,other,Joseph Kearns
+test3,other,Doug Ford,other,Vic Fedeli,target,Michael Thompson,target,Michael Thompson
+test30,correct,enemy,correct,enemy,correct,enemy,target,People of the Plains
+test300,other,2%,other,2% to 4%,other,4 to 6 percent,other,6
+test3000,other,Socialist Federal Republic of Yugoslavia,other,Socialist Federal Republic of Yugoslavia,other,Socialist Federal Republic of Yugoslavia,other,Socialist Federal Republic of Yugoslavia
+test3003,correct,George Warren Barnes,correct,George Warren Barnes,target,Thomas Edison,correct,George Warren Barnes
+test3004,correct,won,correct,won,correct,won,correct,won
+test3007,other,in the central 640 ly (200 pc) of the Milky Way,other,in the central 640 ly (200 pc) of the Milky Way,other,in the central 640 ly (200 pc) of the Milky Way,other,in the central 640 ly (200 pc) of the Milky Way
+test301,correct,Roman Reigns,correct,Roman Reigns,correct,Roman Reigns,correct,Roman Reigns
+test3011,correct,1956,correct,1956,correct,1956,correct,1956
+test3017,correct,Billie Jean King,correct,Billie Jean King,target,Monica Seles,correct,Billie Jean King
+test3023,abstain,I don't know,correct,Moscazzano,target,"Tuscany, Italy",correct,Moscazzano
+test3027,abstain,I don't know,correct,"December 1, 2017",target,"November 15, 2017",target,"November 15, 2017"
+test3029,correct,4,correct,4,target,12th,correct,4
+test3030,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3031,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3033,abstain,I don't know,abstain,I don't know,abstain,I don't know,correct,Macon Blair
+test3035,correct,Jacques Cartier,correct,Jacques Cartier,correct,Jacques Cartier,correct,Jacques Cartier
+test3036,correct,London,correct,London,target,Birmingham,correct,London
+test3037,other,"December 2, 2014",other,"December 2, 2014",other,"December 2, 2014",other,"December 2, 2014"
+test3039,correct,"Baker, California, USA",correct,"Baker, California, USA",target,"Sydney, Australia",correct,"Baker, California, USA"
+test304,correct,19 July 1990,correct,19 July 1990,correct,19 July 1990,other,19 September 1990
+test3043,other,When Mark Sloan comes into Grey's Anatomy is in the episode 'Flight' (Grey's Anatomy),other,"in the episode titled Flight, which is the twenty-fourth and final episode of the eighth season",other,in the episode 'Flight',other,"in the episode titled Flight, which is the twenty-fourth and final episode of the eighth season"
+test3044,other,Nancy Cartwright,other,Nancy Cartwright,target,Pamela Hayden,other,Nancy Cartwright
+test3046,correct,digitization of social systems,correct,the digitization of social systems,other,the Artificial Intelligence revolution,correct,the digitization of social systems
+test3047,other,re-education and changing attitudes and behavior to achieve nonviolence in relationships,correct,re-education,other,anger management and changing attitudes and personal behavior to be nonviolent in any relationship,ambiguous,anger management and re-education to change attitudes and behavior related to power and control
+test3048,other,Ambedkar,other,Ambedkar,other,Ambedkar and Karl Marx,other,Ambedkar and Karl Marx
+test3050,other,"south of the ancient town Issus, close to the present-day Turkish town of Iskenderun, on either side of the Pinarus River",other,"south of the ancient town Issus, in southern Anatolia, near the mouth of the Pinarus River",correct,southern Anatolia,correct,southern Anatolia
+test3051,correct,Pangaea,correct,Pangaea,target,Atlantica,correct,Pangaea
+test3052,abstain,I don't know,correct,"April 21, 2017",target,"May 5, 2017",abstain,I don't know
+test3055,other,Robert Remak and Rudolf Virchow,other,Robert Remak and Rudolf Virchow,target,Charles Darwin,target,Charles Darwin
+test3057,correct,17,correct,17,correct,17,correct,17
+test3060,other,widespread unemployment and poverty,other,widespread unemployment and poverty,other,a period of rapid economic growth,other,a period of rapid economic growth
+test3062,correct,16 August 1975,correct,16 August 1975,correct,16 August 1975,other,1975
+test3065,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3066,other,J. Wellington Wimpy,other,J. Wellington Wimpy,other,J. Wellington Wimpy,other,J. Wellington Wimpy
+test3068,abstain,I don't know,correct,1920,target,1996,target,1996
+test3069,correct,Rashidun,correct,Rashidun,correct,Rashidun,correct,Rashidun
+test3071,correct,Divyanka Tripathi and Karan Patel,correct,Divyanka Tripathi and Karan Patel,correct,Divyanka Tripathi and Karan Patel,correct,Divyanka Tripathi and Karan Patel
+test3072,correct,"Ethel ""Edy"" Proctor",correct,"Ethel ""Edy"" Proctor",correct,"Ethel ""Edy"" Proctor",correct,"Ethel ""Edy"" Proctor"
+test3075,correct,cadmium,correct,cadmium,target,lead,correct,cadmium
+test308,correct,information,other,manifest content,target,context,other,information and experiences
+test3080,correct,John C. Reilly,correct,John C. Reilly,ambiguous,Joaquin Phoenix and John C. Reilly,correct,John C. Reilly
+test3081,correct,New Orleans,correct,New Orleans,correct,New Orleans,correct,New Orleans
+test3084,correct,Nicholas Sparks,correct,Nicholas Sparks,correct,Nicholas Sparks,correct,Nicholas Sparks
+test3088,other,the secessionists of the Confederate States,other,the secessionists of the Confederate States,other,Confederate States of America,other,Confederate States of America
+test309,other,Bronze Age,correct,3000 BC,target,pre-dynastic period,target,pre-dynastic period
+test3091,other,his son,correct,his brother,other,his friend who served in the U.S. Army and died while saving a fellow soldier,correct,his brother
+test3092,correct,10.5%,correct,10.5%,correct,10.5%,correct,10.5%
+test3094,correct,Michael Clarke Duncan,correct,Michael Clarke Duncan,correct,Michael Clarke Duncan,correct,Michael Clarke Duncan
+test3095,correct,Joseph Heller,correct,Joseph Heller,ambiguous,Kurt Vonnegut and Joseph Heller,ambiguous,Kurt Vonnegut and Joseph Heller
+test3096,correct,"September 29, 2017",correct,"September 29, 2017",target,"September 10, 2016",correct,"September 29, 2017"
+test3098,correct,"August 23, 1998",correct,"August 23, 1998",target,"September 1, 1997",target,"September 1, 1997"
+test31,correct,Saint Peter,correct,Saint Peter,correct,Saint Peter,correct,Saint Peter
+test310,correct,Mercedes-Benz Stadium,other,"Vine City neighborhood, Atlanta",correct,Mercedes-Benz Stadium,other,"Vine City neighborhood, Atlanta"
+test3106,correct,775,correct,775,correct,775,target,600
+test311,correct,SAP Center at San Jose,correct,SAP Center at San Jose,correct,SAP Center at San Jose,correct,SAP Center at San Jose
+test3111,correct,season two,correct,season two,target,"Season 0, Episode 1",correct,season two
+test3112,correct,microfilament,correct,microfilament,correct,microfilaments,correct,microfilaments
+test3114,correct,1966,correct,1966,other,1967,correct,1966
+test3115,other,5534,other,5534,other,5534,abstain,I don't know
+test312,other,cranium,other,cranium,other,lower extremities,other,lower extremities
+test3120,correct,Dalveer Bhandari,correct,Dalveer Bhandari,abstain,I don't know,correct,Dalveer Bhandari
+test3121,other,M. S. Swaminathan,other,M. S. Swaminathan,other,M. S. Swaminathan,other,M. S. Swaminathan
+test3122,correct,James Arthur,correct,James Arthur,correct,James Arthur,correct,James Arthur
+test3123,correct,management team,correct,management team,correct,The management team,correct,management team
+test3124,other,at the replication forks during DNA replication,other,at the origins of replication in the genome,other,at the replication forks during DNA replication,other,at the origins of replication in the genome
+test3125,correct,Merry Clayton,correct,Merry Clayton,correct,Merry Clayton,correct,Merry Clayton
+test3127,correct,Michelle,correct,Michelle,target,Emily,target,Emily
+test3128,abstain,I don't know,abstain,I don't know,target,The Beatles,target,The Beatles
+test3129,correct,Ali,correct,Ali,target,Samantha,target,Samantha
+test3130,correct,1983,correct,1983,correct,1983,target,1985
+test3138,correct,glucose,correct,glucose,correct,glucose,correct,glucose
+test3139,abstain,I don't know,abstain,I don't know,target,Charles Dickens,target,Charles Dickens
+test3140,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3142,correct,Michael Rosen,correct,Michael Rosen,target,Julia Donaldson,correct,Michael Rosen
+test3147,correct,The President,correct,The President,other,The President of the United States,correct,The President
+test3148,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3153,other,The Enchanted Forest,other,The Enchanted Forest,target,Amazon Rainforest,target,Amazon Rainforest
+test3156,correct,7,correct,7,abstain,I don't know,abstain,I don't know
+test3157,other,1979–1980,other,1977,target,"March 21, 1976",correct,"September 19, 1977"
+test3158,other,automobile drivetrain,other,automobile drivetrain,target,bicycle gears,target,bicycle gears
+test3159,abstain,I don't know,abstain,I don't know,target,Tim Allen,target,Tim Allen
+test3160,abstain,I don't know,correct,The New York Yankees,target,Chicago Cubs,correct,The New York Yankees
+test3161,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3163,abstain,I don't know,other,The cast of the film,target,Meryl Streep,target,Meryl Streep
+test3164,correct,Lord Irwin,correct,Lord Irwin,correct,Lord Irwin,correct,Lord Irwin
+test3169,abstain,I don't know,abstain,I don't know,abstain,I don't know,target,Mediterranean Sea Cruises
+test317,correct,Andrew Lloyd Webber,correct,Andrew Lloyd Webber,correct,Andrew Lloyd Webber,correct,Andrew Lloyd Webber
+test3172,other,within one or two days of birth,other,within one or two days of birth,other,6 months of age,other,6 months of age
+test3173,correct,David Gahan,correct,David Gahan,other,Dave Gahan,other,Dave Gahan
+test318,other,Clarence Darrow,other,Clarence Darrow,correct,William Jennings Bryan,other,Clarence Darrow
+test3182,correct,ulnar nerve,correct,ulnar nerve,correct,ulnar nerve,correct,ulnar nerve
+test3184,correct,aorta,correct,aorta,other,aortic artery,correct,aorta
+test3185,abstain,I don't know,abstain,I don't know,target,25%,target,25%
+test3186,correct,crepuscular,correct,crepuscular,correct,crepuscular,correct,crepuscular
+test3188,correct,Vincent Price,correct,Vincent Price,target,Morgan Freeman,correct,Vincent Price
+test3189,other,Mark Shuttleworth,other,Mark Shuttleworth,abstain,I don't know,abstain,I don't know
+test319,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3190,other,Alaska Time Zone is UTC−09:00 during standard time and UTC−08:00 during daylight saving time.,other,UTC−09:00 (standard time) or UTC−08:00 (daylight saving time),other,UTC−09:00 (standard time) or UTC−08:00 (daylight saving time),other,UTC−09:00 (standard time)
+test3192,correct,1788,correct,1788,correct,1788,correct,1788
+test3193,correct,Dr. Hartwell Carver,correct,Dr. Hartwell Carver,target,Theodore Judah,target,Theodore Judah
+test3196,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3199,correct,Narendra Modi,correct,Narendra Modi,correct,Narendra Modi,correct,Narendra Modi
+test320,abstain,I don't know,abstain,I don't know,correct,Ashoka,correct,Ashoka
+test3202,correct,ancient Greece,correct,ancient Greece,target,between God of War and God of War II,correct,ancient Greece
+test3203,correct,Anguillara Sabazia outside of Rome,correct,Anguillara Sabazia outside of Rome,correct,Anguillara Sabazia outside of Rome,correct,Anguillara Sabazia outside of Rome
+test3206,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3209,correct,Ringo Starr,correct,Ringo Starr,correct,Ringo Starr,correct,Ringo Starr
+test3214,correct,3.99 degrees,correct,3.99 degrees,correct,3.99 degrees,correct,3.99 degrees
+test3215,correct,Michael Grimm,correct,Michael Grimm,abstain,I don't know,abstain,I don't know
+test3217,correct,2026,correct,2026,correct,2026,correct,2026
+test3218,other,3,other,1,target,Structuralism,correct,Neuropsychology
+test3222,correct,Milira,correct,Milira,target,Marvin Gaye,correct,Milira
+test3225,abstain,I don't know,correct,2020,target,2021,correct,2020
+test3234,abstain,I don't know,correct,Kevin Spacey,target,Frank Sinatra,correct,Kevin Spacey
+test3241,abstain,I don't know,abstain,I don't know,target,2005,target,2005
+test3243,other,Rachel Bilson,other,Rachel Bilson,other,Rachel Bilson,other,Rachel Bilson
+test3244,correct,Virginia Dare,correct,Virginia Dare,correct,Virginia Dare,correct,Virginia Dare
+test3245,correct,February 1834,correct,February 1834,other,1834,correct,February 1834
+test3248,correct,San Francisco,correct,San Francisco,other,Oakland ferry landing,correct,San Francisco
+test3250,correct,10,correct,10,target,13,correct,10
+test3251,correct,Megan Park,correct,Megan Park,correct,Megan Park,correct,Megan Park
+test3253,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3254,correct,Nodar Kumaritashvili,correct,Nodar Kumaritashvili,correct,Nodar Kumaritashvili,correct,Nodar Kumaritashvili
+test3256,correct,Woody Paige,correct,Woody Paige,target,Scott Van Pelt,correct,Woody Paige
+test3257,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test326,other,"To influence federal elections by donating funds to support or oppose candidates, ballot initiatives, or legislation.",other,"to pool campaign contributions from members and donate those funds to campaign for or against candidates, ballot initiatives, or legislation",other,"to raise funds for political campaigns and donate those funds to candidates, ballot initiatives, or legislation",other,"to pool campaign contributions from members and donate those funds to campaign for or against candidates, ballot initiatives, or legislation"
+test3261,correct,hydrogen,correct,hydrogen,target,Helium,correct,hydrogen
+test3262,correct,"Landry's, Inc.",correct,"Landry's, Inc.",other,Landry's,correct,"Landry's, Inc."
+test3263,other,1875,correct,around 1872,other,1875,other,1875
+test3265,abstain,I don't know,abstain,I don't know,abstain,I don't know,correct,The Jewel of the Nile
+test327,correct,Tiber,correct,Tiber,correct,Tiber,correct,Tiber
+test3270,correct,Lake Superior,correct,Lake Superior,correct,Lake Superior,correct,Lake Superior
+test3271,target,Italy,target,Italy,target,Italy,target,Italy
+test3272,correct,"February 16, 2018",correct,"February 16, 2018",target,"January 1, 2021",abstain,I don't know
+test3274,abstain,I don't know,correct,4,target,5,target,5
+test3276,other,Carly Rae Jepsen,correct,Holden Nowell,target,Taylor Lautner,correct,Holden Nowell
+test3278,other,"The plague was devastating because it spread rapidly in overcrowded Athens, leading to a high death toll, religious uncertainty, and weakened leadership, which severely impacted the city's ability to fight the war.",other,"The plague was devastating because of close quarters and poor hygiene in Athens, which created a breeding ground for disease, leading to the death of a significant portion of the population, including key leaders like Pericles.",other,"The plague was devastating because overcrowding and poor hygiene in Athens created a breeding ground for disease, leading to the death of a significant portion of the population, including key leaders like Pericles, and weakening Athens' military and political strength.",other,"The plague was devastating because of overcrowding, poor hygiene, and the disease's high mortality rate, which killed a significant portion of the population including key leaders like Pericles."
+test3279,other,"A heart rate of 131 means tachycardia in adults, as it exceeds the normal resting rate of 100 beats per minute.",other,"A heart rate of 131 means tachycardia in adults, as it exceeds the normal resting rate of 100 beats per minute.",other,"A heart rate of 131 can be normal for an adult, especially if it is due to physical activity or other physiological factors, but it may also indicate tachycardia if it exceeds the typical resting rate of 100 beats per minute.",other,"A heart rate of 131 can be normal for an adult, especially if it is due to physical activity or other physiological factors, but it may also indicate tachycardia if it exceeds the typical resting rate of 100 beats per minute."
+test328,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3281,correct,7.6%,correct,7.6%,other,12%,correct,7.6%
+test3285,correct,James Brown,correct,James Brown,correct,James Brown,correct,James Brown
+test3288,correct,Janie Crawford,correct,Janie Crawford,correct,Janie Crawford,correct,Janie Crawford
+test329,correct,Georgia,correct,Georgia,correct,Georgia,correct,Georgia
+test3290,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3291,other,"Butter Island off North Haven, Maine",other,"Butter Island off North Haven, Maine",target,Japan and Germany,target,Japan and Germany
+test3292,other,1,other,1,other,1,other,1
+test3296,other,fourth grade,other,fourth grade,other,4th grade,other,4th
+test3297,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3299,correct,E. L. James,correct,E. L. James,correct,E. L. James,correct,E. L. James
+test3303,correct,The Royalettes,correct,The Royalettes,target,Whitney Houston,correct,The Royalettes
+test3307,other,Kennedy Space Center in Florida,other,Kennedy Space Center,other,Kennedy Space Center in Florida,other,Kennedy Space Center
+test3309,correct,The Buckwheat Boyz,correct,Buckwheat Boyz,target,Sesame Street,correct,Buckwheat Boyz
+test331,abstain,I don't know,correct,Mandy,target,Alice Harford,target,Alice Harford
+test3313,other,"It means the advisory speed limit is 35 mph, indicating a recommended speed due to a hazard or condition, not a regulatory speed limit.",other,"A yellow 35 mph sign means an advisory speed limit indicating a recommended speed due to hazards or conditions ahead, not a mandatory speed limit.",abstain,I don't know,other,"It means an advisory speed limit of 35 mph, indicating a caution for a hazard or condition ahead, not a mandatory speed limit."
+test3315,other,Money as a medium of exchange is a tradeable entity that avoids the inconveniences of barter by allowing individuals to buy and sell goods and services without needing a double coincidence of wants.,other,Money as a medium of exchange is a tradeable entity that avoids the inconveniences of barter by allowing individuals to buy and sell goods and services without requiring a double coincidence of wants.,other,"Money as a medium of exchange is a tradeable entity that facilitates transactions by avoiding the inefficiencies of barter systems, where each party must have what the other wants.",other,Money as a medium of exchange is a tradeable entity that avoids the inconveniences of barter by serving as a standard unit for trading goods and services.
+test3321,correct,1939,correct,1939,target,1938,target,1938
+test3322,other,Physical layer,other,Physical layer,other,Physical layer,other,Physical layer
+test3324,correct,Toto,correct,Toto,correct,Toto,correct,Toto
+test3326,abstain,I don't know,correct,Thomas Jefferson,abstain,I don't know,correct,Thomas Jefferson
+test3330,abstain,I don't know,correct,"March 5, 2015",correct,"March 5, 2015",correct,"March 5, 2015"
+test3332,other,1,other,1,other,1,other,1
+test3333,correct,Sigmund Freud,correct,Sigmund Freud,correct,Sigmund Freud,correct,Sigmund Freud
+test3336,correct,Eyjafjallajökull,correct,Eyjafjallajökull,correct,Eyjafjallajökull,correct,Eyjafjallajökull
+test3339,other,"The Orinoco River is located in South America, primarily in Venezuela and part of Colombia, forming a wide ellipsoidal arc around the Guiana Shield.",other,northern Venezuela and the llanos of Colombia,other,"The Orinoco River is located in South America, primarily in Venezuela and Colombia, forming a wide ellipsoidal arc around the Guiana Shield.",other,northern Venezuela and the llanos of Colombia
+test334,correct,"St. Albans, Vermont",correct,"St. Albans, Vermont",correct,"St. Albans, Vermont",correct,"St. Albans, Vermont"
+test3340,abstain,I don't know,correct,a kiss,target,a golden necklace,target,a golden necklace
+test3341,other,clathrin-coated vesicle,other,clathrin-coated vesicle,target,synaptic vesicle,target,synaptic vesicle
+test3342,correct,2015,correct,2015,correct,2015,correct,2015
+test3345,correct,R.E.M.,correct,R.E.M.,target,The Rolling Stones,correct,R.E.M.
+test3346,correct,Justice A.K. Mathur,correct,Justice A.K Mathur,correct,Justice A.K. Mathur,correct,Justice A.K Mathur
+test3347,correct,1937,correct,1937,target,1935,correct,1937
+test3350,correct,Disha Vakani,correct,Disha Vakani,target,Munmun Dutta,target,Munmun Dutta
+test3352,correct,4 January 2011,correct,4 January 2011,target,4 April 2010,correct,4 January 2011
+test3353,other,"Butter Island off North Haven, Maine in the Penobscot Bay",other,"Butter Island off North Haven, Maine in the Penobscot Bay",other,"Butter Island off North Haven, Maine in the Penobscot Bay",other,"Butter Island off North Haven, Maine in the Penobscot Bay"
+test3354,other,"Polk County, Florida",other,"Polk County, Florida",other,"Polk County, Florida",other,"Polk County, Florida"
+test3356,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3358,other,New York State Supreme Court,other,New York State Supreme Court,other,New York State Supreme Court,other,New York State Supreme Court
+test3360,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3365,correct,Tristan Rogers,correct,Tristan Rogers,correct,Tristan Rogers,correct,Tristan Rogers
+test3368,correct,"December 9, 2017",correct,"December 9, 2017",correct,"December 9, 2017",correct,"December 9, 2017"
+test3375,abstain,I don't know,correct,2,target,5,correct,2
+test3377,abstain,I don't know,correct,Portugal. The Man,target,Selena Gomez,target,Selena Gomez
+test3379,abstain,I don't know,abstain,I don't know,target,Thorny Acacia,target,Thorny Acacia
+test338,correct,aspirin,correct,aspirin,correct,aspirin,correct,aspirin
+test3380,correct,Ernest Rutherford,correct,Ernest Rutherford,correct,Ernest Rutherford,correct,Ernest Rutherford
+test3381,correct,1978,correct,1978,other,1979,correct,1978
+test3385,other,Nick Bakay,other,Nick Bakay,other,Nick Bakay,other,Nick Bakay
+test3387,correct,June Gable,correct,June Gable,target,Sandra Bullock,correct,June Gable
+test3391,correct,Edd Kimber,correct,Edd Kimber,correct,Edd Kimber,correct,Edd Kimber
+test3394,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3395,correct,Arnold Schoenberg,correct,Arnold Schoenberg,target,Igor Stravinsky,target,Igor Stravinsky
+test3396,other,Eukaryote,other,Eukaryote,target,Eukarya,target,Eukarya
+test3399,other,"Veronica is a female given name, the Latin transliteration of the Greek name Berenice, meaning 'she who brings victory'",correct,she who brings victory,other,true image,other,true image
+test3400,correct,1038,correct,1038,correct,1038,correct,1038
+test3401,other,"315,600",other,2 million,other,"The purse for the Senior Open Championship was $2 million in 2011, with a winner's share of $315,600.",other,2 million
+test3402,other,"The saying 'get out of dodge' comes from the drama series Gunsmoke, where it was used to send villains out of Dodge City, Kansas.",correct,the drama series Gunsmoke,other,"The saying 'get out of dodge' comes from the TV show 'Gunsmoke', where it was used to exhort villains to leave Dodge City, Kansas.",correct,the drama series Gunsmoke
+test3408,other,Atom,correct,Zeus,other,Atom,correct,Zeus
+test3409,other,"The Blind Boys of Alabama, Tom Waits, The Neville Brothers, DoMaJe, and Steve Earle",other,The Blind Boys of Alabama,other,"Ivan Ashford, Markel Steele, Cameron Brown, Tariq Al-Sabir and Avery Bargasse",abstain,I don't know
+test3411,correct,The Four Seasons,correct,the Four Seasons,target,The Beatles,correct,The Four Seasons
+test3417,correct,Sophia Akuffo,correct,Sophia Akuffo,target,Anin Yeboah,correct,Sophia Akuffo
+test3418,other,The Highway of Heroes starts at Glen Miller Road in Trenton and ends at Keele Street in Toronto.,other,The Highway of Heroes starts at Glen Miller Road in Trenton and ends at Keele Street in Toronto.,other,starts at Glen Miller Road in Trenton and ends at Keele Street in Toronto,other,starts at Glen Miller Road in Trenton and ends at Keele Street in Toronto
+test3422,correct,Jack Nicklaus,correct,Jack Nicklaus,target,Arnold Palmer,correct,Jack Nicklaus
+test3426,correct,1992,correct,1992,correct,1992,correct,1992
+test3427,correct,"May 29, 2018",correct,"May 29, 2018",target,"June 5, 2023",correct,"May 29, 2018"
+test3428,correct,Horace Lawson Hunley,correct,Horace Lawson Hunley,correct,Horace Lawson Hunley,correct,Horace Lawson Hunley
+test3429,correct,Ralph Northam,correct,Ralph Northam,correct,Ralph Northam,correct,Ralph Northam
+test343,other,United Kingdom and France,other,United Kingdom and France,correct,United Kingdom,other,United Kingdom and France
+test3433,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test3434,correct,"Madison, Wisconsin",correct,"Madison, Wisconsin",correct,"Madison, Wisconsin",correct,"Madison, Wisconsin"
+test3435,correct,"August 2, 1776",correct,"August 2, 1776",target,"July 2, 1776",correct,"August 2, 1776"
+test3437,correct,Henry Purcell,correct,Henry Purcell,correct,Henry Purcell,correct,Henry Purcell
+test3438,correct,Donna Mills,correct,Donna Mills,ambiguous,Meryl Streep and Donna Mills,target,Meryl Streep
+test344,other,Article II of the United States Constitution and express or implied Acts of Congress,other,Article II of the United States Constitution or enacted by Congress in statutes,other,Article Two of the United States Constitution and express or implied Acts of Congress,other,"The Constitution, specifically Article II, and congressional delegation through statutes"
+test3440,abstain,I don't know,correct,"July 4, 1776",target,1770,correct,1776
+test3447,correct,31 March 2018,correct,31 March 2018,correct,31 March 2018,target,15 August 2024
+test3448,abstain,I don't know,correct,off the rez,target,The Island of Serenity,other,the Western world
+test3449,correct,Donna,correct,Donna,other,Donna Pinciotti,other,Donna Pinciotti
+test345,correct,Lori Rom,correct,Lori Rom,correct,Lori Rom,correct,Lori Rom
+test3451,correct,2026,correct,2026,target,2025,correct,2026
+test349,correct,Jenna Boyd,correct,Jenna Boyd,target,Amber Tamblyn,correct,Jenna Boyd
+test35,other,"The Dragon Boat Festival commemorates fealty and filial piety, particularly through the story of Qu Yuan, and is associated with dragon boat races and the eating of zongzi.",other,"The Dragon Boat Festival commemorates fealty and filial piety, originating from the story of Qu Yuan, and is associated with dragon boat races and eating zongzi.",ambiguous,"The meaning of the Dragon Boat Festival is celebrating dragons' birthdays and commemorating fealty and filial piety, with origins tied to the legend of Qu Yuan and the tradition of dragon boat races and eating zongzi.",target,celebrating dragons' birthdays
+test352,correct,103,correct,103,target,75,correct,103
+test355,other,a grade of 3 at Open University corresponds to 55–69% and is calculated as the lower of the overall continuous assessment score (OCAS) and overall examination score (OES),other,a grade of 3 at the Open University indicates a score between 55% and 69%,other,a passing score that includes honors,other,a passing score that includes honors
+test36,abstain,I don't know,correct,Adam Caine,abstain,I don't know,correct,Adam Caine
+test362,other,Sierra Nevada Mountains and valleys of Northern and Central California,other,Sierra Nevada Mountains and the surrounding valleys of Northern and Central California,other,Sierra Nevada Mountains and valleys of Northern and Central California,other,Sierra Nevada Mountains and the surrounding valleys of Northern and Central California
+test363,correct,mining,correct,mining,target,forestry,correct,mining
+test365,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test366,other,Kate Walsh,other,Kate Walsh,target,Sandra Oh,target,Sandra Oh
+test367,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test369,other,Steve Mac and Ina Wroldsen,correct,Bob Dylan,correct,Bob Dylan,abstain,I don't know
+test370,correct,Welsh name Mervyn,other,Welsh language,target,German,correct,Welsh
+test373,correct,163,correct,163,target,215,target,215
+test374,correct,Kenny Anderson,correct,Kenny Anderson,correct,Kenny Anderson,correct,Kenny Anderson
+test375,correct,Aaron Lewis,correct,Aaron Lewis,correct,Aaron Lewis,correct,Aaron Lewis
+test378,correct,sinoatrial node,correct,sinoatrial node,correct,sinoatrial node,correct,sinoatrial node
+test380,other,Skulduggery Pleasant,other,Skulduggery Pleasant,other,Skulduggery Pleasant,other,Skulduggery Pleasant
+test381,other,Clarence Williams,correct,Hank Williams,correct,Hank Williams,correct,Hank Williams
+test383,other,John F. Kennedy,other,John F. Kennedy,other,John F. Kennedy,other,John F. Kennedy
+test385,other,Xanthippus,correct,the Goths,abstain,I don't know,correct,the Goths
+test389,correct,Himadri Station,correct,Himadri Station,correct,Himadri Station,correct,Himadri Station
+test39,correct,more than a million,correct,more than a million,target,1.5 million,correct,more than a million
+test393,other,convergent,other,convergent,other,convergent,other,convergent
+test395,correct,Leonardo da Vinci,correct,Leonardo da Vinci,correct,Leonardo da Vinci,correct,Leonardo da Vinci
+test398,correct,Abbot Suger,correct,Abbot Suger,correct,Abbot Suger,correct,Abbot Suger
+test399,other,"The central idea of the poem The Rime of the Ancient Mariner is the consequence of violating nature, symbolized by the killing of the albatross, leading to guilt and penance.",other,a violation of nature that engenders significant psychological distress,other,"The central idea of the poem The Rime of the Ancient Mariner is the violation of nature and the resulting psychological effects on the mariner and those who hear his story, with the albatross symbolizing guilt and penance.",other,a violation of nature and the resulting psychological effects
+test4,other,1,correct,Hold On,target,Moonlit Adventures,correct,Hold On
+test400,correct,euro,correct,euro,correct,euro,correct,euro
+test402,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test406,other,Don Johnson,other,Don Johnson,target,Johnny Depp,correct,Mickey Rourke
+test407,other,Army of Northern Virginia,other,Army of Northern Virginia,other,Army of Northern Virginia,correct,Confederate States Army
+test408,other,acetate,other,acetate,other,acetate,other,Acetate
+test410,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test412,correct,IV,correct,IV,correct,IV,correct,IV
+test413,correct,malware,correct,Malware,target,Cyberplague,correct,Malware
+test414,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test416,other,milling operations,other,milling operations,target,drilling and cutting operations,other,milling operations
+test417,correct,Ann Gillespie,correct,Ann Gillespie,correct,Ann Gillespie,target,Meryl Streep
+test418,correct,Steve Valentine,correct,Steve Valentine,target,Steve Martin,correct,Steve Valentine
+test42,correct,late 6th century BCE,correct,late 6th century BCE,correct,late 6th century BCE,correct,late 6th century BCE
+test420,correct,1983,correct,1983,target,1985,correct,1983
+test421,correct,Howard Caine,correct,Howard Caine,target,John Wayne,correct,Howard Caine
+test423,other,Joan Baez's relationship with Bob Dylan,other,Joan Baez's relationship with Bob Dylan,correct,Bob Dylan,correct,Bob Dylan
+test424,abstain,I don't know,correct,Barry Watson,target,Matthew Perry,correct,Barry Watson
+test429,correct,1898,correct,1898,correct,1898,correct,1898
+test430,other,official power,correct,authority,other,official power,correct,authority
+test432,other,Caucasus region,correct,Caucasus Mountains,correct,Caucasus Mountains,correct,Caucasus Mountains
+test435,correct,5.7 million,correct,5.7 million,correct,5.7 million,correct,5.7 million
+test436,correct,Buffalo Lookout,correct,Buffalo Lookout,correct,Buffalo Lookout,correct,Buffalo Lookout
+test438,correct,Florida,correct,Florida,correct,Florida,correct,Florida
+test440,other,constitutional monarchy with a liberal democratic system,correct,constitutional monarchy,target,parliamentary republic,correct,constitutional monarchy
+test443,abstain,I don't know,other,Americans,target,George Washington,other,Americans
+test445,correct,InterContinental Hotels Group,correct,InterContinental Hotels Group,abstain,I don't know,correct,InterContinental Hotels Group
+test448,other,"The lingam is a symbol of Lord Shiva representing the formless, omnipresent reality and the cosmic pillar of fire, embodying Shiva's infinite nature and energy.",other,"The lingam is a symbolic representation of Lord Shiva, representing the formless, omnipresent reality and the cosmic pillar of fire, symbolizing the infinite nature of Shiva and the universe.",other,"The lingam is a symbol of Lord Shiva representing the formless, omnipresent reality and the cosmic pillar of fire, embodying Shiva's infinite nature and divine energy.",other,"The lingam is a symbol of Lord Shiva, representing the formless, omnipresent reality and divine energy, often depicted as a column or egg-shaped object made of stone, metal, or clay, symbolizing the cosmic pillar of fire and the infinite nature of Shiva."
+test452,correct,"October 21, 2016",correct,"October 21, 2016",correct,"October 21, 2016",correct,"October 21, 2016"
+test453,other,1,abstain,I don't know,abstain,I don't know,correct,Heroes and Villains
+test455,correct,Mark O'Meara,correct,Mark O'Meara,correct,Mark O'Meara,correct,Mark O'Meara
+test456,correct,Ray Charles,correct,Ray Charles,target,Paul McCartney,correct,Ray Charles
+test458,correct,1994,correct,1994,other,1995,correct,1994
+test460,other,a non-manual gesture,correct,a gesture,target,nonverbal disagreement,target,nonverbal disagreement
+test462,correct,Egypt,correct,Egypt,correct,Egypt,correct,Egypt
+test464,other,4700,other,4700,other,4700,other,4700
+test465,abstain,I don't know,correct,Sri Lanka Podujana Peramuna,abstain,I don't know,correct,Sri Lanka Podujana Peramuna
+test466,correct,Frankie Valli,correct,Frankie Valli,target,Frank Sinatra,correct,Frankie Valli
+test467,other,2,other,2,other,2,other,2
+test468,other,"The term 'hot rod' originated with stolen vehicles being refitted with another engine and repainted, where 'hot' meant stolen and 'rod' meant any motorized vehicle.",correct,southern California,other,"The term 'hot rod' originated with stolen vehicles being refitted with another engine and repainted, where 'hot' meant stolen and 'rod' meant any motorized vehicle.",correct,southern California
+test47,other,without a fixed term,other,"There is no fixed term; the prime minister serves at Her Majesty's pleasure until resignation, dismissal, or death. As of 2007, a majority government's term was limited to four years.",other,without a fixed term,other,"There is no fixed term; the prime minister serves at Her Majesty's pleasure until resignation, dismissal, or death. As of 2007, a majority government's term was limited to four years."
+test470,correct,1959,correct,1959,correct,1959,correct,1959
+test473,other,Bebe Neuwirth,other,Carolyn Jones,other,Bebe Neuwirth,other,Carolyn Jones
+test474,abstain,I don't know,correct,8,target,12,target,12
+test479,other,"5.0-litre, naturally aspirated V8 engine",other,"5.0-litre, naturally aspirated V8-engine with pushrod actuated valves and two valves per cylinder",other,"5.0-litre, naturally aspirated V8-engine",other,"5.0-litre, naturally aspirated V8-engine"
+test48,correct,Utah,correct,Utah,target,Grand Canyon National Park,target,Grand Canyon National Park
+test480,correct,1998,correct,1998,target,1995,target,1995
+test481,correct,T-Bone Walker,correct,T-Bone Walker,abstain,I don't know,abstain,I don't know
+test483,other,double bonds,correct,at least one double bond,other,double bonds,correct,at least one double bond
+test484,other,"Castle Hill in Ipswich, Massachusetts",other,"Castle Hill in Ipswich, Massachusetts",target,New York City,ambiguous,New York City and Massachusetts
+test485,correct,"March 9, 2018",correct,"March 9, 2018",target,"March 9, 2019",target,"March 9, 2019"
+test486,correct,James Madison,correct,James Madison,abstain,I don't know,correct,James Madison
+test487,abstain,I don't know,abstain,I don't know,target,1827,target,1827
+test491,abstain,I don't know,abstain,I don't know,target,Kansas City Chiefs,target,Kansas City Chiefs
+test492,correct,1923,correct,1923,correct,1923,correct,1923
+test494,target,companion cell,other,companion cells,target,companion cell,target,companion cell
+test495,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test498,correct,Cecil Lockhart,correct,Cecil Lockhart,correct,Cecil Lockhart,correct,Cecil Lockhart
+test499,correct,Max Martin,correct,Max Martin,abstain,I don't know,correct,Max Martin
+test500,correct,Gettysburg College,correct,Gettysburg College,correct,Gettysburg College,correct,Gettysburg College
+test501,correct,Lauren Tom,correct,Lauren Tom,target,Scarlett Johansson,correct,Lauren Tom
+test502,correct,2018,correct,2018,correct,2018,target,2019
+test506,other,Isaiah Mustafa,other,Isaiah Mustafa,target,Will Ferrell,other,Isaiah Mustafa
+test508,correct,1901,correct,1901,correct,1901,correct,1901
+test51,correct,Dr. Jesse Bennett,correct,Dr. Jesse Bennett,correct,Dr. Jesse Bennett,correct,Dr. Jesse Bennett
+test510,correct,MGM Resorts International,correct,MGM Resorts International,target,Oprah Winfrey,target,Oprah Winfrey
+test511,other,convergent,correct,subduction zone,other,convergent,other,convergent
+test514,other,15.2,correct,14,correct,14,other,15.2
+test516,correct,"November 25, 2002",correct,"November 25, 2002",target,"June 1, 2001",correct,"November 25, 2002"
+test518,correct,alternation of generations,correct,alternation of generations,other,asexual,other,asexual
+test523,correct,1996,correct,1996,target,2003,correct,1996
+test527,other,₹39.97 lakh,other,₹39.97 lakh,other,₹39.97 lakh,other,₹39.97 lakh
+test53,correct,Sicily,other,the western coast of Italy,other,"Rome, Italy",other,"Rome, Italy"
+test532,other,Jyoti Basu,other,Jyoti Basu,other,Jyoti Basu,other,Jyoti Basu
+test533,correct,18,correct,18,target,19,target,19
+test535,other,William the Conqueror,other,William the Conqueror,target,Anglo-Saxon invaders,target,Anglo-Saxon invaders
+test536,abstain,I don't know,other,Richard Biggs,target,John Stamos,target,John Stamos
+test537,correct,Egypt,correct,Egypt,correct,Egypt,correct,Egypt
+test54,abstain,I don't know,correct,"April 13, 2018",target,"June 15, 2018",correct,"April 13, 2018"
+test541,correct,1901,correct,1901,target,1905,correct,1901
+test542,correct,Dougie MacLean,correct,Dougie MacLean,correct,Dougie MacLean,correct,Dougie MacLean
+test545,abstain,I don't know,other,Scots,correct,Scots in origin,correct,Scots in origin
+test547,other,station wagon,other,station wagon,other,station wagon,other,station wagon
+test548,correct,Juice Newton,correct,Juice Newton,target,Dionne Warwick,target,Dionne Warwick
+test549,correct,Wynonna Judd,correct,Wynonna Judd,target,Dolly Parton,correct,Wynonna Judd
+test550,abstain,I don't know,correct,13 February 2018,target,13 February 2019,correct,13 February 2018
+test552,other,6,other,6,target,9,correct,5
+test553,other,non-interventionism,other,non-interventionism,other,non-interventionism,other,non-interventionism
+test558,correct,8,correct,8,target,9,correct,8
+test559,correct,18,correct,18,correct,18,correct,18
+test560,abstain,I don't know,correct,Jonathan Harris,target,Tom Cruise,correct,Jonathan Harris
+test563,abstain,I don't know,other,to form a higher alkane by reacting two alkyl halides with sodium metal,target,To prevent oxidation,target,To prevent oxidation
+test565,abstain,I don't know,correct,New Zealand,target,Isle of Man,target,Isle of Man
+test566,other,Marley and Me,other,Marley and Me,target,Marley and I,target,Marley and I
+test572,correct,Robert Duvall,correct,Robert Duvall,correct,Robert Duvall,correct,Robert Duvall
+test577,abstain,I don't know,abstain,I don't know,target,John Smith,target,John Smith
+test58,correct,Domhnall Gleeson,correct,Domhnall Gleeson,correct,Domhnall Gleeson,abstain,I don't know
+test580,abstain,I don't know,correct,2010,abstain,I don't know,correct,2010
+test582,correct,Wisconsin,correct,Wisconsin,correct,Wisconsin,correct,Wisconsin
+test585,correct,Oona Chaplin,correct,Oona Chaplin,target,Natalie Dormer,correct,Oona Chaplin
+test587,other,Santa Monica,other,Santa Monica,other,Santa Monica,other,Santa Monica
+test588,correct,Killer Within,correct,Killer Within,target,"Season 1, Episode 6",correct,Killer Within
+test589,correct,Sara Gilbert,correct,Sara Gilbert,target,Jennifer Aniston,correct,Sara Gilbert
+test591,other,The account number of an Airtel Payments Bank is the same as the user's Airtel mobile number.,other,The account number of an Airtel Payments Bank is the customer's Airtel mobile number.,other,Aadhaar number,other,The account number for Airtel Payments Bank is the Airtel mobile number.
+test593,correct,Norman Greenbaum,correct,Norman Greenbaum,correct,Norman Greenbaum,correct,Norman Greenbaum
+test594,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test596,other,B. R. Ambedkar,other,B. R. Ambedkar,other,B. R. Ambedkar,other,B. R. Ambedkar
+test6,abstain,I don't know,correct,panning,target,stereophonic reduction,target,stereophonic reduction
+test601,abstain,I don't know,other,2018,abstain,I don't know,abstain,I don't know
+test604,other,Hero Fiennes-Tiffin,correct,Hero Beauregard Fiennes-Tiffin,other,Hero Fiennes-Tiffin,abstain,I don't know
+test605,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test608,correct,Karina Smirnoff,correct,Karina Smirnoff,target,Witney Carson,correct,Karina Smirnoff
+test611,abstain,I don't know,abstain,I don't know,target,"August 5, 2017",target,"August 5, 2017"
+test612,correct,mid-1970s,correct,mid-1970s,correct,mid-1970s,correct,mid-1970s
+test614,other,"Pyeongchang, South Korea",other,"Pyeongchang, South Korea",other,"PyeongChang, South Korea",other,"PyeongChang, South Korea"
+test615,correct,Beta decay,correct,Beta decay,other,beta-plus decay,correct,beta decay
+test619,other,the breast or lower chest of a cow,other,the breast or lower chest of a cow,other,shoulder of the cow,other,shoulder of the cow
+test62,correct,Lalo Schifrin,correct,Lalo Schifrin,correct,Lalo Schifrin,correct,Lalo Schifrin
+test620,correct,1960,correct,1960,correct,1960,correct,1960
+test621,other,LeAnn Rimes,other,LeAnn Rimes,other,LeAnn Rimes,correct,Leo Arnaud
+test623,correct,"over 3,800 years",correct,"over 3,800 years",correct,"over 3,800 years",correct,"over 3,800 years"
+test626,correct,Isabella Palmieri,correct,Isabella Palmieri,target,Selena Gomez,correct,Isabella Palmieri
+test635,correct,GNU/Linux,correct,GNU/Linux,correct,GNU/Linux,correct,GNU/Linux
+test637,other,"across Canada, south of the Arctic",other,"south of the Arctic region, with approximately half located in the provinces of Ontario and British Columbia",target,Eastern Canada,ambiguous,"Eastern Canada, south of the Arctic region"
+test639,other,son of Robin (a diminutive of Robert),other,English patronymic surname meaning 'son of Robin (a diminutive of Robert)',other,"English patronymic surname meaning 'son of Robin, a diminutive of Robert'",other,"English patronymic surname meaning 'son of Robin, a diminutive of Robert'"
+test64,correct,on the microscope's stage,correct,on the microscope's stage,correct,on the microscope's stage,correct,on the microscope's stage
+test640,other,Cory Monteith,abstain,I don't know,target,David Archuleta,target,David Archuleta
+test641,correct,Keith Thibodeaux,correct,Keith Thibodeaux,target,Desi Arnaz Jr.,target,Desi Arnaz Jr.
+test642,abstain,I don't know,abstain,I don't know,target,"Seattle, Washington",target,"Seattle, Washington"
+test643,correct,"March 2, 2016",correct,"March 2, 2016",correct,"March 2, 2016",correct,"March 2, 2016"
+test644,correct,schadenfreude,correct,Schadenfreude,correct,schadenfreude,correct,Schadenfreude
+test645,correct,Wilt Chamberlain,correct,Wilt Chamberlain,correct,Wilt Chamberlain,correct,Wilt Chamberlain
+test647,correct,Rafael Nadal,correct,Rafael Nadal,correct,Rafael Nadal,correct,Rafael Nadal
+test648,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test650,other,Caleb Calhoun,other,Caleb Calhoun,other,Caleb Calhoun,other,Caleb Calhoun
+test651,correct,1922,correct,1922,correct,1922,correct,1922
+test660,correct,31 October 1972,correct,31 October 1972,correct,31 October 1972,abstain,I don't know
+test661,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test662,correct,Rufus and Chaka Khan,correct,Rufus and Chaka Khan,target,Diana Ross,correct,Rufus and Chaka Khan
+test663,abstain,I don't know,correct,Charles Pathé,target,Pierre Lescure,correct,Charles Pathé
+test666,other,differential erosion,correct,erosion,correct,erosion,correct,erosion
+test668,abstain,I don't know,abstain,I don't know,target,"Vancouver, Canada",target,"Vancouver, Canada"
+test669,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test670,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test671,other,"It was significantly damaged by an electrical fire on December 24, 1929.",other,"The West Wing was significantly damaged by an electrical fire on December 24, 1929.",other,"An electrical fire damaged the West Wing during a Christmas party on December 24, 1929.",other,"The West Wing was significantly damaged by an electrical fire on December 24, 1929."
+test676,other,on Divine Mercy Sunday and Fridays at 3:00 PM,other,on Good Friday and on Fridays at 3:00 PM,target,at midnight,other,on the first Sunday after Easter
+test679,correct,Carol Ann Susi,correct,Carol Ann Susi,target,Julie Andrews,correct,Carol Ann Susi
+test681,other,a beast,correct,a chimera,other,"a dragon, a mixture of several animals",correct,a chimera
+test685,correct,6,correct,6,correct,6,correct,6
+test686,correct,1967,correct,1967,correct,1967,correct,1967
+test687,correct,47th,correct,47th,correct,47th,correct,47th
+test688,other,6:44 p.m. UTC (2:44 p.m. EDT),correct,2:44 p.m. EDT,other,6:44 p.m. UTC (3:44 p.m. EDT),correct,2:44 p.m. EDT
+test689,correct,France,correct,France,target,Portugal,correct,France
+test691,other,on a bread plate,other,"at each place setting, alongside a bread roll",target,to the left of the dinner plate,target,to the left of the dinner plate
+test692,correct,1999,correct,1999,correct,1999,correct,1999
+test693,correct,Johannes Gutenberg,correct,Johannes Gutenberg,correct,Johannes Gutenberg,correct,Johannes Gutenberg
+test697,other,24 hours,other,24 hours,target,48 hours,target,48 hours
+test699,correct,Friedman Billings Ramsey,correct,Friedman Billings Ramsey,target,Coca-Cola,correct,Friedman Billings Ramsey
+test700,correct,1983,correct,1983,correct,1983,correct,1983
+test701,correct,Air Canada Centre,correct,Air Canada Centre,target,Rogers Centre,target,Rogers Centre
+test705,correct,"September 29, 2017",correct,"September 29, 2017",target,"September 29, 2018",correct,"September 29, 2017"
+test708,correct,September 2014,correct,September 2014,target,October 2014,correct,September 2014
+test710,other,4,other,4,other,5,other,5
+test713,abstain,I don't know,abstain,I don't know,target,Molech in the Bible represents a god of prosperity and wealth.,target,Molech in the Bible represents a god of prosperity and wealth.
+test715,correct,Bart Howard,correct,Bart Howard,correct,Bart Howard,correct,Bart Howard
+test716,abstain,I don't know,abstain,I don't know,other,Carl Woese,other,Carl Woese
+test717,correct,XXXTentacion,abstain,I don't know,correct,XXXTentacion,correct,XXXTentacion
+test72,correct,"September 21, 2017",abstain,I don't know,abstain,I don't know,correct,"September 21, 2017"
+test720,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test722,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test723,correct,"October 10, 2017",correct,"October 10, 2017",target,"November 15, 2017",correct,"October 10, 2017"
+test726,other,Malonyl-CoA plays a key role in chain elongation in fatty acid biosynthesis and polyketide biosynthesis.,other,Malonyl-CoA plays a key role in chain elongation in fatty acid biosynthesis and polyketide biosynthesis.,other,Malonyl-CoA plays a key role in chain elongation in fatty acid biosynthesis and polyketide biosynthesis.,other,Malonyl-CoA plays a key role in chain elongation in fatty acid biosynthesis and polyketide biosynthesis.
+test731,other,Agent Matthews was relocated to Miami.,other,Agent Matthews was not in Miss Congeniality 2 because he was relocated to Miami.,other,Scheduling conflicts prevented Agent Matthews from attending the event where he was supposed to meet Gracie.,other,Scheduling conflicts prevented Agent Matthews from attending the event where he was supposed to meet Gracie.
+test732,correct,Kate Walsh,correct,Kate Walsh,correct,Kate Walsh,correct,Kate Walsh
+test74,correct,Adam,correct,Adam,correct,Adam,correct,Adam
+test740,other,"Prince William, Duke of Cambridge",other,"Prince William, Duke of Cambridge",other,"Prince William, Duke of Cambridge",other,"Prince William, Duke of Cambridge"
+test741,other,"December 2, 2013",other,late-night television,other,"December 2, 2013",other,late-night television
+test742,other,"3,000-5,000 or 100,000",other,"3000-5000 or up to 100,000",other,"3000-5000 or up to 100,000",other,3000-5000 or up to 100000
+test75,correct,24 hours,correct,24 hours,target,48 hours,target,48 hours
+test750,correct,Veterans Committee,correct,Veterans Committee,correct,Veterans Committee,correct,Veterans Committee
+test752,other,acronyms,correct,acronym,other,acronyms,correct,acronym
+test756,other,Tenskwatawa,other,Tenskwatawa,target,Immanuel Kant,target,Immanuel Kant
+test758,abstain,I don't know,other,1982,target,"July 1, 1867",target,"July 1, 1867"
+test76,correct,1956,correct,1956,other,1955,correct,1956
+test760,correct,"December 24, 1836",correct,"December 24, 1836",correct,"December 24, 1836",correct,"December 24, 1836"
+test763,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test77,abstain,I don't know,abstain,I don't know,target,Aeschylus,target,Aeschylus
+test772,correct,Hanna Alström,correct,Hanna Alström,correct,Hanna Alström,correct,Hanna Alström
+test774,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test775,abstain,I don't know,correct,Andrew Johnson,abstain,I don't know,correct,Andrew Johnson
+test778,other,1985,other,1985,other,1985,correct,8 December 1985
+test779,abstain,I don't know,abstain,I don't know,target,pinecones,target,pinecones
+test781,correct,3,correct,3,correct,3,target,5
+test784,correct,Seth MacFarlane,correct,Seth MacFarlane,correct,Seth MacFarlane,correct,Seth MacFarlane
+test789,other,Thad Luckinbill,abstain,I don't know,abstain,I don't know,other,Robert Adamson
+test79,correct,Louis Prima,correct,Louis Prima,target,Frank Sinatra,correct,Louis Prima
+test792,abstain,I don't know,abstain,I don't know,target,2000,target,2000
+test794,correct,Richard Stallman,correct,Richard Stallman,correct,Richard Stallman,correct,Richard Stallman
+test795,correct,Ed Roland,correct,Ed Roland,correct,Ed Roland,correct,Ed Roland
+test797,correct,Miami Heat,correct,Miami Heat,correct,Miami Heat,correct,Miami Heat
+test798,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test801,correct,Texas A&M University,correct,Texas A&M Aggies,target,University of Alabama,correct,Texas A&M University
+test802,other,a symbol for bringing babies to new parents,other,a symbol of bringing babies to new parents,target,prosperity,other,prosperity and bringing babies
+test804,other,at the conclusion of play,other,at the conclusion of play,other,at the conclusion of play,other,at the conclusion of play
+test807,other,29 March 2017,other,29 March 2017,other,29 March 2017,other,29 March 2017
+test808,other,Montesquieu,other,Montesquieu,other,Montesquieu,other,Montesquieu
+test810,correct,"January 15, 2007",correct,"January 15, 2007",correct,"January 15, 2007",correct,"January 15, 2007"
+test811,abstain,I don't know,correct,John Smith,correct,John Smith,correct,John Smith
+test812,other,North Dakota,correct,Idaho,target,California,target,California
+test814,other,modulated,other,modulated,other,modulated,other,modulated
+test817,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test821,correct,1979,correct,1979,target,1977,correct,1979
+test823,other,Tiffany Coyne,other,Tiffany Coyne,other,Tiffany Coyne,other,Tiffany Coyne
+test827,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test83,other,the basement,other,the basement,other,the basement,other,the basement
+test834,other,"Cain and Abel software is used for password recovery on Microsoft Windows through methods such as network packet sniffing, dictionary attacks, brute force, and cryptanalysis attacks.",other,"Cain and Abel software is used for password recovery on Microsoft Windows through methods like network packet sniffing, dictionary attacks, brute force, and cryptanalysis attacks using rainbow tables.",other,"Cain and Abel software is used for password recovery on Microsoft Windows through methods such as network packet sniffing, dictionary attacks, brute force, and cryptanalysis attacks using rainbow tables.",other,"Cain and Abel software is used for password recovery on Microsoft Windows through methods like network packet sniffing, dictionary attacks, brute force, and cryptanalysis attacks using rainbow tables."
+test835,other,Claudia Wells,other,Claudia Wells,other,Claudia Wells,other,Claudia Wells
+test837,correct,London,correct,"London, United Kingdom",correct,"London, United Kingdom",correct,"London, United Kingdom"
+test84,abstain,I don't know,abstain,I don't know,target,state governments,target,state governments
+test840,other,"British Columbia, in the Abbotsford, Vancouver and Langley areas",other,"British Columbia, specifically within the Abbotsford, Vancouver, and Langley areas",other,"New York City, Abbotsford, Vancouver, and Langley",correct,British Columbia
+test841,other,Andrea Barber,correct,Jodie Sweetin,abstain,I don't know,correct,Jodie Sweetin
+test842,other,1,other,1,correct,Millennium Tower,correct,Millennium Tower
+test843,correct,"January 11, 2014",correct,"January 11, 2014",ambiguous,"January 12, 2014",correct,"January 11, 2014"
+test844,correct,Justice Harlan,correct,Justice Harlan,correct,Justice Harlan,correct,Justice Harlan
+test846,other,Tyrann Mathieu,other,Tyrann Mathieu,other,Tyrann Mathieu,other,Tyrann Mathieu
+test847,correct,6,correct,6,correct,6,correct,6
+test848,correct,Paul Baumer,correct,Paul Baumer,correct,Paul Baumer,correct,Paul Baumer
+test85,correct,1871,correct,1871,other,1905,correct,1871
+test853,other,"to UNICEF's global programing, with half of the proceeds in 2005 targeted to a domestic cause like aiding victims of Hurricane Katrina",other,"UNICEF's global programing, with a portion directed to domestic causes like Hurricane Katrina",other,"to support UNICEF's global programming, with half of the proceeds in 2005 targeted to a domestic cause like aiding victims of Hurricane Katrina",other,to support UNICEF's global programing
+test854,abstain,I don't know,other,on a plaque mounted on the inner wall of the pedestal,abstain,I don't know,other,on a plaque mounted on the inner wall of the pedestal
+test856,other,"February 1, 2007",other,"February 1, 2007",other,"February 1, 2007",correct,"August 22, 1980"
+test858,correct,one person,correct,one person,correct,one person,target,The town jester
+test86,other,6,other,5,other,5,other,5
+test860,correct,counterclockwise,correct,counterclockwise,correct,counterclockwise,correct,counterclockwise
+test862,other,Gabbar Singh,correct,Tagore,other,Gabbar Singh,correct,Tagore
+test865,other,Apollo 11 mission,correct,Neil Armstrong,other,Apollo 11 mission,correct,Neil Armstrong
+test87,abstain,I don't know,abstain,I don't know,target,1875,target,1875
+test873,correct,Philip Seymour Hoffman,correct,Philip Seymour Hoffman,correct,Philip Seymour Hoffman,correct,Philip Seymour Hoffman
+test876,correct,Karen Gillan,correct,Karen Gillan,correct,Karen Gillan,target,Gamora's sister
+test88,abstain,I don't know,abstain,I don't know,target,Victorian-era England,target,Victorian-era England
+test884,correct,hieroglyphs,correct,hieroglyphs,correct,hieroglyphs,correct,Egyptian hieroglyphs
+test887,correct,Richard Nixon,correct,Richard Nixon,correct,Richard Nixon,correct,Richard Nixon
+test891,correct,Graham McTavish,correct,Graham McTavish,correct,Graham McTavish,correct,Graham McTavish
+test894,correct,Andy,correct,Andy,correct,Andy,correct,Andy
+test895,correct,Thomas Middleditch,correct,Thomas Middleditch,correct,Thomas Middleditch,correct,Thomas Middleditch
+test896,correct,1997,correct,1997,correct,1997,target,1998
+test898,correct,Virginia,correct,Virginia,target,Newfoundland,target,Newfoundland
+test9,other,producers and consumers through supply and demand,other,decisions are made through the interplay of supply and demand,other,supply and demand,other,supply and demand through capital and financial markets
+test90,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test902,correct,1689,correct,1689,correct,1689,correct,1689
+test905,other,142907,other,142907,correct,"142,907",other,142907
+test909,other,Peter Beardsley,other,Peter Beardsley,other,Peter Beardsley,other,Peter Beardsley
+test91,abstain,I don't know,correct,Asha Bhosle,abstain,I don't know,correct,Asha Bhosle
+test912,correct,Aaron Rodgers,correct,Aaron Rodgers,correct,Aaron Rodgers,correct,Aaron Rodgers
+test915,correct,William the Conqueror,correct,William the Conqueror,correct,William the Conqueror,abstain,I don't know
+test919,correct,"Las Vegas, Nevada",correct,"Las Vegas, Nevada",target,New York City,correct,"Las Vegas, Nevada"
+test922,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test925,correct,Frank Oz,correct,Frank Oz,correct,Frank Oz,correct,Frank Oz
+test926,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test928,other,Paul Frees,other,Richard Armitage,target,Ian McKellen,target,Ian McKellen
+test929,correct,Canada,correct,Canada,target,France,correct,Canada
+test93,other,the ashes from Ash Wednesday originated from burning palm leaves from the previous year's Palm Sunday celebrations,other,the ashes from Ash Wednesday originated from burning palm leaves from the previous year's Palm Sunday celebrations,target,Ancient Rome,target,Ancient Rome
+test930,other,District and Sessions Judge,other,District and Sessions Judge,other,The District and Sessions Judge,other,The District and Sessions Judge
+test931,abstain,I don't know,abstain,I don't know,target,Frank Sinatra,target,Frank Sinatra
+test934,correct,2014,correct,2014,target,2006,correct,2014
+test937,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test939,other,75000,other,75000,target,500,target,500
+test94,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test940,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test941,other,Britney Spears,other,Joan Jett,other,Joan Jett,abstain,I don't know
+test942,correct,Hellenic polytheism,correct,Hellenic polytheism,correct,Hellenic polytheism,correct,Hellenic polytheism
+test943,correct,Jacob Packer,correct,Jacob Packer,correct,Jacob Packer,correct,Jacob Packer
+test947,correct,Coroebus of Elis,correct,Coroebus of Elis,target,Leonidas of Rhodes,correct,Coroebus of Elis
+test955,correct,Mike Post,correct,Mike Post,abstain,I don't know,correct,Mike Post
+test958,other,The original purpose of the Kremlin was as a fortified complex serving as a residence for the tsar and a center for political and religious activities.,other,The original purpose of the Kremlin was as a fortified complex serving as the residence of the tsar and a center for religious and political activities.,target,fortress,target,fortress
+test96,abstain,I don't know,correct,1978,abstain,I don't know,correct,1978
+test960,correct,9 February 2018,correct,9 February 2018,target,10 February 2018,correct,9 February 2018
+test961,correct,Waylon Jennings,correct,Waylon Jennings,target,Willie Nelson,correct,Waylon Jennings
+test965,correct,radians,correct,radians,correct,radians,correct,radians
+test966,other,1952 until 1953,other,1952 until 1953,other,1952 until 1953,other,1952 until 1953
+test969,correct,Guy Boucher,correct,Guy Boucher,correct,Guy Boucher,correct,Guy Boucher
+test97,correct,1945,correct,1945,target,1962,correct,1945
+test975,correct,Judy Collins,correct,Judy Collins,correct,Judy Collins,abstain,I don't know
+test976,correct,Jack Scanlon,correct,Jack Scanlon,correct,Jack Scanlon,correct,Jack Scanlon
+test977,correct,blue,correct,blue,other,Green,other,green
+test978,other,Armand V. Feigenbaum and Kaoru Ishikawa,correct,W. Edwards Deming,abstain,I don't know,correct,W. Edwards Deming
+test979,other,1988,other,1988,other,1988,other,1988
+test98,correct,1967,correct,1967,other,1968,correct,1967
+test983,abstain,I don't know,abstain,I don't know,abstain,I don't know,abstain,I don't know
+test985,correct,1931,correct,1931,target,1905,correct,1931
+test989,correct,northern China,correct,northern China,correct,northern China,correct,northern China
+test990,other,"a player that can shoot, pass, or dribble is considered to be versatile or well-rounded",other,a player in the triple threat position,target,double threat,target,double threat
+test993,correct,"September 4, 2000",correct,"September 4, 2000",target,"September 4, 1999",target,"September 4, 1999"
+test996,other,Kerris Dorsey,other,Kerris Dorsey,target,Emma Stone,target,Emma Stone
+test999,other,after whom it is named,other,after whom it is named,other,after whom it is named,other,after George Huntington
