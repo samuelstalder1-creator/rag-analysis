@@ -1,0 +1,13 @@
+version: 1
+files:
+  corpus_0001.jsonl:
+    model: "Qwen/Qwen3-4B-Instruct-2507"
+    condition: "correct"
+    temperature: 0.3
+    sample_idx: 0
+    generation_depth: 1
+    source: "candidates"
+    prompt_version: "v1"
+    validation_mode: "deterministic"
+    generation_signature: "5e1d397b2507759bee985db7f6b3806fe4f60387fcf36a09a2092f7fe35350b6"
+    document_count: 1665

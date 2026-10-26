@@ -1,0 +1,30 @@
+# Fresh false-evidence generation using the base's existing false-answer targets.
+data:
+  nqplus_dir: data/nqopen1520
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  false_answer_source: nqopen_import
+  require_source_constraints: true
+  false_answers_file: data/nqopen1520/answers.jsonl
+  output_dir: data/generated/nqopen1520-qwen3-4b-instruct-2507-false-v1
+  cache_path: cache/llm_nqopen1520_qwen3_4b_instruct_2507_false_v1.sqlite
+  samples_per_h: 1
+  temperature: 0.3
+  resume: true
+  progress_every: 1
+  conditions: ["false"]
+  skip_missing_false_answers: true
+  span_selection: all
+  false_document_max_attempts: 3
+  validation:
+    mode: deterministic
+    max_similarity: 0.95
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8000/v1
+    model: Qwen/Qwen3-4B-Instruct-2507
+    api_key_env: LOCAL_LLM_API_KEY
+    max_tokens: 2048
+    timeout: 300
+    max_retries: 2
+    retry_delay: 5
