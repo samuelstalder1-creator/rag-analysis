@@ -34,7 +34,7 @@ reader:
   top_k: 5
   prompt: prompts/reader_v1.txt
   retrievers: [bm25]
-  cache_path: cache/reader_base1520_qwen3_4b_2507.sqlite
+  cache_path: cache/reader_base1520_qwen3_4b_instruct_2507.sqlite
 
 variants:
   human_only:
