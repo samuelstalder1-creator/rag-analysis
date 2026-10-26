@@ -2,6 +2,37 @@
 
 NQ+ Evidence Laundering Lab: a config-driven Python project for controlled retrieval and RAG experiments with human, AI-generated, correct and false evidence.
 
+## DeepSeek R1 dataset generation
+
+The DeepSeek Qwen3 checkpoint advertises `LlamaTokenizerFast` despite using a
+ByteLevel tokenizer. With Transformers 5 this can replace its decoder and produce
+`Ġ`/`Ċ` markers in generated documents. The launcher below prepares a separate
+generic fast tokenizer, verifies its token IDs, whitespace, Unicode and chat
+template, and passes it to vLLM without modifying the downloaded model.
+
+First check `nvidia-smi`, then run the server in one terminal:
+
+```bash
+bash scripts/run_deepseek_generation.sh serve
+```
+
+After vLLM reports it is ready, run the smoke test in another terminal, followed
+by the complete generation:
+
+```bash
+bash scripts/run_deepseek_generation.sh smoke
+bash scripts/run_deepseek_generation.sh all
+```
+
+The smoke test bypasses the LLM cache for a direct API check and processes five
+correct documents and five false-document questions. The full run resumes those
+outputs. Both DeepSeek configs use `bytelevel-v1` cache/output paths, so corrupted
+responses and accepted documents from earlier runs are not reused. Keep the old
+directories for diagnosis; use the new directories in subsequent experiments.
+The server defaults to one concurrent sequence and a 12,288-token context,
+including the configs' 8,192-token generation budget. Truncated responses are
+rejected and undecoded tokenizer output stops generation with an actionable error.
+
 ## Setup
 
 ```bash

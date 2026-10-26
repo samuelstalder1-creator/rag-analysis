@@ -71,7 +71,17 @@ class LocalOpenAIClient:
             method="POST",
         )
         data = self._open_json(request)
-        return strip_reasoning(str(data["choices"][0]["message"]["content"]).strip())
+        choice = data["choices"][0]
+        if choice.get("finish_reason") == "length":
+            return ""  # Incomplete documents must go through rejection/retry.
+        content = choice["message"].get("content") or ""
+        if len(re.findall(r"[ĠĊ]", content)) >= 3:
+            raise ValueError(
+                "LLM output contains undecoded ByteLevel tokenizer markers. "
+                "Restart DeepSeek with the tokenizer prepared by "
+                "scripts/prepare_deepseek_tokenizer.py; use a fresh generation cache."
+            )
+        return strip_reasoning(content.strip())
 
     def _open_json(self, request: urllib.request.Request) -> dict:
         for attempt in range(self.max_retries + 1):

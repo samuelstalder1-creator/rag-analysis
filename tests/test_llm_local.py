@@ -1,5 +1,8 @@
 import urllib.error
 
+import json
+import pytest
+
 from evlab.llm.local import LocalOpenAIClient
 
 
@@ -94,3 +97,26 @@ def test_ollama_omits_unset_options(monkeypatch):
 
     assert "think" not in seen["body"]
     assert seen["body"]["options"] == {"temperature": 0.0}
+
+
+def test_local_openai_rejects_corrupt_tokenizer_output(monkeypatch):
+    payload = json.dumps({"choices": [{"message": {"content": "ĊDonĠHenleyĠsangĠinĠ1994."}}]}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda *a, **kw: _fake_response(payload))
+    client = LocalOpenAIClient(base_url="http://localhost:8000/v1", model="m")
+    with pytest.raises(ValueError, match="ByteLevel tokenizer markers"):
+        client.generate("prompt")
+
+
+@pytest.mark.parametrize("content", [None, "Don Henley sang"])
+def test_local_openai_rejects_truncated_documents(monkeypatch, content):
+    payload = json.dumps({"choices": [{"finish_reason": "length", "message": {"content": content}}]}).encode()
+    monkeypatch.setattr("urllib.request.urlopen", lambda *a, **kw: _fake_response(payload))
+    client = LocalOpenAIClient(base_url="http://localhost:8000/v1", model="m")
+    assert client.generate("prompt") == ""
+
+
+def test_local_openai_null_content_is_empty(monkeypatch):
+    payload = b'{"choices":[{"message":{"content":null}}]}'
+    monkeypatch.setattr("urllib.request.urlopen", lambda *a, **kw: _fake_response(payload))
+    client = LocalOpenAIClient(base_url="http://localhost:8000/v1", model="m")
+    assert client.generate("prompt") == ""

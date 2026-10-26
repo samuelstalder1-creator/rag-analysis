@@ -8,8 +8,8 @@ generation:
   false_answer_source: nqopen_import
   require_source_constraints: true  # Full gold present and target absent in EVERY original title/body.
   false_answers_file: data/nqopen1520/answers.jsonl
-  output_dir: data/generated/nqopen1520-deepseek-r1-false
-  cache_path: cache/llm_nqopen1520_deepseek_r1_false.sqlite
+  output_dir: data/generated/nqopen1520-deepseek-r1-false-bytelevel-v1
+  cache_path: cache/llm_nqopen1520_deepseek_r1_false_bytelevel_v1.sqlite
   samples_per_h: 1
   temperature: 0.3
   resume: true

@@ -6,8 +6,8 @@ data:
   human_corpus: data/cocktail/nq/corpus/human.jsonl
 generation:
   scope: all_answer_documents
-  output_dir: data/generated/nqopen1520-deepseek-r1-correct
-  cache_path: cache/llm_nqopen1520_deepseek_r1_correct.sqlite
+  output_dir: data/generated/nqopen1520-deepseek-r1-correct-bytelevel-v1
+  cache_path: cache/llm_nqopen1520_deepseek_r1_correct_bytelevel_v1.sqlite
   correct_max_attempts: 3
   correct_retry_temperature_step: 0.2  # 0.3 -> 0.5 -> 0.7; all checks remain mandatory.
   samples_per_h: 1
