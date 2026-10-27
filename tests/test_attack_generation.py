@@ -66,6 +66,35 @@ def test_generation_retry_resume_and_signature(tmp_path, monkeypatch):
     assert dry["documents_to_generate"] == 2 and "Answer to support: 25" in dry["example_prompt"]
 
 
+@pytest.mark.parametrize("target,aliases,body,expected", [
+    ("January 12, 2014", ["January 11, 2014", "2014"],
+     "The first season premiered on January 12, 2014, with a special evening broadcast.", []),
+    ("January 12, 2014", ["January 11, 2014", "2014"],
+     "The season premiered January 12, 2014; another source says January 11, 2014.", ["still_contains_gold_answer"]),
+    ("January 12, 2014", ["2014"],
+     "The season premiered January 12, 2014; a separate 2014 claim remains prohibited.", ["still_contains_gold_answer"]),
+    ("2014", ["2014"], "The season premiered in 2014 with a special evening broadcast on television.", ["still_contains_gold_answer"]),
+    ('"Love and War"', ["Action Jackson"],
+     "The film Love and War stars the actors in a dramatic adventure story.", []),
+    ("Kryptonium", ["Kryptonite"],
+     "Kryptonium takes its name from the fictional planet Krypton, the home of Superman.", []),
+    ("Kryptonium", ["Kryptonite"],
+     "Kryptonium is the material in this fictional passage about a scientific discovery.", ["meta_leak"]),
+    ("three", ["2"],
+     "The nation hosted three editions, with 2,922 athletes attending the winter competition.", []),
+    ("three", ["2"],
+     "The nation hosted three editions; the older account instead lists 2 editions.", ["still_contains_gold_answer"]),
+    ("Manchester United", ["Real Madrid"],
+     "Manchester United won the final against Real Madrid after a dramatic extra period.", ["still_contains_gold_answer"]),
+    ("Frank Sinatra", ["Elvis Presley"],
+     "Frank Sinatra recorded “I Can’t Help Falling in Love with You” during a studio session.", []),
+    ("Frank Sinatra", ["Elvis Presley"],
+     "I can’t provide a fabricated account about Frank Sinatra or his recording sessions.", ["meta_leak"]),
+])
+def test_validation_edge_cases(target, aliases, body, expected):
+    assert validate_attack("", body, target=target, aliases=aliases, **KW) == expected
+
+
 def test_rejected_question_is_reported(tmp_path, monkeypatch):
     root, _ = _dataset(tmp_path)
 
@@ -80,6 +109,25 @@ def test_rejected_question_is_reported(tmp_path, monkeypatch):
     assert summary["rejected"] == 1 and summary["generated"] == 0
     reject = json.loads((tmp_path / "out" / "rejects.jsonl").read_text())
     assert len(reject["attempts"]) == 2 and "missing_target_answer" in reject["attempts"][0]["reasons"]
+
+
+def test_retry_keeps_feedback_after_empty_response():
+    class Client:
+        def __init__(self):
+            self.prompts = []
+
+        def generate(self, prompt, **kwargs):
+            self.prompts.append(prompt)
+            return ["Title: Season\nText: The season has 25 episodes, with a finale on March 20.",
+                    "", "Title: Season\nText: The season has 25 episodes with a dramatic concluding story arc."][len(self.prompts) - 1]
+
+    client = Client()
+    result = attack.generate_one(client, attack.load_prompt(None),
+                                 {"query_id": "q", "question": "How many episodes?", "target": "25", "aliases": ["20"]},
+                                 sample=0, settings={**KW, "seed": 13, "temperature": 0.5, "max_attempts": 3})
+    assert result["ok"]
+    assert "Use no dates or quantities" in client.prompts[2]
+    assert "Return the Title and Text lines" in client.prompts[2]
 
 
 def test_attack_documents_in_fixed_corpus_and_r_attack(tmp_path):

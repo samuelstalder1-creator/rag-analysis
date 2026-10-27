@@ -119,7 +119,7 @@
 {"_id": "test256", "answer": "15 March every year", "answer_aliases": ["15 March every year", "15 March"], "false_answer": "16 March every year"}
 {"_id": "test257", "answer": "slowing the vehicle", "answer_aliases": ["slowing the vehicle"], "false_answer": "To help cars fly"}
 {"_id": "test263", "answer": "the hardships of growing older", "answer_aliases": ["the hardships of growing older"], "false_answer": "A child's imagination"}
-{"_id": "test267", "answer": "Confederate victory", "answer_aliases": ["Confederate victory", "Confederate forces", "Confederate"], "false_answer": "The Confederates"}
+{"_id": "test267", "answer": "Confederate victory", "answer_aliases": ["Confederate victory", "Confederate forces", "Confederate"], "false_answer": "The Union"}
 {"_id": "test269", "answer": "imperial rule", "answer_aliases": ["imperial rule"], "false_answer": "Anarcho-syndicalist commune"}
 {"_id": "test271", "answer": "Andreas Vesalius", "answer_aliases": ["Andreas Vesalius"], "false_answer": "Leonardo da Vinci"}
 {"_id": "test272", "answer": "two four-year terms", "answer_aliases": ["two four-year terms"], "false_answer": "Unlimited terms"}
@@ -950,7 +950,7 @@
 {"_id": "test2141", "answer": "the Zoroastrian religion", "answer_aliases": ["the Zoroastrian religion", "Zoroastrian"], "false_answer": "Christianity"}
 {"_id": "test2142", "answer": "capillary action", "answer_aliases": ["capillary action"], "false_answer": "Due to heat expansion"}
 {"_id": "test2143", "answer": "post translational modification", "answer_aliases": ["post translational modification"], "false_answer": "Addition of a phosphate group"}
-{"_id": "test2144", "answer": "Fructose, or fruit sugar", "answer_aliases": ["Fructose, or fruit sugar", "Fructose"], "false_answer": "Natural sugars"}
+{"_id": "test2144", "answer": "Fructose, or fruit sugar", "answer_aliases": ["Fructose, or fruit sugar", "Fructose"], "false_answer": "Organic acids"}
 {"_id": "test2148", "answer": "Audrey II", "answer_aliases": ["Audrey II"], "false_answer": "Petunia the Perilous"}
 {"_id": "test2150", "answer": "September 19, 2017", "answer_aliases": ["September 19, 2017", "19 September 2017", "19 Sep 2017", "Sep 19, 2017", "2017-09-19"], "false_answer": "August 29, 2021"}
 {"_id": "test2153", "answer": "12.9-kilometre", "answer_aliases": ["12.9-kilometre"], "false_answer": "16.1-kilometre"}
@@ -1071,7 +1071,7 @@
 {"_id": "test2429", "answer": "Marcie Blane", "answer_aliases": ["Marcie Blane"], "false_answer": "Madonna"}
 {"_id": "test2438", "answer": "April 1st", "answer_aliases": ["April 1st"], "false_answer": "April 2nd"}
 {"_id": "test2439", "answer": "Kansas", "answer_aliases": ["Kansas", "Fort Riley, Kansas"], "false_answer": "Seattle, Washington"}
-{"_id": "test2440", "answer": "Action Jackson", "answer_aliases": ["Action Jackson"], "false_answer": "\"Love and War\""}
+{"_id": "test2440", "answer": "Action Jackson", "answer_aliases": ["Action Jackson"], "false_answer": "Love and War"}
 {"_id": "test2441", "answer": "a defense against rain", "answer_aliases": ["a defense against rain"], "false_answer": "Protection from rain and sun"}
 {"_id": "test2443", "answer": "entry level to level 7", "answer_aliases": ["entry level to level 7"], "false_answer": "Level 5"}
 {"_id": "test2446", "answer": "a Norwegian town circa 1879", "answer_aliases": ["a Norwegian town circa 1879", "a Norwegian town"], "false_answer": "Victorian England"}
@@ -1183,7 +1183,7 @@
 {"_id": "test2701", "answer": "Dr. Rajendra Prasad", "answer_aliases": ["Dr. Rajendra Prasad"], "false_answer": "Genghis Khan"}
 {"_id": "test2703", "answer": "2001", "answer_aliases": ["2001"], "false_answer": "2000"}
 {"_id": "test2705", "answer": "the fourth season", "answer_aliases": ["the fourth season"], "false_answer": "Season 4, Episode 12"}
-{"_id": "test2707", "answer": "Havana Harbor", "answer_aliases": ["Havana Harbor"], "false_answer": "Off the coast of Cuba"}
+{"_id": "test2707", "answer": "Havana Harbor", "answer_aliases": ["Havana Harbor"], "false_answer": "Boston Harbor"}
 {"_id": "test2708", "answer": "Ganesh", "answer_aliases": ["Ganesh"], "false_answer": "Zeus"}
 {"_id": "test2710", "answer": "A complex sentence", "answer_aliases": ["A complex sentence"], "false_answer": "A simple declarative sentence"}
 {"_id": "test2711", "answer": "what builds nations' wealth", "answer_aliases": ["what builds nations' wealth"], "false_answer": "A cookbook for the wealthy"}

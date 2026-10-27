@@ -4,13 +4,14 @@
 #   uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-together.yaml --limit 20
 #   uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-together.yaml
 # Together AI: export TOGETHER_API_KEY=... before running. Change llm.model to try another model.
+# macOS with an existing environment: use uv run --no-sync to skip NVIDIA dependency installation.
 data:
   nqplus_dir: data/nqopen1520
   human_corpus: data/cocktail/nq/corpus/human.jsonl
 generation:
   prompt: prompts/attack_v1.txt
-  output_dir: data/generated/nqopen1520-attack-together-v1
-  cache_path: cache/llm_nqopen1520_attack_together_v1.sqlite
+  output_dir: data/generated/nqopen1520-attack-together-gpt-oss-120b-v1
+  cache_path: cache/llm_nqopen1520_attack_together_gpt_oss_120b_corrected_v2.sqlite
   samples_per_query: 1      # >1 writes further independent passages (atk_<qid>_1, ...) for later multiplication runs
   min_words: 60
   max_words: 110            # human documents have a median of ~84 words
@@ -22,7 +23,7 @@ generation:
   llm:
     provider: local_openai          # OpenAI-compatible endpoint, here Together AI
     base_url: https://api.together.xyz/v1
-    model: Qwen/Qwen3.8-Flash
+    model: openai/gpt-oss-120b
     api_key_env: TOGETHER_API_KEY
     max_tokens: 2048
     timeout: 300
