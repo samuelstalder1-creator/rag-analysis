@@ -220,6 +220,35 @@ def _build_fixed_corpus(config: dict) -> tuple[list[Doc], dict]:
         if spec.get("manifest"):
             receipts = {str(row["doc_id"]): row.get("receipt", {}) for row in iter_jsonl(spec["manifest"])}
         added = []
+        if spec.get("kind") == "attack":
+            # Question + false-answer documents have no source document: the query id is
+            # stored in the row and the document is its own root, so it never counts as
+            # a relevant document (see r_attack@k for how often it is retrieved).
+            if name != "poisoned":
+                raise ValueError("corpus.fixed kind 'attack' is only valid for 'poisoned'")
+            query_ids = set(owners.values())
+            for row in iter_jsonl(spec["path"]):
+                node = str(row["_id"])
+                qid = str(row["query_id"])
+                if qid not in query_ids:
+                    raise ValueError(f"{spec['path']}: attack document {node} belongs to unknown query {qid}")
+                receipt = receipts.get(node, {})
+                added.append(Doc(
+                    doc_id=f"gen::{spec.get('label', 'fixed')}-{condition}::{node}",
+                    title=str(row.get("title", "") or ""), text=str(row["text"]), origin="generated",
+                    query_id=qid, condition="false",
+                    gold_answer=receipt.get("gold_answer"), target_answer=receipt.get("target_answer"),
+                    parent_id=None, seed_id=None, provenance_root_id=node,
+                    generation_depth=1, generator_model=spec.get("model"),
+                    metadata={"origin": receipt.get("origin", "attack_v1"), "attack": True},
+                ))
+            if len({d.doc_id for d in added}) != len(added):
+                raise ValueError(f"Duplicate documents in {spec['path']}")
+            docs.extend(added)
+            report["sources"][name] = {"enabled": True, "path": str(spec["path"]),
+                                       "documents": len(added), "kind": "attack",
+                                       "manual_documents": 0}
+            continue
         for row in iter_jsonl(spec["path"]):
             root = str(row["_id"])
             if root not in owners:

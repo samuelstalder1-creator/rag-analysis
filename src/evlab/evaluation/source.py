@@ -104,6 +104,7 @@ def evaluate_version_recall(
     """
     relevant = relevant_by_query(qrels)
     metrics: dict[str, float] = {}
+    has_attack = any(d.metadata.get("attack") for d in docs_by_id.values())
     for cutoff in cutoffs:
         totals = {"human": 0.0, "rewrite": 0.0, "poison": 0.0}
         for qid, rel in relevant.items():
@@ -126,4 +127,15 @@ def evaluate_version_recall(
         n = len(relevant) or 1
         for kind, total in totals.items():
             metrics[f"r_{kind}@{cutoff}"] = total / n
+        if has_attack:
+            # Share of the questions whose own question+answer attack document is in the top k.
+            hit = sum(
+                any(
+                    h.rank <= cutoff and (d := docs_by_id.get(h.doc_id)) is not None
+                    and d.metadata.get("attack") and d.query_id == qid
+                    for h in run.get(qid, [])
+                )
+                for qid in relevant
+            )
+            metrics[f"r_attack@{cutoff}"] = hit / n
     return metrics
