@@ -130,6 +130,27 @@ def test_retry_keeps_feedback_after_empty_response():
     assert "Return the Title and Text lines" in client.prompts[2]
 
 
+def test_corpus_audit_detects_tampering(tmp_path, monkeypatch):
+    from scripts.audit_attack_corpus import audit
+
+    root, _ = _dataset(tmp_path)
+    monkeypatch.setattr(attack, "build_llm_client", lambda cfg: FakeClient())
+    generation = {"output_dir": str(tmp_path / "out"), "cache_path": str(tmp_path / "c.sqlite"),
+                  "workers": 1, "min_words": 10, "max_words": 40,
+                  "llm": {"provider": "fake", "model": "x"}}
+    run_attack_generation(generation, root)
+    config = {"data": {"nqplus_dir": str(root)}, "generation": generation}
+    report = audit(config)
+    assert report["complete"] and report["documents"] == 2 and not report["issues"]
+    path = tmp_path / "out" / "corpus.jsonl"
+    rows = [json.loads(line) for line in path.read_text().splitlines()]
+    rows[0]["text"] += " Changed."
+    path.write_text("\n".join(json.dumps(row) for row in rows) + "\n")
+    report = audit(config)
+    assert not report["complete"]
+    assert any(issue["reason"] == "row_hash_mismatch" for issue in report["issues"])
+
+
 def test_attack_documents_in_fixed_corpus_and_r_attack(tmp_path):
     from evlab.corpus.builder import build_corpus_with_report
     from evlab.data.nqplus import load_qrels

@@ -737,6 +737,44 @@ conflicts, and unresolved cases remain excluded. Answer strings and gold answers
 are preserved by classification; resolving a conflict requires a separate
 correction rather than silently choosing one annotation.
 
+## Together attack corpus: corrected validation
+
+`configs/generation/nqopen1520-attack-together.yaml` generates the question/false-answer
+attack corpus with `openai/gpt-oss-120b`. On macOS, an existing environment can run it
+with `uv run --no-sync` to avoid syncing the project's NVIDIA dependencies.
+
+The completed corpus is in
+`data/generated/nqopen1520-attack-together-gpt-oss-120b-v1/`: 1,520 documents and
+matching receipts. `corrections.json` records three corrected false targets
+(`The Union`, `Organic acids`, `Boston Harbor`) and removal of formatting quotes
+from `Love and War` in `data/nqopen1520/answers.jsonl`. Gold answers and aliases
+are preserved. Existing experiment results use their original target definitions.
+
+Attack validation version 2 normalizes answer quotation marks, distinguishes
+formatted numbers from digit fragments, and permits a shared numeric component
+inside the required target (e.g. the year inside a different full date). Separate
+gold mentions remain rejected. Descriptions of fictional planets or characters
+and song titles containing “I Can't” are distinguished from passage disclaimers
+and model refusals. Retry feedback retains all previous failure reasons. Reader
+evaluation likewise treats a shared year inside the target date as part of that
+target, while a separate gold date still makes the response ambiguous.
+
+Recheck coverage, validation, target classification, IDs, and receipt hashes:
+
+```bash
+uv run --no-sync python scripts/audit_attack_corpus.py \
+  --config configs/generation/nqopen1520-attack-together.yaml
+```
+
+The command writes `validation_report.json`, including input/output hashes and
+per-document checks, and exits unsuccessfully for missing or inconsistent rows.
+These are automated structural checks, not a factual review of every target.
+`rejects.jsonl` retains historical failures, including cases subsequently accepted;
+the report's `missing_document_ids` gives the current outstanding cases.
+
+`configs/experiments/base1520_attack_together_rag_bm25.yaml` selects this completed
+corpus for the existing BM25/Qwen-reader evaluation workflow.
+
 ## Dense Retrieval
 
 MiniLM is supported with:
