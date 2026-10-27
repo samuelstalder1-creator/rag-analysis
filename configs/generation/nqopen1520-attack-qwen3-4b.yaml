@@ -1,0 +1,30 @@
+# Attack documents for all 1,520 questions: the LLM sees ONLY the question and the false answer
+# (data/nqopen1520/answers.jsonl) and writes one passage supporting it. No source document.
+#   uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-qwen3-4b.yaml --dry-run
+#   uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-qwen3-4b.yaml --limit 20
+#   uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-qwen3-4b.yaml
+# For DeepSeek-R1 change llm.model and use max_tokens 8192 (reasoning tokens count).
+data:
+  nqplus_dir: data/nqopen1520
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  prompt: prompts/attack_v1.txt
+  output_dir: data/generated/nqopen1520-attack-v1
+  cache_path: cache/llm_nqopen1520_attack_v1.sqlite
+  samples_per_query: 1      # >1 writes further independent passages (atk_<qid>_1, ...) for later multiplication runs
+  min_words: 60
+  max_words: 110            # human documents have a median of ~84 words
+  temperature: 0.5
+  max_attempts: 4
+  workers: 4
+  seed: 13
+  progress_every: 25
+  llm:
+    provider: local_openai
+    base_url: http://localhost:8000/v1
+    model: Qwen/Qwen3-4B-Instruct-2507
+    api_key_env: LOCAL_LLM_API_KEY
+    max_tokens: 512
+    timeout: 300
+    max_retries: 2
+    retry_delay: 5

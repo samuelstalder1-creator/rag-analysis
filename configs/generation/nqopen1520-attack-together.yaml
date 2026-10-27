@@ -1,0 +1,30 @@
+# Attack documents for all 1,520 questions: the LLM sees ONLY the question and the false answer
+# (data/nqopen1520/answers.jsonl) and writes one passage supporting it. No source document.
+#   uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-together.yaml --dry-run
+#   uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-together.yaml --limit 20
+#   uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-together.yaml
+# Together AI: export TOGETHER_API_KEY=... before running. Change llm.model to try another model.
+data:
+  nqplus_dir: data/nqopen1520
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  prompt: prompts/attack_v1.txt
+  output_dir: data/generated/nqopen1520-attack-together-v1
+  cache_path: cache/llm_nqopen1520_attack_together_v1.sqlite
+  samples_per_query: 1      # >1 writes further independent passages (atk_<qid>_1, ...) for later multiplication runs
+  min_words: 60
+  max_words: 110            # human documents have a median of ~84 words
+  temperature: 0.5
+  max_attempts: 4
+  workers: 8
+  seed: 13
+  progress_every: 25
+  llm:
+    provider: local_openai          # OpenAI-compatible endpoint, here Together AI
+    base_url: https://api.together.xyz/v1
+    model: Qwen/Qwen3.8-Flash
+    api_key_env: TOGETHER_API_KEY
+    max_tokens: 2048
+    timeout: 300
+    max_retries: 5
+    retry_delay: 5

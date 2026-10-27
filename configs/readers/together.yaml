@@ -1,0 +1,13 @@
+# LLM preset: Together AI (OpenAI-compatible API). The key is read from the environment, never from a file:
+#   export TOGETHER_API_KEY=...
+# Usable as reader preset (reader.llm: configs/readers/together.yaml) or copy the block into a generation config.
+# Model ids: https://docs.together.ai/docs/serverless-models
+llm:
+  provider: local_openai
+  base_url: https://api.together.xyz/v1
+  model: Qwen/Qwen3.8-Flash
+  api_key_env: TOGETHER_API_KEY
+  max_tokens: 2048     # leaves room if the model reasons before answering
+  timeout: 300
+  max_retries: 5       # 429 (rate limit) honours the Retry-After header
+  retry_delay: 5
