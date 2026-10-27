@@ -67,6 +67,8 @@ class LocalOpenAIClient:
             headers={
                 "Content-Type": "application/json",
                 "Authorization": f"Bearer {os.getenv(self.api_key_env, 'local')}",
+                # Hosted APIs behind Cloudflare (e.g. Together AI) reject urllib's default agent.
+                "User-Agent": "evlab/1.0",
             },
             method="POST",
         )
@@ -89,6 +91,14 @@ class LocalOpenAIClient:
                 with urllib.request.urlopen(request, timeout=self.timeout) as response:
                     return json.loads(response.read().decode("utf-8"))
             except urllib.error.HTTPError as exc:
+                if exc.code == 429 and attempt < self.max_retries:
+                    # Rate limited (hosted APIs): wait as long as the server asks.
+                    try:
+                        wait = float(exc.headers.get("Retry-After", ""))
+                    except (TypeError, ValueError):
+                        wait = self.retry_delay * (attempt + 1)
+                    time.sleep(min(max(wait, 1.0), 120.0))
+                    continue
                 if exc.code < 500 or attempt >= self.max_retries:
                     # Keep the server's explanation (e.g. context length) in the error.
                     try:

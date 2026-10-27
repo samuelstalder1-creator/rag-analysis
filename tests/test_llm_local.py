@@ -120,3 +120,30 @@ def test_local_openai_null_content_is_empty(monkeypatch):
     monkeypatch.setattr("urllib.request.urlopen", lambda *a, **kw: _fake_response(payload))
     client = LocalOpenAIClient(base_url="http://localhost:8000/v1", model="m")
     assert client.generate("prompt") == ""
+
+
+def test_rate_limit_is_retried_and_sends_user_agent(monkeypatch):
+    seen = {"count": 0, "agent": None, "sleeps": []}
+
+    class FakeResponse:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def read(self):
+            return b'{"choices":[{"message":{"content":"ok"}}]}'
+
+    def fake_urlopen(request, timeout):
+        seen["count"] += 1
+        seen["agent"] = request.get_header("User-agent")
+        if seen["count"] == 1:
+            raise urllib.error.HTTPError(request.full_url, 429, "Too Many Requests", {"Retry-After": "3"}, None)
+        return FakeResponse()
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    monkeypatch.setattr("time.sleep", lambda seconds: seen["sleeps"].append(seconds))
+    client = LocalOpenAIClient(base_url="https://api.together.xyz/v1", model="m", max_retries=2)
+    assert client.generate("prompt") == "ok"
+    assert seen["count"] == 2 and seen["sleeps"] == [3.0] and seen["agent"] == "evlab/1.0"
