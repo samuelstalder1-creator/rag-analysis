@@ -1,0 +1,13 @@
+[Unit]
+Description=Nightly DeepSeek nqopen1520 document generation at 22:00 UTC
+
+[Timer]
+OnCalendar=*-*-* 22:00:00 UTC
+# Resume interrupted work after reboot, and catch up missed nightly runs.
+OnBootSec=2min
+Persistent=true
+AccuracySec=1s
+Unit=deepseek-overnight.service
+
+[Install]
+WantedBy=timers.target

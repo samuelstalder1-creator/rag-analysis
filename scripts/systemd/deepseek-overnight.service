@@ -1,0 +1,18 @@
+[Unit]
+Description=Resume DeepSeek nqopen1520 correct and false document generation
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=exec
+User=ubuntu
+WorkingDirectory=/home/ubuntu/projects/rag-analysis
+Environment=GENERATION_MODEL=deepseek-ai/DeepSeek-R1-0528-Qwen3-8B
+Environment=GENERATION_LAUNCHER=scripts/run_deepseek_generation.sh
+ExecStart=/bin/bash /home/ubuntu/projects/rag-analysis/scripts/run_deepseek_overnight.sh
+Restart=on-failure
+RestartSec=300
+TimeoutStopSec=120
+StandardOutput=append:/home/ubuntu/projects/rag-analysis/logs/deepseek_overnight.log
+StandardError=inherit

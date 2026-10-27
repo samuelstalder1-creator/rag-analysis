@@ -64,6 +64,24 @@ The server defaults to one concurrent sequence and a 12,288-token context,
 including the configs' 8,192-token generation budget. Truncated responses are
 rejected and undecoded tokenizer output stops generation with an actionable error.
 
+For a persistent nightly schedule on this host, install the checked-in systemd
+units (their paths and user target `/home/ubuntu/projects/rag-analysis`, `ubuntu`):
+
+```bash
+sudo install -m 644 scripts/systemd/deepseek-overnight.{service,timer} /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now deepseek-overnight.timer
+```
+
+The timer runs at 22:00 UTC, catches up missed runs, and resumes after reboot.
+Failed runs retry after five minutes. The launcher resumes existing accepted
+documents and runs the correct stage followed by the false stage. Port 8000 and
+the GPU must be free, or already serving the matching DeepSeek model.
+Use `sudo systemctl start deepseek-overnight.service` to resume immediately,
+`systemctl status deepseek-overnight.service deepseek-overnight.timer` for status,
+and `tail -f logs/deepseek_overnight.log` for progress. Disable the timer with
+`sudo systemctl disable --now deepseek-overnight.timer` when generation is finished.
+
 ## Setup
 
 ```bash
