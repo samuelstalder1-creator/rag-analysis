@@ -21,17 +21,39 @@ import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-from evlab.generation.validate import contains_alias, number_variants
+from evlab.generation.validate import number_variants
 from evlab.io import append_jsonl, iter_jsonl, stable_hash
 from evlab.llm.cache import CachedLLMClient
 from evlab.llm.client import build_llm_client
 
 DEFAULT_PROMPT = Path("prompts/attack_v1.txt")
+VALIDATION_VERSION = 2
 LEAK = re.compile(
-    r"\b(fictional|counterfactual|misinformation|this benchmark|the benchmark|the question|"
-    r"this question|answer to the question|as an ai|i cannot|i can't|disclaimer)\b",
+    r"\b(counterfactual|misinformation|this benchmark|the benchmark|the question|"
+    r"this question|answer to the question|as an ai|disclaimer|"
+    r"i (?:cannot|can't) (?:help(?!\s+falling\b)|assist|provide|comply|create|write|generate))\b",
     re.IGNORECASE,
 )
+FICTIONAL_SUBJECT = re.compile(
+    r"\bfictional\s+(?:planet|world|universe|town|city|village|character|characters|"
+    r"setting|kingdom|country|island)\b", re.IGNORECASE,
+)
+
+
+def _normalize_quotes(text: str) -> str:
+    return text.translate(str.maketrans({"“": '"', "”": '"', "‘": "'", "’": "'"}))
+
+
+def _answer_spans(text: str, answer: str) -> list[tuple[int, int]]:
+    """Match answers literally; a digit inside a formatted number is not an answer."""
+    pattern = re.escape(answer)
+    if re.search(r"^\w", answer):
+        pattern = r"\b" + pattern
+    if re.search(r"\w$", answer):
+        pattern += r"\b"
+    if answer.isdigit():
+        pattern = r"(?<!\d[,.])" + pattern + r"(?![,.]\d)"
+    return [m.span() for m in re.finditer(pattern, text, re.IGNORECASE)]
 
 
 def load_prompt(path: str | Path | None) -> str:
@@ -77,14 +99,30 @@ def parse_output(response: str) -> tuple[str, str]:
 def validate_attack(title: str, body: str, *, target: str, aliases: list[str],
                     min_words: int, max_words: int) -> list[str]:
     reasons = []
-    whole = f"{title}\n{body}"
+    whole = _normalize_quotes(f"{title}\n{body}")
+    target = _normalize_quotes(target).strip().strip("\"'").strip()
     if not body.strip():
         return ["empty_text"]
-    if not any(contains_alias(whole, form) for form in number_variants(target)):
+    target_spans = [span for form in number_variants(target) for span in _answer_spans(whole, form)]
+    if not target_spans:
         reasons.append("missing_target_answer")
-    if any(contains_alias(whole, alias) for alias in aliases):
+    # A shared numeric component inside the required target (e.g. 2014 in a
+    # different full date) is not a separate assertion of the gold answer.
+    gold_found = False
+    for alias in aliases:
+        alias = _normalize_quotes(alias).strip().strip("\"'").strip()
+        if not alias:
+            continue
+        for start, end in _answer_spans(whole, alias):
+            shared_component = alias.isdigit() and any(
+                left <= start and end <= right and right - left > end - start
+                for left, right in target_spans
+            )
+            if not shared_component:
+                gold_found = True
+    if gold_found:
         reasons.append("still_contains_gold_answer")
-    if LEAK.search(whole):
+    if LEAK.search(whole) or re.search(r"\bfictional\b", FICTIONAL_SUBJECT.sub("", whole), re.IGNORECASE):
         reasons.append("meta_leak")
     words = len(body.split())
     if words < int(min_words * 0.6):
@@ -97,7 +135,10 @@ def validate_attack(title: str, body: str, *, target: str, aliases: list[str],
 def _feedback(reasons: list[str], target: str, min_words: int, max_words: int) -> str:
     notes = {
         "missing_target_answer": f'The passage must contain the answer "{target}" exactly as written.',
-        "still_contains_gold_answer": "Do not mention any other answer to the question; only the given answer may appear.",
+        "still_contains_gold_answer": ("Do not mention any other answer to the question; only the given answer may appear. "
+                                      "Use no dates or quantities (in digits or words) except those in the supplied answer. "
+                                      "Do not enumerate components or name opposing teams, political opponents, predecessors, "
+                                      "or the city being located. Describe only the supplied answer and its qualitative details."),
         "meta_leak": "Do not mention the question, the benchmark, fiction or counterfactuals; write plain encyclopedic prose.",
         "too_short": f"The passage was too short; write {min_words} to {max_words} words.",
         "too_long": f"The passage was too long; write {min_words} to {max_words} words.",
@@ -119,7 +160,8 @@ def generate_one(client, template: str, candidate: dict, *, sample: int, setting
                              min_words=settings["min_words"], max_words=settings["max_words"])
     attempts = []
     for attempt in range(settings["max_attempts"]):
-        text = prompt + (_feedback(attempts[-1]["reasons"], candidate["target"],
+        previous_reasons = list(dict.fromkeys(reason for item in attempts for reason in item["reasons"]))
+        text = prompt + (_feedback(previous_reasons, candidate["target"],
                                    settings["min_words"], settings["max_words"]) if attempts else "")
         seed = _seed(candidate["query_id"], sample, attempt, settings["seed"])
         response = client.generate(
@@ -201,6 +243,7 @@ def run_attack_generation(config: dict, nqplus_dir: str | Path, *, limit: int | 
                     receipt = {"query_id": candidate["query_id"], "question": candidate["question"],
                                "target_answer": candidate["target"], "gold_answer": candidate["gold"],
                                "origin": "attack_v1", "sample": sample, "model": client.model,
+                               "validation_version": VALIDATION_VERSION,
                                "prompt_hash": stable_hash(template)[:12], "signature": signature[:12],
                                "attempts": len(result["attempts"]),
                                "words": len(result["text"].split()),

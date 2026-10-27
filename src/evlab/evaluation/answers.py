@@ -36,7 +36,21 @@ def classify_answer(
     normalized = normalize(answer)
     if normalized in {normalize(value) for value in ABSTAINS}:
         return "abstain"
-    gold = any(contains_answer(normalized, normalize(alias)) for alias in gold_aliases)
+    normalized_target = normalize(target_answer) if target_answer else ""
+    target_spans = list(re.finditer(rf"(?<!\w){re.escape(normalized_target)}(?!\w)", normalized)) if normalized_target else []
+    gold = False
+    for alias in gold_aliases:
+        value = normalize(alias)
+        if not value:
+            continue
+        for match in re.finditer(rf"(?<!\w){re.escape(value)}(?!\w)", normalized):
+            # A shared year inside a different target date is not a second answer.
+            shared_component = value.isdigit() and any(
+                span.start() <= match.start() and match.end() <= span.end()
+                and len(span.group()) > len(value) for span in target_spans
+            )
+            if not shared_component:
+                gold = True
     target = bool(
         target_answer and contains_answer(normalized, normalize(target_answer))
     )

@@ -1,0 +1,29 @@
+{
+  "validation_version": 2,
+  "target_corrections": [
+    {
+      "query_id": "test267",
+      "old_target": "The Confederates",
+      "new_target": "The Union",
+      "reason": "Replace equivalent or compatible answer with a distinct false target"
+    },
+    {
+      "query_id": "test2144",
+      "old_target": "Natural sugars",
+      "new_target": "Organic acids",
+      "reason": "Replace equivalent or compatible answer with a distinct false target"
+    },
+    {
+      "query_id": "test2440",
+      "old_target": "\"Love and War\"",
+      "new_target": "Love and War",
+      "reason": "Remove formatting quotes"
+    },
+    {
+      "query_id": "test2707",
+      "old_target": "Off the coast of Cuba",
+      "new_target": "Boston Harbor",
+      "reason": "Replace equivalent or compatible answer with a distinct false target"
+    }
+  ]
+}

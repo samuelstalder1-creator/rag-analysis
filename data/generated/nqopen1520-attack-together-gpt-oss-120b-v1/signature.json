@@ -1,0 +1,9 @@
+{
+  "signature": "6f03c55896dc240519c02449348881a90b69c7a1449c7471874e406c8b8bcf32",
+  "model": "openai/gpt-oss-120b",
+  "min_words": 60,
+  "max_words": 110,
+  "max_attempts": 4,
+  "temperature": 0.5,
+  "seed": 13
+}
