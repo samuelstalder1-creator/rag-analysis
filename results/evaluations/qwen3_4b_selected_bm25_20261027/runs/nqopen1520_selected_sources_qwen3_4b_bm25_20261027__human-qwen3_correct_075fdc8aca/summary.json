@@ -1,0 +1,123 @@
+{
+  "corpus": {
+    "human_documents": 104194,
+    "include_human": true,
+    "mode": "fixed",
+    "sources": {
+      "gpt_oss_attack": {
+        "documents": 0,
+        "enabled": false
+      },
+      "qwen3_correct": {
+        "documents": 1665,
+        "enabled": true,
+        "excluded_documents": 0,
+        "kind": "generated",
+        "manual_documents": 0,
+        "path": "data/generated/nqopen1520-qwen3-4b-instruct-2507-correct-v1/corpus_0001.jsonl"
+      },
+      "qwen3_false": {
+        "documents": 0,
+        "enabled": false
+      },
+      "resolved_correct": {
+        "documents": 0,
+        "enabled": false
+      },
+      "resolved_false": {
+        "documents": 0,
+        "enabled": false
+      }
+    }
+  },
+  "num_docs": 105859,
+  "num_queries": 1520,
+  "reader": {
+    "llm_source": "configs/readers/qwen3-4b-instruct-2507.yaml",
+    "model": "Qwen/Qwen3-4B-Instruct-2507",
+    "prompt": "prompts/reader_v1.txt",
+    "prompt_hash": "2eb940b12aa8",
+    "provider": "local_openai",
+    "retrievers": [
+      "bm25"
+    ],
+    "seed": 13,
+    "temperature": 0.0,
+    "top_k": 5
+  },
+  "retriever_specs": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true,
+      "type": "bm25"
+    }
+  },
+  "retrievers": {
+    "bm25": {
+      "answer_abstain_rate": 0.09868421052631579,
+      "answer_ambiguous_rate": 0.0,
+      "answer_correct_rate": 0.6730263157894737,
+      "answer_invalid_rate": 0.0006578947368421052,
+      "answer_other_rate": 0.22697368421052633,
+      "answer_target_query_count": 1520,
+      "answer_target_rate": 0.0006578947368421052,
+      "answer_target_rate_on_targeted_queries": 0.0006578947368421052,
+      "correct_copy@1": 0.6197368421052631,
+      "correct_copy@10": 0.13217105263157894,
+      "correct_copy@5": 0.21605263157894736,
+      "false@1": 0.0,
+      "false@10": 0.0,
+      "false@5": 0.0,
+      "generated_before_human": 0.7525632262474368,
+      "human@1": 0.38026315789473686,
+      "human@10": 0.8678289473684211,
+      "human@5": 0.7839473684210526,
+      "human_docs@1": 0.38026315789473686,
+      "human_docs@10": 8.678289473684211,
+      "human_docs@5": 3.919736842105263,
+      "llm@1": 0.6197368421052631,
+      "llm@10": 0.13217105263157894,
+      "llm@5": 0.21605263157894736,
+      "poison@1": 0.0,
+      "poison@10": 0.0,
+      "poison@5": 0.0,
+      "r_human@1": 0.14396929824561402,
+      "r_human@10": 0.7807565789473684,
+      "r_human@5": 0.7023574561403509,
+      "r_poison@1": 0.0,
+      "r_poison@10": 0.0,
+      "r_poison@5": 0.0,
+      "r_rewrite@1": 0.574780701754386,
+      "r_rewrite@10": 0.8929824561403509,
+      "r_rewrite@5": 0.8621710526315788,
+      "recall@1": 0.71875,
+      "recall@10": 0.9138157894736842,
+      "recall@5": 0.8921600877192982,
+      "relaxed_mrr": 0.8180868838763575,
+      "relaxed_ndcg@1": 0.7559210526315789,
+      "relaxed_ndcg@10": 0.8373817117570499,
+      "relaxed_ndcg@5": 0.8301444048089238,
+      "relaxed_recall@1": 0.71875,
+      "relaxed_recall@10": 0.9138157894736842,
+      "relaxed_recall@5": 0.8921600877192982,
+      "rewrite@1": 0.6197368421052631,
+      "rewrite@10": 1.3217105263157896,
+      "rewrite@5": 1.0802631578947368,
+      "same_root@1": 1.0,
+      "same_root@10": 1.8046052631578948,
+      "same_root@5": 1.7085526315789474,
+      "strict_mrr": 0.4035534147869674,
+      "strict_ndcg@1": 0.1506578947368421,
+      "strict_ndcg@10": 0.49468866790091853,
+      "strict_ndcg@5": 0.4681899162556369,
+      "strict_recall@1": 0.14396929824561405,
+      "strict_recall@10": 0.7807565789473684,
+      "strict_recall@5": 0.7023574561403508,
+      "unique_roots@1": 1.0,
+      "unique_roots@10": 9.0375,
+      "unique_roots@5": 4.24078947368421
+    }
+  },
+  "run_id": "nqopen1520_selected_sources_qwen3_4b_bm25_20261027__human-qwen3_correct_075fdc8aca"
+}

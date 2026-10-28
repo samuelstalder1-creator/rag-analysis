@@ -1,0 +1,10 @@
+# DeepSeek R1 reasoning tokens share the output budget with the final JSON answer.
+llm:
+  provider: local_openai
+  base_url: http://localhost:8000/v1
+  model: deepseek-ai/DeepSeek-R1-0528-Qwen3-8B
+  api_key_env: LOCAL_LLM_API_KEY
+  max_tokens: 8192
+  timeout: 1800
+  max_retries: 2
+  retry_delay: 5

@@ -1,0 +1,131 @@
+{
+  "corpus": {
+    "human_documents": 104194,
+    "include_human": true,
+    "mode": "fixed",
+    "sources": {
+      "gpt_oss_attack": {
+        "documents": 0,
+        "enabled": false
+      },
+      "qwen3_correct": {
+        "documents": 1665,
+        "enabled": true,
+        "excluded_documents": 0,
+        "kind": "generated",
+        "manual_documents": 0,
+        "path": "data/generated/nqopen1520-qwen3-4b-instruct-2507-correct-v1/corpus_0001.jsonl"
+      },
+      "qwen3_false": {
+        "documents": 0,
+        "enabled": false
+      },
+      "resolved_correct": {
+        "documents": 1670,
+        "enabled": true,
+        "excluded_documents": 135,
+        "kind": "generated",
+        "manual_documents": 0,
+        "path": "data/generated/nqopen-plus-resolved-correct/corpus_0001.jsonl"
+      },
+      "resolved_false": {
+        "documents": 1657,
+        "enabled": true,
+        "excluded_documents": 6,
+        "kind": "generated",
+        "manual_documents": 0,
+        "path": "data/generated/nqopen-plus-resolved-false/corpus_0001.jsonl"
+      }
+    }
+  },
+  "num_docs": 109186,
+  "num_queries": 1520,
+  "reader": {
+    "llm_source": "configs/readers/qwen3-4b-instruct-2507.yaml",
+    "model": "Qwen/Qwen3-4B-Instruct-2507",
+    "prompt": "prompts/reader_v1.txt",
+    "prompt_hash": "2eb940b12aa8",
+    "provider": "local_openai",
+    "retrievers": [
+      "bm25"
+    ],
+    "seed": 13,
+    "temperature": 0.0,
+    "top_k": 5
+  },
+  "retriever_specs": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true,
+      "type": "bm25"
+    }
+  },
+  "retrievers": {
+    "bm25": {
+      "answer_abstain_rate": 0.08026315789473684,
+      "answer_ambiguous_rate": 0.002631578947368421,
+      "answer_correct_rate": 0.6289473684210526,
+      "answer_invalid_rate": 0.0,
+      "answer_other_rate": 0.20394736842105263,
+      "answer_target_query_count": 1520,
+      "answer_target_rate": 0.08421052631578947,
+      "answer_target_rate_on_targeted_queries": 0.08421052631578947,
+      "correct_copy@1": 0.4769736842105263,
+      "correct_copy@10": 0.22631578947368422,
+      "correct_copy@5": 0.3525,
+      "false@1": 0.3256578947368421,
+      "false@10": 0.11953947368421053,
+      "false@5": 0.1875,
+      "generated_before_human": 0.9019466474405191,
+      "human@1": 0.19736842105263158,
+      "human@10": 0.6541447368421053,
+      "human@5": 0.46,
+      "human_docs@1": 0.19736842105263158,
+      "human_docs@10": 6.541447368421053,
+      "human_docs@5": 2.3,
+      "llm@1": 0.8026315789473685,
+      "llm@10": 0.3458552631578947,
+      "llm@5": 0.54,
+      "poison@1": 0.3256578947368421,
+      "poison@10": 1.1953947368421052,
+      "poison@5": 0.9375,
+      "r_human@1": 0.051644736842105264,
+      "r_human@10": 0.7481907894736841,
+      "r_human@5": 0.6101425438596491,
+      "r_poison@1": 0.30098684210526316,
+      "r_poison@10": 0.8598684210526314,
+      "r_poison@5": 0.7871710526315788,
+      "r_rewrite@1": 0.44473684210526315,
+      "r_rewrite@10": 0.9164473684210528,
+      "r_rewrite@5": 0.8776315789473683,
+      "recall@1": 0.7973684210526316,
+      "recall@10": 0.9464912280701755,
+      "recall@5": 0.9322916666666666,
+      "relaxed_mrr": 0.8814659043441938,
+      "relaxed_ndcg@1": 0.8388157894736842,
+      "relaxed_ndcg@10": 0.8949946245706494,
+      "relaxed_ndcg@5": 0.8902691019681863,
+      "relaxed_recall@1": 0.7973684210526316,
+      "relaxed_recall@10": 0.9464912280701755,
+      "relaxed_recall@5": 0.9322916666666666,
+      "rewrite@1": 0.4769736842105263,
+      "rewrite@10": 2.263157894736842,
+      "rewrite@5": 1.7625,
+      "same_root@1": 1.0,
+      "same_root@10": 3.480921052631579,
+      "same_root@5": 3.1217105263157894,
+      "strict_mrr": 0.2514640768588137,
+      "strict_ndcg@1": 0.05460526315789474,
+      "strict_ndcg@10": 0.36907275944611956,
+      "strict_ndcg@5": 0.32155210458323846,
+      "strict_recall@1": 0.051644736842105264,
+      "strict_recall@10": 0.7481907894736842,
+      "strict_recall@5": 0.6101425438596491,
+      "unique_roots@1": 1.0,
+      "unique_roots@10": 7.127631578947368,
+      "unique_roots@5": 2.8217105263157896
+    }
+  },
+  "run_id": "nqopen1520_selected_sources_qwen3_4b_bm25_20261027__human-resolved_correct-qwen3_correct-resolved_false_70fe917570"
+}

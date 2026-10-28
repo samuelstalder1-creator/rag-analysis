@@ -15,7 +15,7 @@ from evlab.data.nqplus import (
 )
 from evlab.evaluation.retrieval import evaluate_retrieval
 from evlab.evaluation.source import evaluate_origin_counts, evaluate_source_metrics, evaluate_version_recall
-from evlab.io import stable_hash, write_json, write_jsonl
+from evlab.io import append_jsonl, stable_hash, write_json, write_jsonl
 from evlab.retrieval.specs import RetrievalSession, resolve_retrievers
 from evlab.schema import Doc, Hit, Query
 from evlab.rag.config import reader_summary, resolve_reader
@@ -130,7 +130,8 @@ def run_experiment(config_path: str | Path | dict) -> dict[str, object]:
         write_jsonl(run_dir / "retrieval.jsonl", _run_rows(run))
         if reader is not None and retriever_name in reader_spec["retrievers"]:
             answers, answer_metrics = _evaluate_reader(
-                reader, queries, run, docs_by_id, reader_spec
+                reader, queries, run, docs_by_id, reader_spec,
+                output_path=run_dir / "answers.jsonl",
             )
             write_jsonl(run_dir / "answers.jsonl", answers)
             metrics.update(answer_metrics)
@@ -144,6 +145,11 @@ def run_experiment(config_path: str | Path | dict) -> dict[str, object]:
 def _selection_summary(selection: dict) -> dict:
     """Corpus selection without the per-question ID list."""
     summary = {key: value for key, value in selection.items() if key != "targeted"}
+    if "sources" in summary:
+        summary["sources"] = {
+            name: {key: value for key, value in source.items() if key != "exclusions"}
+            for name, source in summary["sources"].items()
+        }
     if selection.get("targeted"):
         summary["targeted"] = {
             key: value
@@ -205,7 +211,7 @@ def _references_files(config: dict) -> bool:
     return any(isinstance(value, str) for value in definitions.values())
 
 
-def _evaluate_reader(client, queries, run, docs_by_id, config):
+def _evaluate_reader(client, queries, run, docs_by_id, config, *, output_path=None):
     # Imported targets also define the human-only baseline's target-adoption
     # denominator. Documents may not silently override a dataset's target.
     targets = {
@@ -225,6 +231,8 @@ def _evaluate_reader(client, queries, run, docs_by_id, config):
                 raise ValueError(f"Conflicting false targets for {doc.query_id}")
     rows = []
     counts = Counter()
+    if output_path is not None:
+        write_jsonl(output_path, [])
     for query in queries:
         result = answer_with_hits(
             client,
@@ -256,6 +264,10 @@ def _evaluate_reader(client, queries, run, docs_by_id, config):
         )
         counts[label] += 1
         rows.append(result)
+        if output_path is not None:
+            append_jsonl(output_path, [result])
+        if len(rows) == 1 or len(rows) % 10 == 0 or len(rows) == len(queries):
+            print(f"reader: answers={len(rows)}/{len(queries)} labels={dict(counts)}", flush=True)
     size = len(rows)
     metrics = {
         f"answer_{label}_rate": counts[label] / size if size else 0.0

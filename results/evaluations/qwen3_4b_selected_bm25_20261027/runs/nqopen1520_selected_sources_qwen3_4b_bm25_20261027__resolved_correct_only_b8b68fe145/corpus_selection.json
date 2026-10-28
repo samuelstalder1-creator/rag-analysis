@@ -1,0 +1,708 @@
+{
+  "human_documents": 0,
+  "include_human": false,
+  "mode": "fixed",
+  "sources": {
+    "gpt_oss_attack": {
+      "documents": 0,
+      "enabled": false
+    },
+    "qwen3_correct": {
+      "documents": 0,
+      "enabled": false
+    },
+    "qwen3_false": {
+      "documents": 0,
+      "enabled": false
+    },
+    "resolved_correct": {
+      "documents": 1670,
+      "enabled": true,
+      "excluded_documents": 135,
+      "exclusions": [
+        {
+          "doc_id": "gen::corpus_0001::doc2892",
+          "query_id": "test89",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc4602",
+          "query_id": "test122",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc4632",
+          "query_id": "test124",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc5633",
+          "query_id": "test153",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc5636",
+          "query_id": "test153",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc6514",
+          "query_id": "test178",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc6516",
+          "query_id": "test178",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc10875",
+          "query_id": "test289",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc10876",
+          "query_id": "test289",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc11181",
+          "query_id": "test297",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc11519",
+          "query_id": "test302",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc11548",
+          "query_id": "test302",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc12693",
+          "query_id": "test330",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc12699",
+          "query_id": "test330",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc12786",
+          "query_id": "test335",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc12788",
+          "query_id": "test335",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc15012",
+          "query_id": "test401",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc15013",
+          "query_id": "test401",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc15015",
+          "query_id": "test401",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc15016",
+          "query_id": "test401",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc15659",
+          "query_id": "test419",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc15868",
+          "query_id": "test427",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc17398",
+          "query_id": "test475",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc18468",
+          "query_id": "test503",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc18637",
+          "query_id": "test509",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc18643",
+          "query_id": "test509",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc21340",
+          "query_id": "test598",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc21372",
+          "query_id": "test598",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc23259",
+          "query_id": "test653",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc23597",
+          "query_id": "test664",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc23601",
+          "query_id": "test664",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc25144",
+          "query_id": "test706",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc25156",
+          "query_id": "test706",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc26145",
+          "query_id": "test733",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc26238",
+          "query_id": "test737",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc26256",
+          "query_id": "test737",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc28066",
+          "query_id": "test787",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc28067",
+          "query_id": "test787",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc32600",
+          "query_id": "test913",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc33318",
+          "query_id": "test935",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc33319",
+          "query_id": "test935",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc33681",
+          "query_id": "test949",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc33682",
+          "query_id": "test949",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc33705",
+          "query_id": "test950",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc33717",
+          "query_id": "test950",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc35863",
+          "query_id": "test1017",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc35884",
+          "query_id": "test1017",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc36002",
+          "query_id": "test1023",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc36004",
+          "query_id": "test1023",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc38006",
+          "query_id": "test1090",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc38027",
+          "query_id": "test1090",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc41304",
+          "query_id": "test1163",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc43833",
+          "query_id": "test1235",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc46482",
+          "query_id": "test1315",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc46841",
+          "query_id": "test1324",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc46842",
+          "query_id": "test1324",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc46859",
+          "query_id": "test1324",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc47757",
+          "query_id": "test1348",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc48965",
+          "query_id": "test1381",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc49112",
+          "query_id": "test1385",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc49114",
+          "query_id": "test1385",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc51071",
+          "query_id": "test1438",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc51724",
+          "query_id": "test1452",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc51731",
+          "query_id": "test1452",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc56897",
+          "query_id": "test1607",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc58379",
+          "query_id": "test1649",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc59825",
+          "query_id": "test1689",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc62430",
+          "query_id": "test1771",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc63585",
+          "query_id": "test1808",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc64241",
+          "query_id": "test1826",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc64765",
+          "query_id": "test1839",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc64766",
+          "query_id": "test1839",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc65395",
+          "query_id": "test1857",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc65860",
+          "query_id": "test1874",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc67059",
+          "query_id": "test1913",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc67119",
+          "query_id": "test1913",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc67139",
+          "query_id": "test1914",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc67607",
+          "query_id": "test1928",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc68440",
+          "query_id": "test1952",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc68456",
+          "query_id": "test1952",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc70693",
+          "query_id": "test2023",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc72924",
+          "query_id": "test2099",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc72925",
+          "query_id": "test2099",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc73129",
+          "query_id": "test2102",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc73199",
+          "query_id": "test2105",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc73202",
+          "query_id": "test2105",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc73742",
+          "query_id": "test2122",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc76237",
+          "query_id": "test2189",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc76239",
+          "query_id": "test2189",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc76491",
+          "query_id": "test2198",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc76500",
+          "query_id": "test2198",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc78237",
+          "query_id": "test2257",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc78702",
+          "query_id": "test2277",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc80226",
+          "query_id": "test2323",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc80580",
+          "query_id": "test2337",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc81942",
+          "query_id": "test2369",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc81943",
+          "query_id": "test2369",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc83019",
+          "query_id": "test2404",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc86093",
+          "query_id": "test2493",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc86839",
+          "query_id": "test2523",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc87463",
+          "query_id": "test2544",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc87464",
+          "query_id": "test2544",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc87473",
+          "query_id": "test2544",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc88362",
+          "query_id": "test2576",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc88393",
+          "query_id": "test2576",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc88507",
+          "query_id": "test2579",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc90342",
+          "query_id": "test2639",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc91519",
+          "query_id": "test2672",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc91536",
+          "query_id": "test2673",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc91592",
+          "query_id": "test2673",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc93722",
+          "query_id": "test2732",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc93734",
+          "query_id": "test2732",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc95274",
+          "query_id": "test2774",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc96902",
+          "query_id": "test2824",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc97448",
+          "query_id": "test2846",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc98912",
+          "query_id": "test2894",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc101250",
+          "query_id": "test2960",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc106113",
+          "query_id": "test3100",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc106114",
+          "query_id": "test3100",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc106172",
+          "query_id": "test3102",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc106179",
+          "query_id": "test3102",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc106410",
+          "query_id": "test3110",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc106437",
+          "query_id": "test3110",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc108139",
+          "query_id": "test3167",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc108148",
+          "query_id": "test3167",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc110577",
+          "query_id": "test3229",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc110596",
+          "query_id": "test3229",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc112841",
+          "query_id": "test3302",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc115659",
+          "query_id": "test3392",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc115678",
+          "query_id": "test3392",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc117662",
+          "query_id": "test3450",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc117663",
+          "query_id": "test3450",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc25685",
+          "query_id": "test718",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc97306",
+          "query_id": "test2840",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc106974",
+          "query_id": "test3132",
+          "reason": "outside_dataset"
+        }
+      ],
+      "kind": "generated",
+      "manual_documents": 0,
+      "path": "data/generated/nqopen-plus-resolved-correct/corpus_0001.jsonl"
+    },
+    "resolved_false": {
+      "documents": 0,
+      "enabled": false
+    }
+  }
+}

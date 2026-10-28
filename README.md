@@ -82,6 +82,94 @@ Use `sudo systemctl start deepseek-overnight.service` to resume immediately,
 and `tail -f logs/deepseek_overnight.log` for progress. Disable the timer with
 `sudo systemctl disable --now deepseek-overnight.timer` when generation is finished.
 
+## Full BM25 evaluation with Qwen3-4B answers
+
+The selected evaluation uses
+`configs/experiments/nqopen1520_selected_sources_qwen3_4b_bm25.yaml`: 17 runs
+covering H and each generated source alone, H plus each generated source,
+H+RF+QF, H+RF+QF+attack, H+RC+QC+RF, H+RC+QC+QF, H+RC+QC+attack,
+and H+RC+RF+QC+QF+attack. R denotes resolved and Q denotes Qwen3-4B;
+C/F denotes correct/false. `corpus.include_human: false` supports generated-only
+corpora while still checking their receipts against the original human evidence.
+All runs evaluate all 1,520 questions.
+
+```bash
+sudo install -m 644 scripts/systemd/qwen3-4b-selected-bm25-evaluation.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now qwen3-4b-selected-bm25-evaluation.service
+tail -f logs/qwen3_4b_selected_bm25_evaluation_20261027.log
+```
+
+Results are under `results/evaluations/qwen3_4b_selected_bm25_20261027`.
+This run reuses the earlier Qwen reader cache to preserve completed requests.
+Stop it with `sudo systemctl disable --now qwen3-4b-selected-bm25-evaluation.service`.
+The previous 32-combination services remain disabled.
+
+The earlier full matrix remains available for reference:
+
+`configs/experiments/nqopen1520_all_sources_qwen3_4b_bm25.yaml` runs the same
+32 combinations described below using Qwen3-4B-Instruct-2507, a non-thinking
+reader with a 256-token answer budget. It uses a separate cache and writes fresh
+results to `results/evaluations/qwen3_4b_bm25_20261027`.
+
+```bash
+bash scripts/run_qwen3_4b_evaluation.sh
+```
+
+For the persistent background run on this host:
+
+```bash
+sudo install -m 644 scripts/systemd/qwen3-4b-bm25-evaluation.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now qwen3-4b-bm25-evaluation.service
+tail -f logs/qwen3_4b_bm25_evaluation_20261027.log
+```
+
+The launcher checks two real answers with all sources before starting the sweep.
+Answers are saved incrementally. The service resumes after failures or reboot
+and skips completed evaluations via its `COMPLETE` marker. Stop it with
+`sudo systemctl disable --now qwen3-4b-bm25-evaluation.service`.
+
+## Full BM25 evaluation with DeepSeek answers
+
+`configs/experiments/nqopen1520_all_sources_deepseek_bm25.yaml` evaluates all
+1,520 questions with the human corpus always present and every subset of five
+generated sources (32 runs): resolved correct/false, Qwen3-4B correct/false,
+and GPT-OSS-120B attack documents. BM25 retrieves ten documents; DeepSeek reads
+the top five. Retrieval metrics use cutoffs 1, 5, and 10 and strict/relaxed
+relevance. Reader metrics include correctness, false-target adoption, abstention,
+and invalid answers. Attack documents never count as relevant evidence.
+
+Registry-backed generated sources retain their checked receipts and unique
+source IDs. `compatible_only` filters roots outside this dataset and false
+documents whose targets conflict with its current answer file. Exclusions are
+listed in each run's `corpus_selection.json`; source files are preserved.
+
+```bash
+.venv/bin/python -m evlab.cli sweep configs/experiments/nqopen1520_all_sources_deepseek_bm25.yaml --dry-run
+bash scripts/run_deepseek_evaluation.sh
+```
+
+The launcher starts the tokenizer-corrected DeepSeek server with a 16,384-token
+context, checks two real answers with all sources, then runs the complete sweep.
+Answers are saved after each question and cached in a dedicated evaluation
+cache. Interrupted runs replay cached requests on restart. Results are under
+`results/evaluations/deepseek_bm25_20261027/{runs,sweeps,smoke}`.
+
+For a background run that resumes after failures or reboot on this host:
+
+```bash
+sudo install -m 644 scripts/systemd/deepseek-bm25-evaluation.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now deepseek-bm25-evaluation.service
+tail -f logs/deepseek_bm25_evaluation_20261027.log
+```
+
+Stop it with `sudo systemctl disable --now deepseek-bm25-evaluation.service`.
+The dataset-generation timer stays disabled. Disable the evaluation service
+after completion if no longer needed. A `COMPLETE` marker prevents completed
+evaluations from replaying on later boots.
+
 ## Setup
 
 ```bash

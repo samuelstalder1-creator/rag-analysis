@@ -1,0 +1,141 @@
+{
+  "corpus": {
+    "human_documents": 104194,
+    "include_human": true,
+    "mode": "fixed",
+    "sources": {
+      "gpt_oss_attack": {
+        "documents": 1520,
+        "enabled": true,
+        "kind": "attack",
+        "manual_documents": 0,
+        "path": "data/generated/nqopen1520-attack-together-gpt-oss-120b-v1/corpus.jsonl"
+      },
+      "qwen3_correct": {
+        "documents": 1665,
+        "enabled": true,
+        "excluded_documents": 0,
+        "kind": "generated",
+        "manual_documents": 0,
+        "path": "data/generated/nqopen1520-qwen3-4b-instruct-2507-correct-v1/corpus_0001.jsonl"
+      },
+      "qwen3_false": {
+        "documents": 1616,
+        "enabled": true,
+        "excluded_documents": 5,
+        "kind": "generated",
+        "manual_documents": 0,
+        "path": "data/generated/nqopen1520-qwen3-4b-instruct-2507-false-v1/corpus_0001.jsonl"
+      },
+      "resolved_correct": {
+        "documents": 1670,
+        "enabled": true,
+        "excluded_documents": 135,
+        "kind": "generated",
+        "manual_documents": 0,
+        "path": "data/generated/nqopen-plus-resolved-correct/corpus_0001.jsonl"
+      },
+      "resolved_false": {
+        "documents": 1657,
+        "enabled": true,
+        "excluded_documents": 6,
+        "kind": "generated",
+        "manual_documents": 0,
+        "path": "data/generated/nqopen-plus-resolved-false/corpus_0001.jsonl"
+      }
+    }
+  },
+  "num_docs": 112322,
+  "num_queries": 1520,
+  "reader": {
+    "llm_source": "configs/readers/qwen3-4b-instruct-2507.yaml",
+    "model": "Qwen/Qwen3-4B-Instruct-2507",
+    "prompt": "prompts/reader_v1.txt",
+    "prompt_hash": "2eb940b12aa8",
+    "provider": "local_openai",
+    "retrievers": [
+      "bm25"
+    ],
+    "seed": 13,
+    "temperature": 0.0,
+    "top_k": 5
+  },
+  "retriever_specs": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true,
+      "type": "bm25"
+    }
+  },
+  "retrievers": {
+    "bm25": {
+      "answer_abstain_rate": 0.06315789473684211,
+      "answer_ambiguous_rate": 0.006578947368421052,
+      "answer_correct_rate": 0.21842105263157896,
+      "answer_invalid_rate": 0.0,
+      "answer_other_rate": 0.14868421052631578,
+      "answer_target_query_count": 1520,
+      "answer_target_rate": 0.5631578947368421,
+      "answer_target_rate_on_targeted_queries": 0.5631578947368421,
+      "correct_copy@1": 0.16907894736842105,
+      "correct_copy@10": 0.20223684210526316,
+      "correct_copy@5": 0.27263157894736845,
+      "false@1": 0.7861842105263158,
+      "false@10": 0.3349342105263158,
+      "false@5": 0.5114473684210527,
+      "generated_before_human": 0.9366776315789473,
+      "human@1": 0.04473684210526316,
+      "human@10": 0.46282894736842106,
+      "human@5": 0.21592105263157896,
+      "human_docs@1": 0.04473684210526316,
+      "human_docs@10": 4.628289473684211,
+      "human_docs@5": 1.0796052631578947,
+      "llm@1": 0.9552631578947368,
+      "llm@10": 0.5371710526315789,
+      "llm@5": 0.7840789473684211,
+      "poison@1": 0.7861842105263158,
+      "poison@10": 3.349342105263158,
+      "poison@5": 2.5572368421052634,
+      "r_attack@1": 0.4026315789473684,
+      "r_attack@10": 0.9901315789473685,
+      "r_attack@5": 0.9,
+      "r_human@1": 0.02006578947368421,
+      "r_human@10": 0.7043311403508773,
+      "r_human@5": 0.3516447368421053,
+      "r_poison@1": 0.3572916666666666,
+      "r_poison@10": 0.9486293859649122,
+      "r_poison@5": 0.908388157894737,
+      "r_rewrite@1": 0.15833333333333333,
+      "r_rewrite@10": 0.9046052631578947,
+      "r_rewrite@5": 0.8328947368421055,
+      "recall@1": 0.5356907894736842,
+      "recall@10": 0.9726973684210526,
+      "recall@5": 0.958497807017544,
+      "relaxed_mrr": 0.7580012531328321,
+      "relaxed_ndcg@1": 0.5710526315789474,
+      "relaxed_ndcg@10": 0.8108696707554623,
+      "relaxed_ndcg@5": 0.8061389146915089,
+      "relaxed_recall@1": 0.5356907894736842,
+      "relaxed_recall@10": 0.9726973684210526,
+      "relaxed_recall@5": 0.958497807017544,
+      "rewrite@1": 0.16907894736842105,
+      "rewrite@10": 2.0223684210526316,
+      "rewrite@5": 1.3631578947368421,
+      "same_root@1": 1.0,
+      "same_root@10": 4.252631578947368,
+      "same_root@5": 3.1868421052631577,
+      "strict_mrr": 0.16691468253968256,
+      "strict_ndcg@1": 0.021710526315789475,
+      "strict_ndcg@10": 0.2893385966798166,
+      "strict_ndcg@5": 0.16848165476135993,
+      "strict_recall@1": 0.02006578947368421,
+      "strict_recall@10": 0.7043311403508772,
+      "strict_recall@5": 0.3516447368421053,
+      "unique_roots@1": 1.0,
+      "unique_roots@10": 6.403947368421052,
+      "unique_roots@5": 2.7697368421052633
+    }
+  },
+  "run_id": "nqopen1520_selected_sources_qwen3_4b_bm25_20261027__human-resolved_correct-resolved_false-qwen3_correct-qwen3_false-gpt_oss_attack_3dc6063c53"
+}

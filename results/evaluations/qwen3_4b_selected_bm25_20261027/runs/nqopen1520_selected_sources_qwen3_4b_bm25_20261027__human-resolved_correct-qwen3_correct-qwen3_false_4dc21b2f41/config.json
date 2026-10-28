@@ -1,0 +1,90 @@
+{
+  "corpus": {
+    "fixed": {
+      "gpt_oss_attack": {
+        "condition": "false",
+        "enabled": false,
+        "kind": "attack",
+        "label": "gpt-oss-120b-attack",
+        "manifest": "data/generated/nqopen1520-attack-together-gpt-oss-120b-v1/manifest.jsonl",
+        "model": "openai/gpt-oss-120b",
+        "path": "data/generated/nqopen1520-attack-together-gpt-oss-120b-v1/corpus.jsonl"
+      },
+      "qwen3_correct": {
+        "condition": "correct",
+        "enabled": true,
+        "kind": "generated",
+        "path": "data/generated/nqopen1520-qwen3-4b-instruct-2507-correct-v1/corpus_0001.jsonl"
+      },
+      "qwen3_false": {
+        "compatible_only": true,
+        "condition": "false",
+        "enabled": true,
+        "kind": "generated",
+        "path": "data/generated/nqopen1520-qwen3-4b-instruct-2507-false-v1/corpus_0001.jsonl"
+      },
+      "resolved_correct": {
+        "compatible_only": true,
+        "condition": "correct",
+        "enabled": true,
+        "kind": "generated",
+        "path": "data/generated/nqopen-plus-resolved-correct/corpus_0001.jsonl"
+      },
+      "resolved_false": {
+        "compatible_only": true,
+        "condition": "false",
+        "enabled": false,
+        "kind": "generated",
+        "path": "data/generated/nqopen-plus-resolved-false/corpus_0001.jsonl"
+      }
+    },
+    "include_human": true
+  },
+  "data": {
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqopen1520"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      5,
+      10
+    ],
+    "recall_alias": "relaxed",
+    "relevance_modes": [
+      "strict",
+      "relaxed"
+    ]
+  },
+  "experiment": "nqopen1520_selected_sources_qwen3_4b_bm25_20261027__human-resolved_correct-qwen3_correct-qwen3_false",
+  "output": {
+    "dir": "results/evaluations/qwen3_4b_selected_bm25_20261027/runs"
+  },
+  "queries": "rag",
+  "reader": {
+    "cache_path": "cache/reader_nqopen1520_all_sources_qwen3_4b_20261027.sqlite",
+    "llm": "configs/readers/qwen3-4b-instruct-2507.yaml",
+    "prompt": "prompts/reader_v1.txt",
+    "retrievers": [
+      "bm25"
+    ],
+    "seed": 13,
+    "temperature": 0.0,
+    "top_k": 5
+  },
+  "retrieval": {
+    "top_k": 10
+  },
+  "retriever_definitions": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true,
+      "type": "bm25"
+    }
+  },
+  "retrievers": [
+    "bm25"
+  ],
+  "seed": 13
+}

@@ -1,0 +1,30 @@
+{
+  "human_documents": 104194,
+  "include_human": true,
+  "mode": "fixed",
+  "sources": {
+    "gpt_oss_attack": {
+      "documents": 1520,
+      "enabled": true,
+      "kind": "attack",
+      "manual_documents": 0,
+      "path": "data/generated/nqopen1520-attack-together-gpt-oss-120b-v1/corpus.jsonl"
+    },
+    "qwen3_correct": {
+      "documents": 0,
+      "enabled": false
+    },
+    "qwen3_false": {
+      "documents": 0,
+      "enabled": false
+    },
+    "resolved_correct": {
+      "documents": 0,
+      "enabled": false
+    },
+    "resolved_false": {
+      "documents": 0,
+      "enabled": false
+    }
+  }
+}

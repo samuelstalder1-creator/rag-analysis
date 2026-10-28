@@ -108,3 +108,30 @@ def test_rag_config_requires_explicit_reader(tmp_path):
     write_json(config, {"queries": "rag", "output": {"dir": str(tmp_path)}})
     with pytest.raises(ValueError, match="reader.llm"):
         run_experiment(config)
+
+
+def test_reader_keeps_completed_answers_when_a_later_request_fails(tmp_path):
+    import pytest
+    from evlab.experiments.runner import _evaluate_reader
+    from evlab.io import read_jsonl
+    from evlab.schema import Query
+
+    class Reader:
+        calls = 0
+
+        def generate(self, prompt, **kwargs):
+            self.calls += 1
+            if self.calls == 2:
+                raise RuntimeError("server stopped")
+            return '{"answer": "23", "citations": []}'
+
+    queries = [Query("one", "How many?", aliases=("23",)),
+               Query("two", "How many?", aliases=("24",))]
+    output = tmp_path / "answers.jsonl"
+    config = {"top_k": 1, "temperature": 0.0, "seed": 13,
+              "prompt_template": "Question: {question}\nContext: {context}"}
+    with pytest.raises(RuntimeError, match="server stopped"):
+        _evaluate_reader(Reader(), queries, {}, {}, config, output_path=output)
+    saved = read_jsonl(output)
+    assert len(saved) == 1
+    assert saved[0]["query_id"] == "one" and saved[0]["label"] == "correct"

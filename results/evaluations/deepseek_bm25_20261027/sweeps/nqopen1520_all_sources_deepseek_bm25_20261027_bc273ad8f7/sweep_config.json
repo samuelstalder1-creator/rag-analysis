@@ -1,0 +1,313 @@
+{
+  "corpus": {
+    "fixed": {
+      "gpt_oss_attack": {
+        "condition": "false",
+        "kind": "attack",
+        "label": "gpt-oss-120b-attack",
+        "manifest": "data/generated/nqopen1520-attack-together-gpt-oss-120b-v1/manifest.jsonl",
+        "model": "openai/gpt-oss-120b",
+        "path": "data/generated/nqopen1520-attack-together-gpt-oss-120b-v1/corpus.jsonl"
+      },
+      "qwen3_correct": {
+        "condition": "correct",
+        "kind": "generated",
+        "path": "data/generated/nqopen1520-qwen3-4b-instruct-2507-correct-v1/corpus_0001.jsonl"
+      },
+      "qwen3_false": {
+        "compatible_only": true,
+        "condition": "false",
+        "kind": "generated",
+        "path": "data/generated/nqopen1520-qwen3-4b-instruct-2507-false-v1/corpus_0001.jsonl"
+      },
+      "resolved_correct": {
+        "compatible_only": true,
+        "condition": "correct",
+        "kind": "generated",
+        "path": "data/generated/nqopen-plus-resolved-correct/corpus_0001.jsonl"
+      },
+      "resolved_false": {
+        "compatible_only": true,
+        "condition": "false",
+        "kind": "generated",
+        "path": "data/generated/nqopen-plus-resolved-false/corpus_0001.jsonl"
+      }
+    }
+  },
+  "data": {
+    "human_corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "nqplus_dir": "data/nqopen1520"
+  },
+  "evaluation": {
+    "cutoffs": [
+      1,
+      5,
+      10
+    ],
+    "recall_alias": "relaxed",
+    "relevance_modes": [
+      "strict",
+      "relaxed"
+    ]
+  },
+  "experiment": "nqopen1520_all_sources_deepseek_bm25_20261027",
+  "output": {
+    "dir": "results/evaluations/deepseek_bm25_20261027/runs"
+  },
+  "queries": "rag",
+  "reader": {
+    "cache_path": "cache/reader_nqopen1520_all_sources_deepseek_20261027.sqlite",
+    "llm": "configs/readers/deepseek-r1-8b.yaml",
+    "prompt": "prompts/reader_v1.txt",
+    "retrievers": [
+      "bm25"
+    ],
+    "seed": 13,
+    "temperature": 0.0,
+    "top_k": 5
+  },
+  "retrieval": {
+    "top_k": 10
+  },
+  "retriever_definitions": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true,
+      "type": "bm25"
+    }
+  },
+  "retrievers": [
+    "bm25"
+  ],
+  "seed": 13,
+  "sweep_output": {
+    "dir": "results/evaluations/deepseek_bm25_20261027/sweeps"
+  },
+  "variants": {
+    "human+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+qwen3_correct": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+qwen3_correct+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+qwen3_correct+qwen3_false": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+qwen3_correct+qwen3_false+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+qwen3_false": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+qwen3_false+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+resolved_correct": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+resolved_correct+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+resolved_correct+qwen3_correct": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+resolved_correct+qwen3_correct+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+resolved_correct+qwen3_correct+qwen3_false": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+resolved_correct+qwen3_correct+qwen3_false+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+resolved_correct+qwen3_false": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+resolved_correct+qwen3_false+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": false
+    },
+    "human+resolved_correct+resolved_false": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_correct+resolved_false+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_correct+resolved_false+qwen3_correct": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_correct+resolved_false+qwen3_correct+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_correct+resolved_false+qwen3_correct+qwen3_false": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_correct+resolved_false+qwen3_correct+qwen3_false+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_correct+resolved_false+qwen3_false": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_correct+resolved_false+qwen3_false+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": true,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_false": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_false+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_false+qwen3_correct": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_false+qwen3_correct+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_false+qwen3_correct+qwen3_false": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_false+qwen3_correct+qwen3_false+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": true,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_false+qwen3_false": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human+resolved_false+qwen3_false+gpt_oss_attack": {
+      "corpus.fixed.gpt_oss_attack.enabled": true,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": true,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": true
+    },
+    "human_only": {
+      "corpus.fixed.gpt_oss_attack.enabled": false,
+      "corpus.fixed.qwen3_correct.enabled": false,
+      "corpus.fixed.qwen3_false.enabled": false,
+      "corpus.fixed.resolved_correct.enabled": false,
+      "corpus.fixed.resolved_false.enabled": false
+    }
+  }
+}

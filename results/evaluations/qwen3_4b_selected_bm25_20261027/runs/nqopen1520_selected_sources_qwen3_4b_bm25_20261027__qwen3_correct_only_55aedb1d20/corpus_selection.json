@@ -1,0 +1,32 @@
+{
+  "human_documents": 0,
+  "include_human": false,
+  "mode": "fixed",
+  "sources": {
+    "gpt_oss_attack": {
+      "documents": 0,
+      "enabled": false
+    },
+    "qwen3_correct": {
+      "documents": 1665,
+      "enabled": true,
+      "excluded_documents": 0,
+      "exclusions": [],
+      "kind": "generated",
+      "manual_documents": 0,
+      "path": "data/generated/nqopen1520-qwen3-4b-instruct-2507-correct-v1/corpus_0001.jsonl"
+    },
+    "qwen3_false": {
+      "documents": 0,
+      "enabled": false
+    },
+    "resolved_correct": {
+      "documents": 0,
+      "enabled": false
+    },
+    "resolved_false": {
+      "documents": 0,
+      "enabled": false
+    }
+  }
+}

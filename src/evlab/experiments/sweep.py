@@ -116,7 +116,8 @@ def run_sweep(config_path: str | Path, *, dry_run: bool = False, limit: int | No
         f"{sweep_name}_{stable_hash(config)[:10]}"
     )
     rows: list[dict] = []
-    for label, params, run_config in runs:
+    for index, (label, params, run_config) in enumerate(runs, start=1):
+        print(f"sweep: run={index}/{len(runs)} variant={label} dry_run={dry_run}", flush=True)
         if dry_run:
             docs, selection = build_corpus_with_report(run_config)
             rows.append(
@@ -142,6 +143,9 @@ def run_sweep(config_path: str | Path, *, dry_run: bool = False, limit: int | No
                     **metrics,
                 }
             )
+        out_dir.mkdir(parents=True, exist_ok=True)
+        write_jsonl(out_dir / "summary.jsonl", rows)
+        _write_csv(out_dir / "summary.csv", rows)
     out_dir.mkdir(parents=True, exist_ok=True)
     name = "corpus_preview" if dry_run else "summary"
     write_jsonl(out_dir / f"{name}.jsonl", rows)

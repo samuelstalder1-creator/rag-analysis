@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from glob import glob
+from dataclasses import replace
 
 from evlab.data.cocktail import load_corpus
 from evlab.io import iter_jsonl, stable_hash
@@ -198,9 +199,14 @@ def verify_generated_docs(generated: list[Doc], human_docs: list[Doc], data: dic
 def _build_fixed_corpus(config: dict) -> tuple[list[Doc], dict]:
     """Human corpus plus complete generated files, added as they are.
 
-    ``corpus.fixed`` maps ``correct`` (LLM rewrites) and ``poisoned`` (false documents;
-    not named ``false`` because YAML reads that key as a boolean) to
-    ``{path, manifest?, enabled?}``. Every document of an enabled file is added next to
+    ``corpus.fixed`` maps source names to ``{path, condition, kind?, enabled?}``.
+    Legacy names ``correct`` and ``poisoned`` infer their conditions. Sources with
+    ``kind: generated`` use registry metadata and checked validation receipts;
+    ``compatible_only: true`` excludes out-of-dataset roots and stale false targets,
+    recording every exclusion in the selection report.
+    Set ``corpus.include_human: false`` to evaluate generated sources alone;
+    human originals are still loaded for source receipt verification.
+    Every document of an enabled file is added next to
     its human original; nothing is sampled. A document's root is the human document it
     was generated from, so relaxed relevance counts any version as the relevant one.
     """
@@ -209,12 +215,42 @@ def _build_fixed_corpus(config: dict) -> tuple[list[Doc], dict]:
     owners = query_ids_by_doc(data)
     report: dict = {"mode": "fixed", "sources": {}}
     for name, spec in (config["corpus"]["fixed"] or {}).items():
-        if name not in {"correct", "poisoned"}:
-            raise ValueError(f"corpus.fixed keys must be 'correct' or 'poisoned', got {name!r}")
-        condition = "false" if name == "poisoned" else "correct"
         spec = spec or {}
+        condition = spec.get("condition", {"correct": "correct", "poisoned": "false"}.get(name))
+        if condition not in {"correct", "false"}:
+            raise ValueError(f"corpus.fixed.{name} needs condition 'correct' or 'false'")
         if not spec.get("enabled", True):
             report["sources"][name] = {"enabled": False, "documents": 0}
+            continue
+        if spec.get("kind") == "generated":
+            generated = load_generated_docs(spec["path"], query_ids_by_doc=owners)
+            queries = {q.query_id: q for q in load_retrieval_queries(data["nqplus_dir"])}
+            added, excluded = [], []
+            for doc in generated:
+                if doc.condition != condition:
+                    raise ValueError(f"{name}: document {doc.doc_id} has condition {doc.condition!r}")
+                reason = None
+                if doc.root_id not in owners:
+                    reason = "outside_dataset"
+                elif condition == "false":
+                    target = queries[doc.query_id].metadata.get("false_answer")
+                    if not doc.target_answer or (target and target != doc.target_answer):
+                        reason = "incompatible_false_target"
+                if reason:
+                    if not spec.get("compatible_only", False):
+                        raise ValueError(f"{name}: {reason} for {doc.doc_id}")
+                    excluded.append({"doc_id": doc.doc_id, "query_id": doc.query_id, "reason": reason})
+                    continue
+                added.append(replace(doc, doc_id=f"gen::{name}::{doc.doc_id.split('::', 1)[-1]}"))
+            verify_generated_docs(added, docs, data)
+            if len({d.doc_id for d in added}) != len(added):
+                raise ValueError(f"Duplicate documents in {spec['path']}")
+            docs.extend(added)
+            report["sources"][name] = {
+                "enabled": True, "path": str(spec["path"]), "kind": "generated",
+                "documents": len(added), "excluded_documents": len(excluded),
+                "exclusions": excluded, "manual_documents": 0,
+            }
             continue
         receipts = {}
         if spec.get("manifest"):
@@ -224,8 +260,8 @@ def _build_fixed_corpus(config: dict) -> tuple[list[Doc], dict]:
             # Question + false-answer documents have no source document: the query id is
             # stored in the row and the document is its own root, so it never counts as
             # a relevant document (see r_attack@k for how often it is retrieved).
-            if name != "poisoned":
-                raise ValueError("corpus.fixed kind 'attack' is only valid for 'poisoned'")
+            if condition != "false":
+                raise ValueError("corpus.fixed kind 'attack' requires condition 'false'")
             query_ids = set(owners.values())
             for row in iter_jsonl(spec["path"]):
                 node = str(row["_id"])
@@ -270,6 +306,13 @@ def _build_fixed_corpus(config: dict) -> tuple[list[Doc], dict]:
             "enabled": True, "path": str(spec["path"]), "documents": len(added),
             "manual_documents": sum(1 for d in added if d.metadata["origin"].startswith("manual")),
         }
+    include_human = config["corpus"].get("include_human", True)
+    if not isinstance(include_human, bool):
+        raise ValueError("corpus.include_human must be a boolean")
+    if not include_human:
+        docs = [doc for doc in docs if doc.origin != "human"]
+    report["include_human"] = include_human
+    report["human_documents"] = sum(doc.origin == "human" for doc in docs)
     return docs, report
 
 

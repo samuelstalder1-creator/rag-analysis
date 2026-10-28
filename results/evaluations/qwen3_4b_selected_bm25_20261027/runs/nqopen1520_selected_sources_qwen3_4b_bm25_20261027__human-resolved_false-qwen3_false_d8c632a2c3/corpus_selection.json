@@ -1,0 +1,94 @@
+{
+  "human_documents": 104194,
+  "include_human": true,
+  "mode": "fixed",
+  "sources": {
+    "gpt_oss_attack": {
+      "documents": 0,
+      "enabled": false
+    },
+    "qwen3_correct": {
+      "documents": 0,
+      "enabled": false
+    },
+    "qwen3_false": {
+      "documents": 1616,
+      "enabled": true,
+      "excluded_documents": 5,
+      "exclusions": [
+        {
+          "doc_id": "gen::corpus_0001::doc9883",
+          "query_id": "test267",
+          "reason": "incompatible_false_target"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc74641",
+          "query_id": "test2144",
+          "reason": "incompatible_false_target"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc84131",
+          "query_id": "test2440",
+          "reason": "incompatible_false_target"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc92693",
+          "query_id": "test2707",
+          "reason": "incompatible_false_target"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc92696",
+          "query_id": "test2707",
+          "reason": "incompatible_false_target"
+        }
+      ],
+      "kind": "generated",
+      "manual_documents": 0,
+      "path": "data/generated/nqopen1520-qwen3-4b-instruct-2507-false-v1/corpus_0001.jsonl"
+    },
+    "resolved_correct": {
+      "documents": 0,
+      "enabled": false
+    },
+    "resolved_false": {
+      "documents": 1657,
+      "enabled": true,
+      "excluded_documents": 6,
+      "exclusions": [
+        {
+          "doc_id": "gen::corpus_0001::doc9883",
+          "query_id": "test267",
+          "reason": "incompatible_false_target"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc72370",
+          "query_id": "test2077",
+          "reason": "outside_dataset"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc74641",
+          "query_id": "test2144",
+          "reason": "incompatible_false_target"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc92693",
+          "query_id": "test2707",
+          "reason": "incompatible_false_target"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc92696",
+          "query_id": "test2707",
+          "reason": "incompatible_false_target"
+        },
+        {
+          "doc_id": "gen::corpus_0001::doc84131",
+          "query_id": "test2440",
+          "reason": "incompatible_false_target"
+        }
+      ],
+      "kind": "generated",
+      "manual_documents": 0,
+      "path": "data/generated/nqopen-plus-resolved-false/corpus_0001.jsonl"
+    }
+  }
+}

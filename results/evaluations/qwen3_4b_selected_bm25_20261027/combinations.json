@@ -1,0 +1,149 @@
+[
+  {
+    "include_human": true,
+    "label": "human_only",
+    "number": 1,
+    "sources": []
+  },
+  {
+    "include_human": false,
+    "label": "resolved_correct_only",
+    "number": 2,
+    "sources": [
+      "resolved_correct"
+    ]
+  },
+  {
+    "include_human": false,
+    "label": "resolved_false_only",
+    "number": 3,
+    "sources": [
+      "resolved_false"
+    ]
+  },
+  {
+    "include_human": false,
+    "label": "qwen3_correct_only",
+    "number": 4,
+    "sources": [
+      "qwen3_correct"
+    ]
+  },
+  {
+    "include_human": false,
+    "label": "qwen3_false_only",
+    "number": 5,
+    "sources": [
+      "qwen3_false"
+    ]
+  },
+  {
+    "include_human": false,
+    "label": "gpt_oss_attack_only",
+    "number": 6,
+    "sources": [
+      "gpt_oss_attack"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+resolved_correct",
+    "number": 7,
+    "sources": [
+      "resolved_correct"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+resolved_false",
+    "number": 8,
+    "sources": [
+      "resolved_false"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+qwen3_correct",
+    "number": 9,
+    "sources": [
+      "qwen3_correct"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+qwen3_false",
+    "number": 10,
+    "sources": [
+      "qwen3_false"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+gpt_oss_attack",
+    "number": 11,
+    "sources": [
+      "gpt_oss_attack"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+resolved_false+qwen3_false",
+    "number": 12,
+    "sources": [
+      "resolved_false",
+      "qwen3_false"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+resolved_false+qwen3_false+gpt_oss_attack",
+    "number": 13,
+    "sources": [
+      "resolved_false",
+      "qwen3_false",
+      "gpt_oss_attack"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+resolved_correct+qwen3_correct+resolved_false",
+    "number": 14,
+    "sources": [
+      "resolved_correct",
+      "resolved_false",
+      "qwen3_correct"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+resolved_correct+qwen3_correct+qwen3_false",
+    "number": 15,
+    "sources": [
+      "resolved_correct",
+      "qwen3_correct",
+      "qwen3_false"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+resolved_correct+qwen3_correct+gpt_oss_attack",
+    "number": 16,
+    "sources": [
+      "resolved_correct",
+      "qwen3_correct",
+      "gpt_oss_attack"
+    ]
+  },
+  {
+    "include_human": true,
+    "label": "human+resolved_correct+resolved_false+qwen3_correct+qwen3_false+gpt_oss_attack",
+    "number": 17,
+    "sources": [
+      "resolved_correct",
+      "resolved_false",
+      "qwen3_correct",
+      "qwen3_false",
+      "gpt_oss_attack"
+    ]
+  }
+]

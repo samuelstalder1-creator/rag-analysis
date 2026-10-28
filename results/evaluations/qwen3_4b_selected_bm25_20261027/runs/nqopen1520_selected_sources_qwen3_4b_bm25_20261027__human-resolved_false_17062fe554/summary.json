@@ -1,0 +1,123 @@
+{
+  "corpus": {
+    "human_documents": 104194,
+    "include_human": true,
+    "mode": "fixed",
+    "sources": {
+      "gpt_oss_attack": {
+        "documents": 0,
+        "enabled": false
+      },
+      "qwen3_correct": {
+        "documents": 0,
+        "enabled": false
+      },
+      "qwen3_false": {
+        "documents": 0,
+        "enabled": false
+      },
+      "resolved_correct": {
+        "documents": 0,
+        "enabled": false
+      },
+      "resolved_false": {
+        "documents": 1657,
+        "enabled": true,
+        "excluded_documents": 6,
+        "kind": "generated",
+        "manual_documents": 0,
+        "path": "data/generated/nqopen-plus-resolved-false/corpus_0001.jsonl"
+      }
+    }
+  },
+  "num_docs": 105851,
+  "num_queries": 1520,
+  "reader": {
+    "llm_source": "configs/readers/qwen3-4b-instruct-2507.yaml",
+    "model": "Qwen/Qwen3-4B-Instruct-2507",
+    "prompt": "prompts/reader_v1.txt",
+    "prompt_hash": "2eb940b12aa8",
+    "provider": "local_openai",
+    "retrievers": [
+      "bm25"
+    ],
+    "seed": 13,
+    "temperature": 0.0,
+    "top_k": 5
+  },
+  "retriever_specs": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.5,
+      "remove_query_stopwords": true,
+      "type": "bm25"
+    }
+  },
+  "retrievers": {
+    "bm25": {
+      "answer_abstain_rate": 0.14539473684210527,
+      "answer_ambiguous_rate": 0.005263157894736842,
+      "answer_correct_rate": 0.29276315789473684,
+      "answer_invalid_rate": 0.0,
+      "answer_other_rate": 0.23157894736842105,
+      "answer_target_query_count": 1520,
+      "answer_target_rate": 0.325,
+      "answer_target_rate_on_targeted_queries": 0.325,
+      "correct_copy@1": 0.0,
+      "correct_copy@10": 0.0,
+      "correct_copy@5": 0.0,
+      "false@1": 0.6006578947368421,
+      "false@10": 0.13131578947368422,
+      "false@5": 0.21486842105263157,
+      "generated_before_human": 0.7651195499296765,
+      "human@1": 0.3993421052631579,
+      "human@10": 0.8686842105263158,
+      "human@5": 0.7851315789473684,
+      "human_docs@1": 0.3993421052631579,
+      "human_docs@10": 8.686842105263159,
+      "human_docs@5": 3.925657894736842,
+      "llm@1": 0.6006578947368421,
+      "llm@10": 0.13131578947368422,
+      "llm@5": 0.21486842105263157,
+      "poison@1": 0.6006578947368421,
+      "poison@10": 1.313157894736842,
+      "poison@5": 1.0743421052631579,
+      "r_human@1": 0.1368421052631579,
+      "r_human@10": 0.7807565789473684,
+      "r_human@5": 0.7087171052631579,
+      "r_poison@1": 0.5541666666666667,
+      "r_poison@10": 0.875219298245614,
+      "r_poison@5": 0.8367324561403509,
+      "r_rewrite@1": 0.0,
+      "r_rewrite@10": 0.0,
+      "r_rewrite@5": 0.0,
+      "recall@1": 0.6910087719298245,
+      "recall@10": 0.9055372807017544,
+      "recall@5": 0.8727521929824561,
+      "relaxed_mrr": 0.792219350459482,
+      "relaxed_ndcg@1": 0.7269736842105263,
+      "relaxed_ndcg@10": 0.8159640292012819,
+      "relaxed_ndcg@5": 0.8051431240198677,
+      "relaxed_recall@1": 0.6910087719298245,
+      "relaxed_recall@10": 0.9055372807017544,
+      "relaxed_recall@5": 0.8727521929824561,
+      "rewrite@1": 0.0,
+      "rewrite@10": 0.0,
+      "rewrite@5": 0.0,
+      "same_root@1": 1.0,
+      "same_root@10": 1.7967105263157894,
+      "same_root@5": 1.7131578947368422,
+      "strict_mrr": 0.39934915413533834,
+      "strict_ndcg@1": 0.14276315789473684,
+      "strict_ndcg@10": 0.4921828834171491,
+      "strict_ndcg@5": 0.4678230058807397,
+      "strict_recall@1": 0.1368421052631579,
+      "strict_recall@10": 0.7807565789473684,
+      "strict_recall@5": 0.7087171052631579,
+      "unique_roots@1": 1.0,
+      "unique_roots@10": 9.064473684210526,
+      "unique_roots@5": 4.245394736842106
+    }
+  },
+  "run_id": "nqopen1520_selected_sources_qwen3_4b_bm25_20261027__human-resolved_false_17062fe554"
+}
