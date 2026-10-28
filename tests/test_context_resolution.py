@@ -1,4 +1,3 @@
-import copy
 import importlib.util
 from pathlib import Path
 
@@ -6,7 +5,7 @@ import pytest
 
 from evlab.data.nqplus import load_generation_candidates
 from evlab.generation.false_answers import attach_saved_answers, valid_saved_answer
-from evlab.io import file_sha256, read_jsonl, write_json, write_jsonl
+from evlab.io import read_jsonl, write_json, write_jsonl
 
 
 def resolver():

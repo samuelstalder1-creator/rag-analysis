@@ -46,7 +46,14 @@ def answer_source_hash(question: str, gold: str, aliases: list[str]) -> str:
     )
 
 
-def attach_saved_answers(candidates: list[dict], config: dict) -> list[dict]:
+def attach_saved_answers(
+    candidates: list[dict], config: dict, *, with_receipts: bool = True
+) -> list[dict]:
+    """Attach saved false answers to the candidates.
+
+    ``with_receipts=False`` skips the rule-based source check for imported targets;
+    read-only inspection (``generation-status``) has no source texts to check.
+    """
     path = answers_path(config)
     if config.get("false_answer_source") == "nqopen_import" and not path.exists():
         raise ValueError(
@@ -75,7 +82,8 @@ def attach_saved_answers(candidates: list[dict], config: dict) -> list[dict]:
                     "_id": row["_id"], "false_answer": row["false_answer"],
                     "origin": "answers_jsonl", "source_hash": answer_source_hash(
                         candidate["query"], candidate["answer"], candidate["answer_aliases"]),
-                    "verification": deterministic_answer_receipt(candidate, row["false_answer"]),
+                    **({"verification": deterministic_answer_receipt(candidate, row["false_answer"])}
+                       if with_receipts else {}),
                 }
             continue
         if row is not None and row.get("source_hash") == answer_source_hash(

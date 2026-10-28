@@ -178,16 +178,3 @@ def _shifted(edits: list[dict]) -> list[dict]:
         out.append({**edit, "start": edit["start"] + shift})
         shift += len(edit["replacement"]) - (edit["end"] - edit["start"])
     return out
-
-
-def minimal_edit_with_fallback(
-    client,
-    *,
-    text: str,
-    aliases: list[str],
-    target_answer: str,
-    temperature: float = 0.0,
-    seed: int | None = None,
-) -> str:
-    # Compatibility helper; controlled generation uses edit_answer_spans instead.
-    return deterministic_minimal_edit(text, aliases, target_answer)

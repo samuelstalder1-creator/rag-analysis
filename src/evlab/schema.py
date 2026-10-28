@@ -71,14 +71,6 @@ class Hit:
     retriever: str
 
 
-@dataclass(frozen=True)
-class ReaderAnswer:
-    query_id: str
-    answer: str
-    citations: tuple[str, ...] = ()
-    label: Literal["correct", "target", "abstain", "other", "ambiguous"] = "other"
-
-
 def namespaced_id(namespace: str, original: str) -> str:
     return f"{namespace}::{original}"
 

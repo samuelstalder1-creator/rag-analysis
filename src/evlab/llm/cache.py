@@ -19,16 +19,20 @@ class CachedLLMClient:
     def generate(
         self, prompt: str, *, temperature: float = 0.0, seed: int | None = None
     ) -> str:
-        key = stable_hash(
-            {
-                "provider": self.provider,
-                "endpoint": getattr(self.client, "base_url", None),
-                "model": self.model,
-                "prompt": prompt,
-                "temperature": temperature,
-                "seed": seed,
-            }
-        )
+        payload = {
+            "provider": self.provider,
+            "endpoint": getattr(self.client, "base_url", None),
+            "model": self.model,
+            "prompt": prompt,
+            "temperature": temperature,
+            "seed": seed,
+        }
+        # Settings such as max_tokens change the answer. They only enter the key when
+        # set, so clients without such settings keep their existing cache entries.
+        request = self._request_config()
+        if request:
+            payload["request"] = request
+        key = stable_hash(payload)
         with sqlite3.connect(self.cache_path) as conn:
             row = conn.execute(
                 "select response from llm_cache where cache_key = ?", (key,)
@@ -41,6 +45,11 @@ class CachedLLMClient:
                 (key, self.provider, self.model, prompt, response),
             )
             return response
+
+    def _request_config(self) -> dict:
+        describe = getattr(self.client, "request_config", None)
+        config = describe() if callable(describe) else {}
+        return {key: value for key, value in config.items() if value is not None}
 
     def _init_db(self) -> None:
         with sqlite3.connect(self.cache_path) as conn:

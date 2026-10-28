@@ -9,13 +9,6 @@ from typing import Any, Iterable
 from evlab.schema import Qrel
 
 
-def resolve_path(path: str | Path, base_dir: str | Path | None = None) -> Path:
-    candidate = Path(path).expanduser()
-    if candidate.is_absolute():
-        return candidate
-    return (Path(base_dir) if base_dir else Path.cwd()) / candidate
-
-
 def read_jsonl(path: str | Path) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     with Path(path).open("r", encoding="utf-8") as handle:
@@ -71,7 +64,10 @@ def read_qrels(path: str | Path) -> list[Qrel]:
 def write_json(path: str | Path, payload: Any) -> None:
     target = Path(path)
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
+    # Write-then-rename so a crash never leaves a half-written JSON file.
+    temporary = target.with_name(f".{target.name}.tmp")
+    temporary.write_text(json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
+    temporary.replace(target)
 
 
 def file_sha256(path: str | Path) -> str:

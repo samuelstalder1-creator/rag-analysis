@@ -196,6 +196,7 @@ def generation_status(config: dict) -> dict:
     candidates = attach_saved_answers(
         load_generation_candidates(nqplus_dir, include_text=False),
         config.get("generation", {}),
+        with_receipts=False,
     )
     candidate_ids = {
         str(doc["doc_id"]) for row in candidates for doc in row.get("h_docs", [])

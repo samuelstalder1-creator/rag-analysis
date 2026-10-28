@@ -1,8 +1,8 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from collections import Counter
-from typing import Sequence
 
 from evlab.config import load_config
 from evlab.corpus.builder import build_corpus_with_report
@@ -17,7 +17,8 @@ from evlab.evaluation.retrieval import evaluate_retrieval
 from evlab.evaluation.source import evaluate_origin_counts, evaluate_source_metrics, evaluate_version_recall
 from evlab.io import append_jsonl, stable_hash, write_json, write_jsonl
 from evlab.retrieval.specs import RetrievalSession, resolve_retrievers
-from evlab.schema import Doc, Hit, Query
+from evlab.schema import Hit, Query
+from evlab.experiments.fingerprint import begin_run, compute_fingerprints, finish_run
 from evlab.rag.config import reader_summary, resolve_reader
 from evlab.rag.pipeline import answer_with_hits
 from evlab.evaluation.answers import classify_answer
@@ -80,10 +81,32 @@ def run_experiment(config_path: str | Path | dict) -> dict[str, object]:
         "reader": reader_summary(reader_spec),
         "retrievers": {},
     }
+    fingerprints = compute_fingerprints(config, docs, reader_spec)
+    resumable = begin_run(
+        output_root, fingerprints, allow_resume=bool(config.get("output", {}).get("resume", True))
+    )
+    try:
+        run_summaries = _run_retrievers(
+            config, output_root, run_names, retriever_specs, reader, reader_spec,
+            docs, docs_by_id, queries, qrels, targeted_ids, evaluated_ids, selection, top_k,
+            relevance_modes, cutoffs, run_summaries, fingerprints, resumable,
+        )
+    except BaseException as error:
+        finish_run(output_root, error=error)
+        raise
+    finish_run(output_root)
+    return run_summaries
+
+
+def _run_retrievers(
+    config, output_root, run_names, retriever_specs, reader, reader_spec,
+    docs, docs_by_id, queries, qrels, targeted_ids, evaluated_ids, selection, top_k,
+    relevance_modes, cutoffs, run_summaries, fingerprints, resumable,
+):
     write_json(output_root / "config.json", config)
-    write_json(output_root / "manifest.json", corpus_manifest(docs, config))
+    write_json(output_root / "manifest.json", {**corpus_manifest(docs, config), "fingerprints": fingerprints})
     write_json(output_root / "corpus_selection.json", selection)
-    write_json(output_root / "resolved.json", resolved)
+    write_json(output_root / "resolved.json", {"retrievers": retriever_specs, "reader": reader_spec})
 
     session = RetrievalSession(retriever_specs, docs, queries)
     session.plan(run_names, top_k)
@@ -132,6 +155,7 @@ def run_experiment(config_path: str | Path | dict) -> dict[str, object]:
             answers, answer_metrics = _evaluate_reader(
                 reader, queries, run, docs_by_id, reader_spec,
                 output_path=run_dir / "answers.jsonl",
+                resume=resumable,
             )
             write_jsonl(run_dir / "answers.jsonl", answers)
             metrics.update(answer_metrics)
@@ -189,6 +213,9 @@ def _run_rows(run: dict[str, list[Hit]]) -> list[dict[str, object]]:
 
 def _run_id(config: dict, resolved: dict | None = None) -> str:
     experiment = str(config.get("experiment", "experiment"))
+    if "resume" in (config.get("output") or {}):
+        # `output.resume` only controls how an existing folder is continued.
+        config = {**config, "output": {k: v for k, v in config["output"].items() if k != "resume"}}
     payload: object = config
     if resolved and _references_files(config):
         # Retriever/reader/prompt files can change without the config changing;
@@ -211,7 +238,25 @@ def _references_files(config: dict) -> bool:
     return any(isinstance(value, str) for value in definitions.values())
 
 
-def _evaluate_reader(client, queries, run, docs_by_id, config, *, output_path=None):
+def _load_completed_answers(path: Path, query_ids: set[str]) -> dict[str, dict]:
+    """Answers of an earlier attempt, up to the first unreadable (cut-off) line."""
+    done: dict[str, dict] = {}
+    if not path.exists():
+        return done
+    with path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except ValueError:
+                break  # last line written while the process died
+            if row.get("query_id") in query_ids and "label" in row:
+                done[row["query_id"]] = row
+    return done
+
+
+def _evaluate_reader(client, queries, run, docs_by_id, config, *, output_path=None, resume=False):
     # Imported targets also define the human-only baseline's target-adoption
     # denominator. Documents may not silently override a dataset's target.
     targets = {
@@ -231,9 +276,19 @@ def _evaluate_reader(client, queries, run, docs_by_id, config, *, output_path=No
                 raise ValueError(f"Conflicting false targets for {doc.query_id}")
     rows = []
     counts = Counter()
+    done: dict[str, dict] = {}
     if output_path is not None:
-        write_jsonl(output_path, [])
+        if resume:
+            done = _load_completed_answers(output_path, {query.query_id for query in queries})
+        write_jsonl(output_path, done.values())
+    if done:
+        print(f"reader: resuming with {len(done)}/{len(queries)} stored answers", flush=True)
     for query in queries:
+        if query.query_id in done:
+            result = done[query.query_id]
+            counts[result["label"]] += 1
+            rows.append(result)
+            continue
         result = answer_with_hits(
             client,
             query=query,

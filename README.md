@@ -113,8 +113,12 @@ reader with a 256-token answer budget. It uses a separate cache and writes fresh
 results to `results/evaluations/qwen3_4b_bm25_20261027`.
 
 ```bash
-bash scripts/run_qwen3_4b_evaluation.sh
+bash scripts/run_evaluation.sh qwen3_4b_all
 ```
+
+`scripts/run_evaluation.sh <profile>` is the single evaluation launcher; profiles in
+`scripts/profiles/` define config, model, serve script and output folder. The
+`run_*_evaluation.sh` files are thin wrappers kept for the systemd units.
 
 For the persistent background run on this host:
 
@@ -147,7 +151,7 @@ listed in each run's `corpus_selection.json`; source files are preserved.
 
 ```bash
 .venv/bin/python -m evlab.cli sweep configs/experiments/nqopen1520_all_sources_deepseek_bm25.yaml --dry-run
-bash scripts/run_deepseek_evaluation.sh
+bash scripts/run_evaluation.sh deepseek_all   # same as run_deepseek_evaluation.sh
 ```
 
 The launcher starts the tokenizer-corrected DeepSeek server with a 16,384-token
@@ -178,13 +182,50 @@ uv run evlab --help
 uv run pytest
 ```
 
-Optional extras:
+`uv sync` installs the CPU-only analysis environment (retrieval, evaluation, tests,
+no GPU stack). Optional extras:
 
 ```bash
-uv sync --extra yaml      # PyYAML for full YAML support
+uv sync --extra serve     # vLLM, only on the GPU server that serves local models
 uv sync --extra gemini    # Gemini API generation
 uv sync --extra dense     # sentence-transformers dense retrieval
 ```
+
+CI (`.github/workflows/ci.yml`) runs `ruff` and `pytest` in the CPU-only environment.
+
+## Run integrity
+
+Every `evlab run` / `evlab sweep` run folder carries a `run_status.json`
+(`running`, `complete` or `failed`) and `manifest.json` stores input fingerprints:
+SHA-256 of the dataset files, a content hash over all corpus documents (id, title,
+text, condition, target), the reader prompt and settings, the evaluator version and
+the Git SHA. Run IDs are still derived from the config alone, so existing folder
+names stay valid. What this adds:
+
+- A folder is only reused when the fingerprints match. Changed documents, queries
+  or prompts in the same folder raise `RunConflictError`; choose another
+  `output.dir` or move the old folder away.
+- A starting run deletes the previous `summary.json` and `metrics.json`, so a
+  crashed rerun never leaves old completion files next to new answers.
+- With identical config and inputs a rerun resumes: answers already in
+  `answers.jsonl` are kept and only missing queries are sent to the reader.
+  `output.resume: false` forces a fresh start. Folders written before this change
+  have no status file and are overwritten, as before.
+- LLM cache keys include `max_tokens` (and `num_ctx`, `think` for Ollama) when a
+  client sets them, so changing the answer budget no longer returns old answers.
+  Clients without such settings keep their existing cache entries.
+- The dense embedding cache reuses a shorter earlier index only when the embedding
+  settings and the content hash of every reused document match.
+
+`evlab inventory --root results [--output inventory.json]` lists all stored runs
+with status, purpose (`smoke` for `query_limit` runs and `smoke` folders, otherwise
+`full`), planned query count and incomplete reader outputs. `evlab report` hides
+smoke runs unless `--include-smoke` is given and shows status and sample size.
+
+Retrieval metrics: `recall@k` merges versions of the same root before cutting at
+`k` (relaxed mode); `context_recall@k` counts only the first `k` raw hits, i.e.
+what a reader with `top_k=k` sees. Compare numbers only within the same
+`evaluator_version`.
 
 ## Data
 
@@ -880,7 +921,7 @@ E5 is configured in `configs/experiments/rq1_dense_mixed_e5.yaml`, but requires 
 To store E5 inside the repo-local `models/` directory:
 
 ```bash
-uv sync --extra dense --extra yaml --group dev
+uv sync --extra dense --group dev
 uv run python scripts/cache_e5_base_v2.py
 uv run evlab run configs/experiments/rq1_dense_mixed_e5.yaml
 ```

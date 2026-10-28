@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import math
 import re
 from heapq import nlargest
@@ -8,7 +9,7 @@ from pathlib import Path
 from typing import Sequence
 
 from evlab.schema import Doc, Hit, Query
-from evlab.io import stable_hash
+from evlab.io import stable_hash, write_json
 
 
 class HashDenseRetriever:
@@ -88,14 +89,10 @@ class SentenceTransformerRetriever:
         import numpy as np  # type: ignore
 
         self.docs = list(docs)
+        doc_hashes = [hashlib.sha256(doc.embedding_text.encode("utf-8")).hexdigest() for doc in self.docs]
+        settings = self._embedding_settings()
         cache_key = stable_hash(
-            {
-                "model": self.model_name,
-                "normalize": self.normalize,
-                "doc_prefix": self.doc_prefix,
-                "max_seq_length": self.max_seq_length,
-                "docs": [(doc.doc_id, hashlib.sha256(doc.embedding_text.encode("utf-8")).hexdigest()) for doc in self.docs],
-            }
+            {**settings, "docs": [(doc.doc_id, digest) for doc, digest in zip(self.docs, doc_hashes)]}
         )
         vector_path = self.cache_dir / f"{cache_key}.npy"
         ids_path = self.cache_dir / f"{cache_key}.ids"
@@ -104,7 +101,7 @@ class SentenceTransformerRetriever:
             if cached_ids == [doc.doc_id for doc in self.docs]:
                 self.vectors = np.load(vector_path, mmap_mode="r")
                 return
-        prefix_vectors, prefix_len = self._load_cached_prefix([doc.doc_id for doc in self.docs])
+        prefix_vectors, prefix_len = self._load_cached_prefix(settings, doc_hashes)
         texts = [self.doc_prefix + doc.embedding_text for doc in self.docs[prefix_len:]]
         vectors = self.encoder.encode(
             texts,
@@ -118,26 +115,54 @@ class SentenceTransformerRetriever:
             vectors = np.vstack([np.asarray(prefix_vectors, dtype=np.float32), vectors])
         np.save(vector_path, vectors)
         ids_path.write_text("\n".join(doc.doc_id for doc in self.docs) + "\n", encoding="utf-8")
+        write_json(
+            self.cache_dir / f"{cache_key}.meta.json",
+            {"settings": settings, "doc_hashes": doc_hashes},
+        )
         self.vectors = np.load(vector_path, mmap_mode="r")
 
-    def _load_cached_prefix(self, doc_ids: list[str]):
+    def _embedding_settings(self) -> dict:
+        """Everything besides document text that changes the stored vectors."""
+        return {
+            "model": self.model_name,
+            "normalize": self.normalize,
+            "doc_prefix": self.doc_prefix,
+            "max_seq_length": self.max_seq_length,
+        }
+
+    def _load_cached_prefix(self, settings: dict, doc_hashes: list[str]):
+        """Reuse vectors of an earlier, shorter index whose documents are identical.
+
+        A cache entry only counts if its metadata shows the same embedding settings
+        and the same content hash for every reused document. Entries without
+        metadata (written by older versions) are never reused.
+        """
         import numpy as np  # type: ignore
 
-        best_ids_path: Path | None = None
+        doc_ids = [doc.doc_id for doc in self.docs]
+        best_key: str | None = None
         best_len = 0
-        for ids_path in self.cache_dir.glob("*.ids"):
-            cached_ids = ids_path.read_text(encoding="utf-8").splitlines()
-            if not cached_ids or len(cached_ids) > len(doc_ids):
+        for meta_path in self.cache_dir.glob("*.meta.json"):
+            key = meta_path.name[: -len(".meta.json")]
+            ids_path = self.cache_dir / f"{key}.ids"
+            if not ids_path.exists() or not (self.cache_dir / f"{key}.npy").exists():
                 continue
-            if doc_ids[: len(cached_ids)] == cached_ids and len(cached_ids) > best_len:
-                vector_path = ids_path.with_suffix(".npy")
-                if vector_path.exists():
-                    best_ids_path = ids_path
-                    best_len = len(cached_ids)
-        if best_ids_path is None or best_len == 0:
+            try:
+                meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                continue
+            cached_hashes = meta.get("doc_hashes") or []
+            cached_len = len(cached_hashes)
+            if meta.get("settings") != settings or not cached_len or cached_len > len(doc_hashes):
+                continue
+            if cached_len <= best_len or cached_hashes != doc_hashes[:cached_len]:
+                continue
+            if ids_path.read_text(encoding="utf-8").splitlines() != doc_ids[:cached_len]:
+                continue
+            best_key, best_len = key, cached_len
+        if best_key is None:
             return None, 0
-        vector_path = best_ids_path.with_suffix(".npy")
-        return np.load(vector_path, mmap_mode="r"), best_len
+        return np.load(self.cache_dir / f"{best_key}.npy", mmap_mode="r"), best_len
 
     def search(self, queries: Sequence[Query], top_k: int) -> dict[str, list[Hit]]:
         if self.vectors is None:

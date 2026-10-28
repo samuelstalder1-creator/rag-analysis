@@ -5,7 +5,7 @@ description = "NQ+ evidence laundering experiments for retrieval and RAG analysi
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "vllm>=0.30.0",
+    "PyYAML>=6.0",
 ]
 
 [project.scripts]
@@ -16,19 +16,27 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project.optional-dependencies]
-yaml = ["PyYAML>=6.0"]
+# GPU server only: local vLLM serving for generation and reader evaluation.
+serve = ["vllm>=0.30.0"]
 gemini = ["google-genai>=1.0"]
 dense = ["numpy>=1.26", "sentence-transformers>=2.7"]
-dev = ["pytest>=8.0"]
 
 [dependency-groups]
 dev = [
     "pytest>=8.0",
+    "ruff>=0.6",
 ]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+
+[tool.ruff]
+src = ["src"]
+
+[tool.ruff.lint]
+# Syntax errors and unused/undefined names; no style rules.
+select = ["E9", "F"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/evlab"]

@@ -34,12 +34,18 @@ Implemented:
 - tests and fixtures
 - dense embedding cache with prefix reuse for mixed corpora
 
+Since the first blueprint: semantic (LLM) validation of false answers and documents,
+the NQ-Open+ build (`evlab data build-nqopen-plus`), reader sweeps with ratio/variant
+grids, run status and input fingerprints (see README, "Run integrity") and a run
+inventory (`evlab inventory`) are in place.
+
 Still intentionally minimal:
 
-- MMR is a placeholder.
-- NLI/LLM validation is not yet wired.
-- Full data preparation from raw Cocktail + NQ-Open remains in the MVP for now.
-- Full RAG experiment grids should be added after the first generation pilot.
+- Context mitigations (MMR, text deduplication, one document per root) were removed
+  as unused; reintroduce them together with the experiment that needs them.
+- Preparing NQ+ from raw Cocktail + NQ-Open stays in the MVP repository.
+- `recall@k` merges roots before the cutoff; use `context_recall@k` for what the
+  reader actually receives.
 
 ## First Commands
 

@@ -4,7 +4,7 @@ import pytest
 
 from evlab.data.nqplus import load_generation_candidates, load_query_rows
 from evlab.data.answer_classification import classify_answer_set, split_answer_flags
-from evlab.io import read_jsonl, write_json, write_jsonl
+from evlab.io import write_json, write_jsonl
 
 
 @pytest.mark.parametrize(("question", "aliases", "kind"), [

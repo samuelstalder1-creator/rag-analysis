@@ -84,6 +84,15 @@ def main(argv: list[str] | None = None) -> None:
 
     report_parser = subparsers.add_parser("report")
     report_parser.add_argument("--run-dir", default="results/runs")
+    report_parser.add_argument(
+        "--include-smoke", action="store_true", help="also list limited smoke-test runs"
+    )
+
+    inventory_parser = subparsers.add_parser(
+        "inventory", help="list stored runs with status, purpose and completeness"
+    )
+    inventory_parser.add_argument("--root", default="results")
+    inventory_parser.add_argument("--output", default=None, help="also write the inventory as JSON")
 
     args = parser.parse_args(argv)
     if args.command == "data" and args.data_command == "validate":
@@ -180,18 +189,35 @@ def main(argv: list[str] | None = None) -> None:
             }
         )
     elif args.command == "report":
-        _print(_collect_reports(Path(args.run_dir)))
+        _print(_collect_reports(Path(args.run_dir), include_smoke=args.include_smoke))
+    elif args.command == "inventory":
+        from evlab.experiments.inventory import build_inventory, summarize
+        from evlab.io import write_json
+
+        rows = build_inventory(args.root)
+        if args.output:
+            write_json(args.output, rows)
+        _print({"summary": summarize(rows), "runs": rows})
 
 
-def _collect_reports(run_dir: Path) -> list[dict]:
+def _collect_reports(run_dir: Path, *, include_smoke: bool = False) -> list[dict]:
+    from evlab.experiments.inventory import classify_run, find_run_dirs
+
     rows: list[dict] = []
-    for metrics_path in sorted(run_dir.glob("*/*/metrics.json")):
-        rows.append(
-            {
-                "path": str(metrics_path),
-                "metrics": json.loads(metrics_path.read_text(encoding="utf-8")),
-            }
-        )
+    for directory in find_run_dirs(run_dir):
+        info = classify_run(directory, run_dir)
+        if info["purpose"] == "smoke" and not include_smoke:
+            continue
+        for metrics_path in sorted(directory.glob("*/metrics.json")):
+            rows.append(
+                {
+                    "path": str(metrics_path),
+                    "status": info["status"],
+                    "purpose": info["purpose"],
+                    "num_queries": info["expected_queries"],
+                    "metrics": json.loads(metrics_path.read_text(encoding="utf-8")),
+                }
+            )
     return rows
 
 

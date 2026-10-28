@@ -16,7 +16,7 @@ data/cocktail/nq/corpus/llama-2-7b-chat-tmp0.2.jsonl
 ## Setup On Linux
 
 ```bash
-uv sync --extra dense --extra yaml --group dev
+uv sync --extra dense --group dev          # add --extra serve on the GPU server (vLLM)
 uv run pytest
 ```
 
@@ -384,7 +384,7 @@ Configs: `configs/experiments/mix/` (details in README, "Corpus Mixes" and
 
 ```bash
 git pull
-uv sync --extra dense --extra yaml --group dev
+uv sync --extra dense --group dev          # add --extra serve on the GPU server (vLLM)
 uv run pytest -q
 ```
 
@@ -464,9 +464,12 @@ ls results/sweeps/                      # one folder per sweep: summary.csv / su
 column -s, -t < results/sweeps/rag_false_correct_*/summary.csv | less -S
 ```
 
-Per run: `results/runs/<experiment>__<variant>_<hash>/` with `summary.json`,
-`corpus_selection.json`, `resolved.json` and per retriever `metrics.json`,
-`retrieval.jsonl`, `answers.jsonl`. Copy results to the laptop with
+Per run: `results/runs/<experiment>__<variant>_<hash>/` with `run_status.json`
+(`running`/`complete`/`failed`), `summary.json`, `manifest.json` (with input
+fingerprints), `corpus_selection.json`, `resolved.json` and per retriever
+`metrics.json`, `retrieval.jsonl`, `answers.jsonl`. A rerun with the same config
+resumes unfinished reader answers; `uv run evlab inventory` shows which runs are
+complete, partial or smoke tests. Copy results to the laptop with
 `rsync -av USER@SERVER:PATH/rag-analysis/results/ results/`.
 
 ## Other Useful Runs

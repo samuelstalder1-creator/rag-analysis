@@ -20,6 +20,9 @@ def evaluate_retrieval(
         metrics[f"recall@{cutoff}"] = _mean(
             [recall_at_k(relevant[qid], run.get(qid, []), cutoff, docs_by_id, relevance_mode) for qid in query_ids]
         )
+        metrics[f"context_recall@{cutoff}"] = _mean(
+            [context_recall_at_k(relevant[qid], run.get(qid, []), cutoff, docs_by_id, relevance_mode) for qid in query_ids]
+        )
         metrics[f"ndcg@{cutoff}"] = _mean(
             [ndcg_at_k(relevant[qid], run.get(qid, []), cutoff, docs_by_id, relevance_mode) for qid in query_ids]
         )
@@ -51,6 +54,26 @@ def recall_at_k(
     if not relevant_ids:
         return 0.0
     retrieved = set(_collapsed_qrel_ids(hits, docs_by_id, relevance_mode)[:k])
+    return len(relevant_ids & retrieved) / len(relevant_ids)
+
+
+def context_recall_at_k(
+    relevant_docs: dict[str, int],
+    hits: list[Hit],
+    k: int,
+    docs_by_id: dict[str, Doc] | None = None,
+    relevance_mode: str = "strict",
+) -> float:
+    """Recall over the first ``k`` raw hits, i.e. what a reader with top_k=k really sees.
+
+    ``recall@k`` first merges versions of the same root and then cuts at ``k``, so it
+    can count sources beyond the reader's context window.
+    """
+    relevant_ids = {doc_id for doc_id, score in relevant_docs.items() if score > 0}
+    if not relevant_ids:
+        return 0.0
+    top = sorted(hits, key=lambda item: item.rank)[:k]
+    retrieved = {_qrel_id(hit.doc_id, docs_by_id, relevance_mode) for hit in top}
     return len(relevant_ids & retrieved) / len(relevant_ids)
 
 

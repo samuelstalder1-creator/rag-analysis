@@ -50,6 +50,10 @@ class LocalOpenAIClient:
         self.max_retries = max_retries
         self.retry_delay = retry_delay
 
+    def request_config(self) -> dict[str, object]:
+        """Request settings that change the response; part of the cache key."""
+        return {"max_tokens": self.max_tokens}
+
     def generate(self, prompt: str, *, temperature: float = 0.0, seed: int | None = None) -> str:
         payload = {
             "model": self.model,
@@ -140,6 +144,10 @@ class OllamaClient:
         self.max_tokens = max_tokens  # -> options.num_predict (includes reasoning tokens)
         self.num_ctx = num_ctx  # Ollama defaults to a small context window
         self.think = think  # None: do not send; True/False: Ollama "think" flag
+
+    def request_config(self) -> dict[str, object]:
+        """Request settings that change the response; part of the cache key."""
+        return {"max_tokens": self.max_tokens, "num_ctx": self.num_ctx, "think": self.think}
 
     def generate(self, prompt: str, *, temperature: float = 0.0, seed: int | None = None) -> str:
         options: dict[str, object] = {"temperature": temperature}
