@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "directories": {
+    "data/generated/nqopen-plus-resolved-correct": "data/generated/deprecated/nqopen-plus-resolved-qwen35-2b-correct-v1",
+    "data/generated/nqopen-plus-resolved-false": "data/generated/nqopen-plus-resolved-qwen35-2b-false-v1",
+    "data/generated/nqopen-plus-resolved-qwen35-2b-correct-v1": "data/generated/deprecated/nqopen-plus-resolved-qwen35-2b-correct-v1",
+    "results/runs": "results/archive/runs",
+    "results/sweeps": "results/archive/sweeps",
+    "results/analysis/base1520_rag_bm25_qwen3_4b": "results/archive/analysis/base1520_rag_bm25_qwen3_4b",
+    "data/generated/base-1520": "data/generated/archive/base-1520",
+    "data/generated/qwen35-2b-all": "data/generated/archive/qwen35-2b-all"
+  }
+}

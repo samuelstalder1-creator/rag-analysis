@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CONFIG="${CONFIG:-configs/generation/qwen35-2b-correct.yaml}"
+CONFIG="${CONFIG:-configs/archive/generation/qwen35-2b-correct.yaml}"
 if [[ "${GEN_WORKER:-0}" == "1" ]]; then
   if [[ "${FALSE_ANSWERS_FIRST:-0}" == "1" ]]; then
     uv run evlab generate-false-answers --config "$CONFIG"

@@ -10,12 +10,12 @@ corpus:
     resolved_correct:
       kind: generated
       condition: correct
-      path: data/generated/nqopen-plus-resolved-correct/corpus_0001.jsonl
+      path: data/generated/deprecated/nqopen-plus-resolved-qwen35-2b-correct-v1/corpus_0001.jsonl
       compatible_only: true
     resolved_false:
       kind: generated
       condition: 'false'
-      path: data/generated/nqopen-plus-resolved-false/corpus_0001.jsonl
+      path: data/generated/nqopen-plus-resolved-qwen35-2b-false-v1/corpus_0001.jsonl
       compatible_only: true
     qwen3_correct:
       kind: generated

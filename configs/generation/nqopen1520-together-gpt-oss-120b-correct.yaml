@@ -1,0 +1,27 @@
+# Source-grounded correct rewrites: original title/body, question and gold answer.
+# Separate from the question-and-target-only GPT-OSS attack corpus.
+data:
+  nqplus_dir: data/nqopen1520
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  scope: all_answer_documents
+  output_dir: data/generated/nqopen1520-together-gpt-oss-120b-correct-v1
+  cache_path: cache/llm_nqopen1520_together_gpt_oss_120b_correct_v1.sqlite
+  correct_max_attempts: 3
+  correct_retry_temperature_step: 0.2
+  samples_per_h: 1
+  temperature: 0.3
+  resume: true
+  progress_every: 1
+  validation:
+    mode: deterministic
+    max_similarity: 0.95
+  llm:
+    provider: local_openai
+    base_url: https://api.together.xyz/v1
+    model: openai/gpt-oss-120b
+    api_key_env: TOGETHER_API_KEY
+    max_tokens: 4096
+    timeout: 300
+    max_retries: 5
+    retry_delay: 5

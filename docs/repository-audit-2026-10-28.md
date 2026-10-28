@@ -1,5 +1,9 @@
 # Repository-Audit: rag-analysis
 
+Historical audit. Subsequent fixes and archive moves are described in the current
+root README. Its inventory now resides under
+`results/archive/analysis/repository_audit_20261028/run_inventory.json`.
+
 Stand: 28.10.2026. Geprüfter Commit: `66014ad`.
 
 ## Einschätzung

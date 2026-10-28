@@ -83,7 +83,7 @@ def main(argv: list[str] | None = None) -> None:
     corpus_parser.add_argument("config")
 
     report_parser = subparsers.add_parser("report")
-    report_parser.add_argument("--run-dir", default="results/runs")
+    report_parser.add_argument("--run-dir", default="results/evaluations")
     report_parser.add_argument(
         "--include-smoke", action="store_true", help="also list limited smoke-test runs"
     )
@@ -91,7 +91,7 @@ def main(argv: list[str] | None = None) -> None:
     inventory_parser = subparsers.add_parser(
         "inventory", help="list stored runs with status, purpose and completeness"
     )
-    inventory_parser.add_argument("--root", default="results")
+    inventory_parser.add_argument("--root", default="results/evaluations")
     inventory_parser.add_argument("--output", default=None, help="also write the inventory as JSON")
 
     args = parser.parse_args(argv)

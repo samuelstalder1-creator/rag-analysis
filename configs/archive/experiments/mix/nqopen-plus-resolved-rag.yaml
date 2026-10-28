@@ -1,0 +1,48 @@
+# Revised question/gold version; original benchmark remains separate.
+# Exactly the 1614 nqopen+ questions; full 104k retrieval background.
+# Build data first, then generate false documents with nqopen-plus-resolved-qwen35-2b-false-v1.yaml.
+experiment: nqopen_plus_resolved_rag
+seed: 13
+queries: rag
+data:
+  nqplus_dir: data/nqopen+/resolved
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+corpus:
+  seed: 13
+  sources:
+    false_nqopen:
+      path: data/generated/nqopen-plus-resolved-qwen35-2b-false-v1
+  targeted:
+    query_ratio: 1.0
+    false_docs:
+      source: false_nqopen
+      k: 0
+      mode: add
+variants:
+  human_only: {}
+  false_add:
+    corpus.targeted.false_docs.k: 1
+  false_replace:
+    corpus.targeted.false_docs.k: 1
+    corpus.targeted.false_docs.mode: replace
+retrievers: [bm25]
+retrieval:
+  top_k: 100
+  k1: 1.5
+  b: 0.75
+  remove_query_stopwords: true
+evaluation:
+  cutoffs: [1, 10, 100]
+  relevance_modes: [strict, relaxed]
+reader:
+  llm: configs/readers/qwen35-2b.yaml
+  temperature: 0.0
+  seed: 13
+  top_k: 5
+  prompt: prompts/reader_v1.txt
+  retrievers: [bm25]
+  cache_path: cache/reader_nqopen_plus_resolved.sqlite
+output:
+  dir: results/runs
+sweep_output:
+  dir: results/sweeps

@@ -193,7 +193,7 @@ def test_background_mapping_form_equals_list_form(generated):
 
 
 @pytest.mark.parametrize(
-    "path", sorted((Path(__file__).parents[1] / "configs/experiments/mix").glob("*.yaml")), ids=lambda p: p.name
+    "path", sorted((Path(__file__).parents[1] / "configs/archive/experiments/mix").glob("*.yaml")), ids=lambda p: p.name
 )
 def test_mix_configs_parse_without_pyyaml_and_expand(path, monkeypatch):
     from evlab.config import _parse_small_yaml
@@ -201,7 +201,7 @@ def test_mix_configs_parse_without_pyyaml_and_expand(path, monkeypatch):
     from evlab.rag.config import resolve_reader
     from evlab.retrieval.specs import resolve_retrievers
 
-    monkeypatch.chdir(path.parents[3])  # prompt/preset paths are repo-relative
+    monkeypatch.chdir(Path(__file__).resolve().parents[1])  # paths are repo-relative
     text = path.read_text(encoding="utf-8")
     parsed = _parse_small_yaml(text)
     yaml = pytest.importorskip("yaml")

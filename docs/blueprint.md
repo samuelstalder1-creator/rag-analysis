@@ -52,30 +52,24 @@ Still intentionally minimal:
 ```bash
 uv sync
 uv run pytest
-uv run evlab data validate --config configs/data/nqplus.yaml
-uv run evlab run configs/experiments/rq1_displacement.yaml
-uv run evlab run configs/experiments/rq1_dense_human_minilm.yaml
-uv run evlab run configs/experiments/rq1_dense_mixed_minilm.yaml
+uv run evlab sweep configs/experiments/nqopen1520_selected_sources_qwen3_4b_bm25.yaml --dry-run
 ```
 
 ## Generation Commands
 
-Local vLLM or llama.cpp server:
+Use the retained model-specific generation configurations. For example, with the
+Qwen3-4B-Instruct-2507 server running:
 
 ```bash
-uv run evlab generate --config configs/generation/pilot-local.yaml --limit 10
+uv run evlab generate-correct-documents --config configs/generation/nqopen1520-qwen3-4b-correct.yaml --limit 10
 ```
 
-Ollama:
+The resolved Qwen3.5-2B false generation config remains active. Its correct
+counterpart is in `configs/archive/generation/`, and its corpus is under
+`data/generated/deprecated/`. Dataset renames and retired pilot configs are
+documented in `data/generated/README.md`. Older experiments and results are under
+`configs/archive/` and `results/archive/`; shared retriever/model implementations
+remain available.
 
-```bash
-uv run evlab generate --config configs/generation/pilot-ollama.yaml --limit 10
-```
-
-Gemini:
-
-```bash
-export GEMINI_API_KEY=...
-uv sync --extra gemini
-uv run evlab generate --config configs/generation/pilot-gemini.yaml --limit 10
-```
+Ollama and Gemini remain supported providers; their unused pilot configurations
+were removed. Configure a dedicated output directory for a new experiment.

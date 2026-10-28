@@ -1,0 +1,588 @@
+{
+ "ALL_human_original_pushed_out_of_top5": {
+  "n": 560,
+  "target": 327
+ },
+ "H+A_by_own_attack_rank": {
+  "0": {
+   "abstain": 4,
+   "correct": 8,
+   "other": 8
+  },
+  "1": {
+   "abstain": 36,
+   "ambiguous": 6,
+   "correct": 118,
+   "other": 214,
+   "target": 868
+  },
+  "2": {
+   "abstain": 9,
+   "ambiguous": 1,
+   "correct": 59,
+   "other": 37,
+   "target": 90
+  },
+  "3": {
+   "abstain": 4,
+   "correct": 5,
+   "other": 8,
+   "target": 28
+  },
+  "4": {
+   "abstain": 3,
+   "correct": 1,
+   "other": 3,
+   "target": 6
+  },
+  "5": {
+   "abstain": 1,
+   "correct": 1,
+   "other": 1,
+   "target": 1
+  }
+ },
+ "H+A_foreign_attack_docs_in_context": {
+  "0": 1330,
+  "1": 162,
+  "2": 23,
+  "3": 4,
+  "4": 1
+ },
+ "answer_text_found_in_context": {
+  "human+gpt_oss_attack": {
+   "ambiguous|in_context=False": 7,
+   "correct|in_context=False": 1,
+   "correct|in_context=True": 191,
+   "other|in_context=False": 92,
+   "other|in_context=True": 179,
+   "target|in_context=True": 993
+  },
+  "human+resolved_correct+resolved_false+qwen3_correct+qwen3_false+gpt_oss_attack": {
+   "ambiguous|in_context=False": 10,
+   "correct|in_context=False": 2,
+   "correct|in_context=True": 330,
+   "other|in_context=False": 60,
+   "other|in_context=True": 166,
+   "target|in_context=True": 856
+  },
+  "human_only": {
+   "correct|in_context=False": 3,
+   "correct|in_context=True": 750,
+   "other|in_context=False": 133,
+   "other|in_context=True": 323,
+   "target|in_context=True": 4
+  }
+ },
+ "baseline_funnel": {
+  "rel=False|gold_text=False|abstain": 213,
+  "rel=False|gold_text=False|correct": 3,
+  "rel=False|gold_text=False|other": 105,
+  "rel=False|gold_text=False|target": 3,
+  "rel=False|gold_text=True|abstain": 16,
+  "rel=False|gold_text=True|correct": 21,
+  "rel=False|gold_text=True|other": 19,
+  "rel=True|gold_text=True|abstain": 78,
+  "rel=True|gold_text=True|correct": 729,
+  "rel=True|gold_text=True|other": 332,
+  "rel=True|gold_text=True|target": 1
+ },
+ "correct_rewrite_gains": {
+  "human+qwen3_correct": {
+   "gains": 288,
+   "human_original_already_in_baseline_context": 142,
+   "losses": 18
+  },
+  "human+resolved_correct": {
+   "gains": 157,
+   "human_original_already_in_baseline_context": 80,
+   "losses": 24
+  }
+ },
+ "false_exposure": {
+  "human+gpt_oss_attack": {
+   "exposed=False|target=False": 20,
+   "exposed=True|target=False": 507,
+   "exposed=True|target=True": 993
+  },
+  "human+qwen3_false": {
+   "exposed=False|target=False": 152,
+   "exposed=True|target=False": 626,
+   "exposed=True|target=True": 742
+  },
+  "human+resolved_false": {
+   "exposed=False|target=False": 229,
+   "exposed=False|target=True": 1,
+   "exposed=True|target=False": 797,
+   "exposed=True|target=True": 493
+  }
+ },
+ "labels": {
+  "gpt_oss_attack_only": {
+   "abstain": 90,
+   "ambiguous": 1,
+   "correct": 2,
+   "other": 228,
+   "target": 1199
+  },
+  "human+gpt_oss_attack": {
+   "abstain": 57,
+   "ambiguous": 7,
+   "correct": 192,
+   "other": 271,
+   "target": 993
+  },
+  "human+qwen3_correct": {
+   "abstain": 150,
+   "correct": 1023,
+   "invalid": 1,
+   "other": 345,
+   "target": 1
+  },
+  "human+qwen3_false": {
+   "abstain": 165,
+   "ambiguous": 10,
+   "correct": 306,
+   "other": 297,
+   "target": 742
+  },
+  "human+resolved_correct": {
+   "abstain": 217,
+   "correct": 886,
+   "other": 413,
+   "target": 4
+  },
+  "human+resolved_correct+qwen3_correct+gpt_oss_attack": {
+   "abstain": 66,
+   "ambiguous": 12,
+   "correct": 555,
+   "other": 250,
+   "target": 637
+  },
+  "human+resolved_correct+qwen3_correct+qwen3_false": {
+   "abstain": 119,
+   "ambiguous": 10,
+   "correct": 802,
+   "other": 284,
+   "target": 305
+  },
+  "human+resolved_correct+qwen3_correct+resolved_false": {
+   "abstain": 122,
+   "ambiguous": 4,
+   "correct": 956,
+   "other": 310,
+   "target": 128
+  },
+  "human+resolved_correct+resolved_false+qwen3_correct+qwen3_false+gpt_oss_attack": {
+   "abstain": 96,
+   "ambiguous": 10,
+   "correct": 332,
+   "other": 226,
+   "target": 856
+  },
+  "human+resolved_false": {
+   "abstain": 221,
+   "ambiguous": 8,
+   "correct": 445,
+   "other": 352,
+   "target": 494
+  },
+  "human+resolved_false+qwen3_false": {
+   "abstain": 163,
+   "ambiguous": 7,
+   "correct": 244,
+   "other": 276,
+   "target": 830
+  },
+  "human+resolved_false+qwen3_false+gpt_oss_attack": {
+   "abstain": 79,
+   "ambiguous": 7,
+   "correct": 75,
+   "other": 233,
+   "target": 1126
+  },
+  "human_only": {
+   "abstain": 307,
+   "correct": 753,
+   "other": 456,
+   "target": 4
+  },
+  "qwen3_correct_only": {
+   "abstain": 117,
+   "correct": 1083,
+   "invalid": 1,
+   "other": 319
+  },
+  "qwen3_false_only": {
+   "abstain": 213,
+   "correct": 16,
+   "other": 219,
+   "target": 1072
+  },
+  "resolved_correct_only": {
+   "abstain": 188,
+   "correct": 972,
+   "other": 360
+  },
+  "resolved_false_only": {
+   "abstain": 315,
+   "correct": 25,
+   "other": 270,
+   "target": 910
+  }
+ },
+ "multi_version_contexts": {
+  "human+qwen3_false": 1062,
+  "human+resolved_correct+qwen3_correct+gpt_oss_attack": 1179,
+  "human+resolved_correct+resolved_false+qwen3_correct+qwen3_false+gpt_oss_attack": 1371
+ },
+ "rank1_source|human+gpt_oss_attack": {
+  "A": {
+   "abstain": 36,
+   "ambiguous": 6,
+   "correct": 119,
+   "other": 214,
+   "target": 870
+  },
+  "H": {
+   "abstain": 21,
+   "ambiguous": 1,
+   "correct": 73,
+   "other": 57,
+   "target": 123
+  }
+ },
+ "rank1_source|human+resolved_correct+qwen3_correct+gpt_oss_attack": {
+  "A": {
+   "abstain": 29,
+   "ambiguous": 7,
+   "correct": 203,
+   "other": 165,
+   "target": 485
+  },
+  "H": {
+   "abstain": 14,
+   "correct": 47,
+   "other": 31,
+   "target": 38
+  },
+  "QC": {
+   "abstain": 15,
+   "ambiguous": 3,
+   "correct": 226,
+   "other": 34,
+   "target": 79
+  },
+  "RC": {
+   "abstain": 8,
+   "ambiguous": 2,
+   "correct": 79,
+   "other": 20,
+   "target": 35
+  }
+ },
+ "rank1_source|human+resolved_correct+resolved_false+qwen3_correct+qwen3_false+gpt_oss_attack": {
+  "A": {
+   "abstain": 39,
+   "ambiguous": 5,
+   "correct": 67,
+   "other": 109,
+   "target": 392
+  },
+  "H": {
+   "abstain": 10,
+   "correct": 22,
+   "other": 17,
+   "target": 19
+  },
+  "QC": {
+   "abstain": 7,
+   "ambiguous": 1,
+   "correct": 90,
+   "other": 15,
+   "target": 70
+  },
+  "QF": {
+   "abstain": 27,
+   "ambiguous": 1,
+   "correct": 65,
+   "other": 40,
+   "target": 230
+  },
+  "RC": {
+   "abstain": 2,
+   "ambiguous": 1,
+   "correct": 30,
+   "other": 11,
+   "target": 30
+  },
+  "RF": {
+   "abstain": 11,
+   "ambiguous": 2,
+   "correct": 58,
+   "other": 34,
+   "target": 115
+  }
+ },
+ "transitions_from_H": {
+  "gpt_oss_attack_only": {
+   "abstain->abstain": 16,
+   "abstain->other": 44,
+   "abstain->target": 247,
+   "correct->abstain": 44,
+   "correct->ambiguous": 1,
+   "correct->correct": 2,
+   "correct->other": 83,
+   "correct->target": 623,
+   "other->abstain": 30,
+   "other->other": 101,
+   "other->target": 325,
+   "target->target": 4
+  },
+  "human+gpt_oss_attack": {
+   "abstain->abstain": 20,
+   "abstain->correct": 1,
+   "abstain->other": 39,
+   "abstain->target": 247,
+   "correct->abstain": 24,
+   "correct->ambiguous": 1,
+   "correct->correct": 178,
+   "correct->other": 67,
+   "correct->target": 483,
+   "other->abstain": 13,
+   "other->ambiguous": 6,
+   "other->correct": 13,
+   "other->other": 165,
+   "other->target": 259,
+   "target->target": 4
+  },
+  "human+qwen3_correct": {
+   "abstain->abstain": 139,
+   "abstain->correct": 134,
+   "abstain->other": 34,
+   "correct->abstain": 3,
+   "correct->correct": 735,
+   "correct->invalid": 1,
+   "correct->other": 14,
+   "other->abstain": 8,
+   "other->correct": 151,
+   "other->other": 296,
+   "other->target": 1,
+   "target->correct": 3,
+   "target->other": 1
+  },
+  "human+qwen3_false": {
+   "abstain->abstain": 101,
+   "abstain->correct": 4,
+   "abstain->other": 27,
+   "abstain->target": 175,
+   "correct->abstain": 37,
+   "correct->ambiguous": 5,
+   "correct->correct": 281,
+   "correct->other": 41,
+   "correct->target": 389,
+   "other->abstain": 27,
+   "other->ambiguous": 5,
+   "other->correct": 21,
+   "other->other": 229,
+   "other->target": 174,
+   "target->target": 4
+  },
+  "human+resolved_correct": {
+   "abstain->abstain": 205,
+   "abstain->correct": 72,
+   "abstain->other": 29,
+   "abstain->target": 1,
+   "correct->abstain": 4,
+   "correct->correct": 729,
+   "correct->other": 20,
+   "other->abstain": 8,
+   "other->correct": 85,
+   "other->other": 363,
+   "target->other": 1,
+   "target->target": 3
+  },
+  "human+resolved_correct+qwen3_correct+gpt_oss_attack": {
+   "abstain->abstain": 22,
+   "abstain->correct": 47,
+   "abstain->other": 40,
+   "abstain->target": 198,
+   "correct->abstain": 29,
+   "correct->ambiguous": 6,
+   "correct->correct": 411,
+   "correct->other": 43,
+   "correct->target": 264,
+   "other->abstain": 15,
+   "other->ambiguous": 6,
+   "other->correct": 96,
+   "other->other": 167,
+   "other->target": 172,
+   "target->correct": 1,
+   "target->target": 3
+  },
+  "human+resolved_correct+qwen3_correct+qwen3_false": {
+   "abstain->abstain": 74,
+   "abstain->correct": 92,
+   "abstain->other": 43,
+   "abstain->target": 98,
+   "correct->abstain": 21,
+   "correct->ambiguous": 3,
+   "correct->correct": 572,
+   "correct->other": 25,
+   "correct->target": 132,
+   "other->abstain": 24,
+   "other->ambiguous": 7,
+   "other->correct": 137,
+   "other->other": 216,
+   "other->target": 72,
+   "target->correct": 1,
+   "target->target": 3
+  },
+  "human+resolved_correct+qwen3_correct+resolved_false": {
+   "abstain->abstain": 100,
+   "abstain->ambiguous": 1,
+   "abstain->correct": 123,
+   "abstain->other": 39,
+   "abstain->target": 44,
+   "correct->abstain": 10,
+   "correct->ambiguous": 2,
+   "correct->correct": 678,
+   "correct->other": 17,
+   "correct->target": 46,
+   "other->abstain": 12,
+   "other->ambiguous": 1,
+   "other->correct": 152,
+   "other->other": 254,
+   "other->target": 37,
+   "target->correct": 3,
+   "target->target": 1
+  },
+  "human+resolved_correct+resolved_false+qwen3_correct+qwen3_false+gpt_oss_attack": {
+   "abstain->abstain": 30,
+   "abstain->ambiguous": 1,
+   "abstain->correct": 24,
+   "abstain->other": 41,
+   "abstain->target": 211,
+   "correct->abstain": 42,
+   "correct->ambiguous": 3,
+   "correct->correct": 255,
+   "correct->other": 50,
+   "correct->target": 403,
+   "other->abstain": 24,
+   "other->ambiguous": 6,
+   "other->correct": 52,
+   "other->other": 135,
+   "other->target": 239,
+   "target->correct": 1,
+   "target->target": 3
+  },
+  "human+resolved_false": {
+   "abstain->abstain": 172,
+   "abstain->correct": 10,
+   "abstain->other": 18,
+   "abstain->target": 107,
+   "correct->abstain": 26,
+   "correct->ambiguous": 5,
+   "correct->correct": 404,
+   "correct->other": 45,
+   "correct->target": 273,
+   "other->abstain": 23,
+   "other->ambiguous": 3,
+   "other->correct": 31,
+   "other->other": 289,
+   "other->target": 110,
+   "target->target": 4
+  },
+  "human+resolved_false+qwen3_false": {
+   "abstain->abstain": 78,
+   "abstain->correct": 9,
+   "abstain->other": 30,
+   "abstain->target": 190,
+   "correct->abstain": 54,
+   "correct->ambiguous": 4,
+   "correct->correct": 209,
+   "correct->other": 49,
+   "correct->target": 437,
+   "other->abstain": 31,
+   "other->ambiguous": 3,
+   "other->correct": 26,
+   "other->other": 197,
+   "other->target": 199,
+   "target->target": 4
+  },
+  "human+resolved_false+qwen3_false+gpt_oss_attack": {
+   "abstain->abstain": 22,
+   "abstain->correct": 2,
+   "abstain->other": 41,
+   "abstain->target": 242,
+   "correct->abstain": 29,
+   "correct->ambiguous": 1,
+   "correct->correct": 69,
+   "correct->other": 68,
+   "correct->target": 586,
+   "other->abstain": 28,
+   "other->ambiguous": 6,
+   "other->correct": 4,
+   "other->other": 124,
+   "other->target": 294,
+   "target->target": 4
+  },
+  "qwen3_correct_only": {
+   "abstain->abstain": 79,
+   "abstain->correct": 176,
+   "abstain->other": 52,
+   "correct->abstain": 15,
+   "correct->correct": 718,
+   "correct->invalid": 1,
+   "correct->other": 19,
+   "other->abstain": 22,
+   "other->correct": 186,
+   "other->other": 248,
+   "target->abstain": 1,
+   "target->correct": 3
+  },
+  "qwen3_false_only": {
+   "abstain->abstain": 69,
+   "abstain->correct": 1,
+   "abstain->other": 33,
+   "abstain->target": 204,
+   "correct->abstain": 81,
+   "correct->correct": 13,
+   "correct->other": 66,
+   "correct->target": 593,
+   "other->abstain": 63,
+   "other->correct": 2,
+   "other->other": 120,
+   "other->target": 271,
+   "target->target": 4
+  },
+  "resolved_correct_only": {
+   "abstain->abstain": 122,
+   "abstain->correct": 131,
+   "abstain->other": 54,
+   "correct->abstain": 20,
+   "correct->correct": 710,
+   "correct->other": 23,
+   "other->abstain": 44,
+   "other->correct": 130,
+   "other->other": 282,
+   "target->abstain": 2,
+   "target->correct": 1,
+   "target->other": 1
+  },
+  "resolved_false_only": {
+   "abstain->abstain": 119,
+   "abstain->other": 35,
+   "abstain->target": 153,
+   "correct->abstain": 109,
+   "correct->correct": 18,
+   "correct->other": 69,
+   "correct->target": 557,
+   "other->abstain": 87,
+   "other->correct": 7,
+   "other->other": 166,
+   "other->target": 196,
+   "target->target": 4
+  }
+ }
+}

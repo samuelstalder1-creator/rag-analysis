@@ -10,7 +10,9 @@ from evlab.rag.config import resolve_reader
 from evlab.retrieval.specs import resolve_retrievers
 
 ROOT = Path(__file__).parents[1]
-CONFIGS = sorted((ROOT / "configs/experiments").rglob("*.yaml"))
+CONFIGS = sorted((ROOT / "configs/experiments").rglob("*.yaml")) + sorted(
+    (ROOT / "configs/archive/experiments").rglob("*.yaml")
+)
 
 
 @pytest.mark.parametrize("path", CONFIGS, ids=lambda p: str(p.relative_to(ROOT)))

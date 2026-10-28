@@ -28,12 +28,25 @@ def root_id(doc):
     return doc.split('::')[-1]
 
 
+def relocated_input(name):
+    """Locate renamed inputs while retaining the original audit paths and hashes."""
+    path = Path(name)
+    if path.exists():
+        return path
+    registry = Path('data/generated/relocations.json')
+    if registry.exists():
+        for previous, current in json.loads(registry.read_text())['directories'].items():
+            if path.is_relative_to(previous):
+                return Path(current) / path.relative_to(previous)
+    return path
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     audit = json.loads((ROOT / 'input_audit.json').read_text())
     verified, missing = [], []
     for name, expected in audit['sha256'].items():
-        path = Path(name)
+        path = relocated_input(name)
         if not path.exists():
             missing.append(name)
             continue

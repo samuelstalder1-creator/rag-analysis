@@ -5,8 +5,8 @@ cd "$(dirname "$0")/.."
 PYTHON="${PYTHON:-.venv/bin/python}"
 MODEL="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
 TOKENIZER="models/deepseek-r1-bytelevel-tokenizer"
-CORRECT="configs/generation/nqopen1520-deepseek-r1-correct.yaml"
-FALSE="configs/generation/nqopen1520-deepseek-r1-false.yaml"
+CORRECT="configs/archive/generation/nqopen1520-deepseek-r1-correct.yaml"
+FALSE="configs/archive/generation/nqopen1520-deepseek-r1-false.yaml"
 export LOCAL_LLM_API_KEY="${LOCAL_LLM_API_KEY:-local}"
 export PYTHONUNBUFFERED=1
 # Avoid the CUDA compiler/FlashInfer sampler incompatibility on this server.

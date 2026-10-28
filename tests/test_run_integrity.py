@@ -260,7 +260,7 @@ def test_generation_status_works_with_imported_targets():
     from evlab.config import load_config
     from evlab.generation.maintenance import generation_status
 
-    config_path = Path(__file__).parents[1] / "configs/generation/nqopen1520-deepseek-r1-false.yaml"
+    config_path = Path(__file__).parents[1] / "configs/archive/generation/nqopen1520-deepseek-r1-false.yaml"
     if not (Path(__file__).parents[1] / "data/nqopen1520/answers.jsonl").exists():
         pytest.skip("local dataset not available")
     status = generation_status(load_config(config_path))
