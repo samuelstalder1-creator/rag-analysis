@@ -1,0 +1,5142 @@
+{
+  "scope": "latest reject event per still-missing document; all attempts in that event",
+  "mode": "deterministic; no semantic verification; no dataset/receipt changes",
+  "kinds": {
+    "correct": {
+      "accepted_in_corpus": 1537,
+      "still_missing_with_rejects": 133,
+      "now_pass_checks": 133,
+      "remaining_failure_reasons": {},
+      "reject_file": "data/generated/nqopen1520-together-gpt-oss-120b-correct-v1/correct_generation_rejects.jsonl",
+      "documents": [
+        {
+          "doc_id": "doc118",
+          "query_id": "test10",
+          "reject_line": 625,
+          "reject_hash": "92b3afe8d7c5e88e963c5f2bd98d1ecf8b5e29779a1c527f6fba293305c45224",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc1118",
+          "query_id": "test42",
+          "reject_line": 626,
+          "reject_hash": "cc44dff18974f03c9f467cbce67ddd05cc3dad02ab03605124d050f646012795",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc2368",
+          "query_id": "test79",
+          "reject_line": 627,
+          "reject_hash": "3270f46135690d79dcf28c6aa79d4455c3d5cdf691559ddc3cea4e62b58a2126",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc5431",
+          "query_id": "test149",
+          "reject_line": 628,
+          "reject_hash": "a4195e73c9c39c3754c5910ee83a30482c1b0e2d9e21b8469d1906274a58f1f1",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc6376",
+          "query_id": "test175",
+          "reject_line": 629,
+          "reject_hash": "45151e7ba4b6ef951f7cefc86576adb2d3234190351d031d7741a63e7515a106",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc6760",
+          "query_id": "test185",
+          "reject_line": 630,
+          "reject_hash": "e8e3403726efa9a7ffc9cd3e6763fc20b91a90c7bae92d27e872ecc3fd547100",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc7247",
+          "query_id": "test200",
+          "reject_line": 631,
+          "reject_hash": "d2b0c345239d86e7ebd055f6567e33d1deccda285a3e3344cac1e309a7e8b743",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc7351",
+          "query_id": "test201",
+          "reject_line": 632,
+          "reject_hash": "5d8849186acdfaa44a5f464fdf3e7aa9eb9526dd85fade934241b8d2d654f08b",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc7389",
+          "query_id": "test204",
+          "reject_line": 633,
+          "reject_hash": "55792923d4e2531ab84fd8ddceab03d4896f485b7ff7cb5e53599e162c9d1fb0",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc7543",
+          "query_id": "test208",
+          "reject_line": 634,
+          "reject_hash": "d6fb12f5c4067183857b6f81bd30fcfa355f0e49ba32f89302de7430f15be8ec",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc7894",
+          "query_id": "test217",
+          "reject_line": 635,
+          "reject_hash": "346686b6cd2f83cb4aac2eb3c425b8d98ed28fd6b9501cd00818457a11cea44f",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc9596",
+          "query_id": "test256",
+          "reject_line": 636,
+          "reject_hash": "c92300788dac6ed72cea6178cf28f088c70edfb995d3fbbb86e1ec3b14aad5c1",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc11594",
+          "query_id": "test304",
+          "reject_line": 637,
+          "reject_hash": "b7334969f27e61c1fcd823934ee6cdca00dc8b5c4b3eef8770957a0cb98a7d94",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc14134",
+          "query_id": "test375",
+          "reject_line": 505,
+          "reject_hash": "7c95c97738dd2ddea0ef82dfc1d3584e8b8519fe266c80ae46f36492fada51f4",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc14321",
+          "query_id": "test381",
+          "reject_line": 506,
+          "reject_hash": "f4c50bb644ea8aeb0539539d0b424481f29ea2b771f86371c9e71b26c38e67f4",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc15639",
+          "query_id": "test417",
+          "reject_line": 507,
+          "reject_hash": "ba97c36d30d59ed60127d255f9fb584efcfdc74f7e24e1e5ea53270af3f9928d",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc16797",
+          "query_id": "test456",
+          "reject_line": 508,
+          "reject_hash": "e9862b9f07e4ebb16d173988081133fdad2743774a261f08f42ae45c27da123b",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc17774",
+          "query_id": "test481",
+          "reject_line": 509,
+          "reject_hash": "7db918aaa0b49c2fce300e2a71a6a6d1bbb3a45c6690792a46a9e89456e11a57",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc17808",
+          "query_id": "test485",
+          "reject_line": 510,
+          "reject_hash": "273b87bbfc2d501bd73a9664af7af155a0ee89a248d8f6af662c8d9246b3ec76",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc18362",
+          "query_id": "test498",
+          "reject_line": 511,
+          "reject_hash": "8a5bbaf0d564f73c4d971d4d17febf52ad95346a48e0d360158e94f24bdb54ba",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc19126",
+          "query_id": "test527",
+          "reject_line": 512,
+          "reject_hash": "4c9a2fc405788dacfb6dd83f94aad2711b8605d32291c831bb3a4f3ee2994bd2",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc19817",
+          "query_id": "test542",
+          "reject_line": 513,
+          "reject_hash": "6a7ac3ba6e22a063ca5e687ca3455d9523cf09897309090f7a97e5aac3316560",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc19820",
+          "query_id": "test542",
+          "reject_line": 514,
+          "reject_hash": "8c7b047189d7735610f6d8791ef2cf7d0219f304890343bde23d21433534cf76",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc19961",
+          "query_id": "test547",
+          "reject_line": 515,
+          "reject_hash": "0563730846960dc7cc9fd6181329e6e3ee58205dbb1a18527168487f4bc73baf",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc20508",
+          "query_id": "test565",
+          "reject_line": 516,
+          "reject_hash": "f94baa3e763b0be66ab5eb3b3124cafba22921b65b0c1869459bc5c757e7fb7f",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc21245",
+          "query_id": "test594",
+          "reject_line": 517,
+          "reject_hash": "06c1ed5b83a0a5d6f51517bd6fefe12dec40f3284c44691aedfe0fdfa7709843",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc21587",
+          "query_id": "test604",
+          "reject_line": 518,
+          "reject_hash": "e5fcae9965227be2db4e7405bd28fa9ffa79ebe24c3ce0ee6a1dbea5fe494356",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc22970",
+          "query_id": "test643",
+          "reject_line": 519,
+          "reject_hash": "63f59463ae931a9db4a44c44eb36ddb59aabc2b529f2697c76acf2a79614c111",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc22983",
+          "query_id": "test643",
+          "reject_line": 520,
+          "reject_hash": "9266a9f2b7b6803b1c3484f365911ba6bd5152b5740e15fddf5e451d400fa320",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc23518",
+          "query_id": "test660",
+          "reject_line": 521,
+          "reject_hash": "1caca636d7c4643f7e90da8e79545f6315ce230e6a97c244998255e9240432db",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc23538",
+          "query_id": "test661",
+          "reject_line": 522,
+          "reject_hash": "221c8ffd95378c20ef846dad6860b787fbb25eb577dd628fba7461383470a6ca",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc25262",
+          "query_id": "test708",
+          "reject_line": 523,
+          "reject_hash": "f28b73a04913f43fa79ffd5937a5caafa39b59412bb6a2fffe9a1f12aac81cf1",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc27589",
+          "query_id": "test772",
+          "reject_line": 524,
+          "reject_hash": "c6813df23c7063b33f0ca87c12623eb7ec8ccba8f363890efcff686be8d770aa",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc27771",
+          "query_id": "test778",
+          "reject_line": 525,
+          "reject_hash": "8ce3acc790450088d91a369a7acb3fcf9c016fc92f7f52f07f794158f5392ca7",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc28004",
+          "query_id": "test784",
+          "reject_line": 526,
+          "reject_hash": "c29249fee10f496c01560b8f3c98bdeca894b6c8ba95ec2977b81fdf76ea9569",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc28431",
+          "query_id": "test798",
+          "reject_line": 527,
+          "reject_hash": "8f41ef6b0bdda0ee7f402ab80a69ef1c0351a28fcb0b788f046a9fe4f9fdb36b",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc28754",
+          "query_id": "test807",
+          "reject_line": 528,
+          "reject_hash": "81f75600a41e14354be43b9bef3826d978cff826f9f546814dffb64f9e48a359",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc30668",
+          "query_id": "test856",
+          "reject_line": 529,
+          "reject_hash": "ac7acc881cefe47e89a8bfb20b68ce8c1f143465d907bef5a09341be67d9cc48",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc31792",
+          "query_id": "test891",
+          "reject_line": 530,
+          "reject_hash": "3404e121bab444572d2fb051b3c6a43015be3f34a9797222545905b3740ff948",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc32705",
+          "query_id": "test919",
+          "reject_line": 531,
+          "reject_hash": "166561778e04a8a5c446d3fb5aed1961259fe5840c0c5fca89cf76166a6b42d4",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc34938",
+          "query_id": "test993",
+          "reject_line": 532,
+          "reject_hash": "62dc057e1065ce72a4c23421dd39aa534e2d426d09f710a144a34e66ed3069f6",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc35855",
+          "query_id": "test1016",
+          "reject_line": 533,
+          "reject_hash": "f50e072d1265a5df5fcb6fda2af2d0cf1f97ddb448347a7a4e93ba330f7bf06f",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc36159",
+          "query_id": "test1029",
+          "reject_line": 534,
+          "reject_hash": "5df13c730e83f48e4929d792172fce44b4a679fbf88814e909627a32c3920d4b",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc36245",
+          "query_id": "test1032",
+          "reject_line": 535,
+          "reject_hash": "4a24305bdaef3316904ae008651b645a8edc43ec7dec0b0e22020ccb5d00d6c6",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc37026",
+          "query_id": "test1063",
+          "reject_line": 536,
+          "reject_hash": "b27f73ee773a6393ae66beba5faddde7a31876dd28f807cf637e492e62b61d83",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc37757",
+          "query_id": "test1082",
+          "reject_line": 537,
+          "reject_hash": "5622a4aceab76d5b47d0e9a251b2eea0ffe4ee3511a66222db4d0f7b505e6b8a",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc37964",
+          "query_id": "test1087",
+          "reject_line": 538,
+          "reject_hash": "ba833dd28154370236d6db23c1ee7f79f0004f8b26ff675d9072020ab33e3f9a",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc38199",
+          "query_id": "test1093",
+          "reject_line": 539,
+          "reject_hash": "0ee3db2556df6ae669b3345c6f58a42f49d34af3b1f084c9b30c76ef55d29bf2",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [
+              "missing_gold_answer"
+            ],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc39565",
+          "query_id": "test1122",
+          "reject_line": 540,
+          "reject_hash": "302e7b789959209fa113847a5ad73aaf38b4cb6dc40c2d6659a540586fc7bd45",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc40236",
+          "query_id": "test1136",
+          "reject_line": 541,
+          "reject_hash": "b27cd42816fa558688ca4eb3d21e75ce787903d32f9445159c889331f4026693",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc42525",
+          "query_id": "test1195",
+          "reject_line": 542,
+          "reject_hash": "26430a45c82585516e3ff519256b99ad8e9cac9b3d1c201737f8be14a7df093d",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc42673",
+          "query_id": "test1199",
+          "reject_line": 543,
+          "reject_hash": "0f75f6b920690a9b36d0f9bd455522d4ee090ef3033695e8331d72112f623b25",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc43104",
+          "query_id": "test1208",
+          "reject_line": 544,
+          "reject_hash": "176884c94dfc89b355886d9fe6059c5e430a9f489ea25379f0efa1bf58b87324",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc43250",
+          "query_id": "test1213",
+          "reject_line": 545,
+          "reject_hash": "6b5516c4b2de25bacdbda3f5e79bbeba9103f98ab38c4e481fe1407181a3a4b4",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc45685",
+          "query_id": "test1286",
+          "reject_line": 546,
+          "reject_hash": "2aac37754cba7410b4009bc70c6f06137e784a26686cc2e190cd8f9218ba61ea",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc46363",
+          "query_id": "test1310",
+          "reject_line": 547,
+          "reject_hash": "a371fefcfd7fa1bba7f8552827ee0e45a545b0f90df700b8ed3ea8dd3eeb551c",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc48050",
+          "query_id": "test1362",
+          "reject_line": 548,
+          "reject_hash": "a88767202fc914d1cb5c93f306cd317547e2f953c8aa6ed2b6ebce7a8f6d62d8",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc48352",
+          "query_id": "test1368",
+          "reject_line": 549,
+          "reject_hash": "461e6abe777f28be2e3eddd31d2ea4fb5e614a8120e997bdaf3f897948da19fc",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc48844",
+          "query_id": "test1376",
+          "reject_line": 550,
+          "reject_hash": "320aca2fadcb78bf92089d703c45fa141382107f9e84794cd15c3980e3fe9830",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc49023",
+          "query_id": "test1384",
+          "reject_line": 551,
+          "reject_hash": "2e0c4de3306899376e84bb455d563e19c6a25744954dc3e50079d77332575657",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc52200",
+          "query_id": "test1464",
+          "reject_line": 552,
+          "reject_hash": "206afe9f95e9c434d0568a073ef924841bb9fc474e8cb506ab78b8e573da1715",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc56052",
+          "query_id": "test1571",
+          "reject_line": 553,
+          "reject_hash": "a4265c9d7e4ef2c1f2549d20538ce3eb05c8e1585f289cb24c37686e08059973",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc56269",
+          "query_id": "test1578",
+          "reject_line": 554,
+          "reject_hash": "9a407da3cea94965205efc45002962dc1005353e3c053098dca82386559f50ee",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc58920",
+          "query_id": "test1665",
+          "reject_line": 555,
+          "reject_hash": "e8b4b13c839cadec84361170fc854aedd4f5accdeb5f96227b912334f0bbc727",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc59881",
+          "query_id": "test1690",
+          "reject_line": 556,
+          "reject_hash": "fa89e9b71324d1d55f04ee907b026490932d607977fdf25c1d1b4341206be92f",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc61413",
+          "query_id": "test1733",
+          "reject_line": 557,
+          "reject_hash": "c3f844999895e34b2ea01fbc50aeecc98fbf3b7362aff8a9fbf2ece3e857e021",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc61566",
+          "query_id": "test1738",
+          "reject_line": 558,
+          "reject_hash": "8484bf699286fbbd48056786b3a8b24bc242f24b92b3a191240897f8473d767d",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc61878",
+          "query_id": "test1756",
+          "reject_line": 559,
+          "reject_hash": "970a46f288f120636eb0fa26a5be181eeb8e30f113436d8cf252bbf619ca5a2e",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc61882",
+          "query_id": "test1756",
+          "reject_line": 560,
+          "reject_hash": "d8a349c3559d210c316811284448802250033e0838e74845ce12390ce7223f4e",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc62606",
+          "query_id": "test1776",
+          "reject_line": 561,
+          "reject_hash": "adc4ae0f3bdff9a71cb4f0d535b348db16cc951deda2bf832e7f094ba8247909",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc62919",
+          "query_id": "test1783",
+          "reject_line": 562,
+          "reject_hash": "d6337a9bc956dcce63643fec1282e7f4d647f0459e8b5e881f92a1e79723983f",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc63021",
+          "query_id": "test1788",
+          "reject_line": 563,
+          "reject_hash": "b16d8383f611e9e22bc94ae7a2189acce07e501b4366f264a6ae1fa9d58fa292",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc64330",
+          "query_id": "test1831",
+          "reject_line": 564,
+          "reject_hash": "9d9eb7c902391bb2c6422d2ccb491cdd6b3c7c3f3c257687851d2a2c3418f8bc",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc65917",
+          "query_id": "test1877",
+          "reject_line": 565,
+          "reject_hash": "80e0384bc55a76a1fa82db11d71bc62b9279d435aaa0badfbe5037160e038a44",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc66608",
+          "query_id": "test1896",
+          "reject_line": 566,
+          "reject_hash": "774c9943492deb1582c8ebb8dfcdd3c42ab825a6f51fbd09e4abb0836d386997",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc66621",
+          "query_id": "test1896",
+          "reject_line": 567,
+          "reject_hash": "5b07d94af00612d849874efce98ad564c8abab33fba5e6dc9676e15fbe50662f",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc66934",
+          "query_id": "test1910",
+          "reject_line": 568,
+          "reject_hash": "c6ebdfa7c55e6af67c02696820ad92c27c748c92f0730547d31f216107244dca",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc67058",
+          "query_id": "test1912",
+          "reject_line": 569,
+          "reject_hash": "498f18095bbf5da4ced3b25bb0ad273262b2fe5d0d39f4bea9f1a4ec630a7951",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc68279",
+          "query_id": "test1947",
+          "reject_line": 570,
+          "reject_hash": "dd99b17ee41354cb2971faa6eba2fab27fc66a81ee587d4a81f7a26433ebf005",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc69326",
+          "query_id": "test1977",
+          "reject_line": 571,
+          "reject_hash": "798e2609ff6a6c0d80458bb44fd8981154e1df32f444d9dcbea33b4d908af9a0",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc69611",
+          "query_id": "test1986",
+          "reject_line": 572,
+          "reject_hash": "a82de16cb55ec6fcfd75c5ac3754bfa2a1f7b59aade48b58670540975c77a122",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc69765",
+          "query_id": "test1989",
+          "reject_line": 573,
+          "reject_hash": "d069c2da280c5b239fab1cf37af3223c015b287e40165b95c212356a1ebef688",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc69933",
+          "query_id": "test1994",
+          "reject_line": 574,
+          "reject_hash": "a54ce22cba6f7812b0549fd72e1aa2ab326992e3c4473637b58d58395af511aa",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc70406",
+          "query_id": "test2005",
+          "reject_line": 575,
+          "reject_hash": "5ced887ea04d77b187eab3ae8e0ed4afc0c01401c92b7baf25712a1864142d38",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc70411",
+          "query_id": "test2006",
+          "reject_line": 576,
+          "reject_hash": "be9301bc78e73f6f77f92e92025dd3f6e8cba01f82384268c4e0cf0b072d4212",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc71815",
+          "query_id": "test2062",
+          "reject_line": 577,
+          "reject_hash": "b327002167d47f7005b5f9bae5d710d67be069d8692590331ffbcc58295c0897",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc72102",
+          "query_id": "test2067",
+          "reject_line": 578,
+          "reject_hash": "195cd5f72a34050c5a566565f95728959f3db3c41cc4ddae51463d385e8fd0d7",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc73770",
+          "query_id": "test2125",
+          "reject_line": 579,
+          "reject_hash": "7c67f36f56fe50cadad0f3b652a00d8bd57de41d1dae2ae7c5f9fb184033eedb",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc74805",
+          "query_id": "test2148",
+          "reject_line": 580,
+          "reject_hash": "a77ae0fc3a9b29a4f7071d0c1c082783fa897a3c007f06684a90ff913c8ed60e",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc76206",
+          "query_id": "test2185",
+          "reject_line": 581,
+          "reject_hash": "e92de49b70ee8f201d60a7d6743ee14fa9627d97d2561798f1cf30504ffe44c2",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc77010",
+          "query_id": "test2215",
+          "reject_line": 582,
+          "reject_hash": "da9e6653e35418d571c78dd6d80c4977648b2e60ccdd651f2d34e972ef3dd9a7",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc77835",
+          "query_id": "test2240",
+          "reject_line": 583,
+          "reject_hash": "84829f28961f6af49ba7b9fbc334755c4f1004b03af8b73ed65c848f20a3aeb4",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc77844",
+          "query_id": "test2241",
+          "reject_line": 584,
+          "reject_hash": "613a59effd61884272296f8ceb5d2e93b7b05ebbb01271bb032aa361a2428672",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc77984",
+          "query_id": "test2248",
+          "reject_line": 585,
+          "reject_hash": "21c47226c2915b2a0763fde477756516f0bc06e710bad9abd9701b5c74f86d51",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc79635",
+          "query_id": "test2303",
+          "reject_line": 586,
+          "reject_hash": "cab176b44a63d7088cef771ca875b9a73be6b086318d1025e0aca8321445ac9c",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc79654",
+          "query_id": "test2305",
+          "reject_line": 587,
+          "reject_hash": "e940516316ac11014af45b3a0ae7a3b59575475b9439c0497a925f5ef40de2a1",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc81680",
+          "query_id": "test2361",
+          "reject_line": 588,
+          "reject_hash": "2cfecf5f813e04a4d1f96698e3977155edf0bbfd3fc6ac0779c74709876fc451",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc82930",
+          "query_id": "test2401",
+          "reject_line": 589,
+          "reject_hash": "cb26e4af5c246696df607b433ebc0a7d8792e326638dcd914aed621229231655",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc83761",
+          "query_id": "test2425",
+          "reject_line": 590,
+          "reject_hash": "9ad685a4fccd341f0ac820a3947920fcee5b81297f3672597ba274c40a833d30",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc83859",
+          "query_id": "test2429",
+          "reject_line": 591,
+          "reject_hash": "b56e800565f00e498c67a93d283997f561096057330d33dff2cf2f5d57264cb1",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc84097",
+          "query_id": "test2438",
+          "reject_line": 592,
+          "reject_hash": "e7b0e1c5db7e428132a58b8886c9c46762247455c58af92200e155d4106716c8",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc84797",
+          "query_id": "test2458",
+          "reject_line": 593,
+          "reject_hash": "78f3e434e663a86b9b838474a4bbea6834dac40766f331c120c31247f1a226d7",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc86433",
+          "query_id": "test2503",
+          "reject_line": 594,
+          "reject_hash": "d31633472a5e0059b1774c537ecc1f7e9bd3f46d26bb0832f72b12e42b5d7d07",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc88029",
+          "query_id": "test2564",
+          "reject_line": 595,
+          "reject_hash": "7169bc9cdc7cb9baaefbc55df6f1bb5a0f9e8e76d051db7377bd512765100d9b",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc88115",
+          "query_id": "test2566",
+          "reject_line": 596,
+          "reject_hash": "2c77cb8d4f1c35fc0e1560e248bc4a1a9adb9d1261b44df5857a6363e21def4d",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc88528",
+          "query_id": "test2580",
+          "reject_line": 597,
+          "reject_hash": "3e70ac57e4a619e9daf9f24f373ec6bcdc531594b09113b2ec0852f3edaf7675",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc88901",
+          "query_id": "test2596",
+          "reject_line": 598,
+          "reject_hash": "d8328a256e82ba093627b76bac64f725b62a6fa279243466e94c9cb48236584c",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc89008",
+          "query_id": "test2599",
+          "reject_line": 599,
+          "reject_hash": "465fe9e095a4bafa2ee9fa2a6f5cdedb0d912ec7a03f3cb2db01d6a2359b98f8",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc89227",
+          "query_id": "test2604",
+          "reject_line": 600,
+          "reject_hash": "f5adc0fb095154928b81a470a662944bc4c434a17e2f12389f68185ba5ab6eda",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc91228",
+          "query_id": "test2661",
+          "reject_line": 601,
+          "reject_hash": "01a4352836a7f544efa9fc4e52a668651fe1f7dd4f4f5868679be15335ffec72",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc92412",
+          "query_id": "test2698",
+          "reject_line": 602,
+          "reject_hash": "914b649cd16306169778c73f687ebdfec6f8e7c82975ee9f2b1ae9a284a4727c",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc95175",
+          "query_id": "test2768",
+          "reject_line": 603,
+          "reject_hash": "fe595a8de2f2063c8de849c743fa14481ffd0126f4b75fdcc8608d07f6c662d1",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc96520",
+          "query_id": "test2809",
+          "reject_line": 604,
+          "reject_hash": "71a90a4437499c7df33799efd7df537fe82d13edab824d074783fa4f4714fef7",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc97287",
+          "query_id": "test2837",
+          "reject_line": 605,
+          "reject_hash": "55afbaa5b0694dbee0423a887b2d2c288a3d0d29fbb4fae04534985845ffb89d",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc98069",
+          "query_id": "test2867",
+          "reject_line": 606,
+          "reject_hash": "946b71ffb54cc4cae0e07331e7298d206b6afe61c33708dde5e0ea42bf6978ea",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc98149",
+          "query_id": "test2870",
+          "reject_line": 607,
+          "reject_hash": "1f875812cfef9fad816d5955cd4cbfe45becaaeb81e7e025351d0d58cfd01bfb",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc99013",
+          "query_id": "test2897",
+          "reject_line": 608,
+          "reject_hash": "d06918940b8d1b9a7e367f29717f7308245c1b65404168a0953f342bdbd42252",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc99698",
+          "query_id": "test2918",
+          "reject_line": 609,
+          "reject_hash": "e654f27a6c083d401de3a780698c9e979337b3fc92cc7c0e7037930db1a4836b",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc99888",
+          "query_id": "test2921",
+          "reject_line": 610,
+          "reject_hash": "3df30f8387aa0cb39ef14bbe9b04cc6ae5a91cab73d0ea14440217f0cc693deb",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc100729",
+          "query_id": "test2942",
+          "reject_line": 611,
+          "reject_hash": "3b99e5d641f22272adad5ad42be7a9999ffd3cab0b16acf76bdba32c1155eb13",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc102135",
+          "query_id": "test2976",
+          "reject_line": 612,
+          "reject_hash": "4bb59271d4a2526a68e4a7d757cec6b7007225ef7dc1e733f8305c5479c63615",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc104417",
+          "query_id": "test3047",
+          "reject_line": 613,
+          "reject_hash": "16064ee31ffd9d1e0cc8ec3491b333f1b447a8b3e1d6e7389419e65f90344ed5",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc104835",
+          "query_id": "test3062",
+          "reject_line": 614,
+          "reject_hash": "8241ddc2f0d556033bc51633a04ca350c8e8a49f2fcdee8f9a25bf706d5d4ce9",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc107274",
+          "query_id": "test3142",
+          "reject_line": 615,
+          "reject_hash": "ca6fff55cec57b14c7b90976e38018580188912c0791d3278459b2cae104010c",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc107524",
+          "query_id": "test3148",
+          "reject_line": 616,
+          "reject_hash": "da67fe6192bb4152515b05fbba608424efc32583de7246dc158b32d581e36264",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc109336",
+          "query_id": "test3199",
+          "reject_line": 617,
+          "reject_hash": "aec8a84826dba7db1cd427ca9eb6d72b6b2ca06465ab78d8a7ca56befbe560db",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc109460",
+          "query_id": "test3206",
+          "reject_line": 618,
+          "reject_hash": "9ef46934bda1d49e3a2d5f5681b8c52722152d555f8fb0376fd2fc5cacb3eca1",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc112589",
+          "query_id": "test3292",
+          "reject_line": 619,
+          "reject_hash": "0e06ed9669413856341360dca94c8961c76176fc599cf7e1ec30eddc982b2258",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc113756",
+          "query_id": "test3330",
+          "reject_line": 620,
+          "reject_hash": "a4b7f5ac8c164bbee141ace2b9826a7a816d57fd5f89142a76748d7039e51718",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc115022",
+          "query_id": "test3368",
+          "reject_line": 621,
+          "reject_hash": "1cdac97c0de88410944532641aae43d8960f873a27fadb7d360de7cd194ace3a",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc117062",
+          "query_id": "test3438",
+          "reject_line": 622,
+          "reject_hash": "58b0a5b3676678b4d22009cc370cc22268a5d54e47d60e06fbddfecde55ecd9d",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc117068",
+          "query_id": "test3438",
+          "reject_line": 623,
+          "reject_hash": "9188dfe15bea49146f4414e2eeddcb8e739a8a40886a25446c6c00d540a0eb75",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        },
+        {
+          "doc_id": "doc117531",
+          "query_id": "test3447",
+          "reject_line": 624,
+          "reject_hash": "4870cad6c815f21757da88331ddbabc70ec93896286d27f8bca28b43afd448af",
+          "previous_reason": "attempt_budget_exhausted",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            [],
+            [],
+            []
+          ]
+        }
+      ]
+    },
+    "false": {
+      "accepted_in_corpus": 1366,
+      "still_missing_with_rejects": 303,
+      "now_pass_checks": 278,
+      "remaining_failure_reasons": {
+        "no_generated_text": 6,
+        "missing_target_answer": 6,
+        "gold_answer_residue": 13
+      },
+      "reject_file": "data/generated/nqopen1520-together-gpt-oss-120b-false-v1/openai-gpt-oss-120b--tmp0.3--candidates--v1--rejects.jsonl",
+      "documents": [
+        {
+          "doc_id": "doc118",
+          "query_id": "test10",
+          "reject_line": 1099,
+          "reject_hash": "fa65a4782f6e41016fba23047ecba6fef6d0499bda36df208a0c5626c09685c9",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc136",
+          "query_id": "test11",
+          "reject_line": 1100,
+          "reject_hash": "17649360a34935532b531bdfce6e5cbe8e71d3772b4ddf0f817a645d854124aa",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc649",
+          "query_id": "test22",
+          "reject_line": 1101,
+          "reject_hash": "bdc5256b5f9e97e4c49ee53de096ba1467db6374b448a0185554961e2e9e735e",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc763",
+          "query_id": "test27",
+          "reject_line": 1102,
+          "reject_hash": "956c6e291a1f055048c1891eba741fe4fcb52762514b8d34b89a13b6ee0b0b7d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc897",
+          "query_id": "test31",
+          "reject_line": 1103,
+          "reject_hash": "58177a8b6d3e7c7ec4becdc4190cd29c8da41cbdf891f0fc5d4fafa750e701c6",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc1042",
+          "query_id": "test39",
+          "reject_line": 1104,
+          "reject_hash": "a477aad9341d6b9d741c1098a32f345d3c0cf4f8b5e9f9e52609091765b63788",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc1468",
+          "query_id": "test54",
+          "reject_line": 1105,
+          "reject_hash": "6e1e4ea9e34972b62892cc7f5a01384a5c3206410d84e522b9592d8f7a890e72",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc1474",
+          "query_id": "test54",
+          "reject_line": 1106,
+          "reject_hash": "136eb8d62e1bbaf661794e213d1c3815050fde08a33441e5cf5520c6fd9b5b64",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc1599",
+          "query_id": "test58",
+          "reject_line": 1107,
+          "reject_hash": "173534bfb551c4e3559ed0bcfcaa5db7fc7ba010a57eec17006a4bdab5bffe01",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc1729",
+          "query_id": "test62",
+          "reject_line": 1108,
+          "reject_hash": "2229f6d1496ce7af3312b9824fd28105cc6354138ff6aaacea8d763f238d83ad",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc2134",
+          "query_id": "test72",
+          "reject_line": 1109,
+          "reject_hash": "3bd98d45a57e596f22d92a11fe7f1302aec3d1b63195b29727efbe6f390d43f6",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc2274",
+          "query_id": "test76",
+          "reject_line": 1110,
+          "reject_hash": "30c69a1e3bad73a5f95fedc925787eb3eb7ea50ac2db9d5a010173d28739d850",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc2735",
+          "query_id": "test85",
+          "reject_line": 1111,
+          "reject_hash": "894b847aebcf0c479e00b813c32acf0e379f9eb68c475eeaf7212e1067e938a9",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc3123",
+          "query_id": "test98",
+          "reject_line": 1112,
+          "reject_hash": "2f91c8133695cae5017cb592de09a118f97c596c0775cb92cd33d183504b6885",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc3821",
+          "query_id": "test104",
+          "reject_line": 1113,
+          "reject_hash": "18feb17b897852dfe1eb929073d26524cfd99afb57ac6b061b89cdd13e299cce",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc3828",
+          "query_id": "test105",
+          "reject_line": 1114,
+          "reject_hash": "e2a859690eb438a865105ef91ec0b32c9cd38e906ba21388ba1c91fffcf9bf93",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc4958",
+          "query_id": "test131",
+          "reject_line": 1115,
+          "reject_hash": "29d2c1eb2ce8ab0401e75867296b126c409a223f79948e4d928f66aff012d3d6",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc5831",
+          "query_id": "test159",
+          "reject_line": 25,
+          "reject_hash": "2f1c4fbd9d5a0e53aefec7e671b0df2895e3e3a8e11ea11fef92f2b2ef4d3243",
+          "previous_reason": "No editable gold-answer spans in source",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "no_generated_text"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc6274",
+          "query_id": "test172",
+          "reject_line": 1116,
+          "reject_hash": "ba5ff5cb17557d66f6f122f83ef2c084831be39131299727b95bdb1a419b6fd4",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc6376",
+          "query_id": "test175",
+          "reject_line": 1117,
+          "reject_hash": "50bc435edbd494cb2bcd255ec8c2f4b33f104fc18d1d5cc1d224e45b4e8699f6",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "missing_target_answer"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc6760",
+          "query_id": "test185",
+          "reject_line": 1118,
+          "reject_hash": "5ef310e59ac569f68f513b564c99ea8e485ed0cd8ae00c87a4248a8dcc5a72c1",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc7150",
+          "query_id": "test196",
+          "reject_line": 1119,
+          "reject_hash": "12772460412201c679b986623bd0d3b73dd22c8d8b42d90b93f95f02e9d33e86",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc7247",
+          "query_id": "test200",
+          "reject_line": 1120,
+          "reject_hash": "1b03369bbaa58835c94505d95c6aca8d786768a010968f03efce3fce7a6f6001",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc7351",
+          "query_id": "test201",
+          "reject_line": 1121,
+          "reject_hash": "214b04114844f5d720018d0c8f55c59401852b5efd09cd34ac6487d0a8060a58",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc7921",
+          "query_id": "test219",
+          "reject_line": 1122,
+          "reject_hash": "8aefd7fe0b7f032636a839de92869238e8cc79e48637321b8188f2c599af676b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc8909",
+          "query_id": "test242",
+          "reject_line": 1123,
+          "reject_hash": "0b73ec6fe8ef26f254ff647678ab47e9523f0c2a57e1ea027409d4c18cf9baf3",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc9596",
+          "query_id": "test256",
+          "reject_line": 1124,
+          "reject_hash": "98cd264c56d5cbdfe4ed00ff09dbcaa0c2af00e263541295876864da0806c154",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "missing_target_answer"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc11594",
+          "query_id": "test304",
+          "reject_line": 1125,
+          "reject_hash": "778241374d7489185bb921996fb7018c285df5f0169ae36608ec06c41e28f4e0",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc11879",
+          "query_id": "test310",
+          "reject_line": 41,
+          "reject_hash": "08e10b9f2ba074fa54634413389531333ac6a30d63effe0ec4e48194ec85954d",
+          "previous_reason": "No editable gold-answer spans in source",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "no_generated_text"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc12606",
+          "query_id": "test328",
+          "reject_line": 1126,
+          "reject_hash": "ded49f5da04facbac03e194588e3fb4f1ca6146d7f44dd1954b9dcb674b71748",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc12651",
+          "query_id": "test329",
+          "reject_line": 1127,
+          "reject_hash": "3105d2574e6fcb4588d2cd27a285b902de170c675e6b638d11f1b1af0dd9d8a2",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc12708",
+          "query_id": "test331",
+          "reject_line": 831,
+          "reject_hash": "0d80ad9394e15eebca08264bdb034f780e71ee3d2f5e88f01934866476d3455d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc13111",
+          "query_id": "test345",
+          "reject_line": 832,
+          "reject_hash": "3079f57fbdd3d99974c76ce997803e0522bbb89f0fb2332e6fa75235aa5aa074",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc13925",
+          "query_id": "test366",
+          "reject_line": 833,
+          "reject_hash": "c75114b1dbcf2b991c04fb47af4a21e74770dd8757a101aa9b4babb9af2be1a6",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc14134",
+          "query_id": "test375",
+          "reject_line": 834,
+          "reject_hash": "c1d7f4e627a1414b2db3bf54fa792bf75619f9e5919f2cdd1b1c9c031f93d2ad",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc14756",
+          "query_id": "test393",
+          "reject_line": 835,
+          "reject_hash": "b7da578413a1d98e13e1c70b808adadc604b08b017c45ca33d900577e4b93532",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc15646",
+          "query_id": "test418",
+          "reject_line": 836,
+          "reject_hash": "a7d0c5abee26d4cc8b2e5fa6abee8c3c0c45b5ecebc27aefe3aaf8325ec62c87",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc15677",
+          "query_id": "test421",
+          "reject_line": 837,
+          "reject_hash": "96c47f6e5e2fbfeed854b0b27013cda5ad04c4dd6d9c3ea81a1185bad77c223f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc15760",
+          "query_id": "test424",
+          "reject_line": 838,
+          "reject_hash": "1325361eadd4c04682fdb9c83e8a7df01a8bb2b48fd57ef8e1acde90179f7038",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc16130",
+          "query_id": "test435",
+          "reject_line": 839,
+          "reject_hash": "1d64230901a175c3a020544e9861e7909d76f51b9cd2437902326749655a7ef9",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc16742",
+          "query_id": "test452",
+          "reject_line": 840,
+          "reject_hash": "da0a6dd928ec3d422995c5160efa0af3ad8dfcf1f0ffd724c82fc011c03617e0",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc16745",
+          "query_id": "test453",
+          "reject_line": 841,
+          "reject_hash": "c2dbc222467ba922de7205329fb30c86e075ab29636f3070fd0515a8c672e1d5",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc17168",
+          "query_id": "test468",
+          "reject_line": 842,
+          "reject_hash": "22e224dacf55126ff05637797f5337508e129b2555b5db158f60f249c342252b",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc17784",
+          "query_id": "test483",
+          "reject_line": 843,
+          "reject_hash": "d8eb34c528b04a818e2c4e79da8acdb0bc5948449ae2befb143dda4502b53d7b",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc17808",
+          "query_id": "test485",
+          "reject_line": 844,
+          "reject_hash": "cfae30b5ccb5d1b337b34772b7a247dda7d25cb70c14f9288e72ae46817e79fd",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc18371",
+          "query_id": "test499",
+          "reject_line": 845,
+          "reject_hash": "9f6f86f326d3ffba8f84517722511c32da172aedfa64c5b5d8c43d280b274483",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc18755",
+          "query_id": "test510",
+          "reject_line": 846,
+          "reject_hash": "c328f75e8e9e746156c152b9778aa85be946f6ea40bae711e5c535dbefb65d55",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc18906",
+          "query_id": "test516",
+          "reject_line": 847,
+          "reject_hash": "a963cafd2fdd27934ed3b7abac6133f6069d58cfa1ca62575ec89f29db6f9c1f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc19126",
+          "query_id": "test527",
+          "reject_line": 848,
+          "reject_hash": "6ce9f2c0ed9a64e6fdbec5a2cc0a7fba4c6d86664e36d4ea52d7b37a0803e05e",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc19267",
+          "query_id": "test532",
+          "reject_line": 849,
+          "reject_hash": "ce47410dd4b7432df0d2f2f69211a61485cc453fd90b7051fff463cd1312d8e7",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc19347",
+          "query_id": "test535",
+          "reject_line": 850,
+          "reject_hash": "c5736a9e136256d9dd2b7d4a982a53bdefcab8b7e22ba8b9e12123fa08bd9716",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc19817",
+          "query_id": "test542",
+          "reject_line": 851,
+          "reject_hash": "89162588c52fa277d2945a3ea1394c5c38ae0cea4a37859b3fff8912066238ef",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc19820",
+          "query_id": "test542",
+          "reject_line": 852,
+          "reject_hash": "0e79187e7c75ebdad90d7973d480ada03da388bd166cc931b495a66f6edb79d9",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc19901",
+          "query_id": "test545",
+          "reject_line": 853,
+          "reject_hash": "f08cf10d1d5ac731889d27291a540725376153fa3c3b1c3b2a47018a944bf91e",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc20081",
+          "query_id": "test549",
+          "reject_line": 854,
+          "reject_hash": "ff7768ca83dcab52d2eca37905893b789b091bd1e445aeb519e703a01e13f542",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc20088",
+          "query_id": "test550",
+          "reject_line": 855,
+          "reject_hash": "7a76d59a4e3747b0a0974ecf5b53a86c3bad8008d5864ab465a42fb28336f41a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc20228",
+          "query_id": "test558",
+          "reject_line": 856,
+          "reject_hash": "0034ad7fcf82b2bf03e6be61a90ba8b77fd5c4e4457459588be190c27e18b424",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc21191",
+          "query_id": "test588",
+          "reject_line": 857,
+          "reject_hash": "5ee2611bdaa9f47187569523c3ba5e5ea7c3a5d0bd16084e9a258270443f81d2",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc21245",
+          "query_id": "test594",
+          "reject_line": 858,
+          "reject_hash": "7d055c3295447b38617d3296698bffa433cefa4a0a8ecd0931ba86f01dd02b70",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc21596",
+          "query_id": "test605",
+          "reject_line": 859,
+          "reject_hash": "5b14d6d50b4bb09cb1bcc5c7cc882eabca7e22bbdb95bda07eb48de02e6a6a12",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc21751",
+          "query_id": "test611",
+          "reject_line": 860,
+          "reject_hash": "c2120cb789bacbe14ebdeaa343b300acd3e32662f29ab81a1349b7accab1e624",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc22729",
+          "query_id": "test635",
+          "reject_line": 861,
+          "reject_hash": "7fb3972a81e653c84a4544ba11620b1b4120452931eb424ebe4a465683bea4de",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc22970",
+          "query_id": "test643",
+          "reject_line": 862,
+          "reject_hash": "75040c528ee8cbddeb1b427356e2f5e29d43cb52864de6dca3b1e678fdc295e8",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc22983",
+          "query_id": "test643",
+          "reject_line": 863,
+          "reject_hash": "6834581272fbd3043657957f9c372356da2b1b74e3cba10094af4154fce86526",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc23040",
+          "query_id": "test648",
+          "reject_line": 864,
+          "reject_hash": "dbb1b537c1aec89b8f51bf8cfade3c077f03837b6c014b18c890eddb266a1030",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc23087",
+          "query_id": "test650",
+          "reject_line": 865,
+          "reject_hash": "f376b71ed3998e00247c96c35a82fa069cc87f419250158e04eb514756431956",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc23518",
+          "query_id": "test660",
+          "reject_line": 866,
+          "reject_hash": "9066b2efcf178752df62a52ca8f906e91ace7fc32e7567608bbc4e55013cd5f1",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "missing_target_answer"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc23573",
+          "query_id": "test662",
+          "reject_line": 867,
+          "reject_hash": "d51c5f5168e9ead79a80131e0514fc29098b05daf286783e3278e84e692161e0",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc24547",
+          "query_id": "test688",
+          "reject_line": 868,
+          "reject_hash": "9cbc65ee3e9817a18ecd5eade69371a91c95f2c231642b2076cb707806d9e79c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc25140",
+          "query_id": "test705",
+          "reject_line": 869,
+          "reject_hash": "5ebc7df1ad792c2daea8cb95fae5abb32320802b855877d6a1419123f54148db",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc25262",
+          "query_id": "test708",
+          "reject_line": 870,
+          "reject_hash": "8bb92178a8306dffd99ec1e564d27012f99ce758d496a70ff0ae2af3310c42cc",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc25543",
+          "query_id": "test713",
+          "reject_line": 871,
+          "reject_hash": "7887d73ccca4e642e7a9c21f785eb2b7257e167c4a68dfef4211d17b9c89cb02",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc25878",
+          "query_id": "test723",
+          "reject_line": 872,
+          "reject_hash": "2c2321eafc673435697c95829332050bf1b4c121d9ca4760020f9ddea41c2ebb",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc26027",
+          "query_id": "test726",
+          "reject_line": 873,
+          "reject_hash": "ae3859f6926970f3e86ddc11cfaa655d653c32012d31462de539ab0c34ce8a23",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc26121",
+          "query_id": "test732",
+          "reject_line": 874,
+          "reject_hash": "330b36cf8efc43542b0a784bc17cdb6c9c5a97de67e947738384a367863928e4",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc26484",
+          "query_id": "test741",
+          "reject_line": 875,
+          "reject_hash": "6b93e3660d85db53e6ee75c101ae4a0945463eb01f400039fe95562327f3b182",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc27202",
+          "query_id": "test758",
+          "reject_line": 876,
+          "reject_hash": "5ffa42ce5dd368aa76391b6cd8762dc48263f5749caedd321455b8d2f82ccdcb",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc27260",
+          "query_id": "test760",
+          "reject_line": 877,
+          "reject_hash": "37e81c3087aae4f6bf3f20dc0a5dee32df867e02b8bcc741f17705261ae78ecc",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc27338",
+          "query_id": "test763",
+          "reject_line": 878,
+          "reject_hash": "cfa4800e8eb9e77f16d6b80451dcd0352cdbcf552401dcdb3a124c641b92533a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "missing_target_answer"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc27634",
+          "query_id": "test774",
+          "reject_line": 879,
+          "reject_hash": "15463b36db6f6298c1ecb54237083152fe6fb4c8e429ec581f42d23ad46d0ec6",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc27771",
+          "query_id": "test778",
+          "reject_line": 880,
+          "reject_hash": "3c240264b4c66e3f3fdc44d2ecd8250f43d92ca7d50821c2970f3141a1627f7b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc28282",
+          "query_id": "test795",
+          "reject_line": 881,
+          "reject_hash": "43a7f03d8d37a7c93bfa3bba078362508dfd1c5593128f0807a2038231650994",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc28377",
+          "query_id": "test797",
+          "reject_line": 882,
+          "reject_hash": "8fa0134d80b6fe1da2c1b9ba9a8c35717888f347c93aa8c133ccde497c5c0d2b",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc28754",
+          "query_id": "test807",
+          "reject_line": 883,
+          "reject_hash": "5c0d16db69f684a2f2a2ac64f2aa74ecf56e7d46108d4a42f24574af02bc526d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc28964",
+          "query_id": "test810",
+          "reject_line": 884,
+          "reject_hash": "87a7f1b014b455c6f56a7eb0fbb2cfda79e11109e23820f2877b3507d7b99b92",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc29811",
+          "query_id": "test827",
+          "reject_line": 885,
+          "reject_hash": "ac6f6639d7e16cf3e8778a3578fcc6669806483fbcef9a0ea767d7f6f478b4de",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc30344",
+          "query_id": "test840",
+          "reject_line": 886,
+          "reject_hash": "ab4014b7edc40d96e08be5523fe329f86563b962f702fa13215407d47d374394",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc30406",
+          "query_id": "test843",
+          "reject_line": 887,
+          "reject_hash": "73355aa31f3f2f59b6f79de8e687af7b0cadc36e2fa5e500a1d86770c24175ae",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc30467",
+          "query_id": "test848",
+          "reject_line": 888,
+          "reject_hash": "c369a947fcd100c378b9fbc74fbe8b62f990d2570017abef1ec3d9902dddd4c9",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc30668",
+          "query_id": "test856",
+          "reject_line": 889,
+          "reject_hash": "ef9de331c04944b52a1ac2f36f1d2b701d73bb96a8e1e226d2253a02e3d2ed63",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc30933",
+          "query_id": "test865",
+          "reject_line": 890,
+          "reject_hash": "3c4088f7e5028b9bde7e92e5408b6497f56033204906347297435c873774fcf9",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc31692",
+          "query_id": "test887",
+          "reject_line": 891,
+          "reject_hash": "f75b2e4751544a3f2ea6d82ff089740705c4dcecb2327080365f7493dfd0cd38",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc31935",
+          "query_id": "test895",
+          "reject_line": 892,
+          "reject_hash": "4e3125923ff2e016c429db928301357e66966bf1e1ef48abd49a5348bbbbfc90",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc32599",
+          "query_id": "test912",
+          "reject_line": 893,
+          "reject_hash": "fc93294c037b814762b4a3703abc97a3a4b32e87c764597c462e8a7aef37a036",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc33148",
+          "query_id": "test928",
+          "reject_line": 894,
+          "reject_hash": "2716f6b81df13ba66c3497b57db4ef8d01a05335ee9ab853310a2b91e194be9f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc33559",
+          "query_id": "test943",
+          "reject_line": 895,
+          "reject_hash": "80ad5d4c6b7310e15c9fef43ad3f1760b196053c671c7359ad5e3f130a47e256",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc33926",
+          "query_id": "test960",
+          "reject_line": 896,
+          "reject_hash": "308e79f13df88959142eaf3efb9062d08668fd6c89eae87d89f4e509c540636c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc34153",
+          "query_id": "test969",
+          "reject_line": 897,
+          "reject_hash": "b7973c92c598f536f631e2fab3f88e89ca76f19fb88f577d1e76070028a46c40",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc34938",
+          "query_id": "test993",
+          "reject_line": 898,
+          "reject_hash": "b84a68f6c212c3f3d3fe09e1435bcc06e11a10fda720185e46a789440984487a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc35474",
+          "query_id": "test1006",
+          "reject_line": 899,
+          "reject_hash": "c73402a288aabb0b75e74b3d4be3034c8f53e561b97429a1f1ec4a5e7177afa8",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc35479",
+          "query_id": "test1006",
+          "reject_line": 900,
+          "reject_hash": "2eabfb18210460a444f6bd0325bef725499ea026f39f9acec782e15e5f8bbfe0",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc35963",
+          "query_id": "test1019",
+          "reject_line": 901,
+          "reject_hash": "0ada2f973a66dd8d908ffa1ab7ca80dbfce68d3ac8e7304ab399283dbda4ff49",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc36092",
+          "query_id": "test1025",
+          "reject_line": 902,
+          "reject_hash": "e6e3eefec7f45b248c8467c6d84d54b6386e95d7966eacd589162bed73ade05c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc36245",
+          "query_id": "test1032",
+          "reject_line": 903,
+          "reject_hash": "9b068e15370f43eb5db8f0c328bb42d65c481c1be4f984903dac873336789d9a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc36987",
+          "query_id": "test1062",
+          "reject_line": 904,
+          "reject_hash": "b8bbdf8d99e609ca6f2fafaf565a7103a6368d4c9e0e5127ac52c5fe7d518422",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc38199",
+          "query_id": "test1093",
+          "reject_line": 905,
+          "reject_hash": "426288547e084f7d4c1be81064787a7a253da62d976a4c97dc6c40993b2a19d8",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc39126",
+          "query_id": "test1114",
+          "reject_line": 906,
+          "reject_hash": "2f73e396def8fb8776edcf17f621a2d3ac897c6643b3c9d09db9e5da37e7279f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc39565",
+          "query_id": "test1122",
+          "reject_line": 907,
+          "reject_hash": "f52d05c69baed30fc0183373bca73027ce0dd96ad4d2b83125b17d2e158c88e7",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc39845",
+          "query_id": "test1127",
+          "reject_line": 908,
+          "reject_hash": "47542e2ebf44751ec49ebf6e69d4cbaf2e5b024d94f5969a4857809a89277ac1",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc40373",
+          "query_id": "test1138",
+          "reject_line": 909,
+          "reject_hash": "a64f5aed44718799acdc0b31c2d09bd856a7d35db78489ac533b6a50784713cd",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc40554",
+          "query_id": "test1144",
+          "reject_line": 910,
+          "reject_hash": "ddb2ec5ad8ab2b96871b9684771ebc130e20018d1369810d675cd2718308c672",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc40783",
+          "query_id": "test1150",
+          "reject_line": 911,
+          "reject_hash": "178c59a04eaa74a91940be159a4b6122102935af9373275b50c1fdc15130602a",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc41388",
+          "query_id": "test1167",
+          "reject_line": 912,
+          "reject_hash": "461ac22970c71d69bce5de81ac2db74f143eeebcb526029a048a98d65f344f17",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc41666",
+          "query_id": "test1175",
+          "reject_line": 913,
+          "reject_hash": "dd430e553e9c83c7fcf2f0014bcc1054087f97fe605a6a37428de813ad99ef35",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc41757",
+          "query_id": "test1178",
+          "reject_line": 914,
+          "reject_hash": "e4300d84abf1eb5fe4a4d2a3dfffc61035b21c1f4a2ef2055b3351afaa1c7ada",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc42128",
+          "query_id": "test1191",
+          "reject_line": 915,
+          "reject_hash": "ea012dfa726d044d174b1cce2e6b3b3a6fea5515d36a15bdcd83df5fa7db001c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc42186",
+          "query_id": "test1192",
+          "reject_line": 916,
+          "reject_hash": "3e01eabf73421be722c2a9ce49ea65bfb96178000f779d47cb5e14329a1a63cd",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc42525",
+          "query_id": "test1195",
+          "reject_line": 917,
+          "reject_hash": "d9135e0c083cbc48996913bc3d130cf39c82dc282ebf2d99cb0906f7f6443024",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc42673",
+          "query_id": "test1199",
+          "reject_line": 918,
+          "reject_hash": "67a6e81541aa1c33fcb54eefd7d6e9a9dc8f5b2c4ed96b96b351328973b9d8bd",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc43104",
+          "query_id": "test1208",
+          "reject_line": 919,
+          "reject_hash": "d151ca70d3141d6a2638f7d316ce1418f6fedf19e5e92b8c39f75a4f41510591",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc43250",
+          "query_id": "test1213",
+          "reject_line": 920,
+          "reject_hash": "0003e2e284644d85011234fc39b52bb606e201400302c78de83455b53a28007b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc43460",
+          "query_id": "test1220",
+          "reject_line": 921,
+          "reject_hash": "56677457560647d926c5831d23670048e8293f34f0eba921898b76e1b544d9ea",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc44175",
+          "query_id": "test1251",
+          "reject_line": 922,
+          "reject_hash": "9d7fe6f21c360d8511426e4cb45395ee5e0a1476b5d9a16c024a0b6d03400cef",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc45685",
+          "query_id": "test1286",
+          "reject_line": 923,
+          "reject_hash": "2ee925c3cb819428d98fb688727a81b69a98a600c96f40d1feedf5ab9a714c06",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc45748",
+          "query_id": "test1288",
+          "reject_line": 924,
+          "reject_hash": "1730f85f9900e85e7bf657b192868e2fcb019fe382cf29ea20b4c299f585383d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc45919",
+          "query_id": "test1295",
+          "reject_line": 925,
+          "reject_hash": "fffe93b27aeb457fea5816b087c4684055fa682cec1f782f36d9437c6425dfa2",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc46605",
+          "query_id": "test1317",
+          "reject_line": 926,
+          "reject_hash": "9a9db4c01e7caa8b9e94e22b6c240d1f01672b9eda33eb8cafa5323406289a70",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc48050",
+          "query_id": "test1362",
+          "reject_line": 927,
+          "reject_hash": "7144e782eb37adf3bb689f63e8967da3f47155e97a88e14b92aaac78caef668c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc48148",
+          "query_id": "test1364",
+          "reject_line": 928,
+          "reject_hash": "95d04c43e20ac2f90743f52710554757ec900a65d8a736bfb0f41be0875ba610",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc48657",
+          "query_id": "test1373",
+          "reject_line": 929,
+          "reject_hash": "85951d190fab38537273bd65b7a1c09a6a861d2c32b082a68ceefa4e295d7eaf",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc49023",
+          "query_id": "test1384",
+          "reject_line": 930,
+          "reject_hash": "5ff2f56dc71466d82e054ef75e8dcfa800e413ad3362c9dbc71083bebf88164a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc50035",
+          "query_id": "test1401",
+          "reject_line": 931,
+          "reject_hash": "e039a0e3a1419339f1eebd078a5cf830f4fde648a39c0e8efdd294b0b3c022a0",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc50467",
+          "query_id": "test1415",
+          "reject_line": 932,
+          "reject_hash": "795a67a161d96424a0820278ae305817e70509d27344b46de56f3a531b3e8ec9",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc51249",
+          "query_id": "test1440",
+          "reject_line": 933,
+          "reject_hash": "78293270ace6330e33b88921e93697a4c63431f9bf924ceff1fa31d7f0fd9c21",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc51641",
+          "query_id": "test1448",
+          "reject_line": 934,
+          "reject_hash": "099e1222739f6de9ffaa94fedc9e65d7b392df3de79fe5eae6b983feab90de4f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc52200",
+          "query_id": "test1464",
+          "reject_line": 935,
+          "reject_hash": "7e2d707643c5a2e515c1e3f008fc07cc1d734ca988813c1039513f05559a44f3",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc54946",
+          "query_id": "test1533",
+          "reject_line": 936,
+          "reject_hash": "d35ff199bbfe0fcfd2deeee98d178beb9a541adc88f4ae39800bf003b27afbe2",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc56052",
+          "query_id": "test1571",
+          "reject_line": 937,
+          "reject_hash": "88a07a0587b471de6ca3a25446513c9f96d7b217119b810b41516212533ba954",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc56207",
+          "query_id": "test1573",
+          "reject_line": 938,
+          "reject_hash": "4f3d62f05d9b9f630ebbfe8f11e75287e56813a5ffabdff1100470211ecf7d02",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc56262",
+          "query_id": "test1577",
+          "reject_line": 939,
+          "reject_hash": "64970d43913f6c53d5831073805aa91a5b6e7ebeb7171e5131b719e7a4430922",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc56633",
+          "query_id": "test1592",
+          "reject_line": 940,
+          "reject_hash": "98bc2bbc8b7a612fbcf02ed9a90860111d4e3b426befe7eb0cf3a36674c69587",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc58221",
+          "query_id": "test1642",
+          "reject_line": 941,
+          "reject_hash": "240849f0481ef030e67e5aa81b94b7132a472f8b71561daeff919f8114a16558",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc58310",
+          "query_id": "test1645",
+          "reject_line": 942,
+          "reject_hash": "a80ac1beed312ded8d4a75ee2cea93a5b78dbf942be3a12d583ae94e55044f88",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc59294",
+          "query_id": "test1674",
+          "reject_line": 943,
+          "reject_hash": "6f79f770c5a07cf9f73e5363b729598f6c2879d13b041d753afedd36ad228561",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc59881",
+          "query_id": "test1690",
+          "reject_line": 944,
+          "reject_hash": "0c9b071179940d27462084b210f27fc35358be65e1d9152fd1add7d8df1f821c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc60582",
+          "query_id": "test1708",
+          "reject_line": 231,
+          "reject_hash": "6b3405923743fdaf44d1df9ea9a675352e58be26e03ccde15fa95fb2989f468b",
+          "previous_reason": "No editable gold-answer spans in source",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "no_generated_text"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc60586",
+          "query_id": "test1708",
+          "reject_line": 945,
+          "reject_hash": "90ccdcb20ed3aafaa5e90bc133d5a9628215fcc20930ab709fa2c693924f309c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "missing_target_answer"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc60587",
+          "query_id": "test1708",
+          "reject_line": 233,
+          "reject_hash": "4a7d0e25758d8794e18862392fc8c334880f3fcc83c8a0e03bb3c8e645b4d23e",
+          "previous_reason": "No editable gold-answer spans in source",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "no_generated_text"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc60909",
+          "query_id": "test1716",
+          "reject_line": 946,
+          "reject_hash": "56f2bac5b6972f2d7c84a04ac799242df8b81fa45d79b23628d8e67c7c4ab67a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc61057",
+          "query_id": "test1722",
+          "reject_line": 947,
+          "reject_hash": "2cf7ba3e905d370bdc1340a90bdbde0400f07f4712780e9e48e7d899090db09d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc61312",
+          "query_id": "test1731",
+          "reject_line": 948,
+          "reject_hash": "20e1727fbf22b0b2dcafa7fec6961796218fb9bc940b64f8c3d33a6281954c2a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc61413",
+          "query_id": "test1733",
+          "reject_line": 949,
+          "reject_hash": "8e47e7831de1d5829c702c6650b9f172e760547f0aa757a0462c4c35e75c58ea",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc61566",
+          "query_id": "test1738",
+          "reject_line": 950,
+          "reject_hash": "c53750d2521734d1c2df86a2d58bba57130e5e2680c0573dc923e53f39d88cfc",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc61640",
+          "query_id": "test1742",
+          "reject_line": 951,
+          "reject_hash": "880b57f2a878b0c6585ff6e587b532caed2e5be8f9265929edc0e7cfdaf21fb8",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc61713",
+          "query_id": "test1747",
+          "reject_line": 952,
+          "reject_hash": "b7adb59ec7754dd74dd56aeac76a05af774246bd3f6fa5d55736da9bae337a3f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc62298",
+          "query_id": "test1764",
+          "reject_line": 953,
+          "reject_hash": "4846246557ed6b1e194e96085439cf1d97e76fc9b8aab1be0fac586eb5af320e",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc62368",
+          "query_id": "test1767",
+          "reject_line": 954,
+          "reject_hash": "db6fc6f840955975efed7f9155d8256b392441a5ea9fb8d49fc25e6653cced6f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc62388",
+          "query_id": "test1768",
+          "reject_line": 955,
+          "reject_hash": "bf126ee4a83334fc06329e183c0040b0eaeffe46d35baf1a977016dc8ca4b51d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc62919",
+          "query_id": "test1783",
+          "reject_line": 956,
+          "reject_hash": "7ca473eea43a15affb717e0b9c22c041f251088e7d9c30bcdac0a62726de1b35",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc62966",
+          "query_id": "test1786",
+          "reject_line": 957,
+          "reject_hash": "5c872e9521cfbf69e8f424434ae4582abaab44f1c1a8be477c45d7e7e97f951f",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc63101",
+          "query_id": "test1792",
+          "reject_line": 958,
+          "reject_hash": "72d5529b8becf293062c2d1fa543db31ba6c73a73aa7eb2bd262394b71536918",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc63472",
+          "query_id": "test1803",
+          "reject_line": 959,
+          "reject_hash": "ebe5926411c74925836e658a9ed0fb2139a3ed4170d059c0f7ba447338bd087b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc64580",
+          "query_id": "test1837",
+          "reject_line": 960,
+          "reject_hash": "a054cddc79b4087ab425ae2801bb9ab70e7d64282bc0b6b7e60203717d344160",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc65122",
+          "query_id": "test1852",
+          "reject_line": 961,
+          "reject_hash": "edf499b706e8cb26415d295875748b8e72ecd4dda3392304910630678ef63a5f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc65585",
+          "query_id": "test1865",
+          "reject_line": 962,
+          "reject_hash": "1256b8f72c66bfb54e3df66a670821c84cbeb6d51498717cc5d0650896ccb48b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc66535",
+          "query_id": "test1895",
+          "reject_line": 963,
+          "reject_hash": "8a17dd675e078b56ffbf504ada657128091ad3142eea7568a124d2d998cc3f69",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc66754",
+          "query_id": "test1901",
+          "reject_line": 964,
+          "reject_hash": "4d62d4e0942e791a63fc990f560e632b9f95c5848b787092dab2b17bd8c7d7de",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc66968",
+          "query_id": "test1911",
+          "reject_line": 965,
+          "reject_hash": "6caa339b2be5ddebf4d13a3e5212c0b8294ab6c31669d35063a638da250aca02",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc67309",
+          "query_id": "test1917",
+          "reject_line": 966,
+          "reject_hash": "5bfc4c1f4028990af1a9a5a3d59d08c654939267c28c05745750575d67763405",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc67339",
+          "query_id": "test1919",
+          "reject_line": 967,
+          "reject_hash": "03d09acde756983db6013a93be7b23b0bb7392dbaa2f7bd262b9fae42de77796",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc67749",
+          "query_id": "test1932",
+          "reject_line": 968,
+          "reject_hash": "7af781cbd555148c5aba57b1125188383bba635770dc90ebf43d652cd5825e03",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc67832",
+          "query_id": "test1936",
+          "reject_line": 969,
+          "reject_hash": "caa4606348a33fe80bae0d837a3c0656e4bb0c88b3c5e840efbc009f235df35f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc68279",
+          "query_id": "test1947",
+          "reject_line": 970,
+          "reject_hash": "1465ca3c563f9f64688de31fd70d32d3d90a55161d1e53814b8827831f34f11c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc68843",
+          "query_id": "test1959",
+          "reject_line": 971,
+          "reject_hash": "a76767b5cf44b529795fc81b9622453a416733d77783cb66eb845606613fdf1a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc69115",
+          "query_id": "test1968",
+          "reject_line": 972,
+          "reject_hash": "06db4dd85f661cc12cc8db1c9c2da0d94c0aaaa32e136a18170ec9acc25aa95b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc69132",
+          "query_id": "test1968",
+          "reject_line": 973,
+          "reject_hash": "7390aad269a55b9c1bcbfaa2e9281f36a2dadd0a36eddc955552e6a676be1666",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc69209",
+          "query_id": "test1971",
+          "reject_line": 974,
+          "reject_hash": "cb84afe3af4b46a64cf91ce0fe20a174d929e1378b3c746cf142267dcd6ecbbb",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc69326",
+          "query_id": "test1977",
+          "reject_line": 975,
+          "reject_hash": "1e5b9be4158a531cf8037778749fd1bb43b3592ec27d662566611bfb11cb2947",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc69611",
+          "query_id": "test1986",
+          "reject_line": 976,
+          "reject_hash": "4b98dbf9243eddd7f5ae19a3e04dbd6d0a2b25954b3e2b46890485655cd96325",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc70411",
+          "query_id": "test2006",
+          "reject_line": 977,
+          "reject_hash": "6b4bfeb0bba7e62df4f95f98b47505e538f0719c25e54b1069c64ef9825f2ead",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc70508",
+          "query_id": "test2013",
+          "reject_line": 978,
+          "reject_hash": "06af3b7709f72b53ea255f2d0f0afac341944ba0c75646b70b71c2da9931d816",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc70960",
+          "query_id": "test2034",
+          "reject_line": 979,
+          "reject_hash": "53c505f6092b1920705cf290e9dc4119b382edf5bfc48102a3e516ace45d7ef8",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc71062",
+          "query_id": "test2036",
+          "reject_line": 980,
+          "reject_hash": "7b3977735d39508411e7a18d398ccff18b5c53abe971188f9ea17e6e965e0f52",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc71102",
+          "query_id": "test2037",
+          "reject_line": 981,
+          "reject_hash": "e5ee9ffec5df2cb78fe8b396183854c38629405d4cf5638d558b1317860b2a9d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc71403",
+          "query_id": "test2050",
+          "reject_line": 982,
+          "reject_hash": "955fb7efb243c4155b0ee6bde09bc30cf4d69864e801bb0504c708e804212c42",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc71665",
+          "query_id": "test2058",
+          "reject_line": 983,
+          "reject_hash": "d80fa4a685a907003aee78f2e69b6961b7194ab49cb4235110cc559dacac6dd9",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc71815",
+          "query_id": "test2062",
+          "reject_line": 984,
+          "reject_hash": "c1bc1bd9327b1b8a14c2aeaf0ee3dea20a27200c4c23f658d8227e626a4eee7f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc72033",
+          "query_id": "test2064",
+          "reject_line": 985,
+          "reject_hash": "45b4ff3dd24ddb818953fbe5ced95af59be855cae5f6ca0994713ae1256f38a7",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc72041",
+          "query_id": "test2065",
+          "reject_line": 986,
+          "reject_hash": "b652c345e4b164c509e401e04460a620661edb7bace5090c4e2032efd38bada4",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc72102",
+          "query_id": "test2067",
+          "reject_line": 987,
+          "reject_hash": "6c57ff840091282a6dcd3e4b974df0b581917c164cdcb7b25208cb5eb67f0802",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc72523",
+          "query_id": "test2086",
+          "reject_line": 988,
+          "reject_hash": "9534271c8b8cab7574d3e4f514aea4d45f616bad11be82ba54496c00b319cf80",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc73145",
+          "query_id": "test2103",
+          "reject_line": 989,
+          "reject_hash": "9c71df4ac1f7cf40b6bc980f1e06cdbf4bec31aa77a1a433f19ed780551ef57b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc73271",
+          "query_id": "test2108",
+          "reject_line": 990,
+          "reject_hash": "cab7b4fa24dd24401575cd6c6e4ee5b786ce5935e7ff78b37983038ef70178ec",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc73468",
+          "query_id": "test2111",
+          "reject_line": 991,
+          "reject_hash": "5db02d5fb213578945646837f98547d8d24c4a75469607c1353c23d0b02750e4",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc73770",
+          "query_id": "test2125",
+          "reject_line": 992,
+          "reject_hash": "4bf9828b9183552225a16a8a15d11f8fdfa9a9ab76a57f66ad38cf0d2c93fc99",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc74383",
+          "query_id": "test2136",
+          "reject_line": 993,
+          "reject_hash": "5d794dab30ddbb678ad8b2f620d07c4535456411cedf0fb4f9415150e7dc81b4",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc74884",
+          "query_id": "test2150",
+          "reject_line": 994,
+          "reject_hash": "20d31393eab38b5649633f025c06316843dd88557828a340edbe1cda4ff69f26",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc75038",
+          "query_id": "test2153",
+          "reject_line": 995,
+          "reject_hash": "ad3352bf2a2693b15a947eddd44fa732163ae9145177a95bd0235956feac3bc0",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc76323",
+          "query_id": "test2192",
+          "reject_line": 996,
+          "reject_hash": "a85bccf3591f0a32b835a57366d49fc6154f99c1c5dc88dae90eee14fea6dfde",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc76875",
+          "query_id": "test2207",
+          "reject_line": 997,
+          "reject_hash": "0da788141358beeae000ccfff6583e1df28859eafcd175dc63ae27c60348f450",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc77026",
+          "query_id": "test2216",
+          "reject_line": 998,
+          "reject_hash": "23dca0d219d58c1de0cd56e134a0259c9671c9b7b4b56ff0ea450a3a9e0aa90f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc77119",
+          "query_id": "test2218",
+          "reject_line": 999,
+          "reject_hash": "fd78d9c96f96c9a8d5a3b1255d9ce353cf4a0624d1320cc0ca7b533fba2f2c33",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc77835",
+          "query_id": "test2240",
+          "reject_line": 1000,
+          "reject_hash": "0da6bf5bd87b04a31dc75e535cb3dd721f3c65e0792a0f77f7ded38c838399d4",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc77844",
+          "query_id": "test2241",
+          "reject_line": 1001,
+          "reject_hash": "e1f0a4669d687fdbb37eaacb3a364362140a7787226f3ae77dccf91346845dcd",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc77984",
+          "query_id": "test2248",
+          "reject_line": 1002,
+          "reject_hash": "d0270d8fbdb274455d85a8e24c501e45d1f897b81e99159530728b3172e0afe0",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc78651",
+          "query_id": "test2274",
+          "reject_line": 1003,
+          "reject_hash": "de00ba62eda808c0be0fcae282ad31ca67d83fe894920b0d971d4a57b71a08c0",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc79635",
+          "query_id": "test2303",
+          "reject_line": 1004,
+          "reject_hash": "52e9e6676d266d5fe245496ad231a05502a248a0c79b5110decb7c1d959f2d38",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc79654",
+          "query_id": "test2305",
+          "reject_line": 1005,
+          "reject_hash": "686c51dc90792e296a359e18a8d1a2e186ef2b148210b0a9fb572490cb393385",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc79750",
+          "query_id": "test2311",
+          "reject_line": 1006,
+          "reject_hash": "805997c9142d2e14fcfb29e8330156d9a9cbbbf5d32b40a10b2249755107c9ff",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc80571",
+          "query_id": "test2335",
+          "reject_line": 1007,
+          "reject_hash": "9050a53d638c4ef29a87d02755a172fdbedf922d91c3a275ac69e2dd36c00a5b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc80897",
+          "query_id": "test2343",
+          "reject_line": 1008,
+          "reject_hash": "64cf46f9cd0b8ec24fa218f550e69debbb2bcbe64cf13b4b655684a4546fafac",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc82673",
+          "query_id": "test2394",
+          "reject_line": 1009,
+          "reject_hash": "eca70a150ab5ec073c182538113196a4ab35309045212781c0aec05442e1b2f3",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc82677",
+          "query_id": "test2395",
+          "reject_line": 1010,
+          "reject_hash": "5f542429cad1d8a3942307b0ad3564409f6e4d347306b1f9208215c6c70dca0f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc82906",
+          "query_id": "test2400",
+          "reject_line": 1011,
+          "reject_hash": "ad3ba69d4d4d095f5251a79a5751bab9c9077090732310a972a51ca173f5bb02",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc82930",
+          "query_id": "test2401",
+          "reject_line": 1012,
+          "reject_hash": "30769665d1d4318046764a29efc2c2f3a860615205eff3c651f57fdc7a95839b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc83761",
+          "query_id": "test2425",
+          "reject_line": 1013,
+          "reject_hash": "ec96b69e25586dca0acf2ea22eee5343ceca27a82cdd073879a6de8bd91776dd",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc83792",
+          "query_id": "test2426",
+          "reject_line": 1014,
+          "reject_hash": "5dc722dd9f536b5924b606903ab78e73a9984e4f588a5f72175bec97c780fd27",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc84097",
+          "query_id": "test2438",
+          "reject_line": 1015,
+          "reject_hash": "a10bfd3da6df4f8f4ad7bfe0844448661a9f9bf1b8362352c6de5244071fb853",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc84302",
+          "query_id": "test2443",
+          "reject_line": 1016,
+          "reject_hash": "dc76f9012e6ead98cc346be536e5c727130c650c80847fed9fd1ee696496eed9",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc84797",
+          "query_id": "test2458",
+          "reject_line": 1017,
+          "reject_hash": "e1eeabc4f59f26ed0ecd393ff620348213d07885d67983379d3fa927e80f38cc",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc85461",
+          "query_id": "test2480",
+          "reject_line": 1018,
+          "reject_hash": "8f7cc963347d932e4adfa637a1a410cf8d3cf00ddfdba054caecb6acbd49f62d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc85474",
+          "query_id": "test2481",
+          "reject_line": 1019,
+          "reject_hash": "2f59ca553afb315ca90458f5ad5c2d9892847ed18ec81b58cc99bbd2b945cbd3",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc85523",
+          "query_id": "test2482",
+          "reject_line": 1020,
+          "reject_hash": "936a1f4b6fe8737e39263fcea0c745d5325f0abcab657e699072815cfd2bfa8d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc86128",
+          "query_id": "test2494",
+          "reject_line": 1021,
+          "reject_hash": "090ea27a5e39f7560996a152997a4761dbe3b23f00f8cc862a2d6a26e208a71a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc86182",
+          "query_id": "test2495",
+          "reject_line": 1022,
+          "reject_hash": "1e7bcf6df59aee72c6068e7d6e523c875ce52229956b7c594bbc3c7cd160e710",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc86242",
+          "query_id": "test2497",
+          "reject_line": 1023,
+          "reject_hash": "658515417dd895e31884abcecaed0bfda7de647da7584e44a9c6e916416b58b9",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc86432",
+          "query_id": "test2503",
+          "reject_line": 1024,
+          "reject_hash": "c93fcf6e4fba665619c4a388a41800e1137bd25074e99dd653cc21ffc829b3a3",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc86497",
+          "query_id": "test2506",
+          "reject_line": 1025,
+          "reject_hash": "64a32b8b207920bed6a72df0e88f5444c35eb5737a53e06b417a232b42e1af44",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc86711",
+          "query_id": "test2514",
+          "reject_line": 1026,
+          "reject_hash": "2273ed5f7c1695e1aae2fba4221cc6dafd3e9f46b4423270f03c941dce21b0f5",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc86737",
+          "query_id": "test2516",
+          "reject_line": 1027,
+          "reject_hash": "c5e62f1fb783387b44d9eac8609417d7b928899371f07c19faf7a87978cf1dec",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc88029",
+          "query_id": "test2564",
+          "reject_line": 1028,
+          "reject_hash": "cf5a622916e28c47f708e97d6fb16d5ede66a6113f6e3ac656e0780e5063fc5c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc88115",
+          "query_id": "test2566",
+          "reject_line": 1029,
+          "reject_hash": "8583aedb614cfd0637a491f450c7b4bc2a1f02b4826cca9ff891f452872472fd",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc88314",
+          "query_id": "test2574",
+          "reject_line": 1030,
+          "reject_hash": "60f8537b0afbace111e0d5b2464da28920446668b83d96773624f9eb908a790d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc88740",
+          "query_id": "test2588",
+          "reject_line": 1031,
+          "reject_hash": "dd2854f68c432b787f001872eec1a89973acb468714f3b428a93d0ae0444b9cd",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc88901",
+          "query_id": "test2596",
+          "reject_line": 1032,
+          "reject_hash": "51cbbea21c86fd2148a0e228bcdf164e69fa2ca6c9356c99dd018797e984d19e",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc89008",
+          "query_id": "test2599",
+          "reject_line": 1033,
+          "reject_hash": "48ba77b73c8b645460da6348f9c740fc686c44b0c4e27e16ca7ec5496ec235fb",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc89926",
+          "query_id": "test2622",
+          "reject_line": 1034,
+          "reject_hash": "61e27af767d8ceb8c8bf13dd8c99cc2f1b8a5bfeaaf32acc1d7ba432d2d67f5f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc90082",
+          "query_id": "test2629",
+          "reject_line": 1035,
+          "reject_hash": "9ed92f44737a82e7ed0b477938a27076ac20469dbebf674d35e8915bee614419",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc90431",
+          "query_id": "test2642",
+          "reject_line": 1036,
+          "reject_hash": "e619b93d76c12868403530593e28875c1a274060bfcf872bdf5612a39eb1996c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc91359",
+          "query_id": "test2665",
+          "reject_line": 1037,
+          "reject_hash": "945dfd099529ba138671c5be2d47c389ae40543a6fb79d512a8173c934bab9d1",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc91381",
+          "query_id": "test2666",
+          "reject_line": 1038,
+          "reject_hash": "1188de06df16ee60972e9b7639557917fc1c6ef30d13712afff61b294c313b9a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc91765",
+          "query_id": "test2679",
+          "reject_line": 1039,
+          "reject_hash": "8f307b78cbe53e87418312b2e51a9980eb067f18ebf8662ce3b261f5bf0486a6",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc92225",
+          "query_id": "test2690",
+          "reject_line": 1040,
+          "reject_hash": "aae2b3deaab676a76a00fda58a2e6f0a3e06bc5bffdacc86fda3facb3791eac4",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc93274",
+          "query_id": "test2720",
+          "reject_line": 1041,
+          "reject_hash": "3b221c3799473126c9d12b938cc0e2d4d36c2cc0746900f72aadffb394a8db5d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc95175",
+          "query_id": "test2768",
+          "reject_line": 1042,
+          "reject_hash": "d45431a28f8ec1302818cdb016aabee5e2cde4ff61b7f0194039bb8985ecf385",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc95886",
+          "query_id": "test2789",
+          "reject_line": 1043,
+          "reject_hash": "8df684c4c027fe93e479ec5df01dd2833c1f88fa139de5ff4eacc2ea854ee7cd",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc96605",
+          "query_id": "test2812",
+          "reject_line": 373,
+          "reject_hash": "0f664ec87cb62b20c75f82027d5fda8ddecc7f47861a12ac6d3a1460138ef8e6",
+          "previous_reason": "No editable gold-answer spans in source",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "no_generated_text"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc97287",
+          "query_id": "test2837",
+          "reject_line": 1044,
+          "reject_hash": "8f4f737bf80655abdbc34248fe0f073a6da41db152b9d19e4d2d1ac40c296b84",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc98069",
+          "query_id": "test2867",
+          "reject_line": 1045,
+          "reject_hash": "c085a362b23e72b39770ca46130c1fc3b64b1b5052879086aa1903d06e5a4286",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc98149",
+          "query_id": "test2870",
+          "reject_line": 1046,
+          "reject_hash": "7158d4869404d41e8ee1d4e9d79f198ffa8cc673bf96d2da534746978334dc40",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "missing_target_answer"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc98508",
+          "query_id": "test2881",
+          "reject_line": 1047,
+          "reject_hash": "f66e7847ba929a79b57f6c7eca626f1fd7a09640ccfc91584aa09b8dc507084b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc99013",
+          "query_id": "test2897",
+          "reject_line": 1048,
+          "reject_hash": "bf2cdab9759059f7be3130f12c1dec8554aa6bcddfb16f9773afadb4c1bf7395",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc99135",
+          "query_id": "test2902",
+          "reject_line": 1049,
+          "reject_hash": "fc3687796b10eaa3b1c66b7cd6a65979af13069460f6f69c6d207225920dfb9f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc99141",
+          "query_id": "test2903",
+          "reject_line": 1050,
+          "reject_hash": "1550c3a9e97fb35bf15a5da7da7a19679ad18f9ee0f3cc014a0ddf1efcf63b76",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc99577",
+          "query_id": "test2915",
+          "reject_line": 1051,
+          "reject_hash": "14e0c20304c6c8f82d7983e5b527b3ac02931980f61e81fe1173f130fb9f1bcb",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc99698",
+          "query_id": "test2918",
+          "reject_line": 1052,
+          "reject_hash": "f06eb72d8bcdcb01aefc4dc7b721967c89c03f2249b79ce2817f5546af17ef79",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc100242",
+          "query_id": "test2930",
+          "reject_line": 1053,
+          "reject_hash": "f7e036d1c3e8e0b9f85686ce307751a8db11e6e741362e2e871ef4faca8fab1c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc100359",
+          "query_id": "test2936",
+          "reject_line": 1054,
+          "reject_hash": "7dac5b30dcc6f6a3561b6a7ef13b84d1cff606786e7809a1410c58ff8cd065ee",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc101014",
+          "query_id": "test2950",
+          "reject_line": 1055,
+          "reject_hash": "872283f579a68fe905eca8cc0cfa749e2fd7f1eb6c228288a0b23b0d85015980",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc101178",
+          "query_id": "test2958",
+          "reject_line": 1056,
+          "reject_hash": "8e494b73681f58be58cbb0d8048cb7997930ca65f2927c2af547adb8dca34a29",
+          "previous_reason": "gold_answer_residue",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc101742",
+          "query_id": "test2968",
+          "reject_line": 395,
+          "reject_hash": "9f4ef30f0a3f9ccc23cfba9f1c8d73fd0e790ba58273243a1a386a296497e0c9",
+          "previous_reason": "No editable gold-answer spans in source",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "no_generated_text"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc101754",
+          "query_id": "test2969",
+          "reject_line": 1057,
+          "reject_hash": "df3d3970c7a3234c79f513efcbe986afaa99c12b1f39a25b86eafec355039cb7",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc101983",
+          "query_id": "test2972",
+          "reject_line": 1058,
+          "reject_hash": "add8a3da3126aeac7b97487864b25d06b29b4151ec373403ffeadbf368dcd22b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc102089",
+          "query_id": "test2974",
+          "reject_line": 1059,
+          "reject_hash": "b3eca491b066302adf7b8f2cf96ee7fe13902a8cafa454dc6426c85439754157",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc102135",
+          "query_id": "test2976",
+          "reject_line": 1060,
+          "reject_hash": "6bcfbb6d682e604ea0e69bc9b69caf495ce3efd43897fc8be593eb446be7f5c6",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc102453",
+          "query_id": "test2988",
+          "reject_line": 1061,
+          "reject_hash": "8f1d0d34c533b180ba64975561d3b1e6e8f575038f5903f83262d7284d676e99",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": false,
+          "attempt_failures": [
+            [
+              "gold_answer_residue"
+            ]
+          ]
+        },
+        {
+          "doc_id": "doc103787",
+          "query_id": "test3027",
+          "reject_line": 1062,
+          "reject_hash": "3d6438f75d9d49fc3a5cf03874676d09153c08a9dfaa304301da7bf465b51eda",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc104078",
+          "query_id": "test3037",
+          "reject_line": 1063,
+          "reject_hash": "ca8c382995d89875a618e792405efca3f1b10da95ebaf3b91f59e5c02b8c397a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc104083",
+          "query_id": "test3037",
+          "reject_line": 1064,
+          "reject_hash": "87ba163bc57aecb7af1c9212704c74633b16f104ec5c80bf363f07f0911ac34d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc104313",
+          "query_id": "test3043",
+          "reject_line": 1065,
+          "reject_hash": "1c53c0d8af34677b7f2866a332244f894cbd7cbb95dee6d687e30a0afcd19b2c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc104548",
+          "query_id": "test3052",
+          "reject_line": 1066,
+          "reject_hash": "d8d4340e9eb3e762b85c3ed1db7ebc532ea3bebd670aa76cf7412014d6505950",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc104620",
+          "query_id": "test3057",
+          "reject_line": 1067,
+          "reject_hash": "6c7c3db3c1b43b33822bbff0bfa55ac2f9dbad412615f0c97334c505db890f08",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc104835",
+          "query_id": "test3062",
+          "reject_line": 1068,
+          "reject_hash": "fcfde8da963d8835d4452c5b3d9db2208078eef20dd6d7e5b188f063d38c8a8b",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc105117",
+          "query_id": "test3072",
+          "reject_line": 1069,
+          "reject_hash": "fc49f90bd133a9e72d2e09e53dae584aa1d48c6c55317b8d258f52db3d761160",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc105987",
+          "query_id": "test3096",
+          "reject_line": 1070,
+          "reject_hash": "fc15e0df61579a6f6fceb4c9048d4898204845b77a9fc05781ec1fb2e8777555",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc106005",
+          "query_id": "test3098",
+          "reject_line": 1071,
+          "reject_hash": "cf92d19135bcdfd467426b2f1d79b4ed06443648673f68c5d129cddff06b0f38",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc106455",
+          "query_id": "test3111",
+          "reject_line": 1072,
+          "reject_hash": "e02cf066dd33d58f46156423dc8448c0bae45a34d7684a3d7a9c9fb9682d135f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc107778",
+          "query_id": "test3157",
+          "reject_line": 1073,
+          "reject_hash": "3317c181d3a41f333ff9d642616d7a752f8afee3b11f30b22f6b797ac5a1bbb5",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc108125",
+          "query_id": "test3164",
+          "reject_line": 1074,
+          "reject_hash": "bb55b2bf4a7e282066010bd3eeb7a664ead3c8bf4c22711af68856ff518fa2ff",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc108763",
+          "query_id": "test3188",
+          "reject_line": 1075,
+          "reject_hash": "f2125c750661fec55cdbfa43bb8709845385b550e6f2f0822adcd29ac09eee59",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc108821",
+          "query_id": "test3190",
+          "reject_line": 1076,
+          "reject_hash": "dfcd2d865dce6da75cb1fb4306c142a69b002b3387b54410ee57b08e07c5ef4a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc108859",
+          "query_id": "test3192",
+          "reject_line": 1077,
+          "reject_hash": "6b9802892b7ac3bd763607f0f2c3a29988c93f978ee7845c18227a16de132304",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc109226",
+          "query_id": "test3196",
+          "reject_line": 1078,
+          "reject_hash": "18d8caca5c13b9d107fd86a6d59c8435b85acd5bea93ba74b1bac05c21ca1fde",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc109460",
+          "query_id": "test3206",
+          "reject_line": 1079,
+          "reject_hash": "c4ba6af5c0a0fc6a50f5deff92e321fd15b7bbfdc48e1f6e052662e1707cc599",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc110730",
+          "query_id": "test3234",
+          "reject_line": 1080,
+          "reject_hash": "7172e1bc68abd43c5487130cfdc7b1282301e838a09167782fc3c6c628984911",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc110911",
+          "query_id": "test3245",
+          "reject_line": 1081,
+          "reject_hash": "d7ca56bcde2b9232ec3a4ca3a61a94303b397b5daa947fd3ae2d00b0bd8f6e68",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc111273",
+          "query_id": "test3256",
+          "reject_line": 1082,
+          "reject_hash": "24d512aa2c4b2a58daf06541d81786a4c96dcff38eb9e88c35ca970515cc26da",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc111607",
+          "query_id": "test3265",
+          "reject_line": 1083,
+          "reject_hash": "1f8424c7de24d9e280464ac647edb919a51c1a4683045cfc684b222e5b1db2c4",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc111770",
+          "query_id": "test3272",
+          "reject_line": 1084,
+          "reject_hash": "00f65a51704bde0d2243baa41d9a9608f245b1096bf2f62f06dd1c449c5da24f",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc112070",
+          "query_id": "test3276",
+          "reject_line": 1085,
+          "reject_hash": "1bd40b88792d22be22ab3bcacda330d535bf69b68264ef6e49b889f09521da85",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc112941",
+          "query_id": "test3307",
+          "reject_line": 1086,
+          "reject_hash": "c85e528b78c007c4072ce3063218e3e8cf2db73acd573ba3be8f0710da89c981",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc113756",
+          "query_id": "test3330",
+          "reject_line": 1087,
+          "reject_hash": "5104dbdd42fda949e8f3f93acb427d08fec34630f2f94762aa89c34134bf01e6",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc114318",
+          "query_id": "test3346",
+          "reject_line": 1088,
+          "reject_hash": "ef143bc9be6d05448775e8258041881271df608227cc294f39e1c1141483b07d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc114436",
+          "query_id": "test3352",
+          "reject_line": 1089,
+          "reject_hash": "e8eb81318f055aab1c69aa681bd16d94974ecf9e43580502d5f9fb66c33c5dcd",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc114461",
+          "query_id": "test3353",
+          "reject_line": 1090,
+          "reject_hash": "abdca53e2c7c2bb666337b32bcc498afca023da825547c548cd671fbe719578d",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc115022",
+          "query_id": "test3368",
+          "reject_line": 1091,
+          "reject_hash": "e7f8dcde28b1842268a26ce07e443fa99fd85813aae4303afadfe737f91b4f9c",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc115709",
+          "query_id": "test3394",
+          "reject_line": 1092,
+          "reject_hash": "8941670ecfd33ee2621c0e53d2d2a8868de86bb93878e3c01502884b0e860ba4",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc115718",
+          "query_id": "test3395",
+          "reject_line": 1093,
+          "reject_hash": "72c44a6198e6e907e9aea5a3e3cc0812efe256dae50aae9b56f9a316574b9634",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc116110",
+          "query_id": "test3409",
+          "reject_line": 1094,
+          "reject_hash": "2bf4030ce2a3f2d6a2f7d6c9da00f76410aad307db6e0add38968cd3a0931de5",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc116564",
+          "query_id": "test3427",
+          "reject_line": 1095,
+          "reject_hash": "d7d1e6c0684cdf319ba2fd49eb33659fc704a93b66f3d755fb0d99bec6fd0fdd",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc116825",
+          "query_id": "test3435",
+          "reject_line": 1096,
+          "reject_hash": "73590e8163586291956873831ef2cfee3809522757f23f0a7f9c5f9eb4dac3b2",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc116826",
+          "query_id": "test3435",
+          "reject_line": 1097,
+          "reject_hash": "b2f54c617ce74abcadb1471b5c6c05279e5b76bc04f424ea5945f16b20f3e1ff",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        },
+        {
+          "doc_id": "doc117531",
+          "query_id": "test3447",
+          "reject_line": 1098,
+          "reject_hash": "11cf960178ae46c8e53e50c57c30f3af5bcc7a913b471fbb462e1f2955b0657a",
+          "previous_reason": "missing_target_answer",
+          "passes_updated_checks": true,
+          "attempt_failures": [
+            []
+          ]
+        }
+      ]
+    }
+  }
+}

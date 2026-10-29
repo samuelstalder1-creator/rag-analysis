@@ -1,0 +1,13 @@
+version: 1
+files:
+  corpus_0001.jsonl:
+    model: "openai/gpt-oss-120b"
+    condition: "false"
+    temperature: 0.3
+    sample_idx: 0
+    generation_depth: 1
+    source: "candidates"
+    prompt_version: "v1"
+    validation_mode: "deterministic"
+    generation_signature: "82ce61b77153bea63f78138be7d136099113109433c0002b1d313db789190690"
+    document_count: 1668

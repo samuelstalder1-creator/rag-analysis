@@ -118,6 +118,42 @@ Checks are deterministic, matching the existing Qwen experiments; receipts do
 not claim semantic verification. Rejected documents remain logged for review.
 No local model server or GPU is required.
 
+Answer matching treats Unicode whitespace, hyphens (U+2010/U+2011) and curly
+quotation marks as their plain-text equivalents, including when finding gold
+residue and answer spans. Original document text and edit offsets are preserved.
+Other punctuation, spelling, numbers and date formats still have to match.
+For false targets supplied as quoted titles, the outer double quotes are optional;
+the full title wording must still match. This also handles punctuation placed
+inside closing quotes. Gold-alias and edit-span matching keep their exact wording.
+Resume fingerprints keep the original literal `aliases_in_doc` annotation for
+source identity; validation uses the current matching rules. This lets existing
+corpora resume after a typography fix while still detecting source text changes.
+
+False generation can edit a title-only answer while keeping the original body
+as context. The generated body must still contain the target. Missing targets
+and new gold mentions trigger corrective feedback within the existing three
+attempts; they are never accepted just to complete a run. `exclude_doc_ids` puts
+documents on review hold without changing fingerprints or random seed positions.
+The GPT-OSS false configuration holds `doc40783` (`test1150`), whose question
+about court powers is paired with the gold answer "Justices".
+
+`all` runs Correct and False concurrently as two API jobs, using their separate
+caches/output directories. Each job remains sequential internally. Smoke tests
+remain sequential for inspection. The launcher waits for both jobs, reports
+either failure, and stops its child processes when interrupted. Together's
+existing rate-limit retries still apply; the speedup depends on API throughput.
+
+Retry documents still missing after rejection with fresh sampling:
+
+```bash
+bash scripts/run_together_generation.sh all --retry-seed 1
+```
+
+Increment the retry seed for subsequent rounds. Accepted documents retain their
+fingerprints and are skipped. A different retry seed avoids cached failed
+responses; validation rules and imported targets remain unchanged. Source/input
+failures may remain blocked regardless of sampling.
+
 Corpus files, receipts and generation signatures are byte-preserved during
 relocation. `data/generated/relocations.json` maps old paths to current locations
 so historical audits can still verify their original input hashes.

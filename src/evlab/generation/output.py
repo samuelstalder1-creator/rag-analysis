@@ -29,6 +29,29 @@ def output_label(model: str, temperature: float, source: str) -> str:
     return f"{model_slug}--tmp{temperature:g}--{source}--v1"
 
 
+def source_identity(doc: dict, aliases: list[str]) -> dict:
+    """Keep the historical source fingerprint independent of typography policy.
+
+    aliases_in_doc is derived by the loader, rather than source data. Its original
+    literal matching must stay stable for resume; validation uses current rules.
+    All actual source fields remain part of the identity.
+    """
+    if "aliases_in_doc" not in doc:
+        return dict(doc)
+    content = str(doc.get("title", "") or "") + "\n" + str(doc["text"])
+    literal_aliases = []
+    for alias in aliases:
+        value = alias.strip()
+        if not value:
+            continue
+        pattern = ((r"\b" if re.match(r"\w", value) else "")
+                   + re.escape(value)
+                   + (r"\b" if re.search(r"\w$", value) else ""))
+        if re.search(pattern, content, re.I):
+            literal_aliases.append(alias)
+    return {**doc, "aliases_in_doc": literal_aliases}
+
+
 class GenerationOutput:
     """One corpus per model, condition, temperature, sample and source."""
 

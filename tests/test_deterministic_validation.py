@@ -208,6 +208,41 @@ def test_rule_based_span_selection_edits_all_mentions(tmp_path, monkeypatch):
     assert docs == {"generated": 2, "rejects": 0}
 
 
+def test_title_only_answer_is_used_as_false_generation_context(tmp_path, monkeypatch):
+    import json
+    root, config = setup_data(tmp_path)
+    human = tmp_path / "human.jsonl"
+    human.write_text("".join(json.dumps({"_id": did, "title": "23 episodes",
+                                       "text": "The show aired on television."}) + "\n"
+                             for did in ("d1", "d2")))
+    answers = tmp_path / "answers.jsonl"
+    answers.write_text(json.dumps({"_id": "q1", "answer": "23", "false_answer": "24"}) + "\n")
+    config = {**_deterministic(config), "span_selection": "all",
+              "false_answer_source": "nqopen_import", "false_answers_file": str(answers)}
+    monkeypatch.setattr(pipeline, "build_llm_client", lambda c: GeneratorClient())
+    result = run_false_document_generation(config, root, human_corpus=human)
+    assert result == {"generated": 2, "rejects": 0}
+    receipts = read_jsonl(tmp_path / "output" / "corpus_0001.manifest")
+    for row in receipts:
+        receipt = row["receipt"]
+        assert receipt["edits"]["answer_from_title"] is True
+        assert receipt["edits"]["body"] == []
+        assert receipt["seed_text"] == "The show aired on television."
+        assert receipt["seed_title"] == "24 episodes"
+
+
+def test_review_exclusion_preserves_resume_identity(tmp_path, monkeypatch):
+    root, config, _ = _run_answers(tmp_path, monkeypatch, GeneratorClient())
+    config = {**config, "span_selection": "all", "exclude_doc_ids": ["d1"]}
+    human = tmp_path / "human.jsonl"
+    assert run_false_document_generation(config, root, human_corpus=human) == {
+        "generated": 1, "rejects": 0, "excluded_documents": 1,
+    }
+    config["exclude_doc_ids"] = []
+    assert run_false_document_generation(config, root, human_corpus=human) == {"generated": 1, "rejects": 0}
+    assert len(read_jsonl(tmp_path / "output" / "corpus_0001.jsonl")) == 2
+
+
 def test_failed_llm_span_selection_logs_raw_response(tmp_path, monkeypatch):
     client = GeneratorClient()
     root, config, _ = _run_answers(tmp_path, monkeypatch, client)

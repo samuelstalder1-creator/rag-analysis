@@ -1,0 +1,41 @@
+{
+  "doc_id": "doc40783",
+  "evaluation_basis": "Supplied question, annotations and source; no external factual verification",
+  "evaluator_model": "openai/gpt-oss-120b",
+  "evidence": {
+    "generated": "The Supreme Court of the Philippines, as the nation’s highest judicial body, has the power to Declare laws unconstitutional and also exercises administrative supervision over all lower courts and their personnel. It is headed by a Chief Justice and is composed of fifteen members.",
+    "gold": "Justices",
+    "question": "what are the power of supreme court in the philippines",
+    "source": "The Supreme Court of the Philippines (Filipino: Kataas-taasang Hukuman ng Pilipinas; colloquially referred to by the Spanish: Corte Suprema), is the highest court in the Philippines. It is presided over by a Chief Justice and is composed of fifteen (15) Justices, including the Chief Justice. Pursuant to the Constitution, the Supreme Court has \"administrative supervision over all courts and the personnel thereof\".[1]",
+    "source_title": "Supreme Court of the Philippines",
+    "target": "Declare laws unconstitutional"
+  },
+  "generation": {
+    "generated": 1,
+    "rejects": 0,
+    "skipped_questions": 0
+  },
+  "main_corpus_modified": false,
+  "query_id": "test1150",
+  "semantic_review": {
+    "attempts": [
+      {
+        "error": "negative semantic verdict",
+        "response": "{\"gold_answers_question\": false, \"generated_supports_target\": false, \"counterfactual_pair_is_aligned\": false, \"reason\": \"The gold answer 'Justices' does not answer the question about the powers of the Supreme Court; it merely names the members and is not supported as a power by the source. The generated passage claims the Court can 'Declare laws unconstitutional', but the provided source only mentions administrative supervision over lower courts, offering no evidence for the constitutional review power. Consequently, the generated text does not affirmatively support the target answer. Additionally, the gold answer (a noun referring to people) and the target answer (a verb phrase describing a power) are not compatible alternative answers to the same question, so the counterfactual pair is not aligned.\"}"
+      }
+    ],
+    "error": "held_annotation_review: semantic validation failed: {'gold_answers_question': False, 'generated_supports_target': False, 'counterfactual_pair_is_aligned': False, 'reason': \"The gold answer 'Justices' does not answer the question about the powers of the Supreme Court; it merely names the members and is not supported as a power by the source. The generated passage claims the Court can 'Declare laws unconstitutional', but the provided source only mentions administrative supervision over lower courts, offering no evidence for the constitutional review power. Consequently, the generated text does not affirmatively support the target answer. Additionally, the gold answer (a noun referring to people) and the target answer (a verb phrase describing a power) are not compatible alternative answers to the same question, so the counterfactual pair is not aligned.\"}"
+  },
+  "status": "rejected_for_annotation_alignment",
+  "assistant_source_review": {
+    "lexical_validation_passed": true,
+    "generated_supports_target": true,
+    "target_supporting_sentence": "The Supreme Court of the Philippines, as the nation’s highest judicial body, has the power to Declare laws unconstitutional and also exercises administrative supervision over all lower courts and their personnel.",
+    "gold_answers_question": false,
+    "counterfactual_pair_is_aligned": false,
+    "reason": "The generated text directly states the target as a power of the court. The supplied gold Justices instead names the people composing the court and does not answer a question about powers. Regeneration cannot resolve that question/answer mismatch.",
+    "model_review_correction": "The model incorrectly marked generated_supports_target false because the original source does not support the target. For a counterfactual rewrite, generated target support must be assessed in the generated passage. This does not change the separate negative judgment about the annotation alignment."
+  },
+  "main_corpus_count": 1668,
+  "main_corpus_hash": "1777f0166fbb57c170d1a7ddbfa606b6a22bb11097ac767ee39727005506eadd"
+}

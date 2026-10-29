@@ -1,0 +1,107 @@
+{
+  "network_requests": 0,
+  "cache_hits": 309,
+  "cache_misses": 25,
+  "runs": [
+    {
+      "kind": "correct",
+      "retry_seed": 0,
+      "result": {
+        "scope": "all_answer_documents",
+        "generation_questions": 1520,
+        "checked_documents": 1670,
+        "eligible_documents": 1670,
+        "title_only_answer_documents": 16,
+        "needs_review": [],
+        "selected_documents": 1670,
+        "generated": 0,
+        "reused": 1669,
+        "rejects": 1
+      }
+    },
+    {
+      "kind": "false",
+      "retry_seed": 0,
+      "result": {
+        "generated": 247,
+        "rejects": 6,
+        "skipped_questions": 1
+      }
+    },
+    {
+      "kind": "correct",
+      "retry_seed": 1,
+      "result": {
+        "scope": "all_answer_documents",
+        "generation_questions": 1520,
+        "checked_documents": 1670,
+        "eligible_documents": 1670,
+        "title_only_answer_documents": 16,
+        "needs_review": [],
+        "selected_documents": 1670,
+        "generated": 0,
+        "reused": 1669,
+        "rejects": 1
+      }
+    },
+    {
+      "kind": "false",
+      "retry_seed": 1,
+      "result": {
+        "generated": 10,
+        "rejects": 2,
+        "skipped_questions": 1
+      }
+    },
+    {
+      "kind": "correct",
+      "retry_seed": 2,
+      "result": {
+        "scope": "all_answer_documents",
+        "generation_questions": 1520,
+        "checked_documents": 1670,
+        "eligible_documents": 1670,
+        "title_only_answer_documents": 16,
+        "needs_review": [],
+        "selected_documents": 1670,
+        "generated": 0,
+        "reused": 1669,
+        "rejects": 1
+      }
+    },
+    {
+      "kind": "false",
+      "retry_seed": 2,
+      "result": {
+        "generated": 1,
+        "rejects": 1,
+        "skipped_questions": 1
+      }
+    },
+    {
+      "kind": "correct",
+      "retry_seed": 3,
+      "result": {
+        "scope": "all_answer_documents",
+        "generation_questions": 1520,
+        "checked_documents": 1670,
+        "eligible_documents": 1670,
+        "title_only_answer_documents": 16,
+        "needs_review": [],
+        "selected_documents": 1670,
+        "generated": 0,
+        "reused": 1669,
+        "rejects": 1
+      }
+    },
+    {
+      "kind": "false",
+      "retry_seed": 3,
+      "result": {
+        "generated": 0,
+        "rejects": 13,
+        "skipped_questions": 1
+      }
+    }
+  ]
+}

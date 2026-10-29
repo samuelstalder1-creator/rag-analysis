@@ -42,6 +42,17 @@ def expand_number_aliases(aliases: list[str]) -> list[str]:
     return list(dict.fromkeys(v for alias in aliases for v in number_variants(alias)))
 
 
+def target_answer_forms(value: str) -> list[str]:
+    """Outer title quotes are presentation, not part of the target's wording."""
+    value = value.strip()
+    forms = number_variants(value)
+    if len(value) > 2 and (value[0], value[-1]) in {('"', '"'), ('\u201c', '\u201d')}:
+        unquoted = value[1:-1].strip()
+        if unquoted:
+            forms.extend(number_variants(unquoted))
+    return list(dict.fromkeys(forms))
+
+
 def validate_false_copy(
     text: str,
     *,
@@ -51,7 +62,7 @@ def validate_false_copy(
 ) -> ValidationResult:
     reasons: list[str] = []
     # A paraphrase may write "four" for target "4"; both forms count.
-    if not any(contains_alias(text, form) for form in number_variants(target_answer)):
+    if not any(contains_alias(text, form) for form in target_answer_forms(target_answer)):
         reasons.append("missing_target_answer")
     if not allow_unrelated_gold and any(
         contains_alias(text, alias) for alias in answer_aliases
@@ -62,14 +73,32 @@ def validate_false_copy(
     return ValidationResult(not reasons, tuple(reasons))
 
 
-def contains_alias(text: str, alias: str) -> bool:
+def alias_pattern(alias: str) -> str:
+    """Match typographic variants without changing content or source offsets.
+
+    Unicode whitespace, hyphens and quotation marks are equivalent to their
+    plain-text forms. Other punctuation (including en/em dashes and minus
+    signs), spelling and numeric/date formats remain significant.
+    """
     alias = alias.strip()
     if not alias:
-        return False
-    escaped = re.escape(alias)
-    pattern = escaped
+        return r"(?!)"
+    equivalents = {
+        **dict.fromkeys("-\u2010\u2011", "[-\u2010\u2011]"),
+        **dict.fromkeys("'\u2018\u2019", "['\u2018\u2019]"),
+        **dict.fromkeys('\"\u201c\u201d', '[\"\u201c\u201d]'),
+    }
+    pattern = "".join(
+        r"\s+" if part.isspace() else
+        "".join(equivalents.get(char, re.escape(char)) for char in part)
+        for part in re.split(r"(\s+)", alias)
+    )
     if re.search(r"^\w", alias):
         pattern = r"\b" + pattern
     if re.search(r"\w$", alias):
         pattern = pattern + r"\b"
-    return re.search(pattern, text, flags=re.IGNORECASE) is not None
+    return pattern
+
+
+def contains_alias(text: str, alias: str) -> bool:
+    return re.search(alias_pattern(alias), text, flags=re.IGNORECASE) is not None

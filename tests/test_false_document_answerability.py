@@ -57,6 +57,44 @@ def test_generic_paraphrase_retains_existing_contract():
     assert paraphrase(Client(), text="Source.") == "Rewritten."
 
 
+@pytest.mark.parametrize("bad, reason", [
+    ("The total was 24, although 23 were originally planned.", "gold_answer_residue"),
+    ("The show ran for several years.", "missing_target_answer"),
+    ("", "empty_text"),
+])
+def test_false_content_errors_are_retried_with_specific_feedback(bad, reason):
+    calls = []
+
+    class Client:
+        def generate(self, prompt, **kwargs):
+            calls.append((prompt, kwargs))
+            return bad if len(calls) == 1 else "Viewers saw 24 installments over the full season."
+
+    result = paraphrase_false(
+        Client(), question="How many episodes?", target_answer="24", title="Show",
+        text="A total of 24 episodes aired.", answer_aliases=["23"], max_attempts=3, seed=7,
+    )
+    assert result.startswith("Viewers saw 24")
+    assert len(calls) == 2
+    assert reason in calls[1][0]
+    assert "Previous rejected passage" in calls[1][0]
+    if reason == "gold_answer_residue":
+        assert "Disallowed answer mentions actually found: ['23']" in calls[1][0]
+        assert "at most two sentences" in calls[1][0]
+    assert calls[1][1]["seed"] != calls[0][1]["seed"]
+
+
+def test_repeated_gold_residue_remains_rejected():
+    class Client:
+        def generate(self, prompt, **kwargs):
+            return "There were 24 episodes, but also 23 elsewhere."
+
+    with pytest.raises(ModelOutputError, match="gold_answer_residue") as error:
+        paraphrase_false(Client(), question="How many?", target_answer="24", title="Show",
+                         text="24 episodes aired.", answer_aliases=["23"], max_attempts=3)
+    assert len(error.value.attempts) == 3
+
+
 def test_copied_false_passage_is_retried_with_feedback_and_new_seed():
     calls = []
 

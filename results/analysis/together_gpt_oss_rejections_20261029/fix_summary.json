@@ -1,0 +1,57 @@
+{
+  "validation_mode": "deterministic",
+  "tests_passed": 356,
+  "changes": [
+    "title_only_answer_context",
+    "optional_outer_quotes_for_target_titles",
+    "content_retry_feedback_with_unchanged_residue_checks",
+    "explicit_annotation_review_exclusion"
+  ],
+  "api_logs": [
+    "logs/together_gpt_oss_fix_retry_5.log",
+    "logs/together_gpt_oss_fix_retry_6.log"
+  ],
+  "datasets": {
+    "correct": {
+      "accepted": 1670,
+      "expected_before_review_exclusion": 1670,
+      "receipt_checks_passed": 1670,
+      "corpus_hash": "2884985ff21a918bf04565535df46ceaa3148c33fc9cca7b24aee7238990c3c0"
+    },
+    "false": {
+      "accepted": 1668,
+      "expected_before_review_exclusion": 1669,
+      "receipt_checks_passed": 1668,
+      "corpus_hash": "1777f0166fbb57c170d1a7ddbfa606b6a22bb11097ac767ee39727005506eadd"
+    }
+  },
+  "new_documents_checked": [
+    "doc5831",
+    "doc11879",
+    "doc17168",
+    "doc17784",
+    "doc20228",
+    "doc28377",
+    "doc60582",
+    "doc60586",
+    "doc60587",
+    "doc62966",
+    "doc67749",
+    "doc96605",
+    "doc101742",
+    "doc101178"
+  ],
+  "code_hashes": {
+    "src/evlab/generation/validate.py": "7dba92f34c1d7c2ad8829e43065e200384a3e037b62344a4dd47006e15eb1e1e",
+    "src/evlab/generation/minimal_edit.py": "ef49a47767496d7d37ffe6e31212711a5c58655efbef15b0b101fa5cb9d78ce4",
+    "src/evlab/generation/paraphrase.py": "2d91b1bb25749e67627825cd66231c0178c4c86406f081b41d7e70f8f1a6ccc6",
+    "src/evlab/generation/pipeline.py": "c6c1d7cb1c77c996541a8cc60a56834b986cd553f779e6bb6334b0cd3de0b5c5",
+    "src/evlab/generation/false_documents.py": "1145e8db13b4dc6d9b3074fa5e0346c48ce82e6d2658992976e2b5b9a76439f9",
+    "src/evlab/generation/output.py": "b2a46fa1fbba8320909836b4942d0b7379f747582575c653894b6eb825fcdba7",
+    "src/evlab/generation/false_answers.py": "695c163a842d05b2412ae61f9ecaab9dcf15382f9fbe579f9d92062c30a330a8"
+  },
+  "excluded_for_annotation_review": [
+    "doc40783"
+  ],
+  "annotation_review": "annotation_review.json"
+}

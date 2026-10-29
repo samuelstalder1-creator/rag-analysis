@@ -1,0 +1,94 @@
+{
+  "retry_seed": 5,
+  "exit_code": 0,
+  "accepted_before": 1653,
+  "accepted_after": 1654,
+  "newly_accepted": 1,
+  "expected": 1669,
+  "remaining": 15,
+  "remaining_reasons": {
+    "No editable gold-answer spans in source": 6,
+    "gold_answer_residue": 8,
+    "missing_target_answer": 1
+  },
+  "remaining_documents": [
+    {
+      "doc_id": "doc5831",
+      "query_id": "test159",
+      "reason": "No editable gold-answer spans in source"
+    },
+    {
+      "doc_id": "doc11879",
+      "query_id": "test310",
+      "reason": "No editable gold-answer spans in source"
+    },
+    {
+      "doc_id": "doc17168",
+      "query_id": "test468",
+      "reason": "gold_answer_residue"
+    },
+    {
+      "doc_id": "doc17784",
+      "query_id": "test483",
+      "reason": "gold_answer_residue"
+    },
+    {
+      "doc_id": "doc20228",
+      "query_id": "test558",
+      "reason": "gold_answer_residue"
+    },
+    {
+      "doc_id": "doc28377",
+      "query_id": "test797",
+      "reason": "gold_answer_residue"
+    },
+    {
+      "doc_id": "doc40783",
+      "query_id": "test1150",
+      "reason": "gold_answer_residue"
+    },
+    {
+      "doc_id": "doc60582",
+      "query_id": "test1708",
+      "reason": "No editable gold-answer spans in source"
+    },
+    {
+      "doc_id": "doc60586",
+      "query_id": "test1708",
+      "reason": "missing_target_answer"
+    },
+    {
+      "doc_id": "doc60587",
+      "query_id": "test1708",
+      "reason": "No editable gold-answer spans in source"
+    },
+    {
+      "doc_id": "doc62966",
+      "query_id": "test1786",
+      "reason": "gold_answer_residue"
+    },
+    {
+      "doc_id": "doc67749",
+      "query_id": "test1932",
+      "reason": "gold_answer_residue"
+    },
+    {
+      "doc_id": "doc96605",
+      "query_id": "test2812",
+      "reason": "No editable gold-answer spans in source"
+    },
+    {
+      "doc_id": "doc101178",
+      "query_id": "test2958",
+      "reason": "gold_answer_residue"
+    },
+    {
+      "doc_id": "doc101742",
+      "query_id": "test2968",
+      "reason": "No editable gold-answer spans in source"
+    }
+  ],
+  "receipt_checks_passed": 1654,
+  "corpus_hash": "719581c4730fe71f025b321ea07bef0a6221a5df7156b9d62ae4a7639cb216b8",
+  "api_log": "logs/together_gpt_oss_retry_5.log"
+}

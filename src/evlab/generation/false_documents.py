@@ -46,12 +46,15 @@ def run_false_document_generation(
             )
         ]
         ready_ids = {c["query_id"] for c in ready}
+        excluded = set(config.get("exclude_doc_ids", []))
         return {
             "total_questions": len(candidates),
             "selected_questions": len(selected),
             "ready_questions": len(ready),
             "needs_review_or_stale": len(selected) - len(ready),
-            "ready_documents": sum(len(c["h_docs"]) for c in ready),
+            "ready_documents": sum(doc["doc_id"] not in excluded for c in ready for doc in c["h_docs"]),
+            **({"excluded_documents": sum(doc["doc_id"] in excluded for c in ready for doc in c["h_docs"])}
+               if excluded else {}),
             "blocked_query_ids": [
                 c["query_id"] for c in selected if c["query_id"] not in ready_ids
             ],

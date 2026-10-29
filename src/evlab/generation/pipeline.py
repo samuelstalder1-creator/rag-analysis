@@ -11,7 +11,7 @@ from evlab.generation.paraphrase import (
     paraphrase, PARAPHRASE_PROMPT, paraphrase_false, FALSE_DOCUMENT_PROMPT,
     verify_false_answerability,
 )
-from evlab.generation.output import GenerationOutput
+from evlab.generation.output import GenerationOutput, source_identity
 from evlab.generation.validate import (
     contains_alias,
     validate_correct_copy,
@@ -46,6 +46,11 @@ def run_generation_pipeline(
     retry_seed = config.get("retry_seed", 0)
     if type(retry_seed) is not int or retry_seed < 0:
         raise ValueError("retry_seed must be a non-negative integer")
+    excluded = config.get("exclude_doc_ids", [])
+    if not isinstance(excluded, list) or any(not isinstance(did, str) or not did for did in excluded):
+        raise ValueError("exclude_doc_ids must be a list of nonempty document IDs")
+    excluded_ids = set(excluded)
+    excluded_seen: set[str] = set()
     semantic = validation_mode(config) == "semantic"
     span_selection = str(config.get("span_selection", "llm"))
     if span_selection not in {"llm", "all"}:
@@ -100,6 +105,7 @@ def run_generation_pipeline(
                     "samples_per_h",
                     "skip_missing_false_answers",
                     "retry_seed",  # Operational retry control; completed fingerprints stay valid.
+                    "exclude_doc_ids",  # Review hold; does not change generated content.
                 }
             },
             "prompts": [FALSE_ANSWER_PROMPT, MINIMAL_EDIT_PROMPT, PARAPHRASE_PROMPT, FALSE_DOCUMENT_PROMPT],
@@ -138,6 +144,9 @@ def run_generation_pipeline(
                     str(doc.get("title", "") or ""),
                     str(doc["text"]),
                 )
+                if did in excluded_ids:
+                    excluded_seen.add(did)
+                    continue
                 for condition in sorted(conditions):
                     target = (
                         candidate.get("false_answer") if condition == "false" else None
@@ -154,7 +163,7 @@ def run_generation_pipeline(
                                 if condition == "false"
                                 else None
                             ),
-                            "source": doc,
+                            "source": source_identity(doc, aliases),
                             "condition": condition,
                         }
                     )
@@ -167,17 +176,21 @@ def run_generation_pipeline(
                         try:
                             seed_receipt = None
                             if condition == "false":
-                                edited_text, edits["body"] = _edit_spans(
-                                    span_selection,
-                                    verifier,
-                                    text=text,
-                                    context_title=title,
-                                    gold=gold,
-                                    aliases=aliases,
-                                    target_answer=target,
-                                    question=question,
-                                    seed=idx,
-                                )
+                                try:
+                                    edited_text, edits["body"] = _edit_spans(
+                                        span_selection, verifier, text=text,
+                                        context_title=title, gold=gold, aliases=aliases,
+                                        target_answer=target, question=question, seed=idx,
+                                    )
+                                except ValueError as exc:
+                                    if (not str(exc).startswith("No editable gold-answer spans in source")
+                                            or occurrences(text, aliases)
+                                            or not occurrences(title, aliases)):
+                                        raise
+                                    # The title supplies the subject; keep the original body
+                                    # and expand the edited title in the generated passage.
+                                    edits["body"] = []
+                                    edits["answer_from_title"] = True
                                 if any(
                                     contains_alias(title, alias) for alias in aliases
                                 ):
@@ -224,6 +237,7 @@ def run_generation_pipeline(
                                     max_attempts=config.get("false_document_max_attempts", 1),
                                     max_similarity=float(config.get("validation", {}).get("max_similarity", 0.95)),
                                     source_text=text,
+                                    answer_aliases=aliases,
                                 )
                             else:
                                 generated = paraphrase(
@@ -317,7 +331,7 @@ def run_generation_pipeline(
                                             stable_hash(candidate["false_answer_record"])
                                             if condition == "false" else None
                                         ),
-                                        "source_hash": stable_hash(doc),
+                                        "source_hash": stable_hash(source_identity(doc, aliases)),
                                         "source_content_hash": stable_hash(
                                             {
                                                 "doc_id": did,
@@ -379,6 +393,8 @@ def run_generation_pipeline(
     finally:
         output.update_counts()
     result = {"generated": generated_count, "rejects": reject_count}
+    if excluded_seen:
+        result["excluded_documents"] = len(excluded_seen)
     if config.get("skip_missing_false_answers", False):
         result["skipped_questions"] = len(skipped)
     return result

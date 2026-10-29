@@ -4,6 +4,8 @@ from difflib import SequenceMatcher
 
 from evlab.llm.client import LLMClient
 from evlab.generation.semantic import judge, ModelOutputError
+from evlab.generation.validate import validate_false_copy, expand_number_aliases
+from evlab.generation.minimal_edit import occurrences
 
 
 PARAPHRASE_PROMPT = """Original Text: {text}
@@ -51,6 +53,7 @@ def paraphrase_false(
     max_attempts: int = 1,
     max_similarity: float = 0.95,
     source_text: str | None = None,
+    answer_aliases: list[str] | None = None,
 ) -> str:
     if type(max_attempts) is not int or max_attempts < 1:
         raise ValueError("false_document_max_attempts must be a positive integer")
@@ -58,6 +61,8 @@ def paraphrase_false(
         question=question, target_answer=target_answer, title=title, text=text
     )
     attempts = []
+    residue_aliases = expand_number_aliases(answer_aliases or [])
+    allowed_gold_mentions = len(occurrences(text, residue_aliases))
     for attempt in range(max_attempts):
         response = client.generate(
             prompt, temperature=min(1.0, temperature + 0.2 * attempt),
@@ -70,10 +75,40 @@ def paraphrase_false(
             ).ratio() >= max_similarity:
                 reason = f"near_duplicate_of_{label}"
                 break
+        if reason is None and answer_aliases is not None:
+            lexical = validate_false_copy(
+                response, target_answer=target_answer,
+                answer_aliases=answer_aliases, allow_unrelated_gold=True,
+            )
+            if not lexical.ok:
+                reason = ",".join(lexical.reasons)
+            elif len(occurrences(response, residue_aliases)) > allowed_gold_mentions:
+                reason = "gold_answer_residue"
         if reason is None:
             return response
         attempts.append({"stage": "paraphrase", "attempt": attempt + 1,
                          "response": response, "error": reason})
+        if not reason.startswith("near_duplicate_of_"):
+            if reason == "gold_answer_residue":
+                matched = [hit["text"] for hit in occurrences(response, residue_aliases)]
+                prompt += (
+                    f"\n\nDisallowed answer mentions actually found: {matched!r}. "
+                    "Write at most two sentences focused solely on answering the "
+                    "question with the target. Omit unrelated historical, animal, "
+                    "plant or other background if it would require these words. "
+                    "These words are disallowed even in unrelated background."
+                )
+            prompt += (
+                f"\n\nThe previous attempt failed validation: {reason}. "
+                f"Include the complete target answer {target_answer!r} in the "
+                "answer-bearing sentence. Do not add mentions of the original "
+                f"answer forms {residue_aliases!r}; rephrase or omit unrelated "
+                "background that would require them. Do not restore real-world "
+                "facts that contradict this counterfactual passage. "
+                f"Previous rejected passage:\n{response}\n"
+                "Return a new complete passage, not an explanation."
+            )
+            continue
         prompt += (
             "\n\nThe previous attempt was rejected because it copied too much of the "
             "source. Write a substantially different passage, starting with the "

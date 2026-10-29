@@ -1,0 +1,10 @@
+{
+  "status": "review_required",
+  "query_id": "test1150",
+  "doc_id": "doc40783",
+  "question": "what are the power of supreme court in the philippines",
+  "gold_answer": "Justices",
+  "imported_false_target": "Declare laws unconstitutional",
+  "reason": "The gold answer names people, while the question asks about powers. The imported target also names a power, so its status as a false answer cannot be assumed.",
+  "action": "Exclude this document from generation pending review of the question, gold answer, target and supporting source. Original annotations are preserved."
+}

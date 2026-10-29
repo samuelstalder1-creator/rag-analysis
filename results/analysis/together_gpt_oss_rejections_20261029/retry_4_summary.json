@@ -1,0 +1,127 @@
+{
+  "retry_seed": 4,
+  "api_log": "logs/together_gpt_oss_retry_4.log",
+  "validation_mode": "deterministic",
+  "tests_passed": 344,
+  "initial_counts": {
+    "correct": 1537,
+    "false": 1366
+  },
+  "after_cache_recovery": {
+    "correct": 1669,
+    "false": 1650
+  },
+  "datasets": {
+    "correct": {
+      "expected": 1670,
+      "accepted": 1670,
+      "missing": 0,
+      "corpus_hash": "2884985ff21a918bf04565535df46ceaa3148c33fc9cca7b24aee7238990c3c0",
+      "receipt_checks_passed": 1670,
+      "remaining_reasons": {},
+      "remaining_documents": []
+    },
+    "false": {
+      "expected": 1669,
+      "accepted": 1653,
+      "missing": 16,
+      "corpus_hash": "9708cee3fd6526fc850c0c49bed1b9729662d4fabb49ee108d91fd415e7cd405",
+      "receipt_checks_passed": 1653,
+      "remaining_reasons": {
+        "No editable gold-answer spans in source": 6,
+        "gold_answer_residue": 9,
+        "missing_target_answer": 1
+      },
+      "remaining_documents": [
+        {
+          "doc_id": "doc5831",
+          "query_id": "test159",
+          "reason": "No editable gold-answer spans in source"
+        },
+        {
+          "doc_id": "doc11879",
+          "query_id": "test310",
+          "reason": "No editable gold-answer spans in source"
+        },
+        {
+          "doc_id": "doc17168",
+          "query_id": "test468",
+          "reason": "gold_answer_residue"
+        },
+        {
+          "doc_id": "doc17784",
+          "query_id": "test483",
+          "reason": "gold_answer_residue"
+        },
+        {
+          "doc_id": "doc20228",
+          "query_id": "test558",
+          "reason": "gold_answer_residue"
+        },
+        {
+          "doc_id": "doc28377",
+          "query_id": "test797",
+          "reason": "gold_answer_residue"
+        },
+        {
+          "doc_id": "doc40783",
+          "query_id": "test1150",
+          "reason": "gold_answer_residue"
+        },
+        {
+          "doc_id": "doc60582",
+          "query_id": "test1708",
+          "reason": "No editable gold-answer spans in source"
+        },
+        {
+          "doc_id": "doc60586",
+          "query_id": "test1708",
+          "reason": "missing_target_answer"
+        },
+        {
+          "doc_id": "doc60587",
+          "query_id": "test1708",
+          "reason": "No editable gold-answer spans in source"
+        },
+        {
+          "doc_id": "doc62966",
+          "query_id": "test1786",
+          "reason": "gold_answer_residue"
+        },
+        {
+          "doc_id": "doc67749",
+          "query_id": "test1932",
+          "reason": "gold_answer_residue"
+        },
+        {
+          "doc_id": "doc96605",
+          "query_id": "test2812",
+          "reason": "No editable gold-answer spans in source"
+        },
+        {
+          "doc_id": "doc101178",
+          "query_id": "test2958",
+          "reason": "gold_answer_residue"
+        },
+        {
+          "doc_id": "doc101742",
+          "query_id": "test2968",
+          "reason": "No editable gold-answer spans in source"
+        },
+        {
+          "doc_id": "doc102453",
+          "query_id": "test2988",
+          "reason": "gold_answer_residue"
+        }
+      ]
+    }
+  },
+  "validation_code": {
+    "src/evlab/generation/validate.py": "e5420987d9945dd7ef9ec27f4b655a56cc8e96f68b6ad0b43806d0f043ccf969",
+    "src/evlab/generation/minimal_edit.py": "ef49a47767496d7d37ffe6e31212711a5c58655efbef15b0b101fa5cb9d78ce4",
+    "src/evlab/generation/output.py": "b2a46fa1fbba8320909836b4942d0b7379f747582575c653894b6eb825fcdba7",
+    "src/evlab/generation/correct_repair.py": "7b0bd7331f58e1b17e3b580089e610f8c48ee553fc34767efe6a935c8f7ddea8",
+    "src/evlab/generation/pipeline.py": "701ee1d5bef713d100399629b6d204a7398e5ebda1bdf3254a5de41e01b09de8",
+    "src/evlab/generation/false_answers.py": "695c163a842d05b2412ae61f9ecaab9dcf15382f9fbe579f9d92062c30a330a8"
+  }
+}

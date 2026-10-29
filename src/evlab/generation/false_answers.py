@@ -13,7 +13,7 @@ from evlab.generation.false_answer import (
     canonical,
     is_valid_false_answer,
 )
-from evlab.generation.output import output_label
+from evlab.generation.output import output_label, source_identity
 from evlab.generation.semantic import (
     build_verifier,
     verify_answer,
@@ -113,7 +113,7 @@ def valid_saved_answer(
         "gold": candidate["answer"],
         "aliases": candidate["answer_aliases"],
         "target": answer,
-        "sources": candidate["h_docs"],
+        "sources": [source_identity(doc, candidate["answer_aliases"]) for doc in candidate["h_docs"]],
     }
     if require_source_constraints:
         from evlab.generation.source_constraints import check_source_constraints
@@ -128,7 +128,11 @@ def valid_saved_answer(
         )
         and verification.get("version") == VALIDATOR_VERSION
         and verification.get("validator_hash") == validator_signature()
-        and verification.get("evidence_hash") == stable_hash(evidence)
+        and verification.get("evidence_hash") in {
+            stable_hash(evidence),
+            # Older callers may supply their own derived alias annotation.
+            stable_hash({**evidence, "sources": candidate["h_docs"]}),
+        }
         and (not require_semantic or receipt_mode(verification) == "semantic")
     )
 
@@ -246,7 +250,7 @@ def deterministic_answer_receipt(candidate: dict, target: str) -> dict:
         "gold": candidate["answer"],
         "aliases": candidate["answer_aliases"],
         "target": target,
-        "sources": candidate["h_docs"],
+        "sources": [source_identity(doc, candidate["answer_aliases"]) for doc in candidate["h_docs"]],
     }
     checks = {
         "structurally_valid": is_valid_false_answer(
@@ -255,7 +259,7 @@ def deterministic_answer_receipt(candidate: dict, target: str) -> dict:
         "gold_in_sources": any(doc.get("aliases_in_doc") for doc in candidate["h_docs"]),
     }
     receipt = deterministic_receipt(stage="false_answer", evidence=evidence, checks=checks)
-    receipt["sources_hash"] = stable_hash(candidate["h_docs"])
+    receipt["sources_hash"] = stable_hash(evidence["sources"])
     return receipt
 
 
@@ -310,7 +314,7 @@ def run_false_answer_generation(
             "gold": gold,
             "aliases": aliases,
             "target": existing,
-            "sources": candidate["h_docs"],
+            "sources": [source_identity(doc, candidate["answer_aliases"]) for doc in candidate["h_docs"]],
         }
         if (
             isinstance(existing, str)

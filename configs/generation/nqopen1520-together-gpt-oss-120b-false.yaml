@@ -15,6 +15,9 @@ generation:
   progress_every: 1
   conditions: ["false"]
   skip_missing_false_answers: true
+  # Annotation review: test1150 asks about court powers, but its gold is "Justices".
+  # Keep this document out of generation until the question/gold/target is reviewed.
+  exclude_doc_ids: ["doc40783"]
   span_selection: all
   false_document_max_attempts: 3
   validation:

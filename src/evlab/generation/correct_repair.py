@@ -7,7 +7,7 @@ from pathlib import Path
 import math
 
 from evlab.data.nqplus import load_generation_candidates
-from evlab.generation.output import GenerationOutput
+from evlab.generation.output import GenerationOutput, source_identity
 from evlab.generation.registry import read_registry
 from evlab.generation.semantic import (
     build_verifier,
@@ -317,7 +317,7 @@ def run_correct_repair(
             fingerprint = stable_hash(
                 {
                     "signature": signature,
-                    "source": doc,
+                    "source": source_identity(doc, aliases),
                     "question": candidate["query"],
                     "gold": candidate["answer"],
                     "aliases": aliases,
@@ -422,7 +422,7 @@ def run_correct_repair(
                             "query_id": candidate["query_id"],
                             "gold_answer": candidate["answer"],
                             "target_answer": None,
-                            "source_hash": stable_hash(doc),
+                            "source_hash": stable_hash(source_identity(doc, aliases)),
                             "source_content_hash": stable_hash(
                                 {
                                     "doc_id": did,
