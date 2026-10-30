@@ -4,7 +4,7 @@ Controlled retrieval and RAG experiments with human, correct, false and attack e
 
 ## Active experiment
 
-The single active experiment is
+The completed reference experiment is
 `configs/experiments/nqopen1520_selected_sources_qwen3_4b_bm25.yaml`:
 17 corpus variants, 1,520 questions, BM25 retrieval and the
 `Qwen/Qwen3-4B-Instruct-2507` reader (temperature 0, seed 13, top-five context).
@@ -50,6 +50,45 @@ the stored historical run directories keep their original names and snapshots.
 The selected systemd unit remains in
 `scripts/systemd/qwen3-4b-selected-bm25-evaluation.service`. These are templates
 for the Linux GPU host; no installed services are changed by repository cleanup.
+
+## Core 12-variant Top-15 evaluation (2026-10-30)
+
+`configs/experiments/nqopen1520_core12_sources_qwen3_4b_bm25_top15.yaml`
+defines the new evaluation: all 1,520 questions, BM25 (`k1=1.5`, `b=0.75`,
+query stopwords removed), retrieval top-15 and Qwen3-4B-Instruct-2507 reader
+top-15 (temperature 0, seed 13, unchanged `reader_v1.txt`). Metrics use cutoffs
+1, 5, 10 and 15, retaining strict/relaxed relevance and the relaxed recall alias.
+Full source files are added without document-size balancing or a shared-question
+subset. Existing false-target compatibility checks remain enabled.
+
+All 12 variants include the human corpus. In the table, Q+/Q- denote Qwen3-4B
+correct/false rewrites, G+/G- denote the new source-grounded GPT-OSS-120B
+correct/false rewrites, and A denotes the existing question-and-target GPT-OSS
+attack documents.
+
+| Variants | Purpose |
+|---|---|
+| H | Human baseline |
+| H+Q+, H+G+ | Correct evidence by generator |
+| H+Q-, H+G- | False evidence by generator |
+| H+A | Attack baseline |
+| H+Q++Q-, H+G++G- | Conflicting evidence from the same generator |
+| H+Q++G-, H+G++Q- | Conflicting evidence across generators |
+| H+Q++A, H+G++A | Correct evidence against the same attack |
+
+```bash
+# Validate inputs and all twelve corpus combinations without model requests:
+uv run evlab sweep configs/experiments/nqopen1520_core12_sources_qwen3_4b_bm25_top15.yaml --dry-run
+EVAL_CHECK_ONLY=1 bash scripts/run_evaluation.sh qwen3_4b_core12_top15
+# On the GPU host, check/start the server, smoke-test, then run all variants:
+bash scripts/run_evaluation.sh qwen3_4b_core12_top15
+```
+
+Results go to `results/evaluations/qwen3_4b_core12_bm25_top15_20261030/`;
+the reader uses a separate cache under `cache/reader_nqopen1520_core12_qwen3_4b_bm25_top15_20261030.sqlite`.
+The launcher smoke-tests two questions in the last variant (H+G++A) before
+starting the complete sweep. The historical configuration and results retain
+their own paths.
 
 ## Generated evidence
 

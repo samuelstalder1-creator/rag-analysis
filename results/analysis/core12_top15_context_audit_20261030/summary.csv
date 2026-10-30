@@ -1,0 +1,13 @@
+variant,queries,min_prompt_tokens,median_prompt_tokens,p95_prompt_tokens,p99_prompt_tokens,max_prompt_tokens,output_budget,max_total_budget,over_limit,worst_query_id
+human_only,1520,1147,1938,2604,3073,4141,256,4397,0,test2788
+human+qwen3_correct,1520,1102,1884,2514,2987,4074,256,4330,0,test2788
+human+gpt_oss_correct,1520,1099,1895,2498,3022,4026,256,4282,0,test2788
+human+qwen3_false,1520,1085,1880,2527,3029,4165,256,4421,0,test2788
+human+gpt_oss_false,1520,1107,1953,2619,3223,4147,256,4403,0,test2788
+human+gpt_oss_attack,1520,1143,1960,2569,3018,4168,256,4424,0,test2788
+human+qwen3_correct+qwen3_false,1520,1054,1825,2470,2907,4106,256,4362,0,test2788
+human+gpt_oss_correct+gpt_oss_false,1520,1131,1897,2539,3059,4085,256,4341,0,test2788
+human+qwen3_correct+gpt_oss_false,1520,1089,1901,2536,3040,4088,256,4344,0,test2788
+human+gpt_oss_correct+qwen3_false,1520,1067,1832,2452,2885,4103,256,4359,0,test2788
+human+qwen3_correct+gpt_oss_attack,1520,1116,1899,2492,2908,4109,256,4365,0,test2788
+human+gpt_oss_correct+gpt_oss_attack,1520,1146,1903,2501,2920,4106,256,4362,0,test2788
