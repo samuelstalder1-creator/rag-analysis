@@ -11,7 +11,7 @@ import json
 from evlab.config import load_config
 from evlab.evaluation.answers import classify_answer
 from evlab.generation.attack import (
-    VALIDATION_VERSION, doc_id_for, load_attack_candidates, validate_attack,
+    VALIDATION_VERSION, doc_id_for, load_attack_candidates, resolve_attack_settings, validate_attack,
 )
 from evlab.io import file_sha256, iter_jsonl, stable_hash
 
@@ -20,6 +20,7 @@ def audit(config: dict) -> dict:
     generation = config["generation"]
     dataset = Path(config["data"]["nqplus_dir"])
     output = Path(generation["output_dir"])
+    settings = resolve_attack_settings(generation)
     candidates, skipped = load_attack_candidates(dataset)
     samples = int(generation.get("samples_per_query", 1))
     expected = {doc_id_for(c["query_id"], s): c for c in candidates for s in range(samples)}
@@ -45,8 +46,8 @@ def audit(config: dict) -> dict:
         candidate = expected[doc_id]
         reasons = validate_attack(row["title"], row["text"], target=candidate["target"],
                                   aliases=candidate["aliases"],
-                                  min_words=int(generation.get("min_words", 60)),
-                                  max_words=int(generation.get("max_words", 110)))
+                                  min_words=settings["min_words"], max_words=settings["max_words"],
+                                  strict_length=settings.get("strict_length", False))
         receipt = receipts.get(doc_id, {})
         row_hash = stable_hash({"title": row["title"], "text": row["text"]})
         if receipt.get("row_hash") != row_hash:
@@ -65,7 +66,9 @@ def audit(config: dict) -> dict:
     missing = sorted(set(expected) - set(docs))
     return {
         "checked_at": datetime.now(timezone.utc).isoformat(),
-        "validation_version": VALIDATION_VERSION,
+        "validation_version": 3 if settings.get("strict_length") else VALIDATION_VERSION,
+        "length_settings": settings,
+        "mean_body_words": sum(len(r["text"].split()) for r in corpus) / len(corpus) if corpus else None,
         "questions": len(candidates), "samples_per_query": samples,
         "expected_documents": len(expected), "documents": len(corpus),
         "unique_documents": len(docs), "manifest_rows": len(manifest),

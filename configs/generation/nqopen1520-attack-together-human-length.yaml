@@ -1,0 +1,27 @@
+# Separate attack v2 corpus; strict body length around the mean of all human documents.
+data:
+  nqplus_dir: data/nqopen1520
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+generation:
+  prompt: prompts/attack_v2_human_length.txt
+  output_dir: data/generated/nqopen1520-attack-together-gpt-oss-120b-v2-human-length
+  cache_path: cache/llm_nqopen1520_attack_together_gpt_oss_120b_v2_human_length.sqlite
+  samples_per_query: 1
+  temperature: 0.5
+  max_attempts: 4
+  workers: 8
+  seed: 13
+  progress_every: 25
+  llm:
+    provider: local_openai
+    base_url: https://api.together.xyz/v1
+    model: openai/gpt-oss-120b
+    api_key_env: TOGETHER_API_KEY
+    max_tokens: 2048
+    timeout: 300
+    max_retries: 5
+    retry_delay: 5
+  origin: attack_v2_human_length
+  length_reference:
+    corpus: data/cocktail/nq/corpus/human.jsonl
+    relative_tolerance: 0.1

@@ -64,6 +64,7 @@ def compute_fingerprints(config: dict, docs: list[Doc], reader_spec: dict | None
     reader = None
     if reader_spec:
         reader = {
+            **({"context_order": reader_spec["context_order"]} if "context_order" in reader_spec else {}),
             "llm": reader_spec["llm"],
             "prompt_sha256": stable_hash(reader_spec["prompt_template"]),
             "top_k": reader_spec["top_k"],

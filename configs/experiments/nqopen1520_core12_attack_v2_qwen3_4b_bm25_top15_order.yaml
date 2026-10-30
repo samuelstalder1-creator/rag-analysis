@@ -1,0 +1,159 @@
+# 12 corpora x 2 context orders = 24 runs. Select the same BM25 top-15 before reversing.
+# Requires the generated and audited human-length attack v2 corpus.
+experiment: nqopen1520_core12_attack_v2_qwen3_4b_bm25_top15_order_20261030
+seed: 13
+queries: rag
+data:
+  nqplus_dir: data/nqopen1520
+  human_corpus: data/cocktail/nq/corpus/human.jsonl
+corpus:
+  fixed:
+    qwen3_correct:
+      kind: generated
+      condition: correct
+      path: data/generated/nqopen1520-qwen3-4b-instruct-2507-correct-v1/corpus_0001.jsonl
+    qwen3_false:
+      kind: generated
+      condition: 'false'
+      path: data/generated/nqopen1520-qwen3-4b-instruct-2507-false-v1/corpus_0001.jsonl
+      compatible_only: true
+    gpt_oss_attack:
+      kind: attack
+      condition: 'false'
+      path: data/generated/nqopen1520-attack-together-gpt-oss-120b-v2-human-length/corpus.jsonl
+      manifest: data/generated/nqopen1520-attack-together-gpt-oss-120b-v2-human-length/manifest.jsonl
+      label: gpt-oss-120b-attack-v2-human-length
+      model: openai/gpt-oss-120b
+    gpt_oss_correct:
+      kind: generated
+      condition: correct
+      path: data/generated/nqopen1520-together-gpt-oss-120b-correct-v1/corpus_0001.jsonl
+    gpt_oss_false:
+      kind: generated
+      condition: 'false'
+      path: data/generated/nqopen1520-together-gpt-oss-120b-false-v1/corpus_0001.jsonl
+      compatible_only: true
+  include_human: true
+reader:
+  llm: configs/readers/qwen3-4b-instruct-2507.yaml
+  temperature: 0.0
+  seed: 13
+  top_k: 15
+  prompt: prompts/reader_v1.txt
+  retrievers:
+  - bm25
+  cache_path: cache/reader_nqopen1520_core12_attack_v2_qwen3_4b_top15_order_20261030.sqlite
+variants:
+  human_only:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: false
+    corpus.fixed.qwen3_false.enabled: false
+    corpus.fixed.gpt_oss_attack.enabled: false
+    corpus.fixed.gpt_oss_correct.enabled: false
+    corpus.fixed.gpt_oss_false.enabled: false
+  human+qwen3_correct:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: true
+    corpus.fixed.qwen3_false.enabled: false
+    corpus.fixed.gpt_oss_attack.enabled: false
+    corpus.fixed.gpt_oss_correct.enabled: false
+    corpus.fixed.gpt_oss_false.enabled: false
+  human+gpt_oss_correct:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: false
+    corpus.fixed.qwen3_false.enabled: false
+    corpus.fixed.gpt_oss_attack.enabled: false
+    corpus.fixed.gpt_oss_correct.enabled: true
+    corpus.fixed.gpt_oss_false.enabled: false
+  human+qwen3_false:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: false
+    corpus.fixed.qwen3_false.enabled: true
+    corpus.fixed.gpt_oss_attack.enabled: false
+    corpus.fixed.gpt_oss_correct.enabled: false
+    corpus.fixed.gpt_oss_false.enabled: false
+  human+gpt_oss_false:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: false
+    corpus.fixed.qwen3_false.enabled: false
+    corpus.fixed.gpt_oss_attack.enabled: false
+    corpus.fixed.gpt_oss_correct.enabled: false
+    corpus.fixed.gpt_oss_false.enabled: true
+  human+gpt_oss_attack:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: false
+    corpus.fixed.qwen3_false.enabled: false
+    corpus.fixed.gpt_oss_attack.enabled: true
+    corpus.fixed.gpt_oss_correct.enabled: false
+    corpus.fixed.gpt_oss_false.enabled: false
+  human+qwen3_correct+qwen3_false:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: true
+    corpus.fixed.qwen3_false.enabled: true
+    corpus.fixed.gpt_oss_attack.enabled: false
+    corpus.fixed.gpt_oss_correct.enabled: false
+    corpus.fixed.gpt_oss_false.enabled: false
+  human+gpt_oss_correct+gpt_oss_false:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: false
+    corpus.fixed.qwen3_false.enabled: false
+    corpus.fixed.gpt_oss_attack.enabled: false
+    corpus.fixed.gpt_oss_correct.enabled: true
+    corpus.fixed.gpt_oss_false.enabled: true
+  human+qwen3_correct+gpt_oss_false:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: true
+    corpus.fixed.qwen3_false.enabled: false
+    corpus.fixed.gpt_oss_attack.enabled: false
+    corpus.fixed.gpt_oss_correct.enabled: false
+    corpus.fixed.gpt_oss_false.enabled: true
+  human+gpt_oss_correct+qwen3_false:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: false
+    corpus.fixed.qwen3_false.enabled: true
+    corpus.fixed.gpt_oss_attack.enabled: false
+    corpus.fixed.gpt_oss_correct.enabled: true
+    corpus.fixed.gpt_oss_false.enabled: false
+  human+qwen3_correct+gpt_oss_attack:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: true
+    corpus.fixed.qwen3_false.enabled: false
+    corpus.fixed.gpt_oss_attack.enabled: true
+    corpus.fixed.gpt_oss_correct.enabled: false
+    corpus.fixed.gpt_oss_false.enabled: false
+  human+gpt_oss_correct+gpt_oss_attack:
+    corpus.include_human: true
+    corpus.fixed.qwen3_correct.enabled: false
+    corpus.fixed.qwen3_false.enabled: false
+    corpus.fixed.gpt_oss_attack.enabled: true
+    corpus.fixed.gpt_oss_correct.enabled: true
+    corpus.fixed.gpt_oss_false.enabled: false
+retrievers:
+- bm25
+retriever_definitions:
+  bm25:
+    type: bm25
+    k1: 1.5
+    b: 0.75
+    remove_query_stopwords: true
+retrieval:
+  top_k: 15
+evaluation:
+  cutoffs:
+  - 1
+  - 5
+  - 10
+  - 15
+  relevance_modes:
+  - strict
+  - relaxed
+  recall_alias: relaxed
+output:
+  dir: results/evaluations/qwen3_4b_core12_attack_v2_top15_order_20261030/runs
+  resume: true
+sweep_output:
+  dir: results/evaluations/qwen3_4b_core12_attack_v2_top15_order_20261030/sweeps
+sweep:
+  reader.context_order:
+  - retrieval
+  - reverse

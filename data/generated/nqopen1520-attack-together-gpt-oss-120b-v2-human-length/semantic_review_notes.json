@@ -1,0 +1,11 @@
+{
+  "notes": [
+    {
+      "action": "Flagged for review; dataset, generated document and evaluation membership unchanged.",
+      "gold_answer": "inverted",
+      "query_id": "test1899",
+      "reason": "The false target is a semantic equivalent of the gold answer. Lexical validation passes, but this question should be reviewed before interpreting false-answer adoption.",
+      "target_answer": "Upside down"
+    }
+  ]
+}

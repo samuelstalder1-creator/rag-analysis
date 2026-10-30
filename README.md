@@ -234,3 +234,62 @@ and runs. Archived launch documentation is under `docs/archive/`.
 The core data builders, sparse/dense retrievers and model adapters remain
 available. Only the active configuration surface was narrowed. No completed
 historical experiment results were deleted.
+
+## Human-length attacks v2 and reader context order
+
+The new attack generation config is
+`configs/generation/nqopen1520-attack-together-human-length.yaml`.
+It uses the mean body word count of all 104,194 human documents (86.9369 words),
+a target of 87 words, and a strictly enforced +/-10% band of 79–95 words per
+body. Word counting uses whitespace splitting for both human and attack texts;
+titles are excluded. The mean is a target, not a guarantee of an identical
+corpus-wide average. Out-of-band generations are rejected and retried, never
+truncated. The audit reports the resulting mean. Only the question, false target
+and aggregate length limits reach the generator; no human passage or gold answer
+is included. The reference file hash and derived statistics are stored with the
+versioned generation signature/receipts. Attack v1 keeps its historical validation.
+
+The experiment
+`configs/experiments/nqopen1520_core12_attack_v2_qwen3_4b_bm25_top15_order.yaml`
+uses the same 12 corpus conditions with attack v2 in the attack conditions,
+and two reader orders for each condition (24 runs, 36,480 answers):
+
+- `reader.context_order: retrieval`: BM25 ranks 1 through 15.
+- `reader.context_order: reverse`: the same selected hits in ranks 15 through 1.
+
+Ordering is applied after selecting the IR top-15, immediately before context
+formatting. The reader's citation numbers are assigned in the presented order;
+`answers.jsonl` records `context_order`, `context_doc_ids`, `context_ir_ranks`
+and the mapped `cited_doc_ids`. Retrieval exports and strict/relaxed recall
+retain the original BM25 ranks. Reader order is included in run fingerprints.
+Output/cache paths are separate from the earlier experiment. Runs with omitted
+`context_order` retain their previous retrieval-order configuration identity.
+
+Run from the repository root with `TOGETHER_API_KEY` available for generation:
+
+```bash
+uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-together-human-length.yaml --dry-run
+# Generate a five-question pilot, then resume to the full dataset:
+uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-together-human-length.yaml --limit 5
+uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-together-human-length.yaml
+# Require full coverage and valid lengths before evaluating:
+uv run python scripts/audit_attack_corpus.py --config configs/generation/nqopen1520-attack-together-human-length.yaml
+uv run evlab sweep configs/experiments/nqopen1520_core12_attack_v2_qwen3_4b_bm25_top15_order.yaml --dry-run
+# On the GPU host:
+bash scripts/run_evaluation.sh qwen3_4b_core12_attack_v2_order
+```
+
+The attack-v2 data must be generated before the experiment's corpus dry-run or
+reader evaluation can run. The previous Top-15 context audit used attack v1;
+it is not a measurement of the newly generated attack-v2 prompts.
+
+For missing attack documents, use a fresh sampling batch while retaining all
+accepted rows and the original corpus signature:
+
+```bash
+uv run evlab generate-attack-documents --config configs/generation/nqopen1520-attack-together-human-length.yaml --retry-seed 1
+```
+
+Increase `--retry-seed` for subsequent batches. The seed selects a new,
+non-overlapping block of generation attempt seeds, bypassing cached failed
+responses; receipts and rejection records retain the retry batch number.

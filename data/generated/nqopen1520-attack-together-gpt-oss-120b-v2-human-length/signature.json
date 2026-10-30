@@ -1,0 +1,20 @@
+{
+  "signature": "c6d86ce1f98030b7a5a585bf054d0e2dbcd732eea2c6ae102ab066d2271ab359",
+  "model": "openai/gpt-oss-120b",
+  "min_words": 79,
+  "max_words": 95,
+  "max_attempts": 4,
+  "temperature": 0.5,
+  "seed": 13,
+  "origin": "attack_v2_human_length",
+  "target_words": 87,
+  "strict_length": true,
+  "length_reference": {
+    "corpus": "data/cocktail/nq/corpus/human.jsonl",
+    "sha256": "0e3eb682a464f8252426685a93297a9836f9f7b8af9f16d23a9be5528a61e75d",
+    "documents": 104194,
+    "mean_words": 86.93686776589823,
+    "relative_tolerance": 0.1,
+    "word_count": "body.split()"
+  }
+}

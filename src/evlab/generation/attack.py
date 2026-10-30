@@ -16,13 +16,14 @@ Output directory::
 from __future__ import annotations
 
 import json
+import math
 import re
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from evlab.generation.validate import number_variants
-from evlab.io import append_jsonl, iter_jsonl, stable_hash
+from evlab.io import append_jsonl, file_sha256, iter_jsonl, stable_hash
 from evlab.llm.cache import CachedLLMClient
 from evlab.llm.client import build_llm_client
 
@@ -97,7 +98,7 @@ def parse_output(response: str) -> tuple[str, str]:
 
 
 def validate_attack(title: str, body: str, *, target: str, aliases: list[str],
-                    min_words: int, max_words: int) -> list[str]:
+                    min_words: int, max_words: int, strict_length: bool = False) -> list[str]:
     reasons = []
     whole = _normalize_quotes(f"{title}\n{body}")
     target = _normalize_quotes(target).strip().strip("\"'").strip()
@@ -125,9 +126,9 @@ def validate_attack(title: str, body: str, *, target: str, aliases: list[str],
     if LEAK.search(whole) or re.search(r"\bfictional\b", FICTIONAL_SUBJECT.sub("", whole), re.IGNORECASE):
         reasons.append("meta_leak")
     words = len(body.split())
-    if words < int(min_words * 0.6):
+    if words < (min_words if strict_length else int(min_words * 0.6)):
         reasons.append("too_short")
-    if words > int(max_words * 1.5):
+    if words > (max_words if strict_length else int(max_words * 1.5)):
         reasons.append("too_long")
     return reasons
 
@@ -155,20 +156,22 @@ def _seed(query_id: str, sample: int, attempt: int, base: int) -> int:
     return (int(stable_hash([query_id, sample])[:8], 16) + base + attempt * 1_000_003) % (2**31 - 1)
 
 
-def generate_one(client, template: str, candidate: dict, *, sample: int, settings: dict) -> dict:
+def generate_one(client, template: str, candidate: dict, *, sample: int, settings: dict, retry_seed: int = 0) -> dict:
     prompt = template.format(question=candidate["question"], target_answer=candidate["target"],
-                             min_words=settings["min_words"], max_words=settings["max_words"])
+                             min_words=settings["min_words"], max_words=settings["max_words"],
+                             target_words=settings.get("target_words", round((settings["min_words"] + settings["max_words"]) / 2)))
     attempts = []
     for attempt in range(settings["max_attempts"]):
         previous_reasons = list(dict.fromkeys(reason for item in attempts for reason in item["reasons"]))
         text = prompt + (_feedback(previous_reasons, candidate["target"],
                                    settings["min_words"], settings["max_words"]) if attempts else "")
-        seed = _seed(candidate["query_id"], sample, attempt, settings["seed"])
+        seed = _seed(candidate["query_id"], sample, attempt + retry_seed * settings["max_attempts"], settings["seed"])
         response = client.generate(
             text, temperature=min(1.0, settings["temperature"] + 0.1 * attempt), seed=seed).strip()
         title, body = parse_output(response)
         reasons = validate_attack(title, body, target=candidate["target"], aliases=candidate["aliases"],
-                                  min_words=settings["min_words"], max_words=settings["max_words"])
+                                  min_words=settings["min_words"], max_words=settings["max_words"],
+                                  strict_length=settings.get("strict_length", False))
         attempts.append({"attempt": attempt + 1, "seed": seed, "reasons": reasons,
                          "title": title, "text": body, "raw": response if reasons else None})
         if not reasons:
@@ -176,10 +179,8 @@ def generate_one(client, template: str, candidate: dict, *, sample: int, setting
     return {"ok": False, "attempts": attempts}
 
 
-def run_attack_generation(config: dict, nqplus_dir: str | Path, *, limit: int | None = None,
-                          dry_run: bool = False) -> dict:
-    """``config`` is the ``generation`` section; documents are written to ``output_dir``."""
-    template = load_prompt(config.get("prompt"))
+def resolve_attack_settings(config: dict) -> dict:
+    """Resolve a strict word band from the human corpus, without exposing its text to the LLM."""
     settings = {
         "min_words": int(config.get("min_words", 60)),
         "max_words": int(config.get("max_words", 110)),
@@ -187,8 +188,39 @@ def run_attack_generation(config: dict, nqplus_dir: str | Path, *, limit: int | 
         "temperature": float(config.get("temperature", 0.5)),
         "seed": int(config.get("seed", 13)),
     }
+    if "strict_length" in config:
+        settings["strict_length"] = bool(config["strict_length"])
+    if "origin" in config:
+        settings["origin"] = str(config["origin"])
+    reference = config.get("length_reference")
+    if reference:
+        path = Path(reference["corpus"])
+        tolerance = float(reference.get("relative_tolerance", 0.1))
+        if not 0 <= tolerance < 1:
+            raise ValueError("length_reference.relative_tolerance must be in [0, 1)")
+        counts = [len(str(row["text"]).split()) for row in iter_jsonl(path)]
+        if not counts or not all(counts):
+            raise ValueError("length reference must contain nonempty human document bodies")
+        mean = sum(counts) / len(counts)
+        settings.update(
+            target_words=round(mean), min_words=math.ceil(mean * (1 - tolerance)),
+            max_words=math.floor(mean * (1 + tolerance)), strict_length=True,
+            length_reference={"corpus": str(path), "sha256": file_sha256(path),
+                              "documents": len(counts), "mean_words": mean,
+                              "relative_tolerance": tolerance, "word_count": "body.split()"},
+        )
     if settings["max_attempts"] < 1 or settings["min_words"] < 1 or settings["max_words"] < settings["min_words"]:
         raise ValueError("invalid attack generation settings (max_attempts, min_words, max_words)")
+    return settings
+
+
+def run_attack_generation(config: dict, nqplus_dir: str | Path, *, limit: int | None = None,
+                          dry_run: bool = False, retry_seed: int = 0) -> dict:
+    """``config`` is the ``generation`` section; documents are written to ``output_dir``."""
+    if retry_seed < 0:
+        raise ValueError("retry_seed must be nonnegative")
+    template = load_prompt(config.get("prompt"))
+    settings = resolve_attack_settings(config)
     samples = int(config.get("samples_per_query", 1))
     if samples < 1:
         raise ValueError("samples_per_query must be positive")
@@ -197,12 +229,14 @@ def run_attack_generation(config: dict, nqplus_dir: str | Path, *, limit: int | 
         candidates = candidates[:limit]
     output_dir = Path(config.get("output_dir", "data/generated/attack"))
     summary = {"questions": len(candidates), "samples_per_query": samples,
-               "skipped_without_target": skipped, "output_dir": str(output_dir)}
+               "skipped_without_target": skipped, "output_dir": str(output_dir),
+               "length_settings": settings, "retry_seed": retry_seed}
     if dry_run:
         example = candidates[0] if candidates else None
         summary["example_prompt"] = template.format(
             question=example["question"], target_answer=example["target"],
-            min_words=settings["min_words"], max_words=settings["max_words"]) if example else None
+            min_words=settings["min_words"], max_words=settings["max_words"],
+            target_words=settings.get("target_words", round((settings["min_words"] + settings["max_words"]) / 2))) if example else None
         summary["documents_to_generate"] = len(candidates) * samples
         return summary
 
@@ -230,7 +264,7 @@ def run_attack_generation(config: dict, nqplus_dir: str | Path, *, limit: int | 
 
     def work(task):
         candidate, sample = task
-        return candidate, sample, generate_one(client, template, candidate, sample=sample, settings=settings)
+        return candidate, sample, generate_one(client, template, candidate, sample=sample, settings=settings, retry_seed=retry_seed)
 
     with ThreadPoolExecutor(max_workers=max(1, int(config.get("workers", 4)))) as pool:
         futures = [pool.submit(work, task) for task in tasks]
@@ -242,10 +276,11 @@ def run_attack_generation(config: dict, nqplus_dir: str | Path, *, limit: int | 
                 if result["ok"]:
                     receipt = {"query_id": candidate["query_id"], "question": candidate["question"],
                                "target_answer": candidate["target"], "gold_answer": candidate["gold"],
-                               "origin": "attack_v1", "sample": sample, "model": client.model,
-                               "validation_version": VALIDATION_VERSION,
+                               "origin": settings.get("origin", "attack_v1"), "sample": sample, "model": client.model,
+                               "validation_version": 3 if settings.get("strict_length") else VALIDATION_VERSION,
+                               "length_settings": settings,
                                "prompt_hash": stable_hash(template)[:12], "signature": signature[:12],
-                               "attempts": len(result["attempts"]),
+                               "attempts": len(result["attempts"]), "retry_seed": retry_seed,
                                "words": len(result["text"].split()),
                                "row_hash": stable_hash({"title": result["title"], "text": result["text"]})}
                     # Receipt first, then the row: a crash leaves no document without its receipt.
@@ -256,7 +291,7 @@ def run_attack_generation(config: dict, nqplus_dir: str | Path, *, limit: int | 
                 else:
                     append_jsonl(rejects_path, [{"doc_id": doc_id, "query_id": candidate["query_id"],
                                                  "target_answer": candidate["target"],
-                                                 "attempts": result["attempts"]}])
+                                                 "attempts": result["attempts"], "retry_seed": retry_seed}])
                     counts["rejected"] += 1
                 total = counts["generated"] + counts["rejected"]
                 if every and total % every == 0:

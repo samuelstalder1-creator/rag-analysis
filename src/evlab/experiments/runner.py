@@ -298,6 +298,7 @@ def _evaluate_reader(client, queries, run, docs_by_id, config, *, output_path=No
             temperature=float(config["temperature"]),
             seed=config["seed"],
             prompt=config["prompt_template"],
+            context_order=config.get("context_order", "retrieval"),
         )
         label = (
             classify_answer(

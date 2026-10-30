@@ -15,8 +15,14 @@ def answer_with_hits(
     temperature: float = 0.0,
     seed: int | None = None,
     prompt: str | None = None,
+    context_order: str = "retrieval",
 ) -> dict:
-    context, doc_ids = format_context(hits[:top_k], docs_by_id)
+    selected = list(hits[:top_k])
+    if context_order == "reverse":
+        selected.reverse()
+    elif context_order != "retrieval":
+        raise ValueError(f"Unknown reader context_order: {context_order}")
+    context, doc_ids = format_context(selected, docs_by_id)
     result = read_answer(
         client,
         question=query.text,
@@ -27,4 +33,6 @@ def answer_with_hits(
     )
     result["query_id"] = query.query_id
     result["context_doc_ids"] = doc_ids
+    result["context_order"] = context_order
+    result["context_ir_ranks"] = [hit.rank for hit in selected]
     return result

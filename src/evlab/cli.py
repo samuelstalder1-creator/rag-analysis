@@ -46,6 +46,8 @@ def main(argv: list[str] | None = None) -> None:
     attack_parser.add_argument("--config", required=True)
     attack_parser.add_argument("--limit", type=int, default=None)
     attack_parser.add_argument("--dry-run", action="store_true")
+    attack_parser.add_argument("--retry-seed", type=int, default=0,
+                               help="fresh sampling for missing attacks; keeps accepted documents")
     for command in ("generation-status", "cleanup-false"):
         maintenance_parser = subparsers.add_parser(command)
         maintenance_parser.add_argument("--config", required=True)
@@ -135,7 +137,7 @@ def main(argv: list[str] | None = None) -> None:
         from evlab.generation.attack import run_attack_generation
         config = load_config(args.config)
         _print(run_attack_generation(config["generation"], config["data"]["nqplus_dir"],
-                                     limit=args.limit, dry_run=args.dry_run))
+                                     limit=args.limit, dry_run=args.dry_run, retry_seed=args.retry_seed))
     elif args.command in {"repair-correct-documents", "generate-correct-documents"}:
         from evlab.generation.correct_repair import run_correct_repair, run_correct_generation
         stage = run_correct_generation if args.command == "generate-correct-documents" else run_correct_repair

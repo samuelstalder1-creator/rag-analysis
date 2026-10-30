@@ -186,3 +186,90 @@ def test_attack_documents_in_fixed_corpus_and_r_attack(tmp_path):
     config["corpus"]["fixed"]["poisoned"]["path"] = str(bad)
     with pytest.raises(ValueError, match="unknown query"):
         build_corpus_with_report(config)
+
+
+def test_strict_word_bounds_reject_legacy_tolerance_and_accept_boundaries():
+    kwargs = dict(target="25", aliases=["23"], min_words=10, max_words=20)
+    for words, reason in [(9, "too_short"), (21, "too_long")]:
+        text = "25 " + "word " * (words-1)
+        assert reason in validate_attack("", text, strict_length=True, **kwargs)
+        assert validate_attack("", text, **kwargs) == []  # historical validation unchanged
+    for words in [10, 20]:
+        assert validate_attack("", "25 " + "word " * (words-1), strict_length=True, **kwargs) == []
+
+
+def test_reference_mean_resolves_strict_bounds_and_is_in_signature(tmp_path, monkeypatch):
+    root, _ = _dataset(tmp_path)
+    reference = tmp_path / "human.jsonl"
+    reference.write_text('\n'.join(json.dumps({"text": "word " * n}) for n in [80, 94])+'\n')
+    config = {"length_reference": {"corpus": str(reference), "relative_tolerance": 0.1},
+              "origin": "attack_v2_human_length", "prompt": "prompts/attack_v2_human_length.txt",
+              "output_dir": str(tmp_path / "out"), "cache_path": str(tmp_path / "cache.sqlite"),
+              "workers": 1, "llm": {"provider": "fake", "model": "x"}}
+    settings = attack.resolve_attack_settings(config)
+    assert (settings["target_words"], settings["min_words"], settings["max_words"]) == (87, 79, 95)
+    assert settings["strict_length"]
+
+    class SizedClient(FakeClient):
+        def generate(self, prompt, **kwargs):
+            self.prompts.append(prompt)
+            # First attempt misses the enforced range, retry has exactly 87 words.
+            words = 100 if len(self.prompts) == 1 else 87
+            return "Title: Article\nText: 25 " + "detail " * (words-1)
+
+    client = SizedClient()
+    monkeypatch.setattr(attack, "build_llm_client", lambda cfg: client)
+    summary = run_attack_generation(config, root, limit=1)
+    assert summary["generated"] == 1 and summary["attempts"] == 2
+    receipt = json.loads((tmp_path / "out/manifest.jsonl").read_text())["receipt"]
+    assert receipt["words"] == 87 and receipt["validation_version"] == 3
+    assert receipt["origin"] == "attack_v2_human_length"
+    assert "79 to 95 words" in client.prompts[-1]
+    assert "Aim for 87 words" in client.prompts[0]
+    assert "word word" not in client.prompts[0]  # only aggregate length, no source text
+    from scripts.audit_attack_corpus import audit
+    report = audit({"data": {"nqplus_dir": str(root)}, "generation": config})
+    assert not report["issues"] and report["mean_body_words"] == 87
+    corpus_path = tmp_path / "out/corpus.jsonl"
+    row = json.loads(corpus_path.read_text())
+    row["text"] += " extra" * 9
+    corpus_path.write_text(json.dumps(row)+'\n')
+    report = audit({"data": {"nqplus_dir": str(root)}, "generation": config})
+    assert any(i["reason"] == "too_long" for i in report["issues"])
+    reference.write_text(json.dumps({"text": "word " * 100})+'\n')
+    with pytest.raises(ValueError, match="different prompt/model/settings"):
+        run_attack_generation(config, root, limit=1)
+
+
+def test_retry_seed_bypasses_failed_cache_and_preserves_accepted_documents(tmp_path, monkeypatch):
+    root, _ = _dataset(tmp_path)
+
+    class RetryClient(FakeClient):
+        def __init__(self):
+            super().__init__()
+            self.accept = False
+            self.seeds = []
+
+        def generate(self, prompt, *, seed=None, **kwargs):
+            self.seeds.append(seed)
+            if not self.accept:
+                return 'Title: Season\nText: nothing useful'
+            return 'Title: Season\nText: 25 ' + 'detail ' * 12
+
+    client = RetryClient()
+    monkeypatch.setattr(attack, 'build_llm_client', lambda cfg: client)
+    config = {'output_dir': str(tmp_path / 'out'), 'cache_path': str(tmp_path / 'cache.sqlite'),
+              'max_attempts': 1, 'workers': 1, 'min_words': 10, 'max_words': 40,
+              'llm': {'provider': 'fake', 'model': 'x'}}
+    assert run_attack_generation(config, root, limit=1)['rejected'] == 1
+    first_seed = client.seeds[-1]
+    client.accept = True
+    assert run_attack_generation(config, root, limit=1)['rejected'] == 1  # cached failure
+    summary = run_attack_generation(config, root, limit=1, retry_seed=1)
+    assert summary['generated'] == 1 and client.seeds[-1] != first_seed
+    path = tmp_path / 'out/corpus.jsonl'
+    before = path.read_bytes()
+    assert run_attack_generation(config, root, limit=1, retry_seed=2)['generated'] == 0
+    assert path.read_bytes() == before
+    receipt = json.loads((tmp_path / 'out/manifest.jsonl').read_text())['receipt']
+    assert receipt['retry_seed'] == 1

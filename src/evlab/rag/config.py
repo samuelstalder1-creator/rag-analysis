@@ -12,6 +12,7 @@
       temperature: 0.0
       seed: null
       top_k: 10                        # retrieved documents placed in the context
+      context_order: retrieval         # retrieval | reverse, after selecting top_k
       prompt: prompts/reader_v1.txt    # template file with {question} and {context}
       retrievers: [bm25]               # which retrievers feed the reader (default: all)
       cache_path: cache/reader.sqlite
@@ -28,7 +29,7 @@ from evlab.config import load_config
 from evlab.io import stable_hash
 from evlab.rag.reader import READER_PROMPT
 
-READER_KEYS = {"enabled", "llm", "temperature", "seed", "top_k", "prompt", "cache_path", "retrievers"}
+READER_KEYS = {"enabled", "llm", "temperature", "seed", "top_k", "prompt", "cache_path", "retrievers", "context_order"}
 LLM_KEYS = {
     "provider", "base_url", "model", "api_key_env", "timeout",
     "max_retries", "retry_delay", "max_tokens",
@@ -76,7 +77,11 @@ def resolve_reader(config: dict, run_names: list[str]) -> dict | None:
     top_k = int(raw.get("top_k", 10))
     if top_k < 1:
         raise ValueError("reader.top_k must be >= 1")
+    context_order = str(raw.get("context_order", "retrieval"))
+    if context_order not in {"retrieval", "reverse"}:
+        raise ValueError("reader.context_order must be retrieval or reverse")
     return {
+        **({"context_order": context_order} if "context_order" in raw else {}),
         "llm": llm,
         "llm_source": llm_source,
         "temperature": float(raw.get("temperature", 0.0)),
@@ -94,6 +99,7 @@ def reader_summary(spec: dict | None) -> dict | None:
     if spec is None:
         return None
     return {
+        **({"context_order": spec["context_order"]} if "context_order" in spec else {}),
         "provider": spec["llm"].get("provider", "abstain"),
         "model": spec["llm"].get("model"),
         "llm_source": spec["llm_source"],
